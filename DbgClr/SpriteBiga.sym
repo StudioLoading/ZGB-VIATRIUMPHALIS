@@ -1,0 +1,999 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 A$SpriteBiga$100                                               000022 GR
+  7 A$SpriteBiga$1002                                              0003E4 GR
+  7 A$SpriteBiga$1003                                              0003E7 GR
+  7 A$SpriteBiga$1004                                              0003EA GR
+  7 A$SpriteBiga$1005                                              0003EB GR
+  7 A$SpriteBiga$1006                                              0003ED GR
+  7 A$SpriteBiga$1007                                              0003F0 GR
+  7 A$SpriteBiga$1008                                              0003F3 GR
+  7 A$SpriteBiga$1009                                              0003F4 GR
+  7 A$SpriteBiga$101                                               000023 GR
+  7 A$SpriteBiga$1013                                              0003F6 GR
+  7 A$SpriteBiga$1014                                              0003F9 GR
+  7 A$SpriteBiga$1015                                              0003FA GR
+  7 A$SpriteBiga$1019                                              0003FC GR
+  7 A$SpriteBiga$102                                               000024 GR
+  7 A$SpriteBiga$1020                                              0003FD GR
+  7 A$SpriteBiga$1021                                              0003FE GR
+  7 A$SpriteBiga$1022                                              0003FF GR
+  7 A$SpriteBiga$1023                                              000401 GR
+  7 A$SpriteBiga$1024                                              000404 GR
+  7 A$SpriteBiga$1025                                              000407 GR
+  7 A$SpriteBiga$103                                               000025 GR
+  7 A$SpriteBiga$1030                                              000408 GR
+  7 A$SpriteBiga$1035                                              00040A GR
+  7 A$SpriteBiga$104                                               000028 GR
+  7 A$SpriteBiga$1049                                              00040B GR
+  7 A$SpriteBiga$105                                               000029 GR
+  7 A$SpriteBiga$1050                                              00040D GR
+  7 A$SpriteBiga$1051                                              00040E GR
+  7 A$SpriteBiga$1052                                              00040F GR
+  7 A$SpriteBiga$1053                                              000410 GR
+  7 A$SpriteBiga$1054                                              000413 GR
+  7 A$SpriteBiga$1058                                              000414 GR
+  7 A$SpriteBiga$1059                                              000417 GR
+  7 A$SpriteBiga$106                                               00002B GR
+  7 A$SpriteBiga$1060                                              000418 GR
+  7 A$SpriteBiga$1061                                              000419 GR
+  7 A$SpriteBiga$1062                                              00041A GR
+  7 A$SpriteBiga$1063                                              00041C GR
+  7 A$SpriteBiga$1064                                              00041F GR
+  7 A$SpriteBiga$1065                                              000421 GR
+  7 A$SpriteBiga$1066                                              000422 GR
+  7 A$SpriteBiga$1067                                              000425 GR
+  7 A$SpriteBiga$1068                                              000426 GR
+  7 A$SpriteBiga$1069                                              000428 GR
+  7 A$SpriteBiga$107                                               00002C GR
+  7 A$SpriteBiga$1070                                              000429 GR
+  7 A$SpriteBiga$1071                                              00042A GR
+  7 A$SpriteBiga$1072                                              00042B GR
+  7 A$SpriteBiga$1073                                              00042D GR
+  7 A$SpriteBiga$1074                                              000430 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$1075                                              000431 GR
+  7 A$SpriteBiga$1076                                              000432 GR
+  7 A$SpriteBiga$1077                                              000433 GR
+  7 A$SpriteBiga$1078                                              000434 GR
+  7 A$SpriteBiga$1080                                              000435 GR
+  7 A$SpriteBiga$1081                                              000438 GR
+  7 A$SpriteBiga$1082                                              00043B GR
+  7 A$SpriteBiga$1083                                              00043E GR
+  7 A$SpriteBiga$1084                                              000441 GR
+  7 A$SpriteBiga$1085                                              000444 GR
+  7 A$SpriteBiga$1086                                              000447 GR
+  7 A$SpriteBiga$1087                                              00044A GR
+  7 A$SpriteBiga$1095                                              00044D GR
+  7 A$SpriteBiga$1096                                              000450 GR
+  7 A$SpriteBiga$1100                                              000451 GR
+  7 A$SpriteBiga$1101                                              000452 GR
+  7 A$SpriteBiga$1102                                              000454 GR
+  7 A$SpriteBiga$1103                                              000457 GR
+  7 A$SpriteBiga$1104                                              00045A GR
+  7 A$SpriteBiga$1108                                              00045B GR
+  7 A$SpriteBiga$1116                                              00045E GR
+  7 A$SpriteBiga$1117                                              000461 GR
+  7 A$SpriteBiga$1121                                              000462 GR
+  7 A$SpriteBiga$1122                                              000463 GR
+  7 A$SpriteBiga$1123                                              000465 GR
+  7 A$SpriteBiga$1124                                              000468 GR
+  7 A$SpriteBiga$1125                                              00046B GR
+  7 A$SpriteBiga$1129                                              00046C GR
+  7 A$SpriteBiga$1137                                              00046F GR
+  7 A$SpriteBiga$1138                                              000470 GR
+  7 A$SpriteBiga$1139                                              000472 GR
+  7 A$SpriteBiga$1140                                              000475 GR
+  7 A$SpriteBiga$1141                                              000478 GR
+  7 A$SpriteBiga$1145                                              000479 GR
+  7 A$SpriteBiga$115                                               00002E GR
+  7 A$SpriteBiga$1153                                              00047C GR
+  7 A$SpriteBiga$1154                                              00047D GR
+  7 A$SpriteBiga$1155                                              00047F GR
+  7 A$SpriteBiga$1156                                              000482 GR
+  7 A$SpriteBiga$1157                                              000485 GR
+  7 A$SpriteBiga$1171                                              000486 GR
+  7 A$SpriteBiga$1188                                              000489 GR
+  7 A$SpriteBiga$150                                               00003E GR
+  7 A$SpriteBiga$154                                               000040 GR
+  7 A$SpriteBiga$155                                               000043 GR
+  7 A$SpriteBiga$156                                               000044 GR
+  7 A$SpriteBiga$157                                               000045 GR
+  7 A$SpriteBiga$158                                               000046 GR
+  7 A$SpriteBiga$159                                               000049 GR
+  7 A$SpriteBiga$160                                               00004A GR
+  7 A$SpriteBiga$161                                               00004B GR
+  7 A$SpriteBiga$162                                               00004C GR
+  7 A$SpriteBiga$163                                               00004D GR
+  7 A$SpriteBiga$164                                               00004F GR
+  7 A$SpriteBiga$165                                               000050 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$166                                               000051 GR
+  7 A$SpriteBiga$167                                               000052 GR
+  7 A$SpriteBiga$168                                               000053 GR
+  7 A$SpriteBiga$169                                               000055 GR
+  7 A$SpriteBiga$170                                               000056 GR
+  7 A$SpriteBiga$171                                               000057 GR
+  7 A$SpriteBiga$172                                               000058 GR
+  7 A$SpriteBiga$173                                               00005B GR
+  7 A$SpriteBiga$174                                               00005C GR
+  7 A$SpriteBiga$175                                               00005D GR
+  7 A$SpriteBiga$176                                               00005E GR
+  7 A$SpriteBiga$177                                               00005F GR
+  7 A$SpriteBiga$178                                               000060 GR
+  7 A$SpriteBiga$179                                               000062 GR
+  7 A$SpriteBiga$180                                               000063 GR
+  7 A$SpriteBiga$184                                               000064 GR
+  7 A$SpriteBiga$185                                               000067 GR
+  7 A$SpriteBiga$186                                               000069 GR
+  7 A$SpriteBiga$187                                               00006B GR
+  7 A$SpriteBiga$188                                               00006D GR
+  7 A$SpriteBiga$189                                               00006E GR
+  7 A$SpriteBiga$190                                               00006F GR
+  7 A$SpriteBiga$191                                               000070 GR
+  7 A$SpriteBiga$192                                               000073 GR
+  7 A$SpriteBiga$193                                               000074 GR
+  7 A$SpriteBiga$194                                               000075 GR
+  7 A$SpriteBiga$195                                               000076 GR
+  7 A$SpriteBiga$200                                               000077 GR
+  7 A$SpriteBiga$201                                               00007A GR
+  7 A$SpriteBiga$202                                               00007B GR
+  7 A$SpriteBiga$203                                               00007C GR
+  7 A$SpriteBiga$204                                               00007D GR
+  7 A$SpriteBiga$205                                               00007E GR
+  7 A$SpriteBiga$206                                               000081 GR
+  7 A$SpriteBiga$207                                               000082 GR
+  7 A$SpriteBiga$208                                               000083 GR
+  7 A$SpriteBiga$209                                               000084 GR
+  7 A$SpriteBiga$210                                               000085 GR
+  7 A$SpriteBiga$211                                               000086 GR
+  7 A$SpriteBiga$212                                               000088 GR
+  7 A$SpriteBiga$213                                               000089 GR
+  7 A$SpriteBiga$217                                               00008A GR
+  7 A$SpriteBiga$218                                               00008D GR
+  7 A$SpriteBiga$219                                               00008F GR
+  7 A$SpriteBiga$220                                               000091 GR
+  7 A$SpriteBiga$221                                               000094 GR
+  7 A$SpriteBiga$222                                               000095 GR
+  7 A$SpriteBiga$223                                               000096 GR
+  7 A$SpriteBiga$224                                               000097 GR
+  7 A$SpriteBiga$225                                               000099 GR
+  7 A$SpriteBiga$226                                               00009A GR
+  7 A$SpriteBiga$227                                               00009B GR
+  7 A$SpriteBiga$228                                               00009C GR
+  7 A$SpriteBiga$229                                               00009E GR
+  7 A$SpriteBiga$230                                               00009F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$235                                               0000A1 GR
+  7 A$SpriteBiga$236                                               0000A4 GR
+  7 A$SpriteBiga$237                                               0000A5 GR
+  7 A$SpriteBiga$238                                               0000A6 GR
+  7 A$SpriteBiga$239                                               0000A7 GR
+  7 A$SpriteBiga$240                                               0000A8 GR
+  7 A$SpriteBiga$241                                               0000AA GR
+  7 A$SpriteBiga$242                                               0000AC GR
+  7 A$SpriteBiga$243                                               0000AE GR
+  7 A$SpriteBiga$244                                               0000B0 GR
+  7 A$SpriteBiga$245                                               0000B1 GR
+  7 A$SpriteBiga$247                                               0000B3 GR
+  7 A$SpriteBiga$248                                               0000B5 GR
+  7 A$SpriteBiga$249                                               0000B7 GR
+  7 A$SpriteBiga$251                                               0000B8 GR
+  7 A$SpriteBiga$252                                               0000BA GR
+  7 A$SpriteBiga$253                                               0000BD GR
+  7 A$SpriteBiga$254                                               0000BE GR
+  7 A$SpriteBiga$255                                               0000BF GR
+  7 A$SpriteBiga$256                                               0000C0 GR
+  7 A$SpriteBiga$257                                               0000C1 GR
+  7 A$SpriteBiga$258                                               0000C2 GR
+  7 A$SpriteBiga$259                                               0000C4 GR
+  7 A$SpriteBiga$260                                               0000C5 GR
+  7 A$SpriteBiga$265                                               0000C6 GR
+  7 A$SpriteBiga$266                                               0000C9 GR
+  7 A$SpriteBiga$267                                               0000CA GR
+  7 A$SpriteBiga$268                                               0000CB GR
+  7 A$SpriteBiga$269                                               0000CC GR
+  7 A$SpriteBiga$270                                               0000CF GR
+  7 A$SpriteBiga$271                                               0000D0 GR
+  7 A$SpriteBiga$272                                               0000D1 GR
+  7 A$SpriteBiga$273                                               0000D2 GR
+  7 A$SpriteBiga$274                                               0000D4 GR
+  7 A$SpriteBiga$275                                               0000D5 GR
+  7 A$SpriteBiga$276                                               0000D6 GR
+  7 A$SpriteBiga$277                                               0000D7 GR
+  7 A$SpriteBiga$278                                               0000D9 GR
+  7 A$SpriteBiga$279                                               0000DA GR
+  7 A$SpriteBiga$280                                               0000DB GR
+  7 A$SpriteBiga$281                                               0000DC GR
+  7 A$SpriteBiga$282                                               0000DD GR
+  7 A$SpriteBiga$283                                               0000DE GR
+  7 A$SpriteBiga$284                                               0000DF GR
+  7 A$SpriteBiga$285                                               0000E0 GR
+  7 A$SpriteBiga$286                                               0000E1 GR
+  7 A$SpriteBiga$287                                               0000E2 GR
+  7 A$SpriteBiga$288                                               0000E3 GR
+  7 A$SpriteBiga$289                                               0000E4 GR
+  7 A$SpriteBiga$290                                               0000E5 GR
+  7 A$SpriteBiga$291                                               0000E6 GR
+  7 A$SpriteBiga$292                                               0000E7 GR
+  7 A$SpriteBiga$293                                               0000E8 GR
+  7 A$SpriteBiga$294                                               0000E9 GR
+  7 A$SpriteBiga$295                                               0000EA GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 5
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$296                                               0000EB GR
+  7 A$SpriteBiga$297                                               0000EC GR
+  7 A$SpriteBiga$298                                               0000ED GR
+  7 A$SpriteBiga$299                                               0000EE GR
+  7 A$SpriteBiga$303                                               0000EF GR
+  7 A$SpriteBiga$304                                               0000F1 GR
+  7 A$SpriteBiga$308                                               0000F3 GR
+  7 A$SpriteBiga$309                                               0000F4 GR
+  7 A$SpriteBiga$310                                               0000F6 GR
+  7 A$SpriteBiga$311                                               0000F7 GR
+  7 A$SpriteBiga$312                                               0000F8 GR
+  7 A$SpriteBiga$313                                               0000F9 GR
+  7 A$SpriteBiga$314                                               0000FA GR
+  7 A$SpriteBiga$315                                               0000FC GR
+  7 A$SpriteBiga$319                                               0000FE GR
+  7 A$SpriteBiga$320                                               000100 GR
+  7 A$SpriteBiga$321                                               000101 GR
+  7 A$SpriteBiga$322                                               000102 GR
+  7 A$SpriteBiga$323                                               000103 GR
+  7 A$SpriteBiga$324                                               000106 GR
+  7 A$SpriteBiga$325                                               000107 GR
+  7 A$SpriteBiga$326                                               000108 GR
+  7 A$SpriteBiga$327                                               000109 GR
+  7 A$SpriteBiga$328                                               00010A GR
+  7 A$SpriteBiga$329                                               00010B GR
+  7 A$SpriteBiga$330                                               00010D GR
+  7 A$SpriteBiga$331                                               00010E GR
+  7 A$SpriteBiga$332                                               00010F GR
+  7 A$SpriteBiga$333                                               000110 GR
+  7 A$SpriteBiga$334                                               000111 GR
+  7 A$SpriteBiga$335                                               000112 GR
+  7 A$SpriteBiga$336                                               000113 GR
+  7 A$SpriteBiga$337                                               000114 GR
+  7 A$SpriteBiga$338                                               000115 GR
+  7 A$SpriteBiga$339                                               000116 GR
+  7 A$SpriteBiga$340                                               000117 GR
+  7 A$SpriteBiga$341                                               000118 GR
+  7 A$SpriteBiga$342                                               000119 GR
+  7 A$SpriteBiga$346                                               00011A GR
+  7 A$SpriteBiga$351                                               00011C GR
+  7 A$SpriteBiga$352                                               00011D GR
+  7 A$SpriteBiga$353                                               00011F GR
+  7 A$SpriteBiga$354                                               000121 GR
+  7 A$SpriteBiga$355                                               000122 GR
+  7 A$SpriteBiga$356                                               000124 GR
+  7 A$SpriteBiga$357                                               000125 GR
+  7 A$SpriteBiga$358                                               000127 GR
+  7 A$SpriteBiga$359                                               000129 GR
+  7 A$SpriteBiga$360                                               00012B GR
+  7 A$SpriteBiga$361                                               00012D GR
+  7 A$SpriteBiga$362                                               00012E GR
+  7 A$SpriteBiga$364                                               000130 GR
+  7 A$SpriteBiga$365                                               000132 GR
+  7 A$SpriteBiga$366                                               000134 GR
+  7 A$SpriteBiga$368                                               000135 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 6
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$372                                               000137 GR
+  7 A$SpriteBiga$373                                               00013A GR
+  7 A$SpriteBiga$374                                               00013B GR
+  7 A$SpriteBiga$375                                               00013C GR
+  7 A$SpriteBiga$376                                               00013E GR
+  7 A$SpriteBiga$377                                               00013F GR
+  7 A$SpriteBiga$378                                               000141 GR
+  7 A$SpriteBiga$380                                               000142 GR
+  7 A$SpriteBiga$381                                               000145 GR
+  7 A$SpriteBiga$382                                               000146 GR
+  7 A$SpriteBiga$383                                               000147 GR
+  7 A$SpriteBiga$384                                               000148 GR
+  7 A$SpriteBiga$385                                               00014B GR
+  7 A$SpriteBiga$386                                               00014C GR
+  7 A$SpriteBiga$387                                               00014D GR
+  7 A$SpriteBiga$389                                               00014E GR
+  7 A$SpriteBiga$390                                               000150 GR
+  7 A$SpriteBiga$391                                               000151 GR
+  7 A$SpriteBiga$392                                               000152 GR
+  7 A$SpriteBiga$393                                               000154 GR
+  7 A$SpriteBiga$394                                               000155 GR
+  7 A$SpriteBiga$395                                               000156 GR
+  7 A$SpriteBiga$396                                               000157 GR
+  7 A$SpriteBiga$397                                               000158 GR
+  7 A$SpriteBiga$398                                               000159 GR
+  7 A$SpriteBiga$402                                               00015A GR
+  7 A$SpriteBiga$403                                               00015C GR
+  7 A$SpriteBiga$408                                               00015E GR
+  7 A$SpriteBiga$409                                               000160 GR
+  7 A$SpriteBiga$410                                               000161 GR
+  7 A$SpriteBiga$411                                               000162 GR
+  7 A$SpriteBiga$415                                               000164 GR
+  7 A$SpriteBiga$416                                               000167 GR
+  7 A$SpriteBiga$417                                               000168 GR
+  7 A$SpriteBiga$418                                               000169 GR
+  7 A$SpriteBiga$419                                               00016A GR
+  7 A$SpriteBiga$420                                               00016D GR
+  7 A$SpriteBiga$421                                               00016E GR
+  7 A$SpriteBiga$422                                               00016F GR
+  7 A$SpriteBiga$423                                               000170 GR
+  7 A$SpriteBiga$424                                               000172 GR
+  7 A$SpriteBiga$425                                               000173 GR
+  7 A$SpriteBiga$426                                               000174 GR
+  7 A$SpriteBiga$427                                               000175 GR
+  7 A$SpriteBiga$428                                               000177 GR
+  7 A$SpriteBiga$429                                               000178 GR
+  7 A$SpriteBiga$430                                               000179 GR
+  7 A$SpriteBiga$431                                               00017A GR
+  7 A$SpriteBiga$432                                               00017B GR
+  7 A$SpriteBiga$433                                               00017C GR
+  7 A$SpriteBiga$434                                               00017D GR
+  7 A$SpriteBiga$435                                               00017E GR
+  7 A$SpriteBiga$436                                               00017F GR
+  7 A$SpriteBiga$440                                               000180 GR
+  7 A$SpriteBiga$441                                               000181 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 7
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$442                                               000182 GR
+  7 A$SpriteBiga$443                                               000183 GR
+  7 A$SpriteBiga$444                                               000184 GR
+  7 A$SpriteBiga$445                                               000185 GR
+  7 A$SpriteBiga$446                                               000186 GR
+  7 A$SpriteBiga$447                                               000187 GR
+  7 A$SpriteBiga$448                                               000189 GR
+  7 A$SpriteBiga$449                                               00018A GR
+  7 A$SpriteBiga$450                                               00018B GR
+  7 A$SpriteBiga$451                                               00018C GR
+  7 A$SpriteBiga$452                                               00018D GR
+  7 A$SpriteBiga$453                                               00018E GR
+  7 A$SpriteBiga$454                                               00018F GR
+  7 A$SpriteBiga$455                                               000190 GR
+  7 A$SpriteBiga$456                                               000191 GR
+  7 A$SpriteBiga$461                                               000193 GR
+  7 A$SpriteBiga$462                                               000194 GR
+  7 A$SpriteBiga$463                                               000195 GR
+  7 A$SpriteBiga$464                                               000198 GR
+  7 A$SpriteBiga$465                                               000199 GR
+  7 A$SpriteBiga$466                                               00019A GR
+  7 A$SpriteBiga$467                                               00019B GR
+  7 A$SpriteBiga$468                                               00019C GR
+  7 A$SpriteBiga$469                                               00019D GR
+  7 A$SpriteBiga$470                                               00019F GR
+  7 A$SpriteBiga$471                                               0001A0 GR
+  7 A$SpriteBiga$472                                               0001A1 GR
+  7 A$SpriteBiga$473                                               0001A2 GR
+  7 A$SpriteBiga$474                                               0001A3 GR
+  7 A$SpriteBiga$475                                               0001A4 GR
+  7 A$SpriteBiga$476                                               0001A5 GR
+  7 A$SpriteBiga$477                                               0001A6 GR
+  7 A$SpriteBiga$478                                               0001A8 GR
+  7 A$SpriteBiga$479                                               0001A9 GR
+  7 A$SpriteBiga$480                                               0001AA GR
+  7 A$SpriteBiga$481                                               0001AC GR
+  7 A$SpriteBiga$482                                               0001AD GR
+  7 A$SpriteBiga$483                                               0001AE GR
+  7 A$SpriteBiga$484                                               0001AF GR
+  7 A$SpriteBiga$485                                               0001B0 GR
+  7 A$SpriteBiga$486                                               0001B1 GR
+  7 A$SpriteBiga$491                                               0001B2 GR
+  7 A$SpriteBiga$492                                               0001B5 GR
+  7 A$SpriteBiga$493                                               0001B6 GR
+  7 A$SpriteBiga$494                                               0001B7 GR
+  7 A$SpriteBiga$498                                               0001B8 GR
+  7 A$SpriteBiga$499                                               0001BB GR
+  7 A$SpriteBiga$500                                               0001BC GR
+  7 A$SpriteBiga$501                                               0001BD GR
+  7 A$SpriteBiga$502                                               0001BE GR
+  7 A$SpriteBiga$503                                               0001BF GR
+  7 A$SpriteBiga$504                                               0001C1 GR
+  7 A$SpriteBiga$505                                               0001C2 GR
+  7 A$SpriteBiga$506                                               0001C3 GR
+  7 A$SpriteBiga$507                                               0001C4 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 8
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$511                                               0001C5 GR
+  7 A$SpriteBiga$512                                               0001C8 GR
+  7 A$SpriteBiga$513                                               0001C9 GR
+  7 A$SpriteBiga$514                                               0001CA GR
+  7 A$SpriteBiga$518                                               0001CB GR
+  7 A$SpriteBiga$519                                               0001CE GR
+  7 A$SpriteBiga$520                                               0001CF GR
+  7 A$SpriteBiga$521                                               0001D0 GR
+  7 A$SpriteBiga$522                                               0001D1 GR
+  7 A$SpriteBiga$523                                               0001D3 GR
+  7 A$SpriteBiga$524                                               0001D4 GR
+  7 A$SpriteBiga$525                                               0001D5 GR
+  7 A$SpriteBiga$526                                               0001D6 GR
+  7 A$SpriteBiga$527                                               0001D8 GR
+  7 A$SpriteBiga$528                                               0001D9 GR
+  7 A$SpriteBiga$529                                               0001DA GR
+  7 A$SpriteBiga$530                                               0001DB GR
+  7 A$SpriteBiga$531                                               0001DC GR
+  7 A$SpriteBiga$532                                               0001DD GR
+  7 A$SpriteBiga$533                                               0001DE GR
+  7 A$SpriteBiga$534                                               0001DF GR
+  7 A$SpriteBiga$535                                               0001E0 GR
+  7 A$SpriteBiga$536                                               0001E1 GR
+  7 A$SpriteBiga$537                                               0001E2 GR
+  7 A$SpriteBiga$538                                               0001E3 GR
+  7 A$SpriteBiga$539                                               0001E4 GR
+  7 A$SpriteBiga$540                                               0001E5 GR
+  7 A$SpriteBiga$541                                               0001E6 GR
+  7 A$SpriteBiga$542                                               0001E7 GR
+  7 A$SpriteBiga$543                                               0001E8 GR
+  7 A$SpriteBiga$544                                               0001E9 GR
+  7 A$SpriteBiga$545                                               0001EA GR
+  7 A$SpriteBiga$546                                               0001EB GR
+  7 A$SpriteBiga$547                                               0001EC GR
+  7 A$SpriteBiga$548                                               0001ED GR
+  7 A$SpriteBiga$552                                               0001EE GR
+  7 A$SpriteBiga$553                                               0001F0 GR
+  7 A$SpriteBiga$557                                               0001F2 GR
+  7 A$SpriteBiga$558                                               0001F3 GR
+  7 A$SpriteBiga$559                                               0001F5 GR
+  7 A$SpriteBiga$560                                               0001F6 GR
+  7 A$SpriteBiga$561                                               0001F7 GR
+  7 A$SpriteBiga$562                                               0001F8 GR
+  7 A$SpriteBiga$563                                               0001F9 GR
+  7 A$SpriteBiga$564                                               0001FB GR
+  7 A$SpriteBiga$568                                               0001FD GR
+  7 A$SpriteBiga$569                                               0001FF GR
+  7 A$SpriteBiga$570                                               000200 GR
+  7 A$SpriteBiga$571                                               000201 GR
+  7 A$SpriteBiga$572                                               000202 GR
+  7 A$SpriteBiga$573                                               000205 GR
+  7 A$SpriteBiga$574                                               000206 GR
+  7 A$SpriteBiga$575                                               000207 GR
+  7 A$SpriteBiga$576                                               000208 GR
+  7 A$SpriteBiga$577                                               000209 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 9
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$578                                               00020A GR
+  7 A$SpriteBiga$579                                               00020C GR
+  7 A$SpriteBiga$580                                               00020D GR
+  7 A$SpriteBiga$581                                               00020E GR
+  7 A$SpriteBiga$582                                               00020F GR
+  7 A$SpriteBiga$583                                               000210 GR
+  7 A$SpriteBiga$584                                               000211 GR
+  7 A$SpriteBiga$585                                               000212 GR
+  7 A$SpriteBiga$586                                               000213 GR
+  7 A$SpriteBiga$587                                               000214 GR
+  7 A$SpriteBiga$588                                               000215 GR
+  7 A$SpriteBiga$589                                               000216 GR
+  7 A$SpriteBiga$590                                               000217 GR
+  7 A$SpriteBiga$591                                               000218 GR
+  7 A$SpriteBiga$595                                               000219 GR
+  7 A$SpriteBiga$600                                               00021B GR
+  7 A$SpriteBiga$601                                               00021C GR
+  7 A$SpriteBiga$602                                               00021E GR
+  7 A$SpriteBiga$603                                               00021F GR
+  7 A$SpriteBiga$604                                               000220 GR
+  7 A$SpriteBiga$605                                               000221 GR
+  7 A$SpriteBiga$606                                               000222 GR
+  7 A$SpriteBiga$607                                               000224 GR
+  7 A$SpriteBiga$611                                               000226 GR
+  7 A$SpriteBiga$612                                               000229 GR
+  7 A$SpriteBiga$613                                               00022A GR
+  7 A$SpriteBiga$614                                               00022B GR
+  7 A$SpriteBiga$615                                               00022D GR
+  7 A$SpriteBiga$616                                               00022E GR
+  7 A$SpriteBiga$617                                               000230 GR
+  7 A$SpriteBiga$619                                               000231 GR
+  7 A$SpriteBiga$620                                               000234 GR
+  7 A$SpriteBiga$621                                               000235 GR
+  7 A$SpriteBiga$622                                               000236 GR
+  7 A$SpriteBiga$623                                               000237 GR
+  7 A$SpriteBiga$624                                               00023A GR
+  7 A$SpriteBiga$625                                               00023B GR
+  7 A$SpriteBiga$626                                               00023C GR
+  7 A$SpriteBiga$628                                               00023D GR
+  7 A$SpriteBiga$629                                               00023F GR
+  7 A$SpriteBiga$630                                               000240 GR
+  7 A$SpriteBiga$631                                               000241 GR
+  7 A$SpriteBiga$632                                               000243 GR
+  7 A$SpriteBiga$633                                               000244 GR
+  7 A$SpriteBiga$634                                               000245 GR
+  7 A$SpriteBiga$635                                               000246 GR
+  7 A$SpriteBiga$636                                               000247 GR
+  7 A$SpriteBiga$637                                               000248 GR
+  7 A$SpriteBiga$641                                               000249 GR
+  7 A$SpriteBiga$642                                               00024B GR
+  7 A$SpriteBiga$647                                               00024D GR
+  7 A$SpriteBiga$648                                               00024F GR
+  7 A$SpriteBiga$649                                               000250 GR
+  7 A$SpriteBiga$650                                               000251 GR
+  7 A$SpriteBiga$654                                               000253 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 10
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$655                                               000256 GR
+  7 A$SpriteBiga$656                                               000257 GR
+  7 A$SpriteBiga$657                                               000258 GR
+  7 A$SpriteBiga$661                                               000259 GR
+  7 A$SpriteBiga$662                                               00025C GR
+  7 A$SpriteBiga$663                                               00025D GR
+  7 A$SpriteBiga$664                                               00025E GR
+  7 A$SpriteBiga$665                                               00025F GR
+  7 A$SpriteBiga$666                                               000261 GR
+  7 A$SpriteBiga$667                                               000262 GR
+  7 A$SpriteBiga$668                                               000263 GR
+  7 A$SpriteBiga$669                                               000264 GR
+  7 A$SpriteBiga$670                                               000266 GR
+  7 A$SpriteBiga$671                                               000267 GR
+  7 A$SpriteBiga$672                                               000268 GR
+  7 A$SpriteBiga$673                                               000269 GR
+  7 A$SpriteBiga$674                                               00026A GR
+  7 A$SpriteBiga$675                                               00026B GR
+  7 A$SpriteBiga$676                                               00026C GR
+  7 A$SpriteBiga$677                                               00026D GR
+  7 A$SpriteBiga$678                                               00026E GR
+  7 A$SpriteBiga$682                                               00026F GR
+  7 A$SpriteBiga$683                                               000271 GR
+  7 A$SpriteBiga$684                                               000272 GR
+  7 A$SpriteBiga$685                                               000273 GR
+  7 A$SpriteBiga$686                                               000274 GR
+  7 A$SpriteBiga$687                                               000275 GR
+  7 A$SpriteBiga$688                                               000277 GR
+  7 A$SpriteBiga$689                                               000278 GR
+  7 A$SpriteBiga$690                                               00027A GR
+  7 A$SpriteBiga$691                                               00027B GR
+  7 A$SpriteBiga$692                                               00027C GR
+  7 A$SpriteBiga$693                                               00027D GR
+  7 A$SpriteBiga$694                                               00027E GR
+  7 A$SpriteBiga$695                                               00027F GR
+  7 A$SpriteBiga$696                                               000280 GR
+  7 A$SpriteBiga$701                                               000282 GR
+  7 A$SpriteBiga$702                                               000284 GR
+  7 A$SpriteBiga$703                                               000285 GR
+  7 A$SpriteBiga$704                                               000286 GR
+  7 A$SpriteBiga$705                                               000287 GR
+  7 A$SpriteBiga$706                                               000288 GR
+  7 A$SpriteBiga$707                                               000289 GR
+  7 A$SpriteBiga$708                                               00028B GR
+  7 A$SpriteBiga$709                                               00028C GR
+  7 A$SpriteBiga$710                                               00028E GR
+  7 A$SpriteBiga$711                                               00028F GR
+  7 A$SpriteBiga$712                                               000290 GR
+  7 A$SpriteBiga$713                                               000291 GR
+  7 A$SpriteBiga$714                                               000292 GR
+  7 A$SpriteBiga$715                                               000293 GR
+  7 A$SpriteBiga$720                                               000294 GR
+  7 A$SpriteBiga$721                                               000297 GR
+  7 A$SpriteBiga$722                                               000298 GR
+  7 A$SpriteBiga$723                                               000299 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 11
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$724                                               00029B GR
+  7 A$SpriteBiga$725                                               00029C GR
+  7 A$SpriteBiga$726                                               00029E GR
+  7 A$SpriteBiga$728                                               00029F GR
+  7 A$SpriteBiga$729                                               0002A2 GR
+  7 A$SpriteBiga$730                                               0002A3 GR
+  7 A$SpriteBiga$731                                               0002A4 GR
+  7 A$SpriteBiga$732                                               0002A5 GR
+  7 A$SpriteBiga$733                                               0002A7 GR
+  7 A$SpriteBiga$734                                               0002A9 GR
+  7 A$SpriteBiga$735                                               0002AB GR
+  7 A$SpriteBiga$736                                               0002AD GR
+  7 A$SpriteBiga$737                                               0002AF GR
+  7 A$SpriteBiga$738                                               0002B1 GR
+  7 A$SpriteBiga$739                                               0002B3 GR
+  7 A$SpriteBiga$740                                               0002B5 GR
+  7 A$SpriteBiga$741                                               0002B7 GR
+  7 A$SpriteBiga$742                                               0002B9 GR
+  7 A$SpriteBiga$743                                               0002BB GR
+  7 A$SpriteBiga$744                                               0002BD GR
+  7 A$SpriteBiga$745                                               0002BE GR
+  7 A$SpriteBiga$749                                               0002BF GR
+  7 A$SpriteBiga$75                                                000000 GR
+  7 A$SpriteBiga$750                                               0002C2 GR
+  7 A$SpriteBiga$751                                               0002C3 GR
+  7 A$SpriteBiga$752                                               0002C4 GR
+  7 A$SpriteBiga$753                                               0002C6 GR
+  7 A$SpriteBiga$754                                               0002C7 GR
+  7 A$SpriteBiga$755                                               0002C9 GR
+  7 A$SpriteBiga$757                                               0002CA GR
+  7 A$SpriteBiga$758                                               0002CD GR
+  7 A$SpriteBiga$759                                               0002CE GR
+  7 A$SpriteBiga$76                                                000002 GR
+  7 A$SpriteBiga$760                                               0002CF GR
+  7 A$SpriteBiga$761                                               0002D0 GR
+  7 A$SpriteBiga$762                                               0002D3 GR
+  7 A$SpriteBiga$763                                               0002D4 GR
+  7 A$SpriteBiga$764                                               0002D5 GR
+  7 A$SpriteBiga$768                                               0002D6 GR
+  7 A$SpriteBiga$769                                               0002D9 GR
+  7 A$SpriteBiga$77                                                000003 GR
+  7 A$SpriteBiga$770                                               0002DA GR
+  7 A$SpriteBiga$771                                               0002DB GR
+  7 A$SpriteBiga$772                                               0002DC GR
+  7 A$SpriteBiga$773                                               0002DF GR
+  7 A$SpriteBiga$774                                               0002E0 GR
+  7 A$SpriteBiga$775                                               0002E1 GR
+  7 A$SpriteBiga$776                                               0002E2 GR
+  7 A$SpriteBiga$777                                               0002E3 GR
+  7 A$SpriteBiga$778                                               0002E4 GR
+  7 A$SpriteBiga$779                                               0002E5 GR
+  7 A$SpriteBiga$78                                                000004 GR
+  7 A$SpriteBiga$780                                               0002E6 GR
+  7 A$SpriteBiga$781                                               0002E7 GR
+  7 A$SpriteBiga$782                                               0002E8 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 12
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$783                                               0002E9 GR
+  7 A$SpriteBiga$784                                               0002EA GR
+  7 A$SpriteBiga$785                                               0002EB GR
+  7 A$SpriteBiga$786                                               0002EC GR
+  7 A$SpriteBiga$79                                                000007 GR
+  7 A$SpriteBiga$790                                               0002ED GR
+  7 A$SpriteBiga$791                                               0002EE GR
+  7 A$SpriteBiga$792                                               0002F0 GR
+  7 A$SpriteBiga$793                                               0002F1 GR
+  7 A$SpriteBiga$794                                               0002F2 GR
+  7 A$SpriteBiga$795                                               0002F5 GR
+  7 A$SpriteBiga$796                                               0002F8 GR
+  7 A$SpriteBiga$797                                               0002F9 GR
+  7 A$SpriteBiga$798                                               0002FA GR
+  7 A$SpriteBiga$799                                               0002FB GR
+  7 A$SpriteBiga$80                                                00000A GR
+  7 A$SpriteBiga$800                                               0002FE GR
+  7 A$SpriteBiga$804                                               0002FF GR
+  7 A$SpriteBiga$805                                               000300 GR
+  7 A$SpriteBiga$806                                               000302 GR
+  7 A$SpriteBiga$807                                               000304 GR
+  7 A$SpriteBiga$808                                               000305 GR
+  7 A$SpriteBiga$809                                               000307 GR
+  7 A$SpriteBiga$81                                                00000B GR
+  7 A$SpriteBiga$810                                               000308 GR
+  7 A$SpriteBiga$811                                               00030A GR
+  7 A$SpriteBiga$812                                               00030C GR
+  7 A$SpriteBiga$813                                               00030E GR
+  7 A$SpriteBiga$814                                               000310 GR
+  7 A$SpriteBiga$815                                               000311 GR
+  7 A$SpriteBiga$817                                               000313 GR
+  7 A$SpriteBiga$818                                               000315 GR
+  7 A$SpriteBiga$819                                               000317 GR
+  7 A$SpriteBiga$82                                                00000C GR
+  7 A$SpriteBiga$821                                               000318 GR
+  7 A$SpriteBiga$825                                               00031A GR
+  7 A$SpriteBiga$826                                               00031D GR
+  7 A$SpriteBiga$827                                               00031E GR
+  7 A$SpriteBiga$828                                               00031F GR
+  7 A$SpriteBiga$829                                               000320 GR
+  7 A$SpriteBiga$83                                                00000D GR
+  7 A$SpriteBiga$830                                               000323 GR
+  7 A$SpriteBiga$831                                               000324 GR
+  7 A$SpriteBiga$836                                               000326 GR
+  7 A$SpriteBiga$837                                               000329 GR
+  7 A$SpriteBiga$838                                               00032A GR
+  7 A$SpriteBiga$839                                               00032B GR
+  7 A$SpriteBiga$840                                               00032C GR
+  7 A$SpriteBiga$841                                               00032F GR
+  7 A$SpriteBiga$842                                               000330 GR
+  7 A$SpriteBiga$843                                               000331 GR
+  7 A$SpriteBiga$844                                               000332 GR
+  7 A$SpriteBiga$845                                               000333 GR
+  7 A$SpriteBiga$846                                               000334 GR
+  7 A$SpriteBiga$847                                               000336 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 13
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$848                                               000339 GR
+  7 A$SpriteBiga$849                                               00033A GR
+  7 A$SpriteBiga$850                                               00033B GR
+  7 A$SpriteBiga$851                                               00033C GR
+  7 A$SpriteBiga$852                                               00033D GR
+  7 A$SpriteBiga$856                                               00033F GR
+  7 A$SpriteBiga$857                                               000342 GR
+  7 A$SpriteBiga$858                                               000343 GR
+  7 A$SpriteBiga$859                                               000345 GR
+  7 A$SpriteBiga$860                                               000346 GR
+  7 A$SpriteBiga$861                                               000347 GR
+  7 A$SpriteBiga$862                                               000349 GR
+  7 A$SpriteBiga$863                                               00034B GR
+  7 A$SpriteBiga$864                                               00034D GR
+  7 A$SpriteBiga$865                                               00034F GR
+  7 A$SpriteBiga$866                                               000350 GR
+  7 A$SpriteBiga$868                                               000352 GR
+  7 A$SpriteBiga$869                                               000354 GR
+  7 A$SpriteBiga$87                                                000010 GR
+  7 A$SpriteBiga$870                                               000356 GR
+  7 A$SpriteBiga$872                                               000357 GR
+  7 A$SpriteBiga$876                                               000359 GR
+  7 A$SpriteBiga$877                                               00035B GR
+  7 A$SpriteBiga$878                                               00035C GR
+  7 A$SpriteBiga$879                                               00035D GR
+  7 A$SpriteBiga$88                                                000013 GR
+  7 A$SpriteBiga$880                                               000360 GR
+  7 A$SpriteBiga$881                                               000363 GR
+  7 A$SpriteBiga$882                                               000364 GR
+  7 A$SpriteBiga$883                                               000365 GR
+  7 A$SpriteBiga$884                                               000366 GR
+  7 A$SpriteBiga$885                                               000369 GR
+  7 A$SpriteBiga$89                                                000014 GR
+  7 A$SpriteBiga$890                                               00036B GR
+  7 A$SpriteBiga$891                                               00036E GR
+  7 A$SpriteBiga$892                                               000370 GR
+  7 A$SpriteBiga$893                                               000372 GR
+  7 A$SpriteBiga$897                                               000374 GR
+  7 A$SpriteBiga$898                                               000376 GR
+  7 A$SpriteBiga$899                                               000377 GR
+  7 A$SpriteBiga$90                                                000015 GR
+  7 A$SpriteBiga$900                                               000378 GR
+  7 A$SpriteBiga$901                                               00037B GR
+  7 A$SpriteBiga$902                                               00037E GR
+  7 A$SpriteBiga$903                                               00037F GR
+  7 A$SpriteBiga$904                                               000380 GR
+  7 A$SpriteBiga$905                                               000381 GR
+  7 A$SpriteBiga$91                                                000016 GR
+  7 A$SpriteBiga$910                                               000384 GR
+  7 A$SpriteBiga$911                                               000387 GR
+  7 A$SpriteBiga$914                                               000388 GR
+  7 A$SpriteBiga$917                                               00038A GR
+  7 A$SpriteBiga$918                                               00038B GR
+  7 A$SpriteBiga$919                                               00038E GR
+  7 A$SpriteBiga$92                                                000019 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 14
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$920                                               00038F GR
+  7 A$SpriteBiga$921                                               000390 GR
+  7 A$SpriteBiga$922                                               000391 GR
+  7 A$SpriteBiga$923                                               000392 GR
+  7 A$SpriteBiga$924                                               000394 GR
+  7 A$SpriteBiga$926                                               000396 GR
+  7 A$SpriteBiga$927                                               000399 GR
+  7 A$SpriteBiga$928                                               00039B GR
+  7 A$SpriteBiga$929                                               00039C GR
+  7 A$SpriteBiga$93                                                00001A GR
+  7 A$SpriteBiga$930                                               00039E GR
+  7 A$SpriteBiga$931                                               00039F GR
+  7 A$SpriteBiga$932                                               0003A0 GR
+  7 A$SpriteBiga$936                                               0003A2 GR
+  7 A$SpriteBiga$937                                               0003A3 GR
+  7 A$SpriteBiga$938                                               0003A6 GR
+  7 A$SpriteBiga$939                                               0003A7 GR
+  7 A$SpriteBiga$94                                                00001C GR
+  7 A$SpriteBiga$940                                               0003A8 GR
+  7 A$SpriteBiga$941                                               0003A9 GR
+  7 A$SpriteBiga$942                                               0003AC GR
+  7 A$SpriteBiga$943                                               0003AD GR
+  7 A$SpriteBiga$944                                               0003AE GR
+  7 A$SpriteBiga$948                                               0003B0 GR
+  7 A$SpriteBiga$949                                               0003B3 GR
+  7 A$SpriteBiga$95                                                00001D GR
+  7 A$SpriteBiga$950                                               0003B4 GR
+  7 A$SpriteBiga$951                                               0003B5 GR
+  7 A$SpriteBiga$952                                               0003B7 GR
+  7 A$SpriteBiga$959                                               0003B9 GR
+  7 A$SpriteBiga$960                                               0003BC GR
+  7 A$SpriteBiga$961                                               0003BD GR
+  7 A$SpriteBiga$962                                               0003BE GR
+  7 A$SpriteBiga$963                                               0003C0 GR
+  7 A$SpriteBiga$967                                               0003C2 GR
+  7 A$SpriteBiga$968                                               0003C3 GR
+  7 A$SpriteBiga$969                                               0003C5 GR
+  7 A$SpriteBiga$970                                               0003C8 GR
+  7 A$SpriteBiga$971                                               0003CB GR
+  7 A$SpriteBiga$979                                               0003CC GR
+  7 A$SpriteBiga$980                                               0003CE GR
+  7 A$SpriteBiga$981                                               0003CF GR
+  7 A$SpriteBiga$982                                               0003D0 GR
+  7 A$SpriteBiga$983                                               0003D2 GR
+  7 A$SpriteBiga$984                                               0003D3 GR
+  7 A$SpriteBiga$985                                               0003D6 GR
+  7 A$SpriteBiga$986                                               0003D7 GR
+  7 A$SpriteBiga$988                                               0003D8 GR
+  7 A$SpriteBiga$99                                                00001F GR
+  7 A$SpriteBiga$991                                               0003DA GR
+  7 A$SpriteBiga$992                                               0003DB GR
+  7 A$SpriteBiga$993                                               0003DE GR
+  7 A$SpriteBiga$994                                               0003DF GR
+  7 A$SpriteBiga$995                                               0003E0 GR
+  7 A$SpriteBiga$996                                               0003E1 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 15
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteBiga$997                                               0003E2 GR
+  7 C$SpriteBiga.c$102$2_5$204                                  =  0003CC GR
+  7 C$SpriteBiga.c$103$3_5$205                                  =  0003A2 GR
+  7 C$SpriteBiga.c$104$4_5$206                                  =  0003B0 GR
+  7 C$SpriteBiga.c$106$6_5$208                                  =  0003B9 GR
+  7 C$SpriteBiga.c$107$6_5$208                                  =  0003B9 GR
+  7 C$SpriteBiga.c$108$7_5$209                                  =  0003C2 GR
+  7 C$SpriteBiga.c$111$3_5$205                                  =  0003CC GR
+  7 C$SpriteBiga.c$115$1_5$203                                  =  0003E4 GR
+  7 C$SpriteBiga.c$116$2_5$210                                  =  0003F6 GR
+  7 C$SpriteBiga.c$117$3_5$211                                  =  0003FC GR
+  7 C$SpriteBiga.c$120$1_5$181                                  =  00040A GR
+  7 C$SpriteBiga.c$122$1_5$213                                  =  00040B GR
+  7 C$SpriteBiga.c$123$1_0$213                                  =  00040B GR
+  7 C$SpriteBiga.c$124$1_0$213                                  =  000414 GR
+  7 C$SpriteBiga.c$125$2_0$214                                  =  00044D GR
+  7 C$SpriteBiga.c$126$2_0$214                                  =  00044D GR
+  7 C$SpriteBiga.c$127$2_0$214                                  =  000451 GR
+  7 C$SpriteBiga.c$128$2_0$214                                  =  00045B GR
+  7 C$SpriteBiga.c$129$2_0$214                                  =  00045E GR
+  7 C$SpriteBiga.c$130$2_0$214                                  =  00045E GR
+  7 C$SpriteBiga.c$131$2_0$214                                  =  000462 GR
+  7 C$SpriteBiga.c$132$2_0$214                                  =  00046C GR
+  7 C$SpriteBiga.c$133$2_0$214                                  =  00046F GR
+  7 C$SpriteBiga.c$134$2_0$214                                  =  00046F GR
+  7 C$SpriteBiga.c$135$2_0$214                                  =  000479 GR
+  7 C$SpriteBiga.c$136$2_0$214                                  =  00047C GR
+  7 C$SpriteBiga.c$137$2_0$214                                  =  00047C GR
+  7 C$SpriteBiga.c$139$1_0$213                                  =  000486 GR
+  7 C$SpriteBiga.c$140$1_0$213                                  =  000486 GR
+  7 C$SpriteBiga.c$141$1_0$213                                  =  000486 GR
+  7 C$SpriteBiga.c$143$1_0$216                                  =  000489 GR
+  7 C$SpriteBiga.c$144$1_0$216                                  =  000489 GR
+  7 C$SpriteBiga.c$40$0_0$180                                   =  000000 GR
+  7 C$SpriteBiga.c$41$1_0$180                                   =  000000 GR
+  7 C$SpriteBiga.c$42$1_0$180                                   =  000010 GR
+  7 C$SpriteBiga.c$43$1_0$180                                   =  00001F GR
+  7 C$SpriteBiga.c$44$1_0$180                                   =  00002E GR
+  7 C$SpriteBiga.c$46$1_0$181                                   =  00003E GR
+  7 C$SpriteBiga.c$47$1_5$181                                   =  0001B2 GR
+  7 C$SpriteBiga.c$48$1_0$181                                   =  000064 GR
+  7 C$SpriteBiga.c$49$1_5$181                                   =  0001B8 GR
+  7 C$SpriteBiga.c$50$1_1$183                                   =  00008A GR
+  7 C$SpriteBiga.c$51$1_1$183                                   =  0000A1 GR
+  7 C$SpriteBiga.c$53$1_5$181                                   =  000253 GR
+  7 C$SpriteBiga.c$54$1_2$186                                   =  0000EF GR
+  7 C$SpriteBiga.c$55$1_2$186                                   =  0000F3 GR
+  7 C$SpriteBiga.c$56$2_2$187                                   =  0000FE GR
+  7 C$SpriteBiga.c$57$2_2$187                                   =  00011A GR
+  7 C$SpriteBiga.c$59$1_2$186                                   =  00011C GR
+  7 C$SpriteBiga.c$60$2_2$188                                   =  000137 GR
+  7 C$SpriteBiga.c$61$2_2$188                                   =  00015A GR
+  7 C$SpriteBiga.c$63$1_2$186                                   =  00015E GR
+  7 C$SpriteBiga.c$65$2_2$189                                   =  000180 GR
+  7 C$SpriteBiga.c$66$2_2$189                                   =  000193 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 16
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteBiga.c$69$1_5$181                                   =  000259 GR
+  7 C$SpriteBiga.c$70$1_3$192                                   =  0001EE GR
+  7 C$SpriteBiga.c$71$1_3$192                                   =  0001F2 GR
+  7 C$SpriteBiga.c$72$2_3$193                                   =  0001FD GR
+  7 C$SpriteBiga.c$73$2_3$193                                   =  000219 GR
+  7 C$SpriteBiga.c$75$1_3$192                                   =  00021B GR
+  7 C$SpriteBiga.c$76$2_3$194                                   =  000226 GR
+  7 C$SpriteBiga.c$77$2_3$194                                   =  000249 GR
+  7 C$SpriteBiga.c$80$1_3$192                                   =  00024D GR
+  7 C$SpriteBiga.c$81$2_3$195                                   =  00026F GR
+  7 C$SpriteBiga.c$82$2_3$195                                   =  000282 GR
+  7 C$SpriteBiga.c$84$1_3$192                                   =  000294 GR
+  7 C$SpriteBiga.c$85$1_3$192                                   =  0002BF GR
+  7 C$SpriteBiga.c$87$1_4$198                                   =  0002D6 GR
+  7 C$SpriteBiga.c$88$1_4$198                                   =  0002ED GR
+  7 C$SpriteBiga.c$89$1_4$198                                   =  0002FF GR
+  7 C$SpriteBiga.c$90$2_4$199                                   =  00031A GR
+  7 C$SpriteBiga.c$92$1_4$198                                   =  000326 GR
+  7 C$SpriteBiga.c$93$2_4$200                                   =  00033F GR
+  7 C$SpriteBiga.c$94$3_4$201                                   =  000359 GR
+  7 C$SpriteBiga.c$95$2_4$200                                   =  00036B GR
+  7 C$SpriteBiga.c$96$3_4$202                                   =  000374 GR
+  7 G$Destroy_SpriteBiga$0$0                                    =  000489 GR
+  7 G$Start_SpriteBiga$0$0                                      =  000000 GR
+  7 G$Update_SpriteBiga$0$0                                     =  00003E GR
+    G$__bank_SpriteBiga$0_0$0                                   =  0000FF G
+  7 G$a_biga_down$0_0$0                                         =  00003A GR
+  7 G$a_biga_h$0_0$0                                            =  00002F GR
+  7 G$a_biga_hit$0_0$0                                          =  000033 GR
+  7 G$a_biga_up$0_0$0                                           =  00003C GR
+  7 G$pickup$0$0                                                =  00040B GR
+  7 XG$Destroy_SpriteBiga$0$0                                   =  000489 GR
+  7 XG$Start_SpriteBiga$0$0                                     =  00002E GR
+  7 XG$Update_SpriteBiga$0$0                                    =  00040A GR
+  7 XG$pickup$0$0                                               =  000486 GR
+    _CheckCollision                                                ****** GX
+  7 _Destroy_SpriteBiga                                            000489 GR
+    _J_ATK                                                         ****** GX
+    _SetSpriteAnim                                                 ****** GX
+    _SpriteManagerRemoveSprite                                     ****** GX
+  7 _Start_SpriteBiga                                              000000 GR
+    _THIS                                                          ****** GX
+  7 _Update_SpriteBiga                                             00003E GR
+    ___bank_SpriteBiga                                          =  0000FF G
+    ___sdcc_bcall_ehl                                              ****** GX
+  7 _a_biga_down                                                   00003A GR
+  7 _a_biga_h                                                      00002F GR
+  7 _a_biga_hit                                                    000033 GR
+  7 _a_biga_up                                                     00003C GR
+    _euphoria_max                                                  ****** GX
+    _euphoria_min                                                  ****** GX
+    _keys                                                          ****** GX
+  7 _pickup                                                        00040B GR
+    _previous_keys                                                 ****** GX
+    _s_horse                                                       ****** GX
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 17
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    _sprite_manager_sprites                                        ****** GX
+    _sprite_manager_updatables                                     ****** GX
+    _stamina_current                                               ****** GX
+    _update_hp_max                                                 ****** GX
+    _update_time_max                                               ****** GX
+    _update_weapon                                                 ****** GX
+    _use_weapon                                                    ****** GX
+    _vx                                                            ****** GX
+    _vy                                                            ****** GX
+    _weapon_atk                                                    ****** GX
+    _weapon_def                                                    ****** GX
+    b_pickup                                                    =  0000FF G
+    b_update_hp_max                                                ****** GX
+    b_update_time_max                                              ****** GX
+    b_update_weapon                                                ****** GX
+    b_use_weapon                                                   ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 18
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size    48A   flags    0
+   8 _INITIALIZER                               size      0   flags    0
+   9 _CABS                                      size      0   flags    8
+

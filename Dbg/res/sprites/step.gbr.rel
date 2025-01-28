@@ -1,0 +1,55 @@
+XL3
+H A areas F global symbols
+M step_gbr
+O -msm83
+S ___bank_step Def000003
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_3 size 3D flags 0 addr 0
+S G$__func_step$0$0 Def000000
+S C$step.gbr.c$9$0_0$161 Def000000
+S _step_tiles Def000008
+S _step Def000032
+S _step_palettes Def000000
+S G$step$0_0$0 Def000032
+S G$step_tiles$0_0$0 Def000008
+S G$step_palettes$0_0$0 Def000000
+S ___func_step Def000000
+S _step_metasprite0 Def000028
+S G$step_metasprite0$0_0$0 Def000028
+S _step_metasprites Def000030
+S G$step_metasprites$0_0$0 Def000030
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 FF 7F 7E 4F 79 01 AA 04
+R 00 00 07 00
+T 08 00 00
+R 00 00 07 00
+T 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 15 00 00 00 00 00 00 00 00 00 06 06 06 06 60 60
+R 00 00 07 00
+T 22 00 00 60 60 00 00 00 00
+R 00 00 07 00
+T 28 00 00
+R 00 00 07 00
+T 28 00 00 00 00 00 00 80 00 00 00
+R 00 00 07 00
+T 30 00 00
+R 00 00 07 00
+T 30 00 00 28 00
+R 00 00 07 00 00 03 07 00
+T 32 00 00
+R 00 00 07 00
+T 32 00 00 08 10 02 08 00 01 00 00 01 30 00
+R 00 00 07 00 00 06 07 00 00 09 07 00 00 0C 07 00

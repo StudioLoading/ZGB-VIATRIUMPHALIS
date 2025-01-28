@@ -1,0 +1,2047 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.3.2 #14228 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module StateGame
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _Update_StateGame
+                                     12 	.globl b_hud_compass_r_u_33
+                                     13 	.globl _hud_compass_r_u_33
+                                     14 	.globl b_hud_compass_h_r
+                                     15 	.globl _hud_compass_h_r
+                                     16 	.globl _set_banked_bkg_data
+                                     17 	.globl _Start_StateGame
+                                     18 	.globl _SpriteManagerAdd
+                                     19 	.globl _GetMapSize
+                                     20 	.globl _UpdateMapTile
+                                     21 	.globl _LoadMap
+                                     22 	.globl _InitScroll
+                                     23 	.globl _SetWindowY
+                                     24 	.globl _set_bkg_data
+                                     25 	.globl _hp_current
+                                     26 	.globl _horse_direction_old
+                                     27 	.globl _horse_direction
+                                     28 	.globl _euphoria_max_current
+                                     29 	.globl _euphoria_min_current
+                                     30 	.globl _s_compass
+                                     31 	.globl _s_biga
+                                     32 	.globl _s_horse
+                                     33 	.globl _coll_surface
+                                     34 	.globl _coll_tiles
+                                     35 	.globl ___bank_StateGame
+                                     36 	.globl b_update_stamina
+                                     37 	.globl _update_stamina
+                                     38 	.globl b_update_euphoria
+                                     39 	.globl _update_euphoria
+                                     40 	.globl b_update_compass
+                                     41 	.globl _update_compass
+                                     42 	.globl b_update_turning
+                                     43 	.globl _update_turning
+                                     44 	.globl b_update_hp
+                                     45 	.globl _update_hp
+                                     46 ;--------------------------------------------------------
+                                     47 ; special function registers
+                                     48 ;--------------------------------------------------------
+                                     49 ;--------------------------------------------------------
+                                     50 ; ram data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area _DATA
+                                     53 ;--------------------------------------------------------
+                                     54 ; ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area _INITIALIZED
+                           000000    57 G$s_horse$0_0$0==.
+      000000                         58 _s_horse::
+      000000                         59 	.ds 2
+                           000002    60 G$s_biga$0_0$0==.
+      000002                         61 _s_biga::
+      000002                         62 	.ds 2
+                           000004    63 G$s_compass$0_0$0==.
+      000004                         64 _s_compass::
+      000004                         65 	.ds 2
+                           000006    66 G$euphoria_min_current$0_0$0==.
+      000006                         67 _euphoria_min_current::
+      000006                         68 	.ds 2
+                           000008    69 G$euphoria_max_current$0_0$0==.
+      000008                         70 _euphoria_max_current::
+      000008                         71 	.ds 2
+                           00000A    72 G$horse_direction$0_0$0==.
+      00000A                         73 _horse_direction::
+      00000A                         74 	.ds 1
+                           00000B    75 G$horse_direction_old$0_0$0==.
+      00000B                         76 _horse_direction_old::
+      00000B                         77 	.ds 1
+                           00000C    78 G$hp_current$0_0$0==.
+      00000C                         79 _hp_current::
+      00000C                         80 	.ds 1
+                                     81 ;--------------------------------------------------------
+                                     82 ; absolute external ram data
+                                     83 ;--------------------------------------------------------
+                                     84 	.area _DABS (ABS)
+                                     85 ;--------------------------------------------------------
+                                     86 ; global & static initialisations
+                                     87 ;--------------------------------------------------------
+                                     88 	.area _HOME
+                                     89 	.area _GSINIT
+                                     90 	.area _GSFINAL
+                                     91 	.area _GSINIT
+                                     92 ;--------------------------------------------------------
+                                     93 ; Home
+                                     94 ;--------------------------------------------------------
+                                     95 	.area _HOME
+                           000000    96 	G$set_banked_bkg_data$0$0	= .
+                                     97 	.globl	G$set_banked_bkg_data$0$0
+                           000000    98 	C$StateGame.c$190$1_0$226	= .
+                                     99 	.globl	C$StateGame.c$190$1_0$226
+                                    100 ;StateGame.c:190: void set_banked_bkg_data(UINT8 first_tile, UINT8 nb_tiles, struct TilesInfo* t, UINT8 bank) NONBANKED {
+                                    101 ;	---------------------------------
+                                    102 ; Function set_banked_bkg_data
+                                    103 ; ---------------------------------
+      000000                        104 _set_banked_bkg_data::
+      000000 3B               [ 8]  105 	dec	sp
+      000001 3B               [ 8]  106 	dec	sp
+      000002 4F               [ 4]  107 	ld	c, a
+      000003 F8 01            [12]  108 	ldhl	sp,	#1
+      000005 73               [ 8]  109 	ld	(hl), e
+                           000006   110 	C$StateGame.c$191$2_0$226	= .
+                                    111 	.globl	C$StateGame.c$191$2_0$226
+                                    112 ;StateGame.c:191: uint8_t save = _current_bank;
+      000006 2B               [ 8]  113 	dec	hl
+      000007 F0r00            [12]  114 	ldh	a, (__current_bank + 0)
+      000009 77               [ 8]  115 	ld	(hl), a
+                           00000A   116 	C$StateGame.c$192$1_0$226	= .
+                                    117 	.globl	C$StateGame.c$192$1_0$226
+                                    118 ;StateGame.c:192: SWITCH_ROM(bank);
+      00000A F8 06            [12]  119 	ldhl	sp,	#6
+      00000C 7E               [ 8]  120 	ld	a, (hl)
+      00000D E0r00            [12]  121 	ldh	(__current_bank + 0), a
+      00000F EAr00r00         [16]  122 	ld	(#_rROMB0),a
+                           000012   123 	C$StateGame.c$193$1_0$226	= .
+                                    124 	.globl	C$StateGame.c$193$1_0$226
+                                    125 ;StateGame.c:193: set_bkg_data(first_tile, nb_tiles, t->data+((16u) * first_tile));
+      000012 F8 04            [12]  126 	ldhl	sp,	#4
+      000014 2A               [ 8]  127 	ld	a, (hl+)
+      000015 5F               [ 4]  128 	ld	e, a
+      000016 56               [ 8]  129 	ld	d, (hl)
+      000017 6B               [ 4]  130 	ld	l, e
+                                    131 ;	spillPairReg hl
+                                    132 ;	spillPairReg hl
+      000018 62               [ 4]  133 	ld	h, d
+                                    134 ;	spillPairReg hl
+                                    135 ;	spillPairReg hl
+      000019 23               [ 8]  136 	inc	hl
+      00001A 2A               [ 8]  137 	ld	a, (hl+)
+      00001B 46               [ 8]  138 	ld	b, (hl)
+      00001C 69               [ 4]  139 	ld	l, c
+                                    140 ;	spillPairReg hl
+                                    141 ;	spillPairReg hl
+      00001D 26 00            [ 8]  142 	ld	h, #0x00
+                                    143 ;	spillPairReg hl
+                                    144 ;	spillPairReg hl
+      00001F 29               [ 8]  145 	add	hl, hl
+      000020 29               [ 8]  146 	add	hl, hl
+      000021 29               [ 8]  147 	add	hl, hl
+      000022 29               [ 8]  148 	add	hl, hl
+      000023 5F               [ 4]  149 	ld	e, a
+      000024 50               [ 4]  150 	ld	d, b
+      000025 19               [ 8]  151 	add	hl, de
+      000026 E5               [16]  152 	push	hl
+      000027 F8 03            [12]  153 	ldhl	sp,	#3
+      000029 7E               [ 8]  154 	ld	a, (hl)
+      00002A F5               [16]  155 	push	af
+      00002B 33               [ 8]  156 	inc	sp
+      00002C 79               [ 4]  157 	ld	a, c
+      00002D F5               [16]  158 	push	af
+      00002E 33               [ 8]  159 	inc	sp
+      00002F CDr00r00         [24]  160 	call	_set_bkg_data
+      000032 E8 04            [16]  161 	add	sp, #4
+                           000034   162 	C$StateGame.c$194$1_0$226	= .
+                                    163 	.globl	C$StateGame.c$194$1_0$226
+                                    164 ;StateGame.c:194: SWITCH_ROM(save);
+      000034 F8 00            [12]  165 	ldhl	sp,	#0
+      000036 7E               [ 8]  166 	ld	a, (hl)
+      000037 E0r00            [12]  167 	ldh	(__current_bank + 0), a
+      000039 7E               [ 8]  168 	ld	a, (hl)
+      00003A EAr00r00         [16]  169 	ld	(#_rROMB0),a
+                           00003D   170 	C$StateGame.c$195$1_0$226	= .
+                                    171 	.globl	C$StateGame.c$195$1_0$226
+                                    172 ;StateGame.c:195: }
+      00003D 33               [ 8]  173 	inc	sp
+      00003E 33               [ 8]  174 	inc	sp
+      00003F E1               [12]  175 	pop	hl
+      000040 E8 03            [16]  176 	add	sp, #3
+      000042 E9               [ 4]  177 	jp	(hl)
+                                    178 	.area _HOME
+                                    179 ;--------------------------------------------------------
+                                    180 ; code
+                                    181 ;--------------------------------------------------------
+                                    182 	.area _CODE_255
+                           000000   183 	G$Start_StateGame$0$0	= .
+                                    184 	.globl	G$Start_StateGame$0$0
+                           000000   185 	C$StateGame.c$51$0_0$191	= .
+                                    186 	.globl	C$StateGame.c$51$0_0$191
+                                    187 ;StateGame.c:51: void START() {
+                                    188 ;	---------------------------------
+                                    189 ; Function Start_StateGame
+                                    190 ; ---------------------------------
+      000000                        191 _Start_StateGame::
+      000000 E8 FC            [16]  192 	add	sp, #-4
+                           000002   193 	C$StateGame.c$54$1_0$191	= .
+                                    194 	.globl	C$StateGame.c$54$1_0$191
+                                    195 ;StateGame.c:54: scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
+      000002 11 48 00         [12]  196 	ld	de, #0x0048
+      000005 D5               [16]  197 	push	de
+      000006 11 40 00         [12]  198 	ld	de, #0x0040
+      000009 3E 06            [ 8]  199 	ld	a, #0x06
+      00000B CDr00r00         [24]  200 	call	_SpriteManagerAdd
+      00000E 21r00r00         [12]  201 	ld	hl, #_scroll_target
+      000011 79               [ 4]  202 	ld	a, c
+      000012 22               [ 8]  203 	ld	(hl+), a
+      000013 70               [ 8]  204 	ld	(hl), b
+                           000014   205 	C$StateGame.c$55$1_0$191	= .
+                                    206 	.globl	C$StateGame.c$55$1_0$191
+                                    207 ;StateGame.c:55: s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
+      000014 11 61 00         [12]  208 	ld	de, #0x0061
+      000017 D5               [16]  209 	push	de
+      000018 11 24 00         [12]  210 	ld	de, #0x0024
+      00001B 3E 03            [ 8]  211 	ld	a, #0x03
+      00001D CDr00r00         [24]  212 	call	_SpriteManagerAdd
+      000020 21r02r00         [12]  213 	ld	hl, #_s_biga
+      000023 79               [ 4]  214 	ld	a, c
+      000024 22               [ 8]  215 	ld	(hl+), a
+      000025 70               [ 8]  216 	ld	(hl), b
+                           000026   217 	C$StateGame.c$56$1_0$191	= .
+                                    218 	.globl	C$StateGame.c$56$1_0$191
+                                    219 ;StateGame.c:56: s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
+      000026 11 58 00         [12]  220 	ld	de, #0x0058
+      000029 D5               [16]  221 	push	de
+      00002A 11 38 00         [12]  222 	ld	de, #0x0038
+      00002D 3E 01            [ 8]  223 	ld	a, #0x01
+      00002F CDr00r00         [24]  224 	call	_SpriteManagerAdd
+      000032 21r00r00         [12]  225 	ld	hl, #_s_horse
+      000035 79               [ 4]  226 	ld	a, c
+      000036 22               [ 8]  227 	ld	(hl+), a
+      000037 70               [ 8]  228 	ld	(hl), b
+                           000038   229 	C$StateGame.c$57$1_0$191	= .
+                                    230 	.globl	C$StateGame.c$57$1_0$191
+                                    231 ;StateGame.c:57: s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
+      000038 11 58 00         [12]  232 	ld	de, #0x0058
+      00003B D5               [16]  233 	push	de
+      00003C 11 38 00         [12]  234 	ld	de, #0x0038
+      00003F 3E 04            [ 8]  235 	ld	a, #0x04
+      000041 CDr00r00         [24]  236 	call	_SpriteManagerAdd
+      000044 21r04r00         [12]  237 	ld	hl, #_s_compass
+      000047 79               [ 4]  238 	ld	a, c
+      000048 22               [ 8]  239 	ld	(hl+), a
+      000049 70               [ 8]  240 	ld	(hl), b
+                           00004A   241 	C$StateGame.c$58$1_1$191	= .
+                                    242 	.globl	C$StateGame.c$58$1_1$191
+                                    243 ;StateGame.c:58: Sprite* s_item = SpriteManagerAdd(SpriteFire, s_horse->x + 40u, s_horse->y + 16u);
+      00004A 21r00r00         [12]  244 	ld	hl, #_s_horse
+      00004D 2A               [ 8]  245 	ld	a, (hl+)
+      00004E 4F               [ 4]  246 	ld	c, a
+      00004F 46               [ 8]  247 	ld	b, (hl)
+      000050 21 0E 00         [12]  248 	ld	hl, #0x000e
+      000053 09               [ 8]  249 	add	hl, bc
+      000054 5D               [ 4]  250 	ld	e, l
+      000055 54               [ 4]  251 	ld	d, h
+      000056 1A               [ 8]  252 	ld	a, (de)
+      000057 F8 00            [12]  253 	ldhl	sp,	#0
+      000059 22               [ 8]  254 	ld	(hl+), a
+      00005A 13               [ 8]  255 	inc	de
+      00005B 1A               [ 8]  256 	ld	a, (de)
+      00005C 77               [ 8]  257 	ld	(hl), a
+      00005D D1               [12]  258 	pop	de
+      00005E D5               [16]  259 	push	de
+      00005F 21 10 00         [12]  260 	ld	hl, #0x0010
+      000062 19               [ 8]  261 	add	hl, de
+      000063 E5               [16]  262 	push	hl
+      000064 7D               [ 4]  263 	ld	a, l
+      000065 F8 04            [12]  264 	ldhl	sp,	#4
+      000067 77               [ 8]  265 	ld	(hl), a
+      000068 E1               [12]  266 	pop	hl
+      000069 7C               [ 4]  267 	ld	a, h
+      00006A F8 03            [12]  268 	ldhl	sp,	#3
+      00006C 77               [ 8]  269 	ld	(hl), a
+      00006D 21 0C 00         [12]  270 	ld	hl, #0x000c
+      000070 09               [ 8]  271 	add	hl, bc
+      000071 2A               [ 8]  272 	ld	a, (hl+)
+      000072 4F               [ 4]  273 	ld	c, a
+      000073 46               [ 8]  274 	ld	b, (hl)
+      000074 21 28 00         [12]  275 	ld	hl, #0x0028
+      000077 09               [ 8]  276 	add	hl, bc
+      000078 5D               [ 4]  277 	ld	e, l
+      000079 54               [ 4]  278 	ld	d, h
+      00007A F8 02            [12]  279 	ldhl	sp,	#2
+      00007C 2A               [ 8]  280 	ld	a, (hl+)
+      00007D 4F               [ 4]  281 	ld	c, a
+      00007E 46               [ 8]  282 	ld	b, (hl)
+      00007F C5               [16]  283 	push	bc
+      000080 3E 05            [ 8]  284 	ld	a, #0x05
+      000082 CDr00r00         [24]  285 	call	_SpriteManagerAdd
+      000085 21r00r00         [12]  286 	ld	hl, #_s_horse
+      000088 2A               [ 8]  287 	ld	a, (hl+)
+      000089 4F               [ 4]  288 	ld	c, a
+      00008A 46               [ 8]  289 	ld	b, (hl)
+                           00008B   290 	C$StateGame.c$59$1_1$192	= .
+                                    291 	.globl	C$StateGame.c$59$1_1$192
+                                    292 ;StateGame.c:59: Sprite* s_item2 = SpriteManagerAdd(SpriteFire, s_horse->x + 48u, s_horse->y + 8u);
+      00008B 21 0E 00         [12]  293 	ld	hl, #0x000e
+      00008E 09               [ 8]  294 	add	hl, bc
+      00008F 5D               [ 4]  295 	ld	e, l
+      000090 54               [ 4]  296 	ld	d, h
+      000091 1A               [ 8]  297 	ld	a, (de)
+      000092 F8 00            [12]  298 	ldhl	sp,	#0
+      000094 22               [ 8]  299 	ld	(hl+), a
+      000095 13               [ 8]  300 	inc	de
+      000096 1A               [ 8]  301 	ld	a, (de)
+      000097 77               [ 8]  302 	ld	(hl), a
+      000098 D1               [12]  303 	pop	de
+      000099 D5               [16]  304 	push	de
+      00009A 21 08 00         [12]  305 	ld	hl, #0x0008
+      00009D 19               [ 8]  306 	add	hl, de
+      00009E E5               [16]  307 	push	hl
+      00009F 7D               [ 4]  308 	ld	a, l
+      0000A0 F8 04            [12]  309 	ldhl	sp,	#4
+      0000A2 77               [ 8]  310 	ld	(hl), a
+      0000A3 E1               [12]  311 	pop	hl
+      0000A4 7C               [ 4]  312 	ld	a, h
+      0000A5 F8 03            [12]  313 	ldhl	sp,	#3
+      0000A7 77               [ 8]  314 	ld	(hl), a
+      0000A8 21 0C 00         [12]  315 	ld	hl, #0x000c
+      0000AB 09               [ 8]  316 	add	hl, bc
+      0000AC 2A               [ 8]  317 	ld	a, (hl+)
+      0000AD 4F               [ 4]  318 	ld	c, a
+      0000AE 46               [ 8]  319 	ld	b, (hl)
+      0000AF 21 30 00         [12]  320 	ld	hl, #0x0030
+      0000B2 09               [ 8]  321 	add	hl, bc
+      0000B3 5D               [ 4]  322 	ld	e, l
+      0000B4 54               [ 4]  323 	ld	d, h
+      0000B5 F8 02            [12]  324 	ldhl	sp,	#2
+      0000B7 2A               [ 8]  325 	ld	a, (hl+)
+      0000B8 4F               [ 4]  326 	ld	c, a
+      0000B9 46               [ 8]  327 	ld	b, (hl)
+      0000BA C5               [16]  328 	push	bc
+      0000BB 3E 05            [ 8]  329 	ld	a, #0x05
+      0000BD CDr00r00         [24]  330 	call	_SpriteManagerAdd
+                           0000C0   331 	C$StateGame.c$60$1_1$192	= .
+                                    332 	.globl	C$StateGame.c$60$1_1$192
+                                    333 ;StateGame.c:60: scroll_bottom_movement_limit= 40;
+      0000C0 21r00r00         [12]  334 	ld	hl, #_scroll_bottom_movement_limit
+      0000C3 36 28            [12]  335 	ld	(hl), #0x28
+                           0000C5   336 	C$StateGame.c$61$1_1$192	= .
+                                    337 	.globl	C$StateGame.c$61$1_1$192
+                                    338 ;StateGame.c:61: InitScroll(BANK(maprome00), &maprome00, coll_tiles, coll_surface);
+      0000C5 11r00r00         [12]  339 	ld	de, #_maprome00+0
+      0000C8 0Er00            [ 8]  340 	ld	c, #<(___bank_maprome00)
+      0000CA 21rA2r01         [12]  341 	ld	hl, #_coll_surface
+      0000CD E5               [16]  342 	push	hl
+      0000CE 21r3Dr01         [12]  343 	ld	hl, #_coll_tiles
+      0000D1 E5               [16]  344 	push	hl
+      0000D2 79               [ 4]  345 	ld	a, c
+      0000D3 CDr00r00         [24]  346 	call	_InitScroll
+                           0000D6   347 	C$StateGame.c$64$1_1$192	= .
+                                    348 	.globl	C$StateGame.c$64$1_1$192
+                                    349 ;StateGame.c:64: INIT_HUD(hudm);
+      0000D6 11r00r00         [12]  350 	ld	de, #_hudm
+      0000D9 0Er00            [ 8]  351 	ld	c, #<(___bank_hudm)
+      0000DB 21r00r00         [12]  352 	ld	hl, #_scroll_h_border
+      0000DE E5               [16]  353 	push	hl
+      0000DF 21 00 00         [12]  354 	ld	hl, #0x0000
+      0000E2 E5               [16]  355 	push	hl
+      0000E3 79               [ 4]  356 	ld	a, c
+      0000E4 CDr00r00         [24]  357 	call	_GetMapSize
+      0000E7 21r00r00         [12]  358 	ld	hl, #_scroll_h_border
+      0000EA 7E               [ 8]  359 	ld	a, (hl)
+      0000EB 87               [ 4]  360 	add	a, a
+      0000EC 87               [ 4]  361 	add	a, a
+      0000ED 87               [ 4]  362 	add	a, a
+      0000EE 77               [ 8]  363 	ld	(hl), a
+      0000EF 3E 07            [ 8]  364 	ld	a, #0x07
+      0000F1 E0r00            [12]  365 	ldh	(_WX_REG + 0), a
+      0000F3 3E 90            [ 8]  366 	ld	a, #0x90
+      0000F5 96               [ 8]  367 	sub	a, (hl)
+      0000F6 E0r00            [12]  368 	ldh	(_WY_REG + 0), a
+      0000F8 01r00r00         [12]  369 	ld	bc, #_hudm
+      0000FB 3Er00            [ 8]  370 	ld	a, #<(___bank_hudm)
+      0000FD C5               [16]  371 	push	bc
+      0000FE 67               [ 4]  372 	ld	h, a
+      0000FF 2E 00            [ 8]  373 	ld	l, #0x00
+      000101 E5               [16]  374 	push	hl
+      000102 1E 00            [ 8]  375 	ld	e, #0x00
+      000104 3E 01            [ 8]  376 	ld	a, #0x01
+      000106 CDr00r00         [24]  377 	call	_LoadMap
+      000109 21r00r00         [12]  378 	ld	hl, #_hud_map_offset
+      00010C 79               [ 4]  379 	ld	a, c
+      00010D 22               [ 8]  380 	ld	(hl+), a
+      00010E 70               [ 8]  381 	ld	(hl), b
+      00010F F0r00            [12]  382 	ldh	a, (_LCDC_REG + 0)
+      000111 F6 20            [ 8]  383 	or	a, #0x20
+      000113 E0r00            [12]  384 	ldh	(_LCDC_REG + 0), a
+                           000115   385 	C$StateGame.c$65$1_1$192	= .
+                                    386 	.globl	C$StateGame.c$65$1_1$192
+                                    387 ;StateGame.c:65: SetWindowY(104);//su suggerimento di toxa, perché INIT_HUD non fa sta chiamata che dice serve...
+      000115 3E 68            [ 8]  388 	ld	a, #0x68
+      000117 CDr00r00         [24]  389 	call	_SetWindowY
+                           00011A   390 	C$StateGame.c$66$1_1$192	= .
+                                    391 	.globl	C$StateGame.c$66$1_1$192
+                                    392 ;StateGame.c:66: euphoria_min_current = euphoria_min;
+      00011A FAr00r00         [16]  393 	ld	a, (#_euphoria_min)
+      00011D EAr06r00         [16]  394 	ld	(#_euphoria_min_current),a
+      000120 FAr01r00         [16]  395 	ld	a, (#_euphoria_min + 1)
+      000123 EAr07r00         [16]  396 	ld	(#_euphoria_min_current + 1),a
+                           000126   397 	C$StateGame.c$67$1_1$192	= .
+                                    398 	.globl	C$StateGame.c$67$1_1$192
+                                    399 ;StateGame.c:67: euphoria_max_current = euphoria_max;
+      000126 FAr00r00         [16]  400 	ld	a, (#_euphoria_max)
+      000129 EAr08r00         [16]  401 	ld	(#_euphoria_max_current),a
+      00012C FAr01r00         [16]  402 	ld	a, (#_euphoria_max + 1)
+      00012F EAr09r00         [16]  403 	ld	(#_euphoria_max_current + 1),a
+                           000132   404 	C$StateGame.c$68$1_1$192	= .
+                                    405 	.globl	C$StateGame.c$68$1_1$192
+                                    406 ;StateGame.c:68: update_euphoria();
+      000132 1Er00            [ 8]  407 	ld	e, #b_update_euphoria
+      000134 21r70r02         [12]  408 	ld	hl, #_update_euphoria
+      000137 CDr00r00         [24]  409 	call	___sdcc_bcall_ehl
+                           00013A   410 	C$StateGame.c$69$1_1$191	= .
+                                    411 	.globl	C$StateGame.c$69$1_1$191
+                                    412 ;StateGame.c:69: }
+      00013A E8 04            [16]  413 	add	sp, #4
+                           00013C   414 	C$StateGame.c$69$1_1$191	= .
+                                    415 	.globl	C$StateGame.c$69$1_1$191
+                           00013C   416 	XG$Start_StateGame$0$0	= .
+                                    417 	.globl	XG$Start_StateGame$0$0
+      00013C C9               [16]  418 	ret
+                           0000FF   419 G$__bank_StateGame$0_0$0 == 0x00ff
+                           0000FF   420 ___bank_StateGame	=	0x00ff
+                           00013D   421 G$coll_tiles$0_0$0 == .
+      00013D                        422 _coll_tiles:
+      00013D 0F                     423 	.db #0x0f	; 15
+      00013E 10                     424 	.db #0x10	; 16
+      00013F 11                     425 	.db #0x11	; 17
+      000140 12                     426 	.db #0x12	; 18
+      000141 13                     427 	.db #0x13	; 19
+      000142 14                     428 	.db #0x14	; 20
+      000143 15                     429 	.db #0x15	; 21
+      000144 16                     430 	.db #0x16	; 22
+      000145 17                     431 	.db #0x17	; 23
+      000146 18                     432 	.db #0x18	; 24
+      000147 19                     433 	.db #0x19	; 25
+      000148 1A                     434 	.db #0x1a	; 26
+      000149 1B                     435 	.db #0x1b	; 27
+      00014A 1C                     436 	.db #0x1c	; 28
+      00014B 1D                     437 	.db #0x1d	; 29
+      00014C 1E                     438 	.db #0x1e	; 30
+      00014D 1F                     439 	.db #0x1f	; 31
+      00014E 20                     440 	.db #0x20	; 32
+      00014F 21                     441 	.db #0x21	; 33
+      000150 22                     442 	.db #0x22	; 34
+      000151 23                     443 	.db #0x23	; 35
+      000152 24                     444 	.db #0x24	; 36
+      000153 25                     445 	.db #0x25	; 37
+      000154 26                     446 	.db #0x26	; 38
+      000155 27                     447 	.db #0x27	; 39
+      000156 28                     448 	.db #0x28	; 40
+      000157 29                     449 	.db #0x29	; 41
+      000158 2A                     450 	.db #0x2a	; 42
+      000159 2B                     451 	.db #0x2b	; 43
+      00015A 2C                     452 	.db #0x2c	; 44
+      00015B 2D                     453 	.db #0x2d	; 45
+      00015C 2E                     454 	.db #0x2e	; 46
+      00015D 2F                     455 	.db #0x2f	; 47
+      00015E 30                     456 	.db #0x30	; 48	'0'
+      00015F 31                     457 	.db #0x31	; 49	'1'
+      000160 32                     458 	.db #0x32	; 50	'2'
+      000161 33                     459 	.db #0x33	; 51	'3'
+      000162 34                     460 	.db #0x34	; 52	'4'
+      000163 35                     461 	.db #0x35	; 53	'5'
+      000164 36                     462 	.db #0x36	; 54	'6'
+      000165 37                     463 	.db #0x37	; 55	'7'
+      000166 38                     464 	.db #0x38	; 56	'8'
+      000167 39                     465 	.db #0x39	; 57	'9'
+      000168 3A                     466 	.db #0x3a	; 58
+      000169 3B                     467 	.db #0x3b	; 59
+      00016A 3C                     468 	.db #0x3c	; 60
+      00016B 3D                     469 	.db #0x3d	; 61
+      00016C 3E                     470 	.db #0x3e	; 62
+      00016D 3F                     471 	.db #0x3f	; 63
+      00016E 40                     472 	.db #0x40	; 64
+      00016F 41                     473 	.db #0x41	; 65	'A'
+      000170 42                     474 	.db #0x42	; 66	'B'
+      000171 43                     475 	.db #0x43	; 67	'C'
+      000172 44                     476 	.db #0x44	; 68	'D'
+      000173 45                     477 	.db #0x45	; 69	'E'
+      000174 46                     478 	.db #0x46	; 70	'F'
+      000175 47                     479 	.db #0x47	; 71	'G'
+      000176 48                     480 	.db #0x48	; 72	'H'
+      000177 49                     481 	.db #0x49	; 73	'I'
+      000178 4A                     482 	.db #0x4a	; 74	'J'
+      000179 4B                     483 	.db #0x4b	; 75	'K'
+      00017A 4C                     484 	.db #0x4c	; 76	'L'
+      00017B 4D                     485 	.db #0x4d	; 77	'M'
+      00017C 4E                     486 	.db #0x4e	; 78	'N'
+      00017D 4F                     487 	.db #0x4f	; 79	'O'
+      00017E 50                     488 	.db #0x50	; 80	'P'
+      00017F 51                     489 	.db #0x51	; 81	'Q'
+      000180 52                     490 	.db #0x52	; 82	'R'
+      000181 53                     491 	.db #0x53	; 83	'S'
+      000182 54                     492 	.db #0x54	; 84	'T'
+      000183 55                     493 	.db #0x55	; 85	'U'
+      000184 56                     494 	.db #0x56	; 86	'V'
+      000185 57                     495 	.db #0x57	; 87	'W'
+      000186 58                     496 	.db #0x58	; 88	'X'
+      000187 59                     497 	.db #0x59	; 89	'Y'
+      000188 5A                     498 	.db #0x5a	; 90	'Z'
+      000189 5B                     499 	.db #0x5b	; 91
+      00018A 5C                     500 	.db #0x5c	; 92
+      00018B 5D                     501 	.db #0x5d	; 93
+      00018C 5E                     502 	.db #0x5e	; 94
+      00018D 5F                     503 	.db #0x5f	; 95
+      00018E 60                     504 	.db #0x60	; 96
+      00018F 61                     505 	.db #0x61	; 97	'a'
+      000190 62                     506 	.db #0x62	; 98	'b'
+      000191 63                     507 	.db #0x63	; 99	'c'
+      000192 64                     508 	.db #0x64	; 100	'd'
+      000193 65                     509 	.db #0x65	; 101	'e'
+      000194 66                     510 	.db #0x66	; 102	'f'
+      000195 67                     511 	.db #0x67	; 103	'g'
+      000196 68                     512 	.db #0x68	; 104	'h'
+      000197 69                     513 	.db #0x69	; 105	'i'
+      000198 6A                     514 	.db #0x6a	; 106	'j'
+      000199 6B                     515 	.db #0x6b	; 107	'k'
+      00019A 6C                     516 	.db #0x6c	; 108	'l'
+      00019B 6D                     517 	.db #0x6d	; 109	'm'
+      00019C 6E                     518 	.db #0x6e	; 110	'n'
+      00019D 6F                     519 	.db #0x6f	; 111	'o'
+      00019E 70                     520 	.db #0x70	; 112	'p'
+      00019F 71                     521 	.db #0x71	; 113	'q'
+      0001A0 72                     522 	.db #0x72	; 114	'r'
+      0001A1 00                     523 	.db #0x00	; 0
+                           0001A2   524 G$coll_surface$0_0$0 == .
+      0001A2                        525 _coll_surface:
+      0001A2 00                     526 	.db #0x00	; 0
+      0001A3 00                     527 	.db #0x00	; 0
+                           0001A4   528 	G$update_stamina$0$0	= .
+                                    529 	.globl	G$update_stamina$0$0
+                           0001A4   530 	C$StateGame.c$71$1_1$193	= .
+                                    531 	.globl	C$StateGame.c$71$1_1$193
+                                    532 ;StateGame.c:71: void update_stamina() BANKED{
+                                    533 ;	---------------------------------
+                                    534 ; Function update_stamina
+                                    535 ; ---------------------------------
+                           0000FF   536 	b_update_stamina	= 255
+      0001A4                        537 _update_stamina::
+      0001A4 E8 FB            [16]  538 	add	sp, #-5
+                           0001A6   539 	C$StateGame.c$75$1_0$193	= .
+                                    540 	.globl	C$StateGame.c$75$1_0$193
+                                    541 ;StateGame.c:75: INT16 stamina_hud = stamina_current/10;// (stamina_current * PIXEL_STAMINA)/stamina_max;
+      0001A6 01 0A 00         [12]  542 	ld	bc, #0x000a
+      0001A9 21r00r00         [12]  543 	ld	hl, #_stamina_current
+      0001AC 2A               [ 8]  544 	ld	a, (hl+)
+      0001AD 5F               [ 4]  545 	ld	e, a
+      0001AE 56               [ 8]  546 	ld	d, (hl)
+                           0001AF   547 	C$StateGame.c$76$1_0$193	= .
+                                    548 	.globl	C$StateGame.c$76$1_0$193
+                                    549 ;StateGame.c:76: UINT16 stamina_intero = stamina_hud >> 3;
+      0001AF CDr00r00         [24]  550 	call	__divsint
+      0001B2 59               [ 4]  551 	ld	e, c
+      0001B3 50               [ 4]  552 	ld	d, b
+      0001B4 F8 02            [12]  553 	ldhl	sp,	#2
+      0001B6 7B               [ 4]  554 	ld	a, e
+      0001B7 22               [ 8]  555 	ld	(hl+), a
+      0001B8 72               [ 8]  556 	ld	(hl), d
+      0001B9 CB 2E            [16]  557 	sra	(hl)
+      0001BB 2B               [ 8]  558 	dec	hl
+      0001BC CB 1E            [16]  559 	rr	(hl)
+      0001BE 23               [ 8]  560 	inc	hl
+      0001BF CB 2E            [16]  561 	sra	(hl)
+      0001C1 2B               [ 8]  562 	dec	hl
+      0001C2 CB 1E            [16]  563 	rr	(hl)
+      0001C4 23               [ 8]  564 	inc	hl
+      0001C5 CB 2E            [16]  565 	sra	(hl)
+      0001C7 2B               [ 8]  566 	dec	hl
+      0001C8 CB 1E            [16]  567 	rr	(hl)
+                           0001CA   568 	C$StateGame.c$77$1_0$193	= .
+                                    569 	.globl	C$StateGame.c$77$1_0$193
+                                    570 ;StateGame.c:77: UINT16 stamina_resto = stamina_hud % 8;
+      0001CA 01 08 00         [12]  571 	ld	bc, #0x0008
+      0001CD CDr00r00         [24]  572 	call	__modsint
+      0001D0 59               [ 4]  573 	ld	e, c
+      0001D1 50               [ 4]  574 	ld	d, b
+                           0001D2   575 	C$StateGame.c$78$1_0$193	= .
+                                    576 	.globl	C$StateGame.c$78$1_0$193
+                                    577 ;StateGame.c:78: INT16 idx = 0;
+      0001D2 01 00 00         [12]  578 	ld	bc, #0x0000
+                           0001D5   579 	C$StateGame.c$79$1_0$193	= .
+                                    580 	.globl	C$StateGame.c$79$1_0$193
+                                    581 ;StateGame.c:79: if(stamina_intero > 0){
+      0001D5 F8 03            [12]  582 	ldhl	sp,	#3
+      0001D7 3A               [ 8]  583 	ld	a, (hl-)
+      0001D8 B6               [ 8]  584 	or	a, (hl)
+      0001D9 28 3F            [12]  585 	jr	Z, 00103$
+                           0001DB   586 	C$StateGame.c$80$1_0$193	= .
+                                    587 	.globl	C$StateGame.c$80$1_0$193
+                                    588 ;StateGame.c:80: for(idx = 0; idx < stamina_intero; idx++){
+      0001DB 01 00 00         [12]  589 	ld	bc, #0x0000
+      0001DE                        590 00110$:
+      0001DE 33               [ 8]  591 	inc	sp
+      0001DF 33               [ 8]  592 	inc	sp
+      0001E0 C5               [16]  593 	push	bc
+      0001E1 D5               [16]  594 	push	de
+      0001E2 F8 02            [12]  595 	ldhl	sp,	#2
+      0001E4 5D               [ 4]  596 	ld	e, l
+      0001E5 54               [ 4]  597 	ld	d, h
+      0001E6 F8 04            [12]  598 	ldhl	sp,	#4
+      0001E8 1A               [ 8]  599 	ld	a, (de)
+      0001E9 13               [ 8]  600 	inc	de
+      0001EA 96               [ 8]  601 	sub	a, (hl)
+      0001EB 23               [ 8]  602 	inc	hl
+      0001EC 1A               [ 8]  603 	ld	a, (de)
+      0001ED 9E               [ 8]  604 	sbc	a, (hl)
+      0001EE D1               [12]  605 	pop	de
+      0001EF 30 29            [12]  606 	jr	NC, 00120$
+                           0001F1   607 	C$StateGame.c$81$4_0$196	= .
+                                    608 	.globl	C$StateGame.c$81$4_0$196
+                                    609 ;StateGame.c:81: UPDATE_HUD_TILE(7+idx,0, 52);
+      0001F1 79               [ 4]  610 	ld	a, c
+      0001F2 C6 07            [ 8]  611 	add	a, #0x07
+      0001F4 F8 04            [12]  612 	ldhl	sp,	#4
+      0001F6 77               [ 8]  613 	ld	(hl), a
+      0001F7 C5               [16]  614 	push	bc
+      0001F8 D5               [16]  615 	push	de
+      0001F9 21 00 00         [12]  616 	ld	hl, #0x0000
+      0001FC E5               [16]  617 	push	hl
+      0001FD 3E 34            [ 8]  618 	ld	a, #0x34
+      0001FF F5               [16]  619 	push	af
+      000200 33               [ 8]  620 	inc	sp
+      000201 21r00r00         [12]  621 	ld	hl, #_hud_map_offset
+      000204 6E               [ 8]  622 	ld	l, (hl)
+                                    623 ;	spillPairReg hl
+                                    624 ;	spillPairReg hl
+      000205 FAr01r00         [16]  625 	ld	a, (_hud_map_offset + 1)
+      000208 67               [ 4]  626 	ld	h, a
+                                    627 ;	spillPairReg hl
+                                    628 ;	spillPairReg hl
+      000209 E5               [16]  629 	push	hl
+      00020A AF               [ 4]  630 	xor	a, a
+      00020B F5               [16]  631 	push	af
+      00020C 33               [ 8]  632 	inc	sp
+      00020D F8 0E            [12]  633 	ldhl	sp,	#14
+      00020F 5E               [ 8]  634 	ld	e, (hl)
+      000210 3E 01            [ 8]  635 	ld	a, #0x01
+      000212 CDr00r00         [24]  636 	call	_UpdateMapTile
+      000215 D1               [12]  637 	pop	de
+      000216 C1               [12]  638 	pop	bc
+                           000217   639 	C$StateGame.c$80$3_0$195	= .
+                                    640 	.globl	C$StateGame.c$80$3_0$195
+                                    641 ;StateGame.c:80: for(idx = 0; idx < stamina_intero; idx++){
+      000217 03               [ 8]  642 	inc	bc
+      000218 18 C4            [12]  643 	jr	00110$
+      00021A                        644 00120$:
+      00021A                        645 00103$:
+                           00021A   646 	C$StateGame.c$84$1_0$193	= .
+                                    647 	.globl	C$StateGame.c$84$1_0$193
+                                    648 ;StateGame.c:84: if(stamina_resto > 0){
+      00021A 7A               [ 4]  649 	ld	a, d
+      00021B B3               [ 4]  650 	or	a, e
+      00021C 28 22            [12]  651 	jr	Z, 00119$
+                           00021E   652 	C$StateGame.c$85$2_0$197	= .
+                                    653 	.globl	C$StateGame.c$85$2_0$197
+                                    654 ;StateGame.c:85: UPDATE_HUD_TILE(7+idx,0, 60 - stamina_resto);
+      00021E 3E 3C            [ 8]  655 	ld	a, #0x3c
+      000220 93               [ 4]  656 	sub	a, e
+      000221 57               [ 4]  657 	ld	d, a
+      000222 79               [ 4]  658 	ld	a, c
+      000223 C6 07            [ 8]  659 	add	a, #0x07
+      000225 5F               [ 4]  660 	ld	e, a
+      000226 C5               [16]  661 	push	bc
+      000227 21 00 00         [12]  662 	ld	hl, #0x0000
+      00022A E5               [16]  663 	push	hl
+      00022B D5               [16]  664 	push	de
+      00022C 33               [ 8]  665 	inc	sp
+      00022D 21r00r00         [12]  666 	ld	hl, #_hud_map_offset
+      000230 6E               [ 8]  667 	ld	l, (hl)
+                                    668 ;	spillPairReg hl
+                                    669 ;	spillPairReg hl
+      000231 FAr01r00         [16]  670 	ld	a, (_hud_map_offset + 1)
+      000234 67               [ 4]  671 	ld	h, a
+                                    672 ;	spillPairReg hl
+                                    673 ;	spillPairReg hl
+      000235 E5               [16]  674 	push	hl
+      000236 AF               [ 4]  675 	xor	a, a
+      000237 F5               [16]  676 	push	af
+      000238 33               [ 8]  677 	inc	sp
+      000239 3E 01            [ 8]  678 	ld	a, #0x01
+      00023B CDr00r00         [24]  679 	call	_UpdateMapTile
+      00023E C1               [12]  680 	pop	bc
+                           00023F   681 	C$StateGame.c$86$2_0$197	= .
+                                    682 	.globl	C$StateGame.c$86$2_0$197
+                                    683 ;StateGame.c:86: idx++;
+      00023F 03               [ 8]  684 	inc	bc
+                           000240   685 	C$StateGame.c$88$1_0$193	= .
+                                    686 	.globl	C$StateGame.c$88$1_0$193
+                                    687 ;StateGame.c:88: while(idx < 12){
+      000240                        688 00119$:
+      000240                        689 00106$:
+      000240 79               [ 4]  690 	ld	a, c
+      000241 D6 0C            [ 8]  691 	sub	a, #0x0c
+      000243 78               [ 4]  692 	ld	a, b
+      000244 17               [ 4]  693 	rla
+      000245 3F               [ 4]  694 	ccf
+      000246 1F               [ 4]  695 	rra
+      000247 DE 80            [ 8]  696 	sbc	a, #0x80
+      000249 30 22            [12]  697 	jr	NC, 00112$
+                           00024B   698 	C$StateGame.c$89$2_0$198	= .
+                                    699 	.globl	C$StateGame.c$89$2_0$198
+                                    700 ;StateGame.c:89: UPDATE_HUD_TILE(7+idx,0, 60);
+      00024B 79               [ 4]  701 	ld	a, c
+      00024C C6 07            [ 8]  702 	add	a, #0x07
+      00024E 5F               [ 4]  703 	ld	e, a
+      00024F C5               [16]  704 	push	bc
+      000250 21 00 00         [12]  705 	ld	hl, #0x0000
+      000253 E5               [16]  706 	push	hl
+      000254 3E 3C            [ 8]  707 	ld	a, #0x3c
+      000256 F5               [16]  708 	push	af
+      000257 33               [ 8]  709 	inc	sp
+      000258 21r00r00         [12]  710 	ld	hl, #_hud_map_offset
+      00025B 6E               [ 8]  711 	ld	l, (hl)
+                                    712 ;	spillPairReg hl
+                                    713 ;	spillPairReg hl
+      00025C FAr01r00         [16]  714 	ld	a, (_hud_map_offset + 1)
+      00025F 67               [ 4]  715 	ld	h, a
+                                    716 ;	spillPairReg hl
+                                    717 ;	spillPairReg hl
+      000260 E5               [16]  718 	push	hl
+      000261 AF               [ 4]  719 	xor	a, a
+      000262 F5               [16]  720 	push	af
+      000263 33               [ 8]  721 	inc	sp
+      000264 3E 01            [ 8]  722 	ld	a, #0x01
+      000266 CDr00r00         [24]  723 	call	_UpdateMapTile
+      000269 C1               [12]  724 	pop	bc
+                           00026A   725 	C$StateGame.c$90$2_0$198	= .
+                                    726 	.globl	C$StateGame.c$90$2_0$198
+                                    727 ;StateGame.c:90: idx++;
+      00026A 03               [ 8]  728 	inc	bc
+      00026B 18 D3            [12]  729 	jr	00106$
+      00026D                        730 00112$:
+                           00026D   731 	C$StateGame.c$92$1_0$193	= .
+                                    732 	.globl	C$StateGame.c$92$1_0$193
+                                    733 ;StateGame.c:92: }
+      00026D E8 05            [16]  734 	add	sp, #5
+                           00026F   735 	C$StateGame.c$92$1_0$193	= .
+                                    736 	.globl	C$StateGame.c$92$1_0$193
+                           00026F   737 	XG$update_stamina$0$0	= .
+                                    738 	.globl	XG$update_stamina$0$0
+      00026F C9               [16]  739 	ret
+                           000270   740 	G$update_euphoria$0$0	= .
+                                    741 	.globl	G$update_euphoria$0$0
+                           000270   742 	C$StateGame.c$94$1_0$199	= .
+                                    743 	.globl	C$StateGame.c$94$1_0$199
+                                    744 ;StateGame.c:94: void update_euphoria() BANKED{
+                                    745 ;	---------------------------------
+                                    746 ; Function update_euphoria
+                                    747 ; ---------------------------------
+                           0000FF   748 	b_update_euphoria	= 255
+      000270                        749 _update_euphoria::
+      000270 E8 F8            [16]  750 	add	sp, #-8
+                           000272   751 	C$StateGame.c$95$1_0$199	= .
+                                    752 	.globl	C$StateGame.c$95$1_0$199
+                                    753 ;StateGame.c:95: euphoria_min_current = euphoria_min;
+      000272 FAr00r00         [16]  754 	ld	a, (#_euphoria_min)
+      000275 EAr06r00         [16]  755 	ld	(#_euphoria_min_current),a
+      000278 FAr01r00         [16]  756 	ld	a, (#_euphoria_min + 1)
+      00027B EAr07r00         [16]  757 	ld	(#_euphoria_min_current + 1),a
+                           00027E   758 	C$StateGame.c$96$1_0$199	= .
+                                    759 	.globl	C$StateGame.c$96$1_0$199
+                                    760 ;StateGame.c:96: euphoria_max_current = euphoria_max;
+      00027E FAr00r00         [16]  761 	ld	a, (#_euphoria_max)
+      000281 EAr08r00         [16]  762 	ld	(#_euphoria_max_current),a
+      000284 FAr01r00         [16]  763 	ld	a, (#_euphoria_max + 1)
+      000287 EAr09r00         [16]  764 	ld	(#_euphoria_max_current + 1),a
+                           00028A   765 	C$StateGame.c$97$1_1$199	= .
+                                    766 	.globl	C$StateGame.c$97$1_1$199
+                                    767 ;StateGame.c:97: UINT8 euphoria_init = euphoria_min_current / 10 / 8;
+      00028A 01 0A 00         [12]  768 	ld	bc, #0x000a
+      00028D 21r06r00         [12]  769 	ld	hl, #_euphoria_min_current
+      000290 2A               [ 8]  770 	ld	a, (hl+)
+      000291 5F               [ 4]  771 	ld	e, a
+      000292 56               [ 8]  772 	ld	d, (hl)
+      000293 CDr00r00         [24]  773 	call	__divuint
+      000296 CB 38            [ 8]  774 	srl	b
+      000298 CB 19            [ 8]  775 	rr	c
+      00029A CB 38            [ 8]  776 	srl	b
+      00029C CB 19            [ 8]  777 	rr	c
+      00029E CB 38            [ 8]  778 	srl	b
+      0002A0 CB 19            [ 8]  779 	rr	c
+      0002A2 F8 00            [12]  780 	ldhl	sp,	#0
+      0002A4 71               [ 8]  781 	ld	(hl), c
+                           0002A5   782 	C$StateGame.c$98$1_1$199	= .
+                                    783 	.globl	C$StateGame.c$98$1_1$199
+                                    784 ;StateGame.c:98: UINT8 euphoria_final = euphoria_max_current / 10 / 8;
+      0002A5 01 0A 00         [12]  785 	ld	bc, #0x000a
+      0002A8 21r08r00         [12]  786 	ld	hl, #_euphoria_max_current
+      0002AB 2A               [ 8]  787 	ld	a, (hl+)
+      0002AC 5F               [ 4]  788 	ld	e, a
+      0002AD 56               [ 8]  789 	ld	d, (hl)
+      0002AE CDr00r00         [24]  790 	call	__divuint
+      0002B1 CB 38            [ 8]  791 	srl	b
+      0002B3 CB 19            [ 8]  792 	rr	c
+      0002B5 CB 38            [ 8]  793 	srl	b
+      0002B7 CB 19            [ 8]  794 	rr	c
+      0002B9 CB 38            [ 8]  795 	srl	b
+      0002BB CB 19            [ 8]  796 	rr	c
+      0002BD F8 01            [12]  797 	ldhl	sp,	#1
+      0002BF 71               [ 8]  798 	ld	(hl), c
+                           0002C0   799 	C$StateGame.c$99$1_1$200	= .
+                                    800 	.globl	C$StateGame.c$99$1_1$200
+                                    801 ;StateGame.c:99: UINT8 delta_euphoria = euphoria_final - euphoria_init;
+      0002C0 3A               [ 8]  802 	ld	a, (hl-)
+      0002C1 96               [ 8]  803 	sub	a, (hl)
+      0002C2 23               [ 8]  804 	inc	hl
+      0002C3 23               [ 8]  805 	inc	hl
+      0002C4 77               [ 8]  806 	ld	(hl), a
+                           0002C5   807 	C$StateGame.c$101$1_1$199	= .
+                                    808 	.globl	C$StateGame.c$101$1_1$199
+                                    809 ;StateGame.c:101: while(idx_delta_euphoria <= (delta_euphoria-1)){
+      0002C5 F8 07            [12]  810 	ldhl	sp,	#7
+      0002C7 36 00            [12]  811 	ld	(hl), #0x00
+      0002C9                        812 00104$:
+      0002C9 F8 02            [12]  813 	ldhl	sp,	#2
+      0002CB 2A               [ 8]  814 	ld	a, (hl+)
+      0002CC 22               [ 8]  815 	ld	(hl+), a
+      0002CD AF               [ 4]  816 	xor	a, a
+      0002CE 32               [ 8]  817 	ld	(hl-), a
+      0002CF 2A               [ 8]  818 	ld	a, (hl+)
+      0002D0 5F               [ 4]  819 	ld	e, a
+      0002D1 56               [ 8]  820 	ld	d, (hl)
+      0002D2 21 01 00         [12]  821 	ld	hl, #0x0001
+      0002D5 7B               [ 4]  822 	ld	a, e
+      0002D6 95               [ 4]  823 	sub	a, l
+      0002D7 5F               [ 4]  824 	ld	e, a
+      0002D8 7A               [ 4]  825 	ld	a, d
+      0002D9 9C               [ 4]  826 	sbc	a, h
+      0002DA F8 06            [12]  827 	ldhl	sp,	#6
+      0002DC 32               [ 8]  828 	ld	(hl-), a
+      0002DD 7B               [ 4]  829 	ld	a, e
+      0002DE 22               [ 8]  830 	ld	(hl+), a
+      0002DF 23               [ 8]  831 	inc	hl
+      0002E0 3A               [ 8]  832 	ld	a, (hl-)
+      0002E1 2B               [ 8]  833 	dec	hl
+      0002E2 4F               [ 4]  834 	ld	c, a
+      0002E3 06 00            [ 8]  835 	ld	b, #0x00
+      0002E5 2A               [ 8]  836 	ld	a, (hl+)
+      0002E6 91               [ 4]  837 	sub	a, c
+      0002E7 7E               [ 8]  838 	ld	a, (hl)
+      0002E8 98               [ 4]  839 	sbc	a, b
+      0002E9 56               [ 8]  840 	ld	d, (hl)
+      0002EA 78               [ 4]  841 	ld	a, b
+      0002EB CB 7F            [ 8]  842 	bit	7,a
+      0002ED 28 07            [12]  843 	jr	Z, 00131$
+      0002EF CB 7A            [ 8]  844 	bit	7, d
+      0002F1 20 08            [12]  845 	jr	NZ, 00132$
+      0002F3 BF               [ 4]  846 	cp	a, a
+      0002F4 18 05            [12]  847 	jr	00132$
+      0002F6                        848 00131$:
+      0002F6 CB 7A            [ 8]  849 	bit	7, d
+      0002F8 28 01            [12]  850 	jr	Z, 00132$
+      0002FA 37               [ 4]  851 	scf
+      0002FB                        852 00132$:
+      0002FB 38 49            [12]  853 	jr	C, 00106$
+                           0002FD   854 	C$StateGame.c$103$1_1$199	= .
+                                    855 	.globl	C$StateGame.c$103$1_1$199
+                                    856 ;StateGame.c:103: UPDATE_HUD_TILE(7+euphoria_init+idx_delta_euphoria,1, 7+idx_delta_euphoria);
+      0002FD F8 07            [12]  857 	ldhl	sp,	#7
+      0002FF 4E               [ 8]  858 	ld	c, (hl)
+      000300 F8 00            [12]  859 	ldhl	sp,	#0
+      000302 7E               [ 8]  860 	ld	a, (hl)
+      000303 C6 07            [ 8]  861 	add	a, #0x07
+      000305 81               [ 4]  862 	add	a, c
+      000306 5F               [ 4]  863 	ld	e, a
+                           000307   864 	C$StateGame.c$102$2_1$201	= .
+                                    865 	.globl	C$StateGame.c$102$2_1$201
+                                    866 ;StateGame.c:102: if(idx_delta_euphoria < 3){
+      000307 F8 07            [12]  867 	ldhl	sp,	#7
+      000309 7E               [ 8]  868 	ld	a, (hl)
+      00030A D6 03            [ 8]  869 	sub	a, #0x03
+      00030C 30 1B            [12]  870 	jr	NC, 00102$
+                           00030E   871 	C$StateGame.c$103$3_1$202	= .
+                                    872 	.globl	C$StateGame.c$103$3_1$202
+                                    873 ;StateGame.c:103: UPDATE_HUD_TILE(7+euphoria_init+idx_delta_euphoria,1, 7+idx_delta_euphoria);
+      00030E 79               [ 4]  874 	ld	a, c
+      00030F C6 07            [ 8]  875 	add	a, #0x07
+      000311 01 00 00         [12]  876 	ld	bc, #0x0000
+      000314 C5               [16]  877 	push	bc
+      000315 F5               [16]  878 	push	af
+      000316 33               [ 8]  879 	inc	sp
+      000317 21r00r00         [12]  880 	ld	hl, #_hud_map_offset
+      00031A 2A               [ 8]  881 	ld	a, (hl+)
+      00031B 4F               [ 4]  882 	ld	c, a
+      00031C 46               [ 8]  883 	ld	b, (hl)
+      00031D C5               [16]  884 	push	bc
+      00031E 3E 01            [ 8]  885 	ld	a, #0x01
+      000320 F5               [16]  886 	push	af
+      000321 33               [ 8]  887 	inc	sp
+      000322 3E 01            [ 8]  888 	ld	a, #0x01
+      000324 CDr00r00         [24]  889 	call	_UpdateMapTile
+      000327 18 18            [12]  890 	jr	00103$
+      000329                        891 00102$:
+                           000329   892 	C$StateGame.c$104$3_1$203	= .
+                                    893 	.globl	C$StateGame.c$104$3_1$203
+                                    894 ;StateGame.c:104: }else{ UPDATE_HUD_TILE(7+euphoria_init+idx_delta_euphoria,1, 1);}
+      000329 01 00 00         [12]  895 	ld	bc, #0x0000
+      00032C C5               [16]  896 	push	bc
+      00032D 3E 01            [ 8]  897 	ld	a, #0x01
+      00032F F5               [16]  898 	push	af
+      000330 33               [ 8]  899 	inc	sp
+      000331 21r00r00         [12]  900 	ld	hl, #_hud_map_offset
+      000334 2A               [ 8]  901 	ld	a, (hl+)
+      000335 4F               [ 4]  902 	ld	c, a
+      000336 46               [ 8]  903 	ld	b, (hl)
+      000337 C5               [16]  904 	push	bc
+      000338 3E 01            [ 8]  905 	ld	a, #0x01
+      00033A F5               [16]  906 	push	af
+      00033B 33               [ 8]  907 	inc	sp
+      00033C 3E 01            [ 8]  908 	ld	a, #0x01
+      00033E CDr00r00         [24]  909 	call	_UpdateMapTile
+      000341                        910 00103$:
+                           000341   911 	C$StateGame.c$105$2_1$201	= .
+                                    912 	.globl	C$StateGame.c$105$2_1$201
+                                    913 ;StateGame.c:105: idx_delta_euphoria++;
+      000341 F8 07            [12]  914 	ldhl	sp,	#7
+      000343 34               [12]  915 	inc	(hl)
+      000344 18 83            [12]  916 	jr	00104$
+      000346                        917 00106$:
+                           000346   918 	C$StateGame.c$107$1_1$200	= .
+                                    919 	.globl	C$StateGame.c$107$1_1$200
+                                    920 ;StateGame.c:107: UPDATE_HUD_TILE(7+euphoria_final,1, 10);
+      000346 F8 01            [12]  921 	ldhl	sp,	#1
+      000348 7E               [ 8]  922 	ld	a, (hl)
+      000349 C6 07            [ 8]  923 	add	a, #0x07
+      00034B 5F               [ 4]  924 	ld	e, a
+      00034C 01 00 00         [12]  925 	ld	bc, #0x0000
+      00034F C5               [16]  926 	push	bc
+      000350 3E 0A            [ 8]  927 	ld	a, #0x0a
+      000352 F5               [16]  928 	push	af
+      000353 33               [ 8]  929 	inc	sp
+      000354 21r00r00         [12]  930 	ld	hl, #_hud_map_offset
+      000357 2A               [ 8]  931 	ld	a, (hl+)
+      000358 4F               [ 4]  932 	ld	c, a
+      000359 46               [ 8]  933 	ld	b, (hl)
+      00035A C5               [16]  934 	push	bc
+      00035B 3E 01            [ 8]  935 	ld	a, #0x01
+      00035D F5               [16]  936 	push	af
+      00035E 33               [ 8]  937 	inc	sp
+      00035F 3E 01            [ 8]  938 	ld	a, #0x01
+      000361 CDr00r00         [24]  939 	call	_UpdateMapTile
+                           000364   940 	C$StateGame.c$108$1_1$199	= .
+                                    941 	.globl	C$StateGame.c$108$1_1$199
+                                    942 ;StateGame.c:108: }
+      000364 E8 08            [16]  943 	add	sp, #8
+                           000366   944 	C$StateGame.c$108$1_1$199	= .
+                                    945 	.globl	C$StateGame.c$108$1_1$199
+                           000366   946 	XG$update_euphoria$0$0	= .
+                                    947 	.globl	XG$update_euphoria$0$0
+      000366 C9               [16]  948 	ret
+                           000367   949 	G$update_compass$0$0	= .
+                                    950 	.globl	G$update_compass$0$0
+                           000367   951 	C$StateGame.c$110$1_1$204	= .
+                                    952 	.globl	C$StateGame.c$110$1_1$204
+                                    953 ;StateGame.c:110: void update_compass() BANKED{
+                                    954 ;	---------------------------------
+                                    955 ; Function update_compass
+                                    956 ; ---------------------------------
+                           0000FF   957 	b_update_compass	= 255
+      000367                        958 _update_compass::
+      000367 3B               [ 8]  959 	dec	sp
+                           000368   960 	C$StateGame.c$112$2_0$204	= .
+                                    961 	.globl	C$StateGame.c$112$2_0$204
+                                    962 ;StateGame.c:112: INT8 using_sin = sin;
+      000368 21r00r00         [12]  963 	ld	hl, #_sin
+      00036B 46               [ 8]  964 	ld	b, (hl)
+                           00036C   965 	C$StateGame.c$113$1_0$204	= .
+                                    966 	.globl	C$StateGame.c$113$1_0$204
+                                    967 ;StateGame.c:113: if(cos < 0) {using_cos = -cos;}
+      00036C FAr00r00         [16]  968 	ld	a, (#_cos)
+      00036F 07               [ 4]  969 	rlca
+      000370 E6 01            [ 8]  970 	and	a,#0x01
+      000372 F8 00            [12]  971 	ldhl	sp,	#0
+      000374 77               [ 8]  972 	ld	(hl), a
+                           000375   973 	C$StateGame.c$114$1_0$204	= .
+                                    974 	.globl	C$StateGame.c$114$1_0$204
+                                    975 ;StateGame.c:114: if(sin < 0) {using_sin = -sin;}
+      000375 21r00r00         [12]  976 	ld	hl, #_sin
+      000378 7E               [ 8]  977 	ld	a, (hl)
+      000379 07               [ 4]  978 	rlca
+      00037A E6 01            [ 8]  979 	and	a,#0x01
+      00037C 4F               [ 4]  980 	ld	c, a
+      00037D B7               [ 4]  981 	or	a, a
+      00037E 28 03            [12]  982 	jr	Z, 00104$
+      000380 AF               [ 4]  983 	xor	a, a
+      000381 96               [ 8]  984 	sub	a, (hl)
+      000382 47               [ 4]  985 	ld	b, a
+      000383                        986 00104$:
+                           000383   987 	C$StateGame.c$115$1_0$204	= .
+                                    988 	.globl	C$StateGame.c$115$1_0$204
+                                    989 ;StateGame.c:115: if(using_sin >= 0 && using_sin <= 30){//tratto come se stesse andando orizzontale
+      000383 CB 78            [ 8]  990 	bit	7, b
+      000385 20 1E            [12]  991 	jr	NZ, 00116$
+      000387 58               [ 4]  992 	ld	e, b
+      000388 3E 1E            [ 8]  993 	ld	a,#0x1e
+      00038A 57               [ 4]  994 	ld	d,a
+      00038B 90               [ 4]  995 	sub	a, b
+      00038C CB 7B            [ 8]  996 	bit	7, e
+      00038E 28 07            [12]  997 	jr	Z, 00341$
+      000390 CB 7A            [ 8]  998 	bit	7, d
+      000392 20 08            [12]  999 	jr	NZ, 00342$
+      000394 BF               [ 4] 1000 	cp	a, a
+      000395 18 05            [12] 1001 	jr	00342$
+      000397                       1002 00341$:
+      000397 CB 7A            [ 8] 1003 	bit	7, d
+      000399 28 01            [12] 1004 	jr	Z, 00342$
+      00039B 37               [ 4] 1005 	scf
+      00039C                       1006 00342$:
+      00039C 38 07            [12] 1007 	jr	C, 00116$
+                           00039E  1008 	C$StateGame.c$116$2_0$207	= .
+                                   1009 	.globl	C$StateGame.c$116$2_0$207
+                                   1010 ;StateGame.c:116: horse_direction = EEE;
+      00039E 21r0Ar00         [12] 1011 	ld	hl, #_horse_direction
+      0003A1 36 00            [12] 1012 	ld	(hl), #0x00
+      0003A3 18 66            [12] 1013 	jr	00117$
+      0003A5                       1014 00116$:
+                           0003A5  1015 	C$StateGame.c$117$1_0$204	= .
+                                   1016 	.globl	C$StateGame.c$117$1_0$204
+                                   1017 ;StateGame.c:117: }else if(using_sin > 30 && using_sin < 54){// tratto come se stesse andando a 33 gradi
+      0003A5 58               [ 4] 1018 	ld	e, b
+      0003A6 3E 1E            [ 8] 1019 	ld	a,#0x1e
+      0003A8 57               [ 4] 1020 	ld	d,a
+      0003A9 90               [ 4] 1021 	sub	a, b
+      0003AA CB 7B            [ 8] 1022 	bit	7, e
+      0003AC 28 07            [12] 1023 	jr	Z, 00343$
+      0003AE CB 7A            [ 8] 1024 	bit	7, d
+      0003B0 20 08            [12] 1025 	jr	NZ, 00344$
+      0003B2 BF               [ 4] 1026 	cp	a, a
+      0003B3 18 05            [12] 1027 	jr	00344$
+      0003B5                       1028 00343$:
+      0003B5 CB 7A            [ 8] 1029 	bit	7, d
+      0003B7 28 01            [12] 1030 	jr	Z, 00344$
+      0003B9 37               [ 4] 1031 	scf
+      0003BA                       1032 00344$:
+      0003BA 30 0E            [12] 1033 	jr	NC, 00112$
+      0003BC 78               [ 4] 1034 	ld	a, b
+      0003BD EE 80            [ 8] 1035 	xor	a, #0x80
+      0003BF D6 B6            [ 8] 1036 	sub	a, #0xb6
+      0003C1 30 07            [12] 1037 	jr	NC, 00112$
+                           0003C3  1038 	C$StateGame.c$118$2_0$208	= .
+                                   1039 	.globl	C$StateGame.c$118$2_0$208
+                                   1040 ;StateGame.c:118: horse_direction = ENE;
+      0003C3 21r0Ar00         [12] 1041 	ld	hl, #_horse_direction
+      0003C6 36 01            [12] 1042 	ld	(hl), #0x01
+      0003C8 18 41            [12] 1043 	jr	00117$
+      0003CA                       1044 00112$:
+                           0003CA  1045 	C$StateGame.c$119$1_0$204	= .
+                                   1046 	.globl	C$StateGame.c$119$1_0$204
+                                   1047 ;StateGame.c:119: }else if(using_sin > 54 && using_sin < 78){// tratto come se stesse andando a 66 gradi
+      0003CA 58               [ 4] 1048 	ld	e, b
+      0003CB 3E 36            [ 8] 1049 	ld	a,#0x36
+      0003CD 57               [ 4] 1050 	ld	d,a
+      0003CE 90               [ 4] 1051 	sub	a, b
+      0003CF CB 7B            [ 8] 1052 	bit	7, e
+      0003D1 28 07            [12] 1053 	jr	Z, 00345$
+      0003D3 CB 7A            [ 8] 1054 	bit	7, d
+      0003D5 20 08            [12] 1055 	jr	NZ, 00346$
+      0003D7 BF               [ 4] 1056 	cp	a, a
+      0003D8 18 05            [12] 1057 	jr	00346$
+      0003DA                       1058 00345$:
+      0003DA CB 7A            [ 8] 1059 	bit	7, d
+      0003DC 28 01            [12] 1060 	jr	Z, 00346$
+      0003DE 37               [ 4] 1061 	scf
+      0003DF                       1062 00346$:
+      0003DF 30 0E            [12] 1063 	jr	NC, 00108$
+      0003E1 78               [ 4] 1064 	ld	a, b
+      0003E2 EE 80            [ 8] 1065 	xor	a, #0x80
+      0003E4 D6 CE            [ 8] 1066 	sub	a, #0xce
+      0003E6 30 07            [12] 1067 	jr	NC, 00108$
+                           0003E8  1068 	C$StateGame.c$120$2_0$209	= .
+                                   1069 	.globl	C$StateGame.c$120$2_0$209
+                                   1070 ;StateGame.c:120: horse_direction = NNE;
+      0003E8 21r0Ar00         [12] 1071 	ld	hl, #_horse_direction
+      0003EB 36 02            [12] 1072 	ld	(hl), #0x02
+      0003ED 18 1C            [12] 1073 	jr	00117$
+      0003EF                       1074 00108$:
+                           0003EF  1075 	C$StateGame.c$121$1_0$204	= .
+                                   1076 	.globl	C$StateGame.c$121$1_0$204
+                                   1077 ;StateGame.c:121: }else if(using_sin > 78){ // tratto come se stesse andando verticale su
+      0003EF 58               [ 4] 1078 	ld	e, b
+      0003F0 3E 4E            [ 8] 1079 	ld	a,#0x4e
+      0003F2 57               [ 4] 1080 	ld	d,a
+      0003F3 90               [ 4] 1081 	sub	a, b
+      0003F4 CB 7B            [ 8] 1082 	bit	7, e
+      0003F6 28 07            [12] 1083 	jr	Z, 00347$
+      0003F8 CB 7A            [ 8] 1084 	bit	7, d
+      0003FA 20 08            [12] 1085 	jr	NZ, 00348$
+      0003FC BF               [ 4] 1086 	cp	a, a
+      0003FD 18 05            [12] 1087 	jr	00348$
+      0003FF                       1088 00347$:
+      0003FF CB 7A            [ 8] 1089 	bit	7, d
+      000401 28 01            [12] 1090 	jr	Z, 00348$
+      000403 37               [ 4] 1091 	scf
+      000404                       1092 00348$:
+      000404 30 05            [12] 1093 	jr	NC, 00117$
+                           000406  1094 	C$StateGame.c$122$2_0$210	= .
+                                   1095 	.globl	C$StateGame.c$122$2_0$210
+                                   1096 ;StateGame.c:122: horse_direction = NNN;
+      000406 21r0Ar00         [12] 1097 	ld	hl, #_horse_direction
+      000409 36 03            [12] 1098 	ld	(hl), #0x03
+      00040B                       1099 00117$:
+                           00040B  1100 	C$StateGame.c$125$1_0$204	= .
+                                   1101 	.globl	C$StateGame.c$125$1_0$204
+                                   1102 ;StateGame.c:125: if(sin > 0 && cos < 0){
+      00040B 21r00r00         [12] 1103 	ld	hl, #_sin
+      00040E 5E               [ 8] 1104 	ld	e, (hl)
+      00040F AF               [ 4] 1105 	xor	a, a
+      000410 57               [ 4] 1106 	ld	d, a
+      000411 96               [ 8] 1107 	sub	a, (hl)
+      000412 CB 7B            [ 8] 1108 	bit	7, e
+      000414 28 07            [12] 1109 	jr	Z, 00349$
+      000416 CB 7A            [ 8] 1110 	bit	7, d
+      000418 20 08            [12] 1111 	jr	NZ, 00350$
+      00041A BF               [ 4] 1112 	cp	a, a
+      00041B 18 05            [12] 1113 	jr	00350$
+      00041D                       1114 00349$:
+      00041D CB 7A            [ 8] 1115 	bit	7, d
+      00041F 28 01            [12] 1116 	jr	Z, 00350$
+      000421 37               [ 4] 1117 	scf
+      000422                       1118 00350$:
+      000422 30 2E            [12] 1119 	jr	NC, 00124$
+      000424 F8 00            [12] 1120 	ldhl	sp,	#0
+      000426 7E               [ 8] 1121 	ld	a, (hl)
+      000427 B7               [ 4] 1122 	or	a, a
+      000428 28 28            [12] 1123 	jr	Z, 00124$
+                           00042A  1124 	C$StateGame.c$126$2_0$211	= .
+                                   1125 	.globl	C$StateGame.c$126$2_0$211
+                                   1126 ;StateGame.c:126: switch(horse_direction){//THIS->mirror = V_MIRROR;
+      00042A FAr0Ar00         [16] 1127 	ld	a, (#_horse_direction)
+      00042D B7               [ 4] 1128 	or	a, a
+      00042E 28 0F            [12] 1129 	jr	Z, 00119$
+      000430 FAr0Ar00         [16] 1130 	ld	a, (#_horse_direction)
+      000433 3D               [ 4] 1131 	dec	a
+      000434 28 10            [12] 1132 	jr	Z, 00120$
+      000436 FAr0Ar00         [16] 1133 	ld	a, (#_horse_direction)
+      000439 D6 02            [ 8] 1134 	sub	a, #0x02
+      00043B 28 10            [12] 1135 	jr	Z, 00121$
+      00043D 18 13            [12] 1136 	jr	00124$
+                           00043F  1137 	C$StateGame.c$127$3_0$212	= .
+                                   1138 	.globl	C$StateGame.c$127$3_0$212
+                                   1139 ;StateGame.c:127: case EEE: horse_direction = WWW; break;
+      00043F                       1140 00119$:
+      00043F 21r0Ar00         [12] 1141 	ld	hl, #_horse_direction
+      000442 36 06            [12] 1142 	ld	(hl), #0x06
+      000444 18 0C            [12] 1143 	jr	00124$
+                           000446  1144 	C$StateGame.c$128$3_0$212	= .
+                                   1145 	.globl	C$StateGame.c$128$3_0$212
+                                   1146 ;StateGame.c:128: case ENE: horse_direction = WNW; break;
+      000446                       1147 00120$:
+      000446 21r0Ar00         [12] 1148 	ld	hl, #_horse_direction
+      000449 36 05            [12] 1149 	ld	(hl), #0x05
+      00044B 18 05            [12] 1150 	jr	00124$
+                           00044D  1151 	C$StateGame.c$129$3_0$212	= .
+                                   1152 	.globl	C$StateGame.c$129$3_0$212
+                                   1153 ;StateGame.c:129: case NNE: horse_direction = NNW; break;
+      00044D                       1154 00121$:
+      00044D 21r0Ar00         [12] 1155 	ld	hl, #_horse_direction
+      000450 36 04            [12] 1156 	ld	(hl), #0x04
+                           000452  1157 	C$StateGame.c$130$1_0$204	= .
+                                   1158 	.globl	C$StateGame.c$130$1_0$204
+                                   1159 ;StateGame.c:130: }			
+      000452                       1160 00124$:
+                           000452  1161 	C$StateGame.c$132$1_0$204	= .
+                                   1162 	.globl	C$StateGame.c$132$1_0$204
+                                   1163 ;StateGame.c:132: if(sin < 0 && cos > 0){//THIS->mirror = H_MIRROR;
+      000452 79               [ 4] 1164 	ld	a, c
+      000453 B7               [ 4] 1165 	or	a, a
+      000454 28 42            [12] 1166 	jr	Z, 00131$
+      000456 21r00r00         [12] 1167 	ld	hl, #_cos
+      000459 5E               [ 8] 1168 	ld	e, (hl)
+      00045A AF               [ 4] 1169 	xor	a, a
+      00045B 57               [ 4] 1170 	ld	d, a
+      00045C 96               [ 8] 1171 	sub	a, (hl)
+      00045D CB 7B            [ 8] 1172 	bit	7, e
+      00045F 28 07            [12] 1173 	jr	Z, 00354$
+      000461 CB 7A            [ 8] 1174 	bit	7, d
+      000463 20 08            [12] 1175 	jr	NZ, 00355$
+      000465 BF               [ 4] 1176 	cp	a, a
+      000466 18 05            [12] 1177 	jr	00355$
+      000468                       1178 00354$:
+      000468 CB 7A            [ 8] 1179 	bit	7, d
+      00046A 28 01            [12] 1180 	jr	Z, 00355$
+      00046C 37               [ 4] 1181 	scf
+      00046D                       1182 00355$:
+      00046D 30 29            [12] 1183 	jr	NC, 00131$
+                           00046F  1184 	C$StateGame.c$133$2_0$213	= .
+                                   1185 	.globl	C$StateGame.c$133$2_0$213
+                                   1186 ;StateGame.c:133: switch(horse_direction){
+      00046F FAr0Ar00         [16] 1187 	ld	a, (#_horse_direction)
+      000472 3D               [ 4] 1188 	dec	a
+      000473 28 10            [12] 1189 	jr	Z, 00126$
+      000475 FAr0Ar00         [16] 1190 	ld	a, (#_horse_direction)
+      000478 D6 02            [ 8] 1191 	sub	a, #0x02
+      00047A 28 10            [12] 1192 	jr	Z, 00127$
+      00047C FAr0Ar00         [16] 1193 	ld	a, (#_horse_direction)
+      00047F D6 03            [ 8] 1194 	sub	a, #0x03
+      000481 28 10            [12] 1195 	jr	Z, 00128$
+      000483 18 13            [12] 1196 	jr	00131$
+                           000485  1197 	C$StateGame.c$134$3_0$214	= .
+                                   1198 	.globl	C$StateGame.c$134$3_0$214
+                                   1199 ;StateGame.c:134: case ENE: horse_direction = ESE; break;
+      000485                       1200 00126$:
+      000485 21r0Ar00         [12] 1201 	ld	hl, #_horse_direction
+      000488 36 0B            [12] 1202 	ld	(hl), #0x0b
+      00048A 18 0C            [12] 1203 	jr	00131$
+                           00048C  1204 	C$StateGame.c$135$3_0$214	= .
+                                   1205 	.globl	C$StateGame.c$135$3_0$214
+                                   1206 ;StateGame.c:135: case NNE: horse_direction = SSE; break;
+      00048C                       1207 00127$:
+      00048C 21r0Ar00         [12] 1208 	ld	hl, #_horse_direction
+      00048F 36 0A            [12] 1209 	ld	(hl), #0x0a
+      000491 18 05            [12] 1210 	jr	00131$
+                           000493  1211 	C$StateGame.c$136$3_0$214	= .
+                                   1212 	.globl	C$StateGame.c$136$3_0$214
+                                   1213 ;StateGame.c:136: case NNN: horse_direction = SSS; break;
+      000493                       1214 00128$:
+      000493 21r0Ar00         [12] 1215 	ld	hl, #_horse_direction
+      000496 36 09            [12] 1216 	ld	(hl), #0x09
+                           000498  1217 	C$StateGame.c$137$1_0$204	= .
+                                   1218 	.globl	C$StateGame.c$137$1_0$204
+                                   1219 ;StateGame.c:137: }
+      000498                       1220 00131$:
+                           000498  1221 	C$StateGame.c$139$1_0$204	= .
+                                   1222 	.globl	C$StateGame.c$139$1_0$204
+                                   1223 ;StateGame.c:139: if(sin < 0 && cos < 0){//THIS->mirror = HV_MIRROR;
+      000498 79               [ 4] 1224 	ld	a, c
+      000499 B7               [ 4] 1225 	or	a, a
+      00049A 28 39            [12] 1226 	jr	Z, 00139$
+      00049C F8 00            [12] 1227 	ldhl	sp,	#0
+      00049E 7E               [ 8] 1228 	ld	a, (hl)
+      00049F B7               [ 4] 1229 	or	a, a
+      0004A0 28 33            [12] 1230 	jr	Z, 00139$
+                           0004A2  1231 	C$StateGame.c$140$2_0$215	= .
+                                   1232 	.globl	C$StateGame.c$140$2_0$215
+                                   1233 ;StateGame.c:140: switch(horse_direction){
+      0004A2 FAr0Ar00         [16] 1234 	ld	a, (#_horse_direction)
+      0004A5 B7               [ 4] 1235 	or	a, a
+      0004A6 28 13            [12] 1236 	jr	Z, 00133$
+      0004A8 FAr0Ar00         [16] 1237 	ld	a, (#_horse_direction)
+      0004AB 3D               [ 4] 1238 	dec	a
+      0004AC 28 14            [12] 1239 	jr	Z, 00134$
+      0004AE FAr0Ar00         [16] 1240 	ld	a,(#_horse_direction)
+      0004B1 FE 02            [ 8] 1241 	cp	a,#0x02
+      0004B3 28 14            [12] 1242 	jr	Z, 00135$
+      0004B5 D6 03            [ 8] 1243 	sub	a, #0x03
+      0004B7 28 17            [12] 1244 	jr	Z, 00136$
+      0004B9 18 1A            [12] 1245 	jr	00139$
+                           0004BB  1246 	C$StateGame.c$141$3_0$216	= .
+                                   1247 	.globl	C$StateGame.c$141$3_0$216
+                                   1248 ;StateGame.c:141: case EEE: horse_direction = WWW; break;
+      0004BB                       1249 00133$:
+      0004BB 21r0Ar00         [12] 1250 	ld	hl, #_horse_direction
+      0004BE 36 06            [12] 1251 	ld	(hl), #0x06
+      0004C0 18 13            [12] 1252 	jr	00139$
+                           0004C2  1253 	C$StateGame.c$142$3_0$216	= .
+                                   1254 	.globl	C$StateGame.c$142$3_0$216
+                                   1255 ;StateGame.c:142: case ENE: horse_direction = WSW; break;
+      0004C2                       1256 00134$:
+      0004C2 21r0Ar00         [12] 1257 	ld	hl, #_horse_direction
+      0004C5 36 07            [12] 1258 	ld	(hl), #0x07
+      0004C7 18 0C            [12] 1259 	jr	00139$
+                           0004C9  1260 	C$StateGame.c$143$3_0$216	= .
+                                   1261 	.globl	C$StateGame.c$143$3_0$216
+                                   1262 ;StateGame.c:143: case NNE: horse_direction = SSW; break;
+      0004C9                       1263 00135$:
+      0004C9 21r0Ar00         [12] 1264 	ld	hl, #_horse_direction
+      0004CC 36 08            [12] 1265 	ld	(hl), #0x08
+      0004CE 18 05            [12] 1266 	jr	00139$
+                           0004D0  1267 	C$StateGame.c$144$3_0$216	= .
+                                   1268 	.globl	C$StateGame.c$144$3_0$216
+                                   1269 ;StateGame.c:144: case NNN: horse_direction = SSS; break;
+      0004D0                       1270 00136$:
+      0004D0 21r0Ar00         [12] 1271 	ld	hl, #_horse_direction
+      0004D3 36 09            [12] 1272 	ld	(hl), #0x09
+                           0004D5  1273 	C$StateGame.c$145$1_0$204	= .
+                                   1274 	.globl	C$StateGame.c$145$1_0$204
+                                   1275 ;StateGame.c:145: }			
+      0004D5                       1276 00139$:
+                           0004D5  1277 	C$StateGame.c$147$1_0$204	= .
+                                   1278 	.globl	C$StateGame.c$147$1_0$204
+                                   1279 ;StateGame.c:147: if(horse_direction_old != horse_direction){
+      0004D5 FAr0Br00         [16] 1280 	ld	a, (#_horse_direction_old)
+      0004D8 21r0Ar00         [12] 1281 	ld	hl, #_horse_direction
+      0004DB 96               [ 8] 1282 	sub	a, (hl)
+      0004DC CAr63r06         [16] 1283 	jp	Z,00156$
+                           0004DF  1284 	C$StateGame.c$148$2_0$217	= .
+                                   1285 	.globl	C$StateGame.c$148$2_0$217
+                                   1286 ;StateGame.c:148: horse_direction_old = horse_direction;
+      0004DF FAr0Ar00         [16] 1287 	ld	a, (#_horse_direction)
+      0004E2 21r0Br00         [12] 1288 	ld	hl, #_horse_direction_old
+      0004E5 77               [ 8] 1289 	ld	(hl), a
+                           0004E6  1290 	C$StateGame.c$149$2_0$217	= .
+                                   1291 	.globl	C$StateGame.c$149$2_0$217
+                                   1292 ;StateGame.c:149: switch(horse_direction_old){
+      0004E6 3E 0B            [ 8] 1293 	ld	a, #0x0b
+      0004E8 96               [ 8] 1294 	sub	a, (hl)
+      0004E9 DAr63r06         [16] 1295 	jp	C, 00156$
+      0004EC 4E               [ 8] 1296 	ld	c, (hl)
+      0004ED 06 00            [ 8] 1297 	ld	b, #0x00
+      0004EF 21rF6r04         [12] 1298 	ld	hl, #00364$
+      0004F2 09               [ 8] 1299 	add	hl, bc
+      0004F3 09               [ 8] 1300 	add	hl, bc
+      0004F4 09               [ 8] 1301 	add	hl, bc
+      0004F5 E9               [ 4] 1302 	jp	(hl)
+      0004F6                       1303 00364$:
+      0004F6 C3r1Ar05         [16] 1304 	jp	00141$
+      0004F9 C3r36r05         [16] 1305 	jp	00142$
+      0004FC C3r52r05         [16] 1306 	jp	00143$
+      0004FF C3r6Er05         [16] 1307 	jp	00144$
+      000502 C3r8Ar05         [16] 1308 	jp	00145$
+      000505 C3rA6r05         [16] 1309 	jp	00146$
+      000508 C3rC2r05         [16] 1310 	jp	00147$
+      00050B C3rDEr05         [16] 1311 	jp	00148$
+      00050E C3rF9r05         [16] 1312 	jp	00149$
+      000511 C3r14r06         [16] 1313 	jp	00150$
+      000514 C3r2Fr06         [16] 1314 	jp	00151$
+      000517 C3r4Ar06         [16] 1315 	jp	00152$
+                           00051A  1316 	C$StateGame.c$150$3_0$218	= .
+                                   1317 	.globl	C$StateGame.c$150$3_0$218
+                                   1318 ;StateGame.c:150: case EEE: UPDATE_HUD_TILE(1,2,63); break;
+      00051A                       1319 00141$:
+      00051A 11 00 00         [12] 1320 	ld	de, #0x0000
+      00051D D5               [16] 1321 	push	de
+      00051E 3E 3F            [ 8] 1322 	ld	a, #0x3f
+      000520 F5               [16] 1323 	push	af
+      000521 33               [ 8] 1324 	inc	sp
+      000522 21r00r00         [12] 1325 	ld	hl, #_hud_map_offset
+      000525 2A               [ 8] 1326 	ld	a, (hl+)
+      000526 5F               [ 4] 1327 	ld	e, a
+      000527 56               [ 8] 1328 	ld	d, (hl)
+      000528 D5               [16] 1329 	push	de
+      000529 3E 02            [ 8] 1330 	ld	a, #0x02
+      00052B F5               [16] 1331 	push	af
+      00052C 33               [ 8] 1332 	inc	sp
+      00052D 3E 01            [ 8] 1333 	ld	a,#0x01
+      00052F 5F               [ 4] 1334 	ld	e,a
+      000530 CDr00r00         [24] 1335 	call	_UpdateMapTile
+      000533 C3r63r06         [16] 1336 	jp	00156$
+                           000536  1337 	C$StateGame.c$151$3_0$218	= .
+                                   1338 	.globl	C$StateGame.c$151$3_0$218
+                                   1339 ;StateGame.c:151: case ENE: UPDATE_HUD_TILE(1,2,64); break;
+      000536                       1340 00142$:
+      000536 11 00 00         [12] 1341 	ld	de, #0x0000
+      000539 D5               [16] 1342 	push	de
+      00053A 3E 40            [ 8] 1343 	ld	a, #0x40
+      00053C F5               [16] 1344 	push	af
+      00053D 33               [ 8] 1345 	inc	sp
+      00053E 21r00r00         [12] 1346 	ld	hl, #_hud_map_offset
+      000541 2A               [ 8] 1347 	ld	a, (hl+)
+      000542 5F               [ 4] 1348 	ld	e, a
+      000543 56               [ 8] 1349 	ld	d, (hl)
+      000544 D5               [16] 1350 	push	de
+      000545 3E 02            [ 8] 1351 	ld	a, #0x02
+      000547 F5               [16] 1352 	push	af
+      000548 33               [ 8] 1353 	inc	sp
+      000549 3E 01            [ 8] 1354 	ld	a,#0x01
+      00054B 5F               [ 4] 1355 	ld	e,a
+      00054C CDr00r00         [24] 1356 	call	_UpdateMapTile
+      00054F C3r63r06         [16] 1357 	jp	00156$
+                           000552  1358 	C$StateGame.c$152$3_0$218	= .
+                                   1359 	.globl	C$StateGame.c$152$3_0$218
+                                   1360 ;StateGame.c:152: case NNE: UPDATE_HUD_TILE(1,2,65); break;
+      000552                       1361 00143$:
+      000552 11 00 00         [12] 1362 	ld	de, #0x0000
+      000555 D5               [16] 1363 	push	de
+      000556 3E 41            [ 8] 1364 	ld	a, #0x41
+      000558 F5               [16] 1365 	push	af
+      000559 33               [ 8] 1366 	inc	sp
+      00055A 21r00r00         [12] 1367 	ld	hl, #_hud_map_offset
+      00055D 2A               [ 8] 1368 	ld	a, (hl+)
+      00055E 5F               [ 4] 1369 	ld	e, a
+      00055F 56               [ 8] 1370 	ld	d, (hl)
+      000560 D5               [16] 1371 	push	de
+      000561 3E 02            [ 8] 1372 	ld	a, #0x02
+      000563 F5               [16] 1373 	push	af
+      000564 33               [ 8] 1374 	inc	sp
+      000565 3E 01            [ 8] 1375 	ld	a,#0x01
+      000567 5F               [ 4] 1376 	ld	e,a
+      000568 CDr00r00         [24] 1377 	call	_UpdateMapTile
+      00056B C3r63r06         [16] 1378 	jp	00156$
+                           00056E  1379 	C$StateGame.c$153$3_0$218	= .
+                                   1380 	.globl	C$StateGame.c$153$3_0$218
+                                   1381 ;StateGame.c:153: case NNN: UPDATE_HUD_TILE(1,2,66); break;
+      00056E                       1382 00144$:
+      00056E 11 00 00         [12] 1383 	ld	de, #0x0000
+      000571 D5               [16] 1384 	push	de
+      000572 3E 42            [ 8] 1385 	ld	a, #0x42
+      000574 F5               [16] 1386 	push	af
+      000575 33               [ 8] 1387 	inc	sp
+      000576 21r00r00         [12] 1388 	ld	hl, #_hud_map_offset
+      000579 2A               [ 8] 1389 	ld	a, (hl+)
+      00057A 5F               [ 4] 1390 	ld	e, a
+      00057B 56               [ 8] 1391 	ld	d, (hl)
+      00057C D5               [16] 1392 	push	de
+      00057D 3E 02            [ 8] 1393 	ld	a, #0x02
+      00057F F5               [16] 1394 	push	af
+      000580 33               [ 8] 1395 	inc	sp
+      000581 3E 01            [ 8] 1396 	ld	a,#0x01
+      000583 5F               [ 4] 1397 	ld	e,a
+      000584 CDr00r00         [24] 1398 	call	_UpdateMapTile
+      000587 C3r63r06         [16] 1399 	jp	00156$
+                           00058A  1400 	C$StateGame.c$154$3_0$218	= .
+                                   1401 	.globl	C$StateGame.c$154$3_0$218
+                                   1402 ;StateGame.c:154: case NNW: UPDATE_HUD_TILE(1,2,67); break;
+      00058A                       1403 00145$:
+      00058A 11 00 00         [12] 1404 	ld	de, #0x0000
+      00058D D5               [16] 1405 	push	de
+      00058E 3E 43            [ 8] 1406 	ld	a, #0x43
+      000590 F5               [16] 1407 	push	af
+      000591 33               [ 8] 1408 	inc	sp
+      000592 21r00r00         [12] 1409 	ld	hl, #_hud_map_offset
+      000595 2A               [ 8] 1410 	ld	a, (hl+)
+      000596 5F               [ 4] 1411 	ld	e, a
+      000597 56               [ 8] 1412 	ld	d, (hl)
+      000598 D5               [16] 1413 	push	de
+      000599 3E 02            [ 8] 1414 	ld	a, #0x02
+      00059B F5               [16] 1415 	push	af
+      00059C 33               [ 8] 1416 	inc	sp
+      00059D 3E 01            [ 8] 1417 	ld	a,#0x01
+      00059F 5F               [ 4] 1418 	ld	e,a
+      0005A0 CDr00r00         [24] 1419 	call	_UpdateMapTile
+      0005A3 C3r63r06         [16] 1420 	jp	00156$
+                           0005A6  1421 	C$StateGame.c$155$3_0$218	= .
+                                   1422 	.globl	C$StateGame.c$155$3_0$218
+                                   1423 ;StateGame.c:155: case WNW: UPDATE_HUD_TILE(1,2,68); break;
+      0005A6                       1424 00146$:
+      0005A6 11 00 00         [12] 1425 	ld	de, #0x0000
+      0005A9 D5               [16] 1426 	push	de
+      0005AA 3E 44            [ 8] 1427 	ld	a, #0x44
+      0005AC F5               [16] 1428 	push	af
+      0005AD 33               [ 8] 1429 	inc	sp
+      0005AE 21r00r00         [12] 1430 	ld	hl, #_hud_map_offset
+      0005B1 2A               [ 8] 1431 	ld	a, (hl+)
+      0005B2 5F               [ 4] 1432 	ld	e, a
+      0005B3 56               [ 8] 1433 	ld	d, (hl)
+      0005B4 D5               [16] 1434 	push	de
+      0005B5 3E 02            [ 8] 1435 	ld	a, #0x02
+      0005B7 F5               [16] 1436 	push	af
+      0005B8 33               [ 8] 1437 	inc	sp
+      0005B9 3E 01            [ 8] 1438 	ld	a,#0x01
+      0005BB 5F               [ 4] 1439 	ld	e,a
+      0005BC CDr00r00         [24] 1440 	call	_UpdateMapTile
+      0005BF C3r63r06         [16] 1441 	jp	00156$
+                           0005C2  1442 	C$StateGame.c$156$3_0$218	= .
+                                   1443 	.globl	C$StateGame.c$156$3_0$218
+                                   1444 ;StateGame.c:156: case WWW: UPDATE_HUD_TILE(1,2,69); break;
+      0005C2                       1445 00147$:
+      0005C2 11 00 00         [12] 1446 	ld	de, #0x0000
+      0005C5 D5               [16] 1447 	push	de
+      0005C6 3E 45            [ 8] 1448 	ld	a, #0x45
+      0005C8 F5               [16] 1449 	push	af
+      0005C9 33               [ 8] 1450 	inc	sp
+      0005CA 21r00r00         [12] 1451 	ld	hl, #_hud_map_offset
+      0005CD 2A               [ 8] 1452 	ld	a, (hl+)
+      0005CE 5F               [ 4] 1453 	ld	e, a
+      0005CF 56               [ 8] 1454 	ld	d, (hl)
+      0005D0 D5               [16] 1455 	push	de
+      0005D1 3E 02            [ 8] 1456 	ld	a, #0x02
+      0005D3 F5               [16] 1457 	push	af
+      0005D4 33               [ 8] 1458 	inc	sp
+      0005D5 3E 01            [ 8] 1459 	ld	a,#0x01
+      0005D7 5F               [ 4] 1460 	ld	e,a
+      0005D8 CDr00r00         [24] 1461 	call	_UpdateMapTile
+      0005DB C3r63r06         [16] 1462 	jp	00156$
+                           0005DE  1463 	C$StateGame.c$157$3_0$218	= .
+                                   1464 	.globl	C$StateGame.c$157$3_0$218
+                                   1465 ;StateGame.c:157: case WSW: UPDATE_HUD_TILE(1,2,70); break;
+      0005DE                       1466 00148$:
+      0005DE 11 00 00         [12] 1467 	ld	de, #0x0000
+      0005E1 D5               [16] 1468 	push	de
+      0005E2 3E 46            [ 8] 1469 	ld	a, #0x46
+      0005E4 F5               [16] 1470 	push	af
+      0005E5 33               [ 8] 1471 	inc	sp
+      0005E6 21r00r00         [12] 1472 	ld	hl, #_hud_map_offset
+      0005E9 2A               [ 8] 1473 	ld	a, (hl+)
+      0005EA 5F               [ 4] 1474 	ld	e, a
+      0005EB 56               [ 8] 1475 	ld	d, (hl)
+      0005EC D5               [16] 1476 	push	de
+      0005ED 3E 02            [ 8] 1477 	ld	a, #0x02
+      0005EF F5               [16] 1478 	push	af
+      0005F0 33               [ 8] 1479 	inc	sp
+      0005F1 3E 01            [ 8] 1480 	ld	a,#0x01
+      0005F3 5F               [ 4] 1481 	ld	e,a
+      0005F4 CDr00r00         [24] 1482 	call	_UpdateMapTile
+      0005F7 18 6A            [12] 1483 	jr	00156$
+                           0005F9  1484 	C$StateGame.c$158$3_0$218	= .
+                                   1485 	.globl	C$StateGame.c$158$3_0$218
+                                   1486 ;StateGame.c:158: case SSW: UPDATE_HUD_TILE(1,2,71); break;
+      0005F9                       1487 00149$:
+      0005F9 11 00 00         [12] 1488 	ld	de, #0x0000
+      0005FC D5               [16] 1489 	push	de
+      0005FD 3E 47            [ 8] 1490 	ld	a, #0x47
+      0005FF F5               [16] 1491 	push	af
+      000600 33               [ 8] 1492 	inc	sp
+      000601 21r00r00         [12] 1493 	ld	hl, #_hud_map_offset
+      000604 2A               [ 8] 1494 	ld	a, (hl+)
+      000605 5F               [ 4] 1495 	ld	e, a
+      000606 56               [ 8] 1496 	ld	d, (hl)
+      000607 D5               [16] 1497 	push	de
+      000608 3E 02            [ 8] 1498 	ld	a, #0x02
+      00060A F5               [16] 1499 	push	af
+      00060B 33               [ 8] 1500 	inc	sp
+      00060C 3E 01            [ 8] 1501 	ld	a,#0x01
+      00060E 5F               [ 4] 1502 	ld	e,a
+      00060F CDr00r00         [24] 1503 	call	_UpdateMapTile
+      000612 18 4F            [12] 1504 	jr	00156$
+                           000614  1505 	C$StateGame.c$159$3_0$218	= .
+                                   1506 	.globl	C$StateGame.c$159$3_0$218
+                                   1507 ;StateGame.c:159: case SSS: UPDATE_HUD_TILE(1,2,72); break;
+      000614                       1508 00150$:
+      000614 11 00 00         [12] 1509 	ld	de, #0x0000
+      000617 D5               [16] 1510 	push	de
+      000618 3E 48            [ 8] 1511 	ld	a, #0x48
+      00061A F5               [16] 1512 	push	af
+      00061B 33               [ 8] 1513 	inc	sp
+      00061C 21r00r00         [12] 1514 	ld	hl, #_hud_map_offset
+      00061F 2A               [ 8] 1515 	ld	a, (hl+)
+      000620 5F               [ 4] 1516 	ld	e, a
+      000621 56               [ 8] 1517 	ld	d, (hl)
+      000622 D5               [16] 1518 	push	de
+      000623 3E 02            [ 8] 1519 	ld	a, #0x02
+      000625 F5               [16] 1520 	push	af
+      000626 33               [ 8] 1521 	inc	sp
+      000627 3E 01            [ 8] 1522 	ld	a,#0x01
+      000629 5F               [ 4] 1523 	ld	e,a
+      00062A CDr00r00         [24] 1524 	call	_UpdateMapTile
+      00062D 18 34            [12] 1525 	jr	00156$
+                           00062F  1526 	C$StateGame.c$160$3_0$218	= .
+                                   1527 	.globl	C$StateGame.c$160$3_0$218
+                                   1528 ;StateGame.c:160: case SSE: UPDATE_HUD_TILE(1,2,73); break;
+      00062F                       1529 00151$:
+      00062F 11 00 00         [12] 1530 	ld	de, #0x0000
+      000632 D5               [16] 1531 	push	de
+      000633 3E 49            [ 8] 1532 	ld	a, #0x49
+      000635 F5               [16] 1533 	push	af
+      000636 33               [ 8] 1534 	inc	sp
+      000637 21r00r00         [12] 1535 	ld	hl, #_hud_map_offset
+      00063A 2A               [ 8] 1536 	ld	a, (hl+)
+      00063B 5F               [ 4] 1537 	ld	e, a
+      00063C 56               [ 8] 1538 	ld	d, (hl)
+      00063D D5               [16] 1539 	push	de
+      00063E 3E 02            [ 8] 1540 	ld	a, #0x02
+      000640 F5               [16] 1541 	push	af
+      000641 33               [ 8] 1542 	inc	sp
+      000642 3E 01            [ 8] 1543 	ld	a,#0x01
+      000644 5F               [ 4] 1544 	ld	e,a
+      000645 CDr00r00         [24] 1545 	call	_UpdateMapTile
+      000648 18 19            [12] 1546 	jr	00156$
+                           00064A  1547 	C$StateGame.c$161$3_0$218	= .
+                                   1548 	.globl	C$StateGame.c$161$3_0$218
+                                   1549 ;StateGame.c:161: case ESE: UPDATE_HUD_TILE(1,2,74); break;
+      00064A                       1550 00152$:
+      00064A 11 00 00         [12] 1551 	ld	de, #0x0000
+      00064D D5               [16] 1552 	push	de
+      00064E 3E 4A            [ 8] 1553 	ld	a, #0x4a
+      000650 F5               [16] 1554 	push	af
+      000651 33               [ 8] 1555 	inc	sp
+      000652 21r00r00         [12] 1556 	ld	hl, #_hud_map_offset
+      000655 2A               [ 8] 1557 	ld	a, (hl+)
+      000656 5F               [ 4] 1558 	ld	e, a
+      000657 56               [ 8] 1559 	ld	d, (hl)
+      000658 D5               [16] 1560 	push	de
+      000659 3E 02            [ 8] 1561 	ld	a, #0x02
+      00065B F5               [16] 1562 	push	af
+      00065C 33               [ 8] 1563 	inc	sp
+      00065D 3E 01            [ 8] 1564 	ld	a,#0x01
+      00065F 5F               [ 4] 1565 	ld	e,a
+      000660 CDr00r00         [24] 1566 	call	_UpdateMapTile
+                           000663  1567 	C$StateGame.c$163$1_0$204	= .
+                                   1568 	.globl	C$StateGame.c$163$1_0$204
+                                   1569 ;StateGame.c:163: }
+      000663                       1570 00156$:
+                           000663  1571 	C$StateGame.c$165$1_0$204	= .
+                                   1572 	.globl	C$StateGame.c$165$1_0$204
+                                   1573 ;StateGame.c:165: }
+      000663 33               [ 8] 1574 	inc	sp
+                           000664  1575 	C$StateGame.c$165$1_0$204	= .
+                                   1576 	.globl	C$StateGame.c$165$1_0$204
+                           000664  1577 	XG$update_compass$0$0	= .
+                                   1578 	.globl	XG$update_compass$0$0
+      000664 C9               [16] 1579 	ret
+                           000665  1580 	G$update_turning$0$0	= .
+                                   1581 	.globl	G$update_turning$0$0
+                           000665  1582 	C$StateGame.c$167$1_0$219	= .
+                                   1583 	.globl	C$StateGame.c$167$1_0$219
+                                   1584 ;StateGame.c:167: void update_turning() BANKED{
+                                   1585 ;	---------------------------------
+                                   1586 ; Function update_turning
+                                   1587 ; ---------------------------------
+                           0000FF  1588 	b_update_turning	= 255
+      000665                       1589 _update_turning::
+                           000665  1590 	C$StateGame.c$168$1_0$219	= .
+                                   1591 	.globl	C$StateGame.c$168$1_0$219
+                                   1592 ;StateGame.c:168: switch(turn_verse){
+      000665 FAr00r00         [16] 1593 	ld	a, (#_turn_verse)
+      000668 B7               [ 4] 1594 	or	a, a
+      000669 28 0E            [12] 1595 	jr	Z, 00101$
+      00066B FAr00r00         [16] 1596 	ld	a, (#_turn_verse)
+      00066E 3D               [ 4] 1597 	dec	a
+      00066F 28 3D            [12] 1598 	jr	Z, 00102$
+      000671 FAr00r00         [16] 1599 	ld	a, (#_turn_verse)
+      000674 D6 02            [ 8] 1600 	sub	a, #0x02
+      000676 28 6B            [12] 1601 	jr	Z, 00103$
+      000678 C9               [16] 1602 	ret
+                           000679  1603 	C$StateGame.c$169$2_0$220	= .
+                                   1604 	.globl	C$StateGame.c$169$2_0$220
+                                   1605 ;StateGame.c:169: case NONE: UPDATE_HUD_TILE(3,2,1); UPDATE_HUD_TILE(3,3,1);break;	
+      000679                       1606 00101$:
+      000679 11 00 00         [12] 1607 	ld	de, #0x0000
+      00067C D5               [16] 1608 	push	de
+      00067D 3E 01            [ 8] 1609 	ld	a, #0x01
+      00067F F5               [16] 1610 	push	af
+      000680 33               [ 8] 1611 	inc	sp
+      000681 21r00r00         [12] 1612 	ld	hl, #_hud_map_offset
+      000684 2A               [ 8] 1613 	ld	a, (hl+)
+      000685 5F               [ 4] 1614 	ld	e, a
+      000686 56               [ 8] 1615 	ld	d, (hl)
+      000687 D5               [16] 1616 	push	de
+      000688 3E 02            [ 8] 1617 	ld	a, #0x02
+      00068A F5               [16] 1618 	push	af
+      00068B 33               [ 8] 1619 	inc	sp
+      00068C 1E 03            [ 8] 1620 	ld	e, #0x03
+      00068E 3E 01            [ 8] 1621 	ld	a, #0x01
+      000690 CDr00r00         [24] 1622 	call	_UpdateMapTile
+      000693 11 00 00         [12] 1623 	ld	de, #0x0000
+      000696 D5               [16] 1624 	push	de
+      000697 3E 01            [ 8] 1625 	ld	a, #0x01
+      000699 F5               [16] 1626 	push	af
+      00069A 33               [ 8] 1627 	inc	sp
+      00069B 21r00r00         [12] 1628 	ld	hl, #_hud_map_offset
+      00069E 2A               [ 8] 1629 	ld	a, (hl+)
+      00069F 5F               [ 4] 1630 	ld	e, a
+      0006A0 56               [ 8] 1631 	ld	d, (hl)
+      0006A1 D5               [16] 1632 	push	de
+      0006A2 3E 03            [ 8] 1633 	ld	a, #0x03
+      0006A4 F5               [16] 1634 	push	af
+      0006A5 33               [ 8] 1635 	inc	sp
+      0006A6 1E 03            [ 8] 1636 	ld	e, #0x03
+      0006A8 3E 01            [ 8] 1637 	ld	a, #0x01
+      0006AA CDr00r00         [24] 1638 	call	_UpdateMapTile
+      0006AD C9               [16] 1639 	ret
+                           0006AE  1640 	C$StateGame.c$170$2_0$220	= .
+                                   1641 	.globl	C$StateGame.c$170$2_0$220
+                                   1642 ;StateGame.c:170: case CLOCK: UPDATE_HUD_TILE(3,2,48); UPDATE_HUD_TILE(3,3,49);break;	
+      0006AE                       1643 00102$:
+      0006AE 11 00 00         [12] 1644 	ld	de, #0x0000
+      0006B1 D5               [16] 1645 	push	de
+      0006B2 3E 30            [ 8] 1646 	ld	a, #0x30
+      0006B4 F5               [16] 1647 	push	af
+      0006B5 33               [ 8] 1648 	inc	sp
+      0006B6 21r00r00         [12] 1649 	ld	hl, #_hud_map_offset
+      0006B9 2A               [ 8] 1650 	ld	a, (hl+)
+      0006BA 5F               [ 4] 1651 	ld	e, a
+      0006BB 56               [ 8] 1652 	ld	d, (hl)
+      0006BC D5               [16] 1653 	push	de
+      0006BD 3E 02            [ 8] 1654 	ld	a, #0x02
+      0006BF F5               [16] 1655 	push	af
+      0006C0 33               [ 8] 1656 	inc	sp
+      0006C1 1E 03            [ 8] 1657 	ld	e, #0x03
+      0006C3 3E 01            [ 8] 1658 	ld	a, #0x01
+      0006C5 CDr00r00         [24] 1659 	call	_UpdateMapTile
+      0006C8 11 00 00         [12] 1660 	ld	de, #0x0000
+      0006CB D5               [16] 1661 	push	de
+      0006CC 3E 31            [ 8] 1662 	ld	a, #0x31
+      0006CE F5               [16] 1663 	push	af
+      0006CF 33               [ 8] 1664 	inc	sp
+      0006D0 21r00r00         [12] 1665 	ld	hl, #_hud_map_offset
+      0006D3 2A               [ 8] 1666 	ld	a, (hl+)
+      0006D4 5F               [ 4] 1667 	ld	e, a
+      0006D5 56               [ 8] 1668 	ld	d, (hl)
+      0006D6 D5               [16] 1669 	push	de
+      0006D7 3E 03            [ 8] 1670 	ld	a, #0x03
+      0006D9 F5               [16] 1671 	push	af
+      0006DA 33               [ 8] 1672 	inc	sp
+      0006DB 1E 03            [ 8] 1673 	ld	e, #0x03
+      0006DD 3E 01            [ 8] 1674 	ld	a, #0x01
+      0006DF CDr00r00         [24] 1675 	call	_UpdateMapTile
+      0006E2 C9               [16] 1676 	ret
+                           0006E3  1677 	C$StateGame.c$171$2_0$220	= .
+                                   1678 	.globl	C$StateGame.c$171$2_0$220
+                                   1679 ;StateGame.c:171: case COUNTERCLOCK: UPDATE_HUD_TILE(3,2,75); UPDATE_HUD_TILE(3,3,76);break;	
+      0006E3                       1680 00103$:
+      0006E3 11 00 00         [12] 1681 	ld	de, #0x0000
+      0006E6 D5               [16] 1682 	push	de
+      0006E7 3E 4B            [ 8] 1683 	ld	a, #0x4b
+      0006E9 F5               [16] 1684 	push	af
+      0006EA 33               [ 8] 1685 	inc	sp
+      0006EB 21r00r00         [12] 1686 	ld	hl, #_hud_map_offset
+      0006EE 2A               [ 8] 1687 	ld	a, (hl+)
+      0006EF 5F               [ 4] 1688 	ld	e, a
+      0006F0 56               [ 8] 1689 	ld	d, (hl)
+      0006F1 D5               [16] 1690 	push	de
+      0006F2 3E 02            [ 8] 1691 	ld	a, #0x02
+      0006F4 F5               [16] 1692 	push	af
+      0006F5 33               [ 8] 1693 	inc	sp
+      0006F6 1E 03            [ 8] 1694 	ld	e, #0x03
+      0006F8 3E 01            [ 8] 1695 	ld	a, #0x01
+      0006FA CDr00r00         [24] 1696 	call	_UpdateMapTile
+      0006FD 11 00 00         [12] 1697 	ld	de, #0x0000
+      000700 D5               [16] 1698 	push	de
+      000701 3E 4C            [ 8] 1699 	ld	a, #0x4c
+      000703 F5               [16] 1700 	push	af
+      000704 33               [ 8] 1701 	inc	sp
+      000705 21r00r00         [12] 1702 	ld	hl, #_hud_map_offset
+      000708 2A               [ 8] 1703 	ld	a, (hl+)
+      000709 5F               [ 4] 1704 	ld	e, a
+      00070A 56               [ 8] 1705 	ld	d, (hl)
+      00070B D5               [16] 1706 	push	de
+      00070C 3E 03            [ 8] 1707 	ld	a, #0x03
+      00070E F5               [16] 1708 	push	af
+      00070F 33               [ 8] 1709 	inc	sp
+      000710 1E 03            [ 8] 1710 	ld	e, #0x03
+      000712 3E 01            [ 8] 1711 	ld	a, #0x01
+      000714 CDr00r00         [24] 1712 	call	_UpdateMapTile
+                           000717  1713 	C$StateGame.c$172$1_0$219	= .
+                                   1714 	.globl	C$StateGame.c$172$1_0$219
+                                   1715 ;StateGame.c:172: }
+                           000717  1716 	C$StateGame.c$173$1_0$219	= .
+                                   1717 	.globl	C$StateGame.c$173$1_0$219
+                                   1718 ;StateGame.c:173: }
+                           000717  1719 	C$StateGame.c$173$1_0$219	= .
+                                   1720 	.globl	C$StateGame.c$173$1_0$219
+                           000717  1721 	XG$update_turning$0$0	= .
+                                   1722 	.globl	XG$update_turning$0$0
+      000717 C9               [16] 1723 	ret
+                           000718  1724 	G$update_hp$0$0	= .
+                                   1725 	.globl	G$update_hp$0$0
+                           000718  1726 	C$StateGame.c$175$1_0$221	= .
+                                   1727 	.globl	C$StateGame.c$175$1_0$221
+                                   1728 ;StateGame.c:175: void update_hp() BANKED{
+                                   1729 ;	---------------------------------
+                                   1730 ; Function update_hp
+                                   1731 ; ---------------------------------
+                           0000FF  1732 	b_update_hp	= 255
+      000718                       1733 _update_hp::
+      000718 E8 FD            [16] 1734 	add	sp, #-3
+                           00071A  1735 	C$StateGame.c$176$1_0$221	= .
+                                   1736 	.globl	C$StateGame.c$176$1_0$221
+                                   1737 ;StateGame.c:176: INT8 hp_intero = hp_current / 8;
+      00071A FAr0Cr00         [16] 1738 	ld	a, (#_hp_current)
+      00071D F8 00            [12] 1739 	ldhl	sp,	#0
+      00071F 22               [ 8] 1740 	ld	(hl+), a
+      000720 07               [ 4] 1741 	rlca
+      000721 9F               [ 4] 1742 	sbc	a, a
+      000722 77               [ 8] 1743 	ld	(hl), a
+      000723 C1               [12] 1744 	pop	bc
+      000724 C5               [16] 1745 	push	bc
+      000725 CB 7E            [12] 1746 	bit	7, (hl)
+      000727 28 08            [12] 1747 	jr	Z, 00110$
+      000729 D1               [12] 1748 	pop	de
+      00072A D5               [16] 1749 	push	de
+      00072B 21 07 00         [12] 1750 	ld	hl, #0x0007
+      00072E 19               [ 8] 1751 	add	hl, de
+      00072F 4D               [ 4] 1752 	ld	c, l
+      000730 44               [ 4] 1753 	ld	b, h
+      000731                       1754 00110$:
+      000731 CB 28            [ 8] 1755 	sra	b
+      000733 CB 19            [ 8] 1756 	rr	c
+      000735 CB 28            [ 8] 1757 	sra	b
+      000737 CB 19            [ 8] 1758 	rr	c
+      000739 CB 28            [ 8] 1759 	sra	b
+      00073B CB 19            [ 8] 1760 	rr	c
+      00073D F8 02            [12] 1761 	ldhl	sp,	#2
+      00073F 71               [ 8] 1762 	ld	(hl), c
+                           000740  1763 	C$StateGame.c$177$1_0$221	= .
+                                   1764 	.globl	C$StateGame.c$177$1_0$221
+                                   1765 ;StateGame.c:177: INT8 hp_resto = hp_current % 8;
+      000740 01 08 00         [12] 1766 	ld	bc, #0x0008
+      000743 D1               [12] 1767 	pop	de
+      000744 D5               [16] 1768 	push	de
+      000745 CDr00r00         [24] 1769 	call	__modsint
+                           000748  1770 	C$StateGame.c$178$1_0$221	= .
+                                   1771 	.globl	C$StateGame.c$178$1_0$221
+                                   1772 ;StateGame.c:178: INT8 idx_hp = 0;
+      000748 06 00            [ 8] 1773 	ld	b, #0x00
+                           00074A  1774 	C$StateGame.c$179$1_0$221	= .
+                                   1775 	.globl	C$StateGame.c$179$1_0$221
+                                   1776 ;StateGame.c:179: if(hp_intero > 0){
+      00074A F8 02            [12] 1777 	ldhl	sp,	#2
+      00074C 5E               [ 8] 1778 	ld	e, (hl)
+      00074D AF               [ 4] 1779 	xor	a, a
+      00074E 57               [ 4] 1780 	ld	d, a
+      00074F 96               [ 8] 1781 	sub	a, (hl)
+      000750 CB 7B            [ 8] 1782 	bit	7, e
+      000752 28 07            [12] 1783 	jr	Z, 00146$
+      000754 CB 7A            [ 8] 1784 	bit	7, d
+      000756 20 08            [12] 1785 	jr	NZ, 00147$
+      000758 BF               [ 4] 1786 	cp	a, a
+      000759 18 05            [12] 1787 	jr	00147$
+      00075B                       1788 00146$:
+      00075B CB 7A            [ 8] 1789 	bit	7, d
+      00075D 28 01            [12] 1790 	jr	Z, 00147$
+      00075F 37               [ 4] 1791 	scf
+      000760                       1792 00147$:
+      000760 30 3D            [12] 1793 	jr	NC, 00105$
+                           000762  1794 	C$StateGame.c$180$1_0$221	= .
+                                   1795 	.globl	C$StateGame.c$180$1_0$221
+                                   1796 ;StateGame.c:180: while(idx_hp < hp_intero){
+      000762 06 00            [ 8] 1797 	ld	b, #0x00
+      000764                       1798 00101$:
+      000764 F8 02            [12] 1799 	ldhl	sp,	#2
+      000766 5E               [ 8] 1800 	ld	e, (hl)
+      000767 78               [ 4] 1801 	ld	a,b
+      000768 57               [ 4] 1802 	ld	d,a
+      000769 96               [ 8] 1803 	sub	a, (hl)
+      00076A CB 7B            [ 8] 1804 	bit	7, e
+      00076C 28 07            [12] 1805 	jr	Z, 00148$
+      00076E CB 7A            [ 8] 1806 	bit	7, d
+      000770 20 08            [12] 1807 	jr	NZ, 00149$
+      000772 BF               [ 4] 1808 	cp	a, a
+      000773 18 05            [12] 1809 	jr	00149$
+      000775                       1810 00148$:
+      000775 CB 7A            [ 8] 1811 	bit	7, d
+      000777 28 01            [12] 1812 	jr	Z, 00149$
+      000779 37               [ 4] 1813 	scf
+      00077A                       1814 00149$:
+      00077A 30 23            [12] 1815 	jr	NC, 00115$
+                           00077C  1816 	C$StateGame.c$181$3_0$223	= .
+                                   1817 	.globl	C$StateGame.c$181$3_0$223
+                                   1818 ;StateGame.c:181: UPDATE_HUD_TILE(7+idx_hp,2,52);
+      00077C 78               [ 4] 1819 	ld	a, b
+      00077D C6 07            [ 8] 1820 	add	a, #0x07
+      00077F 5F               [ 4] 1821 	ld	e, a
+      000780 C5               [16] 1822 	push	bc
+      000781 21 00 00         [12] 1823 	ld	hl, #0x0000
+      000784 E5               [16] 1824 	push	hl
+      000785 3E 34            [ 8] 1825 	ld	a, #0x34
+      000787 F5               [16] 1826 	push	af
+      000788 33               [ 8] 1827 	inc	sp
+      000789 21r00r00         [12] 1828 	ld	hl, #_hud_map_offset
+      00078C 6E               [ 8] 1829 	ld	l, (hl)
+                                   1830 ;	spillPairReg hl
+                                   1831 ;	spillPairReg hl
+      00078D FAr01r00         [16] 1832 	ld	a, (_hud_map_offset + 1)
+      000790 67               [ 4] 1833 	ld	h, a
+                                   1834 ;	spillPairReg hl
+                                   1835 ;	spillPairReg hl
+      000791 E5               [16] 1836 	push	hl
+      000792 3E 02            [ 8] 1837 	ld	a, #0x02
+      000794 F5               [16] 1838 	push	af
+      000795 33               [ 8] 1839 	inc	sp
+      000796 3E 01            [ 8] 1840 	ld	a, #0x01
+      000798 CDr00r00         [24] 1841 	call	_UpdateMapTile
+      00079B C1               [12] 1842 	pop	bc
+                           00079C  1843 	C$StateGame.c$182$3_0$223	= .
+                                   1844 	.globl	C$StateGame.c$182$3_0$223
+                                   1845 ;StateGame.c:182: idx_hp++;
+      00079C 04               [ 4] 1846 	inc	b
+      00079D 18 C5            [12] 1847 	jr	00101$
+      00079F                       1848 00115$:
+      00079F                       1849 00105$:
+                           00079F  1850 	C$StateGame.c$185$1_0$221	= .
+                                   1851 	.globl	C$StateGame.c$185$1_0$221
+                                   1852 ;StateGame.c:185: if(hp_resto > 0){
+      00079F 59               [ 4] 1853 	ld	e, c
+      0007A0 AF               [ 4] 1854 	xor	a, a
+      0007A1 57               [ 4] 1855 	ld	d, a
+      0007A2 91               [ 4] 1856 	sub	a, c
+      0007A3 CB 7B            [ 8] 1857 	bit	7, e
+      0007A5 28 07            [12] 1858 	jr	Z, 00150$
+      0007A7 CB 7A            [ 8] 1859 	bit	7, d
+      0007A9 20 08            [12] 1860 	jr	NZ, 00151$
+      0007AB BF               [ 4] 1861 	cp	a, a
+      0007AC 18 05            [12] 1862 	jr	00151$
+      0007AE                       1863 00150$:
+      0007AE CB 7A            [ 8] 1864 	bit	7, d
+      0007B0 28 01            [12] 1865 	jr	Z, 00151$
+      0007B2 37               [ 4] 1866 	scf
+      0007B3                       1867 00151$:
+      0007B3 30 1E            [12] 1868 	jr	NC, 00108$
+                           0007B5  1869 	C$StateGame.c$186$2_0$224	= .
+                                   1870 	.globl	C$StateGame.c$186$2_0$224
+                                   1871 ;StateGame.c:186: UPDATE_HUD_TILE(7+idx_hp,2,60-hp_resto);
+      0007B5 3E 3C            [ 8] 1872 	ld	a, #0x3c
+      0007B7 91               [ 4] 1873 	sub	a, c
+      0007B8 57               [ 4] 1874 	ld	d, a
+      0007B9 78               [ 4] 1875 	ld	a, b
+      0007BA C6 07            [ 8] 1876 	add	a, #0x07
+      0007BC 5F               [ 4] 1877 	ld	e, a
+      0007BD 01 00 00         [12] 1878 	ld	bc, #0x0000
+      0007C0 C5               [16] 1879 	push	bc
+      0007C1 D5               [16] 1880 	push	de
+      0007C2 33               [ 8] 1881 	inc	sp
+      0007C3 21r00r00         [12] 1882 	ld	hl, #_hud_map_offset
+      0007C6 2A               [ 8] 1883 	ld	a, (hl+)
+      0007C7 4F               [ 4] 1884 	ld	c, a
+      0007C8 46               [ 8] 1885 	ld	b, (hl)
+      0007C9 C5               [16] 1886 	push	bc
+      0007CA 3E 02            [ 8] 1887 	ld	a, #0x02
+      0007CC F5               [16] 1888 	push	af
+      0007CD 33               [ 8] 1889 	inc	sp
+      0007CE 3E 01            [ 8] 1890 	ld	a, #0x01
+      0007D0 CDr00r00         [24] 1891 	call	_UpdateMapTile
+      0007D3                       1892 00108$:
+                           0007D3  1893 	C$StateGame.c$188$1_0$221	= .
+                                   1894 	.globl	C$StateGame.c$188$1_0$221
+                                   1895 ;StateGame.c:188: }
+      0007D3 E8 03            [16] 1896 	add	sp, #3
+                           0007D5  1897 	C$StateGame.c$188$1_0$221	= .
+                                   1898 	.globl	C$StateGame.c$188$1_0$221
+                           0007D5  1899 	XG$update_hp$0$0	= .
+                                   1900 	.globl	XG$update_hp$0$0
+      0007D5 C9               [16] 1901 	ret
+                           0007D6  1902 	G$hud_compass_h_r$0$0	= .
+                                   1903 	.globl	G$hud_compass_h_r$0$0
+                           0007D6  1904 	C$StateGame.c$197$1_0$227	= .
+                                   1905 	.globl	C$StateGame.c$197$1_0$227
+                                   1906 ;StateGame.c:197: void hud_compass_h_r() BANKED{
+                                   1907 ;	---------------------------------
+                                   1908 ; Function hud_compass_h_r
+                                   1909 ; ---------------------------------
+                           0000FF  1910 	b_hud_compass_h_r	= 255
+      0007D6                       1911 _hud_compass_h_r::
+                           0007D6  1912 	C$StateGame.c$198$1_0$227	= .
+                                   1913 	.globl	C$StateGame.c$198$1_0$227
+                                   1914 ;StateGame.c:198: set_banked_bkg_data(63u, 9u, &hudt, BANK(hudt));
+      0007D6 06r00            [ 8] 1915 	ld	b, #<(___bank_hudt)
+      0007D8 C5               [16] 1916 	push	bc
+      0007D9 33               [ 8] 1917 	inc	sp
+      0007DA 11r00r00         [12] 1918 	ld	de, #_hudt
+      0007DD D5               [16] 1919 	push	de
+      0007DE 1E 09            [ 8] 1920 	ld	e, #0x09
+      0007E0 3E 3F            [ 8] 1921 	ld	a, #0x3f
+      0007E2 CDr00r00         [24] 1922 	call	_set_banked_bkg_data
+                           0007E5  1923 	C$StateGame.c$199$1_0$227	= .
+                                   1924 	.globl	C$StateGame.c$199$1_0$227
+                                   1925 ;StateGame.c:199: }
+                           0007E5  1926 	C$StateGame.c$199$1_0$227	= .
+                                   1927 	.globl	C$StateGame.c$199$1_0$227
+                           0007E5  1928 	XG$hud_compass_h_r$0$0	= .
+                                   1929 	.globl	XG$hud_compass_h_r$0$0
+      0007E5 C9               [16] 1930 	ret
+                           0007E6  1931 	G$hud_compass_r_u_33$0$0	= .
+                                   1932 	.globl	G$hud_compass_r_u_33$0$0
+                           0007E6  1933 	C$StateGame.c$200$1_0$229	= .
+                                   1934 	.globl	C$StateGame.c$200$1_0$229
+                                   1935 ;StateGame.c:200: void hud_compass_r_u_33() BANKED{
+                                   1936 ;	---------------------------------
+                                   1937 ; Function hud_compass_r_u_33
+                                   1938 ; ---------------------------------
+                           0000FF  1939 	b_hud_compass_r_u_33	= 255
+      0007E6                       1940 _hud_compass_r_u_33::
+                           0007E6  1941 	C$StateGame.c$202$1_0$229	= .
+                                   1942 	.globl	C$StateGame.c$202$1_0$229
+                                   1943 ;StateGame.c:202: }
+                           0007E6  1944 	C$StateGame.c$202$1_0$229	= .
+                                   1945 	.globl	C$StateGame.c$202$1_0$229
+                           0007E6  1946 	XG$hud_compass_r_u_33$0$0	= .
+                                   1947 	.globl	XG$hud_compass_r_u_33$0$0
+      0007E6 C9               [16] 1948 	ret
+                           0007E7  1949 	G$Update_StateGame$0$0	= .
+                                   1950 	.globl	G$Update_StateGame$0$0
+                           0007E7  1951 	C$StateGame.c$204$1_0$230	= .
+                                   1952 	.globl	C$StateGame.c$204$1_0$230
+                                   1953 ;StateGame.c:204: void UPDATE() {
+                                   1954 ;	---------------------------------
+                                   1955 ; Function Update_StateGame
+                                   1956 ; ---------------------------------
+      0007E7                       1957 _Update_StateGame::
+                           0007E7  1958 	C$StateGame.c$206$1_0$230	= .
+                                   1959 	.globl	C$StateGame.c$206$1_0$230
+                                   1960 ;StateGame.c:206: print_target = PRINT_WIN;
+      0007E7 21r00r00         [12] 1961 	ld	hl, #_print_target
+      0007EA 36 01            [12] 1962 	ld	(hl), #0x01
+                           0007EC  1963 	C$StateGame.c$208$1_0$230	= .
+                                   1964 	.globl	C$StateGame.c$208$1_0$230
+                                   1965 ;StateGame.c:208: update_stamina();
+      0007EC 1Er00            [ 8] 1966 	ld	e, #b_update_stamina
+      0007EE 21rA4r01         [12] 1967 	ld	hl, #_update_stamina
+      0007F1 CDr00r00         [24] 1968 	call	___sdcc_bcall_ehl
+                           0007F4  1969 	C$StateGame.c$210$1_0$230	= .
+                                   1970 	.globl	C$StateGame.c$210$1_0$230
+                                   1971 ;StateGame.c:210: update_compass();
+      0007F4 1Er00            [ 8] 1972 	ld	e, #b_update_compass
+      0007F6 21r67r03         [12] 1973 	ld	hl, #_update_compass
+      0007F9 CDr00r00         [24] 1974 	call	___sdcc_bcall_ehl
+                           0007FC  1975 	C$StateGame.c$212$1_0$230	= .
+                                   1976 	.globl	C$StateGame.c$212$1_0$230
+                                   1977 ;StateGame.c:212: update_turning();
+      0007FC 1Er00            [ 8] 1978 	ld	e, #b_update_turning
+      0007FE 21r65r06         [12] 1979 	ld	hl, #_update_turning
+      000801 CDr00r00         [24] 1980 	call	___sdcc_bcall_ehl
+                           000804  1981 	C$StateGame.c$214$1_0$230	= .
+                                   1982 	.globl	C$StateGame.c$214$1_0$230
+                                   1983 ;StateGame.c:214: update_hp();
+      000804 1Er00            [ 8] 1984 	ld	e, #b_update_hp
+      000806 21r18r07         [12] 1985 	ld	hl, #_update_hp
+      000809 CDr00r00         [24] 1986 	call	___sdcc_bcall_ehl
+                           00080C  1987 	C$StateGame.c$216$1_0$230	= .
+                                   1988 	.globl	C$StateGame.c$216$1_0$230
+                                   1989 ;StateGame.c:216: if(euphoria_min_current != euphoria_min || euphoria_max_current != euphoria_max){
+      00080C FAr06r00         [16] 1990 	ld	a, (#_euphoria_min_current)
+      00080F 21r00r00         [12] 1991 	ld	hl, #_euphoria_min
+      000812 96               [ 8] 1992 	sub	a, (hl)
+      000813 20 1A            [12] 1993 	jr	NZ, 00101$
+      000815 FAr07r00         [16] 1994 	ld	a, (#_euphoria_min_current + 1)
+      000818 21r01r00         [12] 1995 	ld	hl, #_euphoria_min + 1
+      00081B 96               [ 8] 1996 	sub	a, (hl)
+      00081C 20 11            [12] 1997 	jr	NZ, 00101$
+      00081E FAr08r00         [16] 1998 	ld	a, (#_euphoria_max_current)
+      000821 21r00r00         [12] 1999 	ld	hl, #_euphoria_max
+      000824 96               [ 8] 2000 	sub	a, (hl)
+      000825 20 08            [12] 2001 	jr	NZ, 00115$
+      000827 FAr09r00         [16] 2002 	ld	a, (#_euphoria_max_current + 1)
+      00082A 21r01r00         [12] 2003 	ld	hl, #_euphoria_max + 1
+      00082D 96               [ 8] 2004 	sub	a, (hl)
+      00082E C8               [20] 2005 	ret	Z
+      00082F                       2006 00115$:
+      00082F                       2007 00101$:
+                           00082F  2008 	C$StateGame.c$217$2_0$231	= .
+                                   2009 	.globl	C$StateGame.c$217$2_0$231
+                                   2010 ;StateGame.c:217: update_euphoria();
+      00082F 1Er00            [ 8] 2011 	ld	e, #b_update_euphoria
+      000831 21r70r02         [12] 2012 	ld	hl, #_update_euphoria
+                           000834  2013 	C$StateGame.c$229$1_0$230	= .
+                                   2014 	.globl	C$StateGame.c$229$1_0$230
+                                   2015 ;StateGame.c:229: }
+                           000834  2016 	C$StateGame.c$229$1_0$230	= .
+                                   2017 	.globl	C$StateGame.c$229$1_0$230
+                           000834  2018 	XG$Update_StateGame$0$0	= .
+                                   2019 	.globl	XG$Update_StateGame$0$0
+      000834 C3r00r00         [16] 2020 	jp  ___sdcc_bcall_ehl
+                                   2021 	.area _CODE_255
+                                   2022 	.area _INITIALIZER
+                           000000  2023 FStateGame$__xinit_s_horse$0_0$0 == .
+      000000                       2024 __xinit__s_horse:
+      000000 00 00                 2025 	.dw #0x0000
+                           000002  2026 FStateGame$__xinit_s_biga$0_0$0 == .
+      000002                       2027 __xinit__s_biga:
+      000002 00 00                 2028 	.dw #0x0000
+                           000004  2029 FStateGame$__xinit_s_compass$0_0$0 == .
+      000004                       2030 __xinit__s_compass:
+      000004 00 00                 2031 	.dw #0x0000
+                           000006  2032 FStateGame$__xinit_euphoria_min_current$0_0$0 == .
+      000006                       2033 __xinit__euphoria_min_current:
+      000006 00 00                 2034 	.dw #0x0000
+                           000008  2035 FStateGame$__xinit_euphoria_max_current$0_0$0 == .
+      000008                       2036 __xinit__euphoria_max_current:
+      000008 00 00                 2037 	.dw #0x0000
+                           00000A  2038 FStateGame$__xinit_horse_direction$0_0$0 == .
+      00000A                       2039 __xinit__horse_direction:
+      00000A 00                    2040 	.db #0x00	; 0
+                           00000B  2041 FStateGame$__xinit_horse_direction_old$0_0$0 == .
+      00000B                       2042 __xinit__horse_direction_old:
+      00000B 00                    2043 	.db #0x00	; 0
+                           00000C  2044 FStateGame$__xinit_hp_current$0_0$0 == .
+      00000C                       2045 __xinit__hp_current:
+      00000C 10                    2046 	.db #0x10	;  16
+                                   2047 	.area _CABS (ABS)

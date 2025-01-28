@@ -1,0 +1,123 @@
+;!FILE ../Dbg/SpriteStep.asm
+XL3
+H A areas 52 global symbols
+M SpriteStep
+O -msm83
+S _SetSpriteAnim Ref000000
+S _THIS Ref000000
+S .__.ABS. Def000000
+S ___bank_SpriteStep Def000003
+S G$__bank_SpriteStep$0_0$0 Def0000FF
+S _SpriteManagerRemoveSprite Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_3 size 54 flags 0 addr 0
+S C$SpriteStep.c$27$1_0$169 Def000053
+S XG$Update_SpriteStep$0$0 Def000050
+S C$SpriteStep.c$29$1_0$169 Def000053
+S A$SpriteStep$61 Def000000
+S A$SpriteStep$80 Def00001B
+S A$SpriteStep$62 Def000003
+S A$SpriteStep$90 Def000028
+S A$SpriteStep$81 Def00001C
+S A$SpriteStep$63 Def000004
+S A$SpriteStep$91 Def000029
+S A$SpriteStep$73 Def00000F
+S A$SpriteStep$64 Def000005
+S A$SpriteStep$92 Def00002A
+S A$SpriteStep$74 Def000012
+S A$SpriteStep$65 Def000006
+S XG$Destroy_SpriteStep$0$0 Def000053
+S A$SpriteStep$93 Def00002B
+S A$SpriteStep$75 Def000013
+S A$SpriteStep$66 Def000009
+S A$SpriteStep$85 Def00001E
+S A$SpriteStep$76 Def000014
+S A$SpriteStep$67 Def00000A
+S A$SpriteStep$86 Def000020
+S A$SpriteStep$77 Def000015
+S A$SpriteStep$68 Def00000C
+S A$SpriteStep$87 Def000021
+S A$SpriteStep$78 Def000018
+S A$SpriteStep$69 Def00000D
+S A$SpriteStep$97 Def00002E
+S A$SpriteStep$88 Def000022
+S A$SpriteStep$79 Def000019
+S A$SpriteStep$98 Def000031
+S A$SpriteStep$89 Def000025
+S A$SpriteStep$99 Def000032
+S G$Start_SpriteStep$0$0 Def000000
+S _anim_step Def00003B
+S _Start_SpriteStep Def000000
+S G$anim_step$0_0$0 Def00003B
+S G$Update_SpriteStep$0$0 Def00003D
+S XG$Start_SpriteStep$0$0 Def00003A
+S A$SpriteStep$100 Def000033
+S G$Destroy_SpriteStep$0$0 Def000053
+S A$SpriteStep$140 Def000043
+S A$SpriteStep$104 Def000034
+S A$SpriteStep$141 Def000046
+S A$SpriteStep$114 Def00003A
+S A$SpriteStep$105 Def000037
+S A$SpriteStep$151 Def00004A
+S A$SpriteStep$133 Def00003D
+S A$SpriteStep$106 Def000038
+S C$SpriteStep.c$11$0_0$164 Def000000
+S A$SpriteStep$152 Def00004D
+S A$SpriteStep$134 Def000040
+S _Update_SpriteStep Def00003D
+S A$SpriteStep$162 Def000050
+S A$SpriteStep$153 Def00004E
+S A$SpriteStep$135 Def000041
+S C$SpriteStep.c$12$1_0$164 Def000000
+S A$SpriteStep$154 Def00004F
+S A$SpriteStep$145 Def000047
+S A$SpriteStep$136 Def000042
+S C$SpriteStep.c$20$1_0$166 Def00003D
+S C$SpriteStep.c$13$1_0$164 Def00000F
+S A$SpriteStep$146 Def000048
+S C$SpriteStep.c$21$1_0$166 Def000043
+S C$SpriteStep.c$14$1_0$164 Def00001E
+S A$SpriteStep$147 Def000049
+S C$SpriteStep.c$22$1_0$166 Def000047
+S C$SpriteStep.c$15$1_1$165 Def00002E
+S C$SpriteStep.c$25$1_0$166 Def000050
+S C$SpriteStep.c$23$2_0$167 Def00004A
+S C$SpriteStep.c$17$1_1$164 Def00003A
+S C$SpriteStep.c$16$1_1$165 Def000034
+S _Destroy_SpriteStep Def000053
+S A$SpriteStep$179 Def000053
+S C$SpriteStep.c$19$1_1$166 Def00003D
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 21 00 00 2A 4F 46 21 15 00 09 3E 01 22
+R 00 00 07 00 02 04 01 00
+T 0D 00 00 36 00 21 00 00 2A 4F 46 21 17 00 09 3E
+R 00 00 07 00 02 06 01 00
+T 1A 00 00 01 22 36 00 3E 10 F5 33 01 3B 00 21
+R 00 00 07 00 00 0C 07 00
+T 26 00 00 00 00 2A 5F 56 CD 00 00 21 00 00 2A 4F
+R 00 00 07 00 02 03 01 00 02 09 00 00 02 0C 01 00
+T 33 00 00 46 21 1C 00 09 36 28 C9
+R 00 00 07 00
+T 3B 00 00
+R 00 00 07 00
+T 3B 00 00 01 00
+R 00 00 07 00
+T 3D 00 00
+R 00 00 07 00
+T 3D 00 00 21 00 00 2A 4F 46 21 1C 00 09 35 7E C0
+R 00 00 07 00 02 04 01 00
+T 4A 00 00 21 00 00 5E 23 56 C3 00 00
+R 00 00 07 00 02 04 01 00 02 0A 05 00
+T 53 00 00
+R 00 00 07 00
+T 53 00 00 C9
+R 00 00 07 00

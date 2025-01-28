@@ -1,0 +1,358 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 A$SpriteCamera$102                                             000021 GR
+  7 A$SpriteCamera$103                                             000024 GR
+  7 A$SpriteCamera$104                                             000025 GR
+  7 A$SpriteCamera$105                                             000026 GR
+  7 A$SpriteCamera$106                                             000028 GR
+  7 A$SpriteCamera$107                                             000029 GR
+  7 A$SpriteCamera$108                                             00002B GR
+  7 A$SpriteCamera$110                                             00002C GR
+  7 A$SpriteCamera$111                                             00002F GR
+  7 A$SpriteCamera$112                                             000030 GR
+  7 A$SpriteCamera$113                                             000031 GR
+  7 A$SpriteCamera$114                                             000032 GR
+  7 A$SpriteCamera$115                                             000035 GR
+  7 A$SpriteCamera$116                                             000036 GR
+  7 A$SpriteCamera$117                                             000037 GR
+  7 A$SpriteCamera$119                                             000038 GR
+  7 A$SpriteCamera$120                                             00003A GR
+  7 A$SpriteCamera$121                                             00003B GR
+  7 A$SpriteCamera$122                                             00003C GR
+  7 A$SpriteCamera$123                                             00003E GR
+  7 A$SpriteCamera$124                                             00003F GR
+  7 A$SpriteCamera$125                                             000040 GR
+  7 A$SpriteCamera$126                                             000041 GR
+  7 A$SpriteCamera$127                                             000042 GR
+  7 A$SpriteCamera$128                                             000043 GR
+  7 A$SpriteCamera$132                                             000044 GR
+  7 A$SpriteCamera$133                                             000046 GR
+  7 A$SpriteCamera$137                                             000048 GR
+  7 A$SpriteCamera$138                                             00004B GR
+  7 A$SpriteCamera$139                                             00004C GR
+  7 A$SpriteCamera$140                                             00004D GR
+  7 A$SpriteCamera$141                                             00004E GR
+  7 A$SpriteCamera$142                                             000051 GR
+  7 A$SpriteCamera$143                                             000052 GR
+  7 A$SpriteCamera$147                                             000053 GR
+  7 A$SpriteCamera$148                                             000055 GR
+  7 A$SpriteCamera$149                                             000056 GR
+  7 A$SpriteCamera$150                                             000058 GR
+  7 A$SpriteCamera$155                                             000059 GR
+  7 A$SpriteCamera$156                                             00005C GR
+  7 A$SpriteCamera$157                                             00005D GR
+  7 A$SpriteCamera$158                                             00005E GR
+  7 A$SpriteCamera$159                                             00005F GR
+  7 A$SpriteCamera$160                                             000061 GR
+  7 A$SpriteCamera$161                                             000062 GR
+  7 A$SpriteCamera$162                                             000063 GR
+  7 A$SpriteCamera$163                                             000064 GR
+  7 A$SpriteCamera$167                                             000066 GR
+  7 A$SpriteCamera$168                                             000067 GR
+  7 A$SpriteCamera$169                                             000068 GR
+  7 A$SpriteCamera$170                                             000069 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteCamera$171                                             00006A GR
+  7 A$SpriteCamera$172                                             00006B GR
+  7 A$SpriteCamera$173                                             00006C GR
+  7 A$SpriteCamera$177                                             00006D GR
+  7 A$SpriteCamera$178                                             00006E GR
+  7 A$SpriteCamera$179                                             00006F GR
+  7 A$SpriteCamera$180                                             000070 GR
+  7 A$SpriteCamera$181                                             000071 GR
+  7 A$SpriteCamera$182                                             000072 GR
+  7 A$SpriteCamera$183                                             000073 GR
+  7 A$SpriteCamera$184                                             000074 GR
+  7 A$SpriteCamera$185                                             000076 GR
+  7 A$SpriteCamera$186                                             000077 GR
+  7 A$SpriteCamera$187                                             000078 GR
+  7 A$SpriteCamera$188                                             000079 GR
+  7 A$SpriteCamera$192                                             00007A GR
+  7 A$SpriteCamera$193                                             00007D GR
+  7 A$SpriteCamera$194                                             00007E GR
+  7 A$SpriteCamera$195                                             000080 GR
+  7 A$SpriteCamera$196                                             000081 GR
+  7 A$SpriteCamera$197                                             000082 GR
+  7 A$SpriteCamera$198                                             000084 GR
+  7 A$SpriteCamera$199                                             000086 GR
+  7 A$SpriteCamera$200                                             000088 GR
+  7 A$SpriteCamera$201                                             00008A GR
+  7 A$SpriteCamera$202                                             00008B GR
+  7 A$SpriteCamera$204                                             00008D GR
+  7 A$SpriteCamera$205                                             00008F GR
+  7 A$SpriteCamera$206                                             000091 GR
+  7 A$SpriteCamera$208                                             000092 GR
+  7 A$SpriteCamera$212                                             000094 GR
+  7 A$SpriteCamera$213                                             000096 GR
+  7 A$SpriteCamera$214                                             000097 GR
+  7 A$SpriteCamera$215                                             000098 GR
+  7 A$SpriteCamera$216                                             000099 GR
+  7 A$SpriteCamera$217                                             00009C GR
+  7 A$SpriteCamera$218                                             00009D GR
+  7 A$SpriteCamera$219                                             00009E GR
+  7 A$SpriteCamera$223                                             00009F GR
+  7 A$SpriteCamera$224                                             0000A0 GR
+  7 A$SpriteCamera$225                                             0000A2 GR
+  7 A$SpriteCamera$226                                             0000A3 GR
+  7 A$SpriteCamera$227                                             0000A4 GR
+  7 A$SpriteCamera$228                                             0000A6 GR
+  7 A$SpriteCamera$232                                             0000A7 GR
+  7 A$SpriteCamera$233                                             0000AA GR
+  7 A$SpriteCamera$234                                             0000AB GR
+  7 A$SpriteCamera$235                                             0000AC GR
+  7 A$SpriteCamera$239                                             0000AD GR
+  7 A$SpriteCamera$240                                             0000AF GR
+  7 A$SpriteCamera$241                                             0000B0 GR
+  7 A$SpriteCamera$242                                             0000B1 GR
+  7 A$SpriteCamera$243                                             0000B2 GR
+  7 A$SpriteCamera$244                                             0000B3 GR
+  7 A$SpriteCamera$245                                             0000B4 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteCamera$246                                             0000B6 GR
+  7 A$SpriteCamera$247                                             0000B8 GR
+  7 A$SpriteCamera$248                                             0000BA GR
+  7 A$SpriteCamera$253                                             0000BC GR
+  7 A$SpriteCamera$254                                             0000BE GR
+  7 A$SpriteCamera$255                                             0000BF GR
+  7 A$SpriteCamera$256                                             0000C0 GR
+  7 A$SpriteCamera$257                                             0000C1 GR
+  7 A$SpriteCamera$258                                             0000C2 GR
+  7 A$SpriteCamera$259                                             0000C4 GR
+  7 A$SpriteCamera$260                                             0000C6 GR
+  7 A$SpriteCamera$265                                             0000C8 GR
+  7 A$SpriteCamera$266                                             0000CB GR
+  7 A$SpriteCamera$267                                             0000CD GR
+  7 A$SpriteCamera$268                                             0000CF GR
+  7 A$SpriteCamera$272                                             0000D1 GR
+  7 A$SpriteCamera$273                                             0000D3 GR
+  7 A$SpriteCamera$274                                             0000D4 GR
+  7 A$SpriteCamera$275                                             0000D5 GR
+  7 A$SpriteCamera$276                                             0000D6 GR
+  7 A$SpriteCamera$277                                             0000D9 GR
+  7 A$SpriteCamera$278                                             0000DA GR
+  7 A$SpriteCamera$279                                             0000DB GR
+  7 A$SpriteCamera$280                                             0000DC GR
+  7 A$SpriteCamera$281                                             0000DD GR
+  7 A$SpriteCamera$282                                             0000DE GR
+  7 A$SpriteCamera$283                                             0000DF GR
+  7 A$SpriteCamera$287                                             0000E0 GR
+  7 A$SpriteCamera$288                                             0000E1 GR
+  7 A$SpriteCamera$289                                             0000E3 GR
+  7 A$SpriteCamera$290                                             0000E4 GR
+  7 A$SpriteCamera$291                                             0000E5 GR
+  7 A$SpriteCamera$292                                             0000E7 GR
+  7 A$SpriteCamera$296                                             0000E8 GR
+  7 A$SpriteCamera$297                                             0000EA GR
+  7 A$SpriteCamera$298                                             0000EB GR
+  7 A$SpriteCamera$299                                             0000EC GR
+  7 A$SpriteCamera$303                                             0000ED GR
+  7 A$SpriteCamera$304                                             0000EF GR
+  7 A$SpriteCamera$305                                             0000F0 GR
+  7 A$SpriteCamera$306                                             0000F1 GR
+  7 A$SpriteCamera$307                                             0000F2 GR
+  7 A$SpriteCamera$308                                             0000F3 GR
+  7 A$SpriteCamera$309                                             0000F4 GR
+  7 A$SpriteCamera$310                                             0000F6 GR
+  7 A$SpriteCamera$311                                             0000F8 GR
+  7 A$SpriteCamera$312                                             0000FA GR
+  7 A$SpriteCamera$317                                             0000FC GR
+  7 A$SpriteCamera$318                                             0000FE GR
+  7 A$SpriteCamera$319                                             0000FF GR
+  7 A$SpriteCamera$320                                             000100 GR
+  7 A$SpriteCamera$321                                             000101 GR
+  7 A$SpriteCamera$322                                             000102 GR
+  7 A$SpriteCamera$323                                             000104 GR
+  7 A$SpriteCamera$324                                             000106 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteCamera$329                                             000108 GR
+  7 A$SpriteCamera$330                                             00010A GR
+  7 A$SpriteCamera$331                                             00010B GR
+  7 A$SpriteCamera$332                                             00010C GR
+  7 A$SpriteCamera$333                                             00010D GR
+  7 A$SpriteCamera$334                                             00010F GR
+  7 A$SpriteCamera$335                                             000110 GR
+  7 A$SpriteCamera$336                                             000111 GR
+  7 A$SpriteCamera$337                                             000112 GR
+  7 A$SpriteCamera$338                                             000113 GR
+  7 A$SpriteCamera$339                                             000114 GR
+  7 A$SpriteCamera$340                                             000115 GR
+  7 A$SpriteCamera$341                                             000116 GR
+  7 A$SpriteCamera$342                                             000117 GR
+  7 A$SpriteCamera$343                                             000118 GR
+  7 A$SpriteCamera$347                                             000119 GR
+  7 A$SpriteCamera$348                                             00011A GR
+  7 A$SpriteCamera$349                                             00011C GR
+  7 A$SpriteCamera$350                                             00011D GR
+  7 A$SpriteCamera$351                                             00011E GR
+  7 A$SpriteCamera$352                                             00011F GR
+  7 A$SpriteCamera$353                                             000120 GR
+  7 A$SpriteCamera$354                                             000122 GR
+  7 A$SpriteCamera$355                                             000124 GR
+  7 A$SpriteCamera$356                                             000125 GR
+  7 A$SpriteCamera$357                                             000127 GR
+  7 A$SpriteCamera$358                                             000129 GR
+  7 A$SpriteCamera$359                                             00012A GR
+  7 A$SpriteCamera$360                                             00012C GR
+  7 A$SpriteCamera$361                                             00012D GR
+  7 A$SpriteCamera$362                                             00012F GR
+  7 A$SpriteCamera$363                                             000131 GR
+  7 A$SpriteCamera$364                                             000133 GR
+  7 A$SpriteCamera$365                                             000135 GR
+  7 A$SpriteCamera$366                                             000136 GR
+  7 A$SpriteCamera$368                                             000138 GR
+  7 A$SpriteCamera$369                                             00013A GR
+  7 A$SpriteCamera$370                                             00013C GR
+  7 A$SpriteCamera$372                                             00013D GR
+  7 A$SpriteCamera$376                                             00013F GR
+  7 A$SpriteCamera$377                                             000141 GR
+  7 A$SpriteCamera$378                                             000142 GR
+  7 A$SpriteCamera$379                                             000143 GR
+  7 A$SpriteCamera$380                                             000144 GR
+  7 A$SpriteCamera$381                                             000145 GR
+  7 A$SpriteCamera$382                                             000146 GR
+  7 A$SpriteCamera$383                                             000148 GR
+  7 A$SpriteCamera$384                                             000149 GR
+  7 A$SpriteCamera$385                                             00014A GR
+  7 A$SpriteCamera$386                                             00014B GR
+  7 A$SpriteCamera$387                                             00014C GR
+  7 A$SpriteCamera$388                                             00014D GR
+  7 A$SpriteCamera$389                                             00014E GR
+  7 A$SpriteCamera$390                                             000150 GR
+  7 A$SpriteCamera$391                                             000151 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 5
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteCamera$392                                             000152 GR
+  7 A$SpriteCamera$393                                             000153 GR
+  7 A$SpriteCamera$394                                             000154 GR
+  7 A$SpriteCamera$395                                             000155 GR
+  7 A$SpriteCamera$396                                             000156 GR
+  7 A$SpriteCamera$401                                             000158 GR
+  7 A$SpriteCamera$402                                             00015B GR
+  7 A$SpriteCamera$403                                             00015C GR
+  7 A$SpriteCamera$404                                             00015D GR
+  7 A$SpriteCamera$405                                             00015E GR
+  7 A$SpriteCamera$406                                             00015F GR
+  7 A$SpriteCamera$407                                             000161 GR
+  7 A$SpriteCamera$408                                             000162 GR
+  7 A$SpriteCamera$409                                             000163 GR
+  7 A$SpriteCamera$410                                             000164 GR
+  7 A$SpriteCamera$411                                             000165 GR
+  7 A$SpriteCamera$412                                             000166 GR
+  7 A$SpriteCamera$413                                             000167 GR
+  7 A$SpriteCamera$414                                             000169 GR
+  7 A$SpriteCamera$415                                             00016A GR
+  7 A$SpriteCamera$416                                             00016B GR
+  7 A$SpriteCamera$417                                             00016C GR
+  7 A$SpriteCamera$418                                             00016D GR
+  7 A$SpriteCamera$419                                             00016E GR
+  7 A$SpriteCamera$424                                             00016F GR
+  7 A$SpriteCamera$429                                             000171 GR
+  7 A$SpriteCamera$446                                             000172 GR
+  7 A$SpriteCamera$58                                              000000 GR
+  7 A$SpriteCamera$59                                              000003 GR
+  7 A$SpriteCamera$60                                              000004 GR
+  7 A$SpriteCamera$61                                              000005 GR
+  7 A$SpriteCamera$62                                              000006 GR
+  7 A$SpriteCamera$63                                              000009 GR
+  7 A$SpriteCamera$64                                              00000A GR
+  7 A$SpriteCamera$65                                              00000C GR
+  7 A$SpriteCamera$66                                              00000D GR
+  7 A$SpriteCamera$70                                              00000F GR
+  7 A$SpriteCamera$71                                              000012 GR
+  7 A$SpriteCamera$72                                              000013 GR
+  7 A$SpriteCamera$73                                              000014 GR
+  7 A$SpriteCamera$74                                              000015 GR
+  7 A$SpriteCamera$75                                              000018 GR
+  7 A$SpriteCamera$76                                              000019 GR
+  7 A$SpriteCamera$77                                              00001B GR
+  7 A$SpriteCamera$78                                              00001C GR
+  7 A$SpriteCamera$86                                              00001E GR
+  7 A$SpriteCamera$98                                              00001F GR
+  7 C$SpriteCamera.c$11$0_0$177                                 =  000000 GR
+  7 C$SpriteCamera.c$12$1_0$177                                 =  000000 GR
+  7 C$SpriteCamera.c$13$1_0$177                                 =  00000F GR
+  7 C$SpriteCamera.c$14$1_0$177                                 =  00001E GR
+  7 C$SpriteCamera.c$16$1_0$178                                 =  00001F GR
+  7 C$SpriteCamera.c$17$1_0$178                                 =  000021 GR
+  7 C$SpriteCamera.c$17$1_2$178                                 =  000048 GR
+  7 C$SpriteCamera.c$18$2_0$179                                 =  000044 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 6
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteCamera.c$19$1_1$179                                 =  00007A GR
+  7 C$SpriteCamera.c$20$1_2$178                                 =  000066 GR
+  7 C$SpriteCamera.c$20$2_1$180                                 =  000094 GR
+  7 C$SpriteCamera.c$21$2_1$180                                 =  00009F GR
+  7 C$SpriteCamera.c$22$2_1$180                                 =  0000A7 GR
+  7 C$SpriteCamera.c$23$1_2$178                                 =  00006D GR
+  7 C$SpriteCamera.c$23$2_1$180                                 =  0000AD GR
+  7 C$SpriteCamera.c$24$2_1$180                                 =  0000BC GR
+  7 C$SpriteCamera.c$26$1_1$179                                 =  0000C8 GR
+  7 C$SpriteCamera.c$27$2_1$183                                 =  0000D1 GR
+  7 C$SpriteCamera.c$28$2_1$183                                 =  0000E0 GR
+  7 C$SpriteCamera.c$29$2_1$183                                 =  0000E8 GR
+  7 C$SpriteCamera.c$30$2_1$183                                 =  0000ED GR
+  7 C$SpriteCamera.c$31$2_1$183                                 =  0000FC GR
+  7 C$SpriteCamera.c$33$1_2$186                                 =  000108 GR
+  7 C$SpriteCamera.c$34$1_2$186                                 =  000119 GR
+  7 C$SpriteCamera.c$35$2_2$187                                 =  00013F GR
+  7 C$SpriteCamera.c$36$2_2$188                                 =  000158 GR
+  7 C$SpriteCamera.c$37$1_2$178                                 =  000171 GR
+  7 C$SpriteCamera.c$39$1_2$190                                 =  000172 GR
+  7 C$SpriteCamera.c$40$1_2$190                                 =  000172 GR
+  7 G$Destroy_SpriteCamera$0$0                                  =  000172 GR
+  7 G$Start_SpriteCamera$0$0                                    =  000000 GR
+  7 G$Update_SpriteCamera$0$0                                   =  00001F GR
+    G$__bank_SpriteCamera$0_0$0                                 =  0000FF G
+  7 XG$Destroy_SpriteCamera$0$0                                 =  000172 GR
+  7 XG$Start_SpriteCamera$0$0                                   =  00001E GR
+  7 XG$Update_SpriteCamera$0$0                                  =  000171 GR
+  7 _Destroy_SpriteCamera                                          000172 GR
+  7 _Start_SpriteCamera                                            000000 GR
+    _THIS                                                          ****** GX
+  7 _Update_SpriteCamera                                           00001F GR
+    ___bank_SpriteCamera                                        =  0000FF G
+    _s_horse                                                       ****** GX
+    _vx                                                            ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 7
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size    173   flags    0
+   8 _INITIALIZER                               size      0   flags    0
+   9 _CABS                                      size      0   flags    8
+

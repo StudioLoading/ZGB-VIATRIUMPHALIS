@@ -1,0 +1,37 @@
+VIA TRIUMPHALIS
+è un gioco arcade a tappe.
+ogni tappa devi arrivare in un punto facendo cose.
+il percorso ha una partenza e un arrivo e non è a circuito.
+
+TUTORIAL
+- vai dritto
+- vai dritto e mettici meno di TEMPO
+- impara a girare a destra
+- impara a girare a sinistra
+- impara a zig-zag
+- impara a zig-zag in meno di TEMPO
+- evita l'acqua
+- raccogli il gladio e attacca fantoccio
+- raccogli lancia e lancia al fantoccio
+- prendi il mantello e passa attraverso le fiamme
+
+DA ATTACCO: 
+GLADIO   (colpo secco, a contatto, azzera la stamina)
+PILUM    (lunga distanza, lancio in avanti, abbassa di più la stamina)
+FIAMMA   (droppa dietro)
+
+DA DIFESA:
+ELMO     (ripara da lancia)
+SCUDO    (ripara da gladio)
+MANTELLO (ripara da fiamme)
+
+AMBIENTALI
+SABBIA      (massimizza la stamina)
+FIAMMA      (cappa la stamina a (euphoria_min - (euphoria_min/2)))
+POZZA       (da botte di -stamina ogni secondo)
+
+
+
+PNG2MAP
+cd C:\ZGB-2023.0\tools\png2map\
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\maprome.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\maprome.gbm

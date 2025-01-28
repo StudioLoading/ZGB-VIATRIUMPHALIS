@@ -1,0 +1,86 @@
+;!FILE ../Dbg/SpriteFire.asm
+XL3
+H A areas 2F global symbols
+M SpriteFire
+O -msm83
+S _SetSpriteAnim Ref000000
+S ___bank_SpriteFire Def0000FF
+S _THIS Ref000000
+S G$__bank_SpriteFire$0_0$0 Def0000FF
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_255 size 2C flags 0 addr 0
+S _a_fire Def000020
+S G$a_fire$0_0$0 Def000020
+S _Start_SpriteFire Def000000
+S G$Update_SpriteFire$0$0 Def00002A
+S XG$Start_SpriteFire$0$0 Def00001F
+S G$Destroy_SpriteFire$0$0 Def00002B
+S A$SpriteFire$122 Def00002A
+S _a_fog Def000025
+S C$SpriteFire.c$20$1_0$190 Def000010
+S G$a_fog$0_0$0 Def000025
+S C$SpriteFire.c$21$1_0$190 Def00001F
+S _Update_SpriteFire Def00002A
+S C$SpriteFire.c$23$1_0$192 Def00002A
+S A$SpriteFire$139 Def00002B
+S C$SpriteFire.c$24$1_0$192 Def00002A
+S C$SpriteFire.c$18$0_0$190 Def000000
+S C$SpriteFire.c$19$1_0$190 Def000000
+S _Destroy_SpriteFire Def00002B
+S C$SpriteFire.c$26$1_0$194 Def00002B
+S C$SpriteFire.c$27$1_0$194 Def00002B
+S XG$Update_SpriteFire$0$0 Def00002A
+S A$SpriteFire$61 Def000000
+S A$SpriteFire$80 Def00001C
+S A$SpriteFire$62 Def000002
+S A$SpriteFire$81 Def00001D
+S A$SpriteFire$63 Def000003
+S A$SpriteFire$73 Def000010
+S A$SpriteFire$64 Def000004
+S A$SpriteFire$74 Def000013
+S A$SpriteFire$65 Def000007
+S XG$Destroy_SpriteFire$0$0 Def00002B
+S A$SpriteFire$75 Def000014
+S A$SpriteFire$66 Def00000A
+S A$SpriteFire$76 Def000015
+S A$SpriteFire$67 Def00000B
+S A$SpriteFire$77 Def000016
+S A$SpriteFire$68 Def00000C
+S A$SpriteFire$78 Def000019
+S A$SpriteFire$69 Def00000D
+S A$SpriteFire$79 Def00001A
+S A$SpriteFire$89 Def00001F
+S G$Start_SpriteFire$0$0 Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 3E 18 F5 33 01 20 00 21 00 00 2A 5F 56
+R 00 00 07 00 00 08 07 00 02 0B 02 00
+T 0D 00 00 CD 00 00 21 00 00 2A 4F 46 21 15 00 09
+R 00 00 07 00 02 04 00 00 02 07 02 00
+T 1A 00 00 3E E8 22 36 03 C9
+R 00 00 07 00
+T 20 00 00
+R 00 00 07 00
+T 20 00 00 04 00 01 02 03
+R 00 00 07 00
+T 25 00 00
+R 00 00 07 00
+T 25 00 00 04 04 05 06 07
+R 00 00 07 00
+T 2A 00 00
+R 00 00 07 00
+T 2A 00 00 C9
+R 00 00 07 00
+T 2B 00 00
+R 00 00 07 00
+T 2B 00 00 C9
+R 00 00 07 00

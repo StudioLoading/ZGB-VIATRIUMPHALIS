@@ -1,0 +1,1613 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 A$StateGame$1000                                               000394 GR
+  7 A$StateGame$1001                                               000395 GR
+  7 A$StateGame$1003                                               000397 GR
+  7 A$StateGame$1004                                               000399 GR
+  7 A$StateGame$1005                                               00039B GR
+  7 A$StateGame$1007                                               00039C GR
+  7 A$StateGame$1011                                               00039E GR
+  7 A$StateGame$1012                                               0003A1 GR
+  7 A$StateGame$1013                                               0003A3 GR
+  7 A$StateGame$1018                                               0003A5 GR
+  7 A$StateGame$1019                                               0003A6 GR
+  7 A$StateGame$1020                                               0003A8 GR
+  7 A$StateGame$1021                                               0003A9 GR
+  7 A$StateGame$1022                                               0003AA GR
+  7 A$StateGame$1023                                               0003AC GR
+  7 A$StateGame$1024                                               0003AE GR
+  7 A$StateGame$1025                                               0003B0 GR
+  7 A$StateGame$1026                                               0003B2 GR
+  7 A$StateGame$1027                                               0003B3 GR
+  7 A$StateGame$1029                                               0003B5 GR
+  7 A$StateGame$1030                                               0003B7 GR
+  7 A$StateGame$1031                                               0003B9 GR
+  7 A$StateGame$1033                                               0003BA GR
+  7 A$StateGame$1034                                               0003BC GR
+  7 A$StateGame$1035                                               0003BD GR
+  7 A$StateGame$1036                                               0003BF GR
+  7 A$StateGame$1037                                               0003C1 GR
+  7 A$StateGame$1041                                               0003C3 GR
+  7 A$StateGame$1042                                               0003C6 GR
+  7 A$StateGame$1043                                               0003C8 GR
+  7 A$StateGame$1048                                               0003CA GR
+  7 A$StateGame$1049                                               0003CB GR
+  4 A$StateGame$105                                                000000 GR
+  7 A$StateGame$1050                                               0003CD GR
+  7 A$StateGame$1051                                               0003CE GR
+  7 A$StateGame$1052                                               0003CF GR
+  7 A$StateGame$1053                                               0003D1 GR
+  7 A$StateGame$1054                                               0003D3 GR
+  7 A$StateGame$1055                                               0003D5 GR
+  7 A$StateGame$1056                                               0003D7 GR
+  7 A$StateGame$1057                                               0003D8 GR
+  7 A$StateGame$1059                                               0003DA GR
+  4 A$StateGame$106                                                000001 GR
+  7 A$StateGame$1060                                               0003DC GR
+  7 A$StateGame$1061                                               0003DE GR
+  7 A$StateGame$1063                                               0003DF GR
+  7 A$StateGame$1064                                               0003E1 GR
+  7 A$StateGame$1065                                               0003E2 GR
+  7 A$StateGame$1066                                               0003E4 GR
+  7 A$StateGame$1067                                               0003E6 GR
+  4 A$StateGame$107                                                000002 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1071                                               0003E8 GR
+  7 A$StateGame$1072                                               0003EB GR
+  7 A$StateGame$1073                                               0003ED GR
+  7 A$StateGame$1078                                               0003EF GR
+  7 A$StateGame$1079                                               0003F0 GR
+  4 A$StateGame$108                                                000003 GR
+  7 A$StateGame$1080                                               0003F2 GR
+  7 A$StateGame$1081                                               0003F3 GR
+  7 A$StateGame$1082                                               0003F4 GR
+  7 A$StateGame$1083                                               0003F6 GR
+  7 A$StateGame$1084                                               0003F8 GR
+  7 A$StateGame$1085                                               0003FA GR
+  7 A$StateGame$1086                                               0003FC GR
+  7 A$StateGame$1087                                               0003FD GR
+  7 A$StateGame$1089                                               0003FF GR
+  4 A$StateGame$109                                                000005 GR
+  7 A$StateGame$1090                                               000401 GR
+  7 A$StateGame$1091                                               000403 GR
+  7 A$StateGame$1093                                               000404 GR
+  7 A$StateGame$1097                                               000406 GR
+  7 A$StateGame$1098                                               000409 GR
+  7 A$StateGame$1103                                               00040B GR
+  7 A$StateGame$1104                                               00040E GR
+  7 A$StateGame$1105                                               00040F GR
+  7 A$StateGame$1106                                               000410 GR
+  7 A$StateGame$1107                                               000411 GR
+  7 A$StateGame$1108                                               000412 GR
+  7 A$StateGame$1109                                               000414 GR
+  7 A$StateGame$1110                                               000416 GR
+  7 A$StateGame$1111                                               000418 GR
+  7 A$StateGame$1112                                               00041A GR
+  7 A$StateGame$1113                                               00041B GR
+  7 A$StateGame$1115                                               00041D GR
+  7 A$StateGame$1116                                               00041F GR
+  7 A$StateGame$1117                                               000421 GR
+  7 A$StateGame$1119                                               000422 GR
+  7 A$StateGame$1120                                               000424 GR
+  7 A$StateGame$1121                                               000426 GR
+  7 A$StateGame$1122                                               000427 GR
+  7 A$StateGame$1123                                               000428 GR
+  7 A$StateGame$1127                                               00042A GR
+  7 A$StateGame$1128                                               00042D GR
+  7 A$StateGame$1129                                               00042E GR
+  4 A$StateGame$113                                                000006 GR
+  7 A$StateGame$1130                                               000430 GR
+  7 A$StateGame$1131                                               000433 GR
+  7 A$StateGame$1132                                               000434 GR
+  7 A$StateGame$1133                                               000436 GR
+  7 A$StateGame$1134                                               000439 GR
+  7 A$StateGame$1135                                               00043B GR
+  7 A$StateGame$1136                                               00043D GR
+  4 A$StateGame$114                                                000007 GR
+  7 A$StateGame$1141                                               00043F GR
+  7 A$StateGame$1142                                               000442 GR
+  7 A$StateGame$1143                                               000444 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1148                                               000446 GR
+  7 A$StateGame$1149                                               000449 GR
+  4 A$StateGame$115                                                000009 GR
+  7 A$StateGame$1150                                               00044B GR
+  7 A$StateGame$1155                                               00044D GR
+  7 A$StateGame$1156                                               000450 GR
+  7 A$StateGame$1164                                               000452 GR
+  7 A$StateGame$1165                                               000453 GR
+  7 A$StateGame$1166                                               000454 GR
+  7 A$StateGame$1167                                               000456 GR
+  7 A$StateGame$1168                                               000459 GR
+  7 A$StateGame$1169                                               00045A GR
+  7 A$StateGame$1170                                               00045B GR
+  7 A$StateGame$1171                                               00045C GR
+  7 A$StateGame$1172                                               00045D GR
+  7 A$StateGame$1173                                               00045F GR
+  7 A$StateGame$1174                                               000461 GR
+  7 A$StateGame$1175                                               000463 GR
+  7 A$StateGame$1176                                               000465 GR
+  7 A$StateGame$1177                                               000466 GR
+  7 A$StateGame$1179                                               000468 GR
+  7 A$StateGame$1180                                               00046A GR
+  7 A$StateGame$1181                                               00046C GR
+  7 A$StateGame$1183                                               00046D GR
+  7 A$StateGame$1187                                               00046F GR
+  7 A$StateGame$1188                                               000472 GR
+  7 A$StateGame$1189                                               000473 GR
+  4 A$StateGame$119                                                00000A GR
+  7 A$StateGame$1190                                               000475 GR
+  7 A$StateGame$1191                                               000478 GR
+  7 A$StateGame$1192                                               00047A GR
+  7 A$StateGame$1193                                               00047C GR
+  7 A$StateGame$1194                                               00047F GR
+  7 A$StateGame$1195                                               000481 GR
+  7 A$StateGame$1196                                               000483 GR
+  4 A$StateGame$120                                                00000C GR
+  7 A$StateGame$1201                                               000485 GR
+  7 A$StateGame$1202                                               000488 GR
+  7 A$StateGame$1203                                               00048A GR
+  7 A$StateGame$1208                                               00048C GR
+  7 A$StateGame$1209                                               00048F GR
+  4 A$StateGame$121                                                00000D GR
+  7 A$StateGame$1210                                               000491 GR
+  7 A$StateGame$1215                                               000493 GR
+  7 A$StateGame$1216                                               000496 GR
+  4 A$StateGame$122                                                00000F GR
+  7 A$StateGame$1224                                               000498 GR
+  7 A$StateGame$1225                                               000499 GR
+  7 A$StateGame$1226                                               00049A GR
+  7 A$StateGame$1227                                               00049C GR
+  7 A$StateGame$1228                                               00049E GR
+  7 A$StateGame$1229                                               00049F GR
+  7 A$StateGame$1230                                               0004A0 GR
+  7 A$StateGame$1234                                               0004A2 GR
+  7 A$StateGame$1235                                               0004A5 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1236                                               0004A6 GR
+  7 A$StateGame$1237                                               0004A8 GR
+  7 A$StateGame$1238                                               0004AB GR
+  7 A$StateGame$1239                                               0004AC GR
+  7 A$StateGame$1240                                               0004AE GR
+  7 A$StateGame$1241                                               0004B1 GR
+  7 A$StateGame$1242                                               0004B3 GR
+  7 A$StateGame$1243                                               0004B5 GR
+  7 A$StateGame$1244                                               0004B7 GR
+  7 A$StateGame$1245                                               0004B9 GR
+  7 A$StateGame$1250                                               0004BB GR
+  7 A$StateGame$1251                                               0004BE GR
+  7 A$StateGame$1252                                               0004C0 GR
+  7 A$StateGame$1257                                               0004C2 GR
+  7 A$StateGame$1258                                               0004C5 GR
+  7 A$StateGame$1259                                               0004C7 GR
+  4 A$StateGame$126                                                000012 GR
+  7 A$StateGame$1264                                               0004C9 GR
+  7 A$StateGame$1265                                               0004CC GR
+  7 A$StateGame$1266                                               0004CE GR
+  4 A$StateGame$127                                                000014 GR
+  7 A$StateGame$1271                                               0004D0 GR
+  7 A$StateGame$1272                                               0004D3 GR
+  4 A$StateGame$128                                                000015 GR
+  7 A$StateGame$1280                                               0004D5 GR
+  7 A$StateGame$1281                                               0004D8 GR
+  7 A$StateGame$1282                                               0004DB GR
+  7 A$StateGame$1283                                               0004DC GR
+  7 A$StateGame$1287                                               0004DF GR
+  7 A$StateGame$1288                                               0004E2 GR
+  7 A$StateGame$1289                                               0004E5 GR
+  4 A$StateGame$129                                                000016 GR
+  7 A$StateGame$1293                                               0004E6 GR
+  7 A$StateGame$1294                                               0004E8 GR
+  7 A$StateGame$1295                                               0004E9 GR
+  7 A$StateGame$1296                                               0004EC GR
+  7 A$StateGame$1297                                               0004ED GR
+  7 A$StateGame$1298                                               0004EF GR
+  7 A$StateGame$1299                                               0004F2 GR
+  4 A$StateGame$130                                                000017 GR
+  7 A$StateGame$1300                                               0004F3 GR
+  7 A$StateGame$1301                                               0004F4 GR
+  7 A$StateGame$1302                                               0004F5 GR
+  7 A$StateGame$1304                                               0004F6 GR
+  7 A$StateGame$1305                                               0004F9 GR
+  7 A$StateGame$1306                                               0004FC GR
+  7 A$StateGame$1307                                               0004FF GR
+  7 A$StateGame$1308                                               000502 GR
+  7 A$StateGame$1309                                               000505 GR
+  7 A$StateGame$1310                                               000508 GR
+  7 A$StateGame$1311                                               00050B GR
+  7 A$StateGame$1312                                               00050E GR
+  7 A$StateGame$1313                                               000511 GR
+  7 A$StateGame$1314                                               000514 GR
+  7 A$StateGame$1315                                               000517 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 5
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1320                                               00051A GR
+  7 A$StateGame$1321                                               00051D GR
+  7 A$StateGame$1322                                               00051E GR
+  7 A$StateGame$1323                                               000520 GR
+  7 A$StateGame$1324                                               000521 GR
+  7 A$StateGame$1325                                               000522 GR
+  7 A$StateGame$1326                                               000525 GR
+  7 A$StateGame$1327                                               000526 GR
+  7 A$StateGame$1328                                               000527 GR
+  7 A$StateGame$1329                                               000528 GR
+  4 A$StateGame$133                                                000018 GR
+  7 A$StateGame$1330                                               000529 GR
+  7 A$StateGame$1331                                               00052B GR
+  7 A$StateGame$1332                                               00052C GR
+  7 A$StateGame$1333                                               00052D GR
+  7 A$StateGame$1334                                               00052F GR
+  7 A$StateGame$1335                                               000530 GR
+  7 A$StateGame$1336                                               000533 GR
+  7 A$StateGame$1341                                               000536 GR
+  7 A$StateGame$1342                                               000539 GR
+  7 A$StateGame$1343                                               00053A GR
+  7 A$StateGame$1344                                               00053C GR
+  7 A$StateGame$1345                                               00053D GR
+  7 A$StateGame$1346                                               00053E GR
+  7 A$StateGame$1347                                               000541 GR
+  7 A$StateGame$1348                                               000542 GR
+  7 A$StateGame$1349                                               000543 GR
+  7 A$StateGame$1350                                               000544 GR
+  7 A$StateGame$1351                                               000545 GR
+  7 A$StateGame$1352                                               000547 GR
+  7 A$StateGame$1353                                               000548 GR
+  7 A$StateGame$1354                                               000549 GR
+  7 A$StateGame$1355                                               00054B GR
+  7 A$StateGame$1356                                               00054C GR
+  7 A$StateGame$1357                                               00054F GR
+  4 A$StateGame$136                                                000019 GR
+  7 A$StateGame$1362                                               000552 GR
+  7 A$StateGame$1363                                               000555 GR
+  7 A$StateGame$1364                                               000556 GR
+  7 A$StateGame$1365                                               000558 GR
+  7 A$StateGame$1366                                               000559 GR
+  7 A$StateGame$1367                                               00055A GR
+  7 A$StateGame$1368                                               00055D GR
+  7 A$StateGame$1369                                               00055E GR
+  4 A$StateGame$137                                                00001A GR
+  7 A$StateGame$1370                                               00055F GR
+  7 A$StateGame$1371                                               000560 GR
+  7 A$StateGame$1372                                               000561 GR
+  7 A$StateGame$1373                                               000563 GR
+  7 A$StateGame$1374                                               000564 GR
+  7 A$StateGame$1375                                               000565 GR
+  7 A$StateGame$1376                                               000567 GR
+  7 A$StateGame$1377                                               000568 GR
+  7 A$StateGame$1378                                               00056B GR
+  4 A$StateGame$138                                                00001B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 6
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1383                                               00056E GR
+  7 A$StateGame$1384                                               000571 GR
+  7 A$StateGame$1385                                               000572 GR
+  7 A$StateGame$1386                                               000574 GR
+  7 A$StateGame$1387                                               000575 GR
+  7 A$StateGame$1388                                               000576 GR
+  7 A$StateGame$1389                                               000579 GR
+  4 A$StateGame$139                                                00001C GR
+  7 A$StateGame$1390                                               00057A GR
+  7 A$StateGame$1391                                               00057B GR
+  7 A$StateGame$1392                                               00057C GR
+  7 A$StateGame$1393                                               00057D GR
+  7 A$StateGame$1394                                               00057F GR
+  7 A$StateGame$1395                                               000580 GR
+  7 A$StateGame$1396                                               000581 GR
+  7 A$StateGame$1397                                               000583 GR
+  7 A$StateGame$1398                                               000584 GR
+  7 A$StateGame$1399                                               000587 GR
+  7 A$StateGame$1404                                               00058A GR
+  7 A$StateGame$1405                                               00058D GR
+  7 A$StateGame$1406                                               00058E GR
+  7 A$StateGame$1407                                               000590 GR
+  7 A$StateGame$1408                                               000591 GR
+  7 A$StateGame$1409                                               000592 GR
+  7 A$StateGame$1410                                               000595 GR
+  7 A$StateGame$1411                                               000596 GR
+  7 A$StateGame$1412                                               000597 GR
+  7 A$StateGame$1413                                               000598 GR
+  7 A$StateGame$1414                                               000599 GR
+  7 A$StateGame$1415                                               00059B GR
+  7 A$StateGame$1416                                               00059C GR
+  7 A$StateGame$1417                                               00059D GR
+  7 A$StateGame$1418                                               00059F GR
+  7 A$StateGame$1419                                               0005A0 GR
+  4 A$StateGame$142                                                00001D GR
+  7 A$StateGame$1420                                               0005A3 GR
+  7 A$StateGame$1425                                               0005A6 GR
+  7 A$StateGame$1426                                               0005A9 GR
+  7 A$StateGame$1427                                               0005AA GR
+  7 A$StateGame$1428                                               0005AC GR
+  7 A$StateGame$1429                                               0005AD GR
+  7 A$StateGame$1430                                               0005AE GR
+  7 A$StateGame$1431                                               0005B1 GR
+  7 A$StateGame$1432                                               0005B2 GR
+  7 A$StateGame$1433                                               0005B3 GR
+  7 A$StateGame$1434                                               0005B4 GR
+  7 A$StateGame$1435                                               0005B5 GR
+  7 A$StateGame$1436                                               0005B7 GR
+  7 A$StateGame$1437                                               0005B8 GR
+  7 A$StateGame$1438                                               0005B9 GR
+  7 A$StateGame$1439                                               0005BB GR
+  7 A$StateGame$1440                                               0005BC GR
+  7 A$StateGame$1441                                               0005BF GR
+  7 A$StateGame$1446                                               0005C2 GR
+  7 A$StateGame$1447                                               0005C5 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 7
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1448                                               0005C6 GR
+  7 A$StateGame$1449                                               0005C8 GR
+  4 A$StateGame$145                                                00001F GR
+  7 A$StateGame$1450                                               0005C9 GR
+  7 A$StateGame$1451                                               0005CA GR
+  7 A$StateGame$1452                                               0005CD GR
+  7 A$StateGame$1453                                               0005CE GR
+  7 A$StateGame$1454                                               0005CF GR
+  7 A$StateGame$1455                                               0005D0 GR
+  7 A$StateGame$1456                                               0005D1 GR
+  7 A$StateGame$1457                                               0005D3 GR
+  7 A$StateGame$1458                                               0005D4 GR
+  7 A$StateGame$1459                                               0005D5 GR
+  4 A$StateGame$146                                                000020 GR
+  7 A$StateGame$1460                                               0005D7 GR
+  7 A$StateGame$1461                                               0005D8 GR
+  7 A$StateGame$1462                                               0005DB GR
+  7 A$StateGame$1467                                               0005DE GR
+  7 A$StateGame$1468                                               0005E1 GR
+  7 A$StateGame$1469                                               0005E2 GR
+  4 A$StateGame$147                                                000021 GR
+  7 A$StateGame$1470                                               0005E4 GR
+  7 A$StateGame$1471                                               0005E5 GR
+  7 A$StateGame$1472                                               0005E6 GR
+  7 A$StateGame$1473                                               0005E9 GR
+  7 A$StateGame$1474                                               0005EA GR
+  7 A$StateGame$1475                                               0005EB GR
+  7 A$StateGame$1476                                               0005EC GR
+  7 A$StateGame$1477                                               0005ED GR
+  7 A$StateGame$1478                                               0005EF GR
+  7 A$StateGame$1479                                               0005F0 GR
+  4 A$StateGame$148                                                000022 GR
+  7 A$StateGame$1480                                               0005F1 GR
+  7 A$StateGame$1481                                               0005F3 GR
+  7 A$StateGame$1482                                               0005F4 GR
+  7 A$StateGame$1483                                               0005F7 GR
+  7 A$StateGame$1488                                               0005F9 GR
+  7 A$StateGame$1489                                               0005FC GR
+  4 A$StateGame$149                                                000023 GR
+  7 A$StateGame$1490                                               0005FD GR
+  7 A$StateGame$1491                                               0005FF GR
+  7 A$StateGame$1492                                               000600 GR
+  7 A$StateGame$1493                                               000601 GR
+  7 A$StateGame$1494                                               000604 GR
+  7 A$StateGame$1495                                               000605 GR
+  7 A$StateGame$1496                                               000606 GR
+  7 A$StateGame$1497                                               000607 GR
+  7 A$StateGame$1498                                               000608 GR
+  7 A$StateGame$1499                                               00060A GR
+  4 A$StateGame$150                                                000024 GR
+  7 A$StateGame$1500                                               00060B GR
+  7 A$StateGame$1501                                               00060C GR
+  7 A$StateGame$1502                                               00060E GR
+  7 A$StateGame$1503                                               00060F GR
+  7 A$StateGame$1504                                               000612 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 8
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1509                                               000614 GR
+  4 A$StateGame$151                                                000025 GR
+  7 A$StateGame$1510                                               000617 GR
+  7 A$StateGame$1511                                               000618 GR
+  7 A$StateGame$1512                                               00061A GR
+  7 A$StateGame$1513                                               00061B GR
+  7 A$StateGame$1514                                               00061C GR
+  7 A$StateGame$1515                                               00061F GR
+  7 A$StateGame$1516                                               000620 GR
+  7 A$StateGame$1517                                               000621 GR
+  7 A$StateGame$1518                                               000622 GR
+  7 A$StateGame$1519                                               000623 GR
+  4 A$StateGame$152                                                000026 GR
+  7 A$StateGame$1520                                               000625 GR
+  7 A$StateGame$1521                                               000626 GR
+  7 A$StateGame$1522                                               000627 GR
+  7 A$StateGame$1523                                               000629 GR
+  7 A$StateGame$1524                                               00062A GR
+  7 A$StateGame$1525                                               00062D GR
+  4 A$StateGame$153                                                000027 GR
+  7 A$StateGame$1530                                               00062F GR
+  7 A$StateGame$1531                                               000632 GR
+  7 A$StateGame$1532                                               000633 GR
+  7 A$StateGame$1533                                               000635 GR
+  7 A$StateGame$1534                                               000636 GR
+  7 A$StateGame$1535                                               000637 GR
+  7 A$StateGame$1536                                               00063A GR
+  7 A$StateGame$1537                                               00063B GR
+  7 A$StateGame$1538                                               00063C GR
+  7 A$StateGame$1539                                               00063D GR
+  4 A$StateGame$154                                                000029 GR
+  7 A$StateGame$1540                                               00063E GR
+  7 A$StateGame$1541                                               000640 GR
+  7 A$StateGame$1542                                               000641 GR
+  7 A$StateGame$1543                                               000642 GR
+  7 A$StateGame$1544                                               000644 GR
+  7 A$StateGame$1545                                               000645 GR
+  7 A$StateGame$1546                                               000648 GR
+  4 A$StateGame$155                                                00002A GR
+  7 A$StateGame$1551                                               00064A GR
+  7 A$StateGame$1552                                               00064D GR
+  7 A$StateGame$1553                                               00064E GR
+  7 A$StateGame$1554                                               000650 GR
+  7 A$StateGame$1555                                               000651 GR
+  7 A$StateGame$1556                                               000652 GR
+  7 A$StateGame$1557                                               000655 GR
+  7 A$StateGame$1558                                               000656 GR
+  7 A$StateGame$1559                                               000657 GR
+  4 A$StateGame$156                                                00002B GR
+  7 A$StateGame$1560                                               000658 GR
+  7 A$StateGame$1561                                               000659 GR
+  7 A$StateGame$1562                                               00065B GR
+  7 A$StateGame$1563                                               00065C GR
+  7 A$StateGame$1564                                               00065D GR
+  7 A$StateGame$1565                                               00065F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 9
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1566                                               000660 GR
+  4 A$StateGame$157                                                00002C GR
+  7 A$StateGame$1574                                               000663 GR
+  7 A$StateGame$1579                                               000664 GR
+  4 A$StateGame$158                                                00002D GR
+  4 A$StateGame$159                                                00002E GR
+  7 A$StateGame$1593                                               000665 GR
+  7 A$StateGame$1594                                               000668 GR
+  7 A$StateGame$1595                                               000669 GR
+  7 A$StateGame$1596                                               00066B GR
+  7 A$StateGame$1597                                               00066E GR
+  7 A$StateGame$1598                                               00066F GR
+  7 A$StateGame$1599                                               000671 GR
+  4 A$StateGame$160                                                00002F GR
+  7 A$StateGame$1600                                               000674 GR
+  7 A$StateGame$1601                                               000676 GR
+  7 A$StateGame$1602                                               000678 GR
+  7 A$StateGame$1607                                               000679 GR
+  7 A$StateGame$1608                                               00067C GR
+  7 A$StateGame$1609                                               00067D GR
+  4 A$StateGame$161                                                000032 GR
+  7 A$StateGame$1610                                               00067F GR
+  7 A$StateGame$1611                                               000680 GR
+  7 A$StateGame$1612                                               000681 GR
+  7 A$StateGame$1613                                               000684 GR
+  7 A$StateGame$1614                                               000685 GR
+  7 A$StateGame$1615                                               000686 GR
+  7 A$StateGame$1616                                               000687 GR
+  7 A$StateGame$1617                                               000688 GR
+  7 A$StateGame$1618                                               00068A GR
+  7 A$StateGame$1619                                               00068B GR
+  7 A$StateGame$1620                                               00068C GR
+  7 A$StateGame$1621                                               00068E GR
+  7 A$StateGame$1622                                               000690 GR
+  7 A$StateGame$1623                                               000693 GR
+  7 A$StateGame$1624                                               000696 GR
+  7 A$StateGame$1625                                               000697 GR
+  7 A$StateGame$1626                                               000699 GR
+  7 A$StateGame$1627                                               00069A GR
+  7 A$StateGame$1628                                               00069B GR
+  7 A$StateGame$1629                                               00069E GR
+  7 A$StateGame$1630                                               00069F GR
+  7 A$StateGame$1631                                               0006A0 GR
+  7 A$StateGame$1632                                               0006A1 GR
+  7 A$StateGame$1633                                               0006A2 GR
+  7 A$StateGame$1634                                               0006A4 GR
+  7 A$StateGame$1635                                               0006A5 GR
+  7 A$StateGame$1636                                               0006A6 GR
+  7 A$StateGame$1637                                               0006A8 GR
+  7 A$StateGame$1638                                               0006AA GR
+  7 A$StateGame$1639                                               0006AD GR
+  7 A$StateGame$1644                                               0006AE GR
+  7 A$StateGame$1645                                               0006B1 GR
+  7 A$StateGame$1646                                               0006B2 GR
+  7 A$StateGame$1647                                               0006B4 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 10
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1648                                               0006B5 GR
+  7 A$StateGame$1649                                               0006B6 GR
+  4 A$StateGame$165                                                000034 GR
+  7 A$StateGame$1650                                               0006B9 GR
+  7 A$StateGame$1651                                               0006BA GR
+  7 A$StateGame$1652                                               0006BB GR
+  7 A$StateGame$1653                                               0006BC GR
+  7 A$StateGame$1654                                               0006BD GR
+  7 A$StateGame$1655                                               0006BF GR
+  7 A$StateGame$1656                                               0006C0 GR
+  7 A$StateGame$1657                                               0006C1 GR
+  7 A$StateGame$1658                                               0006C3 GR
+  7 A$StateGame$1659                                               0006C5 GR
+  4 A$StateGame$166                                                000036 GR
+  7 A$StateGame$1660                                               0006C8 GR
+  7 A$StateGame$1661                                               0006CB GR
+  7 A$StateGame$1662                                               0006CC GR
+  7 A$StateGame$1663                                               0006CE GR
+  7 A$StateGame$1664                                               0006CF GR
+  7 A$StateGame$1665                                               0006D0 GR
+  7 A$StateGame$1666                                               0006D3 GR
+  7 A$StateGame$1667                                               0006D4 GR
+  7 A$StateGame$1668                                               0006D5 GR
+  7 A$StateGame$1669                                               0006D6 GR
+  4 A$StateGame$167                                                000037 GR
+  7 A$StateGame$1670                                               0006D7 GR
+  7 A$StateGame$1671                                               0006D9 GR
+  7 A$StateGame$1672                                               0006DA GR
+  7 A$StateGame$1673                                               0006DB GR
+  7 A$StateGame$1674                                               0006DD GR
+  7 A$StateGame$1675                                               0006DF GR
+  7 A$StateGame$1676                                               0006E2 GR
+  4 A$StateGame$168                                                000039 GR
+  7 A$StateGame$1681                                               0006E3 GR
+  7 A$StateGame$1682                                               0006E6 GR
+  7 A$StateGame$1683                                               0006E7 GR
+  7 A$StateGame$1684                                               0006E9 GR
+  7 A$StateGame$1685                                               0006EA GR
+  7 A$StateGame$1686                                               0006EB GR
+  7 A$StateGame$1687                                               0006EE GR
+  7 A$StateGame$1688                                               0006EF GR
+  7 A$StateGame$1689                                               0006F0 GR
+  4 A$StateGame$169                                                00003A GR
+  7 A$StateGame$1690                                               0006F1 GR
+  7 A$StateGame$1691                                               0006F2 GR
+  7 A$StateGame$1692                                               0006F4 GR
+  7 A$StateGame$1693                                               0006F5 GR
+  7 A$StateGame$1694                                               0006F6 GR
+  7 A$StateGame$1695                                               0006F8 GR
+  7 A$StateGame$1696                                               0006FA GR
+  7 A$StateGame$1697                                               0006FD GR
+  7 A$StateGame$1698                                               000700 GR
+  7 A$StateGame$1699                                               000701 GR
+  7 A$StateGame$1700                                               000703 GR
+  7 A$StateGame$1701                                               000704 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 11
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1702                                               000705 GR
+  7 A$StateGame$1703                                               000708 GR
+  7 A$StateGame$1704                                               000709 GR
+  7 A$StateGame$1705                                               00070A GR
+  7 A$StateGame$1706                                               00070B GR
+  7 A$StateGame$1707                                               00070C GR
+  7 A$StateGame$1708                                               00070E GR
+  7 A$StateGame$1709                                               00070F GR
+  7 A$StateGame$1710                                               000710 GR
+  7 A$StateGame$1711                                               000712 GR
+  7 A$StateGame$1712                                               000714 GR
+  7 A$StateGame$1723                                               000717 GR
+  4 A$StateGame$173                                                00003D GR
+  7 A$StateGame$1734                                               000718 GR
+  7 A$StateGame$1738                                               00071A GR
+  7 A$StateGame$1739                                               00071D GR
+  4 A$StateGame$174                                                00003E GR
+  7 A$StateGame$1740                                               00071F GR
+  7 A$StateGame$1741                                               000720 GR
+  7 A$StateGame$1742                                               000721 GR
+  7 A$StateGame$1743                                               000722 GR
+  7 A$StateGame$1744                                               000723 GR
+  7 A$StateGame$1745                                               000724 GR
+  7 A$StateGame$1746                                               000725 GR
+  7 A$StateGame$1747                                               000727 GR
+  7 A$StateGame$1748                                               000729 GR
+  7 A$StateGame$1749                                               00072A GR
+  4 A$StateGame$175                                                00003F GR
+  7 A$StateGame$1750                                               00072B GR
+  7 A$StateGame$1751                                               00072E GR
+  7 A$StateGame$1752                                               00072F GR
+  7 A$StateGame$1753                                               000730 GR
+  7 A$StateGame$1755                                               000731 GR
+  7 A$StateGame$1756                                               000733 GR
+  7 A$StateGame$1757                                               000735 GR
+  7 A$StateGame$1758                                               000737 GR
+  7 A$StateGame$1759                                               000739 GR
+  4 A$StateGame$176                                                000040 GR
+  7 A$StateGame$1760                                               00073B GR
+  7 A$StateGame$1761                                               00073D GR
+  7 A$StateGame$1762                                               00073F GR
+  7 A$StateGame$1766                                               000740 GR
+  7 A$StateGame$1767                                               000743 GR
+  7 A$StateGame$1768                                               000744 GR
+  7 A$StateGame$1769                                               000745 GR
+  4 A$StateGame$177                                                000042 GR
+  7 A$StateGame$1773                                               000748 GR
+  7 A$StateGame$1777                                               00074A GR
+  7 A$StateGame$1778                                               00074C GR
+  7 A$StateGame$1779                                               00074D GR
+  7 A$StateGame$1780                                               00074E GR
+  7 A$StateGame$1781                                               00074F GR
+  7 A$StateGame$1782                                               000750 GR
+  7 A$StateGame$1783                                               000752 GR
+  7 A$StateGame$1784                                               000754 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 12
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1785                                               000756 GR
+  7 A$StateGame$1786                                               000758 GR
+  7 A$StateGame$1787                                               000759 GR
+  7 A$StateGame$1789                                               00075B GR
+  7 A$StateGame$1790                                               00075D GR
+  7 A$StateGame$1791                                               00075F GR
+  7 A$StateGame$1793                                               000760 GR
+  7 A$StateGame$1797                                               000762 GR
+  7 A$StateGame$1799                                               000764 GR
+  7 A$StateGame$1800                                               000766 GR
+  7 A$StateGame$1801                                               000767 GR
+  7 A$StateGame$1802                                               000768 GR
+  7 A$StateGame$1803                                               000769 GR
+  7 A$StateGame$1804                                               00076A GR
+  7 A$StateGame$1805                                               00076C GR
+  7 A$StateGame$1806                                               00076E GR
+  7 A$StateGame$1807                                               000770 GR
+  7 A$StateGame$1808                                               000772 GR
+  7 A$StateGame$1809                                               000773 GR
+  7 A$StateGame$1811                                               000775 GR
+  7 A$StateGame$1812                                               000777 GR
+  7 A$StateGame$1813                                               000779 GR
+  7 A$StateGame$1815                                               00077A GR
+  7 A$StateGame$1819                                               00077C GR
+  7 A$StateGame$1820                                               00077D GR
+  7 A$StateGame$1821                                               00077F GR
+  7 A$StateGame$1822                                               000780 GR
+  7 A$StateGame$1823                                               000781 GR
+  7 A$StateGame$1824                                               000784 GR
+  7 A$StateGame$1825                                               000785 GR
+  7 A$StateGame$1826                                               000787 GR
+  7 A$StateGame$1827                                               000788 GR
+  7 A$StateGame$1828                                               000789 GR
+  7 A$StateGame$1829                                               00078C GR
+  7 A$StateGame$1832                                               00078D GR
+  7 A$StateGame$1833                                               000790 GR
+  7 A$StateGame$1836                                               000791 GR
+  7 A$StateGame$1837                                               000792 GR
+  7 A$StateGame$1838                                               000794 GR
+  7 A$StateGame$1839                                               000795 GR
+  7 A$StateGame$1840                                               000796 GR
+  7 A$StateGame$1841                                               000798 GR
+  7 A$StateGame$1842                                               00079B GR
+  7 A$StateGame$1846                                               00079C GR
+  7 A$StateGame$1847                                               00079D GR
+  7 A$StateGame$1853                                               00079F GR
+  7 A$StateGame$1854                                               0007A0 GR
+  7 A$StateGame$1855                                               0007A1 GR
+  7 A$StateGame$1856                                               0007A2 GR
+  7 A$StateGame$1857                                               0007A3 GR
+  7 A$StateGame$1858                                               0007A5 GR
+  7 A$StateGame$1859                                               0007A7 GR
+  7 A$StateGame$1860                                               0007A9 GR
+  7 A$StateGame$1861                                               0007AB GR
+  7 A$StateGame$1862                                               0007AC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 13
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1864                                               0007AE GR
+  7 A$StateGame$1865                                               0007B0 GR
+  7 A$StateGame$1866                                               0007B2 GR
+  7 A$StateGame$1868                                               0007B3 GR
+  7 A$StateGame$1872                                               0007B5 GR
+  7 A$StateGame$1873                                               0007B7 GR
+  7 A$StateGame$1874                                               0007B8 GR
+  7 A$StateGame$1875                                               0007B9 GR
+  7 A$StateGame$1876                                               0007BA GR
+  7 A$StateGame$1877                                               0007BC GR
+  7 A$StateGame$1878                                               0007BD GR
+  7 A$StateGame$1879                                               0007C0 GR
+  7 A$StateGame$1880                                               0007C1 GR
+  7 A$StateGame$1881                                               0007C2 GR
+  7 A$StateGame$1882                                               0007C3 GR
+  7 A$StateGame$1883                                               0007C6 GR
+  7 A$StateGame$1884                                               0007C7 GR
+  7 A$StateGame$1885                                               0007C8 GR
+  7 A$StateGame$1886                                               0007C9 GR
+  7 A$StateGame$1887                                               0007CA GR
+  7 A$StateGame$1888                                               0007CC GR
+  7 A$StateGame$1889                                               0007CD GR
+  7 A$StateGame$1890                                               0007CE GR
+  7 A$StateGame$1891                                               0007D0 GR
+  7 A$StateGame$1896                                               0007D3 GR
+  7 A$StateGame$1901                                               0007D5 GR
+  7 A$StateGame$1915                                               0007D6 GR
+  7 A$StateGame$1916                                               0007D8 GR
+  7 A$StateGame$1917                                               0007D9 GR
+  7 A$StateGame$1918                                               0007DA GR
+  7 A$StateGame$1919                                               0007DD GR
+  7 A$StateGame$192                                                000000 GR
+  7 A$StateGame$1920                                               0007DE GR
+  7 A$StateGame$1921                                               0007E0 GR
+  7 A$StateGame$1922                                               0007E2 GR
+  7 A$StateGame$1930                                               0007E5 GR
+  7 A$StateGame$1948                                               0007E6 GR
+  7 A$StateGame$196                                                000002 GR
+  7 A$StateGame$1961                                               0007E7 GR
+  7 A$StateGame$1962                                               0007EA GR
+  7 A$StateGame$1966                                               0007EC GR
+  7 A$StateGame$1967                                               0007EE GR
+  7 A$StateGame$1968                                               0007F1 GR
+  7 A$StateGame$197                                                000005 GR
+  7 A$StateGame$1972                                               0007F4 GR
+  7 A$StateGame$1973                                               0007F6 GR
+  7 A$StateGame$1974                                               0007F9 GR
+  7 A$StateGame$1978                                               0007FC GR
+  7 A$StateGame$1979                                               0007FE GR
+  7 A$StateGame$198                                                000006 GR
+  7 A$StateGame$1980                                               000801 GR
+  7 A$StateGame$1984                                               000804 GR
+  7 A$StateGame$1985                                               000806 GR
+  7 A$StateGame$1986                                               000809 GR
+  7 A$StateGame$199                                                000009 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 14
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$1990                                               00080C GR
+  7 A$StateGame$1991                                               00080F GR
+  7 A$StateGame$1992                                               000812 GR
+  7 A$StateGame$1993                                               000813 GR
+  7 A$StateGame$1994                                               000815 GR
+  7 A$StateGame$1995                                               000818 GR
+  7 A$StateGame$1996                                               00081B GR
+  7 A$StateGame$1997                                               00081C GR
+  7 A$StateGame$1998                                               00081E GR
+  7 A$StateGame$1999                                               000821 GR
+  7 A$StateGame$200                                                00000B GR
+  7 A$StateGame$2000                                               000824 GR
+  7 A$StateGame$2001                                               000825 GR
+  7 A$StateGame$2002                                               000827 GR
+  7 A$StateGame$2003                                               00082A GR
+  7 A$StateGame$2004                                               00082D GR
+  7 A$StateGame$2005                                               00082E GR
+  7 A$StateGame$201                                                00000E GR
+  7 A$StateGame$2011                                               00082F GR
+  7 A$StateGame$2012                                               000831 GR
+  7 A$StateGame$202                                                000011 GR
+  7 A$StateGame$2020                                               000834 GR
+  7 A$StateGame$203                                                000012 GR
+  7 A$StateGame$204                                                000013 GR
+  7 A$StateGame$208                                                000014 GR
+  7 A$StateGame$209                                                000017 GR
+  7 A$StateGame$210                                                000018 GR
+  7 A$StateGame$211                                                00001B GR
+  7 A$StateGame$212                                                00001D GR
+  7 A$StateGame$213                                                000020 GR
+  7 A$StateGame$214                                                000023 GR
+  7 A$StateGame$215                                                000024 GR
+  7 A$StateGame$216                                                000025 GR
+  7 A$StateGame$220                                                000026 GR
+  7 A$StateGame$221                                                000029 GR
+  7 A$StateGame$222                                                00002A GR
+  7 A$StateGame$223                                                00002D GR
+  7 A$StateGame$224                                                00002F GR
+  7 A$StateGame$225                                                000032 GR
+  7 A$StateGame$226                                                000035 GR
+  7 A$StateGame$227                                                000036 GR
+  7 A$StateGame$228                                                000037 GR
+  7 A$StateGame$232                                                000038 GR
+  7 A$StateGame$233                                                00003B GR
+  7 A$StateGame$234                                                00003C GR
+  7 A$StateGame$235                                                00003F GR
+  7 A$StateGame$236                                                000041 GR
+  7 A$StateGame$237                                                000044 GR
+  7 A$StateGame$238                                                000047 GR
+  7 A$StateGame$239                                                000048 GR
+  7 A$StateGame$240                                                000049 GR
+  7 A$StateGame$244                                                00004A GR
+  7 A$StateGame$245                                                00004D GR
+  7 A$StateGame$246                                                00004E GR
+  7 A$StateGame$247                                                00004F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 15
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$248                                                000050 GR
+  7 A$StateGame$249                                                000053 GR
+  7 A$StateGame$250                                                000054 GR
+  7 A$StateGame$251                                                000055 GR
+  7 A$StateGame$252                                                000056 GR
+  7 A$StateGame$253                                                000057 GR
+  7 A$StateGame$254                                                000059 GR
+  7 A$StateGame$255                                                00005A GR
+  7 A$StateGame$256                                                00005B GR
+  7 A$StateGame$257                                                00005C GR
+  7 A$StateGame$258                                                00005D GR
+  7 A$StateGame$259                                                00005E GR
+  7 A$StateGame$260                                                00005F GR
+  7 A$StateGame$261                                                000062 GR
+  7 A$StateGame$262                                                000063 GR
+  7 A$StateGame$263                                                000064 GR
+  7 A$StateGame$264                                                000065 GR
+  7 A$StateGame$265                                                000067 GR
+  7 A$StateGame$266                                                000068 GR
+  7 A$StateGame$267                                                000069 GR
+  7 A$StateGame$268                                                00006A GR
+  7 A$StateGame$269                                                00006C GR
+  7 A$StateGame$270                                                00006D GR
+  7 A$StateGame$271                                                000070 GR
+  7 A$StateGame$272                                                000071 GR
+  7 A$StateGame$273                                                000072 GR
+  7 A$StateGame$274                                                000073 GR
+  7 A$StateGame$275                                                000074 GR
+  7 A$StateGame$276                                                000077 GR
+  7 A$StateGame$277                                                000078 GR
+  7 A$StateGame$278                                                000079 GR
+  7 A$StateGame$279                                                00007A GR
+  7 A$StateGame$280                                                00007C GR
+  7 A$StateGame$281                                                00007D GR
+  7 A$StateGame$282                                                00007E GR
+  7 A$StateGame$283                                                00007F GR
+  7 A$StateGame$284                                                000080 GR
+  7 A$StateGame$285                                                000082 GR
+  7 A$StateGame$286                                                000085 GR
+  7 A$StateGame$287                                                000088 GR
+  7 A$StateGame$288                                                000089 GR
+  7 A$StateGame$289                                                00008A GR
+  7 A$StateGame$293                                                00008B GR
+  7 A$StateGame$294                                                00008E GR
+  7 A$StateGame$295                                                00008F GR
+  7 A$StateGame$296                                                000090 GR
+  7 A$StateGame$297                                                000091 GR
+  7 A$StateGame$298                                                000092 GR
+  7 A$StateGame$299                                                000094 GR
+  7 A$StateGame$300                                                000095 GR
+  7 A$StateGame$301                                                000096 GR
+  7 A$StateGame$302                                                000097 GR
+  7 A$StateGame$303                                                000098 GR
+  7 A$StateGame$304                                                000099 GR
+  7 A$StateGame$305                                                00009A GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 16
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$306                                                00009D GR
+  7 A$StateGame$307                                                00009E GR
+  7 A$StateGame$308                                                00009F GR
+  7 A$StateGame$309                                                0000A0 GR
+  7 A$StateGame$310                                                0000A2 GR
+  7 A$StateGame$311                                                0000A3 GR
+  7 A$StateGame$312                                                0000A4 GR
+  7 A$StateGame$313                                                0000A5 GR
+  7 A$StateGame$314                                                0000A7 GR
+  7 A$StateGame$315                                                0000A8 GR
+  7 A$StateGame$316                                                0000AB GR
+  7 A$StateGame$317                                                0000AC GR
+  7 A$StateGame$318                                                0000AD GR
+  7 A$StateGame$319                                                0000AE GR
+  7 A$StateGame$320                                                0000AF GR
+  7 A$StateGame$321                                                0000B2 GR
+  7 A$StateGame$322                                                0000B3 GR
+  7 A$StateGame$323                                                0000B4 GR
+  7 A$StateGame$324                                                0000B5 GR
+  7 A$StateGame$325                                                0000B7 GR
+  7 A$StateGame$326                                                0000B8 GR
+  7 A$StateGame$327                                                0000B9 GR
+  7 A$StateGame$328                                                0000BA GR
+  7 A$StateGame$329                                                0000BB GR
+  7 A$StateGame$330                                                0000BD GR
+  7 A$StateGame$334                                                0000C0 GR
+  7 A$StateGame$335                                                0000C3 GR
+  7 A$StateGame$339                                                0000C5 GR
+  7 A$StateGame$340                                                0000C8 GR
+  7 A$StateGame$341                                                0000CA GR
+  7 A$StateGame$342                                                0000CD GR
+  7 A$StateGame$343                                                0000CE GR
+  7 A$StateGame$344                                                0000D1 GR
+  7 A$StateGame$345                                                0000D2 GR
+  7 A$StateGame$346                                                0000D3 GR
+  7 A$StateGame$350                                                0000D6 GR
+  7 A$StateGame$351                                                0000D9 GR
+  7 A$StateGame$352                                                0000DB GR
+  7 A$StateGame$353                                                0000DE GR
+  7 A$StateGame$354                                                0000DF GR
+  7 A$StateGame$355                                                0000E2 GR
+  7 A$StateGame$356                                                0000E3 GR
+  7 A$StateGame$357                                                0000E4 GR
+  7 A$StateGame$358                                                0000E7 GR
+  7 A$StateGame$359                                                0000EA GR
+  7 A$StateGame$360                                                0000EB GR
+  7 A$StateGame$361                                                0000EC GR
+  7 A$StateGame$362                                                0000ED GR
+  7 A$StateGame$363                                                0000EE GR
+  7 A$StateGame$364                                                0000EF GR
+  7 A$StateGame$365                                                0000F1 GR
+  7 A$StateGame$366                                                0000F3 GR
+  7 A$StateGame$367                                                0000F5 GR
+  7 A$StateGame$368                                                0000F6 GR
+  7 A$StateGame$369                                                0000F8 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 17
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$370                                                0000FB GR
+  7 A$StateGame$371                                                0000FD GR
+  7 A$StateGame$372                                                0000FE GR
+  7 A$StateGame$373                                                0000FF GR
+  7 A$StateGame$374                                                000101 GR
+  7 A$StateGame$375                                                000102 GR
+  7 A$StateGame$376                                                000104 GR
+  7 A$StateGame$377                                                000106 GR
+  7 A$StateGame$378                                                000109 GR
+  7 A$StateGame$379                                                00010C GR
+  7 A$StateGame$380                                                00010D GR
+  7 A$StateGame$381                                                00010E GR
+  7 A$StateGame$382                                                00010F GR
+  7 A$StateGame$383                                                000111 GR
+  7 A$StateGame$384                                                000113 GR
+  7 A$StateGame$388                                                000115 GR
+  7 A$StateGame$389                                                000117 GR
+  7 A$StateGame$393                                                00011A GR
+  7 A$StateGame$394                                                00011D GR
+  7 A$StateGame$395                                                000120 GR
+  7 A$StateGame$396                                                000123 GR
+  7 A$StateGame$400                                                000126 GR
+  7 A$StateGame$401                                                000129 GR
+  7 A$StateGame$402                                                00012C GR
+  7 A$StateGame$403                                                00012F GR
+  7 A$StateGame$407                                                000132 GR
+  7 A$StateGame$408                                                000134 GR
+  7 A$StateGame$409                                                000137 GR
+  7 A$StateGame$413                                                00013A GR
+  7 A$StateGame$418                                                00013C GR
+  7 A$StateGame$538                                                0001A4 GR
+  7 A$StateGame$542                                                0001A6 GR
+  7 A$StateGame$543                                                0001A9 GR
+  7 A$StateGame$544                                                0001AC GR
+  7 A$StateGame$545                                                0001AD GR
+  7 A$StateGame$546                                                0001AE GR
+  7 A$StateGame$550                                                0001AF GR
+  7 A$StateGame$551                                                0001B2 GR
+  7 A$StateGame$552                                                0001B3 GR
+  7 A$StateGame$553                                                0001B4 GR
+  7 A$StateGame$554                                                0001B6 GR
+  7 A$StateGame$555                                                0001B7 GR
+  7 A$StateGame$556                                                0001B8 GR
+  7 A$StateGame$557                                                0001B9 GR
+  7 A$StateGame$558                                                0001BB GR
+  7 A$StateGame$559                                                0001BC GR
+  7 A$StateGame$560                                                0001BE GR
+  7 A$StateGame$561                                                0001BF GR
+  7 A$StateGame$562                                                0001C1 GR
+  7 A$StateGame$563                                                0001C2 GR
+  7 A$StateGame$564                                                0001C4 GR
+  7 A$StateGame$565                                                0001C5 GR
+  7 A$StateGame$566                                                0001C7 GR
+  7 A$StateGame$567                                                0001C8 GR
+  7 A$StateGame$571                                                0001CA GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 18
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$572                                                0001CD GR
+  7 A$StateGame$573                                                0001D0 GR
+  7 A$StateGame$574                                                0001D1 GR
+  7 A$StateGame$578                                                0001D2 GR
+  7 A$StateGame$582                                                0001D5 GR
+  7 A$StateGame$583                                                0001D7 GR
+  7 A$StateGame$584                                                0001D8 GR
+  7 A$StateGame$585                                                0001D9 GR
+  7 A$StateGame$589                                                0001DB GR
+  7 A$StateGame$591                                                0001DE GR
+  7 A$StateGame$592                                                0001DF GR
+  7 A$StateGame$593                                                0001E0 GR
+  7 A$StateGame$594                                                0001E1 GR
+  7 A$StateGame$595                                                0001E2 GR
+  7 A$StateGame$596                                                0001E4 GR
+  7 A$StateGame$597                                                0001E5 GR
+  7 A$StateGame$598                                                0001E6 GR
+  7 A$StateGame$599                                                0001E8 GR
+  7 A$StateGame$600                                                0001E9 GR
+  7 A$StateGame$601                                                0001EA GR
+  7 A$StateGame$602                                                0001EB GR
+  7 A$StateGame$603                                                0001EC GR
+  7 A$StateGame$604                                                0001ED GR
+  7 A$StateGame$605                                                0001EE GR
+  7 A$StateGame$606                                                0001EF GR
+  7 A$StateGame$610                                                0001F1 GR
+  7 A$StateGame$611                                                0001F2 GR
+  7 A$StateGame$612                                                0001F4 GR
+  7 A$StateGame$613                                                0001F6 GR
+  7 A$StateGame$614                                                0001F7 GR
+  7 A$StateGame$615                                                0001F8 GR
+  7 A$StateGame$616                                                0001F9 GR
+  7 A$StateGame$617                                                0001FC GR
+  7 A$StateGame$618                                                0001FD GR
+  7 A$StateGame$619                                                0001FF GR
+  7 A$StateGame$620                                                000200 GR
+  7 A$StateGame$621                                                000201 GR
+  7 A$StateGame$622                                                000204 GR
+  7 A$StateGame$625                                                000205 GR
+  7 A$StateGame$626                                                000208 GR
+  7 A$StateGame$629                                                000209 GR
+  7 A$StateGame$630                                                00020A GR
+  7 A$StateGame$631                                                00020B GR
+  7 A$StateGame$632                                                00020C GR
+  7 A$StateGame$633                                                00020D GR
+  7 A$StateGame$634                                                00020F GR
+  7 A$StateGame$635                                                000210 GR
+  7 A$StateGame$636                                                000212 GR
+  7 A$StateGame$637                                                000215 GR
+  7 A$StateGame$638                                                000216 GR
+  7 A$StateGame$642                                                000217 GR
+  7 A$StateGame$643                                                000218 GR
+  7 A$StateGame$649                                                00021A GR
+  7 A$StateGame$650                                                00021B GR
+  7 A$StateGame$651                                                00021C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 19
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$655                                                00021E GR
+  7 A$StateGame$656                                                000220 GR
+  7 A$StateGame$657                                                000221 GR
+  7 A$StateGame$658                                                000222 GR
+  7 A$StateGame$659                                                000223 GR
+  7 A$StateGame$660                                                000225 GR
+  7 A$StateGame$661                                                000226 GR
+  7 A$StateGame$662                                                000227 GR
+  7 A$StateGame$663                                                00022A GR
+  7 A$StateGame$664                                                00022B GR
+  7 A$StateGame$665                                                00022C GR
+  7 A$StateGame$666                                                00022D GR
+  7 A$StateGame$667                                                000230 GR
+  7 A$StateGame$670                                                000231 GR
+  7 A$StateGame$671                                                000234 GR
+  7 A$StateGame$674                                                000235 GR
+  7 A$StateGame$675                                                000236 GR
+  7 A$StateGame$676                                                000237 GR
+  7 A$StateGame$677                                                000238 GR
+  7 A$StateGame$678                                                000239 GR
+  7 A$StateGame$679                                                00023B GR
+  7 A$StateGame$680                                                00023E GR
+  7 A$StateGame$684                                                00023F GR
+  7 A$StateGame$690                                                000240 GR
+  7 A$StateGame$691                                                000241 GR
+  7 A$StateGame$692                                                000243 GR
+  7 A$StateGame$693                                                000244 GR
+  7 A$StateGame$694                                                000245 GR
+  7 A$StateGame$695                                                000246 GR
+  7 A$StateGame$696                                                000247 GR
+  7 A$StateGame$697                                                000249 GR
+  7 A$StateGame$701                                                00024B GR
+  7 A$StateGame$702                                                00024C GR
+  7 A$StateGame$703                                                00024E GR
+  7 A$StateGame$704                                                00024F GR
+  7 A$StateGame$705                                                000250 GR
+  7 A$StateGame$706                                                000253 GR
+  7 A$StateGame$707                                                000254 GR
+  7 A$StateGame$708                                                000256 GR
+  7 A$StateGame$709                                                000257 GR
+  7 A$StateGame$710                                                000258 GR
+  7 A$StateGame$711                                                00025B GR
+  7 A$StateGame$714                                                00025C GR
+  7 A$StateGame$715                                                00025F GR
+  7 A$StateGame$718                                                000260 GR
+  7 A$StateGame$719                                                000261 GR
+  7 A$StateGame$720                                                000262 GR
+  7 A$StateGame$721                                                000263 GR
+  7 A$StateGame$722                                                000264 GR
+  7 A$StateGame$723                                                000266 GR
+  7 A$StateGame$724                                                000269 GR
+  7 A$StateGame$728                                                00026A GR
+  7 A$StateGame$729                                                00026B GR
+  7 A$StateGame$734                                                00026D GR
+  7 A$StateGame$739                                                00026F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 20
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$750                                                000270 GR
+  7 A$StateGame$754                                                000272 GR
+  7 A$StateGame$755                                                000275 GR
+  7 A$StateGame$756                                                000278 GR
+  7 A$StateGame$757                                                00027B GR
+  7 A$StateGame$761                                                00027E GR
+  7 A$StateGame$762                                                000281 GR
+  7 A$StateGame$763                                                000284 GR
+  7 A$StateGame$764                                                000287 GR
+  7 A$StateGame$768                                                00028A GR
+  7 A$StateGame$769                                                00028D GR
+  7 A$StateGame$770                                                000290 GR
+  7 A$StateGame$771                                                000291 GR
+  7 A$StateGame$772                                                000292 GR
+  7 A$StateGame$773                                                000293 GR
+  7 A$StateGame$774                                                000296 GR
+  7 A$StateGame$775                                                000298 GR
+  7 A$StateGame$776                                                00029A GR
+  7 A$StateGame$777                                                00029C GR
+  7 A$StateGame$778                                                00029E GR
+  7 A$StateGame$779                                                0002A0 GR
+  7 A$StateGame$780                                                0002A2 GR
+  7 A$StateGame$781                                                0002A4 GR
+  7 A$StateGame$785                                                0002A5 GR
+  7 A$StateGame$786                                                0002A8 GR
+  7 A$StateGame$787                                                0002AB GR
+  7 A$StateGame$788                                                0002AC GR
+  7 A$StateGame$789                                                0002AD GR
+  7 A$StateGame$790                                                0002AE GR
+  7 A$StateGame$791                                                0002B1 GR
+  7 A$StateGame$792                                                0002B3 GR
+  7 A$StateGame$793                                                0002B5 GR
+  7 A$StateGame$794                                                0002B7 GR
+  7 A$StateGame$795                                                0002B9 GR
+  7 A$StateGame$796                                                0002BB GR
+  7 A$StateGame$797                                                0002BD GR
+  7 A$StateGame$798                                                0002BF GR
+  7 A$StateGame$802                                                0002C0 GR
+  7 A$StateGame$803                                                0002C1 GR
+  7 A$StateGame$804                                                0002C2 GR
+  7 A$StateGame$805                                                0002C3 GR
+  7 A$StateGame$806                                                0002C4 GR
+  7 A$StateGame$810                                                0002C5 GR
+  7 A$StateGame$811                                                0002C7 GR
+  7 A$StateGame$813                                                0002C9 GR
+  7 A$StateGame$814                                                0002CB GR
+  7 A$StateGame$815                                                0002CC GR
+  7 A$StateGame$816                                                0002CD GR
+  7 A$StateGame$817                                                0002CE GR
+  7 A$StateGame$818                                                0002CF GR
+  7 A$StateGame$819                                                0002D0 GR
+  7 A$StateGame$820                                                0002D1 GR
+  7 A$StateGame$821                                                0002D2 GR
+  7 A$StateGame$822                                                0002D5 GR
+  7 A$StateGame$823                                                0002D6 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 21
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$824                                                0002D7 GR
+  7 A$StateGame$825                                                0002D8 GR
+  7 A$StateGame$826                                                0002D9 GR
+  7 A$StateGame$827                                                0002DA GR
+  7 A$StateGame$828                                                0002DC GR
+  7 A$StateGame$829                                                0002DD GR
+  7 A$StateGame$830                                                0002DE GR
+  7 A$StateGame$831                                                0002DF GR
+  7 A$StateGame$832                                                0002E0 GR
+  7 A$StateGame$833                                                0002E1 GR
+  7 A$StateGame$834                                                0002E2 GR
+  7 A$StateGame$835                                                0002E3 GR
+  7 A$StateGame$836                                                0002E5 GR
+  7 A$StateGame$837                                                0002E6 GR
+  7 A$StateGame$838                                                0002E7 GR
+  7 A$StateGame$839                                                0002E8 GR
+  7 A$StateGame$840                                                0002E9 GR
+  7 A$StateGame$841                                                0002EA GR
+  7 A$StateGame$842                                                0002EB GR
+  7 A$StateGame$843                                                0002ED GR
+  7 A$StateGame$844                                                0002EF GR
+  7 A$StateGame$845                                                0002F1 GR
+  7 A$StateGame$846                                                0002F3 GR
+  7 A$StateGame$847                                                0002F4 GR
+  7 A$StateGame$849                                                0002F6 GR
+  7 A$StateGame$850                                                0002F8 GR
+  7 A$StateGame$851                                                0002FA GR
+  7 A$StateGame$853                                                0002FB GR
+  7 A$StateGame$857                                                0002FD GR
+  7 A$StateGame$858                                                0002FF GR
+  7 A$StateGame$859                                                000300 GR
+  7 A$StateGame$860                                                000302 GR
+  7 A$StateGame$861                                                000303 GR
+  7 A$StateGame$862                                                000305 GR
+  7 A$StateGame$863                                                000306 GR
+  7 A$StateGame$867                                                000307 GR
+  7 A$StateGame$868                                                000309 GR
+  7 A$StateGame$869                                                00030A GR
+  7 A$StateGame$870                                                00030C GR
+  7 A$StateGame$874                                                00030E GR
+  7 A$StateGame$875                                                00030F GR
+  7 A$StateGame$876                                                000311 GR
+  7 A$StateGame$877                                                000314 GR
+  7 A$StateGame$878                                                000315 GR
+  7 A$StateGame$879                                                000316 GR
+  7 A$StateGame$880                                                000317 GR
+  7 A$StateGame$881                                                00031A GR
+  7 A$StateGame$882                                                00031B GR
+  7 A$StateGame$883                                                00031C GR
+  7 A$StateGame$884                                                00031D GR
+  7 A$StateGame$885                                                00031E GR
+  7 A$StateGame$886                                                000320 GR
+  7 A$StateGame$887                                                000321 GR
+  7 A$StateGame$888                                                000322 GR
+  7 A$StateGame$889                                                000324 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 22
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$890                                                000327 GR
+  7 A$StateGame$895                                                000329 GR
+  7 A$StateGame$896                                                00032C GR
+  7 A$StateGame$897                                                00032D GR
+  7 A$StateGame$898                                                00032F GR
+  7 A$StateGame$899                                                000330 GR
+  7 A$StateGame$900                                                000331 GR
+  7 A$StateGame$901                                                000334 GR
+  7 A$StateGame$902                                                000335 GR
+  7 A$StateGame$903                                                000336 GR
+  7 A$StateGame$904                                                000337 GR
+  7 A$StateGame$905                                                000338 GR
+  7 A$StateGame$906                                                00033A GR
+  7 A$StateGame$907                                                00033B GR
+  7 A$StateGame$908                                                00033C GR
+  7 A$StateGame$909                                                00033E GR
+  7 A$StateGame$914                                                000341 GR
+  7 A$StateGame$915                                                000343 GR
+  7 A$StateGame$916                                                000344 GR
+  7 A$StateGame$921                                                000346 GR
+  7 A$StateGame$922                                                000348 GR
+  7 A$StateGame$923                                                000349 GR
+  7 A$StateGame$924                                                00034B GR
+  7 A$StateGame$925                                                00034C GR
+  7 A$StateGame$926                                                00034F GR
+  7 A$StateGame$927                                                000350 GR
+  7 A$StateGame$928                                                000352 GR
+  7 A$StateGame$929                                                000353 GR
+  7 A$StateGame$930                                                000354 GR
+  7 A$StateGame$931                                                000357 GR
+  7 A$StateGame$932                                                000358 GR
+  7 A$StateGame$933                                                000359 GR
+  7 A$StateGame$934                                                00035A GR
+  7 A$StateGame$935                                                00035B GR
+  7 A$StateGame$936                                                00035D GR
+  7 A$StateGame$937                                                00035E GR
+  7 A$StateGame$938                                                00035F GR
+  7 A$StateGame$939                                                000361 GR
+  7 A$StateGame$943                                                000364 GR
+  7 A$StateGame$948                                                000366 GR
+  7 A$StateGame$959                                                000367 GR
+  7 A$StateGame$963                                                000368 GR
+  7 A$StateGame$964                                                00036B GR
+  7 A$StateGame$968                                                00036C GR
+  7 A$StateGame$969                                                00036F GR
+  7 A$StateGame$970                                                000370 GR
+  7 A$StateGame$971                                                000372 GR
+  7 A$StateGame$972                                                000374 GR
+  7 A$StateGame$976                                                000375 GR
+  7 A$StateGame$977                                                000378 GR
+  7 A$StateGame$978                                                000379 GR
+  7 A$StateGame$979                                                00037A GR
+  7 A$StateGame$980                                                00037C GR
+  7 A$StateGame$981                                                00037D GR
+  7 A$StateGame$982                                                00037E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 23
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$StateGame$983                                                000380 GR
+  7 A$StateGame$984                                                000381 GR
+  7 A$StateGame$985                                                000382 GR
+  7 A$StateGame$990                                                000383 GR
+  7 A$StateGame$991                                                000385 GR
+  7 A$StateGame$992                                                000387 GR
+  7 A$StateGame$993                                                000388 GR
+  7 A$StateGame$994                                                00038A GR
+  7 A$StateGame$995                                                00038B GR
+  7 A$StateGame$996                                                00038C GR
+  7 A$StateGame$997                                                00038E GR
+  7 A$StateGame$998                                                000390 GR
+  7 A$StateGame$999                                                000392 GR
+  7 C$StateGame.c$101$1_1$199                                   =  0002C5 GR
+  7 C$StateGame.c$102$2_1$201                                   =  000307 GR
+  7 C$StateGame.c$103$1_1$199                                   =  0002FD GR
+  7 C$StateGame.c$103$3_1$202                                   =  00030E GR
+  7 C$StateGame.c$104$3_1$203                                   =  000329 GR
+  7 C$StateGame.c$105$2_1$201                                   =  000341 GR
+  7 C$StateGame.c$107$1_1$200                                   =  000346 GR
+  7 C$StateGame.c$108$1_1$199                                   =  000366 GR
+  7 C$StateGame.c$110$1_1$204                                   =  000367 GR
+  7 C$StateGame.c$112$2_0$204                                   =  000368 GR
+  7 C$StateGame.c$113$1_0$204                                   =  00036C GR
+  7 C$StateGame.c$114$1_0$204                                   =  000375 GR
+  7 C$StateGame.c$115$1_0$204                                   =  000383 GR
+  7 C$StateGame.c$116$2_0$207                                   =  00039E GR
+  7 C$StateGame.c$117$1_0$204                                   =  0003A5 GR
+  7 C$StateGame.c$118$2_0$208                                   =  0003C3 GR
+  7 C$StateGame.c$119$1_0$204                                   =  0003CA GR
+  7 C$StateGame.c$120$2_0$209                                   =  0003E8 GR
+  7 C$StateGame.c$121$1_0$204                                   =  0003EF GR
+  7 C$StateGame.c$122$2_0$210                                   =  000406 GR
+  7 C$StateGame.c$125$1_0$204                                   =  00040B GR
+  7 C$StateGame.c$126$2_0$211                                   =  00042A GR
+  7 C$StateGame.c$127$3_0$212                                   =  00043F GR
+  7 C$StateGame.c$128$3_0$212                                   =  000446 GR
+  7 C$StateGame.c$129$3_0$212                                   =  00044D GR
+  7 C$StateGame.c$130$1_0$204                                   =  000452 GR
+  7 C$StateGame.c$132$1_0$204                                   =  000452 GR
+  7 C$StateGame.c$133$2_0$213                                   =  00046F GR
+  7 C$StateGame.c$134$3_0$214                                   =  000485 GR
+  7 C$StateGame.c$135$3_0$214                                   =  00048C GR
+  7 C$StateGame.c$136$3_0$214                                   =  000493 GR
+  7 C$StateGame.c$137$1_0$204                                   =  000498 GR
+  7 C$StateGame.c$139$1_0$204                                   =  000498 GR
+  7 C$StateGame.c$140$2_0$215                                   =  0004A2 GR
+  7 C$StateGame.c$141$3_0$216                                   =  0004BB GR
+  7 C$StateGame.c$142$3_0$216                                   =  0004C2 GR
+  7 C$StateGame.c$143$3_0$216                                   =  0004C9 GR
+  7 C$StateGame.c$144$3_0$216                                   =  0004D0 GR
+  7 C$StateGame.c$145$1_0$204                                   =  0004D5 GR
+  7 C$StateGame.c$147$1_0$204                                   =  0004D5 GR
+  7 C$StateGame.c$148$2_0$217                                   =  0004DF GR
+  7 C$StateGame.c$149$2_0$217                                   =  0004E6 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 24
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$StateGame.c$150$3_0$218                                   =  00051A GR
+  7 C$StateGame.c$151$3_0$218                                   =  000536 GR
+  7 C$StateGame.c$152$3_0$218                                   =  000552 GR
+  7 C$StateGame.c$153$3_0$218                                   =  00056E GR
+  7 C$StateGame.c$154$3_0$218                                   =  00058A GR
+  7 C$StateGame.c$155$3_0$218                                   =  0005A6 GR
+  7 C$StateGame.c$156$3_0$218                                   =  0005C2 GR
+  7 C$StateGame.c$157$3_0$218                                   =  0005DE GR
+  7 C$StateGame.c$158$3_0$218                                   =  0005F9 GR
+  7 C$StateGame.c$159$3_0$218                                   =  000614 GR
+  7 C$StateGame.c$160$3_0$218                                   =  00062F GR
+  7 C$StateGame.c$161$3_0$218                                   =  00064A GR
+  7 C$StateGame.c$163$1_0$204                                   =  000663 GR
+  7 C$StateGame.c$165$1_0$204                                   =  000664 GR
+  7 C$StateGame.c$167$1_0$219                                   =  000665 GR
+  7 C$StateGame.c$168$1_0$219                                   =  000665 GR
+  7 C$StateGame.c$169$2_0$220                                   =  000679 GR
+  7 C$StateGame.c$170$2_0$220                                   =  0006AE GR
+  7 C$StateGame.c$171$2_0$220                                   =  0006E3 GR
+  7 C$StateGame.c$172$1_0$219                                   =  000717 GR
+  7 C$StateGame.c$173$1_0$219                                   =  000717 GR
+  7 C$StateGame.c$175$1_0$221                                   =  000718 GR
+  7 C$StateGame.c$176$1_0$221                                   =  00071A GR
+  7 C$StateGame.c$177$1_0$221                                   =  000740 GR
+  7 C$StateGame.c$178$1_0$221                                   =  000748 GR
+  7 C$StateGame.c$179$1_0$221                                   =  00074A GR
+  7 C$StateGame.c$180$1_0$221                                   =  000762 GR
+  7 C$StateGame.c$181$3_0$223                                   =  00077C GR
+  7 C$StateGame.c$182$3_0$223                                   =  00079C GR
+  7 C$StateGame.c$185$1_0$221                                   =  00079F GR
+  7 C$StateGame.c$186$2_0$224                                   =  0007B5 GR
+  7 C$StateGame.c$188$1_0$221                                   =  0007D5 GR
+  4 C$StateGame.c$190$1_0$226                                   =  000000 GR
+  4 C$StateGame.c$191$2_0$226                                   =  000006 GR
+  4 C$StateGame.c$192$1_0$226                                   =  00000A GR
+  4 C$StateGame.c$193$1_0$226                                   =  000012 GR
+  4 C$StateGame.c$194$1_0$226                                   =  000034 GR
+  4 C$StateGame.c$195$1_0$226                                   =  00003D GR
+  7 C$StateGame.c$197$1_0$227                                   =  0007D6 GR
+  7 C$StateGame.c$198$1_0$227                                   =  0007D6 GR
+  7 C$StateGame.c$199$1_0$227                                   =  0007E5 GR
+  7 C$StateGame.c$200$1_0$229                                   =  0007E6 GR
+  7 C$StateGame.c$202$1_0$229                                   =  0007E6 GR
+  7 C$StateGame.c$204$1_0$230                                   =  0007E7 GR
+  7 C$StateGame.c$206$1_0$230                                   =  0007E7 GR
+  7 C$StateGame.c$208$1_0$230                                   =  0007EC GR
+  7 C$StateGame.c$210$1_0$230                                   =  0007F4 GR
+  7 C$StateGame.c$212$1_0$230                                   =  0007FC GR
+  7 C$StateGame.c$214$1_0$230                                   =  000804 GR
+  7 C$StateGame.c$216$1_0$230                                   =  00080C GR
+  7 C$StateGame.c$217$2_0$231                                   =  00082F GR
+  7 C$StateGame.c$229$1_0$230                                   =  000834 GR
+  7 C$StateGame.c$51$0_0$191                                    =  000000 GR
+  7 C$StateGame.c$54$1_0$191                                    =  000002 GR
+  7 C$StateGame.c$55$1_0$191                                    =  000014 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 25
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$StateGame.c$56$1_0$191                                    =  000026 GR
+  7 C$StateGame.c$57$1_0$191                                    =  000038 GR
+  7 C$StateGame.c$58$1_1$191                                    =  00004A GR
+  7 C$StateGame.c$59$1_1$192                                    =  00008B GR
+  7 C$StateGame.c$60$1_1$192                                    =  0000C0 GR
+  7 C$StateGame.c$61$1_1$192                                    =  0000C5 GR
+  7 C$StateGame.c$64$1_1$192                                    =  0000D6 GR
+  7 C$StateGame.c$65$1_1$192                                    =  000115 GR
+  7 C$StateGame.c$66$1_1$192                                    =  00011A GR
+  7 C$StateGame.c$67$1_1$192                                    =  000126 GR
+  7 C$StateGame.c$68$1_1$192                                    =  000132 GR
+  7 C$StateGame.c$69$1_1$191                                    =  00013C GR
+  7 C$StateGame.c$71$1_1$193                                    =  0001A4 GR
+  7 C$StateGame.c$75$1_0$193                                    =  0001A6 GR
+  7 C$StateGame.c$76$1_0$193                                    =  0001AF GR
+  7 C$StateGame.c$77$1_0$193                                    =  0001CA GR
+  7 C$StateGame.c$78$1_0$193                                    =  0001D2 GR
+  7 C$StateGame.c$79$1_0$193                                    =  0001D5 GR
+  7 C$StateGame.c$80$1_0$193                                    =  0001DB GR
+  7 C$StateGame.c$80$3_0$195                                    =  000217 GR
+  7 C$StateGame.c$81$4_0$196                                    =  0001F1 GR
+  7 C$StateGame.c$84$1_0$193                                    =  00021A GR
+  7 C$StateGame.c$85$2_0$197                                    =  00021E GR
+  7 C$StateGame.c$86$2_0$197                                    =  00023F GR
+  7 C$StateGame.c$88$1_0$193                                    =  000240 GR
+  7 C$StateGame.c$89$2_0$198                                    =  00024B GR
+  7 C$StateGame.c$90$2_0$198                                    =  00026A GR
+  7 C$StateGame.c$92$1_0$193                                    =  00026F GR
+  7 C$StateGame.c$94$1_0$199                                    =  000270 GR
+  7 C$StateGame.c$95$1_0$199                                    =  000272 GR
+  7 C$StateGame.c$96$1_0$199                                    =  00027E GR
+  7 C$StateGame.c$97$1_1$199                                    =  00028A GR
+  7 C$StateGame.c$98$1_1$199                                    =  0002A5 GR
+  7 C$StateGame.c$99$1_1$200                                    =  0002C0 GR
+  8 FStateGame$__xinit_euphoria_max_current$0_0$0               =  000008 GR
+  8 FStateGame$__xinit_euphoria_min_current$0_0$0               =  000006 GR
+  8 FStateGame$__xinit_horse_direction$0_0$0                    =  00000A GR
+  8 FStateGame$__xinit_horse_direction_old$0_0$0                =  00000B GR
+  8 FStateGame$__xinit_hp_current$0_0$0                         =  00000C GR
+  8 FStateGame$__xinit_s_biga$0_0$0                             =  000002 GR
+  8 FStateGame$__xinit_s_compass$0_0$0                          =  000004 GR
+  8 FStateGame$__xinit_s_horse$0_0$0                            =  000000 GR
+  7 G$Start_StateGame$0$0                                       =  000000 GR
+  7 G$Update_StateGame$0$0                                      =  0007E7 GR
+    G$__bank_StateGame$0_0$0                                    =  0000FF G
+  7 G$coll_surface$0_0$0                                        =  0001A2 GR
+  7 G$coll_tiles$0_0$0                                          =  00013D GR
+  2 G$euphoria_max_current$0_0$0                                =  000008 GR
+  2 G$euphoria_min_current$0_0$0                                =  000006 GR
+  2 G$horse_direction$0_0$0                                     =  00000A GR
+  2 G$horse_direction_old$0_0$0                                 =  00000B GR
+  2 G$hp_current$0_0$0                                          =  00000C GR
+  7 G$hud_compass_h_r$0$0                                       =  0007D6 GR
+  7 G$hud_compass_r_u_33$0$0                                    =  0007E6 GR
+  2 G$s_biga$0_0$0                                              =  000002 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 26
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  2 G$s_compass$0_0$0                                           =  000004 GR
+  2 G$s_horse$0_0$0                                             =  000000 GR
+  4 G$set_banked_bkg_data$0$0                                   =  000000 GR
+  7 G$update_compass$0$0                                        =  000367 GR
+  7 G$update_euphoria$0$0                                       =  000270 GR
+  7 G$update_hp$0$0                                             =  000718 GR
+  7 G$update_stamina$0$0                                        =  0001A4 GR
+  7 G$update_turning$0$0                                        =  000665 GR
+  7 XG$Start_StateGame$0$0                                      =  00013C GR
+  7 XG$Update_StateGame$0$0                                     =  000834 GR
+  7 XG$hud_compass_h_r$0$0                                      =  0007E5 GR
+  7 XG$hud_compass_r_u_33$0$0                                   =  0007E6 GR
+  7 XG$update_compass$0$0                                       =  000664 GR
+  7 XG$update_euphoria$0$0                                      =  000366 GR
+  7 XG$update_hp$0$0                                            =  0007D5 GR
+  7 XG$update_stamina$0$0                                       =  00026F GR
+  7 XG$update_turning$0$0                                       =  000717 GR
+    _GetMapSize                                                    ****** GX
+    _InitScroll                                                    ****** GX
+    _LCDC_REG                                                      ****** GX
+    _LoadMap                                                       ****** GX
+    _SetWindowY                                                    ****** GX
+    _SpriteManagerAdd                                              ****** GX
+  7 _Start_StateGame                                               000000 GR
+    _UpdateMapTile                                                 ****** GX
+  7 _Update_StateGame                                              0007E7 GR
+    _WX_REG                                                        ****** GX
+    _WY_REG                                                        ****** GX
+    ___bank_StateGame                                           =  0000FF G
+    ___bank_hudm                                                   ****** GX
+    ___bank_hudt                                                   ****** GX
+    ___bank_maprome00                                              ****** GX
+    ___sdcc_bcall_ehl                                              ****** GX
+    __current_bank                                                 ****** GX
+    __divsint                                                      ****** GX
+    __divuint                                                      ****** GX
+    __modsint                                                      ****** GX
+  8 __xinit__euphoria_max_current                                  000008 R
+  8 __xinit__euphoria_min_current                                  000006 R
+  8 __xinit__horse_direction                                       00000A R
+  8 __xinit__horse_direction_old                                   00000B R
+  8 __xinit__hp_current                                            00000C R
+  8 __xinit__s_biga                                                000002 R
+  8 __xinit__s_compass                                             000004 R
+  8 __xinit__s_horse                                               000000 R
+  7 _coll_surface                                                  0001A2 GR
+  7 _coll_tiles                                                    00013D GR
+    _cos                                                           ****** GX
+    _euphoria_max                                                  ****** GX
+  2 _euphoria_max_current                                          000008 GR
+    _euphoria_min                                                  ****** GX
+  2 _euphoria_min_current                                          000006 GR
+  2 _horse_direction                                               00000A GR
+  2 _horse_direction_old                                           00000B GR
+  2 _hp_current                                                    00000C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 27
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 _hud_compass_h_r                                               0007D6 GR
+  7 _hud_compass_r_u_33                                            0007E6 GR
+    _hud_map_offset                                                ****** GX
+    _hudm                                                          ****** GX
+    _hudt                                                          ****** GX
+    _maprome00                                                     ****** GX
+    _print_target                                                  ****** GX
+    _rROMB0                                                        ****** GX
+  2 _s_biga                                                        000002 GR
+  2 _s_compass                                                     000004 GR
+  2 _s_horse                                                       000000 GR
+    _scroll_bottom_movement_limit                                  ****** GX
+    _scroll_h_border                                               ****** GX
+    _scroll_target                                                 ****** GX
+  4 _set_banked_bkg_data                                           000000 GR
+    _set_bkg_data                                                  ****** GX
+    _sin                                                           ****** GX
+    _stamina_current                                               ****** GX
+    _turn_verse                                                    ****** GX
+  7 _update_compass                                                000367 GR
+  7 _update_euphoria                                               000270 GR
+  7 _update_hp                                                     000718 GR
+  7 _update_stamina                                                0001A4 GR
+  7 _update_turning                                                000665 GR
+    b_hud_compass_h_r                                           =  0000FF G
+    b_hud_compass_r_u_33                                        =  0000FF G
+    b_update_compass                                            =  0000FF G
+    b_update_euphoria                                           =  0000FF G
+    b_update_hp                                                 =  0000FF G
+    b_update_stamina                                            =  0000FF G
+    b_update_turning                                            =  0000FF G
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 28
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      D   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size     43   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size    837   flags    0
+   8 _INITIALIZER                               size      D   flags    0
+   9 _CABS                                      size      0   flags    8
+

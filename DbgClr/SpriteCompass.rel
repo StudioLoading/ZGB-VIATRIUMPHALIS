@@ -1,0 +1,514 @@
+;!FILE ../DbgClr/SpriteCompass.asm
+XL3
+H A areas 149 global symbols
+M SpriteCompass
+O -msm83
+S _SetSpriteAnim Ref000000
+S _scroll_target Ref000000
+S _THIS Ref000000
+S .__.ABS. Def000000
+S _cos Ref000000
+S ___bank_SpriteCompass Def000003
+S G$__bank_SpriteCompass$0_0$0 Def0000FF
+S _sin Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_3 size 1CD flags 0 addr 0
+S A$SpriteCompass$91 Def00001E
+S A$SpriteCompass$82 Def00001B
+S A$SpriteCompass$64 Def000003
+S A$SpriteCompass$83 Def00001C
+S A$SpriteCompass$65 Def000004
+S XG$Destroy_SpriteCompass$0$0 Def0001CC
+S C$SpriteCompass.c$49$2_1$188 Def000177
+S A$SpriteCompass$75 Def00000F
+S A$SpriteCompass$66 Def000005
+S A$SpriteCompass$76 Def000012
+S A$SpriteCompass$67 Def000006
+S A$SpriteCompass$77 Def000013
+S A$SpriteCompass$68 Def000009
+S A$SpriteCompass$78 Def000014
+S A$SpriteCompass$69 Def00000A
+S A$SpriteCompass$79 Def000015
+S G$Start_SpriteCompass$0$0 Def000000
+S _Start_SpriteCompass Def000000
+S _a_compass_33 Def000021
+S _a_compass_h Def00001F
+S G$a_compass_33$0_0$0 Def000021
+S G$a_compass_h$0_0$0 Def00001F
+S _a_compass_66 Def000023
+S G$Update_SpriteCompass$0$0 Def000027
+S G$a_compass_66$0_0$0 Def000023
+S XG$Start_SpriteCompass$0$0 Def00001E
+S A$SpriteCompass$210 Def00008F
+S A$SpriteCompass$201 Def000082
+S A$SpriteCompass$120 Def000028
+S G$Destroy_SpriteCompass$0$0 Def0001CC
+S A$SpriteCompass$310 Def00010B
+S A$SpriteCompass$301 Def000102
+S A$SpriteCompass$220 Def00009D
+S A$SpriteCompass$211 Def000091
+S A$SpriteCompass$202 Def000084
+S A$SpriteCompass$130 Def000033
+S _a_compass_v Def000025
+S A$SpriteCompass$410 Def00018F
+S A$SpriteCompass$311 Def00010C
+S A$SpriteCompass$302 Def000104
+S A$SpriteCompass$230 Def0000A6
+S A$SpriteCompass$221 Def00009E
+S A$SpriteCompass$203 Def000086
+S A$SpriteCompass$140 Def000041
+S A$SpriteCompass$131 Def000034
+S A$SpriteCompass$420 Def00019E
+S A$SpriteCompass$411 Def000190
+S A$SpriteCompass$330 Def000126
+S A$SpriteCompass$312 Def00010D
+S A$SpriteCompass$303 Def000106
+S A$SpriteCompass$240 Def0000B2
+S A$SpriteCompass$231 Def0000A7
+S A$SpriteCompass$222 Def00009F
+S A$SpriteCompass$150 Def000048
+S A$SpriteCompass$141 Def000042
+S A$SpriteCompass$132 Def000035
+S A$SpriteCompass$430 Def0001A8
+S A$SpriteCompass$421 Def0001A0
+S A$SpriteCompass$412 Def000191
+S A$SpriteCompass$340 Def000135
+S A$SpriteCompass$331 Def000128
+S A$SpriteCompass$322 Def000119
+S A$SpriteCompass$313 Def000110
+S A$SpriteCompass$241 Def0000B3
+S A$SpriteCompass$232 Def0000A9
+S A$SpriteCompass$223 Def0000A0
+S A$SpriteCompass$205 Def000087
+S A$SpriteCompass$160 Def000058
+S A$SpriteCompass$151 Def00004B
+S A$SpriteCompass$142 Def000043
+S A$SpriteCompass$133 Def000036
+S A$SpriteCompass$124 Def000029
+S G$a_compass_v$0_0$0 Def000025
+S A$SpriteCompass$440 Def0001B4
+S A$SpriteCompass$431 Def0001A9
+S A$SpriteCompass$413 Def000193
+S A$SpriteCompass$404 Def000183
+S A$SpriteCompass$341 Def000136
+S A$SpriteCompass$332 Def000129
+S A$SpriteCompass$323 Def00011C
+S A$SpriteCompass$314 Def000113
+S A$SpriteCompass$305 Def000107
+S A$SpriteCompass$260 Def0000CD
+S A$SpriteCompass$242 Def0000B4
+S A$SpriteCompass$233 Def0000AA
+S A$SpriteCompass$224 Def0000A3
+S A$SpriteCompass$215 Def000093
+S A$SpriteCompass$206 Def000089
+S A$SpriteCompass$170 Def000064
+S A$SpriteCompass$161 Def000059
+S A$SpriteCompass$152 Def00004C
+S A$SpriteCompass$143 Def000044
+S A$SpriteCompass$134 Def000039
+S A$SpriteCompass$125 Def00002C
+S _Update_SpriteCompass Def000027
+S A$SpriteCompass$450 Def0001C2
+S A$SpriteCompass$441 Def0001B6
+S A$SpriteCompass$432 Def0001AC
+S A$SpriteCompass$423 Def0001A1
+S A$SpriteCompass$414 Def000195
+S A$SpriteCompass$405 Def000186
+S A$SpriteCompass$360 Def00014E
+S A$SpriteCompass$351 Def000144
+S A$SpriteCompass$342 Def000137
+S A$SpriteCompass$324 Def00011D
+S A$SpriteCompass$315 Def000114
+S A$SpriteCompass$270 Def0000DA
+S A$SpriteCompass$261 Def0000CF
+S A$SpriteCompass$243 Def0000B7
+S A$SpriteCompass$234 Def0000AC
+S A$SpriteCompass$216 Def000095
+S A$SpriteCompass$207 Def00008A
+S A$SpriteCompass$171 Def000065
+S A$SpriteCompass$162 Def00005A
+S A$SpriteCompass$153 Def00004D
+S A$SpriteCompass$144 Def000045
+S A$SpriteCompass$135 Def00003A
+S A$SpriteCompass$126 Def00002D
+S C$SpriteCompass.c$40$1_1$180 Def0000C2
+S A$SpriteCompass$451 Def0001C3
+S A$SpriteCompass$442 Def0001B9
+S A$SpriteCompass$433 Def0001AD
+S A$SpriteCompass$415 Def000197
+S A$SpriteCompass$406 Def000188
+S A$SpriteCompass$370 Def000157
+S A$SpriteCompass$361 Def00014F
+S A$SpriteCompass$352 Def000146
+S A$SpriteCompass$343 Def000138
+S A$SpriteCompass$334 Def00012B
+S A$SpriteCompass$325 Def00011E
+S A$SpriteCompass$316 Def000115
+S A$SpriteCompass$280 Def0000E7
+S A$SpriteCompass$271 Def0000DC
+S A$SpriteCompass$262 Def0000D0
+S A$SpriteCompass$253 Def0000C2
+S A$SpriteCompass$244 Def0000BA
+S A$SpriteCompass$235 Def0000AE
+S A$SpriteCompass$217 Def000096
+S A$SpriteCompass$208 Def00008B
+S A$SpriteCompass$190 Def000072
+S A$SpriteCompass$181 Def00006B
+S A$SpriteCompass$172 Def000066
+S A$SpriteCompass$163 Def00005B
+S A$SpriteCompass$154 Def00004E
+S A$SpriteCompass$145 Def000046
+S A$SpriteCompass$136 Def00003B
+S A$SpriteCompass$127 Def00002E
+S A$SpriteCompass$452 Def0001C6
+S A$SpriteCompass$443 Def0001BB
+S A$SpriteCompass$416 Def000199
+S A$SpriteCompass$407 Def00018A
+S A$SpriteCompass$380 Def000167
+S A$SpriteCompass$371 Def00015A
+S A$SpriteCompass$362 Def000150
+S A$SpriteCompass$353 Def000148
+S A$SpriteCompass$344 Def000139
+S A$SpriteCompass$335 Def00012D
+S A$SpriteCompass$326 Def00011F
+S A$SpriteCompass$317 Def000116
+S A$SpriteCompass$290 Def0000F2
+S A$SpriteCompass$281 Def0000EA
+S A$SpriteCompass$272 Def0000DE
+S A$SpriteCompass$254 Def0000C3
+S A$SpriteCompass$245 Def0000BB
+S A$SpriteCompass$218 Def000097
+S A$SpriteCompass$209 Def00008D
+S A$SpriteCompass$191 Def000073
+S A$SpriteCompass$182 Def00006D
+S A$SpriteCompass$164 Def00005E
+S A$SpriteCompass$155 Def000051
+S A$SpriteCompass$146 Def000047
+S A$SpriteCompass$137 Def00003C
+S A$SpriteCompass$128 Def00002F
+S A$SpriteCompass$119 Def000027
+S C$SpriteCompass.c$51$1_1$180 Def000183
+S C$SpriteCompass.c$42$1_1$180 Def0000F2
+S C$SpriteCompass.c$33$2_0$180 Def000067
+S A$SpriteCompass$453 Def0001C7
+S A$SpriteCompass$417 Def00019A
+S A$SpriteCompass$408 Def00018D
+S A$SpriteCompass$372 Def00015B
+S A$SpriteCompass$363 Def000151
+S A$SpriteCompass$345 Def00013B
+S A$SpriteCompass$336 Def00012F
+S A$SpriteCompass$327 Def000120
+S A$SpriteCompass$309 Def000109
+S A$SpriteCompass$291 Def0000F3
+S A$SpriteCompass$282 Def0000EB
+S A$SpriteCompass$264 Def0000D2
+S A$SpriteCompass$255 Def0000C5
+S A$SpriteCompass$246 Def0000BC
+S A$SpriteCompass$219 Def00009A
+S A$SpriteCompass$192 Def000075
+S A$SpriteCompass$183 Def00006F
+S A$SpriteCompass$165 Def00005F
+S A$SpriteCompass$156 Def000052
+S A$SpriteCompass$138 Def00003F
+S A$SpriteCompass$129 Def000032
+S A$SpriteCompass$481 Def0001CC
+S A$SpriteCompass$427 Def0001A3
+S A$SpriteCompass$409 Def00018E
+S A$SpriteCompass$382 Def000169
+S A$SpriteCompass$373 Def00015C
+S A$SpriteCompass$364 Def000154
+S A$SpriteCompass$355 Def000149
+S A$SpriteCompass$346 Def00013D
+S A$SpriteCompass$328 Def000122
+S A$SpriteCompass$292 Def0000F5
+S A$SpriteCompass$283 Def0000EC
+S A$SpriteCompass$265 Def0000D4
+S A$SpriteCompass$256 Def0000C6
+S A$SpriteCompass$247 Def0000BD
+S A$SpriteCompass$229 Def0000A5
+S A$SpriteCompass$193 Def000076
+S A$SpriteCompass$184 Def000070
+S A$SpriteCompass$166 Def000060
+S A$SpriteCompass$157 Def000053
+S A$SpriteCompass$139 Def000040
+S C$SpriteCompass.c$35$1_1$180 Def00006B
+S A$SpriteCompass$464 Def0001CB
+S A$SpriteCompass$428 Def0001A6
+S A$SpriteCompass$419 Def00019C
+S A$SpriteCompass$383 Def00016B
+S A$SpriteCompass$374 Def00015D
+S A$SpriteCompass$365 Def000155
+S A$SpriteCompass$347 Def00013F
+S A$SpriteCompass$338 Def000130
+S A$SpriteCompass$329 Def000124
+S A$SpriteCompass$293 Def0000F6
+S A$SpriteCompass$284 Def0000ED
+S A$SpriteCompass$266 Def0000D6
+S A$SpriteCompass$257 Def0000C7
+S A$SpriteCompass$248 Def0000C0
+S A$SpriteCompass$239 Def0000B0
+S A$SpriteCompass$194 Def000077
+S A$SpriteCompass$185 Def000071
+S A$SpriteCompass$176 Def000067
+S A$SpriteCompass$167 Def000061
+S A$SpriteCompass$158 Def000054
+S C$SpriteCompass.c$60$1_1$192 Def0001CC
+S C$SpriteCompass.c$54$1_1$180 Def0001AF
+S C$SpriteCompass.c$45$1_1$180 Def000119
+S C$SpriteCompass.c$22$0_0$178 Def000000
+S A$SpriteCompass$447 Def0001BD
+S A$SpriteCompass$438 Def0001AF
+S A$SpriteCompass$429 Def0001A7
+S A$SpriteCompass$393 Def000177
+S A$SpriteCompass$384 Def00016D
+S A$SpriteCompass$375 Def00015E
+S A$SpriteCompass$348 Def000141
+S A$SpriteCompass$339 Def000132
+S A$SpriteCompass$294 Def0000F7
+S A$SpriteCompass$285 Def0000F0
+S A$SpriteCompass$276 Def0000E0
+S A$SpriteCompass$258 Def0000C9
+S A$SpriteCompass$195 Def000079
+S A$SpriteCompass$177 Def00006A
+S A$SpriteCompass$168 Def000062
+S A$SpriteCompass$159 Def000055
+S C$SpriteCompass.c$30$1_0$179 Def000048
+S _Destroy_SpriteCompass Def0001CC
+S A$SpriteCompass$448 Def0001C0
+S A$SpriteCompass$439 Def0001B2
+S A$SpriteCompass$394 Def00017A
+S A$SpriteCompass$376 Def000160
+S A$SpriteCompass$349 Def000142
+S A$SpriteCompass$295 Def0000F9
+S A$SpriteCompass$277 Def0000E2
+S A$SpriteCompass$268 Def0000D7
+S A$SpriteCompass$259 Def0000CB
+S A$SpriteCompass$196 Def00007B
+S A$SpriteCompass$169 Def000063
+S C$SpriteCompass.c$41$2_1$185 Def0000E0
+S C$SpriteCompass.c$38$1_1$180 Def0000A5
+S C$SpriteCompass.c$23$1_0$178 Def000000
+S A$SpriteCompass$458 Def0001C9
+S A$SpriteCompass$449 Def0001C1
+S A$SpriteCompass$395 Def00017B
+S A$SpriteCompass$386 Def00016E
+S A$SpriteCompass$377 Def000162
+S A$SpriteCompass$359 Def00014B
+S A$SpriteCompass$296 Def0000FB
+S A$SpriteCompass$278 Def0000E3
+S A$SpriteCompass$269 Def0000D9
+S A$SpriteCompass$197 Def00007D
+S C$SpriteCompass.c$55$2_1$190 Def0001BD
+S C$SpriteCompass.c$48$1_1$180 Def000157
+S C$SpriteCompass.c$24$1_0$178 Def00000F
+S A$SpriteCompass$459 Def0001CA
+S A$SpriteCompass$396 Def00017C
+S A$SpriteCompass$387 Def000170
+S A$SpriteCompass$378 Def000164
+S A$SpriteCompass$297 Def0000FD
+S A$SpriteCompass$279 Def0000E4
+S A$SpriteCompass$198 Def00007F
+S C$SpriteCompass.c$25$1_0$178 Def00001E
+S A$SpriteCompass$397 Def00017D
+S A$SpriteCompass$388 Def000173
+S A$SpriteCompass$379 Def000166
+S A$SpriteCompass$298 Def0000FF
+S A$SpriteCompass$199 Def000080
+S C$SpriteCompass.c$43$2_1$186 Def000109
+S C$SpriteCompass.c$37$2_1$183 Def000093
+S A$SpriteCompass$398 Def000180
+S A$SpriteCompass$389 Def000175
+S A$SpriteCompass$299 Def000100
+S XG$Update_SpriteCompass$0$0 Def0001CB
+S A$SpriteCompass$399 Def000181
+S C$SpriteCompass.c$27$1_0$179 Def000027
+S C$SpriteCompass.c$59$1_1$192 Def0001CC
+S C$SpriteCompass.c$52$2_1$189 Def0001A3
+S C$SpriteCompass.c$39$2_1$184 Def0000B0
+S C$SpriteCompass.c$36$1_1$179 Def000072
+S A$SpriteCompass$70 Def00000C
+S C$SpriteCompass.c$46$2_1$187 Def00014B
+S C$SpriteCompass.c$29$1_0$179 Def000029
+S A$SpriteCompass$80 Def000018
+S A$SpriteCompass$71 Def00000D
+S A$SpriteCompass$81 Def000019
+S A$SpriteCompass$63 Def000000
+S C$SpriteCompass.c$57$1_1$179 Def0001CB
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 21 00 00 2A 4F 46 21 15 00 09 3E E8 22
+R 00 00 07 00 02 04 02 00
+T 0D 00 00 36 03 21 00 00 2A 4F 46 21 17 00 09 3E
+R 00 00 07 00 02 06 02 00
+T 1A 00 00 E8 22 36 03 C9
+R 00 00 07 00
+T 1F 00 00
+R 00 00 07 00
+T 1F 00 00 01 00
+R 00 00 07 00
+T 21 00 00
+R 00 00 07 00
+T 21 00 00 01 01
+R 00 00 07 00
+T 23 00 00
+R 00 00 07 00
+T 23 00 00 01 02
+R 00 00 07 00
+T 25 00 00
+R 00 00 07 00
+T 25 00 00 01 03
+R 00 00 07 00
+T 27 00 00
+R 00 00 07 00
+T 27 00 00 3B 3B 21 00 00 2A 4F 46 21 0C 00 09 33
+R 00 00 07 00 02 06 02 00
+T 34 00 00 33 E5 21 00 00 2A 4F 46 21 0C 00 09 2A
+R 00 00 07 00 02 06 01 00
+T 41 00 00 4F 46 E1 E5 79 22 70 21 00 00 2A 4F 46
+R 00 00 07 00 02 0B 02 00
+T 4E 00 00 21 0E 00 09 33 33 E5 21 00 00 2A 4F 46
+R 00 00 07 00 02 0B 01 00
+T 5B 00 00 21 0E 00 09 2A 4F 46 E1 E5 79 22 70 21
+R 00 00 07 00
+T 68 00 00 00 00 4E CB 7E 28 03 AF 96 4F
+R 00 00 07 00 02 03 07 00
+T 72 00 00
+R 00 00 07 00
+T 72 00 00 59 3E 1E 57 91 CB 7B 28 07 CB 7A 20 08
+R 00 00 07 00
+T 7F 00 00 BF 18 05
+R 00 00 07 00
+T 82 00 00
+R 00 00 07 00
+T 82 00 00 CB 7A 28 01 37
+R 00 00 07 00
+T 87 00 00
+R 00 00 07 00
+T 87 00 00 3E 00 17 47 CB 79 20 16 CB 40 20 12 3E
+R 00 00 07 00
+T 94 00 00 01 F5 33 01 1F 00 21 00 00 2A 5F 56 CD
+R 00 00 07 00 00 07 07 00 02 0A 02 00
+T A1 00 00 00 00 18 74
+R 00 00 07 00 02 03 00 00
+T A5 00 00
+R 00 00 07 00
+T A5 00 00 78 B7 28 19 79 EE 80 D6 B6 30 12 3E 01
+R 00 00 07 00
+T B2 00 00 F5 33 01 21 00 21 00 00 2A 5F 56 CD
+R 00 00 07 00 00 06 07 00 02 09 02 00
+T BE 00 00 00 00 18 57
+R 00 00 07 00 02 03 00 00
+T C2 00 00
+R 00 00 07 00
+T C2 00 00 59 3E 36 57 91 CB 7B 28 07 CB 7A 20 08
+R 00 00 07 00
+T CF 00 00 BF 18 05
+R 00 00 07 00
+T D2 00 00
+R 00 00 07 00
+T D2 00 00 CB 7A 28 01 37
+R 00 00 07 00
+T D7 00 00
+R 00 00 07 00
+T D7 00 00 30 19 79 EE 80 D6 CE 30 12 3E 01 F5 33
+R 00 00 07 00
+T E4 00 00 01 23 00 21 00 00 2A 5F 56 CD 00 00 18
+R 00 00 07 00 00 04 07 00 02 07 02 00 02 0D 00 00
+T F1 00 00 27
+R 00 00 07 00
+T F2 00 00
+R 00 00 07 00
+T F2 00 00 59 3E 4E 57 91 CB 7B 28 07 CB 7A 20 08
+R 00 00 07 00
+T FF 00 00 BF 18 05
+R 00 00 07 00
+T 02 01 00
+R 00 00 07 00
+T 02 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 07 01 00
+R 00 00 07 00
+T 07 01 00 30 10 3E 01 F5 33 01 25 00 21 00 00 2A
+R 00 00 07 00 00 0A 07 00 02 0D 02 00
+T 14 01 00 5F 56 CD 00 00
+R 00 00 07 00 02 06 00 00
+T 19 01 00
+R 00 00 07 00
+T 19 01 00 21 00 00 5E AF 57 96 CB 7B 28 07 CB 7A
+R 00 00 07 00 02 04 07 00
+T 26 01 00 20 08 BF 18 05
+R 00 00 07 00
+T 2B 01 00
+R 00 00 07 00
+T 2B 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 30 01 00
+R 00 00 07 00
+T 30 01 00 30 25 21 00 00 5E AF 57 96 CB 7B 28 07
+R 00 00 07 00 02 06 04 00
+T 3D 01 00 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 44 01 00
+R 00 00 07 00
+T 44 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 49 01 00
+R 00 00 07 00
+T 49 01 00 30 0C 21 00 00 2A 4F 46 21 10 00 09 36
+R 00 00 07 00 02 06 02 00
+T 56 01 00 00
+R 00 00 07 00
+T 57 01 00
+R 00 00 07 00
+T 57 01 00 21 00 00 5E AF 57 96 CB 7B 28 07 CB 7A
+R 00 00 07 00 02 04 07 00
+T 64 01 00 20 08 BF 18 05
+R 00 00 07 00
+T 69 01 00
+R 00 00 07 00
+T 69 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 6E 01 00
+R 00 00 07 00
+T 6E 01 00 30 13 FA 00 00 CB 7F 28 0C 21 00 00 2A
+R 00 00 07 00 02 06 04 00 02 0D 02 00
+T 7B 01 00 4F 46 21 10 00 09 36 02
+R 00 00 07 00
+T 83 01 00
+R 00 00 07 00
+T 83 01 00 FA 00 00 CB 7F 28 25 21 00 00 5E AF 57
+R 00 00 07 00 02 04 07 00 02 0B 04 00
+T 90 01 00 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 9C 01 00
+R 00 00 07 00
+T 9C 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T A1 01 00
+R 00 00 07 00
+T A1 01 00 30 0C 21 00 00 2A 4F 46 21 10 00 09 36
+R 00 00 07 00 02 06 02 00
+T AE 01 00 01
+R 00 00 07 00
+T AF 01 00
+R 00 00 07 00
+T AF 01 00 FA 00 00 CB 7F 28 13 FA 00 00 CB 7F 28
+R 00 00 07 00 02 04 07 00 02 0B 04 00
+T BC 01 00 0C 21 00 00 2A 4F 46 21 10 00 09 36 03
+R 00 00 07 00 02 05 02 00
+T C9 01 00
+R 00 00 07 00
+T C9 01 00 33 33 C9
+R 00 00 07 00
+T CC 01 00
+R 00 00 07 00
+T CC 01 00 C9
+R 00 00 07 00

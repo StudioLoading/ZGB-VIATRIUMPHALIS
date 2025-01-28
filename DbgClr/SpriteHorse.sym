@@ -1,0 +1,2053 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 A$SpriteHorse$1002                                             00039E GR
+  7 A$SpriteHorse$1003                                             0003A1 GR
+  7 A$SpriteHorse$1008                                             0003A3 GR
+  7 A$SpriteHorse$1009                                             0003A5 GR
+  7 A$SpriteHorse$1010                                             0003A7 GR
+  7 A$SpriteHorse$1011                                             0003A9 GR
+  7 A$SpriteHorse$1015                                             0003AB GR
+  7 A$SpriteHorse$1016                                             0003AE GR
+  7 A$SpriteHorse$1020                                             0003B0 GR
+  7 A$SpriteHorse$1021                                             0003B3 GR
+  7 A$SpriteHorse$1026                                             0003B5 GR
+  7 A$SpriteHorse$1027                                             0003B7 GR
+  7 A$SpriteHorse$1028                                             0003B9 GR
+  7 A$SpriteHorse$1029                                             0003BB GR
+  7 A$SpriteHorse$1033                                             0003BD GR
+  7 A$SpriteHorse$1034                                             0003C0 GR
+  7 A$SpriteHorse$1038                                             0003C2 GR
+  7 A$SpriteHorse$1039                                             0003C5 GR
+  7 A$SpriteHorse$1044                                             0003C7 GR
+  7 A$SpriteHorse$1045                                             0003CA GR
+  7 A$SpriteHorse$1046                                             0003CB GR
+  7 A$SpriteHorse$1047                                             0003CE GR
+  7 A$SpriteHorse$1048                                             0003CF GR
+  7 A$SpriteHorse$1049                                             0003D0 GR
+  7 A$SpriteHorse$1050                                             0003D1 GR
+  7 A$SpriteHorse$1051                                             0003D3 GR
+  7 A$SpriteHorse$1052                                             0003D4 GR
+  7 A$SpriteHorse$1053                                             0003D5 GR
+  7 A$SpriteHorse$1057                                             0003D8 GR
+  7 A$SpriteHorse$1058                                             0003DB GR
+  7 A$SpriteHorse$1062                                             0003DD GR
+  7 A$SpriteHorse$1063                                             0003DE GR
+  7 A$SpriteHorse$1064                                             0003E0 GR
+  7 A$SpriteHorse$1065                                             0003E1 GR
+  7 A$SpriteHorse$1066                                             0003E2 GR
+  7 A$SpriteHorse$1070                                             0003E5 GR
+  7 A$SpriteHorse$1074                                             0003E8 GR
+  7 A$SpriteHorse$1075                                             0003E9 GR
+  7 A$SpriteHorse$1079                                             0003EC GR
+  7 A$SpriteHorse$1080                                             0003EF GR
+  7 A$SpriteHorse$1084                                             0003F2 GR
+  7 A$SpriteHorse$1085                                             0003F5 GR
+  7 A$SpriteHorse$1086                                             0003F6 GR
+  7 A$SpriteHorse$1087                                             0003F7 GR
+  7 A$SpriteHorse$1088                                             0003F9 GR
+  7 A$SpriteHorse$1089                                             0003FA GR
+  7 A$SpriteHorse$1090                                             0003FB GR
+  7 A$SpriteHorse$1091                                             0003FD GR
+  7 A$SpriteHorse$1092                                             0003FE GR
+  7 A$SpriteHorse$1093                                             0003FF GR
+  7 A$SpriteHorse$1094                                             000401 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1095                                             000403 GR
+  7 A$SpriteHorse$1096                                             000405 GR
+  7 A$SpriteHorse$1097                                             000407 GR
+  7 A$SpriteHorse$1098                                             000408 GR
+  7 A$SpriteHorse$1100                                             00040A GR
+  7 A$SpriteHorse$1101                                             00040C GR
+  7 A$SpriteHorse$1102                                             00040E GR
+  7 A$SpriteHorse$1104                                             00040F GR
+  7 A$SpriteHorse$1105                                             000411 GR
+  7 A$SpriteHorse$1106                                             000412 GR
+  7 A$SpriteHorse$1107                                             000414 GR
+  7 A$SpriteHorse$1108                                             000416 GR
+  7 A$SpriteHorse$1109                                             000417 GR
+  7 A$SpriteHorse$1113                                             000419 GR
+  7 A$SpriteHorse$1114                                             00041C GR
+  7 A$SpriteHorse$1115                                             00041E GR
+  7 A$SpriteHorse$1120                                             000421 GR
+  7 A$SpriteHorse$1121                                             000422 GR
+  7 A$SpriteHorse$1122                                             000424 GR
+  7 A$SpriteHorse$1123                                             000427 GR
+  7 A$SpriteHorse$1124                                             000429 GR
+  7 A$SpriteHorse$1125                                             00042B GR
+  7 A$SpriteHorse$1129                                             00042D GR
+  7 A$SpriteHorse$1130                                             000430 GR
+  7 A$SpriteHorse$1131                                             000432 GR
+  7 A$SpriteHorse$1136                                             000435 GR
+  7 A$SpriteHorse$1137                                             000438 GR
+  7 A$SpriteHorse$1138                                             000439 GR
+  7 A$SpriteHorse$1139                                             00043B GR
+  7 A$SpriteHorse$1140                                             00043C GR
+  7 A$SpriteHorse$1141                                             00043D GR
+  7 A$SpriteHorse$1142                                             00043F GR
+  7 A$SpriteHorse$1143                                             000441 GR
+  7 A$SpriteHorse$1144                                             000443 GR
+  7 A$SpriteHorse$1145                                             000445 GR
+  7 A$SpriteHorse$1146                                             000446 GR
+  7 A$SpriteHorse$1148                                             000448 GR
+  7 A$SpriteHorse$1149                                             00044A GR
+  7 A$SpriteHorse$1150                                             00044C GR
+  7 A$SpriteHorse$1152                                             00044D GR
+  7 A$SpriteHorse$1153                                             00044F GR
+  7 A$SpriteHorse$1154                                             000452 GR
+  7 A$SpriteHorse$1155                                             000454 GR
+  7 A$SpriteHorse$1156                                             000456 GR
+  7 A$SpriteHorse$1160                                             000458 GR
+  7 A$SpriteHorse$1161                                             00045B GR
+  7 A$SpriteHorse$1162                                             00045D GR
+  7 A$SpriteHorse$1167                                             000460 GR
+  7 A$SpriteHorse$1168                                             000463 GR
+  7 A$SpriteHorse$1169                                             000464 GR
+  7 A$SpriteHorse$1170                                             000466 GR
+  7 A$SpriteHorse$1171                                             000467 GR
+  7 A$SpriteHorse$1172                                             000468 GR
+  7 A$SpriteHorse$1173                                             00046A GR
+  7 A$SpriteHorse$1174                                             00046C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1175                                             00046E GR
+  7 A$SpriteHorse$1176                                             000470 GR
+  7 A$SpriteHorse$1177                                             000471 GR
+  7 A$SpriteHorse$1179                                             000473 GR
+  7 A$SpriteHorse$1180                                             000475 GR
+  7 A$SpriteHorse$1181                                             000477 GR
+  7 A$SpriteHorse$1183                                             000478 GR
+  7 A$SpriteHorse$1187                                             00047A GR
+  7 A$SpriteHorse$1188                                             00047D GR
+  7 A$SpriteHorse$1189                                             00047F GR
+  7 A$SpriteHorse$1194                                             000482 GR
+  7 A$SpriteHorse$1195                                             000483 GR
+  7 A$SpriteHorse$1196                                             000484 GR
+  7 A$SpriteHorse$1197                                             000486 GR
+  7 A$SpriteHorse$1198                                             000489 GR
+  7 A$SpriteHorse$1199                                             00048A GR
+  7 A$SpriteHorse$1200                                             00048C GR
+  7 A$SpriteHorse$1201                                             00048D GR
+  7 A$SpriteHorse$1202                                             00048E GR
+  7 A$SpriteHorse$1203                                             000490 GR
+  7 A$SpriteHorse$1204                                             000492 GR
+  7 A$SpriteHorse$1205                                             000494 GR
+  7 A$SpriteHorse$1206                                             000496 GR
+  7 A$SpriteHorse$1207                                             000497 GR
+  7 A$SpriteHorse$1209                                             000499 GR
+  7 A$SpriteHorse$1210                                             00049B GR
+  7 A$SpriteHorse$1211                                             00049D GR
+  7 A$SpriteHorse$1213                                             00049E GR
+  7 A$SpriteHorse$1217                                             0004A0 GR
+  7 A$SpriteHorse$1218                                             0004A3 GR
+  7 A$SpriteHorse$1219                                             0004A5 GR
+  7 A$SpriteHorse$1224                                             0004A7 GR
+  7 A$SpriteHorse$1225                                             0004AA GR
+  7 A$SpriteHorse$1226                                             0004AB GR
+  7 A$SpriteHorse$1227                                             0004AD GR
+  7 A$SpriteHorse$1228                                             0004AF GR
+  7 A$SpriteHorse$1229                                             0004B1 GR
+  7 A$SpriteHorse$1230                                             0004B2 GR
+  7 A$SpriteHorse$1231                                             0004B4 GR
+  7 A$SpriteHorse$1232                                             0004B5 GR
+  7 A$SpriteHorse$1233                                             0004B6 GR
+  7 A$SpriteHorse$1234                                             0004B8 GR
+  7 A$SpriteHorse$1235                                             0004BA GR
+  7 A$SpriteHorse$1236                                             0004BC GR
+  7 A$SpriteHorse$1237                                             0004BE GR
+  7 A$SpriteHorse$1238                                             0004BF GR
+  7 A$SpriteHorse$1240                                             0004C1 GR
+  7 A$SpriteHorse$1241                                             0004C3 GR
+  7 A$SpriteHorse$1242                                             0004C5 GR
+  7 A$SpriteHorse$1244                                             0004C6 GR
+  7 A$SpriteHorse$1248                                             0004C8 GR
+  7 A$SpriteHorse$1249                                             0004CB GR
+  7 A$SpriteHorse$1250                                             0004CD GR
+  7 A$SpriteHorse$1255                                             0004CF GR
+  7 A$SpriteHorse$1256                                             0004D2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1257                                             0004D3 GR
+  7 A$SpriteHorse$1258                                             0004D5 GR
+  7 A$SpriteHorse$1259                                             0004D7 GR
+  7 A$SpriteHorse$1260                                             0004D9 GR
+  7 A$SpriteHorse$1261                                             0004DA GR
+  7 A$SpriteHorse$1262                                             0004DC GR
+  7 A$SpriteHorse$1263                                             0004DD GR
+  7 A$SpriteHorse$1264                                             0004DE GR
+  7 A$SpriteHorse$1265                                             0004E0 GR
+  7 A$SpriteHorse$1266                                             0004E2 GR
+  7 A$SpriteHorse$1267                                             0004E4 GR
+  7 A$SpriteHorse$1268                                             0004E6 GR
+  7 A$SpriteHorse$1269                                             0004E7 GR
+  7 A$SpriteHorse$1271                                             0004E9 GR
+  7 A$SpriteHorse$1272                                             0004EB GR
+  7 A$SpriteHorse$1273                                             0004ED GR
+  7 A$SpriteHorse$1275                                             0004EE GR
+  7 A$SpriteHorse$1279                                             0004F0 GR
+  7 A$SpriteHorse$1280                                             0004F3 GR
+  7 A$SpriteHorse$1281                                             0004F5 GR
+  7 A$SpriteHorse$1286                                             0004F7 GR
+  7 A$SpriteHorse$1287                                             0004FA GR
+  7 A$SpriteHorse$1288                                             0004FC GR
+  7 A$SpriteHorse$1289                                             0004FE GR
+  7 A$SpriteHorse$1293                                             000500 GR
+  7 A$SpriteHorse$1294                                             000503 GR
+  7 A$SpriteHorse$1299                                             000505 GR
+  7 A$SpriteHorse$1300                                             000508 GR
+  7 A$SpriteHorse$1301                                             000509 GR
+  7 A$SpriteHorse$1302                                             00050B GR
+  7 A$SpriteHorse$1303                                             00050C GR
+  7 A$SpriteHorse$1304                                             00050D GR
+  7 A$SpriteHorse$1305                                             00050F GR
+  7 A$SpriteHorse$1306                                             000511 GR
+  7 A$SpriteHorse$1307                                             000513 GR
+  7 A$SpriteHorse$1308                                             000515 GR
+  7 A$SpriteHorse$1309                                             000516 GR
+  7 A$SpriteHorse$1311                                             000518 GR
+  7 A$SpriteHorse$1312                                             00051A GR
+  7 A$SpriteHorse$1313                                             00051C GR
+  7 A$SpriteHorse$1315                                             00051D GR
+  7 A$SpriteHorse$1316                                             00051F GR
+  7 A$SpriteHorse$1317                                             000520 GR
+  7 A$SpriteHorse$1321                                             000521 GR
+  7 A$SpriteHorse$1322                                             000524 GR
+  7 A$SpriteHorse$1323                                             000525 GR
+  7 A$SpriteHorse$1324                                             000527 GR
+  7 A$SpriteHorse$1325                                             000528 GR
+  7 A$SpriteHorse$1326                                             00052A GR
+  7 A$SpriteHorse$1327                                             00052C GR
+  7 A$SpriteHorse$1328                                             00052D GR
+  7 A$SpriteHorse$1329                                             00052F GR
+  7 A$SpriteHorse$1333                                             000531 GR
+  7 A$SpriteHorse$1334                                             000534 GR
+  7 A$SpriteHorse$1335                                             000536 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 5
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1340                                             000539 GR
+  7 A$SpriteHorse$1341                                             00053A GR
+  7 A$SpriteHorse$1342                                             00053B GR
+  7 A$SpriteHorse$1343                                             00053D GR
+  7 A$SpriteHorse$1344                                             000540 GR
+  7 A$SpriteHorse$1345                                             000542 GR
+  7 A$SpriteHorse$1346                                             000544 GR
+  7 A$SpriteHorse$1350                                             000546 GR
+  7 A$SpriteHorse$1351                                             000549 GR
+  7 A$SpriteHorse$1352                                             00054B GR
+  7 A$SpriteHorse$1357                                             00054E GR
+  7 A$SpriteHorse$1358                                             000551 GR
+  7 A$SpriteHorse$1359                                             000552 GR
+  7 A$SpriteHorse$1360                                             000554 GR
+  7 A$SpriteHorse$1361                                             000555 GR
+  7 A$SpriteHorse$1362                                             000556 GR
+  7 A$SpriteHorse$1363                                             000558 GR
+  7 A$SpriteHorse$1364                                             00055A GR
+  7 A$SpriteHorse$1365                                             00055C GR
+  7 A$SpriteHorse$1366                                             00055E GR
+  7 A$SpriteHorse$1367                                             00055F GR
+  7 A$SpriteHorse$1369                                             000561 GR
+  7 A$SpriteHorse$1370                                             000563 GR
+  7 A$SpriteHorse$1371                                             000565 GR
+  7 A$SpriteHorse$1373                                             000566 GR
+  7 A$SpriteHorse$1374                                             000568 GR
+  7 A$SpriteHorse$1375                                             00056B GR
+  7 A$SpriteHorse$1376                                             00056D GR
+  7 A$SpriteHorse$1377                                             00056F GR
+  7 A$SpriteHorse$1381                                             000571 GR
+  7 A$SpriteHorse$1382                                             000574 GR
+  7 A$SpriteHorse$1383                                             000576 GR
+  7 A$SpriteHorse$1388                                             000579 GR
+  7 A$SpriteHorse$1389                                             00057C GR
+  7 A$SpriteHorse$1390                                             00057D GR
+  7 A$SpriteHorse$1391                                             00057F GR
+  7 A$SpriteHorse$1392                                             000580 GR
+  7 A$SpriteHorse$1393                                             000581 GR
+  7 A$SpriteHorse$1394                                             000583 GR
+  7 A$SpriteHorse$1395                                             000585 GR
+  7 A$SpriteHorse$1396                                             000587 GR
+  7 A$SpriteHorse$1397                                             000589 GR
+  7 A$SpriteHorse$1398                                             00058A GR
+  7 A$SpriteHorse$1400                                             00058C GR
+  7 A$SpriteHorse$1401                                             00058E GR
+  7 A$SpriteHorse$1402                                             000590 GR
+  7 A$SpriteHorse$1404                                             000591 GR
+  7 A$SpriteHorse$1408                                             000593 GR
+  7 A$SpriteHorse$1409                                             000596 GR
+  7 A$SpriteHorse$1410                                             000598 GR
+  7 A$SpriteHorse$1415                                             00059B GR
+  7 A$SpriteHorse$1416                                             00059C GR
+  7 A$SpriteHorse$1417                                             00059D GR
+  7 A$SpriteHorse$1418                                             00059F GR
+  7 A$SpriteHorse$1419                                             0005A2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 6
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1420                                             0005A3 GR
+  7 A$SpriteHorse$1421                                             0005A5 GR
+  7 A$SpriteHorse$1422                                             0005A6 GR
+  7 A$SpriteHorse$1423                                             0005A7 GR
+  7 A$SpriteHorse$1424                                             0005A9 GR
+  7 A$SpriteHorse$1425                                             0005AB GR
+  7 A$SpriteHorse$1426                                             0005AD GR
+  7 A$SpriteHorse$1427                                             0005AF GR
+  7 A$SpriteHorse$1428                                             0005B0 GR
+  7 A$SpriteHorse$1430                                             0005B2 GR
+  7 A$SpriteHorse$1431                                             0005B4 GR
+  7 A$SpriteHorse$1432                                             0005B6 GR
+  7 A$SpriteHorse$1434                                             0005B7 GR
+  7 A$SpriteHorse$1438                                             0005B9 GR
+  7 A$SpriteHorse$1439                                             0005BC GR
+  7 A$SpriteHorse$1440                                             0005BE GR
+  7 A$SpriteHorse$1445                                             0005C0 GR
+  7 A$SpriteHorse$1446                                             0005C3 GR
+  7 A$SpriteHorse$1447                                             0005C4 GR
+  7 A$SpriteHorse$1448                                             0005C6 GR
+  7 A$SpriteHorse$1449                                             0005C8 GR
+  7 A$SpriteHorse$1450                                             0005CA GR
+  7 A$SpriteHorse$1451                                             0005CB GR
+  7 A$SpriteHorse$1452                                             0005CD GR
+  7 A$SpriteHorse$1453                                             0005CE GR
+  7 A$SpriteHorse$1454                                             0005CF GR
+  7 A$SpriteHorse$1455                                             0005D1 GR
+  7 A$SpriteHorse$1456                                             0005D3 GR
+  7 A$SpriteHorse$1457                                             0005D5 GR
+  7 A$SpriteHorse$1458                                             0005D7 GR
+  7 A$SpriteHorse$1459                                             0005D8 GR
+  7 A$SpriteHorse$1461                                             0005DA GR
+  7 A$SpriteHorse$1462                                             0005DC GR
+  7 A$SpriteHorse$1463                                             0005DE GR
+  7 A$SpriteHorse$1465                                             0005DF GR
+  7 A$SpriteHorse$1469                                             0005E1 GR
+  7 A$SpriteHorse$1470                                             0005E4 GR
+  7 A$SpriteHorse$1471                                             0005E6 GR
+  7 A$SpriteHorse$1476                                             0005E8 GR
+  7 A$SpriteHorse$1477                                             0005EB GR
+  7 A$SpriteHorse$1478                                             0005EC GR
+  7 A$SpriteHorse$1479                                             0005EE GR
+  7 A$SpriteHorse$1480                                             0005F0 GR
+  7 A$SpriteHorse$1481                                             0005F2 GR
+  7 A$SpriteHorse$1482                                             0005F3 GR
+  7 A$SpriteHorse$1483                                             0005F5 GR
+  7 A$SpriteHorse$1484                                             0005F6 GR
+  7 A$SpriteHorse$1485                                             0005F7 GR
+  7 A$SpriteHorse$1486                                             0005F9 GR
+  7 A$SpriteHorse$1487                                             0005FB GR
+  7 A$SpriteHorse$1488                                             0005FD GR
+  7 A$SpriteHorse$1489                                             0005FF GR
+  7 A$SpriteHorse$1490                                             000600 GR
+  7 A$SpriteHorse$1492                                             000602 GR
+  7 A$SpriteHorse$1493                                             000604 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 7
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1494                                             000606 GR
+  7 A$SpriteHorse$1496                                             000607 GR
+  7 A$SpriteHorse$1500                                             000609 GR
+  7 A$SpriteHorse$1501                                             00060C GR
+  7 A$SpriteHorse$1502                                             00060E GR
+  7 A$SpriteHorse$1507                                             000610 GR
+  7 A$SpriteHorse$1508                                             000613 GR
+  7 A$SpriteHorse$1509                                             000615 GR
+  7 A$SpriteHorse$1510                                             000617 GR
+  7 A$SpriteHorse$1514                                             000619 GR
+  7 A$SpriteHorse$1515                                             00061C GR
+  7 A$SpriteHorse$1520                                             00061E GR
+  7 A$SpriteHorse$1521                                             000621 GR
+  7 A$SpriteHorse$1522                                             000622 GR
+  7 A$SpriteHorse$1523                                             000625 GR
+  7 A$SpriteHorse$1524                                             000626 GR
+  7 A$SpriteHorse$1526                                             000628 GR
+  7 A$SpriteHorse$1528                                             000629 GR
+  7 A$SpriteHorse$1529                                             00062A GR
+  7 A$SpriteHorse$1530                                             00062C GR
+  7 A$SpriteHorse$1531                                             00062F GR
+  7 A$SpriteHorse$1532                                             000630 GR
+  7 A$SpriteHorse$1533                                             000633 GR
+  7 A$SpriteHorse$1534                                             000634 GR
+  7 A$SpriteHorse$1535                                             000635 GR
+  7 A$SpriteHorse$1537                                             000637 GR
+  7 A$SpriteHorse$1539                                             000639 GR
+  7 A$SpriteHorse$1540                                             00063A GR
+  7 A$SpriteHorse$1541                                             00063C GR
+  7 A$SpriteHorse$1542                                             00063D GR
+  7 A$SpriteHorse$1543                                             00063E GR
+  7 A$SpriteHorse$1544                                             00063F GR
+  7 A$SpriteHorse$1545                                             000642 GR
+  7 A$SpriteHorse$1546                                             000643 GR
+  7 A$SpriteHorse$1547                                             000644 GR
+  7 A$SpriteHorse$1548                                             000645 GR
+  7 A$SpriteHorse$1549                                             000648 GR
+  7 A$SpriteHorse$1550                                             000649 GR
+  7 A$SpriteHorse$1554                                             00064B GR
+  7 A$SpriteHorse$1558                                             00064C GR
+  7 A$SpriteHorse$1559                                             00064D GR
+  7 A$SpriteHorse$1560                                             00064E GR
+  7 A$SpriteHorse$1561                                             000650 GR
+  7 A$SpriteHorse$1565                                             000653 GR
+  7 A$SpriteHorse$1566                                             000654 GR
+  7 A$SpriteHorse$1567                                             000657 GR
+  7 A$SpriteHorse$1568                                             000658 GR
+  7 A$SpriteHorse$1572                                             000659 GR
+  7 A$SpriteHorse$1573                                             00065A GR
+  7 A$SpriteHorse$1574                                             00065D GR
+  7 A$SpriteHorse$1575                                             00065E GR
+  7 A$SpriteHorse$1579                                             00065F GR
+  7 A$SpriteHorse$1580                                             000662 GR
+  7 A$SpriteHorse$1581                                             000664 GR
+  7 A$SpriteHorse$1582                                             000666 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 8
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1586                                             000668 GR
+  7 A$SpriteHorse$1587                                             00066B GR
+  7 A$SpriteHorse$1588                                             00066C GR
+  7 A$SpriteHorse$1590                                             00066E GR
+  7 A$SpriteHorse$1592                                             000670 GR
+  7 A$SpriteHorse$1593                                             000671 GR
+  7 A$SpriteHorse$1594                                             000673 GR
+  7 A$SpriteHorse$1595                                             000674 GR
+  7 A$SpriteHorse$1596                                             000675 GR
+  7 A$SpriteHorse$1597                                             000676 GR
+  7 A$SpriteHorse$1598                                             000677 GR
+  7 A$SpriteHorse$1599                                             00067A GR
+  7 A$SpriteHorse$1600                                             00067B GR
+  7 A$SpriteHorse$1601                                             00067C GR
+  7 A$SpriteHorse$1602                                             00067D GR
+  7 A$SpriteHorse$1603                                             000680 GR
+  7 A$SpriteHorse$1608                                             000683 GR
+  7 A$SpriteHorse$1609                                             000686 GR
+  7 A$SpriteHorse$1610                                             000687 GR
+  7 A$SpriteHorse$1611                                             000688 GR
+  7 A$SpriteHorse$1612                                             000689 GR
+  7 A$SpriteHorse$1614                                             00068B GR
+  7 A$SpriteHorse$1616                                             00068C GR
+  7 A$SpriteHorse$1617                                             00068D GR
+  7 A$SpriteHorse$1618                                             00068F GR
+  7 A$SpriteHorse$1619                                             000690 GR
+  7 A$SpriteHorse$1620                                             000691 GR
+  7 A$SpriteHorse$1621                                             000692 GR
+  7 A$SpriteHorse$1622                                             000695 GR
+  7 A$SpriteHorse$1623                                             000696 GR
+  7 A$SpriteHorse$1624                                             000697 GR
+  7 A$SpriteHorse$1625                                             000698 GR
+  7 A$SpriteHorse$1626                                             00069B GR
+  7 A$SpriteHorse$1631                                             00069E GR
+  7 A$SpriteHorse$1632                                             0006A1 GR
+  7 A$SpriteHorse$1633                                             0006A2 GR
+  7 A$SpriteHorse$1634                                             0006A3 GR
+  7 A$SpriteHorse$1638                                             0006A4 GR
+  7 A$SpriteHorse$1639                                             0006A7 GR
+  7 A$SpriteHorse$1640                                             0006A8 GR
+  7 A$SpriteHorse$1641                                             0006A9 GR
+  7 A$SpriteHorse$1643                                             0006AA GR
+  7 A$SpriteHorse$1644                                             0006AC GR
+  7 A$SpriteHorse$1645                                             0006AD GR
+  7 A$SpriteHorse$1646                                             0006AE GR
+  7 A$SpriteHorse$1647                                             0006B0 GR
+  7 A$SpriteHorse$1648                                             0006B1 GR
+  7 A$SpriteHorse$1649                                             0006B3 GR
+  7 A$SpriteHorse$165                                              000000 GR
+  7 A$SpriteHorse$1650                                             0006B4 GR
+  7 A$SpriteHorse$1651                                             0006B5 GR
+  7 A$SpriteHorse$1652                                             0006B6 GR
+  7 A$SpriteHorse$1653                                             0006B8 GR
+  7 A$SpriteHorse$1654                                             0006B9 GR
+  7 A$SpriteHorse$1655                                             0006BB GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 9
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1656                                             0006BC GR
+  7 A$SpriteHorse$1657                                             0006BE GR
+  7 A$SpriteHorse$1658                                             0006BF GR
+  7 A$SpriteHorse$1659                                             0006C1 GR
+  7 A$SpriteHorse$166                                              000002 GR
+  7 A$SpriteHorse$1660                                             0006C2 GR
+  7 A$SpriteHorse$1661                                             0006C4 GR
+  7 A$SpriteHorse$1662                                             0006C5 GR
+  7 A$SpriteHorse$1663                                             0006C7 GR
+  7 A$SpriteHorse$1664                                             0006CA GR
+  7 A$SpriteHorse$1665                                             0006CB GR
+  7 A$SpriteHorse$1666                                             0006CC GR
+  7 A$SpriteHorse$1667                                             0006CD GR
+  7 A$SpriteHorse$1668                                             0006CE GR
+  7 A$SpriteHorse$1669                                             0006D1 GR
+  7 A$SpriteHorse$167                                              000003 GR
+  7 A$SpriteHorse$1670                                             0006D2 GR
+  7 A$SpriteHorse$1671                                             0006D3 GR
+  7 A$SpriteHorse$1672                                             0006D4 GR
+  7 A$SpriteHorse$1673                                             0006D6 GR
+  7 A$SpriteHorse$1674                                             0006D8 GR
+  7 A$SpriteHorse$1675                                             0006DA GR
+  7 A$SpriteHorse$1676                                             0006DC GR
+  7 A$SpriteHorse$1677                                             0006DE GR
+  7 A$SpriteHorse$1678                                             0006E0 GR
+  7 A$SpriteHorse$1679                                             0006E2 GR
+  7 A$SpriteHorse$168                                              000004 GR
+  7 A$SpriteHorse$1680                                             0006E3 GR
+  7 A$SpriteHorse$1681                                             0006E4 GR
+  7 A$SpriteHorse$1682                                             0006E5 GR
+  7 A$SpriteHorse$1683                                             0006E8 GR
+  7 A$SpriteHorse$1684                                             0006EA GR
+  7 A$SpriteHorse$1688                                             0006EB GR
+  7 A$SpriteHorse$1689                                             0006EE GR
+  7 A$SpriteHorse$169                                              000007 GR
+  7 A$SpriteHorse$1690                                             0006EF GR
+  7 A$SpriteHorse$1691                                             0006F0 GR
+  7 A$SpriteHorse$1695                                             0006F1 GR
+  7 A$SpriteHorse$1696                                             0006F4 GR
+  7 A$SpriteHorse$1697                                             0006F5 GR
+  7 A$SpriteHorse$1698                                             0006F6 GR
+  7 A$SpriteHorse$1699                                             0006F8 GR
+  7 A$SpriteHorse$170                                              00000A GR
+  7 A$SpriteHorse$1700                                             0006F9 GR
+  7 A$SpriteHorse$1701                                             0006FA GR
+  7 A$SpriteHorse$1702                                             0006FB GR
+  7 A$SpriteHorse$1703                                             0006FD GR
+  7 A$SpriteHorse$1705                                             0006FF GR
+  7 A$SpriteHorse$1707                                             000700 GR
+  7 A$SpriteHorse$1708                                             000702 GR
+  7 A$SpriteHorse$171                                              00000B GR
+  7 A$SpriteHorse$1712                                             000703 GR
+  7 A$SpriteHorse$1713                                             000706 GR
+  7 A$SpriteHorse$1714                                             000707 GR
+  7 A$SpriteHorse$1715                                             000708 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 10
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1716                                             000709 GR
+  7 A$SpriteHorse$1717                                             00070A GR
+  7 A$SpriteHorse$1718                                             00070C GR
+  7 A$SpriteHorse$1719                                             00070E GR
+  7 A$SpriteHorse$172                                              00000C GR
+  7 A$SpriteHorse$1720                                             000710 GR
+  7 A$SpriteHorse$1721                                             000712 GR
+  7 A$SpriteHorse$1722                                             000713 GR
+  7 A$SpriteHorse$1724                                             000715 GR
+  7 A$SpriteHorse$1725                                             000717 GR
+  7 A$SpriteHorse$1726                                             000719 GR
+  7 A$SpriteHorse$1728                                             00071A GR
+  7 A$SpriteHorse$1729                                             00071C GR
+  7 A$SpriteHorse$173                                              00000D GR
+  7 A$SpriteHorse$1730                                             00071D GR
+  7 A$SpriteHorse$1731                                             00071F GR
+  7 A$SpriteHorse$1735                                             000720 GR
+  7 A$SpriteHorse$1736                                             000723 GR
+  7 A$SpriteHorse$1737                                             000724 GR
+  7 A$SpriteHorse$1738                                             000725 GR
+  7 A$SpriteHorse$1739                                             000726 GR
+  7 A$SpriteHorse$1740                                             000728 GR
+  7 A$SpriteHorse$1741                                             000729 GR
+  7 A$SpriteHorse$1742                                             00072A GR
+  7 A$SpriteHorse$1743                                             00072B GR
+  7 A$SpriteHorse$1744                                             00072D GR
+  7 A$SpriteHorse$1745                                             00072E GR
+  7 A$SpriteHorse$1746                                             000731 GR
+  7 A$SpriteHorse$1747                                             000732 GR
+  7 A$SpriteHorse$1748                                             000733 GR
+  7 A$SpriteHorse$1749                                             000734 GR
+  7 A$SpriteHorse$1750                                             000736 GR
+  7 A$SpriteHorse$1751                                             000737 GR
+  7 A$SpriteHorse$1752                                             000738 GR
+  7 A$SpriteHorse$1753                                             000739 GR
+  7 A$SpriteHorse$1754                                             00073B GR
+  7 A$SpriteHorse$1758                                             00073C GR
+  7 A$SpriteHorse$1759                                             00073F GR
+  7 A$SpriteHorse$1760                                             000740 GR
+  7 A$SpriteHorse$1761                                             000741 GR
+  7 A$SpriteHorse$1762                                             000742 GR
+  7 A$SpriteHorse$1763                                             000744 GR
+  7 A$SpriteHorse$1764                                             000745 GR
+  7 A$SpriteHorse$1765                                             000746 GR
+  7 A$SpriteHorse$1766                                             000747 GR
+  7 A$SpriteHorse$1767                                             000749 GR
+  7 A$SpriteHorse$177                                              000010 GR
+  7 A$SpriteHorse$1771                                             00074A GR
+  7 A$SpriteHorse$1772                                             00074C GR
+  7 A$SpriteHorse$1773                                             00074D GR
+  7 A$SpriteHorse$1774                                             00074F GR
+  7 A$SpriteHorse$1775                                             000751 GR
+  7 A$SpriteHorse$1776                                             000753 GR
+  7 A$SpriteHorse$1777                                             000754 GR
+  7 A$SpriteHorse$1778                                             000756 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 11
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1779                                             000759 GR
+  7 A$SpriteHorse$178                                              000013 GR
+  7 A$SpriteHorse$1780                                             00075B GR
+  7 A$SpriteHorse$1781                                             00075C GR
+  7 A$SpriteHorse$1782                                             00075E GR
+  7 A$SpriteHorse$1783                                             000761 GR
+  7 A$SpriteHorse$1784                                             000763 GR
+  7 A$SpriteHorse$1785                                             000764 GR
+  7 A$SpriteHorse$1786                                             000766 GR
+  7 A$SpriteHorse$1787                                             000769 GR
+  7 A$SpriteHorse$1788                                             00076B GR
+  7 A$SpriteHorse$1789                                             00076C GR
+  7 A$SpriteHorse$1790                                             00076E GR
+  7 A$SpriteHorse$1791                                             000771 GR
+  7 A$SpriteHorse$1792                                             000773 GR
+  7 A$SpriteHorse$1793                                             000774 GR
+  7 A$SpriteHorse$1794                                             000776 GR
+  7 A$SpriteHorse$1795                                             000779 GR
+  7 A$SpriteHorse$1796                                             00077B GR
+  7 A$SpriteHorse$1797                                             00077C GR
+  7 A$SpriteHorse$1798                                             00077E GR
+  7 A$SpriteHorse$1799                                             000781 GR
+  7 A$SpriteHorse$1807                                             000784 GR
+  7 A$SpriteHorse$1808                                             000786 GR
+  7 A$SpriteHorse$1809                                             000787 GR
+  7 A$SpriteHorse$1810                                             000788 GR
+  7 A$SpriteHorse$1814                                             00078A GR
+  7 A$SpriteHorse$1815                                             00078D GR
+  7 A$SpriteHorse$1816                                             00078E GR
+  7 A$SpriteHorse$1817                                             00078F GR
+  7 A$SpriteHorse$1818                                             000790 GR
+  7 A$SpriteHorse$182                                              000016 GR
+  7 A$SpriteHorse$1823                                             000791 GR
+  7 A$SpriteHorse$1824                                             000793 GR
+  7 A$SpriteHorse$1825                                             000794 GR
+  7 A$SpriteHorse$1826                                             000795 GR
+  7 A$SpriteHorse$1827                                             000796 GR
+  7 A$SpriteHorse$1828                                             000797 GR
+  7 A$SpriteHorse$1829                                             000799 GR
+  7 A$SpriteHorse$183                                              000019 GR
+  7 A$SpriteHorse$1830                                             00079B GR
+  7 A$SpriteHorse$1831                                             00079D GR
+  7 A$SpriteHorse$1836                                             0007A0 GR
+  7 A$SpriteHorse$1837                                             0007A3 GR
+  7 A$SpriteHorse$1838                                             0007A4 GR
+  7 A$SpriteHorse$184                                              00001A GR
+  7 A$SpriteHorse$1842                                             0007A7 GR
+  7 A$SpriteHorse$1843                                             0007A9 GR
+  7 A$SpriteHorse$1844                                             0007AA GR
+  7 A$SpriteHorse$1845                                             0007AB GR
+  7 A$SpriteHorse$1846                                             0007AC GR
+  7 A$SpriteHorse$1847                                             0007AD GR
+  7 A$SpriteHorse$1848                                             0007AE GR
+  7 A$SpriteHorse$1849                                             0007AF GR
+  7 A$SpriteHorse$185                                              00001B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 12
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1850                                             0007B0 GR
+  7 A$SpriteHorse$1851                                             0007B1 GR
+  7 A$SpriteHorse$1852                                             0007B2 GR
+  7 A$SpriteHorse$1853                                             0007B4 GR
+  7 A$SpriteHorse$1854                                             0007B5 GR
+  7 A$SpriteHorse$1855                                             0007B6 GR
+  7 A$SpriteHorse$1856                                             0007B8 GR
+  7 A$SpriteHorse$186                                              00001C GR
+  7 A$SpriteHorse$1860                                             0007B9 GR
+  7 A$SpriteHorse$1861                                             0007BC GR
+  7 A$SpriteHorse$1865                                             0007BE GR
+  7 A$SpriteHorse$1866                                             0007C0 GR
+  7 A$SpriteHorse$1867                                             0007C1 GR
+  7 A$SpriteHorse$1868                                             0007C2 GR
+  7 A$SpriteHorse$187                                              00001F GR
+  7 A$SpriteHorse$1872                                             0007C4 GR
+  7 A$SpriteHorse$1873                                             0007C6 GR
+  7 A$SpriteHorse$1874                                             0007C7 GR
+  7 A$SpriteHorse$1875                                             0007C8 GR
+  7 A$SpriteHorse$1876                                             0007C9 GR
+  7 A$SpriteHorse$1877                                             0007CA GR
+  7 A$SpriteHorse$188                                              000020 GR
+  7 A$SpriteHorse$1880                                             0007CB GR
+  7 A$SpriteHorse$1881                                             0007CC GR
+  7 A$SpriteHorse$1882                                             0007CD GR
+  7 A$SpriteHorse$1883                                             0007CE GR
+  7 A$SpriteHorse$1884                                             0007CF GR
+  7 A$SpriteHorse$1885                                             0007D0 GR
+  7 A$SpriteHorse$1886                                             0007D1 GR
+  7 A$SpriteHorse$1887                                             0007D2 GR
+  7 A$SpriteHorse$1888                                             0007D3 GR
+  7 A$SpriteHorse$1889                                             0007D5 GR
+  7 A$SpriteHorse$189                                              000022 GR
+  7 A$SpriteHorse$1890                                             0007D8 GR
+  7 A$SpriteHorse$1894                                             0007D9 GR
+  7 A$SpriteHorse$1895                                             0007DC GR
+  7 A$SpriteHorse$1896                                             0007DD GR
+  7 A$SpriteHorse$1897                                             0007DE GR
+  7 A$SpriteHorse$1898                                             0007DF GR
+  7 A$SpriteHorse$1899                                             0007E2 GR
+  7 A$SpriteHorse$190                                              000023 GR
+  7 A$SpriteHorse$1900                                             0007E3 GR
+  7 A$SpriteHorse$1901                                             0007E4 GR
+  7 A$SpriteHorse$1903                                             0007E5 GR
+  7 A$SpriteHorse$1904                                             0007E7 GR
+  7 A$SpriteHorse$1905                                             0007E8 GR
+  7 A$SpriteHorse$1906                                             0007E9 GR
+  7 A$SpriteHorse$1907                                             0007EB GR
+  7 A$SpriteHorse$1908                                             0007EC GR
+  7 A$SpriteHorse$1909                                             0007ED GR
+  7 A$SpriteHorse$1910                                             0007EF GR
+  7 A$SpriteHorse$1911                                             0007F2 GR
+  7 A$SpriteHorse$1916                                             0007F5 GR
+  7 A$SpriteHorse$1917                                             0007F8 GR
+  7 A$SpriteHorse$1918                                             0007FA GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 13
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1922                                             0007FD GR
+  7 A$SpriteHorse$1923                                             0007FF GR
+  7 A$SpriteHorse$1924                                             000800 GR
+  7 A$SpriteHorse$1925                                             000801 GR
+  7 A$SpriteHorse$1926                                             000802 GR
+  7 A$SpriteHorse$1927                                             000803 GR
+  7 A$SpriteHorse$1930                                             000804 GR
+  7 A$SpriteHorse$1931                                             000805 GR
+  7 A$SpriteHorse$1932                                             000806 GR
+  7 A$SpriteHorse$1935                                             000807 GR
+  7 A$SpriteHorse$1936                                             000808 GR
+  7 A$SpriteHorse$1937                                             000809 GR
+  7 A$SpriteHorse$1938                                             00080A GR
+  7 A$SpriteHorse$1939                                             00080B GR
+  7 A$SpriteHorse$194                                              000025 GR
+  7 A$SpriteHorse$1940                                             00080D GR
+  7 A$SpriteHorse$1941                                             000810 GR
+  7 A$SpriteHorse$1945                                             000811 GR
+  7 A$SpriteHorse$1946                                             000814 GR
+  7 A$SpriteHorse$1947                                             000815 GR
+  7 A$SpriteHorse$1948                                             000816 GR
+  7 A$SpriteHorse$1949                                             000817 GR
+  7 A$SpriteHorse$195                                              000028 GR
+  7 A$SpriteHorse$1950                                             00081A GR
+  7 A$SpriteHorse$1951                                             00081B GR
+  7 A$SpriteHorse$1952                                             00081C GR
+  7 A$SpriteHorse$1954                                             00081D GR
+  7 A$SpriteHorse$1955                                             00081F GR
+  7 A$SpriteHorse$1956                                             000820 GR
+  7 A$SpriteHorse$1957                                             000821 GR
+  7 A$SpriteHorse$1958                                             000823 GR
+  7 A$SpriteHorse$1959                                             000824 GR
+  7 A$SpriteHorse$196                                              000029 GR
+  7 A$SpriteHorse$1960                                             000825 GR
+  7 A$SpriteHorse$1961                                             000827 GR
+  7 A$SpriteHorse$1962                                             00082A GR
+  7 A$SpriteHorse$1967                                             00082D GR
+  7 A$SpriteHorse$1968                                             000830 GR
+  7 A$SpriteHorse$197                                              00002A GR
+  7 A$SpriteHorse$1972                                             000832 GR
+  7 A$SpriteHorse$198                                              00002B GR
+  7 A$SpriteHorse$1980                                             000835 GR
+  7 A$SpriteHorse$1981                                             000838 GR
+  7 A$SpriteHorse$1982                                             000839 GR
+  7 A$SpriteHorse$1983                                             00083A GR
+  7 A$SpriteHorse$1984                                             00083B GR
+  7 A$SpriteHorse$1985                                             00083D GR
+  7 A$SpriteHorse$1986                                             00083E GR
+  7 A$SpriteHorse$1987                                             000840 GR
+  7 A$SpriteHorse$1988                                             000841 GR
+  7 A$SpriteHorse$1989                                             000843 GR
+  7 A$SpriteHorse$199                                              00002E GR
+  7 A$SpriteHorse$1990                                             000845 GR
+  7 A$SpriteHorse$1991                                             000847 GR
+  7 A$SpriteHorse$1992                                             000849 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 14
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$1993                                             00084A GR
+  7 A$SpriteHorse$1995                                             00084C GR
+  7 A$SpriteHorse$1996                                             00084E GR
+  7 A$SpriteHorse$1997                                             000850 GR
+  7 A$SpriteHorse$1999                                             000851 GR
+  7 A$SpriteHorse$200                                              00002F GR
+  7 A$SpriteHorse$2003                                             000853 GR
+  7 A$SpriteHorse$2004                                             000854 GR
+  7 A$SpriteHorse$2005                                             000857 GR
+  7 A$SpriteHorse$2006                                             000858 GR
+  7 A$SpriteHorse$2007                                             000859 GR
+  7 A$SpriteHorse$201                                              000031 GR
+  7 A$SpriteHorse$2012                                             00085B GR
+  7 A$SpriteHorse$2013                                             00085D GR
+  7 A$SpriteHorse$2014                                             00085E GR
+  7 A$SpriteHorse$2015                                             00085F GR
+  7 A$SpriteHorse$2019                                             000861 GR
+  7 A$SpriteHorse$202                                              000032 GR
+  7 A$SpriteHorse$2020                                             000864 GR
+  7 A$SpriteHorse$2021                                             000866 GR
+  7 A$SpriteHorse$2022                                             000867 GR
+  7 A$SpriteHorse$2023                                             00086A GR
+  7 A$SpriteHorse$2024                                             00086C GR
+  7 A$SpriteHorse$2025                                             00086D GR
+  7 A$SpriteHorse$2026                                             00086F GR
+  7 A$SpriteHorse$2027                                             000870 GR
+  7 A$SpriteHorse$2028                                             000872 GR
+  7 A$SpriteHorse$2029                                             000875 GR
+  7 A$SpriteHorse$2030                                             000876 GR
+  7 A$SpriteHorse$2031                                             000877 GR
+  7 A$SpriteHorse$2032                                             000878 GR
+  7 A$SpriteHorse$2033                                             00087A GR
+  7 A$SpriteHorse$2034                                             00087B GR
+  7 A$SpriteHorse$2035                                             00087C GR
+  7 A$SpriteHorse$2036                                             00087D GR
+  7 A$SpriteHorse$2037                                             00087E GR
+  7 A$SpriteHorse$2041                                             000880 GR
+  7 A$SpriteHorse$2042                                             000881 GR
+  7 A$SpriteHorse$2043                                             000882 GR
+  7 A$SpriteHorse$2044                                             000885 GR
+  7 A$SpriteHorse$2045                                             000887 GR
+  7 A$SpriteHorse$2046                                             000888 GR
+  7 A$SpriteHorse$2051                                             00088B GR
+  7 A$SpriteHorse$2052                                             00088D GR
+  7 A$SpriteHorse$2053                                             00088E GR
+  7 A$SpriteHorse$2054                                             00088F GR
+  7 A$SpriteHorse$2055                                             000890 GR
+  7 A$SpriteHorse$2059                                             000891 GR
+  7 A$SpriteHorse$206                                              000034 GR
+  7 A$SpriteHorse$2060                                             000892 GR
+  7 A$SpriteHorse$2061                                             000894 GR
+  7 A$SpriteHorse$2062                                             000896 GR
+  7 A$SpriteHorse$2063                                             000898 GR
+  7 A$SpriteHorse$2064                                             00089A GR
+  7 A$SpriteHorse$2069                                             00089C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 15
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$207                                              000037 GR
+  7 A$SpriteHorse$2070                                             00089F GR
+  7 A$SpriteHorse$2071                                             0008A0 GR
+  7 A$SpriteHorse$2072                                             0008A1 GR
+  7 A$SpriteHorse$2076                                             0008A3 GR
+  7 A$SpriteHorse$208                                              000039 GR
+  7 A$SpriteHorse$2080                                             0008A5 GR
+  7 A$SpriteHorse$2081                                             0008A7 GR
+  7 A$SpriteHorse$2082                                             0008A8 GR
+  7 A$SpriteHorse$2086                                             0008A9 GR
+  7 A$SpriteHorse$2087                                             0008AA GR
+  7 A$SpriteHorse$2088                                             0008AB GR
+  7 A$SpriteHorse$2089                                             0008AC GR
+  7 A$SpriteHorse$209                                              00003A GR
+  7 A$SpriteHorse$2090                                             0008AD GR
+  7 A$SpriteHorse$2091                                             0008AE GR
+  7 A$SpriteHorse$2092                                             0008AF GR
+  7 A$SpriteHorse$2093                                             0008B0 GR
+  7 A$SpriteHorse$2094                                             0008B1 GR
+  7 A$SpriteHorse$2095                                             0008B4 GR
+  7 A$SpriteHorse$2096                                             0008B5 GR
+  7 A$SpriteHorse$2097                                             0008B6 GR
+  7 A$SpriteHorse$2098                                             0008B7 GR
+  7 A$SpriteHorse$2099                                             0008B8 GR
+  7 A$SpriteHorse$2100                                             0008B9 GR
+  7 A$SpriteHorse$2101                                             0008BA GR
+  7 A$SpriteHorse$2105                                             0008BB GR
+  7 A$SpriteHorse$2106                                             0008BD GR
+  7 A$SpriteHorse$2107                                             0008BE GR
+  7 A$SpriteHorse$2108                                             0008BF GR
+  7 A$SpriteHorse$2109                                             0008C0 GR
+  7 A$SpriteHorse$2110                                             0008C1 GR
+  7 A$SpriteHorse$2113                                             0008C2 GR
+  7 A$SpriteHorse$2114                                             0008C3 GR
+  7 A$SpriteHorse$2115                                             0008C4 GR
+  7 A$SpriteHorse$2118                                             0008C5 GR
+  7 A$SpriteHorse$2119                                             0008C8 GR
+  7 A$SpriteHorse$2120                                             0008C9 GR
+  7 A$SpriteHorse$2121                                             0008CA GR
+  7 A$SpriteHorse$2125                                             0008CB GR
+  7 A$SpriteHorse$2126                                             0008CE GR
+  7 A$SpriteHorse$2127                                             0008CF GR
+  7 A$SpriteHorse$2128                                             0008D0 GR
+  7 A$SpriteHorse$2129                                             0008D1 GR
+  7 A$SpriteHorse$2130                                             0008D3 GR
+  7 A$SpriteHorse$2131                                             0008D4 GR
+  7 A$SpriteHorse$2132                                             0008D5 GR
+  7 A$SpriteHorse$2133                                             0008D6 GR
+  7 A$SpriteHorse$2134                                             0008D8 GR
+  7 A$SpriteHorse$2138                                             0008D9 GR
+  7 A$SpriteHorse$2141                                             0008DB GR
+  7 A$SpriteHorse$2142                                             0008DD GR
+  7 A$SpriteHorse$2146                                             0008DF GR
+  7 A$SpriteHorse$2147                                             0008E1 GR
+  7 A$SpriteHorse$2148                                             0008E2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 16
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$2149                                             0008E3 GR
+  7 A$SpriteHorse$2154                                             0008E4 GR
+  7 A$SpriteHorse$2155                                             0008E5 GR
+  7 A$SpriteHorse$2156                                             0008E6 GR
+  7 A$SpriteHorse$2157                                             0008E8 GR
+  7 A$SpriteHorse$2158                                             0008E9 GR
+  7 A$SpriteHorse$2159                                             0008EA GR
+  7 A$SpriteHorse$2160                                             0008EB GR
+  7 A$SpriteHorse$2161                                             0008ED GR
+  7 A$SpriteHorse$2162                                             0008F0 GR
+  7 A$SpriteHorse$2169                                             0008F1 GR
+  7 A$SpriteHorse$217                                              00003C GR
+  7 A$SpriteHorse$2170                                             0008F4 GR
+  7 A$SpriteHorse$2171                                             0008F5 GR
+  7 A$SpriteHorse$2175                                             0008F7 GR
+  7 A$SpriteHorse$2176                                             0008F8 GR
+  7 A$SpriteHorse$2177                                             0008FA GR
+  7 A$SpriteHorse$2178                                             0008FB GR
+  7 A$SpriteHorse$2179                                             0008FC GR
+  7 A$SpriteHorse$2180                                             0008FD GR
+  7 A$SpriteHorse$2181                                             0008FF GR
+  7 A$SpriteHorse$2188                                             000902 GR
+  7 A$SpriteHorse$2189                                             000905 GR
+  7 A$SpriteHorse$2190                                             000906 GR
+  7 A$SpriteHorse$2191                                             000908 GR
+  7 A$SpriteHorse$2196                                             00090A GR
+  7 A$SpriteHorse$2197                                             00090D GR
+  7 A$SpriteHorse$2201                                             00090F GR
+  7 A$SpriteHorse$2209                                             000911 GR
+  7 A$SpriteHorse$2210                                             000914 GR
+  7 A$SpriteHorse$2211                                             000915 GR
+  7 A$SpriteHorse$2212                                             000916 GR
+  7 A$SpriteHorse$2216                                             000918 GR
+  7 A$SpriteHorse$2217                                             00091A GR
+  7 A$SpriteHorse$2218                                             00091B GR
+  7 A$SpriteHorse$2226                                             00091D GR
+  7 A$SpriteHorse$2227                                             000920 GR
+  7 A$SpriteHorse$2228                                             000921 GR
+  7 A$SpriteHorse$2229                                             000923 GR
+  7 A$SpriteHorse$2230                                             000924 GR
+  7 A$SpriteHorse$2231                                             000926 GR
+  7 A$SpriteHorse$2232                                             000927 GR
+  7 A$SpriteHorse$2233                                             000929 GR
+  7 A$SpriteHorse$2234                                             00092B GR
+  7 A$SpriteHorse$2235                                             00092D GR
+  7 A$SpriteHorse$2236                                             00092F GR
+  7 A$SpriteHorse$2237                                             000931 GR
+  7 A$SpriteHorse$2238                                             000932 GR
+  7 A$SpriteHorse$2240                                             000934 GR
+  7 A$SpriteHorse$2241                                             000936 GR
+  7 A$SpriteHorse$2242                                             000938 GR
+  7 A$SpriteHorse$2244                                             000939 GR
+  7 A$SpriteHorse$2248                                             00093B GR
+  7 A$SpriteHorse$2249                                             00093D GR
+  7 A$SpriteHorse$2250                                             00093E GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 17
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$2251                                             00093F GR
+  7 A$SpriteHorse$2252                                             000942 GR
+  7 A$SpriteHorse$2253                                             000945 GR
+  7 A$SpriteHorse$2254                                             000946 GR
+  7 A$SpriteHorse$2255                                             000947 GR
+  7 A$SpriteHorse$2256                                             000948 GR
+  7 A$SpriteHorse$2257                                             00094B GR
+  7 A$SpriteHorse$2262                                             00094D GR
+  7 A$SpriteHorse$2263                                             00094F GR
+  7 A$SpriteHorse$2264                                             000950 GR
+  7 A$SpriteHorse$2265                                             000951 GR
+  7 A$SpriteHorse$2266                                             000954 GR
+  7 A$SpriteHorse$2267                                             000957 GR
+  7 A$SpriteHorse$2268                                             000958 GR
+  7 A$SpriteHorse$2269                                             000959 GR
+  7 A$SpriteHorse$2270                                             00095A GR
+  7 A$SpriteHorse$2275                                             00095D GR
+  7 A$SpriteHorse$2276                                             000960 GR
+  7 A$SpriteHorse$2277                                             000961 GR
+  7 A$SpriteHorse$2278                                             000962 GR
+  7 A$SpriteHorse$2279                                             000964 GR
+  7 A$SpriteHorse$2280                                             000965 GR
+  7 A$SpriteHorse$2281                                             000967 GR
+  7 A$SpriteHorse$2283                                             000968 GR
+  7 A$SpriteHorse$2284                                             00096B GR
+  7 A$SpriteHorse$2285                                             00096C GR
+  7 A$SpriteHorse$2286                                             00096D GR
+  7 A$SpriteHorse$2287                                             00096E GR
+  7 A$SpriteHorse$2288                                             000970 GR
+  7 A$SpriteHorse$2289                                             000972 GR
+  7 A$SpriteHorse$2290                                             000974 GR
+  7 A$SpriteHorse$2291                                             000976 GR
+  7 A$SpriteHorse$2292                                             000978 GR
+  7 A$SpriteHorse$2293                                             00097A GR
+  7 A$SpriteHorse$2294                                             00097C GR
+  7 A$SpriteHorse$2295                                             00097E GR
+  7 A$SpriteHorse$2296                                             000980 GR
+  7 A$SpriteHorse$2297                                             000982 GR
+  7 A$SpriteHorse$2298                                             000983 GR
+  7 A$SpriteHorse$2303                                             000984 GR
+  7 A$SpriteHorse$2304                                             000987 GR
+  7 A$SpriteHorse$2305                                             000988 GR
+  7 A$SpriteHorse$2309                                             000989 GR
+  7 A$SpriteHorse$2310                                             00098B GR
+  7 A$SpriteHorse$2311                                             00098C GR
+  7 A$SpriteHorse$2312                                             00098E GR
+  7 A$SpriteHorse$2317                                             00098F GR
+  7 A$SpriteHorse$2318                                             000992 GR
+  7 A$SpriteHorse$2319                                             000993 GR
+  7 A$SpriteHorse$2320                                             000994 GR
+  7 A$SpriteHorse$2321                                             000995 GR
+  7 A$SpriteHorse$2322                                             000996 GR
+  7 A$SpriteHorse$2323                                             000998 GR
+  7 A$SpriteHorse$2324                                             00099A GR
+  7 A$SpriteHorse$2325                                             00099C GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 18
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$2326                                             00099E GR
+  7 A$SpriteHorse$2327                                             00099F GR
+  7 A$SpriteHorse$2329                                             0009A1 GR
+  7 A$SpriteHorse$2330                                             0009A3 GR
+  7 A$SpriteHorse$2331                                             0009A5 GR
+  7 A$SpriteHorse$2333                                             0009A6 GR
+  7 A$SpriteHorse$2337                                             0009A8 GR
+  7 A$SpriteHorse$2338                                             0009A9 GR
+  7 A$SpriteHorse$2339                                             0009AA GR
+  7 A$SpriteHorse$2344                                             0009AC GR
+  7 A$SpriteHorse$2345                                             0009AF GR
+  7 A$SpriteHorse$2346                                             0009B1 GR
+  7 A$SpriteHorse$2350                                             0009B3 GR
+  7 A$SpriteHorse$2351                                             0009B5 GR
+  7 A$SpriteHorse$2356                                             0009B6 GR
+  7 A$SpriteHorse$2357                                             0009B9 GR
+  7 A$SpriteHorse$2360                                             0009BA GR
+  7 A$SpriteHorse$2363                                             0009BC GR
+  7 A$SpriteHorse$2364                                             0009BD GR
+  7 A$SpriteHorse$2365                                             0009C0 GR
+  7 A$SpriteHorse$2366                                             0009C1 GR
+  7 A$SpriteHorse$2367                                             0009C2 GR
+  7 A$SpriteHorse$2368                                             0009C3 GR
+  7 A$SpriteHorse$2369                                             0009C4 GR
+  7 A$SpriteHorse$2370                                             0009C6 GR
+  7 A$SpriteHorse$2372                                             0009C8 GR
+  7 A$SpriteHorse$2373                                             0009CB GR
+  7 A$SpriteHorse$2374                                             0009CD GR
+  7 A$SpriteHorse$2375                                             0009CE GR
+  7 A$SpriteHorse$2376                                             0009D0 GR
+  7 A$SpriteHorse$2377                                             0009D1 GR
+  7 A$SpriteHorse$2378                                             0009D2 GR
+  7 A$SpriteHorse$2382                                             0009D5 GR
+  7 A$SpriteHorse$2383                                             0009D6 GR
+  7 A$SpriteHorse$2384                                             0009D9 GR
+  7 A$SpriteHorse$2385                                             0009DA GR
+  7 A$SpriteHorse$2386                                             0009DB GR
+  7 A$SpriteHorse$2387                                             0009DC GR
+  7 A$SpriteHorse$2388                                             0009DF GR
+  7 A$SpriteHorse$2389                                             0009E0 GR
+  7 A$SpriteHorse$2390                                             0009E1 GR
+  7 A$SpriteHorse$2394                                             0009E3 GR
+  7 A$SpriteHorse$2395                                             0009E6 GR
+  7 A$SpriteHorse$2396                                             0009E7 GR
+  7 A$SpriteHorse$2397                                             0009E8 GR
+  7 A$SpriteHorse$2398                                             0009EA GR
+  7 A$SpriteHorse$2402                                             0009EC GR
+  7 A$SpriteHorse$2403                                             0009EF GR
+  7 A$SpriteHorse$2404                                             0009F0 GR
+  7 A$SpriteHorse$2405                                             0009F1 GR
+  7 A$SpriteHorse$2406                                             0009F3 GR
+  7 A$SpriteHorse$2407                                             0009F4 GR
+  7 A$SpriteHorse$2408                                             0009F5 GR
+  7 A$SpriteHorse$2409                                             0009F6 GR
+  7 A$SpriteHorse$2413                                             0009F8 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 19
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$2414                                             0009FB GR
+  7 A$SpriteHorse$2415                                             0009FD GR
+  7 A$SpriteHorse$2419                                             0009FF GR
+  7 A$SpriteHorse$2420                                             000A00 GR
+  7 A$SpriteHorse$2421                                             000A02 GR
+  7 A$SpriteHorse$2422                                             000A03 GR
+  7 A$SpriteHorse$2423                                             000A04 GR
+  7 A$SpriteHorse$2424                                             000A06 GR
+  7 A$SpriteHorse$2425                                             000A09 GR
+  7 A$SpriteHorse$2426                                             000A0C GR
+  7 A$SpriteHorse$2430                                             000A0D GR
+  7 A$SpriteHorse$2431                                             000A0E GR
+  7 A$SpriteHorse$2432                                             000A11 GR
+  7 A$SpriteHorse$2437                                             000A13 GR
+  7 A$SpriteHorse$2438                                             000A16 GR
+  7 A$SpriteHorse$2439                                             000A18 GR
+  7 A$SpriteHorse$2440                                             000A19 GR
+  7 A$SpriteHorse$2444                                             000A1B GR
+  7 A$SpriteHorse$2445                                             000A1E GR
+  7 A$SpriteHorse$2446                                             000A21 GR
+  7 A$SpriteHorse$2447                                             000A24 GR
+  7 A$SpriteHorse$2448                                             000A27 GR
+  7 A$SpriteHorse$2449                                             000A28 GR
+  7 A$SpriteHorse$2450                                             000A2A GR
+  7 A$SpriteHorse$2451                                             000A2B GR
+  7 A$SpriteHorse$2452                                             000A2D GR
+  7 A$SpriteHorse$2453                                             000A2E GR
+  7 A$SpriteHorse$2454                                             000A30 GR
+  7 A$SpriteHorse$2455                                             000A31 GR
+  7 A$SpriteHorse$2459                                             000A33 GR
+  7 A$SpriteHorse$2460                                             000A36 GR
+  7 A$SpriteHorse$2464                                             000A38 GR
+  7 A$SpriteHorse$2465                                             000A3B GR
+  7 A$SpriteHorse$2466                                             000A3C GR
+  7 A$SpriteHorse$2467                                             000A3D GR
+  7 A$SpriteHorse$2475                                             000A3E GR
+  7 A$SpriteHorse$2476                                             000A40 GR
+  7 A$SpriteHorse$2477                                             000A41 GR
+  7 A$SpriteHorse$2478                                             000A42 GR
+  7 A$SpriteHorse$2479                                             000A44 GR
+  7 A$SpriteHorse$2480                                             000A45 GR
+  7 A$SpriteHorse$2481                                             000A48 GR
+  7 A$SpriteHorse$2482                                             000A49 GR
+  7 A$SpriteHorse$2484                                             000A4A GR
+  7 A$SpriteHorse$2487                                             000A4C GR
+  7 A$SpriteHorse$2488                                             000A4D GR
+  7 A$SpriteHorse$2489                                             000A50 GR
+  7 A$SpriteHorse$2490                                             000A51 GR
+  7 A$SpriteHorse$2491                                             000A52 GR
+  7 A$SpriteHorse$2492                                             000A53 GR
+  7 A$SpriteHorse$2493                                             000A54 GR
+  7 A$SpriteHorse$2498                                             000A57 GR
+  7 A$SpriteHorse$2503                                             000A59 GR
+  7 A$SpriteHorse$2520                                             000A5A GR
+  7 A$SpriteHorse$262                                              000058 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 20
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$266                                              00005A GR
+  7 A$SpriteHorse$267                                              00005D GR
+  7 A$SpriteHorse$271                                              00005E GR
+  7 A$SpriteHorse$272                                              000061 GR
+  7 A$SpriteHorse$273                                              000062 GR
+  7 A$SpriteHorse$274                                              000063 GR
+  7 A$SpriteHorse$275                                              000064 GR
+  7 A$SpriteHorse$276                                              000065 GR
+  7 A$SpriteHorse$277                                              000067 GR
+  7 A$SpriteHorse$278                                              000069 GR
+  7 A$SpriteHorse$279                                              00006B GR
+  7 A$SpriteHorse$280                                              00006D GR
+  7 A$SpriteHorse$281                                              00006E GR
+  7 A$SpriteHorse$283                                              000070 GR
+  7 A$SpriteHorse$284                                              000072 GR
+  7 A$SpriteHorse$285                                              000074 GR
+  7 A$SpriteHorse$287                                              000075 GR
+  7 A$SpriteHorse$291                                              000077 GR
+  7 A$SpriteHorse$292                                              00007A GR
+  7 A$SpriteHorse$293                                              00007D GR
+  7 A$SpriteHorse$294                                              00007E GR
+  7 A$SpriteHorse$295                                              000080 GR
+  7 A$SpriteHorse$296                                              000083 GR
+  7 A$SpriteHorse$297                                              000086 GR
+  7 A$SpriteHorse$298                                              000087 GR
+  7 A$SpriteHorse$302                                              000089 GR
+  7 A$SpriteHorse$303                                              00008C GR
+  7 A$SpriteHorse$307                                              00008E GR
+  7 A$SpriteHorse$308                                              000091 GR
+  7 A$SpriteHorse$312                                              000094 GR
+  7 A$SpriteHorse$313                                              000097 GR
+  7 A$SpriteHorse$314                                              000098 GR
+  7 A$SpriteHorse$319                                              00009A GR
+  7 A$SpriteHorse$320                                              00009D GR
+  7 A$SpriteHorse$321                                              00009F GR
+  7 A$SpriteHorse$326                                              0000A1 GR
+  7 A$SpriteHorse$327                                              0000A4 GR
+  7 A$SpriteHorse$332                                              0000A5 GR
+  7 A$SpriteHorse$333                                              0000A8 GR
+  7 A$SpriteHorse$334                                              0000A9 GR
+  7 A$SpriteHorse$335                                              0000AA GR
+  7 A$SpriteHorse$336                                              0000AB GR
+  7 A$SpriteHorse$337                                              0000AC GR
+  7 A$SpriteHorse$338                                              0000AE GR
+  7 A$SpriteHorse$339                                              0000B0 GR
+  7 A$SpriteHorse$340                                              0000B2 GR
+  7 A$SpriteHorse$341                                              0000B4 GR
+  7 A$SpriteHorse$342                                              0000B5 GR
+  7 A$SpriteHorse$344                                              0000B7 GR
+  7 A$SpriteHorse$345                                              0000B9 GR
+  7 A$SpriteHorse$346                                              0000BB GR
+  7 A$SpriteHorse$348                                              0000BC GR
+  7 A$SpriteHorse$352                                              0000BE GR
+  7 A$SpriteHorse$353                                              0000C1 GR
+  7 A$SpriteHorse$354                                              0000C2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 21
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$355                                              0000C5 GR
+  7 A$SpriteHorse$356                                              0000C8 GR
+  7 A$SpriteHorse$357                                              0000CB GR
+  7 A$SpriteHorse$358                                              0000CC GR
+  7 A$SpriteHorse$359                                              0000CD GR
+  7 A$SpriteHorse$360                                              0000CE GR
+  7 A$SpriteHorse$361                                              0000CF GR
+  7 A$SpriteHorse$362                                              0000D0 GR
+  7 A$SpriteHorse$363                                              0000D1 GR
+  7 A$SpriteHorse$368                                              0000D3 GR
+  7 A$SpriteHorse$369                                              0000D6 GR
+  7 A$SpriteHorse$370                                              0000D7 GR
+  7 A$SpriteHorse$371                                              0000D8 GR
+  7 A$SpriteHorse$372                                              0000D9 GR
+  7 A$SpriteHorse$373                                              0000DA GR
+  7 A$SpriteHorse$374                                              0000DC GR
+  7 A$SpriteHorse$375                                              0000DE GR
+  7 A$SpriteHorse$376                                              0000E0 GR
+  7 A$SpriteHorse$377                                              0000E2 GR
+  7 A$SpriteHorse$378                                              0000E3 GR
+  7 A$SpriteHorse$380                                              0000E5 GR
+  7 A$SpriteHorse$381                                              0000E7 GR
+  7 A$SpriteHorse$382                                              0000E9 GR
+  7 A$SpriteHorse$384                                              0000EA GR
+  7 A$SpriteHorse$388                                              0000EC GR
+  7 A$SpriteHorse$392                                              0000EF GR
+  7 A$SpriteHorse$393                                              0000F0 GR
+  7 A$SpriteHorse$397                                              0000F2 GR
+  7 A$SpriteHorse$398                                              0000F5 GR
+  7 A$SpriteHorse$399                                              0000F6 GR
+  7 A$SpriteHorse$400                                              0000F7 GR
+  7 A$SpriteHorse$401                                              0000F8 GR
+  7 A$SpriteHorse$402                                              0000F9 GR
+  7 A$SpriteHorse$403                                              0000FC GR
+  7 A$SpriteHorse$404                                              0000FD GR
+  7 A$SpriteHorse$405                                              0000FE GR
+  7 A$SpriteHorse$406                                              0000FF GR
+  7 A$SpriteHorse$407                                              000100 GR
+  7 A$SpriteHorse$408                                              000101 GR
+  7 A$SpriteHorse$412                                              000102 GR
+  7 A$SpriteHorse$413                                              000105 GR
+  7 A$SpriteHorse$418                                              000106 GR
+  7 A$SpriteHorse$419                                              000109 GR
+  7 A$SpriteHorse$420                                              00010B GR
+  7 A$SpriteHorse$424                                              00010D GR
+  7 A$SpriteHorse$425                                              00010E GR
+  7 A$SpriteHorse$426                                              00010F GR
+  7 A$SpriteHorse$427                                              000110 GR
+  7 A$SpriteHorse$432                                              000111 GR
+  7 A$SpriteHorse$433                                              000114 GR
+  7 A$SpriteHorse$434                                              000116 GR
+  7 A$SpriteHorse$435                                              000117 GR
+  7 A$SpriteHorse$436                                              000118 GR
+  7 A$SpriteHorse$437                                              00011A GR
+  7 A$SpriteHorse$438                                              00011B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 22
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$439                                              00011D GR
+  7 A$SpriteHorse$440                                              00011E GR
+  7 A$SpriteHorse$441                                              000120 GR
+  7 A$SpriteHorse$442                                              000122 GR
+  7 A$SpriteHorse$443                                              000124 GR
+  7 A$SpriteHorse$444                                              000126 GR
+  7 A$SpriteHorse$445                                              000127 GR
+  7 A$SpriteHorse$447                                              000129 GR
+  7 A$SpriteHorse$448                                              00012B GR
+  7 A$SpriteHorse$449                                              00012D GR
+  7 A$SpriteHorse$451                                              00012E GR
+  7 A$SpriteHorse$455                                              000130 GR
+  7 A$SpriteHorse$456                                              000133 GR
+  7 A$SpriteHorse$457                                              000135 GR
+  7 A$SpriteHorse$458                                              000136 GR
+  7 A$SpriteHorse$463                                              000138 GR
+  7 A$SpriteHorse$467                                              00013B GR
+  7 A$SpriteHorse$468                                              00013E GR
+  7 A$SpriteHorse$469                                              00013F GR
+  7 A$SpriteHorse$470                                              000140 GR
+  7 A$SpriteHorse$471                                              000141 GR
+  7 A$SpriteHorse$472                                              000144 GR
+  7 A$SpriteHorse$473                                              000145 GR
+  7 A$SpriteHorse$474                                              000146 GR
+  7 A$SpriteHorse$475                                              000147 GR
+  7 A$SpriteHorse$476                                              000148 GR
+  7 A$SpriteHorse$480                                              00014A GR
+  7 A$SpriteHorse$481                                              00014B GR
+  7 A$SpriteHorse$482                                              00014C GR
+  7 A$SpriteHorse$483                                              00014D GR
+  7 A$SpriteHorse$484                                              00014E GR
+  7 A$SpriteHorse$485                                              00014F GR
+  7 A$SpriteHorse$486                                              000150 GR
+  7 A$SpriteHorse$487                                              000151 GR
+  7 A$SpriteHorse$488                                              000152 GR
+  7 A$SpriteHorse$493                                              000154 GR
+  7 A$SpriteHorse$494                                              000157 GR
+  7 A$SpriteHorse$495                                              000158 GR
+  7 A$SpriteHorse$496                                              000159 GR
+  7 A$SpriteHorse$497                                              00015A GR
+  7 A$SpriteHorse$498                                              00015B GR
+  7 A$SpriteHorse$499                                              00015C GR
+  7 A$SpriteHorse$503                                              00015E GR
+  7 A$SpriteHorse$504                                              000161 GR
+  7 A$SpriteHorse$505                                              000162 GR
+  7 A$SpriteHorse$506                                              000163 GR
+  7 A$SpriteHorse$507                                              000164 GR
+  7 A$SpriteHorse$508                                              000165 GR
+  7 A$SpriteHorse$509                                              000166 GR
+  7 A$SpriteHorse$514                                              000167 GR
+  7 A$SpriteHorse$515                                              000168 GR
+  7 A$SpriteHorse$516                                              00016A GR
+  7 A$SpriteHorse$517                                              00016C GR
+  7 A$SpriteHorse$518                                              00016D GR
+  7 A$SpriteHorse$519                                              00016F GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 23
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$520                                              000170 GR
+  7 A$SpriteHorse$521                                              000172 GR
+  7 A$SpriteHorse$522                                              000174 GR
+  7 A$SpriteHorse$523                                              000176 GR
+  7 A$SpriteHorse$524                                              000178 GR
+  7 A$SpriteHorse$525                                              000179 GR
+  7 A$SpriteHorse$527                                              00017B GR
+  7 A$SpriteHorse$528                                              00017D GR
+  7 A$SpriteHorse$529                                              00017F GR
+  7 A$SpriteHorse$531                                              000180 GR
+  7 A$SpriteHorse$535                                              000182 GR
+  7 A$SpriteHorse$536                                              000184 GR
+  7 A$SpriteHorse$537                                              000186 GR
+  7 A$SpriteHorse$538                                              000188 GR
+  7 A$SpriteHorse$539                                              00018A GR
+  7 A$SpriteHorse$540                                              00018C GR
+  7 A$SpriteHorse$541                                              00018E GR
+  7 A$SpriteHorse$542                                              000190 GR
+  7 A$SpriteHorse$543                                              000192 GR
+  7 A$SpriteHorse$544                                              000195 GR
+  7 A$SpriteHorse$545                                              000196 GR
+  7 A$SpriteHorse$550                                              000198 GR
+  7 A$SpriteHorse$551                                              00019B GR
+  7 A$SpriteHorse$556                                              00019D GR
+  7 A$SpriteHorse$557                                              0001A0 GR
+  7 A$SpriteHorse$558                                              0001A1 GR
+  7 A$SpriteHorse$559                                              0001A2 GR
+  7 A$SpriteHorse$560                                              0001A3 GR
+  7 A$SpriteHorse$561                                              0001A5 GR
+  7 A$SpriteHorse$562                                              0001A6 GR
+  7 A$SpriteHorse$563                                              0001A8 GR
+  7 A$SpriteHorse$564                                              0001A9 GR
+  7 A$SpriteHorse$565                                              0001AB GR
+  7 A$SpriteHorse$566                                              0001AD GR
+  7 A$SpriteHorse$567                                              0001AF GR
+  7 A$SpriteHorse$568                                              0001B1 GR
+  7 A$SpriteHorse$569                                              0001B2 GR
+  7 A$SpriteHorse$571                                              0001B4 GR
+  7 A$SpriteHorse$572                                              0001B6 GR
+  7 A$SpriteHorse$573                                              0001B8 GR
+  7 A$SpriteHorse$575                                              0001B9 GR
+  7 A$SpriteHorse$579                                              0001BC GR
+  7 A$SpriteHorse$580                                              0001BF GR
+  7 A$SpriteHorse$581                                              0001C0 GR
+  7 A$SpriteHorse$582                                              0001C1 GR
+  7 A$SpriteHorse$583                                              0001C2 GR
+  7 A$SpriteHorse$584                                              0001C3 GR
+  7 A$SpriteHorse$585                                              0001C4 GR
+  7 A$SpriteHorse$586                                              0001C5 GR
+  7 A$SpriteHorse$590                                              0001C6 GR
+  7 A$SpriteHorse$591                                              0001C7 GR
+  7 A$SpriteHorse$592                                              0001C8 GR
+  7 A$SpriteHorse$593                                              0001C9 GR
+  7 A$SpriteHorse$594                                              0001CB GR
+  7 A$SpriteHorse$595                                              0001CC GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 24
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$596                                              0001CE GR
+  7 A$SpriteHorse$597                                              0001D1 GR
+  7 A$SpriteHorse$598                                              0001D2 GR
+  7 A$SpriteHorse$599                                              0001D4 GR
+  7 A$SpriteHorse$600                                              0001D5 GR
+  7 A$SpriteHorse$601                                              0001D7 GR
+  7 A$SpriteHorse$602                                              0001DA GR
+  7 A$SpriteHorse$603                                              0001DB GR
+  7 A$SpriteHorse$604                                              0001DD GR
+  7 A$SpriteHorse$605                                              0001DE GR
+  7 A$SpriteHorse$606                                              0001E0 GR
+  7 A$SpriteHorse$607                                              0001E3 GR
+  7 A$SpriteHorse$608                                              0001E4 GR
+  7 A$SpriteHorse$609                                              0001E6 GR
+  7 A$SpriteHorse$610                                              0001E7 GR
+  7 A$SpriteHorse$611                                              0001E9 GR
+  7 A$SpriteHorse$612                                              0001EC GR
+  7 A$SpriteHorse$613                                              0001ED GR
+  7 A$SpriteHorse$614                                              0001EF GR
+  7 A$SpriteHorse$615                                              0001F0 GR
+  7 A$SpriteHorse$616                                              0001F2 GR
+  7 A$SpriteHorse$617                                              0001F5 GR
+  7 A$SpriteHorse$618                                              0001F6 GR
+  7 A$SpriteHorse$619                                              0001F8 GR
+  7 A$SpriteHorse$620                                              0001FA GR
+  7 A$SpriteHorse$621                                              0001FB GR
+  7 A$SpriteHorse$622                                              0001FC GR
+  7 A$SpriteHorse$623                                              0001FD GR
+  7 A$SpriteHorse$625                                              0001FF GR
+  7 A$SpriteHorse$626                                              000202 GR
+  7 A$SpriteHorse$627                                              000203 GR
+  7 A$SpriteHorse$628                                              000205 GR
+  7 A$SpriteHorse$629                                              000207 GR
+  7 A$SpriteHorse$630                                              000208 GR
+  7 A$SpriteHorse$631                                              000209 GR
+  7 A$SpriteHorse$632                                              00020A GR
+  7 A$SpriteHorse$640                                              00020C GR
+  7 A$SpriteHorse$641                                              00020F GR
+  7 A$SpriteHorse$649                                              000210 GR
+  7 A$SpriteHorse$650                                              000213 GR
+  7 A$SpriteHorse$654                                              000215 GR
+  7 A$SpriteHorse$655                                              000218 GR
+  7 A$SpriteHorse$656                                              00021A GR
+  7 A$SpriteHorse$657                                              00021B GR
+  7 A$SpriteHorse$661                                              00021D GR
+  7 A$SpriteHorse$662                                              000220 GR
+  7 A$SpriteHorse$663                                              000221 GR
+  7 A$SpriteHorse$664                                              000222 GR
+  7 A$SpriteHorse$665                                              000224 GR
+  7 A$SpriteHorse$666                                              000225 GR
+  7 A$SpriteHorse$667                                              000227 GR
+  7 A$SpriteHorse$669                                              000228 GR
+  7 A$SpriteHorse$670                                              00022B GR
+  7 A$SpriteHorse$671                                              00022C GR
+  7 A$SpriteHorse$672                                              00022D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 25
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$673                                              00022E GR
+  7 A$SpriteHorse$674                                              000231 GR
+  7 A$SpriteHorse$675                                              000232 GR
+  7 A$SpriteHorse$676                                              000233 GR
+  7 A$SpriteHorse$678                                              000234 GR
+  7 A$SpriteHorse$679                                              000235 GR
+  7 A$SpriteHorse$680                                              000236 GR
+  7 A$SpriteHorse$681                                              000237 GR
+  7 A$SpriteHorse$682                                              000238 GR
+  7 A$SpriteHorse$683                                              000239 GR
+  7 A$SpriteHorse$684                                              00023A GR
+  7 A$SpriteHorse$685                                              00023B GR
+  7 A$SpriteHorse$686                                              00023C GR
+  7 A$SpriteHorse$690                                              00023D GR
+  7 A$SpriteHorse$691                                              000240 GR
+  7 A$SpriteHorse$692                                              000241 GR
+  7 A$SpriteHorse$693                                              000242 GR
+  7 A$SpriteHorse$694                                              000244 GR
+  7 A$SpriteHorse$695                                              000245 GR
+  7 A$SpriteHorse$696                                              000247 GR
+  7 A$SpriteHorse$698                                              000248 GR
+  7 A$SpriteHorse$699                                              00024B GR
+  7 A$SpriteHorse$700                                              00024C GR
+  7 A$SpriteHorse$701                                              00024D GR
+  7 A$SpriteHorse$702                                              00024E GR
+  7 A$SpriteHorse$703                                              000251 GR
+  7 A$SpriteHorse$704                                              000252 GR
+  7 A$SpriteHorse$705                                              000253 GR
+  7 A$SpriteHorse$707                                              000254 GR
+  7 A$SpriteHorse$708                                              000256 GR
+  7 A$SpriteHorse$709                                              000257 GR
+  7 A$SpriteHorse$710                                              000258 GR
+  7 A$SpriteHorse$711                                              00025A GR
+  7 A$SpriteHorse$712                                              00025B GR
+  7 A$SpriteHorse$713                                              00025C GR
+  7 A$SpriteHorse$714                                              00025D GR
+  7 A$SpriteHorse$715                                              00025E GR
+  7 A$SpriteHorse$716                                              00025F GR
+  7 A$SpriteHorse$720                                              000260 GR
+  7 A$SpriteHorse$721                                              000263 GR
+  7 A$SpriteHorse$722                                              000265 GR
+  7 A$SpriteHorse$726                                              000267 GR
+  7 A$SpriteHorse$727                                              000269 GR
+  7 A$SpriteHorse$728                                              00026A GR
+  7 A$SpriteHorse$729                                              00026B GR
+  7 A$SpriteHorse$730                                              00026D GR
+  7 A$SpriteHorse$731                                              000270 GR
+  7 A$SpriteHorse$732                                              000273 GR
+  7 A$SpriteHorse$736                                              000274 GR
+  7 A$SpriteHorse$737                                              000277 GR
+  7 A$SpriteHorse$738                                              000278 GR
+  7 A$SpriteHorse$739                                              000279 GR
+  7 A$SpriteHorse$740                                              00027A GR
+  7 A$SpriteHorse$744                                              00027D GR
+  7 A$SpriteHorse$745                                              000280 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 26
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$746                                              000282 GR
+  7 A$SpriteHorse$747                                              000283 GR
+  7 A$SpriteHorse$748                                              000284 GR
+  7 A$SpriteHorse$749                                              000285 GR
+  7 A$SpriteHorse$754                                              000287 GR
+  7 A$SpriteHorse$755                                              00028A GR
+  7 A$SpriteHorse$756                                              00028B GR
+  7 A$SpriteHorse$757                                              00028D GR
+  7 A$SpriteHorse$758                                              00028F GR
+  7 A$SpriteHorse$759                                              000290 GR
+  7 A$SpriteHorse$760                                              000291 GR
+  7 A$SpriteHorse$761                                              000292 GR
+  7 A$SpriteHorse$766                                              000294 GR
+  7 A$SpriteHorse$767                                              000297 GR
+  7 A$SpriteHorse$768                                              000299 GR
+  7 A$SpriteHorse$769                                              00029A GR
+  7 A$SpriteHorse$774                                              00029C GR
+  7 A$SpriteHorse$775                                              00029F GR
+  7 A$SpriteHorse$776                                              0002A0 GR
+  7 A$SpriteHorse$777                                              0002A2 GR
+  7 A$SpriteHorse$778                                              0002A4 GR
+  7 A$SpriteHorse$779                                              0002A5 GR
+  7 A$SpriteHorse$780                                              0002A6 GR
+  7 A$SpriteHorse$781                                              0002A8 GR
+  7 A$SpriteHorse$786                                              0002AA GR
+  7 A$SpriteHorse$787                                              0002AD GR
+  7 A$SpriteHorse$788                                              0002AF GR
+  7 A$SpriteHorse$789                                              0002B0 GR
+  7 A$SpriteHorse$794                                              0002B2 GR
+  7 A$SpriteHorse$795                                              0002B5 GR
+  7 A$SpriteHorse$796                                              0002B7 GR
+  7 A$SpriteHorse$800                                              0002B9 GR
+  7 A$SpriteHorse$801                                              0002BC GR
+  7 A$SpriteHorse$805                                              0002BE GR
+  7 A$SpriteHorse$806                                              0002C1 GR
+  7 A$SpriteHorse$807                                              0002C3 GR
+  7 A$SpriteHorse$808                                              0002C4 GR
+  7 A$SpriteHorse$812                                              0002C6 GR
+  7 A$SpriteHorse$813                                              0002C9 GR
+  7 A$SpriteHorse$814                                              0002CA GR
+  7 A$SpriteHorse$815                                              0002CB GR
+  7 A$SpriteHorse$816                                              0002CC GR
+  7 A$SpriteHorse$821                                              0002CF GR
+  7 A$SpriteHorse$822                                              0002D2 GR
+  7 A$SpriteHorse$823                                              0002D3 GR
+  7 A$SpriteHorse$824                                              0002D6 GR
+  7 A$SpriteHorse$825                                              0002D7 GR
+  7 A$SpriteHorse$826                                              0002D8 GR
+  7 A$SpriteHorse$827                                              0002DA GR
+  7 A$SpriteHorse$828                                              0002DB GR
+  7 A$SpriteHorse$829                                              0002DC GR
+  7 A$SpriteHorse$830                                              0002DE GR
+  7 A$SpriteHorse$831                                              0002DF GR
+  7 A$SpriteHorse$832                                              0002E0 GR
+  7 A$SpriteHorse$833                                              0002E2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 27
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$834                                              0002E4 GR
+  7 A$SpriteHorse$835                                              0002E5 GR
+  7 A$SpriteHorse$837                                              0002E7 GR
+  7 A$SpriteHorse$838                                              0002E9 GR
+  7 A$SpriteHorse$839                                              0002EB GR
+  7 A$SpriteHorse$840                                              0002EC GR
+  7 A$SpriteHorse$841                                              0002ED GR
+  7 A$SpriteHorse$846                                              0002EF GR
+  7 A$SpriteHorse$847                                              0002F2 GR
+  7 A$SpriteHorse$851                                              0002F4 GR
+  7 A$SpriteHorse$852                                              0002F7 GR
+  7 A$SpriteHorse$857                                              0002F9 GR
+  7 A$SpriteHorse$858                                              0002FC GR
+  7 A$SpriteHorse$859                                              0002FD GR
+  7 A$SpriteHorse$863                                              0002FE GR
+  7 A$SpriteHorse$864                                              0002FF GR
+  7 A$SpriteHorse$868                                              000301 GR
+  7 A$SpriteHorse$869                                              000304 GR
+  7 A$SpriteHorse$873                                              000306 GR
+  7 A$SpriteHorse$874                                              000309 GR
+  7 A$SpriteHorse$878                                              00030A GR
+  7 A$SpriteHorse$879                                              00030D GR
+  7 A$SpriteHorse$883                                              00030E GR
+  7 A$SpriteHorse$884                                              00030F GR
+  7 A$SpriteHorse$885                                              000311 GR
+  7 A$SpriteHorse$886                                              000313 GR
+  7 A$SpriteHorse$887                                              000316 GR
+  7 A$SpriteHorse$888                                              000319 GR
+  7 A$SpriteHorse$889                                              00031A GR
+  7 A$SpriteHorse$890                                              00031C GR
+  7 A$SpriteHorse$891                                              00031D GR
+  7 A$SpriteHorse$892                                              00031E GR
+  7 A$SpriteHorse$893                                              000320 GR
+  7 A$SpriteHorse$894                                              000322 GR
+  7 A$SpriteHorse$895                                              000324 GR
+  7 A$SpriteHorse$896                                              000326 GR
+  7 A$SpriteHorse$897                                              000327 GR
+  7 A$SpriteHorse$899                                              000329 GR
+  7 A$SpriteHorse$900                                              00032B GR
+  7 A$SpriteHorse$901                                              00032D GR
+  7 A$SpriteHorse$903                                              00032E GR
+  7 A$SpriteHorse$904                                              000330 GR
+  7 A$SpriteHorse$905                                              000333 GR
+  7 A$SpriteHorse$906                                              000335 GR
+  7 A$SpriteHorse$907                                              000337 GR
+  7 A$SpriteHorse$909                                              000339 GR
+  7 A$SpriteHorse$910                                              00033C GR
+  7 A$SpriteHorse$911                                              00033D GR
+  7 A$SpriteHorse$912                                              00033F GR
+  7 A$SpriteHorse$913                                              000341 GR
+  7 A$SpriteHorse$914                                              000343 GR
+  7 A$SpriteHorse$915                                              000344 GR
+  7 A$SpriteHorse$916                                              000346 GR
+  7 A$SpriteHorse$917                                              000347 GR
+  7 A$SpriteHorse$918                                              000348 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 28
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 A$SpriteHorse$919                                              00034A GR
+  7 A$SpriteHorse$920                                              00034C GR
+  7 A$SpriteHorse$921                                              00034E GR
+  7 A$SpriteHorse$922                                              000350 GR
+  7 A$SpriteHorse$923                                              000351 GR
+  7 A$SpriteHorse$925                                              000353 GR
+  7 A$SpriteHorse$926                                              000355 GR
+  7 A$SpriteHorse$927                                              000357 GR
+  7 A$SpriteHorse$929                                              000358 GR
+  7 A$SpriteHorse$934                                              00035A GR
+  7 A$SpriteHorse$935                                              00035D GR
+  7 A$SpriteHorse$939                                              00035F GR
+  7 A$SpriteHorse$940                                              000362 GR
+  7 A$SpriteHorse$941                                              000363 GR
+  7 A$SpriteHorse$942                                              000365 GR
+  7 A$SpriteHorse$943                                              000366 GR
+  7 A$SpriteHorse$948                                              000368 GR
+  7 A$SpriteHorse$949                                              000369 GR
+  7 A$SpriteHorse$950                                              00036A GR
+  7 A$SpriteHorse$954                                              00036C GR
+  7 A$SpriteHorse$955                                              00036F GR
+  7 A$SpriteHorse$959                                              000371 GR
+  7 A$SpriteHorse$960                                              000374 GR
+  7 A$SpriteHorse$964                                              000375 GR
+  7 A$SpriteHorse$965                                              000378 GR
+  7 A$SpriteHorse$969                                              000379 GR
+  7 A$SpriteHorse$970                                              00037A GR
+  7 A$SpriteHorse$971                                              00037C GR
+  7 A$SpriteHorse$972                                              00037D GR
+  7 A$SpriteHorse$973                                              00037E GR
+  7 A$SpriteHorse$974                                              000380 GR
+  7 A$SpriteHorse$975                                              000382 GR
+  7 A$SpriteHorse$976                                              000384 GR
+  7 A$SpriteHorse$977                                              000386 GR
+  7 A$SpriteHorse$978                                              000387 GR
+  7 A$SpriteHorse$980                                              000389 GR
+  7 A$SpriteHorse$981                                              00038B GR
+  7 A$SpriteHorse$982                                              00038D GR
+  7 A$SpriteHorse$984                                              00038E GR
+  7 A$SpriteHorse$988                                              000390 GR
+  7 A$SpriteHorse$989                                              000393 GR
+  7 A$SpriteHorse$993                                              000395 GR
+  7 A$SpriteHorse$994                                              000398 GR
+  7 A$SpriteHorse$995                                              000399 GR
+  7 A$SpriteHorse$996                                              00039B GR
+  7 A$SpriteHorse$997                                              00039C GR
+  7 C$SpriteHorse.c$102$2_0$204                                 =  000138 GR
+  7 C$SpriteHorse.c$103$1_1$204                                 =  00013B GR
+  7 C$SpriteHorse.c$104$2_1$205                                 =  00014A GR
+  7 C$SpriteHorse.c$105$1_1$204                                 =  000154 GR
+  7 C$SpriteHorse.c$106$2_1$206                                 =  00015E GR
+  7 C$SpriteHorse.c$108$1_1$204                                 =  000167 GR
+  7 C$SpriteHorse.c$109$2_1$207                                 =  000182 GR
+  7 C$SpriteHorse.c$111$2_1$208                                 =  000198 GR
+  7 C$SpriteHorse.c$114$1_1$204                                 =  00019D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 29
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteHorse.c$115$2_1$209                                 =  0001BC GR
+  7 C$SpriteHorse.c$116$2_1$209                                 =  0001C6 GR
+  7 C$SpriteHorse.c$118$3_1$210                                 =  00020C GR
+  7 C$SpriteHorse.c$119$3_1$210                                 =  00020C GR
+  7 C$SpriteHorse.c$121$2_1$209                                 =  000210 GR
+  7 C$SpriteHorse.c$122$2_1$209                                 =  000210 GR
+  7 C$SpriteHorse.c$123$2_1$209                                 =  000215 GR
+  7 C$SpriteHorse.c$124$2_1$209                                 =  00021D GR
+  7 C$SpriteHorse.c$124$2_3$193                                 =  000984 GR
+  7 C$SpriteHorse.c$125$2_1$209                                 =  00023D GR
+  7 C$SpriteHorse.c$126$2_1$209                                 =  000260 GR
+  7 C$SpriteHorse.c$127$3_1$211                                 =  000267 GR
+  7 C$SpriteHorse.c$128$3_1$211                                 =  000274 GR
+  7 C$SpriteHorse.c$129$3_1$211                                 =  00027D GR
+  7 C$SpriteHorse.c$132$2_1$212                                 =  000287 GR
+  7 C$SpriteHorse.c$133$3_1$213                                 =  000294 GR
+  7 C$SpriteHorse.c$135$2_1$212                                 =  00029C GR
+  7 C$SpriteHorse.c$136$3_1$214                                 =  0002AA GR
+  7 C$SpriteHorse.c$138$2_1$212                                 =  0002B2 GR
+  7 C$SpriteHorse.c$139$3_1$215                                 =  0002B9 GR
+  7 C$SpriteHorse.c$140$3_1$215                                 =  0002BE GR
+  7 C$SpriteHorse.c$141$3_1$215                                 =  0002C6 GR
+  7 C$SpriteHorse.c$146$2_3$193                                 =  0002CF GR
+  7 C$SpriteHorse.c$147$2_1$216                                 =  0002EF GR
+  7 C$SpriteHorse.c$148$2_1$216                                 =  0002F4 GR
+  7 C$SpriteHorse.c$151$1_1$204                                 =  0002FE GR
+  7 C$SpriteHorse.c$152$2_1$217                                 =  000301 GR
+  7 C$SpriteHorse.c$153$2_1$217                                 =  000306 GR
+  7 C$SpriteHorse.c$154$2_1$217                                 =  00030A GR
+  7 C$SpriteHorse.c$154$2_3$193                                 =  0002F9 GR
+  7 C$SpriteHorse.c$155$2_1$217                                 =  00030E GR
+  7 C$SpriteHorse.c$155$2_3$193                                 =  000505 GR
+  7 C$SpriteHorse.c$156$3_1$218                                 =  00035A GR
+  7 C$SpriteHorse.c$157$3_1$218                                 =  00035F GR
+  7 C$SpriteHorse.c$159$1_1$204                                 =  000368 GR
+  7 C$SpriteHorse.c$160$2_1$219                                 =  00036C GR
+  7 C$SpriteHorse.c$161$2_1$219                                 =  000371 GR
+  7 C$SpriteHorse.c$162$2_1$219                                 =  000375 GR
+  7 C$SpriteHorse.c$163$2_1$219                                 =  000379 GR
+  7 C$SpriteHorse.c$164$3_1$220                                 =  000390 GR
+  7 C$SpriteHorse.c$165$3_1$220                                 =  000395 GR
+  7 C$SpriteHorse.c$168$2_1$221                                 =  00039E GR
+  7 C$SpriteHorse.c$170$1_1$204                                 =  0003A3 GR
+  7 C$SpriteHorse.c$171$2_1$222                                 =  0003AB GR
+  7 C$SpriteHorse.c$172$2_1$222                                 =  0003B0 GR
+  7 C$SpriteHorse.c$174$1_1$204                                 =  0003B5 GR
+  7 C$SpriteHorse.c$175$2_1$223                                 =  0003BD GR
+  7 C$SpriteHorse.c$176$2_1$223                                 =  0003C2 GR
+  7 C$SpriteHorse.c$178$1_1$204                                 =  0003C7 GR
+  7 C$SpriteHorse.c$179$1_2$224                                 =  0003D8 GR
+  7 C$SpriteHorse.c$180$1_2$224                                 =  0003DD GR
+  7 C$SpriteHorse.c$183$1_2$224                                 =  0003E5 GR
+  7 C$SpriteHorse.c$184$1_2$224                                 =  0003E8 GR
+  7 C$SpriteHorse.c$185$2_2$225                                 =  0003EC GR
+  7 C$SpriteHorse.c$192$2_3$193                                 =  0003F2 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 30
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteHorse.c$193$3_2$226                                 =  000419 GR
+  7 C$SpriteHorse.c$194$2_2$225                                 =  000421 GR
+  7 C$SpriteHorse.c$195$3_2$227                                 =  00042D GR
+  7 C$SpriteHorse.c$196$2_2$225                                 =  000435 GR
+  7 C$SpriteHorse.c$197$3_2$228                                 =  000458 GR
+  7 C$SpriteHorse.c$198$2_2$225                                 =  000460 GR
+  7 C$SpriteHorse.c$199$3_2$229                                 =  00047A GR
+  7 C$SpriteHorse.c$200$2_2$225                                 =  000482 GR
+  7 C$SpriteHorse.c$201$3_2$230                                 =  0004A0 GR
+  7 C$SpriteHorse.c$202$2_2$225                                 =  0004A7 GR
+  7 C$SpriteHorse.c$203$3_2$231                                 =  0004C8 GR
+  7 C$SpriteHorse.c$204$2_2$225                                 =  0004CF GR
+  7 C$SpriteHorse.c$205$3_2$232                                 =  0004F0 GR
+  7 C$SpriteHorse.c$206$2_2$225                                 =  0004F7 GR
+  7 C$SpriteHorse.c$207$3_2$233                                 =  000500 GR
+  7 C$SpriteHorse.c$210$2_3$193                                 =  000521 GR
+  7 C$SpriteHorse.c$211$3_2$234                                 =  000531 GR
+  7 C$SpriteHorse.c$212$2_2$225                                 =  000539 GR
+  7 C$SpriteHorse.c$213$3_2$235                                 =  000546 GR
+  7 C$SpriteHorse.c$214$2_2$225                                 =  00054E GR
+  7 C$SpriteHorse.c$215$3_2$236                                 =  000571 GR
+  7 C$SpriteHorse.c$216$2_2$225                                 =  000579 GR
+  7 C$SpriteHorse.c$217$3_2$237                                 =  000593 GR
+  7 C$SpriteHorse.c$218$2_2$225                                 =  00059B GR
+  7 C$SpriteHorse.c$219$3_2$238                                 =  0005B9 GR
+  7 C$SpriteHorse.c$220$2_2$225                                 =  0005C0 GR
+  7 C$SpriteHorse.c$221$3_2$239                                 =  0005E1 GR
+  7 C$SpriteHorse.c$222$2_2$225                                 =  0005E8 GR
+  7 C$SpriteHorse.c$223$3_2$240                                 =  000609 GR
+  7 C$SpriteHorse.c$224$2_2$225                                 =  000610 GR
+  7 C$SpriteHorse.c$225$3_2$241                                 =  000619 GR
+  7 C$SpriteHorse.c$228$2_3$242                                 =  00061E GR
+  7 C$SpriteHorse.c$230$2_3$242                                 =  00064B GR
+  7 C$SpriteHorse.c$232$3_3$243                                 =  00064C GR
+  7 C$SpriteHorse.c$233$3_4$244                                 =  000653 GR
+  7 C$SpriteHorse.c$234$3_4$244                                 =  000659 GR
+  7 C$SpriteHorse.c$235$3_4$244                                 =  00065F GR
+  7 C$SpriteHorse.c$236$4_4$245                                 =  000668 GR
+  7 C$SpriteHorse.c$238$4_4$246                                 =  000683 GR
+  7 C$SpriteHorse.c$242$2_3$193                                 =  000720 GR
+  7 C$SpriteHorse.c$242$3_3$247                                 =  0006A4 GR
+  7 C$SpriteHorse.c$243$3_3$247                                 =  00074A GR
+  7 C$SpriteHorse.c$244$4_3$248                                 =  000784 GR
+  7 C$SpriteHorse.c$246$2_3$193                                 =  0006F1 GR
+  7 C$SpriteHorse.c$246$4_3$248                                 =  000784 GR
+  7 C$SpriteHorse.c$247$5_3$249                                 =  00078A GR
+  7 C$SpriteHorse.c$249$2_3$193                                 =  00088B GR
+  7 C$SpriteHorse.c$250$5_3$250                                 =  0007A0 GR
+  7 C$SpriteHorse.c$251$6_3$251                                 =  0007A7 GR
+  7 C$SpriteHorse.c$252$6_3$251                                 =  0007B9 GR
+  7 C$SpriteHorse.c$253$2_3$193                                 =  000703 GR
+  7 C$SpriteHorse.c$253$6_3$251                                 =  0007BE GR
+  7 C$SpriteHorse.c$254$2_3$193                                 =  0008A5 GR
+  7 C$SpriteHorse.c$254$7_3$252                                 =  0007C4 GR
+  7 C$SpriteHorse.c$255$7_3$252                                 =  0007D9 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 31
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteHorse.c$256$6_3$251                                 =  0007F5 GR
+  7 C$SpriteHorse.c$257$7_3$253                                 =  0007FD GR
+  7 C$SpriteHorse.c$258$7_3$253                                 =  000811 GR
+  7 C$SpriteHorse.c$261$5_3$254                                 =  00082D GR
+  7 C$SpriteHorse.c$262$4_3$248                                 =  000832 GR
+  7 C$SpriteHorse.c$264$4_3$248                                 =  000835 GR
+  7 C$SpriteHorse.c$265$4_3$248                                 =  000835 GR
+  7 C$SpriteHorse.c$266$5_3$255                                 =  000853 GR
+  7 C$SpriteHorse.c$267$4_3$248                                 =  00085B GR
+  7 C$SpriteHorse.c$268$5_3$256                                 =  000861 GR
+  7 C$SpriteHorse.c$269$6_3$257                                 =  000880 GR
+  7 C$SpriteHorse.c$272$4_3$248                                 =  000891 GR
+  7 C$SpriteHorse.c$273$5_3$258                                 =  00089C GR
+  7 C$SpriteHorse.c$274$6_3$259                                 =  0008A3 GR
+  7 C$SpriteHorse.c$275$6_4$260                                 =  0008A9 GR
+  7 C$SpriteHorse.c$276$6_4$260                                 =  0008BB GR
+  7 C$SpriteHorse.c$277$6_4$260                                 =  0008CB GR
+  7 C$SpriteHorse.c$278$6_4$260                                 =  0008D9 GR
+  7 C$SpriteHorse.c$279$7_4$261                                 =  0008DF GR
+  7 C$SpriteHorse.c$281$6_5$262                                 =  0008E4 GR
+  7 C$SpriteHorse.c$282$6_5$262                                 =  0008F1 GR
+  7 C$SpriteHorse.c$283$6_5$262                                 =  0008F1 GR
+  7 C$SpriteHorse.c$284$6_6$263                                 =  0008F7 GR
+  7 C$SpriteHorse.c$285$6_6$263                                 =  000902 GR
+  7 C$SpriteHorse.c$286$6_6$263                                 =  000902 GR
+  7 C$SpriteHorse.c$288$5_3$264                                 =  00090A GR
+  7 C$SpriteHorse.c$289$4_3$248                                 =  00090F GR
+  7 C$SpriteHorse.c$290$4_3$248                                 =  000911 GR
+  7 C$SpriteHorse.c$291$4_3$248                                 =  000911 GR
+  7 C$SpriteHorse.c$292$5_3$265                                 =  000918 GR
+  7 C$SpriteHorse.c$295$2_3$242                                 =  00091D GR
+  7 C$SpriteHorse.c$298$2_3$242                                 =  00091D GR
+  7 C$SpriteHorse.c$299$3_3$266                                 =  00093B GR
+  7 C$SpriteHorse.c$301$3_3$267                                 =  00094D GR
+  7 C$SpriteHorse.c$303$2_3$242                                 =  00095D GR
+  7 C$SpriteHorse.c$307$1_2$224                                 =  00098F GR
+  7 C$SpriteHorse.c$308$2_2$268                                 =  0009A8 GR
+  7 C$SpriteHorse.c$308$2_3$193                                 =  000989 GR
+  7 C$SpriteHorse.c$309$1_2$224                                 =  0009AC GR
+  7 C$SpriteHorse.c$310$2_2$269                                 =  0009B3 GR
+  7 C$SpriteHorse.c$316$2_3$271                                 =  000A3E GR
+  7 C$SpriteHorse.c$317$3_3$272                                 =  0009D5 GR
+  7 C$SpriteHorse.c$318$4_3$273                                 =  0009E3 GR
+  7 C$SpriteHorse.c$320$5_3$274                                 =  0009EC GR
+  7 C$SpriteHorse.c$321$6_3$275                                 =  0009F8 GR
+  7 C$SpriteHorse.c$322$7_3$276                                 =  0009FF GR
+  7 C$SpriteHorse.c$323$7_3$276                                 =  000A0D GR
+  7 C$SpriteHorse.c$325$7_3$277                                 =  000A13 GR
+  7 C$SpriteHorse.c$326$7_3$277                                 =  000A1B GR
+  7 C$SpriteHorse.c$327$7_3$277                                 =  000A33 GR
+  7 C$SpriteHorse.c$328$7_3$277                                 =  000A38 GR
+  7 C$SpriteHorse.c$332$3_3$272                                 =  000A3E GR
+  7 C$SpriteHorse.c$335$2_3$193                                 =  000A59 GR
+  7 C$SpriteHorse.c$337$2_3$279                                 =  000A5A GR
+  7 C$SpriteHorse.c$338$2_3$279                                 =  000A5A GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 32
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 C$SpriteHorse.c$62$0_0$192                                  =  000000 GR
+  7 C$SpriteHorse.c$63$1_0$192                                  =  000000 GR
+  7 C$SpriteHorse.c$64$1_0$192                                  =  000010 GR
+  7 C$SpriteHorse.c$65$1_0$192                                  =  000016 GR
+  7 C$SpriteHorse.c$66$1_0$192                                  =  000025 GR
+  7 C$SpriteHorse.c$67$1_0$192                                  =  000034 GR
+  7 C$SpriteHorse.c$68$1_0$192                                  =  00003C GR
+  7 C$SpriteHorse.c$70$1_0$193                                  =  000058 GR
+  7 C$SpriteHorse.c$72$1_0$193                                  =  00005E GR
+  7 C$SpriteHorse.c$73$2_0$194                                  =  000077 GR
+  7 C$SpriteHorse.c$74$3_0$195                                  =  000089 GR
+  7 C$SpriteHorse.c$75$3_0$195                                  =  00008E GR
+  7 C$SpriteHorse.c$76$2_3$193                                  =  00005A GR
+  7 C$SpriteHorse.c$76$3_0$195                                  =  000094 GR
+  7 C$SpriteHorse.c$78$3_0$196                                  =  00009A GR
+  7 C$SpriteHorse.c$81$2_0$197                                  =  0000A1 GR
+  7 C$SpriteHorse.c$83$1_0$193                                  =  0000A5 GR
+  7 C$SpriteHorse.c$84$2_3$193                                  =  0000BE GR
+  7 C$SpriteHorse.c$86$2_0$199                                  =  0000D3 GR
+  7 C$SpriteHorse.c$87$3_0$200                                  =  0000EC GR
+  7 C$SpriteHorse.c$88$3_0$200                                  =  0000EF GR
+  7 C$SpriteHorse.c$89$4_0$201                                  =  0000F2 GR
+  7 C$SpriteHorse.c$90$4_0$201                                  =  000102 GR
+  7 C$SpriteHorse.c$95$1_0$193                                  =  000106 GR
+  7 C$SpriteHorse.c$96$2_0$202                                  =  00010D GR
+  7 C$SpriteHorse.c$98$1_0$193                                  =  000111 GR
+  7 C$SpriteHorse.c$99$2_0$203                                  =  000130 GR
+  8 FSpriteHorse$__xinit_cos$0_0$0                              =  000014 GR
+  8 FSpriteHorse$__xinit_euphoria_max$0_0$0                     =  00000A GR
+  8 FSpriteHorse$__xinit_euphoria_min$0_0$0                     =  000008 GR
+  8 FSpriteHorse$__xinit_frm_skip$0_0$0                         =  000004 GR
+  8 FSpriteHorse$__xinit_no_whip_counter$0_0$0                  =  00000F GR
+  8 FSpriteHorse$__xinit_no_whip_counter_max$0_0$0              =  000011 GR
+  8 FSpriteHorse$__xinit_no_whip_over_stamina$0_0$0             =  000010 GR
+  8 FSpriteHorse$__xinit_onfire_countdown$0_0$0                 =  000019 GR
+  8 FSpriteHorse$__xinit_orme_spawned$0_0$0                     =  000018 GR
+  8 FSpriteHorse$__xinit_past_coll_tile$0_0$0                   =  000016 GR
+  8 FSpriteHorse$__xinit_s_flame$0_0$0                          =  00001B GR
+  8 FSpriteHorse$__xinit_sin$0_0$0                              =  000013 GR
+  8 FSpriteHorse$__xinit_stamina_current$0_0$0                  =  00000C GR
+  8 FSpriteHorse$__xinit_stamina_verso$0_0$0                    =  00000E GR
+  8 FSpriteHorse$__xinit_turn$0_0$0                             =  000012 GR
+  8 FSpriteHorse$__xinit_turn_samepressure_counter$0_0$0        =  000015 GR
+  8 FSpriteHorse$__xinit_turn_verse$0_0$0                       =  000017 GR
+  8 FSpriteHorse$__xinit_velocity$0_0$0                         =  000001 GR
+  8 FSpriteHorse$__xinit_velocity_counter$0_0$0                 =  000000 GR
+  8 FSpriteHorse$__xinit_vx$0_0$0                               =  000003 GR
+  8 FSpriteHorse$__xinit_vy$0_0$0                               =  000002 GR
+  8 FSpriteHorse$__xinit_whip_counter$0_0$0                     =  000006 GR
+  8 FSpriteHorse$__xinit_whip_counter_max$0_0$0                 =  000007 GR
+  8 FSpriteHorse$__xinit_whip_power_over_stamina$0_0$0          =  000005 GR
+  7 G$Destroy_SpriteHorse$0$0                                   =  000A5A GR
+  7 G$Start_SpriteHorse$0$0                                     =  000000 GR
+  7 G$Update_SpriteHorse$0$0                                    =  000058 GR
+    G$__bank_SpriteHorse$0_0$0                                  =  0000FF G
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 33
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  7 G$a_horse_h$0_0$0                                           =  00003D GR
+  7 G$a_horse_h_idle$0_0$0                                      =  000056 GR
+  7 G$a_horse_hit$0_0$0                                         =  000046 GR
+  2 G$cos$0_0$0                                                 =  000014 GR
+  2 G$euphoria_max$0_0$0                                        =  00000A GR
+  2 G$euphoria_min$0_0$0                                        =  000008 GR
+  2 G$frm_skip$0_0$0                                            =  000004 GR
+  2 G$no_whip_counter$0_0$0                                     =  00000F GR
+  2 G$no_whip_counter_max$0_0$0                                 =  000011 GR
+  2 G$no_whip_over_stamina$0_0$0                                =  000010 GR
+  2 G$onfire_countdown$0_0$0                                    =  000019 GR
+  2 G$orme_spawned$0_0$0                                        =  000018 GR
+  2 G$past_coll_tile$0_0$0                                      =  000016 GR
+  2 G$s_flame$0_0$0                                             =  00001B GR
+  2 G$sin$0_0$0                                                 =  000013 GR
+  2 G$stamina_current$0_0$0                                     =  00000C GR
+  2 G$stamina_verso$0_0$0                                       =  00000E GR
+  2 G$turn$0_0$0                                                =  000012 GR
+  2 G$turn_samepressure_counter$0_0$0                           =  000015 GR
+  2 G$turn_verse$0_0$0                                          =  000017 GR
+  2 G$velocity$0_0$0                                            =  000001 GR
+  2 G$velocity_counter$0_0$0                                    =  000000 GR
+  2 G$vx$0_0$0                                                  =  000003 GR
+  2 G$vy$0_0$0                                                  =  000002 GR
+  2 G$whip_counter$0_0$0                                        =  000006 GR
+  2 G$whip_counter_max$0_0$0                                    =  000007 GR
+  2 G$whip_power_over_stamina$0_0$0                             =  000005 GR
+  7 XG$Destroy_SpriteHorse$0$0                                  =  000A5A GR
+  7 XG$Start_SpriteHorse$0$0                                    =  00003C GR
+  7 XG$Update_SpriteHorse$0$0                                   =  000A59 GR
+    _CheckCollision                                                ****** GX
+  7 _Destroy_SpriteHorse                                           000A5A GR
+    _GetScrollTile                                                 ****** GX
+    _J_WHIP                                                        ****** GX
+    _SetSpriteAnim                                                 ****** GX
+    _SpriteManagerAdd                                              ****** GX
+    _SpriteManagerRemoveSprite                                     ****** GX
+  7 _Start_SpriteHorse                                             000000 GR
+    _THIS                                                          ****** GX
+    _TranslateSprite                                               ****** GX
+  7 _Update_SpriteHorse                                            000058 GR
+    ___bank_SpriteHorse                                         =  0000FF G
+    ___sdcc_bcall_ehl                                              ****** GX
+    __mulschar                                                     ****** GX
+  8 __xinit__cos                                                   000014 R
+  8 __xinit__euphoria_max                                          00000A R
+  8 __xinit__euphoria_min                                          000008 R
+  8 __xinit__frm_skip                                              000004 R
+  8 __xinit__no_whip_counter                                       00000F R
+  8 __xinit__no_whip_counter_max                                   000011 R
+  8 __xinit__no_whip_over_stamina                                  000010 R
+  8 __xinit__onfire_countdown                                      000019 R
+  8 __xinit__orme_spawned                                          000018 R
+  8 __xinit__past_coll_tile                                        000016 R
+  8 __xinit__s_flame                                               00001B R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 34
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  8 __xinit__sin                                                   000013 R
+  8 __xinit__stamina_current                                       00000C R
+  8 __xinit__stamina_verso                                         00000E R
+  8 __xinit__turn                                                  000012 R
+  8 __xinit__turn_samepressure_counter                             000015 R
+  8 __xinit__turn_verse                                            000017 R
+  8 __xinit__velocity                                              000001 R
+  8 __xinit__velocity_counter                                      000000 R
+  8 __xinit__vx                                                    000003 R
+  8 __xinit__vy                                                    000002 R
+  8 __xinit__whip_counter                                          000006 R
+  8 __xinit__whip_counter_max                                      000007 R
+  8 __xinit__whip_power_over_stamina                               000005 R
+  7 _a_horse_h                                                     00003D GR
+  7 _a_horse_h_idle                                                000056 GR
+  7 _a_horse_hit                                                   000046 GR
+  2 _cos                                                           000014 GR
+    _delta_time                                                    ****** GX
+  2 _euphoria_max                                                  00000A GR
+  2 _euphoria_min                                                  000008 GR
+  2 _frm_skip                                                      000004 GR
+    _hp_current                                                    ****** GX
+    _hud_turn_cooldown                                             ****** GX
+    _keys                                                          ****** GX
+  2 _no_whip_counter                                               00000F GR
+  2 _no_whip_counter_max                                           000011 GR
+  2 _no_whip_over_stamina                                          000010 GR
+  2 _onfire_countdown                                              000019 GR
+  2 _orme_spawned                                                  000018 GR
+  2 _past_coll_tile                                                000016 GR
+    _previous_keys                                                 ****** GX
+  2 _s_flame                                                       00001B GR
+  2 _sin                                                           000013 GR
+    _sine_wave                                                     ****** GX
+    _sprite_manager_sprites                                        ****** GX
+    _sprite_manager_updatables                                     ****** GX
+  2 _stamina_current                                               00000C GR
+  2 _stamina_verso                                                 00000E GR
+  2 _turn                                                          000012 GR
+  2 _turn_samepressure_counter                                     000015 GR
+  2 _turn_verse                                                    000017 GR
+    _use_weapon                                                    ****** GX
+  2 _velocity                                                      000001 GR
+  2 _velocity_counter                                              000000 GR
+  2 _vx                                                            000003 GR
+  2 _vy                                                            000002 GR
+    _weapon_def                                                    ****** GX
+  2 _whip_counter                                                  000006 GR
+  2 _whip_counter_max                                              000007 GR
+  2 _whip_power_over_stamina                                       000005 GR
+    b_use_weapon                                                   ****** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                 Page 35
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size     1D   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size    A5B   flags    0
+   8 _INITIALIZER                               size     1D   flags    0
+   9 _CABS                                      size      0   flags    8
+

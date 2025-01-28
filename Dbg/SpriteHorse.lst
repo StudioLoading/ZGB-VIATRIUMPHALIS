@@ -1,0 +1,2052 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.3.2 #14228 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module SpriteHorse
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _Destroy_SpriteHorse
+                                     12 	.globl _Update_SpriteHorse
+                                     13 	.globl _Start_SpriteHorse
+                                     14 	.globl _SpriteManagerAdd
+                                     15 	.globl _GetScrollTile
+                                     16 	.globl _CheckCollision
+                                     17 	.globl _TranslateSprite
+                                     18 	.globl _SetSpriteAnim
+                                     19 	.globl _orme_spawned
+                                     20 	.globl _turn_verse
+                                     21 	.globl _past_coll_tile
+                                     22 	.globl _turn_samepressure_counter
+                                     23 	.globl _cos
+                                     24 	.globl _sin
+                                     25 	.globl _turn
+                                     26 	.globl _no_whip_counter_max
+                                     27 	.globl _no_whip_over_stamina
+                                     28 	.globl _no_whip_counter
+                                     29 	.globl _stamina_verso
+                                     30 	.globl _stamina_current
+                                     31 	.globl _euphoria_max
+                                     32 	.globl _euphoria_min
+                                     33 	.globl _whip_counter_max
+                                     34 	.globl _whip_counter
+                                     35 	.globl _whip_power_over_stamina
+                                     36 	.globl _frm_skip
+                                     37 	.globl _vx
+                                     38 	.globl _vy
+                                     39 	.globl _velocity
+                                     40 	.globl _velocity_counter
+                                     41 	.globl _a_horse_h_idle
+                                     42 	.globl _a_horse_hit
+                                     43 	.globl _a_horse_h
+                                     44 	.globl ___bank_SpriteHorse
+                                     45 ;--------------------------------------------------------
+                                     46 ; special function registers
+                                     47 ;--------------------------------------------------------
+                                     48 ;--------------------------------------------------------
+                                     49 ; ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area _DATA
+                                     52 ;--------------------------------------------------------
+                                     53 ; ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area _INITIALIZED
+                           000000    56 G$velocity_counter$0_0$0==.
+      000000                         57 _velocity_counter::
+      000000                         58 	.ds 1
+                           000001    59 G$velocity$0_0$0==.
+      000001                         60 _velocity::
+      000001                         61 	.ds 1
+                           000002    62 G$vy$0_0$0==.
+      000002                         63 _vy::
+      000002                         64 	.ds 1
+                           000003    65 G$vx$0_0$0==.
+      000003                         66 _vx::
+      000003                         67 	.ds 1
+                           000004    68 G$frm_skip$0_0$0==.
+      000004                         69 _frm_skip::
+      000004                         70 	.ds 1
+                           000005    71 G$whip_power_over_stamina$0_0$0==.
+      000005                         72 _whip_power_over_stamina::
+      000005                         73 	.ds 1
+                           000006    74 G$whip_counter$0_0$0==.
+      000006                         75 _whip_counter::
+      000006                         76 	.ds 1
+                           000007    77 G$whip_counter_max$0_0$0==.
+      000007                         78 _whip_counter_max::
+      000007                         79 	.ds 1
+                           000008    80 G$euphoria_min$0_0$0==.
+      000008                         81 _euphoria_min::
+      000008                         82 	.ds 2
+                           00000A    83 G$euphoria_max$0_0$0==.
+      00000A                         84 _euphoria_max::
+      00000A                         85 	.ds 2
+                           00000C    86 G$stamina_current$0_0$0==.
+      00000C                         87 _stamina_current::
+      00000C                         88 	.ds 2
+                           00000E    89 G$stamina_verso$0_0$0==.
+      00000E                         90 _stamina_verso::
+      00000E                         91 	.ds 1
+                           00000F    92 G$no_whip_counter$0_0$0==.
+      00000F                         93 _no_whip_counter::
+      00000F                         94 	.ds 1
+                           000010    95 G$no_whip_over_stamina$0_0$0==.
+      000010                         96 _no_whip_over_stamina::
+      000010                         97 	.ds 1
+                           000011    98 G$no_whip_counter_max$0_0$0==.
+      000011                         99 _no_whip_counter_max::
+      000011                        100 	.ds 1
+                           000012   101 G$turn$0_0$0==.
+      000012                        102 _turn::
+      000012                        103 	.ds 1
+                           000013   104 G$sin$0_0$0==.
+      000013                        105 _sin::
+      000013                        106 	.ds 1
+                           000014   107 G$cos$0_0$0==.
+      000014                        108 _cos::
+      000014                        109 	.ds 1
+                           000015   110 G$turn_samepressure_counter$0_0$0==.
+      000015                        111 _turn_samepressure_counter::
+      000015                        112 	.ds 1
+                           000016   113 G$past_coll_tile$0_0$0==.
+      000016                        114 _past_coll_tile::
+      000016                        115 	.ds 1
+                           000017   116 G$turn_verse$0_0$0==.
+      000017                        117 _turn_verse::
+      000017                        118 	.ds 1
+                           000018   119 G$orme_spawned$0_0$0==.
+      000018                        120 _orme_spawned::
+      000018                        121 	.ds 1
+                                    122 ;--------------------------------------------------------
+                                    123 ; absolute external ram data
+                                    124 ;--------------------------------------------------------
+                                    125 	.area _DABS (ABS)
+                                    126 ;--------------------------------------------------------
+                                    127 ; global & static initialisations
+                                    128 ;--------------------------------------------------------
+                                    129 	.area _HOME
+                                    130 	.area _GSINIT
+                                    131 	.area _GSFINAL
+                                    132 	.area _GSINIT
+                                    133 ;--------------------------------------------------------
+                                    134 ; Home
+                                    135 ;--------------------------------------------------------
+                                    136 	.area _HOME
+                                    137 	.area _HOME
+                                    138 ;--------------------------------------------------------
+                                    139 ; code
+                                    140 ;--------------------------------------------------------
+                                    141 	.area _CODE_255
+                           000000   142 	G$Start_SpriteHorse$0$0	= .
+                                    143 	.globl	G$Start_SpriteHorse$0$0
+                           000000   144 	C$SpriteHorse.c$51$0_0$190	= .
+                                    145 	.globl	C$SpriteHorse.c$51$0_0$190
+                                    146 ;SpriteHorse.c:51: void START() {
+                                    147 ;	---------------------------------
+                                    148 ; Function Start_SpriteHorse
+                                    149 ; ---------------------------------
+      000000                        150 _Start_SpriteHorse::
+                           000000   151 	C$SpriteHorse.c$52$1_0$190	= .
+                                    152 	.globl	C$SpriteHorse.c$52$1_0$190
+                                    153 ;SpriteHorse.c:52: SetSpriteAnim(THIS, a_horse_h, 16u);
+      000000 3E 10            [ 8]  154 	ld	a, #0x10
+      000002 F5               [16]  155 	push	af
+      000003 33               [ 8]  156 	inc	sp
+      000004 01r35r00         [12]  157 	ld	bc, #_a_horse_h
+      000007 21r00r00         [12]  158 	ld	hl, #_THIS
+      00000A 2A               [ 8]  159 	ld	a, (hl+)
+      00000B 5F               [ 4]  160 	ld	e, a
+      00000C 56               [ 8]  161 	ld	d, (hl)
+      00000D CDr00r00         [24]  162 	call	_SetSpriteAnim
+                           000010   163 	C$SpriteHorse.c$53$1_0$190	= .
+                                    164 	.globl	C$SpriteHorse.c$53$1_0$190
+                                    165 ;SpriteHorse.c:53: frm_skip = velocity_counter;
+      000010 FAr00r00         [16]  166 	ld	a, (#_velocity_counter)
+      000013 EAr04r00         [16]  167 	ld	(#_frm_skip),a
+                           000016   168 	C$SpriteHorse.c$54$1_0$190	= .
+                                    169 	.globl	C$SpriteHorse.c$54$1_0$190
+                                    170 ;SpriteHorse.c:54: THIS->lim_x = 1000;
+      000016 21r00r00         [12]  171 	ld	hl, #_THIS
+      000019 2A               [ 8]  172 	ld	a, (hl+)
+      00001A 4F               [ 4]  173 	ld	c, a
+      00001B 46               [ 8]  174 	ld	b, (hl)
+      00001C 21 15 00         [12]  175 	ld	hl, #0x0015
+      00001F 09               [ 8]  176 	add	hl, bc
+      000020 3E E8            [ 8]  177 	ld	a, #0xe8
+      000022 22               [ 8]  178 	ld	(hl+), a
+      000023 36 03            [12]  179 	ld	(hl), #0x03
+                           000025   180 	C$SpriteHorse.c$55$1_0$190	= .
+                                    181 	.globl	C$SpriteHorse.c$55$1_0$190
+                                    182 ;SpriteHorse.c:55: THIS->lim_y = 500;
+      000025 21r00r00         [12]  183 	ld	hl, #_THIS
+      000028 2A               [ 8]  184 	ld	a, (hl+)
+      000029 4F               [ 4]  185 	ld	c, a
+      00002A 46               [ 8]  186 	ld	b, (hl)
+      00002B 21 17 00         [12]  187 	ld	hl, #0x0017
+      00002E 09               [ 8]  188 	add	hl, bc
+      00002F 3E F4            [ 8]  189 	ld	a, #0xf4
+      000031 22               [ 8]  190 	ld	(hl+), a
+      000032 36 01            [12]  191 	ld	(hl), #0x01
+                           000034   192 	C$SpriteHorse.c$56$1_0$190	= .
+                                    193 	.globl	C$SpriteHorse.c$56$1_0$190
+                                    194 ;SpriteHorse.c:56: }
+                           000034   195 	C$SpriteHorse.c$56$1_0$190	= .
+                                    196 	.globl	C$SpriteHorse.c$56$1_0$190
+                           000034   197 	XG$Start_SpriteHorse$0$0	= .
+                                    198 	.globl	XG$Start_SpriteHorse$0$0
+      000034 C9               [16]  199 	ret
+                           0000FF   200 G$__bank_SpriteHorse$0_0$0 == 0x00ff
+                           0000FF   201 ___bank_SpriteHorse	=	0x00ff
+                           000035   202 G$a_horse_h$0_0$0 == .
+      000035                        203 _a_horse_h:
+      000035 08                     204 	.db #0x08	; 8
+      000036 00                     205 	.db #0x00	; 0
+      000037 01                     206 	.db #0x01	; 1
+      000038 02                     207 	.db #0x02	; 2
+      000039 03                     208 	.db #0x03	; 3
+      00003A 04                     209 	.db #0x04	; 4
+      00003B 05                     210 	.db #0x05	; 5
+      00003C 06                     211 	.db #0x06	; 6
+      00003D 07                     212 	.db #0x07	; 7
+                           00003E   213 G$a_horse_hit$0_0$0 == .
+      00003E                        214 _a_horse_hit:
+      00003E 0F                     215 	.db #0x0f	; 15
+      00003F 00                     216 	.db #0x00	; 0
+      000040 01                     217 	.db #0x01	; 1
+      000041 00                     218 	.db #0x00	; 0
+      000042 02                     219 	.db #0x02	; 2
+      000043 00                     220 	.db #0x00	; 0
+      000044 03                     221 	.db #0x03	; 3
+      000045 00                     222 	.db #0x00	; 0
+      000046 04                     223 	.db #0x04	; 4
+      000047 00                     224 	.db #0x00	; 0
+      000048 05                     225 	.db #0x05	; 5
+      000049 00                     226 	.db #0x00	; 0
+      00004A 06                     227 	.db #0x06	; 6
+      00004B 00                     228 	.db #0x00	; 0
+      00004C 07                     229 	.db #0x07	; 7
+      00004D 00                     230 	.db #0x00	; 0
+                           00004E   231 G$a_horse_h_idle$0_0$0 == .
+      00004E                        232 _a_horse_h_idle:
+      00004E 01                     233 	.db #0x01	; 1
+      00004F 06                     234 	.db #0x06	; 6
+                           000050   235 	G$Update_SpriteHorse$0$0	= .
+                                    236 	.globl	G$Update_SpriteHorse$0$0
+                           000050   237 	C$SpriteHorse.c$58$1_0$191	= .
+                                    238 	.globl	C$SpriteHorse.c$58$1_0$191
+                                    239 ;SpriteHorse.c:58: void UPDATE() {
+                                    240 ;	---------------------------------
+                                    241 ; Function Update_SpriteHorse
+                                    242 ; ---------------------------------
+      000050                        243 _Update_SpriteHorse::
+      000050 E8 FA            [16]  244 	add	sp, #-6
+                           000052   245 	C$SpriteHorse.c$64$2_3$191	= .
+                                    246 	.globl	C$SpriteHorse.c$64$2_3$191
+                                    247 ;SpriteHorse.c:64: no_whip_counter = no_whip_counter_max;
+      000052 21r11r00         [12]  248 	ld	hl, #_no_whip_counter_max
+      000055 4E               [ 8]  249 	ld	c, (hl)
+                           000056   250 	C$SpriteHorse.c$60$1_0$191	= .
+                                    251 	.globl	C$SpriteHorse.c$60$1_0$191
+                                    252 ;SpriteHorse.c:60: if(whip_counter <= 0){
+      000056 21r06r00         [12]  253 	ld	hl, #_whip_counter
+      000059 5E               [ 8]  254 	ld	e, (hl)
+      00005A AF               [ 4]  255 	xor	a, a
+      00005B 57               [ 4]  256 	ld	d, a
+      00005C 96               [ 8]  257 	sub	a, (hl)
+      00005D CB 7B            [ 8]  258 	bit	7, e
+      00005F 28 07            [12]  259 	jr	Z, 00718$
+      000061 CB 7A            [ 8]  260 	bit	7, d
+      000063 20 08            [12]  261 	jr	NZ, 00719$
+      000065 BF               [ 4]  262 	cp	a, a
+      000066 18 05            [12]  263 	jr	00719$
+      000068                        264 00718$:
+      000068 CB 7A            [ 8]  265 	bit	7, d
+      00006A 28 01            [12]  266 	jr	Z, 00719$
+      00006C 37               [ 4]  267 	scf
+      00006D                        268 00719$:
+      00006D 38 2A            [12]  269 	jr	C, 00106$
+                           00006F   270 	C$SpriteHorse.c$61$2_0$192	= .
+                                    271 	.globl	C$SpriteHorse.c$61$2_0$192
+                                    272 ;SpriteHorse.c:61: if(KEY_TICKED(J_WHIP)){
+      00006F FAr00r00         [16]  273 	ld	a, (#_keys)
+      000072 21r00r00         [12]  274 	ld	hl, #_J_WHIP
+      000075 A6               [ 8]  275 	and	a,(hl)
+      000076 28 1A            [12]  276 	jr	Z, 00102$
+      000078 FAr00r00         [16]  277 	ld	a, (#_previous_keys)
+      00007B 21r00r00         [12]  278 	ld	hl, #_J_WHIP
+      00007E A6               [ 8]  279 	and	a,(hl)
+      00007F 20 11            [12]  280 	jr	NZ, 00102$
+                           000081   281 	C$SpriteHorse.c$62$3_0$193	= .
+                                    282 	.globl	C$SpriteHorse.c$62$3_0$193
+                                    283 ;SpriteHorse.c:62: stamina_verso = 1;
+      000081 21r0Er00         [12]  284 	ld	hl, #_stamina_verso
+      000084 36 01            [12]  285 	ld	(hl), #0x01
+                           000086   286 	C$SpriteHorse.c$63$3_0$193	= .
+                                    287 	.globl	C$SpriteHorse.c$63$3_0$193
+                                    288 ;SpriteHorse.c:63: whip_counter = whip_counter_max;
+      000086 FAr07r00         [16]  289 	ld	a, (#_whip_counter_max)
+      000089 EAr06r00         [16]  290 	ld	(#_whip_counter),a
+                           00008C   291 	C$SpriteHorse.c$64$3_0$193	= .
+                                    292 	.globl	C$SpriteHorse.c$64$3_0$193
+                                    293 ;SpriteHorse.c:64: no_whip_counter = no_whip_counter_max;
+      00008C 21r0Fr00         [12]  294 	ld	hl, #_no_whip_counter
+      00008F 71               [ 8]  295 	ld	(hl), c
+      000090 18 0B            [12]  296 	jr	00107$
+      000092                        297 00102$:
+                           000092   298 	C$SpriteHorse.c$66$3_0$194	= .
+                                    299 	.globl	C$SpriteHorse.c$66$3_0$194
+                                    300 ;SpriteHorse.c:66: stamina_verso = -1;
+      000092 21r0Er00         [12]  301 	ld	hl, #_stamina_verso
+      000095 36 FF            [12]  302 	ld	(hl), #0xff
+      000097 18 04            [12]  303 	jr	00107$
+      000099                        304 00106$:
+                           000099   305 	C$SpriteHorse.c$69$2_0$195	= .
+                                    306 	.globl	C$SpriteHorse.c$69$2_0$195
+                                    307 ;SpriteHorse.c:69: whip_counter--;
+      000099 21r06r00         [12]  308 	ld	hl, #_whip_counter
+      00009C 35               [12]  309 	dec	(hl)
+      00009D                        310 00107$:
+                           00009D   311 	C$SpriteHorse.c$71$1_0$191	= .
+                                    312 	.globl	C$SpriteHorse.c$71$1_0$191
+                                    313 ;SpriteHorse.c:71: if(whip_counter > 0){
+      00009D 21r06r00         [12]  314 	ld	hl, #_whip_counter
+      0000A0 5E               [ 8]  315 	ld	e, (hl)
+      0000A1 AF               [ 4]  316 	xor	a, a
+      0000A2 57               [ 4]  317 	ld	d, a
+      0000A3 96               [ 8]  318 	sub	a, (hl)
+      0000A4 CB 7B            [ 8]  319 	bit	7, e
+      0000A6 28 07            [12]  320 	jr	Z, 00720$
+      0000A8 CB 7A            [ 8]  321 	bit	7, d
+      0000AA 20 08            [12]  322 	jr	NZ, 00721$
+      0000AC BF               [ 4]  323 	cp	a, a
+      0000AD 18 05            [12]  324 	jr	00721$
+      0000AF                        325 00720$:
+      0000AF CB 7A            [ 8]  326 	bit	7, d
+      0000B1 28 01            [12]  327 	jr	Z, 00721$
+      0000B3 37               [ 4]  328 	scf
+      0000B4                        329 00721$:
+      0000B4 30 15            [12]  330 	jr	NC, 00113$
+                           0000B6   331 	C$SpriteHorse.c$72$2_3$191	= .
+                                    332 	.globl	C$SpriteHorse.c$72$2_3$191
+                                    333 ;SpriteHorse.c:72: stamina_current += (whip_power_over_stamina * stamina_verso);
+      0000B6 21r0Er00         [12]  334 	ld	hl, #_stamina_verso
+      0000B9 5E               [ 8]  335 	ld	e, (hl)
+      0000BA FAr05r00         [16]  336 	ld	a, (#_whip_power_over_stamina)
+      0000BD CDr00r00         [24]  337 	call	__mulschar
+      0000C0 21r0Cr00         [12]  338 	ld	hl, #_stamina_current
+      0000C3 7E               [ 8]  339 	ld	a, (hl)
+      0000C4 81               [ 4]  340 	add	a, c
+      0000C5 22               [ 8]  341 	ld	(hl+), a
+      0000C6 7E               [ 8]  342 	ld	a, (hl)
+      0000C7 88               [ 4]  343 	adc	a, b
+      0000C8 77               [ 8]  344 	ld	(hl), a
+      0000C9 18 33            [12]  345 	jr	00114$
+      0000CB                        346 00113$:
+                           0000CB   347 	C$SpriteHorse.c$74$2_0$197	= .
+                                    348 	.globl	C$SpriteHorse.c$74$2_0$197
+                                    349 ;SpriteHorse.c:74: if(no_whip_counter > 0){
+      0000CB 21r0Fr00         [12]  350 	ld	hl, #_no_whip_counter
+      0000CE 5E               [ 8]  351 	ld	e, (hl)
+      0000CF AF               [ 4]  352 	xor	a, a
+      0000D0 57               [ 4]  353 	ld	d, a
+      0000D1 96               [ 8]  354 	sub	a, (hl)
+      0000D2 CB 7B            [ 8]  355 	bit	7, e
+      0000D4 28 07            [12]  356 	jr	Z, 00722$
+      0000D6 CB 7A            [ 8]  357 	bit	7, d
+      0000D8 20 08            [12]  358 	jr	NZ, 00723$
+      0000DA BF               [ 4]  359 	cp	a, a
+      0000DB 18 05            [12]  360 	jr	00723$
+      0000DD                        361 00722$:
+      0000DD CB 7A            [ 8]  362 	bit	7, d
+      0000DF 28 01            [12]  363 	jr	Z, 00723$
+      0000E1 37               [ 4]  364 	scf
+      0000E2                        365 00723$:
+      0000E2 30 1A            [12]  366 	jr	NC, 00114$
+                           0000E4   367 	C$SpriteHorse.c$75$3_0$198	= .
+                                    368 	.globl	C$SpriteHorse.c$75$3_0$198
+                                    369 ;SpriteHorse.c:75: no_whip_counter--;
+      0000E4 21r0Fr00         [12]  370 	ld	hl, #_no_whip_counter
+                           0000E7   371 	C$SpriteHorse.c$76$3_0$198	= .
+                                    372 	.globl	C$SpriteHorse.c$76$3_0$198
+                                    373 ;SpriteHorse.c:76: if(no_whip_counter == 0){
+      0000E7 35               [12]  374 	dec	(hl)
+      0000E8 20 14            [12]  375 	jr	NZ, 00114$
+                           0000EA   376 	C$SpriteHorse.c$77$4_0$199	= .
+                                    377 	.globl	C$SpriteHorse.c$77$4_0$199
+                                    378 ;SpriteHorse.c:77: stamina_current += no_whip_over_stamina;
+      0000EA FAr10r00         [16]  379 	ld	a, (#_no_whip_over_stamina)
+      0000ED 47               [ 4]  380 	ld	b, a
+      0000EE 07               [ 4]  381 	rlca
+      0000EF 9F               [ 4]  382 	sbc	a, a
+      0000F0 5F               [ 4]  383 	ld	e, a
+      0000F1 21r0Cr00         [12]  384 	ld	hl, #_stamina_current
+      0000F4 7E               [ 8]  385 	ld	a, (hl)
+      0000F5 80               [ 4]  386 	add	a, b
+      0000F6 22               [ 8]  387 	ld	(hl+), a
+      0000F7 7E               [ 8]  388 	ld	a, (hl)
+      0000F8 8B               [ 4]  389 	adc	a, e
+      0000F9 77               [ 8]  390 	ld	(hl), a
+                           0000FA   391 	C$SpriteHorse.c$78$4_0$199	= .
+                                    392 	.globl	C$SpriteHorse.c$78$4_0$199
+                                    393 ;SpriteHorse.c:78: no_whip_counter = no_whip_counter_max;
+      0000FA 21r0Fr00         [12]  394 	ld	hl, #_no_whip_counter
+      0000FD 71               [ 8]  395 	ld	(hl), c
+      0000FE                        396 00114$:
+                           0000FE   397 	C$SpriteHorse.c$82$1_0$191	= .
+                                    398 	.globl	C$SpriteHorse.c$82$1_0$191
+                                    399 ;SpriteHorse.c:82: if(stamina_current < 0){
+      0000FE 21r0Dr00         [12]  400 	ld	hl, #_stamina_current + 1
+      000101 CB 7E            [12]  401 	bit	7, (hl)
+      000103 28 04            [12]  402 	jr	Z, 00116$
+                           000105   403 	C$SpriteHorse.c$83$2_0$200	= .
+                                    404 	.globl	C$SpriteHorse.c$83$2_0$200
+                                    405 ;SpriteHorse.c:83: stamina_current = 0;
+      000105 2B               [ 8]  406 	dec	hl
+      000106 AF               [ 4]  407 	xor	a, a
+      000107 22               [ 8]  408 	ld	(hl+), a
+      000108 77               [ 8]  409 	ld	(hl), a
+      000109                        410 00116$:
+                           000109   411 	C$SpriteHorse.c$85$1_0$191	= .
+                                    412 	.globl	C$SpriteHorse.c$85$1_0$191
+                                    413 ;SpriteHorse.c:85: if(stamina_current > STAMINA_MAX){
+      000109 21r0Cr00         [12]  414 	ld	hl, #_stamina_current
+      00010C 3E C0            [ 8]  415 	ld	a, #0xc0
+      00010E 96               [ 8]  416 	sub	a, (hl)
+      00010F 23               [ 8]  417 	inc	hl
+      000110 3E 03            [ 8]  418 	ld	a, #0x03
+      000112 9E               [ 8]  419 	sbc	a, (hl)
+      000113 3E 03            [ 8]  420 	ld	a, #0x03
+      000115 57               [ 4]  421 	ld	d, a
+      000116 CB 7E            [12]  422 	bit	7, (hl)
+      000118 28 07            [12]  423 	jr	Z, 00724$
+      00011A CB 7A            [ 8]  424 	bit	7, d
+      00011C 20 08            [12]  425 	jr	NZ, 00725$
+      00011E BF               [ 4]  426 	cp	a, a
+      00011F 18 05            [12]  427 	jr	00725$
+      000121                        428 00724$:
+      000121 CB 7A            [ 8]  429 	bit	7, d
+      000123 28 01            [12]  430 	jr	Z, 00725$
+      000125 37               [ 4]  431 	scf
+      000126                        432 00725$:
+      000126 30 08            [12]  433 	jr	NC, 00118$
+                           000128   434 	C$SpriteHorse.c$86$2_0$201	= .
+                                    435 	.globl	C$SpriteHorse.c$86$2_0$201
+                                    436 ;SpriteHorse.c:86: stamina_current = STAMINA_MAX;
+      000128 21r0Cr00         [12]  437 	ld	hl, #_stamina_current
+      00012B 3E C0            [ 8]  438 	ld	a, #0xc0
+      00012D 22               [ 8]  439 	ld	(hl+), a
+      00012E 36 03            [12]  440 	ld	(hl), #0x03
+      000130                        441 00118$:
+                           000130   442 	C$SpriteHorse.c$89$2_0$202	= .
+                                    443 	.globl	C$SpriteHorse.c$89$2_0$202
+                                    444 ;SpriteHorse.c:89: INT16 delta_stamina_euphoria = 0;
+      000130 01 00 00         [12]  445 	ld	bc, #0x0000
+                           000133   446 	C$SpriteHorse.c$90$1_1$202	= .
+                                    447 	.globl	C$SpriteHorse.c$90$1_1$202
+                                    448 ;SpriteHorse.c:90: if(stamina_current > euphoria_max){
+      000133 21r0Cr00         [12]  449 	ld	hl, #_stamina_current
+      000136 2A               [ 8]  450 	ld	a, (hl+)
+      000137 5F               [ 4]  451 	ld	e, a
+      000138 56               [ 8]  452 	ld	d, (hl)
+      000139 21r0Ar00         [12]  453 	ld	hl, #_euphoria_max
+      00013C 2A               [ 8]  454 	ld	a, (hl+)
+      00013D 93               [ 4]  455 	sub	a, e
+      00013E 7E               [ 8]  456 	ld	a, (hl)
+      00013F 9A               [ 4]  457 	sbc	a, d
+      000140 30 0A            [12]  458 	jr	NC, 00122$
+                           000142   459 	C$SpriteHorse.c$91$2_1$203	= .
+                                    460 	.globl	C$SpriteHorse.c$91$2_1$203
+                                    461 ;SpriteHorse.c:91: delta_stamina_euphoria = stamina_current - euphoria_max;
+      000142 2B               [ 8]  462 	dec	hl
+      000143 7B               [ 4]  463 	ld	a, e
+      000144 96               [ 8]  464 	sub	a, (hl)
+      000145 23               [ 8]  465 	inc	hl
+      000146 4F               [ 4]  466 	ld	c, a
+      000147 7A               [ 4]  467 	ld	a, d
+      000148 9E               [ 8]  468 	sbc	a, (hl)
+      000149 47               [ 4]  469 	ld	b, a
+      00014A 18 13            [12]  470 	jr	00123$
+      00014C                        471 00122$:
+                           00014C   472 	C$SpriteHorse.c$92$1_1$202	= .
+                                    473 	.globl	C$SpriteHorse.c$92$1_1$202
+                                    474 ;SpriteHorse.c:92: }else if(stamina_current < euphoria_min){
+      00014C 21r08r00         [12]  475 	ld	hl, #_euphoria_min
+      00014F 7B               [ 4]  476 	ld	a, e
+      000150 96               [ 8]  477 	sub	a, (hl)
+      000151 23               [ 8]  478 	inc	hl
+      000152 7A               [ 4]  479 	ld	a, d
+      000153 9E               [ 8]  480 	sbc	a, (hl)
+      000154 30 09            [12]  481 	jr	NC, 00123$
+                           000156   482 	C$SpriteHorse.c$93$2_1$204	= .
+                                    483 	.globl	C$SpriteHorse.c$93$2_1$204
+                                    484 ;SpriteHorse.c:93: delta_stamina_euphoria = euphoria_min - stamina_current;
+      000156 21r08r00         [12]  485 	ld	hl, #_euphoria_min
+      000159 2A               [ 8]  486 	ld	a, (hl+)
+      00015A 93               [ 4]  487 	sub	a, e
+      00015B 4F               [ 4]  488 	ld	c, a
+      00015C 7E               [ 8]  489 	ld	a, (hl)
+      00015D 9A               [ 4]  490 	sbc	a, d
+      00015E 47               [ 4]  491 	ld	b, a
+      00015F                        492 00123$:
+                           00015F   493 	C$SpriteHorse.c$95$1_1$202	= .
+                                    494 	.globl	C$SpriteHorse.c$95$1_1$202
+                                    495 ;SpriteHorse.c:95: if(delta_stamina_euphoria > 32){
+      00015F 58               [ 4]  496 	ld	e, b
+      000160 16 00            [ 8]  497 	ld	d, #0x00
+      000162 3E 20            [ 8]  498 	ld	a, #0x20
+      000164 B9               [ 4]  499 	cp	a, c
+      000165 3E 00            [ 8]  500 	ld	a, #0x00
+      000167 98               [ 4]  501 	sbc	a, b
+      000168 CB 7B            [ 8]  502 	bit	7, e
+      00016A 28 07            [12]  503 	jr	Z, 00726$
+      00016C CB 7A            [ 8]  504 	bit	7, d
+      00016E 20 08            [12]  505 	jr	NZ, 00727$
+      000170 BF               [ 4]  506 	cp	a, a
+      000171 18 05            [12]  507 	jr	00727$
+      000173                        508 00726$:
+      000173 CB 7A            [ 8]  509 	bit	7, d
+      000175 28 01            [12]  510 	jr	Z, 00727$
+      000177 37               [ 4]  511 	scf
+      000178                        512 00727$:
+      000178 30 16            [12]  513 	jr	NC, 00125$
+                           00017A   514 	C$SpriteHorse.c$96$2_1$205	= .
+                                    515 	.globl	C$SpriteHorse.c$96$2_1$205
+                                    516 ;SpriteHorse.c:96: velocity_counter = delta_stamina_euphoria >> 4;
+      00017A CB 28            [ 8]  517 	sra	b
+      00017C CB 19            [ 8]  518 	rr	c
+      00017E CB 28            [ 8]  519 	sra	b
+      000180 CB 19            [ 8]  520 	rr	c
+      000182 CB 28            [ 8]  521 	sra	b
+      000184 CB 19            [ 8]  522 	rr	c
+      000186 CB 28            [ 8]  523 	sra	b
+      000188 CB 19            [ 8]  524 	rr	c
+      00018A 21r00r00         [12]  525 	ld	hl, #_velocity_counter
+      00018D 71               [ 8]  526 	ld	(hl), c
+      00018E 18 05            [12]  527 	jr	00126$
+      000190                        528 00125$:
+                           000190   529 	C$SpriteHorse.c$98$2_1$206	= .
+                                    530 	.globl	C$SpriteHorse.c$98$2_1$206
+                                    531 ;SpriteHorse.c:98: velocity_counter = 2;
+      000190 21r00r00         [12]  532 	ld	hl, #_velocity_counter
+      000193 36 02            [12]  533 	ld	(hl), #0x02
+      000195                        534 00126$:
+                           000195   535 	C$SpriteHorse.c$102$2_3$191	= .
+                                    536 	.globl	C$SpriteHorse.c$102$2_3$191
+                                    537 ;SpriteHorse.c:102: if(KEY_RELEASED(J_RIGHT) || KEY_RELEASED(J_LEFT)){turn_samepressure_counter = 0;}
+      000195 21r00r00         [12]  538 	ld	hl, #_previous_keys
+      000198 4E               [ 8]  539 	ld	c, (hl)
+      000199 21r00r00         [12]  540 	ld	hl, #_keys
+      00019C 46               [ 8]  541 	ld	b, (hl)
+      00019D 78               [ 4]  542 	ld	a, b
+      00019E E6 01            [ 8]  543 	and	a, #0x01
+      0001A0 F5               [16]  544 	push	af
+      0001A1 78               [ 4]  545 	ld	a, b
+      0001A2 E6 02            [ 8]  546 	and	a, #0x02
+      0001A4 5F               [ 4]  547 	ld	e, a
+      0001A5 F1               [12]  548 	pop	af
+      0001A6 CB 41            [ 8]  549 	bit	0, c
+      0001A8 28 03            [12]  550 	jr	Z, 00131$
+      0001AA B7               [ 4]  551 	or	a, a
+      0001AB 28 08            [12]  552 	jr	Z, 00127$
+      0001AD                        553 00131$:
+      0001AD CB 49            [ 8]  554 	bit	1, c
+      0001AF 28 09            [12]  555 	jr	Z, 00128$
+      0001B1 1C               [ 4]  556 	inc	e
+      0001B2 1D               [ 4]  557 	dec	e
+      0001B3 20 05            [12]  558 	jr	NZ, 00128$
+      0001B5                        559 00127$:
+      0001B5 21r15r00         [12]  560 	ld	hl, #_turn_samepressure_counter
+      0001B8 36 00            [12]  561 	ld	(hl), #0x00
+      0001BA                        562 00128$:
+                           0001BA   563 	C$SpriteHorse.c$107$2_3$191	= .
+                                    564 	.globl	C$SpriteHorse.c$107$2_3$191
+                                    565 ;SpriteHorse.c:107: turn_samepressure_counter++;
+      0001BA 21r15r00         [12]  566 	ld	hl, #_turn_samepressure_counter
+      0001BD 56               [ 8]  567 	ld	d, (hl)
+      0001BE 14               [ 4]  568 	inc	d
+                           0001BF   569 	C$SpriteHorse.c$104$1_1$202	= .
+                                    570 	.globl	C$SpriteHorse.c$104$1_1$202
+                                    571 ;SpriteHorse.c:104: if(KEY_PRESSED(J_RIGHT)){
+      0001BF B7               [ 4]  572 	or	a, a
+      0001C0 28 67            [12]  573 	jr	Z, 00144$
+                           0001C2   574 	C$SpriteHorse.c$105$2_1$208	= .
+                                    575 	.globl	C$SpriteHorse.c$105$2_1$208
+                                    576 ;SpriteHorse.c:105: turn_verse = CLOCK;
+      0001C2 21r17r00         [12]  577 	ld	hl, #_turn_verse
+      0001C5 36 01            [12]  578 	ld	(hl), #0x01
+                           0001C7   579 	C$SpriteHorse.c$106$2_1$208	= .
+                                    580 	.globl	C$SpriteHorse.c$106$2_1$208
+                                    581 ;SpriteHorse.c:106: turn--;
+      0001C7 21r12r00         [12]  582 	ld	hl, #_turn
+      0001CA 35               [12]  583 	dec	(hl)
+                           0001CB   584 	C$SpriteHorse.c$107$2_1$208	= .
+                                    585 	.globl	C$SpriteHorse.c$107$2_1$208
+                                    586 ;SpriteHorse.c:107: turn_samepressure_counter++;
+      0001CB 21r15r00         [12]  587 	ld	hl, #_turn_samepressure_counter
+      0001CE 72               [ 8]  588 	ld	(hl), d
+                           0001CF   589 	C$SpriteHorse.c$108$2_1$208	= .
+                                    590 	.globl	C$SpriteHorse.c$108$2_1$208
+                                    591 ;SpriteHorse.c:108: if(turn_samepressure_counter >= 40 && ((sin > 30 && sin < 78) || (sin < -30 && sin > -78))){
+      0001CF 7E               [ 8]  592 	ld	a, (hl)
+      0001D0 EE 80            [ 8]  593 	xor	a, #0x80
+      0001D2 D6 A8            [ 8]  594 	sub	a, #0xa8
+      0001D4 DAr64r02         [16]  595 	jp	C, 00145$
+      0001D7 21r13r00         [12]  596 	ld	hl, #_sin
+      0001DA 5E               [ 8]  597 	ld	e, (hl)
+      0001DB 3E 1E            [ 8]  598 	ld	a,#0x1e
+      0001DD 57               [ 4]  599 	ld	d,a
+      0001DE 96               [ 8]  600 	sub	a, (hl)
+      0001DF CB 7B            [ 8]  601 	bit	7, e
+      0001E1 28 07            [12]  602 	jr	Z, 00730$
+      0001E3 CB 7A            [ 8]  603 	bit	7, d
+      0001E5 20 08            [12]  604 	jr	NZ, 00731$
+      0001E7 BF               [ 4]  605 	cp	a, a
+      0001E8 18 05            [12]  606 	jr	00731$
+      0001EA                        607 00730$:
+      0001EA CB 7A            [ 8]  608 	bit	7, d
+      0001EC 28 01            [12]  609 	jr	Z, 00731$
+      0001EE 37               [ 4]  610 	scf
+      0001EF                        611 00731$:
+      0001EF 30 09            [12]  612 	jr	NC, 00136$
+      0001F1 FAr13r00         [16]  613 	ld	a, (#_sin)
+      0001F4 EE 80            [ 8]  614 	xor	a, #0x80
+      0001F6 D6 CE            [ 8]  615 	sub	a, #0xce
+      0001F8 38 21            [12]  616 	jr	C, 00132$
+      0001FA                        617 00136$:
+      0001FA 21r13r00         [12]  618 	ld	hl, #_sin
+      0001FD 7E               [ 8]  619 	ld	a, (hl)
+      0001FE EE 80            [ 8]  620 	xor	a, #0x80
+      000200 D6 62            [ 8]  621 	sub	a, #0x62
+      000202 30 60            [12]  622 	jr	NC, 00145$
+      000204 5E               [ 8]  623 	ld	e, (hl)
+      000205 3E B2            [ 8]  624 	ld	a,#0xb2
+      000207 57               [ 4]  625 	ld	d,a
+      000208 96               [ 8]  626 	sub	a, (hl)
+      000209 CB 7B            [ 8]  627 	bit	7, e
+      00020B 28 07            [12]  628 	jr	Z, 00732$
+      00020D CB 7A            [ 8]  629 	bit	7, d
+      00020F 20 08            [12]  630 	jr	NZ, 00733$
+      000211 BF               [ 4]  631 	cp	a, a
+      000212 18 05            [12]  632 	jr	00733$
+      000214                        633 00732$:
+      000214 CB 7A            [ 8]  634 	bit	7, d
+      000216 28 01            [12]  635 	jr	Z, 00733$
+      000218 37               [ 4]  636 	scf
+      000219                        637 00733$:
+      000219 30 49            [12]  638 	jr	NC, 00145$
+      00021B                        639 00132$:
+                           00021B   640 	C$SpriteHorse.c$109$3_1$209	= .
+                                    641 	.globl	C$SpriteHorse.c$109$3_1$209
+                                    642 ;SpriteHorse.c:109: turn_samepressure_counter = 40;
+      00021B 21r15r00         [12]  643 	ld	hl, #_turn_samepressure_counter
+      00021E 36 28            [12]  644 	ld	(hl), #0x28
+                           000220   645 	C$SpriteHorse.c$110$3_1$209	= .
+                                    646 	.globl	C$SpriteHorse.c$110$3_1$209
+                                    647 ;SpriteHorse.c:110: turn-=2;
+      000220 21r12r00         [12]  648 	ld	hl, #_turn
+      000223 7E               [ 8]  649 	ld	a, (hl)
+      000224 C6 FE            [ 8]  650 	add	a, #0xfe
+      000226 77               [ 8]  651 	ld	(hl), a
+      000227 18 3B            [12]  652 	jr	00145$
+      000229                        653 00144$:
+                           000229   654 	C$SpriteHorse.c$112$1_1$202	= .
+                                    655 	.globl	C$SpriteHorse.c$112$1_1$202
+                                    656 ;SpriteHorse.c:112: }else if(KEY_PRESSED(J_LEFT)){
+      000229 7B               [ 4]  657 	ld	a, e
+      00022A B7               [ 4]  658 	or	a, a
+      00022B 28 32            [12]  659 	jr	Z, 00141$
+                           00022D   660 	C$SpriteHorse.c$113$2_1$210	= .
+                                    661 	.globl	C$SpriteHorse.c$113$2_1$210
+                                    662 ;SpriteHorse.c:113: turn_verse = COUNTERCLOCK;
+      00022D 21r17r00         [12]  663 	ld	hl, #_turn_verse
+      000230 36 02            [12]  664 	ld	(hl), #0x02
+                           000232   665 	C$SpriteHorse.c$114$2_1$210	= .
+                                    666 	.globl	C$SpriteHorse.c$114$2_1$210
+                                    667 ;SpriteHorse.c:114: turn++;
+      000232 21r12r00         [12]  668 	ld	hl, #_turn
+      000235 34               [12]  669 	inc	(hl)
+                           000236   670 	C$SpriteHorse.c$115$2_1$210	= .
+                                    671 	.globl	C$SpriteHorse.c$115$2_1$210
+                                    672 ;SpriteHorse.c:115: turn_samepressure_counter++;
+      000236 21r15r00         [12]  673 	ld	hl, #_turn_samepressure_counter
+      000239 72               [ 8]  674 	ld	(hl), d
+                           00023A   675 	C$SpriteHorse.c$116$2_1$210	= .
+                                    676 	.globl	C$SpriteHorse.c$116$2_1$210
+                                    677 ;SpriteHorse.c:116: if(turn_samepressure_counter > 40){
+      00023A 5E               [ 8]  678 	ld	e, (hl)
+      00023B 3E 28            [ 8]  679 	ld	a,#0x28
+      00023D 57               [ 4]  680 	ld	d,a
+      00023E 96               [ 8]  681 	sub	a, (hl)
+      00023F CB 7B            [ 8]  682 	bit	7, e
+      000241 28 07            [12]  683 	jr	Z, 00734$
+      000243 CB 7A            [ 8]  684 	bit	7, d
+      000245 20 08            [12]  685 	jr	NZ, 00735$
+      000247 BF               [ 4]  686 	cp	a, a
+      000248 18 05            [12]  687 	jr	00735$
+      00024A                        688 00734$:
+      00024A CB 7A            [ 8]  689 	bit	7, d
+      00024C 28 01            [12]  690 	jr	Z, 00735$
+      00024E 37               [ 4]  691 	scf
+      00024F                        692 00735$:
+      00024F 30 13            [12]  693 	jr	NC, 00145$
+                           000251   694 	C$SpriteHorse.c$117$3_1$211	= .
+                                    695 	.globl	C$SpriteHorse.c$117$3_1$211
+                                    696 ;SpriteHorse.c:117: turn_samepressure_counter = 40;
+      000251 21r15r00         [12]  697 	ld	hl, #_turn_samepressure_counter
+      000254 36 28            [12]  698 	ld	(hl), #0x28
+                           000256   699 	C$SpriteHorse.c$118$3_1$211	= .
+                                    700 	.globl	C$SpriteHorse.c$118$3_1$211
+                                    701 ;SpriteHorse.c:118: turn+=2;
+      000256 21r12r00         [12]  702 	ld	hl, #_turn
+      000259 7E               [ 8]  703 	ld	a, (hl)
+      00025A C6 02            [ 8]  704 	add	a, #0x02
+      00025C 77               [ 8]  705 	ld	(hl), a
+      00025D 18 05            [12]  706 	jr	00145$
+      00025F                        707 00141$:
+                           00025F   708 	C$SpriteHorse.c$121$2_1$212	= .
+                                    709 	.globl	C$SpriteHorse.c$121$2_1$212
+                                    710 ;SpriteHorse.c:121: turn_verse = NONE; 
+      00025F 21r17r00         [12]  711 	ld	hl, #_turn_verse
+      000262 36 00            [12]  712 	ld	(hl), #0x00
+      000264                        713 00145$:
+                           000264   714 	C$SpriteHorse.c$123$1_1$202	= .
+                                    715 	.globl	C$SpriteHorse.c$123$1_1$202
+                                    716 ;SpriteHorse.c:123: if(KEY_TICKED(J_UP)){
+      000264 CB 50            [ 8]  717 	bit	2, b
+      000266 28 0E            [12]  718 	jr	Z, 00147$
+      000268 CB 51            [ 8]  719 	bit	2, c
+      00026A 20 0A            [12]  720 	jr	NZ, 00147$
+                           00026C   721 	C$SpriteHorse.c$124$2_1$213	= .
+                                    722 	.globl	C$SpriteHorse.c$124$2_1$213
+                                    723 ;SpriteHorse.c:124: turn = 64;
+      00026C 21r12r00         [12]  724 	ld	hl, #_turn
+      00026F 36 40            [12]  725 	ld	(hl), #0x40
+                           000271   726 	C$SpriteHorse.c$125$2_1$213	= .
+                                    727 	.globl	C$SpriteHorse.c$125$2_1$213
+                                    728 ;SpriteHorse.c:125: turn_samepressure_counter = 0;
+      000271 21r15r00         [12]  729 	ld	hl, #_turn_samepressure_counter
+      000274 36 00            [12]  730 	ld	(hl), #0x00
+      000276                        731 00147$:
+                           000276   732 	C$SpriteHorse.c$127$1_1$202	= .
+                                    733 	.globl	C$SpriteHorse.c$127$1_1$202
+                                    734 ;SpriteHorse.c:127: if(KEY_TICKED(J_DOWN)){
+      000276 CB 58            [ 8]  735 	bit	3, b
+      000278 28 0E            [12]  736 	jr	Z, 00150$
+      00027A CB 59            [ 8]  737 	bit	3, c
+      00027C 20 0A            [12]  738 	jr	NZ, 00150$
+                           00027E   739 	C$SpriteHorse.c$128$2_1$214	= .
+                                    740 	.globl	C$SpriteHorse.c$128$2_1$214
+                                    741 ;SpriteHorse.c:128: turn = 192;
+      00027E 21r12r00         [12]  742 	ld	hl, #_turn
+      000281 36 C0            [12]  743 	ld	(hl), #0xc0
+                           000283   744 	C$SpriteHorse.c$129$2_1$214	= .
+                                    745 	.globl	C$SpriteHorse.c$129$2_1$214
+                                    746 ;SpriteHorse.c:129: turn_samepressure_counter = 0;
+      000283 21r15r00         [12]  747 	ld	hl, #_turn_samepressure_counter
+      000286 36 00            [12]  748 	ld	(hl), #0x00
+      000288                        749 00150$:
+                           000288   750 	C$SpriteHorse.c$131$1_1$202	= .
+                                    751 	.globl	C$SpriteHorse.c$131$1_1$202
+                                    752 ;SpriteHorse.c:131: sin = sine_wave[turn];
+      000288 01r00r00         [12]  753 	ld	bc, #_sine_wave+0
+      00028B 79               [ 4]  754 	ld	a, c
+      00028C 21r12r00         [12]  755 	ld	hl, #_turn
+      00028F 86               [ 8]  756 	add	a, (hl)
+      000290 5F               [ 4]  757 	ld	e, a
+      000291 78               [ 4]  758 	ld	a, b
+      000292 CE 00            [ 8]  759 	adc	a, #0x00
+      000294 57               [ 4]  760 	ld	d, a
+      000295 1A               [ 8]  761 	ld	a, (de)
+      000296 EAr13r00         [16]  762 	ld	(#_sin),a
+                           000299   763 	C$SpriteHorse.c$132$1_2$215	= .
+                                    764 	.globl	C$SpriteHorse.c$132$1_2$215
+                                    765 ;SpriteHorse.c:132: UINT8 cos_idx = turn+64;
+      000299 FAr12r00         [16]  766 	ld	a, (#_turn)
+      00029C C6 40            [ 8]  767 	add	a, #0x40
+                           00029E   768 	C$SpriteHorse.c$133$1_2$215	= .
+                                    769 	.globl	C$SpriteHorse.c$133$1_2$215
+                                    770 ;SpriteHorse.c:133: cos = sine_wave[cos_idx];
+      00029E 6F               [ 4]  771 	ld	l, a
+      00029F 26 00            [ 8]  772 	ld	h, #0x00
+      0002A1 09               [ 8]  773 	add	hl, bc
+      0002A2 7E               [ 8]  774 	ld	a, (hl)
+      0002A3 EAr14r00         [16]  775 	ld	(#_cos),a
+                           0002A6   776 	C$SpriteHorse.c$136$1_2$215	= .
+                                    777 	.globl	C$SpriteHorse.c$136$1_2$215
+                                    778 ;SpriteHorse.c:136: frm_skip--;
+      0002A6 21r04r00         [12]  779 	ld	hl, #_frm_skip
+                           0002A9   780 	C$SpriteHorse.c$137$1_2$215	= .
+                                    781 	.globl	C$SpriteHorse.c$137$1_2$215
+                                    782 ;SpriteHorse.c:137: if(frm_skip == 0){
+      0002A9 35               [12]  783 	dec	(hl)
+      0002AA C2rC0r07         [16]  784 	jp	NZ, 00245$
+                           0002AD   785 	C$SpriteHorse.c$138$2_2$216	= .
+                                    786 	.globl	C$SpriteHorse.c$138$2_2$216
+                                    787 ;SpriteHorse.c:138: frm_skip = velocity_counter;
+      0002AD FAr00r00         [16]  788 	ld	a, (#_velocity_counter)
+      0002B0 EAr04r00         [16]  789 	ld	(#_frm_skip),a
+                           0002B3   790 	C$SpriteHorse.c$145$2_3$191	= .
+                                    791 	.globl	C$SpriteHorse.c$145$2_3$191
+                                    792 ;SpriteHorse.c:145: if(cos >= 0 && cos <= 30){//tratto come se stesse andando verticale
+      0002B3 21r14r00         [12]  793 	ld	hl, #_cos
+      0002B6 7E               [ 8]  794 	ld	a, (hl)
+      0002B7 07               [ 4]  795 	rlca
+      0002B8 E6 01            [ 8]  796 	and	a,#0x01
+      0002BA 4F               [ 4]  797 	ld	c, a
+      0002BB 5E               [ 8]  798 	ld	e, (hl)
+      0002BC 3E 1E            [ 8]  799 	ld	a,#0x1e
+      0002BE 57               [ 4]  800 	ld	d,a
+      0002BF 96               [ 8]  801 	sub	a, (hl)
+      0002C0 CB 7B            [ 8]  802 	bit	7, e
+      0002C2 28 07            [12]  803 	jr	Z, 00742$
+      0002C4 CB 7A            [ 8]  804 	bit	7, d
+      0002C6 20 08            [12]  805 	jr	NZ, 00743$
+      0002C8 BF               [ 4]  806 	cp	a, a
+      0002C9 18 05            [12]  807 	jr	00743$
+      0002CB                        808 00742$:
+      0002CB CB 7A            [ 8]  809 	bit	7, d
+      0002CD 28 01            [12]  810 	jr	Z, 00743$
+      0002CF 37               [ 4]  811 	scf
+      0002D0                        812 00743$:
+      0002D0 3E 00            [ 8]  813 	ld	a, #0x00
+      0002D2 17               [ 4]  814 	rla
+      0002D3 CB 41            [ 8]  815 	bit	0, c
+      0002D5 20 0B            [12]  816 	jr	NZ, 00178$
+      0002D7 B7               [ 4]  817 	or	a, a
+      0002D8 20 08            [12]  818 	jr	NZ, 00178$
+                           0002DA   819 	C$SpriteHorse.c$146$3_2$217	= .
+                                    820 	.globl	C$SpriteHorse.c$146$3_2$217
+                                    821 ;SpriteHorse.c:146: vx = 0;
+      0002DA 21r03r00         [12]  822 	ld	hl, #_vx
+      0002DD 36 00            [12]  823 	ld	(hl), #0x00
+      0002DF C3rC6r03         [16]  824 	jp	00179$
+      0002E2                        825 00178$:
+                           0002E2   826 	C$SpriteHorse.c$147$2_2$216	= .
+                                    827 	.globl	C$SpriteHorse.c$147$2_2$216
+                                    828 ;SpriteHorse.c:147: }else if(cos > 30 && cos < 54){// tratto come se stesse andando a 66 gradi
+      0002E2 B7               [ 4]  829 	or	a, a
+      0002E3 28 11            [12]  830 	jr	Z, 00174$
+      0002E5 FAr14r00         [16]  831 	ld	a, (#_cos)
+      0002E8 EE 80            [ 8]  832 	xor	a, #0x80
+      0002EA D6 B6            [ 8]  833 	sub	a, #0xb6
+      0002EC 30 08            [12]  834 	jr	NC, 00174$
+                           0002EE   835 	C$SpriteHorse.c$148$3_2$218	= .
+                                    836 	.globl	C$SpriteHorse.c$148$3_2$218
+                                    837 ;SpriteHorse.c:148: vx = 1;
+      0002EE 21r03r00         [12]  838 	ld	hl, #_vx
+      0002F1 36 01            [12]  839 	ld	(hl), #0x01
+      0002F3 C3rC6r03         [16]  840 	jp	00179$
+      0002F6                        841 00174$:
+                           0002F6   842 	C$SpriteHorse.c$149$2_2$216	= .
+                                    843 	.globl	C$SpriteHorse.c$149$2_2$216
+                                    844 ;SpriteHorse.c:149: }else if(cos > 54 && cos < 78){// tratto come se stesse andando a 33 gradi
+      0002F6 21r14r00         [12]  845 	ld	hl, #_cos
+      0002F9 5E               [ 8]  846 	ld	e, (hl)
+      0002FA 3E 36            [ 8]  847 	ld	a,#0x36
+      0002FC 57               [ 4]  848 	ld	d,a
+      0002FD 96               [ 8]  849 	sub	a, (hl)
+      0002FE CB 7B            [ 8]  850 	bit	7, e
+      000300 28 07            [12]  851 	jr	Z, 00744$
+      000302 CB 7A            [ 8]  852 	bit	7, d
+      000304 20 08            [12]  853 	jr	NZ, 00745$
+      000306 BF               [ 4]  854 	cp	a, a
+      000307 18 05            [12]  855 	jr	00745$
+      000309                        856 00744$:
+      000309 CB 7A            [ 8]  857 	bit	7, d
+      00030B 28 01            [12]  858 	jr	Z, 00745$
+      00030D 37               [ 4]  859 	scf
+      00030E                        860 00745$:
+      00030E 30 11            [12]  861 	jr	NC, 00170$
+      000310 FAr14r00         [16]  862 	ld	a, (#_cos)
+      000313 EE 80            [ 8]  863 	xor	a, #0x80
+      000315 D6 CE            [ 8]  864 	sub	a, #0xce
+      000317 30 08            [12]  865 	jr	NC, 00170$
+                           000319   866 	C$SpriteHorse.c$150$3_2$219	= .
+                                    867 	.globl	C$SpriteHorse.c$150$3_2$219
+                                    868 ;SpriteHorse.c:150: vx = 2;
+      000319 21r03r00         [12]  869 	ld	hl, #_vx
+      00031C 36 02            [12]  870 	ld	(hl), #0x02
+      00031E C3rC6r03         [16]  871 	jp	00179$
+      000321                        872 00170$:
+                           000321   873 	C$SpriteHorse.c$151$2_2$216	= .
+                                    874 	.globl	C$SpriteHorse.c$151$2_2$216
+                                    875 ;SpriteHorse.c:151: }else if(cos > 78){ // tratto come se stesse andando orizzontale destra
+      000321 21r14r00         [12]  876 	ld	hl, #_cos
+      000324 5E               [ 8]  877 	ld	e, (hl)
+      000325 3E 4E            [ 8]  878 	ld	a,#0x4e
+      000327 57               [ 4]  879 	ld	d,a
+      000328 96               [ 8]  880 	sub	a, (hl)
+      000329 CB 7B            [ 8]  881 	bit	7, e
+      00032B 28 07            [12]  882 	jr	Z, 00746$
+      00032D CB 7A            [ 8]  883 	bit	7, d
+      00032F 20 08            [12]  884 	jr	NZ, 00747$
+      000331 BF               [ 4]  885 	cp	a, a
+      000332 18 05            [12]  886 	jr	00747$
+      000334                        887 00746$:
+      000334 CB 7A            [ 8]  888 	bit	7, d
+      000336 28 01            [12]  889 	jr	Z, 00747$
+      000338 37               [ 4]  890 	scf
+      000339                        891 00747$:
+      000339 30 08            [12]  892 	jr	NC, 00167$
+                           00033B   893 	C$SpriteHorse.c$152$3_2$220	= .
+                                    894 	.globl	C$SpriteHorse.c$152$3_2$220
+                                    895 ;SpriteHorse.c:152: vx = 3;
+      00033B 21r03r00         [12]  896 	ld	hl, #_vx
+      00033E 36 03            [12]  897 	ld	(hl), #0x03
+      000340 C3rC6r03         [16]  898 	jp	00179$
+      000343                        899 00167$:
+                           000343   900 	C$SpriteHorse.c$153$2_2$216	= .
+                                    901 	.globl	C$SpriteHorse.c$153$2_2$216
+                                    902 ;SpriteHorse.c:153: }else if(cos < 0 && cos > -30){//tratto come se stesse andando verticale
+      000343 79               [ 4]  903 	ld	a, c
+      000344 B7               [ 4]  904 	or	a, a
+      000345 28 21            [12]  905 	jr	Z, 00163$
+      000347 21r14r00         [12]  906 	ld	hl, #_cos
+      00034A 5E               [ 8]  907 	ld	e, (hl)
+      00034B 3E E2            [ 8]  908 	ld	a,#0xe2
+      00034D 57               [ 4]  909 	ld	d,a
+      00034E 96               [ 8]  910 	sub	a, (hl)
+      00034F CB 7B            [ 8]  911 	bit	7, e
+      000351 28 07            [12]  912 	jr	Z, 00748$
+      000353 CB 7A            [ 8]  913 	bit	7, d
+      000355 20 08            [12]  914 	jr	NZ, 00749$
+      000357 BF               [ 4]  915 	cp	a, a
+      000358 18 05            [12]  916 	jr	00749$
+      00035A                        917 00748$:
+      00035A CB 7A            [ 8]  918 	bit	7, d
+      00035C 28 01            [12]  919 	jr	Z, 00749$
+      00035E 37               [ 4]  920 	scf
+      00035F                        921 00749$:
+      00035F 30 07            [12]  922 	jr	NC, 00163$
+                           000361   923 	C$SpriteHorse.c$154$3_2$221	= .
+                                    924 	.globl	C$SpriteHorse.c$154$3_2$221
+                                    925 ;SpriteHorse.c:154: vx = 0;
+      000361 21r03r00         [12]  926 	ld	hl, #_vx
+      000364 36 00            [12]  927 	ld	(hl), #0x00
+      000366 18 5E            [12]  928 	jr	00179$
+      000368                        929 00163$:
+                           000368   930 	C$SpriteHorse.c$155$2_2$216	= .
+                                    931 	.globl	C$SpriteHorse.c$155$2_2$216
+                                    932 ;SpriteHorse.c:155: }else if(cos < -30 && cos > -54){// tratto come se stesse andando a 66 gradi sinistra
+      000368 21r14r00         [12]  933 	ld	hl, #_cos
+      00036B 7E               [ 8]  934 	ld	a, (hl)
+      00036C EE 80            [ 8]  935 	xor	a, #0x80
+      00036E D6 62            [ 8]  936 	sub	a, #0x62
+      000370 30 1E            [12]  937 	jr	NC, 00159$
+      000372 5E               [ 8]  938 	ld	e, (hl)
+      000373 3E CA            [ 8]  939 	ld	a,#0xca
+      000375 57               [ 4]  940 	ld	d,a
+      000376 96               [ 8]  941 	sub	a, (hl)
+      000377 CB 7B            [ 8]  942 	bit	7, e
+      000379 28 07            [12]  943 	jr	Z, 00750$
+      00037B CB 7A            [ 8]  944 	bit	7, d
+      00037D 20 08            [12]  945 	jr	NZ, 00751$
+      00037F BF               [ 4]  946 	cp	a, a
+      000380 18 05            [12]  947 	jr	00751$
+      000382                        948 00750$:
+      000382 CB 7A            [ 8]  949 	bit	7, d
+      000384 28 01            [12]  950 	jr	Z, 00751$
+      000386 37               [ 4]  951 	scf
+      000387                        952 00751$:
+      000387 30 07            [12]  953 	jr	NC, 00159$
+                           000389   954 	C$SpriteHorse.c$156$3_2$222	= .
+                                    955 	.globl	C$SpriteHorse.c$156$3_2$222
+                                    956 ;SpriteHorse.c:156: vx = -1;
+      000389 21r03r00         [12]  957 	ld	hl, #_vx
+      00038C 36 FF            [12]  958 	ld	(hl), #0xff
+      00038E 18 36            [12]  959 	jr	00179$
+      000390                        960 00159$:
+                           000390   961 	C$SpriteHorse.c$157$2_2$216	= .
+                                    962 	.globl	C$SpriteHorse.c$157$2_2$216
+                                    963 ;SpriteHorse.c:157: }else if(cos < -54 && cos > -78){// tratto come se stesse andando a 33 gradi sinistra
+      000390 21r14r00         [12]  964 	ld	hl, #_cos
+      000393 7E               [ 8]  965 	ld	a, (hl)
+      000394 EE 80            [ 8]  966 	xor	a, #0x80
+      000396 D6 4A            [ 8]  967 	sub	a, #0x4a
+      000398 30 1E            [12]  968 	jr	NC, 00155$
+      00039A 5E               [ 8]  969 	ld	e, (hl)
+      00039B 3E B2            [ 8]  970 	ld	a,#0xb2
+      00039D 57               [ 4]  971 	ld	d,a
+      00039E 96               [ 8]  972 	sub	a, (hl)
+      00039F CB 7B            [ 8]  973 	bit	7, e
+      0003A1 28 07            [12]  974 	jr	Z, 00752$
+      0003A3 CB 7A            [ 8]  975 	bit	7, d
+      0003A5 20 08            [12]  976 	jr	NZ, 00753$
+      0003A7 BF               [ 4]  977 	cp	a, a
+      0003A8 18 05            [12]  978 	jr	00753$
+      0003AA                        979 00752$:
+      0003AA CB 7A            [ 8]  980 	bit	7, d
+      0003AC 28 01            [12]  981 	jr	Z, 00753$
+      0003AE 37               [ 4]  982 	scf
+      0003AF                        983 00753$:
+      0003AF 30 07            [12]  984 	jr	NC, 00155$
+                           0003B1   985 	C$SpriteHorse.c$158$3_2$223	= .
+                                    986 	.globl	C$SpriteHorse.c$158$3_2$223
+                                    987 ;SpriteHorse.c:158: vx = -2;
+      0003B1 21r03r00         [12]  988 	ld	hl, #_vx
+      0003B4 36 FE            [12]  989 	ld	(hl), #0xfe
+      0003B6 18 0E            [12]  990 	jr	00179$
+      0003B8                        991 00155$:
+                           0003B8   992 	C$SpriteHorse.c$159$2_2$216	= .
+                                    993 	.globl	C$SpriteHorse.c$159$2_2$216
+                                    994 ;SpriteHorse.c:159: }else if(cos < -78){ // tratto come se stesse andando orizzontale sinistra
+      0003B8 FAr14r00         [16]  995 	ld	a, (#_cos)
+      0003BB EE 80            [ 8]  996 	xor	a, #0x80
+      0003BD D6 32            [ 8]  997 	sub	a, #0x32
+      0003BF 30 05            [12]  998 	jr	NC, 00179$
+                           0003C1   999 	C$SpriteHorse.c$160$3_2$224	= .
+                                   1000 	.globl	C$SpriteHorse.c$160$3_2$224
+                                   1001 ;SpriteHorse.c:160: vx = -3;
+      0003C1 21r03r00         [12] 1002 	ld	hl, #_vx
+      0003C4 36 FD            [12] 1003 	ld	(hl), #0xfd
+      0003C6                       1004 00179$:
+                           0003C6  1005 	C$SpriteHorse.c$108$2_3$191	= .
+                                   1006 	.globl	C$SpriteHorse.c$108$2_3$191
+                                   1007 ;SpriteHorse.c:108: if(turn_samepressure_counter >= 40 && ((sin > 30 && sin < 78) || (sin < -30 && sin > -78))){
+      0003C6 21r13r00         [12] 1008 	ld	hl, #_sin
+      0003C9 5E               [ 8] 1009 	ld	e, (hl)
+      0003CA 3E 1E            [ 8] 1010 	ld	a,#0x1e
+      0003CC 57               [ 4] 1011 	ld	d,a
+      0003CD 96               [ 8] 1012 	sub	a, (hl)
+      0003CE CB 7B            [ 8] 1013 	bit	7, e
+      0003D0 28 07            [12] 1014 	jr	Z, 00754$
+      0003D2 CB 7A            [ 8] 1015 	bit	7, d
+      0003D4 20 08            [12] 1016 	jr	NZ, 00755$
+      0003D6 BF               [ 4] 1017 	cp	a, a
+      0003D7 18 05            [12] 1018 	jr	00755$
+      0003D9                       1019 00754$:
+      0003D9 CB 7A            [ 8] 1020 	bit	7, d
+      0003DB 28 01            [12] 1021 	jr	Z, 00755$
+      0003DD 37               [ 4] 1022 	scf
+      0003DE                       1023 00755$:
+      0003DE 3E 00            [ 8] 1024 	ld	a, #0x00
+      0003E0 17               [ 4] 1025 	rla
+      0003E1 4F               [ 4] 1026 	ld	c, a
+                           0003E2  1027 	C$SpriteHorse.c$163$2_3$191	= .
+                                   1028 	.globl	C$SpriteHorse.c$163$2_3$191
+                                   1029 ;SpriteHorse.c:163: if(sin >= 0 && sin <= 30){//tratto come se stesse andando orizzontale
+      0003E2 FAr13r00         [16] 1030 	ld	a, (#_sin)
+      0003E5 07               [ 4] 1031 	rlca
+      0003E6 E6 01            [ 8] 1032 	and	a,#0x01
+      0003E8 47               [ 4] 1033 	ld	b, a
+      0003E9 CB 40            [ 8] 1034 	bit	0, b
+      0003EB 20 0D            [12] 1035 	jr	NZ, 00207$
+      0003ED 59               [ 4] 1036 	ld	e, c
+      0003EE CB 43            [ 8] 1037 	bit	0, e
+      0003F0 20 08            [12] 1038 	jr	NZ, 00207$
+                           0003F2  1039 	C$SpriteHorse.c$164$3_2$225	= .
+                                   1040 	.globl	C$SpriteHorse.c$164$3_2$225
+                                   1041 ;SpriteHorse.c:164: vy = 0;
+      0003F2 21r02r00         [12] 1042 	ld	hl, #_vy
+      0003F5 36 00            [12] 1043 	ld	(hl), #0x00
+      0003F7 C3rDFr04         [16] 1044 	jp	00208$
+      0003FA                       1045 00207$:
+                           0003FA  1046 	C$SpriteHorse.c$165$2_2$216	= .
+                                   1047 	.globl	C$SpriteHorse.c$165$2_2$216
+                                   1048 ;SpriteHorse.c:165: }else if(sin > 30 && sin < 54){// tratto come se stesse andando a 33 gradi
+      0003FA 79               [ 4] 1049 	ld	a, c
+      0003FB B7               [ 4] 1050 	or	a, a
+      0003FC 28 11            [12] 1051 	jr	Z, 00203$
+      0003FE FAr13r00         [16] 1052 	ld	a, (#_sin)
+      000401 EE 80            [ 8] 1053 	xor	a, #0x80
+      000403 D6 B6            [ 8] 1054 	sub	a, #0xb6
+      000405 30 08            [12] 1055 	jr	NC, 00203$
+                           000407  1056 	C$SpriteHorse.c$166$3_2$226	= .
+                                   1057 	.globl	C$SpriteHorse.c$166$3_2$226
+                                   1058 ;SpriteHorse.c:166: vy = -1;
+      000407 21r02r00         [12] 1059 	ld	hl, #_vy
+      00040A 36 FF            [12] 1060 	ld	(hl), #0xff
+      00040C C3rDFr04         [16] 1061 	jp	00208$
+      00040F                       1062 00203$:
+                           00040F  1063 	C$SpriteHorse.c$167$2_2$216	= .
+                                   1064 	.globl	C$SpriteHorse.c$167$2_2$216
+                                   1065 ;SpriteHorse.c:167: }else if(sin > 54 && sin < 78){// tratto come se stesse andando a 66 gradi
+      00040F 21r13r00         [12] 1066 	ld	hl, #_sin
+      000412 5E               [ 8] 1067 	ld	e, (hl)
+      000413 3E 36            [ 8] 1068 	ld	a,#0x36
+      000415 57               [ 4] 1069 	ld	d,a
+      000416 96               [ 8] 1070 	sub	a, (hl)
+      000417 CB 7B            [ 8] 1071 	bit	7, e
+      000419 28 07            [12] 1072 	jr	Z, 00756$
+      00041B CB 7A            [ 8] 1073 	bit	7, d
+      00041D 20 08            [12] 1074 	jr	NZ, 00757$
+      00041F BF               [ 4] 1075 	cp	a, a
+      000420 18 05            [12] 1076 	jr	00757$
+      000422                       1077 00756$:
+      000422 CB 7A            [ 8] 1078 	bit	7, d
+      000424 28 01            [12] 1079 	jr	Z, 00757$
+      000426 37               [ 4] 1080 	scf
+      000427                       1081 00757$:
+      000427 30 11            [12] 1082 	jr	NC, 00199$
+      000429 FAr13r00         [16] 1083 	ld	a, (#_sin)
+      00042C EE 80            [ 8] 1084 	xor	a, #0x80
+      00042E D6 CE            [ 8] 1085 	sub	a, #0xce
+      000430 30 08            [12] 1086 	jr	NC, 00199$
+                           000432  1087 	C$SpriteHorse.c$168$3_2$227	= .
+                                   1088 	.globl	C$SpriteHorse.c$168$3_2$227
+                                   1089 ;SpriteHorse.c:168: vy = -1;
+      000432 21r02r00         [12] 1090 	ld	hl, #_vy
+      000435 36 FF            [12] 1091 	ld	(hl), #0xff
+      000437 C3rDFr04         [16] 1092 	jp	00208$
+      00043A                       1093 00199$:
+                           00043A  1094 	C$SpriteHorse.c$169$2_2$216	= .
+                                   1095 	.globl	C$SpriteHorse.c$169$2_2$216
+                                   1096 ;SpriteHorse.c:169: }else if(sin > 78){ // tratto come se stesse andando verticale alto
+      00043A 21r13r00         [12] 1097 	ld	hl, #_sin
+      00043D 5E               [ 8] 1098 	ld	e, (hl)
+      00043E 3E 4E            [ 8] 1099 	ld	a,#0x4e
+      000440 57               [ 4] 1100 	ld	d,a
+      000441 96               [ 8] 1101 	sub	a, (hl)
+      000442 CB 7B            [ 8] 1102 	bit	7, e
+      000444 28 07            [12] 1103 	jr	Z, 00758$
+      000446 CB 7A            [ 8] 1104 	bit	7, d
+      000448 20 08            [12] 1105 	jr	NZ, 00759$
+      00044A BF               [ 4] 1106 	cp	a, a
+      00044B 18 05            [12] 1107 	jr	00759$
+      00044D                       1108 00758$:
+      00044D CB 7A            [ 8] 1109 	bit	7, d
+      00044F 28 01            [12] 1110 	jr	Z, 00759$
+      000451 37               [ 4] 1111 	scf
+      000452                       1112 00759$:
+      000452 30 08            [12] 1113 	jr	NC, 00196$
+                           000454  1114 	C$SpriteHorse.c$170$3_2$228	= .
+                                   1115 	.globl	C$SpriteHorse.c$170$3_2$228
+                                   1116 ;SpriteHorse.c:170: vy = -2;
+      000454 21r02r00         [12] 1117 	ld	hl, #_vy
+      000457 36 FE            [12] 1118 	ld	(hl), #0xfe
+      000459 C3rDFr04         [16] 1119 	jp	00208$
+      00045C                       1120 00196$:
+                           00045C  1121 	C$SpriteHorse.c$171$2_2$216	= .
+                                   1122 	.globl	C$SpriteHorse.c$171$2_2$216
+                                   1123 ;SpriteHorse.c:171: }else if(sin < 0 && sin > -30){//tratto come se stesse andando orizzontale
+      00045C 78               [ 4] 1124 	ld	a, b
+      00045D B7               [ 4] 1125 	or	a, a
+      00045E 28 21            [12] 1126 	jr	Z, 00192$
+      000460 21r13r00         [12] 1127 	ld	hl, #_sin
+      000463 5E               [ 8] 1128 	ld	e, (hl)
+      000464 3E E2            [ 8] 1129 	ld	a,#0xe2
+      000466 57               [ 4] 1130 	ld	d,a
+      000467 96               [ 8] 1131 	sub	a, (hl)
+      000468 CB 7B            [ 8] 1132 	bit	7, e
+      00046A 28 07            [12] 1133 	jr	Z, 00760$
+      00046C CB 7A            [ 8] 1134 	bit	7, d
+      00046E 20 08            [12] 1135 	jr	NZ, 00761$
+      000470 BF               [ 4] 1136 	cp	a, a
+      000471 18 05            [12] 1137 	jr	00761$
+      000473                       1138 00760$:
+      000473 CB 7A            [ 8] 1139 	bit	7, d
+      000475 28 01            [12] 1140 	jr	Z, 00761$
+      000477 37               [ 4] 1141 	scf
+      000478                       1142 00761$:
+      000478 30 07            [12] 1143 	jr	NC, 00192$
+                           00047A  1144 	C$SpriteHorse.c$172$3_2$229	= .
+                                   1145 	.globl	C$SpriteHorse.c$172$3_2$229
+                                   1146 ;SpriteHorse.c:172: vy = 0;
+      00047A 21r02r00         [12] 1147 	ld	hl, #_vy
+      00047D 36 00            [12] 1148 	ld	(hl), #0x00
+      00047F 18 5E            [12] 1149 	jr	00208$
+      000481                       1150 00192$:
+                           000481  1151 	C$SpriteHorse.c$173$2_2$216	= .
+                                   1152 	.globl	C$SpriteHorse.c$173$2_2$216
+                                   1153 ;SpriteHorse.c:173: }else if(sin < -30 && sin > -54){// tratto come se stesse andando a -33 gradi 
+      000481 21r13r00         [12] 1154 	ld	hl, #_sin
+      000484 7E               [ 8] 1155 	ld	a, (hl)
+      000485 EE 80            [ 8] 1156 	xor	a, #0x80
+      000487 D6 62            [ 8] 1157 	sub	a, #0x62
+      000489 30 1E            [12] 1158 	jr	NC, 00188$
+      00048B 5E               [ 8] 1159 	ld	e, (hl)
+      00048C 3E CA            [ 8] 1160 	ld	a,#0xca
+      00048E 57               [ 4] 1161 	ld	d,a
+      00048F 96               [ 8] 1162 	sub	a, (hl)
+      000490 CB 7B            [ 8] 1163 	bit	7, e
+      000492 28 07            [12] 1164 	jr	Z, 00762$
+      000494 CB 7A            [ 8] 1165 	bit	7, d
+      000496 20 08            [12] 1166 	jr	NZ, 00763$
+      000498 BF               [ 4] 1167 	cp	a, a
+      000499 18 05            [12] 1168 	jr	00763$
+      00049B                       1169 00762$:
+      00049B CB 7A            [ 8] 1170 	bit	7, d
+      00049D 28 01            [12] 1171 	jr	Z, 00763$
+      00049F 37               [ 4] 1172 	scf
+      0004A0                       1173 00763$:
+      0004A0 30 07            [12] 1174 	jr	NC, 00188$
+                           0004A2  1175 	C$SpriteHorse.c$174$3_2$230	= .
+                                   1176 	.globl	C$SpriteHorse.c$174$3_2$230
+                                   1177 ;SpriteHorse.c:174: vy = 1;
+      0004A2 21r02r00         [12] 1178 	ld	hl, #_vy
+      0004A5 36 01            [12] 1179 	ld	(hl), #0x01
+      0004A7 18 36            [12] 1180 	jr	00208$
+      0004A9                       1181 00188$:
+                           0004A9  1182 	C$SpriteHorse.c$175$2_2$216	= .
+                                   1183 	.globl	C$SpriteHorse.c$175$2_2$216
+                                   1184 ;SpriteHorse.c:175: }else if(sin < -54 && sin > -78){// tratto come se stesse andando a -66 gradi 
+      0004A9 21r13r00         [12] 1185 	ld	hl, #_sin
+      0004AC 7E               [ 8] 1186 	ld	a, (hl)
+      0004AD EE 80            [ 8] 1187 	xor	a, #0x80
+      0004AF D6 4A            [ 8] 1188 	sub	a, #0x4a
+      0004B1 30 1E            [12] 1189 	jr	NC, 00184$
+      0004B3 5E               [ 8] 1190 	ld	e, (hl)
+      0004B4 3E B2            [ 8] 1191 	ld	a,#0xb2
+      0004B6 57               [ 4] 1192 	ld	d,a
+      0004B7 96               [ 8] 1193 	sub	a, (hl)
+      0004B8 CB 7B            [ 8] 1194 	bit	7, e
+      0004BA 28 07            [12] 1195 	jr	Z, 00764$
+      0004BC CB 7A            [ 8] 1196 	bit	7, d
+      0004BE 20 08            [12] 1197 	jr	NZ, 00765$
+      0004C0 BF               [ 4] 1198 	cp	a, a
+      0004C1 18 05            [12] 1199 	jr	00765$
+      0004C3                       1200 00764$:
+      0004C3 CB 7A            [ 8] 1201 	bit	7, d
+      0004C5 28 01            [12] 1202 	jr	Z, 00765$
+      0004C7 37               [ 4] 1203 	scf
+      0004C8                       1204 00765$:
+      0004C8 30 07            [12] 1205 	jr	NC, 00184$
+                           0004CA  1206 	C$SpriteHorse.c$176$3_2$231	= .
+                                   1207 	.globl	C$SpriteHorse.c$176$3_2$231
+                                   1208 ;SpriteHorse.c:176: vy = 1;
+      0004CA 21r02r00         [12] 1209 	ld	hl, #_vy
+      0004CD 36 01            [12] 1210 	ld	(hl), #0x01
+      0004CF 18 0E            [12] 1211 	jr	00208$
+      0004D1                       1212 00184$:
+                           0004D1  1213 	C$SpriteHorse.c$177$2_2$216	= .
+                                   1214 	.globl	C$SpriteHorse.c$177$2_2$216
+                                   1215 ;SpriteHorse.c:177: }else if(sin < -78){ // tratto come se stesse andando verticale basso
+      0004D1 FAr13r00         [16] 1216 	ld	a, (#_sin)
+      0004D4 EE 80            [ 8] 1217 	xor	a, #0x80
+      0004D6 D6 32            [ 8] 1218 	sub	a, #0x32
+      0004D8 30 05            [12] 1219 	jr	NC, 00208$
+                           0004DA  1220 	C$SpriteHorse.c$178$3_2$232	= .
+                                   1221 	.globl	C$SpriteHorse.c$178$3_2$232
+                                   1222 ;SpriteHorse.c:178: vy = 2;
+      0004DA 21r02r00         [12] 1223 	ld	hl, #_vy
+      0004DD 36 02            [12] 1224 	ld	(hl), #0x02
+      0004DF                       1225 00208$:
+                           0004DF  1226 	C$SpriteHorse.c$181$2_3$233	= .
+                                   1227 	.globl	C$SpriteHorse.c$181$2_3$233
+                                   1228 ;SpriteHorse.c:181: INT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
+      0004DF 21r00r00         [12] 1229 	ld	hl, #_delta_time
+      0004E2 46               [ 8] 1230 	ld	b, (hl)
+      0004E3 FAr02r00         [16] 1231 	ld	a, (#_vy)
+      0004E6 04               [ 4] 1232 	inc	b
+      0004E7 18 01            [12] 1233 	jr	00767$
+      0004E9                       1234 00766$:
+      0004E9 87               [ 4] 1235 	add	a, a
+      0004EA                       1236 00767$:
+      0004EA 05               [ 4] 1237 	dec	b
+      0004EB 20 FC            [12] 1238 	jr	NZ,00766$
+      0004ED 21r00r00         [12] 1239 	ld	hl, #_delta_time
+      0004F0 46               [ 8] 1240 	ld	b, (hl)
+      0004F1 21r03r00         [12] 1241 	ld	hl, #_vx
+      0004F4 4E               [ 8] 1242 	ld	c, (hl)
+      0004F5 04               [ 4] 1243 	inc	b
+      0004F6 18 02            [12] 1244 	jr	00769$
+      0004F8                       1245 00768$:
+      0004F8 CB 21            [ 8] 1246 	sla	c
+      0004FA                       1247 00769$:
+      0004FA 05               [ 4] 1248 	dec	b
+      0004FB 20 FB            [12] 1249 	jr	NZ,00768$
+      0004FD F5               [16] 1250 	push	af
+      0004FE 33               [ 8] 1251 	inc	sp
+      0004FF 79               [ 4] 1252 	ld	a, c
+      000500 21r00r00         [12] 1253 	ld	hl, #_THIS
+      000503 5E               [ 8] 1254 	ld	e, (hl)
+      000504 23               [ 8] 1255 	inc	hl
+      000505 56               [ 8] 1256 	ld	d, (hl)
+      000506 CDr00r00         [24] 1257 	call	_TranslateSprite
+      000509 F8 04            [12] 1258 	ldhl	sp,#4
+      00050B 77               [ 8] 1259 	ld	(hl), a
+      00050C 2A               [ 8] 1260 	ld	a, (hl+)
+                           00050D  1261 	C$SpriteHorse.c$182$2_3$233	= .
+                                   1262 	.globl	C$SpriteHorse.c$182$2_3$233
+                                   1263 ;SpriteHorse.c:182: if(horse_coll){
+      00050D 32               [ 8] 1264 	ld	(hl-), a
+      00050E 7E               [ 8] 1265 	ld	a, (hl)
+      00050F B7               [ 4] 1266 	or	a, a
+      000510 28 50            [12] 1267 	jr	Z, 00239$
+                           000512  1268 	C$SpriteHorse.c$184$3_3$234	= .
+                                   1269 	.globl	C$SpriteHorse.c$184$3_3$234
+                                   1270 ;SpriteHorse.c:184: past_coll_tile = horse_coll;
+      000512 23               [ 8] 1271 	inc	hl
+      000513 7E               [ 8] 1272 	ld	a, (hl)
+      000514 EAr16r00         [16] 1273 	ld	(#_past_coll_tile),a
+                           000517  1274 	C$SpriteHorse.c$185$3_4$235	= .
+                                   1275 	.globl	C$SpriteHorse.c$185$3_4$235
+                                   1276 ;SpriteHorse.c:185: INT8 vxbounce = vx * (-1); 
+      000517 AF               [ 4] 1277 	xor	a, a
+      000518 21r03r00         [12] 1278 	ld	hl, #_vx
+      00051B 96               [ 8] 1279 	sub	a, (hl)
+      00051C 47               [ 4] 1280 	ld	b, a
+                           00051D  1281 	C$SpriteHorse.c$186$3_4$235	= .
+                                   1282 	.globl	C$SpriteHorse.c$186$3_4$235
+                                   1283 ;SpriteHorse.c:186: INT8 vybounce = vy * (-1);
+      00051D AF               [ 4] 1284 	xor	a, a
+      00051E 21r02r00         [12] 1285 	ld	hl, #_vy
+      000521 96               [ 8] 1286 	sub	a, (hl)
+      000522 4F               [ 4] 1287 	ld	c, a
+                           000523  1288 	C$SpriteHorse.c$187$3_4$235	= .
+                                   1289 	.globl	C$SpriteHorse.c$187$3_4$235
+                                   1290 ;SpriteHorse.c:187: if(vx < 2){
+      000523 FAr03r00         [16] 1291 	ld	a, (#_vx)
+      000526 EE 80            [ 8] 1292 	xor	a, #0x80
+      000528 D6 82            [ 8] 1293 	sub	a, #0x82
+      00052A 30 1B            [12] 1294 	jr	NC, 00211$
+                           00052C  1295 	C$SpriteHorse.c$188$4_4$236	= .
+                                   1296 	.globl	C$SpriteHorse.c$188$4_4$236
+                                   1297 ;SpriteHorse.c:188: TranslateSprite(THIS, vxbounce << delta_time, 0);
+      00052C FAr00r00         [16] 1298 	ld	a, (#_delta_time)
+      00052F 3C               [ 4] 1299 	inc	a
+      000530 18 02            [12] 1300 	jr	00771$
+      000532                       1301 00770$:
+      000532 CB 20            [ 8] 1302 	sla	b
+      000534                       1303 00771$:
+      000534 3D               [ 4] 1304 	dec	a
+      000535 20 FB            [12] 1305 	jr	NZ,00770$
+      000537 AF               [ 4] 1306 	xor	a, a
+      000538 F5               [16] 1307 	push	af
+      000539 33               [ 8] 1308 	inc	sp
+      00053A 78               [ 4] 1309 	ld	a, b
+      00053B 21r00r00         [12] 1310 	ld	hl, #_THIS
+      00053E 5E               [ 8] 1311 	ld	e, (hl)
+      00053F 23               [ 8] 1312 	inc	hl
+      000540 56               [ 8] 1313 	ld	d, (hl)
+      000541 CDr00r00         [24] 1314 	call	_TranslateSprite
+      000544 C3r59r07         [16] 1315 	jp	00240$
+      000547                       1316 00211$:
+                           000547  1317 	C$SpriteHorse.c$190$4_4$237	= .
+                                   1318 	.globl	C$SpriteHorse.c$190$4_4$237
+                                   1319 ;SpriteHorse.c:190: TranslateSprite(THIS, 0, vybounce << delta_time);
+      000547 21r00r00         [12] 1320 	ld	hl, #_delta_time
+      00054A 46               [ 8] 1321 	ld	b, (hl)
+      00054B 79               [ 4] 1322 	ld	a, c
+      00054C 04               [ 4] 1323 	inc	b
+      00054D 18 01            [12] 1324 	jr	00773$
+      00054F                       1325 00772$:
+      00054F 87               [ 4] 1326 	add	a, a
+      000550                       1327 00773$:
+      000550 05               [ 4] 1328 	dec	b
+      000551 20 FC            [12] 1329 	jr	NZ,00772$
+      000553 F5               [16] 1330 	push	af
+      000554 33               [ 8] 1331 	inc	sp
+      000555 AF               [ 4] 1332 	xor	a, a
+      000556 21r00r00         [12] 1333 	ld	hl, #_THIS
+      000559 5E               [ 8] 1334 	ld	e, (hl)
+      00055A 23               [ 8] 1335 	inc	hl
+      00055B 56               [ 8] 1336 	ld	d, (hl)
+      00055C CDr00r00         [24] 1337 	call	_TranslateSprite
+      00055F C3r59r07         [16] 1338 	jp	00240$
+      000562                       1339 00239$:
+                           000562  1340 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1341 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1342 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      000562 FAr00r00         [16] 1343 	ld	a, (#_THIS)
+      000565 F8 00            [12] 1344 	ldhl	sp,	#0
+      000567 77               [ 8] 1345 	ld	(hl), a
+      000568 FAr01r00         [16] 1346 	ld	a, (#_THIS + 1)
+      00056B F8 01            [12] 1347 	ldhl	sp,	#1
+      00056D 77               [ 8] 1348 	ld	(hl), a
+      00056E D1               [12] 1349 	pop	de
+      00056F D5               [16] 1350 	push	de
+      000570 21 0E 00         [12] 1351 	ld	hl, #0x000e
+      000573 19               [ 8] 1352 	add	hl, de
+      000574 E5               [16] 1353 	push	hl
+      000575 7D               [ 4] 1354 	ld	a, l
+      000576 F8 06            [12] 1355 	ldhl	sp,	#6
+      000578 77               [ 8] 1356 	ld	(hl), a
+      000579 E1               [12] 1357 	pop	hl
+      00057A 7C               [ 4] 1358 	ld	a, h
+      00057B F8 05            [12] 1359 	ldhl	sp,	#5
+      00057D 32               [ 8] 1360 	ld	(hl-), a
+      00057E 2A               [ 8] 1361 	ld	a, (hl+)
+      00057F 5F               [ 4] 1362 	ld	e, a
+      000580 56               [ 8] 1363 	ld	d, (hl)
+      000581 1A               [ 8] 1364 	ld	a, (de)
+      000582 F8 02            [12] 1365 	ldhl	sp,	#2
+      000584 22               [ 8] 1366 	ld	(hl+), a
+      000585 13               [ 8] 1367 	inc	de
+      000586 1A               [ 8] 1368 	ld	a, (de)
+      000587 32               [ 8] 1369 	ld	(hl-), a
+      000588 2A               [ 8] 1370 	ld	a, (hl+)
+      000589 5F               [ 4] 1371 	ld	e, a
+      00058A 56               [ 8] 1372 	ld	d, (hl)
+      00058B 21 04 00         [12] 1373 	ld	hl, #0x0004
+      00058E 19               [ 8] 1374 	add	hl, de
+      00058F E5               [16] 1375 	push	hl
+      000590 7D               [ 4] 1376 	ld	a, l
+      000591 F8 06            [12] 1377 	ldhl	sp,	#6
+      000593 77               [ 8] 1378 	ld	(hl), a
+      000594 E1               [12] 1379 	pop	hl
+      000595 7C               [ 4] 1380 	ld	a, h
+      000596 F8 05            [12] 1381 	ldhl	sp,	#5
+      000598 32               [ 8] 1382 	ld	(hl-), a
+      000599 3A               [ 8] 1383 	ld	a, (hl-)
+      00059A 2B               [ 8] 1384 	dec	hl
+      00059B 77               [ 8] 1385 	ld	(hl), a
+      00059C F8 05            [12] 1386 	ldhl	sp,	#5
+      00059E 3A               [ 8] 1387 	ld	a, (hl-)
+      00059F 2B               [ 8] 1388 	dec	hl
+      0005A0 77               [ 8] 1389 	ld	(hl), a
+      0005A1 CB 3E            [16] 1390 	srl	(hl)
+      0005A3 2B               [ 8] 1391 	dec	hl
+      0005A4 CB 1E            [16] 1392 	rr	(hl)
+      0005A6 23               [ 8] 1393 	inc	hl
+      0005A7 CB 3E            [16] 1394 	srl	(hl)
+      0005A9 2B               [ 8] 1395 	dec	hl
+      0005AA CB 1E            [16] 1396 	rr	(hl)
+      0005AC 23               [ 8] 1397 	inc	hl
+      0005AD CB 3E            [16] 1398 	srl	(hl)
+      0005AF 2B               [ 8] 1399 	dec	hl
+      0005B0 CB 1E            [16] 1400 	rr	(hl)
+      0005B2 D1               [12] 1401 	pop	de
+      0005B3 D5               [16] 1402 	push	de
+      0005B4 21 0C 00         [12] 1403 	ld	hl, #0x000c
+      0005B7 19               [ 8] 1404 	add	hl, de
+      0005B8 E5               [16] 1405 	push	hl
+      0005B9 7D               [ 4] 1406 	ld	a, l
+      0005BA F8 06            [12] 1407 	ldhl	sp,	#6
+      0005BC 77               [ 8] 1408 	ld	(hl), a
+      0005BD E1               [12] 1409 	pop	hl
+      0005BE 7C               [ 4] 1410 	ld	a, h
+      0005BF F8 05            [12] 1411 	ldhl	sp,	#5
+      0005C1 32               [ 8] 1412 	ld	(hl-), a
+      0005C2 2A               [ 8] 1413 	ld	a, (hl+)
+      0005C3 5F               [ 4] 1414 	ld	e, a
+      0005C4 3A               [ 8] 1415 	ld	a, (hl-)
+      0005C5 57               [ 4] 1416 	ld	d, a
+      0005C6 1A               [ 8] 1417 	ld	a, (de)
+      0005C7 22               [ 8] 1418 	ld	(hl+), a
+      0005C8 13               [ 8] 1419 	inc	de
+      0005C9 1A               [ 8] 1420 	ld	a, (de)
+      0005CA 32               [ 8] 1421 	ld	(hl-), a
+      0005CB 5E               [ 8] 1422 	ld	e, (hl)
+      0005CC 23               [ 8] 1423 	inc	hl
+      0005CD 56               [ 8] 1424 	ld	d, (hl)
+      0005CE 21 10 00         [12] 1425 	ld	hl, #0x0010
+      0005D1 19               [ 8] 1426 	add	hl, de
+      0005D2 5D               [ 4] 1427 	ld	e, l
+      0005D3 54               [ 4] 1428 	ld	d, h
+      0005D4 CB 3A            [ 8] 1429 	srl	d
+      0005D6 CB 1B            [ 8] 1430 	rr	e
+      0005D8 CB 3A            [ 8] 1431 	srl	d
+      0005DA CB 1B            [ 8] 1432 	rr	e
+      0005DC CB 3A            [ 8] 1433 	srl	d
+      0005DE CB 1B            [ 8] 1434 	rr	e
+      0005E0 F8 02            [12] 1435 	ldhl	sp,	#2
+      0005E2 4E               [ 8] 1436 	ld	c, (hl)
+      0005E3 23               [ 8] 1437 	inc	hl
+      0005E4 46               [ 8] 1438 	ld	b, (hl)
+      0005E5 CDr00r00         [24] 1439 	call	_GetScrollTile
+      0005E8 4F               [ 4] 1440 	ld	c, a
+                           0005E9  1441 	C$SpriteHorse.c$195$3_3$238	= .
+                                   1442 	.globl	C$SpriteHorse.c$195$3_3$238
+                                   1443 ;SpriteHorse.c:195: switch(tile_over){
+      0005E9 3E 0D            [ 8] 1444 	ld	a, #0x0d
+      0005EB 91               [ 4] 1445 	sub	a, c
+      0005EC DAr59r07         [16] 1446 	jp	C, 00240$
+      0005EF 06 00            [ 8] 1447 	ld	b, #0x00
+      0005F1 21rF8r05         [12] 1448 	ld	hl, #00774$
+      0005F4 09               [ 8] 1449 	add	hl, bc
+      0005F5 09               [ 8] 1450 	add	hl, bc
+      0005F6 09               [ 8] 1451 	add	hl, bc
+      0005F7 E9               [ 4] 1452 	jp	(hl)
+      0005F8                       1453 00774$:
+      0005F8 C3r59r07         [16] 1454 	jp	00240$
+      0005FB C3r59r07         [16] 1455 	jp	00240$
+      0005FE C3r22r06         [16] 1456 	jp	00217$
+      000601 C3r22r06         [16] 1457 	jp	00217$
+      000604 C3r22r06         [16] 1458 	jp	00217$
+      000607 C3r22r06         [16] 1459 	jp	00217$
+      00060A C3r22r06         [16] 1460 	jp	00217$
+      00060D C3r59r07         [16] 1461 	jp	00240$
+      000610 C3r3Fr07         [16] 1462 	jp	00234$
+      000613 C3r3Fr07         [16] 1463 	jp	00234$
+      000616 C3r3Fr07         [16] 1464 	jp	00234$
+      000619 C3r3Fr07         [16] 1465 	jp	00234$
+      00061C C3r3Fr07         [16] 1466 	jp	00234$
+      00061F C3r3Fr07         [16] 1467 	jp	00234$
+                           000622  1468 	C$SpriteHorse.c$197$4_3$239	= .
+                                   1469 	.globl	C$SpriteHorse.c$197$4_3$239
+                                   1470 ;SpriteHorse.c:197: case 5: case 6: //ghiaia: incrementa il frameskip
+      000622                       1471 00217$:
+                           000622  1472 	C$SpriteHorse.c$198$4_3$239	= .
+                                   1473 	.globl	C$SpriteHorse.c$198$4_3$239
+                                   1474 ;SpriteHorse.c:198: frm_skip+=4;
+      000622 21r04r00         [12] 1475 	ld	hl, #_frm_skip
+      000625 34               [12] 1476 	inc	(hl)
+      000626 34               [12] 1477 	inc	(hl)
+      000627 34               [12] 1478 	inc	(hl)
+      000628 34               [12] 1479 	inc	(hl)
+                           000629  1480 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1481 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1482 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      000629 21r00r00         [12] 1483 	ld	hl, #_THIS
+      00062C 2A               [ 8] 1484 	ld	a, (hl+)
+      00062D 5F               [ 4] 1485 	ld	e, a
+      00062E 56               [ 8] 1486 	ld	d, (hl)
+                           00062F  1487 	C$SpriteHorse.c$199$2_3$191	= .
+                                   1488 	.globl	C$SpriteHorse.c$199$2_3$191
+                                   1489 ;SpriteHorse.c:199: if(THIS->anim_frame == 1 || THIS->anim_frame == 5){
+      00062F 21 09 00         [12] 1490 	ld	hl, #0x0009
+      000632 19               [ 8] 1491 	add	hl, de
+      000633 7E               [ 8] 1492 	ld	a, (hl)
+      000634 FE 01            [ 8] 1493 	cp	a, #0x01
+      000636 28 05            [12] 1494 	jr	Z, 00225$
+      000638 D6 05            [ 8] 1495 	sub	a, #0x05
+      00063A C2r38r07         [16] 1496 	jp	NZ,00226$
+      00063D                       1497 00225$:
+                           00063D  1498 	C$SpriteHorse.c$200$5_3$240	= .
+                                   1499 	.globl	C$SpriteHorse.c$200$5_3$240
+                                   1500 ;SpriteHorse.c:200: if(orme_spawned == 0){
+      00063D 21r18r00         [12] 1501 	ld	hl, #_orme_spawned
+      000640 7E               [ 8] 1502 	ld	a, (hl)
+      000641 B7               [ 4] 1503 	or	a, a
+      000642 C2r59r07         [16] 1504 	jp	NZ, 00240$
+                           000645  1505 	C$SpriteHorse.c$201$6_3$241	= .
+                                   1506 	.globl	C$SpriteHorse.c$201$6_3$241
+                                   1507 ;SpriteHorse.c:201: orme_spawned = 1;
+      000645 36 01            [12] 1508 	ld	(hl), #0x01
+                           000647  1509 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1510 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1511 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      000647 21 0E 00         [12] 1512 	ld	hl, #0x000e
+      00064A 19               [ 8] 1513 	add	hl, de
+      00064B 4D               [ 4] 1514 	ld	c, l
+      00064C 44               [ 4] 1515 	ld	b, h
+      00064D 21 0C 00         [12] 1516 	ld	hl, #0x000c
+      000650 19               [ 8] 1517 	add	hl, de
+      000651 E5               [16] 1518 	push	hl
+      000652 7D               [ 4] 1519 	ld	a, l
+      000653 F8 06            [12] 1520 	ldhl	sp,	#6
+      000655 77               [ 8] 1521 	ld	(hl), a
+      000656 E1               [12] 1522 	pop	hl
+      000657 7C               [ 4] 1523 	ld	a, h
+      000658 F8 05            [12] 1524 	ldhl	sp,	#5
+      00065A 77               [ 8] 1525 	ld	(hl), a
+                           00065B  1526 	C$SpriteHorse.c$202$6_3$241	= .
+                                   1527 	.globl	C$SpriteHorse.c$202$6_3$241
+                                   1528 ;SpriteHorse.c:202: if(vx > 0){
+      00065B 21r03r00         [12] 1529 	ld	hl, #_vx
+      00065E 5E               [ 8] 1530 	ld	e, (hl)
+      00065F AF               [ 4] 1531 	xor	a, a
+      000660 57               [ 4] 1532 	ld	d, a
+      000661 96               [ 8] 1533 	sub	a, (hl)
+      000662 CB 7B            [ 8] 1534 	bit	7, e
+      000664 28 07            [12] 1535 	jr	Z, 00778$
+      000666 CB 7A            [ 8] 1536 	bit	7, d
+      000668 20 08            [12] 1537 	jr	NZ, 00779$
+      00066A BF               [ 4] 1538 	cp	a, a
+      00066B 18 05            [12] 1539 	jr	00779$
+      00066D                       1540 00778$:
+      00066D CB 7A            [ 8] 1541 	bit	7, d
+      00066F 28 01            [12] 1542 	jr	Z, 00779$
+      000671 37               [ 4] 1543 	scf
+      000672                       1544 00779$:
+      000672 30 5F            [12] 1545 	jr	NC, 00221$
+                           000674  1546 	C$SpriteHorse.c$203$7_3$242	= .
+                                   1547 	.globl	C$SpriteHorse.c$203$7_3$242
+                                   1548 ;SpriteHorse.c:203: SpriteManagerAdd(SpriteStep, THIS->x - 2, THIS->y-6);
+      000674 69               [ 4] 1549 	ld	l, c
+      000675 60               [ 4] 1550 	ld	h, b
+      000676 2A               [ 8] 1551 	ld	a, (hl+)
+      000677 4F               [ 4] 1552 	ld	c, a
+      000678 46               [ 8] 1553 	ld	b, (hl)
+      000679 79               [ 4] 1554 	ld	a, c
+      00067A C6 FA            [ 8] 1555 	add	a, #0xfa
+      00067C 4F               [ 4] 1556 	ld	c, a
+      00067D 78               [ 4] 1557 	ld	a, b
+      00067E CE FF            [ 8] 1558 	adc	a, #0xff
+      000680 47               [ 4] 1559 	ld	b, a
+      000681 F8 04            [12] 1560 	ldhl	sp,#4
+      000683 2A               [ 8] 1561 	ld	a, (hl+)
+      000684 5F               [ 4] 1562 	ld	e, a
+      000685 56               [ 8] 1563 	ld	d, (hl)
+      000686 1A               [ 8] 1564 	ld	a, (de)
+      000687 6F               [ 4] 1565 	ld	l, a
+                                   1566 ;	spillPairReg hl
+                                   1567 ;	spillPairReg hl
+      000688 13               [ 8] 1568 	inc	de
+      000689 1A               [ 8] 1569 	ld	a, (de)
+      00068A 5D               [ 4] 1570 	ld	e, l
+      00068B 57               [ 4] 1571 	ld	d, a
+      00068C 1B               [ 8] 1572 	dec	de
+      00068D 1B               [ 8] 1573 	dec	de
+      00068E C5               [16] 1574 	push	bc
+      00068F 3E 02            [ 8] 1575 	ld	a, #0x02
+      000691 CDr00r00         [24] 1576 	call	_SpriteManagerAdd
+                           000694  1577 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1578 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1579 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      000694 21r00r00         [12] 1580 	ld	hl, #_THIS
+      000697 2A               [ 8] 1581 	ld	a, (hl+)
+      000698 4F               [ 4] 1582 	ld	c, a
+      000699 46               [ 8] 1583 	ld	b, (hl)
+                           00069A  1584 	C$SpriteHorse.c$204$7_3$242	= .
+                                   1585 	.globl	C$SpriteHorse.c$204$7_3$242
+                                   1586 ;SpriteHorse.c:204: SpriteManagerAdd(SpriteStep, THIS->x + 8, THIS->y-6);
+      00069A 21 0E 00         [12] 1587 	ld	hl, #0x000e
+      00069D 09               [ 8] 1588 	add	hl, bc
+      00069E 5D               [ 4] 1589 	ld	e, l
+      00069F 54               [ 4] 1590 	ld	d, h
+      0006A0 1A               [ 8] 1591 	ld	a, (de)
+      0006A1 F8 02            [12] 1592 	ldhl	sp,	#2
+      0006A3 22               [ 8] 1593 	ld	(hl+), a
+      0006A4 13               [ 8] 1594 	inc	de
+      0006A5 1A               [ 8] 1595 	ld	a, (de)
+      0006A6 77               [ 8] 1596 	ld	(hl), a
+      0006A7 F8 02            [12] 1597 	ldhl	sp,#2
+      0006A9 2A               [ 8] 1598 	ld	a, (hl+)
+      0006AA 5F               [ 4] 1599 	ld	e, a
+      0006AB 56               [ 8] 1600 	ld	d, (hl)
+      0006AC 21 06 00         [12] 1601 	ld	hl, #0x0006
+      0006AF 7B               [ 4] 1602 	ld	a, e
+      0006B0 95               [ 4] 1603 	sub	a, l
+      0006B1 5F               [ 4] 1604 	ld	e, a
+      0006B2 7A               [ 4] 1605 	ld	a, d
+      0006B3 9C               [ 4] 1606 	sbc	a, h
+      0006B4 F8 05            [12] 1607 	ldhl	sp,	#5
+      0006B6 32               [ 8] 1608 	ld	(hl-), a
+      0006B7 73               [ 8] 1609 	ld	(hl), e
+      0006B8 21 0C 00         [12] 1610 	ld	hl, #0x000c
+      0006BB 09               [ 8] 1611 	add	hl, bc
+      0006BC 2A               [ 8] 1612 	ld	a, (hl+)
+      0006BD 4F               [ 4] 1613 	ld	c, a
+      0006BE 46               [ 8] 1614 	ld	b, (hl)
+      0006BF 21 08 00         [12] 1615 	ld	hl, #0x0008
+      0006C2 09               [ 8] 1616 	add	hl, bc
+      0006C3 5D               [ 4] 1617 	ld	e, l
+      0006C4 54               [ 4] 1618 	ld	d, h
+      0006C5 F8 04            [12] 1619 	ldhl	sp,	#4
+      0006C7 2A               [ 8] 1620 	ld	a, (hl+)
+      0006C8 4F               [ 4] 1621 	ld	c, a
+      0006C9 46               [ 8] 1622 	ld	b, (hl)
+      0006CA C5               [16] 1623 	push	bc
+      0006CB 3E 02            [ 8] 1624 	ld	a, #0x02
+      0006CD CDr00r00         [24] 1625 	call	_SpriteManagerAdd
+      0006D0 C3r59r07         [16] 1626 	jp	00240$
+      0006D3                       1627 00221$:
+                           0006D3  1628 	C$SpriteHorse.c$205$6_3$241	= .
+                                   1629 	.globl	C$SpriteHorse.c$205$6_3$241
+                                   1630 ;SpriteHorse.c:205: }else if(vx < 0){
+      0006D3 FAr03r00         [16] 1631 	ld	a, (#_vx)
+      0006D6 CB 7F            [ 8] 1632 	bit	7, a
+      0006D8 CAr59r07         [16] 1633 	jp	Z, 00240$
+                           0006DB  1634 	C$SpriteHorse.c$206$7_3$243	= .
+                                   1635 	.globl	C$SpriteHorse.c$206$7_3$243
+                                   1636 ;SpriteHorse.c:206: SpriteManagerAdd(SpriteStep, THIS->x, THIS->y-6);
+      0006DB 69               [ 4] 1637 	ld	l, c
+      0006DC 60               [ 4] 1638 	ld	h, b
+      0006DD 2A               [ 8] 1639 	ld	a, (hl+)
+      0006DE 4F               [ 4] 1640 	ld	c, a
+      0006DF 46               [ 8] 1641 	ld	b, (hl)
+      0006E0 79               [ 4] 1642 	ld	a, c
+      0006E1 C6 FA            [ 8] 1643 	add	a, #0xfa
+      0006E3 4F               [ 4] 1644 	ld	c, a
+      0006E4 78               [ 4] 1645 	ld	a, b
+      0006E5 CE FF            [ 8] 1646 	adc	a, #0xff
+      0006E7 47               [ 4] 1647 	ld	b, a
+      0006E8 F8 04            [12] 1648 	ldhl	sp,#4
+      0006EA 2A               [ 8] 1649 	ld	a, (hl+)
+      0006EB 5F               [ 4] 1650 	ld	e, a
+      0006EC 56               [ 8] 1651 	ld	d, (hl)
+      0006ED 1A               [ 8] 1652 	ld	a, (de)
+      0006EE 6F               [ 4] 1653 	ld	l, a
+                                   1654 ;	spillPairReg hl
+                                   1655 ;	spillPairReg hl
+      0006EF 13               [ 8] 1656 	inc	de
+      0006F0 1A               [ 8] 1657 	ld	a, (de)
+      0006F1 67               [ 4] 1658 	ld	h, a
+                                   1659 ;	spillPairReg hl
+                                   1660 ;	spillPairReg hl
+      0006F2 C5               [16] 1661 	push	bc
+      0006F3 5D               [ 4] 1662 	ld	e, l
+      0006F4 54               [ 4] 1663 	ld	d, h
+      0006F5 3E 02            [ 8] 1664 	ld	a, #0x02
+      0006F7 CDr00r00         [24] 1665 	call	_SpriteManagerAdd
+                           0006FA  1666 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1667 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1668 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      0006FA 21r00r00         [12] 1669 	ld	hl, #_THIS
+      0006FD 2A               [ 8] 1670 	ld	a, (hl+)
+      0006FE 4F               [ 4] 1671 	ld	c, a
+      0006FF 46               [ 8] 1672 	ld	b, (hl)
+                           000700  1673 	C$SpriteHorse.c$207$7_3$243	= .
+                                   1674 	.globl	C$SpriteHorse.c$207$7_3$243
+                                   1675 ;SpriteHorse.c:207: SpriteManagerAdd(SpriteStep, THIS->x + 8, THIS->y-6);
+      000700 21 0E 00         [12] 1676 	ld	hl, #0x000e
+      000703 09               [ 8] 1677 	add	hl, bc
+      000704 5D               [ 4] 1678 	ld	e, l
+      000705 54               [ 4] 1679 	ld	d, h
+      000706 1A               [ 8] 1680 	ld	a, (de)
+      000707 F8 02            [12] 1681 	ldhl	sp,	#2
+      000709 22               [ 8] 1682 	ld	(hl+), a
+      00070A 13               [ 8] 1683 	inc	de
+      00070B 1A               [ 8] 1684 	ld	a, (de)
+      00070C 77               [ 8] 1685 	ld	(hl), a
+      00070D F8 02            [12] 1686 	ldhl	sp,#2
+      00070F 2A               [ 8] 1687 	ld	a, (hl+)
+      000710 5F               [ 4] 1688 	ld	e, a
+      000711 56               [ 8] 1689 	ld	d, (hl)
+      000712 21 06 00         [12] 1690 	ld	hl, #0x0006
+      000715 7B               [ 4] 1691 	ld	a, e
+      000716 95               [ 4] 1692 	sub	a, l
+      000717 5F               [ 4] 1693 	ld	e, a
+      000718 7A               [ 4] 1694 	ld	a, d
+      000719 9C               [ 4] 1695 	sbc	a, h
+      00071A F8 05            [12] 1696 	ldhl	sp,	#5
+      00071C 32               [ 8] 1697 	ld	(hl-), a
+      00071D 73               [ 8] 1698 	ld	(hl), e
+      00071E 21 0C 00         [12] 1699 	ld	hl, #0x000c
+      000721 09               [ 8] 1700 	add	hl, bc
+      000722 2A               [ 8] 1701 	ld	a, (hl+)
+      000723 4F               [ 4] 1702 	ld	c, a
+      000724 46               [ 8] 1703 	ld	b, (hl)
+      000725 21 08 00         [12] 1704 	ld	hl, #0x0008
+      000728 09               [ 8] 1705 	add	hl, bc
+      000729 5D               [ 4] 1706 	ld	e, l
+      00072A 54               [ 4] 1707 	ld	d, h
+      00072B F8 04            [12] 1708 	ldhl	sp,	#4
+      00072D 2A               [ 8] 1709 	ld	a, (hl+)
+      00072E 4F               [ 4] 1710 	ld	c, a
+      00072F 46               [ 8] 1711 	ld	b, (hl)
+      000730 C5               [16] 1712 	push	bc
+      000731 3E 02            [ 8] 1713 	ld	a, #0x02
+      000733 CDr00r00         [24] 1714 	call	_SpriteManagerAdd
+      000736 18 21            [12] 1715 	jr	00240$
+      000738                       1716 00226$:
+                           000738  1717 	C$SpriteHorse.c$210$5_3$244	= .
+                                   1718 	.globl	C$SpriteHorse.c$210$5_3$244
+                                   1719 ;SpriteHorse.c:210: }else{orme_spawned = 0;}
+      000738 21r18r00         [12] 1720 	ld	hl, #_orme_spawned
+      00073B 36 00            [12] 1721 	ld	(hl), #0x00
+                           00073D  1722 	C$SpriteHorse.c$211$4_3$239	= .
+                                   1723 	.globl	C$SpriteHorse.c$211$4_3$239
+                                   1724 ;SpriteHorse.c:211: break;
+      00073D 18 1A            [12] 1725 	jr	00240$
+                           00073F  1726 	C$SpriteHorse.c$213$4_3$239	= .
+                                   1727 	.globl	C$SpriteHorse.c$213$4_3$239
+                                   1728 ;SpriteHorse.c:213: case 11: case 12: case 13: //acqua: simula pantano limitando stamina
+      00073F                       1729 00234$:
+                           00073F  1730 	C$SpriteHorse.c$214$4_3$239	= .
+                                   1731 	.globl	C$SpriteHorse.c$214$4_3$239
+                                   1732 ;SpriteHorse.c:214: if(stamina_current > (euphoria_min >> 1)){
+      00073F 21r08r00         [12] 1733 	ld	hl, #_euphoria_min
+      000742 2A               [ 8] 1734 	ld	a, (hl+)
+      000743 4F               [ 4] 1735 	ld	c, a
+      000744 46               [ 8] 1736 	ld	b, (hl)
+      000745 CB 38            [ 8] 1737 	srl	b
+      000747 CB 19            [ 8] 1738 	rr	c
+      000749 21r0Cr00         [12] 1739 	ld	hl, #_stamina_current
+      00074C 2A               [ 8] 1740 	ld	a, (hl+)
+      00074D 5F               [ 4] 1741 	ld	e, a
+      00074E 56               [ 8] 1742 	ld	d, (hl)
+      00074F 79               [ 4] 1743 	ld	a, c
+      000750 93               [ 4] 1744 	sub	a, e
+      000751 78               [ 4] 1745 	ld	a, b
+      000752 9A               [ 4] 1746 	sbc	a, d
+      000753 30 04            [12] 1747 	jr	NC, 00240$
+                           000755  1748 	C$SpriteHorse.c$215$5_3$245	= .
+                                   1749 	.globl	C$SpriteHorse.c$215$5_3$245
+                                   1750 ;SpriteHorse.c:215: stamina_current = (euphoria_min >> 1);
+      000755 2B               [ 8] 1751 	dec	hl
+      000756 79               [ 4] 1752 	ld	a, c
+      000757 22               [ 8] 1753 	ld	(hl+), a
+      000758 70               [ 8] 1754 	ld	(hl), b
+                           000759  1755 	C$SpriteHorse.c$218$2_3$233	= .
+                                   1756 	.globl	C$SpriteHorse.c$218$2_3$233
+                                   1757 ;SpriteHorse.c:218: }
+      000759                       1758 00240$:
+                           000759  1759 	C$SpriteHorse.c$221$2_3$233	= .
+                                   1760 	.globl	C$SpriteHorse.c$221$2_3$233
+                                   1761 ;SpriteHorse.c:221: if(stamina_current < 60){
+      000759 21r0Cr00         [12] 1762 	ld	hl, #_stamina_current
+      00075C 2A               [ 8] 1763 	ld	a, (hl+)
+      00075D D6 3C            [ 8] 1764 	sub	a, #0x3c
+      00075F 7E               [ 8] 1765 	ld	a, (hl)
+      000760 DE 00            [ 8] 1766 	sbc	a, #0x00
+      000762 56               [ 8] 1767 	ld	d, (hl)
+      000763 3E 00            [ 8] 1768 	ld	a, #0x00
+      000765 CB 7F            [ 8] 1769 	bit	7,a
+      000767 28 07            [12] 1770 	jr	Z, 00780$
+      000769 CB 7A            [ 8] 1771 	bit	7, d
+      00076B 20 08            [12] 1772 	jr	NZ, 00781$
+      00076D BF               [ 4] 1773 	cp	a, a
+      00076E 18 05            [12] 1774 	jr	00781$
+      000770                       1775 00780$:
+      000770 CB 7A            [ 8] 1776 	bit	7, d
+      000772 28 01            [12] 1777 	jr	Z, 00781$
+      000774 37               [ 4] 1778 	scf
+      000775                       1779 00781$:
+      000775 30 12            [12] 1780 	jr	NC, 00242$
+                           000777  1781 	C$SpriteHorse.c$222$3_3$246	= .
+                                   1782 	.globl	C$SpriteHorse.c$222$3_3$246
+                                   1783 ;SpriteHorse.c:222: SetSpriteAnim(THIS, a_horse_h_idle,4u);
+      000777 3E 04            [ 8] 1784 	ld	a, #0x04
+      000779 F5               [16] 1785 	push	af
+      00077A 33               [ 8] 1786 	inc	sp
+      00077B 01r4Er00         [12] 1787 	ld	bc, #_a_horse_h_idle
+      00077E 21r00r00         [12] 1788 	ld	hl, #_THIS
+      000781 2A               [ 8] 1789 	ld	a, (hl+)
+      000782 5F               [ 4] 1790 	ld	e, a
+      000783 56               [ 8] 1791 	ld	d, (hl)
+      000784 CDr00r00         [24] 1792 	call	_SetSpriteAnim
+      000787 18 10            [12] 1793 	jr	00243$
+      000789                       1794 00242$:
+                           000789  1795 	C$SpriteHorse.c$224$3_3$247	= .
+                                   1796 	.globl	C$SpriteHorse.c$224$3_3$247
+                                   1797 ;SpriteHorse.c:224: SetSpriteAnim(THIS, a_horse_h,4u);
+      000789 3E 04            [ 8] 1798 	ld	a, #0x04
+      00078B F5               [16] 1799 	push	af
+      00078C 33               [ 8] 1800 	inc	sp
+      00078D 01r35r00         [12] 1801 	ld	bc, #_a_horse_h
+      000790 21r00r00         [12] 1802 	ld	hl, #_THIS
+      000793 2A               [ 8] 1803 	ld	a, (hl+)
+      000794 5F               [ 4] 1804 	ld	e, a
+      000795 56               [ 8] 1805 	ld	d, (hl)
+      000796 CDr00r00         [24] 1806 	call	_SetSpriteAnim
+      000799                       1807 00243$:
+                           000799  1808 	C$SpriteHorse.c$226$2_3$233	= .
+                                   1809 	.globl	C$SpriteHorse.c$226$2_3$233
+                                   1810 ;SpriteHorse.c:226: THIS->anim_speed = stamina_current >> 5;
+      000799 21r00r00         [12] 1811 	ld	hl, #_THIS
+      00079C 2A               [ 8] 1812 	ld	a, (hl+)
+      00079D 46               [ 8] 1813 	ld	b, (hl)
+      00079E C6 08            [ 8] 1814 	add	a, #0x08
+      0007A0 4F               [ 4] 1815 	ld	c, a
+      0007A1 30 01            [12] 1816 	jr	NC, 00782$
+      0007A3 04               [ 4] 1817 	inc	b
+      0007A4                       1818 00782$:
+      0007A4 21r0Cr00         [12] 1819 	ld	hl, #_stamina_current
+      0007A7 2A               [ 8] 1820 	ld	a, (hl+)
+      0007A8 5F               [ 4] 1821 	ld	e, a
+      0007A9 56               [ 8] 1822 	ld	d, (hl)
+      0007AA CB 2A            [ 8] 1823 	sra	d
+      0007AC CB 1B            [ 8] 1824 	rr	e
+      0007AE CB 2A            [ 8] 1825 	sra	d
+      0007B0 CB 1B            [ 8] 1826 	rr	e
+      0007B2 CB 2A            [ 8] 1827 	sra	d
+      0007B4 CB 1B            [ 8] 1828 	rr	e
+      0007B6 CB 2A            [ 8] 1829 	sra	d
+      0007B8 CB 1B            [ 8] 1830 	rr	e
+      0007BA CB 2A            [ 8] 1831 	sra	d
+      0007BC CB 1B            [ 8] 1832 	rr	e
+      0007BE 7B               [ 4] 1833 	ld	a, e
+      0007BF 02               [ 8] 1834 	ld	(bc), a
+      0007C0                       1835 00245$:
+                           0007C0  1836 	C$SpriteHorse.c$194$2_3$191	= .
+                                   1837 	.globl	C$SpriteHorse.c$194$2_3$191
+                                   1838 ;SpriteHorse.c:194: UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+      0007C0 21r00r00         [12] 1839 	ld	hl, #_THIS
+      0007C3 2A               [ 8] 1840 	ld	a, (hl+)
+      0007C4 46               [ 8] 1841 	ld	b, (hl)
+                           0007C5  1842 	C$SpriteHorse.c$231$2_3$191	= .
+                                   1843 	.globl	C$SpriteHorse.c$231$2_3$191
+                                   1844 ;SpriteHorse.c:231: THIS->mirror = NO_MIRROR;
+      0007C5 C6 10            [ 8] 1845 	add	a, #0x10
+      0007C7 4F               [ 4] 1846 	ld	c, a
+      0007C8 30 01            [12] 1847 	jr	NC, 00783$
+      0007CA 04               [ 4] 1848 	inc	b
+      0007CB                       1849 00783$:
+                           0007CB  1850 	C$SpriteHorse.c$230$1_2$215	= .
+                                   1851 	.globl	C$SpriteHorse.c$230$1_2$215
+                                   1852 ;SpriteHorse.c:230: if(vx > 0){
+      0007CB 21r03r00         [12] 1853 	ld	hl, #_vx
+      0007CE 5E               [ 8] 1854 	ld	e, (hl)
+      0007CF AF               [ 4] 1855 	xor	a, a
+      0007D0 57               [ 4] 1856 	ld	d, a
+      0007D1 96               [ 8] 1857 	sub	a, (hl)
+      0007D2 CB 7B            [ 8] 1858 	bit	7, e
+      0007D4 28 07            [12] 1859 	jr	Z, 00784$
+      0007D6 CB 7A            [ 8] 1860 	bit	7, d
+      0007D8 20 08            [12] 1861 	jr	NZ, 00785$
+      0007DA BF               [ 4] 1862 	cp	a, a
+      0007DB 18 05            [12] 1863 	jr	00785$
+      0007DD                       1864 00784$:
+      0007DD CB 7A            [ 8] 1865 	bit	7, d
+      0007DF 28 01            [12] 1866 	jr	Z, 00785$
+      0007E1 37               [ 4] 1867 	scf
+      0007E2                       1868 00785$:
+      0007E2 30 04            [12] 1869 	jr	NC, 00249$
+                           0007E4  1870 	C$SpriteHorse.c$231$2_2$248	= .
+                                   1871 	.globl	C$SpriteHorse.c$231$2_2$248
+                                   1872 ;SpriteHorse.c:231: THIS->mirror = NO_MIRROR;
+      0007E4 AF               [ 4] 1873 	xor	a, a
+      0007E5 02               [ 8] 1874 	ld	(bc), a
+      0007E6 18 0A            [12] 1875 	jr	00250$
+      0007E8                       1876 00249$:
+                           0007E8  1877 	C$SpriteHorse.c$232$1_2$215	= .
+                                   1878 	.globl	C$SpriteHorse.c$232$1_2$215
+                                   1879 ;SpriteHorse.c:232: }else if (vx < 0){
+      0007E8 FAr03r00         [16] 1880 	ld	a, (#_vx)
+      0007EB CB 7F            [ 8] 1881 	bit	7, a
+      0007ED 28 03            [12] 1882 	jr	Z, 00250$
+                           0007EF  1883 	C$SpriteHorse.c$233$2_2$249	= .
+                                   1884 	.globl	C$SpriteHorse.c$233$2_2$249
+                                   1885 ;SpriteHorse.c:233: THIS->mirror = V_MIRROR;
+      0007EF 3E 02            [ 8] 1886 	ld	a, #0x02
+      0007F1 02               [ 8] 1887 	ld	(bc), a
+      0007F2                       1888 00250$:
+                           0007F2  1889 	C$SpriteHorse.c$239$2_3$251	= .
+                                   1890 	.globl	C$SpriteHorse.c$239$2_3$251
+                                   1891 ;SpriteHorse.c:239: SPRITEMANAGER_ITERATE(scroll_o_tile, iospr) {
+      0007F2 FAr01r00         [16] 1892 	ld	a, (#(_sprite_manager_updatables + 1) + 0)
+      0007F5 6F               [ 4] 1893 	ld	l, a
+                                   1894 ;	spillPairReg hl
+                                   1895 ;	spillPairReg hl
+      0007F6 26 00            [ 8] 1896 	ld	h, #0x00
+                                   1897 ;	spillPairReg hl
+                                   1898 ;	spillPairReg hl
+      0007F8 29               [ 8] 1899 	add	hl, hl
+      0007F9 11r00r00         [12] 1900 	ld	de, #_sprite_manager_sprites
+      0007FC 19               [ 8] 1901 	add	hl, de
+      0007FD 5D               [ 4] 1902 	ld	e, l
+      0007FE 54               [ 4] 1903 	ld	d, h
+      0007FF 1A               [ 8] 1904 	ld	a, (de)
+      000800 F8 04            [12] 1905 	ldhl	sp,	#4
+      000802 22               [ 8] 1906 	ld	(hl+), a
+      000803 13               [ 8] 1907 	inc	de
+      000804 1A               [ 8] 1908 	ld	a, (de)
+      000805 77               [ 8] 1909 	ld	(hl), a
+      000806 0E 00            [ 8] 1910 	ld	c, #0x00
+      000808                       1911 00257$:
+      000808 21r00r00         [12] 1912 	ld	hl, #_sprite_manager_updatables
+      00080B 46               [ 8] 1913 	ld	b, (hl)
+      00080C 79               [ 4] 1914 	ld	a, c
+      00080D 90               [ 4] 1915 	sub	a, b
+      00080E 28 2C            [12] 1916 	jr	Z, 00259$
+                           000810  1917 	C$SpriteHorse.c$240$3_3$252	= .
+                                   1918 	.globl	C$SpriteHorse.c$240$3_3$252
+                                   1919 ;SpriteHorse.c:240: if(CheckCollision(THIS, iospr)) {
+      000810 C5               [16] 1920 	push	bc
+      000811 F8 06            [12] 1921 	ldhl	sp,	#6
+      000813 2A               [ 8] 1922 	ld	a, (hl+)
+      000814 4F               [ 4] 1923 	ld	c, a
+      000815 46               [ 8] 1924 	ld	b, (hl)
+      000816 21r00r00         [12] 1925 	ld	hl, #_THIS
+      000819 2A               [ 8] 1926 	ld	a, (hl+)
+      00081A 5F               [ 4] 1927 	ld	e, a
+      00081B 56               [ 8] 1928 	ld	d, (hl)
+      00081C CDr00r00         [24] 1929 	call	_CheckCollision
+      00081F C1               [12] 1930 	pop	bc
+                           000820  1931 	C$SpriteHorse.c$239$2_3$251	= .
+                                   1932 	.globl	C$SpriteHorse.c$239$2_3$251
+                                   1933 ;SpriteHorse.c:239: SPRITEMANAGER_ITERATE(scroll_o_tile, iospr) {
+      000820 0C               [ 4] 1934 	inc	c
+      000821 59               [ 4] 1935 	ld	e, c
+      000822 16 00            [ 8] 1936 	ld	d, #0x00
+      000824 13               [ 8] 1937 	inc	de
+      000825 21r00r00         [12] 1938 	ld	hl, #_sprite_manager_updatables
+      000828 19               [ 8] 1939 	add	hl, de
+      000829 6E               [ 8] 1940 	ld	l, (hl)
+                                   1941 ;	spillPairReg hl
+      00082A 26 00            [ 8] 1942 	ld	h, #0x00
+                                   1943 ;	spillPairReg hl
+                                   1944 ;	spillPairReg hl
+      00082C 29               [ 8] 1945 	add	hl, hl
+      00082D 11r00r00         [12] 1946 	ld	de, #_sprite_manager_sprites
+      000830 19               [ 8] 1947 	add	hl, de
+      000831 5D               [ 4] 1948 	ld	e, l
+      000832 54               [ 4] 1949 	ld	d, h
+      000833 1A               [ 8] 1950 	ld	a, (de)
+      000834 F8 04            [12] 1951 	ldhl	sp,	#4
+      000836 22               [ 8] 1952 	ld	(hl+), a
+      000837 13               [ 8] 1953 	inc	de
+      000838 1A               [ 8] 1954 	ld	a, (de)
+      000839 77               [ 8] 1955 	ld	(hl), a
+      00083A 18 CC            [12] 1956 	jr	00257$
+      00083C                       1957 00259$:
+                           00083C  1958 	C$SpriteHorse.c$249$2_3$191	= .
+                                   1959 	.globl	C$SpriteHorse.c$249$2_3$191
+                                   1960 ;SpriteHorse.c:249: }
+      00083C E8 06            [16] 1961 	add	sp, #6
+                           00083E  1962 	C$SpriteHorse.c$249$2_3$191	= .
+                                   1963 	.globl	C$SpriteHorse.c$249$2_3$191
+                           00083E  1964 	XG$Update_SpriteHorse$0$0	= .
+                                   1965 	.globl	XG$Update_SpriteHorse$0$0
+      00083E C9               [16] 1966 	ret
+                           00083F  1967 	G$Destroy_SpriteHorse$0$0	= .
+                                   1968 	.globl	G$Destroy_SpriteHorse$0$0
+                           00083F  1969 	C$SpriteHorse.c$251$2_3$256	= .
+                                   1970 	.globl	C$SpriteHorse.c$251$2_3$256
+                                   1971 ;SpriteHorse.c:251: void DESTROY() {
+                                   1972 ;	---------------------------------
+                                   1973 ; Function Destroy_SpriteHorse
+                                   1974 ; ---------------------------------
+      00083F                       1975 _Destroy_SpriteHorse::
+                           00083F  1976 	C$SpriteHorse.c$252$2_3$256	= .
+                                   1977 	.globl	C$SpriteHorse.c$252$2_3$256
+                                   1978 ;SpriteHorse.c:252: }
+                           00083F  1979 	C$SpriteHorse.c$252$2_3$256	= .
+                                   1980 	.globl	C$SpriteHorse.c$252$2_3$256
+                           00083F  1981 	XG$Destroy_SpriteHorse$0$0	= .
+                                   1982 	.globl	XG$Destroy_SpriteHorse$0$0
+      00083F C9               [16] 1983 	ret
+                                   1984 	.area _CODE_255
+                                   1985 	.area _INITIALIZER
+                           000000  1986 FSpriteHorse$__xinit_velocity_counter$0_0$0 == .
+      000000                       1987 __xinit__velocity_counter:
+      000000 02                    1988 	.db #0x02	;  2
+                           000001  1989 FSpriteHorse$__xinit_velocity$0_0$0 == .
+      000001                       1990 __xinit__velocity:
+      000001 01                    1991 	.db #0x01	;  1
+                           000002  1992 FSpriteHorse$__xinit_vy$0_0$0 == .
+      000002                       1993 __xinit__vy:
+      000002 00                    1994 	.db #0x00	;  0
+                           000003  1995 FSpriteHorse$__xinit_vx$0_0$0 == .
+      000003                       1996 __xinit__vx:
+      000003 00                    1997 	.db #0x00	;  0
+                           000004  1998 FSpriteHorse$__xinit_frm_skip$0_0$0 == .
+      000004                       1999 __xinit__frm_skip:
+      000004 00                    2000 	.db #0x00	;  0
+                           000005  2001 FSpriteHorse$__xinit_whip_power_over_stamina$0_0$0 == .
+      000005                       2002 __xinit__whip_power_over_stamina:
+      000005 03                    2003 	.db #0x03	;  3
+                           000006  2004 FSpriteHorse$__xinit_whip_counter$0_0$0 == .
+      000006                       2005 __xinit__whip_counter:
+      000006 00                    2006 	.db #0x00	;  0
+                           000007  2007 FSpriteHorse$__xinit_whip_counter_max$0_0$0 == .
+      000007                       2008 __xinit__whip_counter_max:
+      000007 24                    2009 	.db #0x24	;  36
+                           000008  2010 FSpriteHorse$__xinit_euphoria_min$0_0$0 == .
+      000008                       2011 __xinit__euphoria_min:
+      000008 90 01                 2012 	.dw #0x0190
+                           00000A  2013 FSpriteHorse$__xinit_euphoria_max$0_0$0 == .
+      00000A                       2014 __xinit__euphoria_max:
+      00000A 94 02                 2015 	.dw #0x0294
+                           00000C  2016 FSpriteHorse$__xinit_stamina_current$0_0$0 == .
+      00000C                       2017 __xinit__stamina_current:
+      00000C 00 00                 2018 	.dw #0x0000
+                           00000E  2019 FSpriteHorse$__xinit_stamina_verso$0_0$0 == .
+      00000E                       2020 __xinit__stamina_verso:
+      00000E 00                    2021 	.db #0x00	;  0
+                           00000F  2022 FSpriteHorse$__xinit_no_whip_counter$0_0$0 == .
+      00000F                       2023 __xinit__no_whip_counter:
+      00000F 00                    2024 	.db #0x00	;  0
+                           000010  2025 FSpriteHorse$__xinit_no_whip_over_stamina$0_0$0 == .
+      000010                       2026 __xinit__no_whip_over_stamina:
+      000010 F8                    2027 	.db #0xf8	; -8
+                           000011  2028 FSpriteHorse$__xinit_no_whip_counter_max$0_0$0 == .
+      000011                       2029 __xinit__no_whip_counter_max:
+      000011 0A                    2030 	.db #0x0a	;  10
+                           000012  2031 FSpriteHorse$__xinit_turn$0_0$0 == .
+      000012                       2032 __xinit__turn:
+      000012 00                    2033 	.db #0x00	; 0
+                           000013  2034 FSpriteHorse$__xinit_sin$0_0$0 == .
+      000013                       2035 __xinit__sin:
+      000013 00                    2036 	.db #0x00	;  0
+                           000014  2037 FSpriteHorse$__xinit_cos$0_0$0 == .
+      000014                       2038 __xinit__cos:
+      000014 00                    2039 	.db #0x00	;  0
+                           000015  2040 FSpriteHorse$__xinit_turn_samepressure_counter$0_0$0 == .
+      000015                       2041 __xinit__turn_samepressure_counter:
+      000015 00                    2042 	.db #0x00	;  0
+                           000016  2043 FSpriteHorse$__xinit_past_coll_tile$0_0$0 == .
+      000016                       2044 __xinit__past_coll_tile:
+      000016 00                    2045 	.db #0x00	; 0
+                           000017  2046 FSpriteHorse$__xinit_turn_verse$0_0$0 == .
+      000017                       2047 __xinit__turn_verse:
+      000017 00                    2048 	.db #0x00	; 0
+                           000018  2049 FSpriteHorse$__xinit_orme_spawned$0_0$0 == .
+      000018                       2050 __xinit__orme_spawned:
+      000018 00                    2051 	.db #0x00	; 0
+                                   2052 	.area _CABS (ABS)

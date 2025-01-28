@@ -1,0 +1,48 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 C$compass.gbr.c$9$0_0$161                                   =  000000 GR
+  7 G$__func_compass$0$0                                        =  000000 GR
+  7 G$compass$0_0$0                                             =  0000E0 GR
+  7 G$compass_metasprite0$0_0$0                                 =  0000A8 GR
+  7 G$compass_metasprite1$0_0$0                                 =  0000B4 GR
+  7 G$compass_metasprite2$0_0$0                                 =  0000C0 GR
+  7 G$compass_metasprite3$0_0$0                                 =  0000CC GR
+  7 G$compass_metasprites$0_0$0                                 =  0000D8 GR
+  7 G$compass_palettes$0_0$0                                    =  000000 GR
+  7 G$compass_tiles$0_0$0                                       =  000008 GR
+    ___bank_compass                                             =  0000FF G
+  7 ___func_compass                                                000000 GR
+  7 _compass                                                       0000E0 GR
+  7 _compass_metasprite0                                           0000A8 GR
+  7 _compass_metasprite1                                           0000B4 GR
+  7 _compass_metasprite2                                           0000C0 GR
+  7 _compass_metasprite3                                           0000CC GR
+  7 _compass_metasprites                                           0000D8 GR
+  7 _compass_palettes                                              000000 GR
+  7 _compass_tiles                                                 000008 GR
+    b___func_compass                                            =  0000FF L
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size     EB   flags    0
+   8 _INITIALIZER                               size      0   flags    0
+   9 _CABS                                      size      0   flags    8
+

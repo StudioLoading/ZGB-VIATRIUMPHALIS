@@ -1,0 +1,55 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  7 C$fire.gbr.c$9$0_0$161                                      =  000000 GR
+  7 G$__func_fire$0$0                                           =  000000 GR
+  7 G$fire$0_0$0                                                =  000280 GR
+  7 G$fire_metasprite0$0_0$0                                    =  000210 GR
+  7 G$fire_metasprite1$0_0$0                                    =  00021C GR
+  7 G$fire_metasprite2$0_0$0                                    =  000228 GR
+  7 G$fire_metasprite3$0_0$0                                    =  000234 GR
+  7 G$fire_metasprite4$0_0$0                                    =  000240 GR
+  7 G$fire_metasprite5$0_0$0                                    =  00024C GR
+  7 G$fire_metasprite6$0_0$0                                    =  000258 GR
+  7 G$fire_metasprite7$0_0$0                                    =  000264 GR
+  7 G$fire_metasprites$0_0$0                                    =  000270 GR
+  7 G$fire_palettes$0_0$0                                       =  000000 GR
+  7 G$fire_tiles$0_0$0                                          =  000010 GR
+    ___bank_fire                                                =  0000FF G
+  7 ___func_fire                                                   000000 GR
+  7 _fire                                                          000280 GR
+  7 _fire_metasprite0                                              000210 GR
+  7 _fire_metasprite1                                              00021C GR
+  7 _fire_metasprite2                                              000228 GR
+  7 _fire_metasprite3                                              000234 GR
+  7 _fire_metasprite4                                              000240 GR
+  7 _fire_metasprite5                                              00024C GR
+  7 _fire_metasprite6                                              000258 GR
+  7 _fire_metasprite7                                              000264 GR
+  7 _fire_metasprites                                              000270 GR
+  7 _fire_palettes                                                 000000 GR
+  7 _fire_tiles                                                    000010 GR
+    b___func_fire                                               =  0000FF L
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _CODE_255                                  size    28B   flags    0
+   8 _INITIALIZER                               size      0   flags    0
+   9 _CABS                                      size      0   flags    8
+

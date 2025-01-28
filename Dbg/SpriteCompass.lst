@@ -1,0 +1,484 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.3.2 #14228 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module SpriteCompass
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _Destroy_SpriteCompass
+                                     12 	.globl _Update_SpriteCompass
+                                     13 	.globl _Start_SpriteCompass
+                                     14 	.globl _SetSpriteAnim
+                                     15 	.globl _a_compass_v
+                                     16 	.globl _a_compass_66
+                                     17 	.globl _a_compass_33
+                                     18 	.globl _a_compass_h
+                                     19 	.globl ___bank_SpriteCompass
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function registers
+                                     22 ;--------------------------------------------------------
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _DATA
+                                     27 ;--------------------------------------------------------
+                                     28 ; ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _INITIALIZED
+                                     31 ;--------------------------------------------------------
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _DABS (ABS)
+                                     35 ;--------------------------------------------------------
+                                     36 ; global & static initialisations
+                                     37 ;--------------------------------------------------------
+                                     38 	.area _HOME
+                                     39 	.area _GSINIT
+                                     40 	.area _GSFINAL
+                                     41 	.area _GSINIT
+                                     42 ;--------------------------------------------------------
+                                     43 ; Home
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _HOME
+                                     46 	.area _HOME
+                                     47 ;--------------------------------------------------------
+                                     48 ; code
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _CODE_255
+                           000000    51 	G$Start_SpriteCompass$0$0	= .
+                                     52 	.globl	G$Start_SpriteCompass$0$0
+                           000000    53 	C$SpriteCompass.c$22$0_0$177	= .
+                                     54 	.globl	C$SpriteCompass.c$22$0_0$177
+                                     55 ;SpriteCompass.c:22: void START() {
+                                     56 ;	---------------------------------
+                                     57 ; Function Start_SpriteCompass
+                                     58 ; ---------------------------------
+      000000                         59 _Start_SpriteCompass::
+                           000000    60 	C$SpriteCompass.c$23$1_0$177	= .
+                                     61 	.globl	C$SpriteCompass.c$23$1_0$177
+                                     62 ;SpriteCompass.c:23: THIS->lim_x = 1000;
+      000000 21r00r00         [12]   63 	ld	hl, #_THIS
+      000003 2A               [ 8]   64 	ld	a, (hl+)
+      000004 4F               [ 4]   65 	ld	c, a
+      000005 46               [ 8]   66 	ld	b, (hl)
+      000006 21 15 00         [12]   67 	ld	hl, #0x0015
+      000009 09               [ 8]   68 	add	hl, bc
+      00000A 3E E8            [ 8]   69 	ld	a, #0xe8
+      00000C 22               [ 8]   70 	ld	(hl+), a
+      00000D 36 03            [12]   71 	ld	(hl), #0x03
+                           00000F    72 	C$SpriteCompass.c$24$1_0$177	= .
+                                     73 	.globl	C$SpriteCompass.c$24$1_0$177
+                                     74 ;SpriteCompass.c:24: THIS->lim_y = 1000;
+      00000F 21r00r00         [12]   75 	ld	hl, #_THIS
+      000012 2A               [ 8]   76 	ld	a, (hl+)
+      000013 4F               [ 4]   77 	ld	c, a
+      000014 46               [ 8]   78 	ld	b, (hl)
+      000015 21 17 00         [12]   79 	ld	hl, #0x0017
+      000018 09               [ 8]   80 	add	hl, bc
+      000019 3E E8            [ 8]   81 	ld	a, #0xe8
+      00001B 22               [ 8]   82 	ld	(hl+), a
+      00001C 36 03            [12]   83 	ld	(hl), #0x03
+                           00001E    84 	C$SpriteCompass.c$25$1_0$177	= .
+                                     85 	.globl	C$SpriteCompass.c$25$1_0$177
+                                     86 ;SpriteCompass.c:25: }
+                           00001E    87 	C$SpriteCompass.c$25$1_0$177	= .
+                                     88 	.globl	C$SpriteCompass.c$25$1_0$177
+                           00001E    89 	XG$Start_SpriteCompass$0$0	= .
+                                     90 	.globl	XG$Start_SpriteCompass$0$0
+      00001E C9               [16]   91 	ret
+                           0000FF    92 G$__bank_SpriteCompass$0_0$0 == 0x00ff
+                           0000FF    93 ___bank_SpriteCompass	=	0x00ff
+                           00001F    94 G$a_compass_h$0_0$0 == .
+      00001F                         95 _a_compass_h:
+      00001F 01                      96 	.db #0x01	; 1
+      000020 00                      97 	.db #0x00	; 0
+                           000021    98 G$a_compass_33$0_0$0 == .
+      000021                         99 _a_compass_33:
+      000021 01                     100 	.db #0x01	; 1
+      000022 01                     101 	.db #0x01	; 1
+                           000023   102 G$a_compass_66$0_0$0 == .
+      000023                        103 _a_compass_66:
+      000023 01                     104 	.db #0x01	; 1
+      000024 02                     105 	.db #0x02	; 2
+                           000025   106 G$a_compass_v$0_0$0 == .
+      000025                        107 _a_compass_v:
+      000025 01                     108 	.db #0x01	; 1
+      000026 03                     109 	.db #0x03	; 3
+                           000027   110 	G$Update_SpriteCompass$0$0	= .
+                                    111 	.globl	G$Update_SpriteCompass$0$0
+                           000027   112 	C$SpriteCompass.c$27$1_0$178	= .
+                                    113 	.globl	C$SpriteCompass.c$27$1_0$178
+                                    114 ;SpriteCompass.c:27: void UPDATE() { 
+                                    115 ;	---------------------------------
+                                    116 ; Function Update_SpriteCompass
+                                    117 ; ---------------------------------
+      000027                        118 _Update_SpriteCompass::
+      000027 3B               [ 8]  119 	dec	sp
+      000028 3B               [ 8]  120 	dec	sp
+                           000029   121 	C$SpriteCompass.c$29$1_0$178	= .
+                                    122 	.globl	C$SpriteCompass.c$29$1_0$178
+                                    123 ;SpriteCompass.c:29: THIS->x = scroll_target->x;
+      000029 21r00r00         [12]  124 	ld	hl, #_THIS
+      00002C 2A               [ 8]  125 	ld	a, (hl+)
+      00002D 4F               [ 4]  126 	ld	c, a
+      00002E 46               [ 8]  127 	ld	b, (hl)
+      00002F 21 0C 00         [12]  128 	ld	hl, #0x000c
+      000032 09               [ 8]  129 	add	hl, bc
+      000033 33               [ 8]  130 	inc	sp
+      000034 33               [ 8]  131 	inc	sp
+      000035 E5               [16]  132 	push	hl
+      000036 21r00r00         [12]  133 	ld	hl, #_scroll_target
+      000039 2A               [ 8]  134 	ld	a, (hl+)
+      00003A 4F               [ 4]  135 	ld	c, a
+      00003B 46               [ 8]  136 	ld	b, (hl)
+      00003C 21 0C 00         [12]  137 	ld	hl, #0x000c
+      00003F 09               [ 8]  138 	add	hl, bc
+      000040 2A               [ 8]  139 	ld	a, (hl+)
+      000041 4F               [ 4]  140 	ld	c, a
+      000042 46               [ 8]  141 	ld	b, (hl)
+      000043 E1               [12]  142 	pop	hl
+      000044 E5               [16]  143 	push	hl
+      000045 79               [ 4]  144 	ld	a, c
+      000046 22               [ 8]  145 	ld	(hl+), a
+      000047 70               [ 8]  146 	ld	(hl), b
+                           000048   147 	C$SpriteCompass.c$30$1_0$178	= .
+                                    148 	.globl	C$SpriteCompass.c$30$1_0$178
+                                    149 ;SpriteCompass.c:30: THIS->y = scroll_target->y;
+      000048 21r00r00         [12]  150 	ld	hl, #_THIS
+      00004B 2A               [ 8]  151 	ld	a, (hl+)
+      00004C 4F               [ 4]  152 	ld	c, a
+      00004D 46               [ 8]  153 	ld	b, (hl)
+      00004E 21 0E 00         [12]  154 	ld	hl, #0x000e
+      000051 09               [ 8]  155 	add	hl, bc
+      000052 33               [ 8]  156 	inc	sp
+      000053 33               [ 8]  157 	inc	sp
+      000054 E5               [16]  158 	push	hl
+      000055 21r00r00         [12]  159 	ld	hl, #_scroll_target
+      000058 2A               [ 8]  160 	ld	a, (hl+)
+      000059 4F               [ 4]  161 	ld	c, a
+      00005A 46               [ 8]  162 	ld	b, (hl)
+      00005B 21 0E 00         [12]  163 	ld	hl, #0x000e
+      00005E 09               [ 8]  164 	add	hl, bc
+      00005F 2A               [ 8]  165 	ld	a, (hl+)
+      000060 4F               [ 4]  166 	ld	c, a
+      000061 46               [ 8]  167 	ld	b, (hl)
+      000062 E1               [12]  168 	pop	hl
+      000063 E5               [16]  169 	push	hl
+      000064 79               [ 4]  170 	ld	a, c
+      000065 22               [ 8]  171 	ld	(hl+), a
+      000066 70               [ 8]  172 	ld	(hl), b
+                           000067   173 	C$SpriteCompass.c$33$2_0$179	= .
+                                    174 	.globl	C$SpriteCompass.c$33$2_0$179
+                                    175 ;SpriteCompass.c:33: INT8 using_sin = sin;
+      000067 21r00r00         [12]  176 	ld	hl, #_sin
+      00006A 4E               [ 8]  177 	ld	c, (hl)
+                           00006B   178 	C$SpriteCompass.c$35$1_1$179	= .
+                                    179 	.globl	C$SpriteCompass.c$35$1_1$179
+                                    180 ;SpriteCompass.c:35: if(sin < 0) {using_sin = -sin;}
+      00006B CB 7E            [12]  181 	bit	7, (hl)
+      00006D 28 03            [12]  182 	jr	Z, 00104$
+      00006F AF               [ 4]  183 	xor	a, a
+      000070 96               [ 8]  184 	sub	a, (hl)
+      000071 4F               [ 4]  185 	ld	c, a
+      000072                        186 00104$:
+                           000072   187 	C$SpriteCompass.c$36$1_1$178	= .
+                                    188 	.globl	C$SpriteCompass.c$36$1_1$178
+                                    189 ;SpriteCompass.c:36: if(using_sin >= 0 && using_sin <= 30){//tratto come se stesse andando orizzontale
+      000072 59               [ 4]  190 	ld	e, c
+      000073 3E 1E            [ 8]  191 	ld	a,#0x1e
+      000075 57               [ 4]  192 	ld	d,a
+      000076 91               [ 4]  193 	sub	a, c
+      000077 CB 7B            [ 8]  194 	bit	7, e
+      000079 28 07            [12]  195 	jr	Z, 00246$
+      00007B CB 7A            [ 8]  196 	bit	7, d
+      00007D 20 08            [12]  197 	jr	NZ, 00247$
+      00007F BF               [ 4]  198 	cp	a, a
+      000080 18 05            [12]  199 	jr	00247$
+      000082                        200 00246$:
+      000082 CB 7A            [ 8]  201 	bit	7, d
+      000084 28 01            [12]  202 	jr	Z, 00247$
+      000086 37               [ 4]  203 	scf
+      000087                        204 00247$:
+      000087 3E 00            [ 8]  205 	ld	a, #0x00
+      000089 17               [ 4]  206 	rla
+      00008A 47               [ 4]  207 	ld	b, a
+      00008B CB 79            [ 8]  208 	bit	7, c
+      00008D 20 16            [12]  209 	jr	NZ, 00116$
+      00008F CB 40            [ 8]  210 	bit	0, b
+      000091 20 12            [12]  211 	jr	NZ, 00116$
+                           000093   212 	C$SpriteCompass.c$37$2_1$182	= .
+                                    213 	.globl	C$SpriteCompass.c$37$2_1$182
+                                    214 ;SpriteCompass.c:37: SetSpriteAnim(THIS, a_compass_h, 1);
+      000093 3E 01            [ 8]  215 	ld	a, #0x01
+      000095 F5               [16]  216 	push	af
+      000096 33               [ 8]  217 	inc	sp
+      000097 01r1Fr00         [12]  218 	ld	bc, #_a_compass_h
+      00009A 21r00r00         [12]  219 	ld	hl, #_THIS
+      00009D 2A               [ 8]  220 	ld	a, (hl+)
+      00009E 5F               [ 4]  221 	ld	e, a
+      00009F 56               [ 8]  222 	ld	d, (hl)
+      0000A0 CDr00r00         [24]  223 	call	_SetSpriteAnim
+      0000A3 18 74            [12]  224 	jr	00117$
+      0000A5                        225 00116$:
+                           0000A5   226 	C$SpriteCompass.c$38$1_1$179	= .
+                                    227 	.globl	C$SpriteCompass.c$38$1_1$179
+                                    228 ;SpriteCompass.c:38: }else if(using_sin > 30 && using_sin < 54){// tratto come se stesse andando a 33 gradi
+      0000A5 78               [ 4]  229 	ld	a, b
+      0000A6 B7               [ 4]  230 	or	a, a
+      0000A7 28 19            [12]  231 	jr	Z, 00112$
+      0000A9 79               [ 4]  232 	ld	a, c
+      0000AA EE 80            [ 8]  233 	xor	a, #0x80
+      0000AC D6 B6            [ 8]  234 	sub	a, #0xb6
+      0000AE 30 12            [12]  235 	jr	NC, 00112$
+                           0000B0   236 	C$SpriteCompass.c$39$2_1$183	= .
+                                    237 	.globl	C$SpriteCompass.c$39$2_1$183
+                                    238 ;SpriteCompass.c:39: SetSpriteAnim(THIS, a_compass_33, 1);
+      0000B0 3E 01            [ 8]  239 	ld	a, #0x01
+      0000B2 F5               [16]  240 	push	af
+      0000B3 33               [ 8]  241 	inc	sp
+      0000B4 01r21r00         [12]  242 	ld	bc, #_a_compass_33
+      0000B7 21r00r00         [12]  243 	ld	hl, #_THIS
+      0000BA 2A               [ 8]  244 	ld	a, (hl+)
+      0000BB 5F               [ 4]  245 	ld	e, a
+      0000BC 56               [ 8]  246 	ld	d, (hl)
+      0000BD CDr00r00         [24]  247 	call	_SetSpriteAnim
+      0000C0 18 57            [12]  248 	jr	00117$
+      0000C2                        249 00112$:
+                           0000C2   250 	C$SpriteCompass.c$40$1_1$179	= .
+                                    251 	.globl	C$SpriteCompass.c$40$1_1$179
+                                    252 ;SpriteCompass.c:40: }else if(using_sin > 54 && using_sin < 78){// tratto come se stesse andando a 66 gradi
+      0000C2 59               [ 4]  253 	ld	e, c
+      0000C3 3E 36            [ 8]  254 	ld	a,#0x36
+      0000C5 57               [ 4]  255 	ld	d,a
+      0000C6 91               [ 4]  256 	sub	a, c
+      0000C7 CB 7B            [ 8]  257 	bit	7, e
+      0000C9 28 07            [12]  258 	jr	Z, 00248$
+      0000CB CB 7A            [ 8]  259 	bit	7, d
+      0000CD 20 08            [12]  260 	jr	NZ, 00249$
+      0000CF BF               [ 4]  261 	cp	a, a
+      0000D0 18 05            [12]  262 	jr	00249$
+      0000D2                        263 00248$:
+      0000D2 CB 7A            [ 8]  264 	bit	7, d
+      0000D4 28 01            [12]  265 	jr	Z, 00249$
+      0000D6 37               [ 4]  266 	scf
+      0000D7                        267 00249$:
+      0000D7 30 19            [12]  268 	jr	NC, 00108$
+      0000D9 79               [ 4]  269 	ld	a, c
+      0000DA EE 80            [ 8]  270 	xor	a, #0x80
+      0000DC D6 CE            [ 8]  271 	sub	a, #0xce
+      0000DE 30 12            [12]  272 	jr	NC, 00108$
+                           0000E0   273 	C$SpriteCompass.c$41$2_1$184	= .
+                                    274 	.globl	C$SpriteCompass.c$41$2_1$184
+                                    275 ;SpriteCompass.c:41: SetSpriteAnim(THIS, a_compass_66, 1);
+      0000E0 3E 01            [ 8]  276 	ld	a, #0x01
+      0000E2 F5               [16]  277 	push	af
+      0000E3 33               [ 8]  278 	inc	sp
+      0000E4 01r23r00         [12]  279 	ld	bc, #_a_compass_66
+      0000E7 21r00r00         [12]  280 	ld	hl, #_THIS
+      0000EA 2A               [ 8]  281 	ld	a, (hl+)
+      0000EB 5F               [ 4]  282 	ld	e, a
+      0000EC 56               [ 8]  283 	ld	d, (hl)
+      0000ED CDr00r00         [24]  284 	call	_SetSpriteAnim
+      0000F0 18 27            [12]  285 	jr	00117$
+      0000F2                        286 00108$:
+                           0000F2   287 	C$SpriteCompass.c$42$1_1$179	= .
+                                    288 	.globl	C$SpriteCompass.c$42$1_1$179
+                                    289 ;SpriteCompass.c:42: }else if(using_sin > 78){ // tratto come se stesse andando orizzontale destra
+      0000F2 59               [ 4]  290 	ld	e, c
+      0000F3 3E 4E            [ 8]  291 	ld	a,#0x4e
+      0000F5 57               [ 4]  292 	ld	d,a
+      0000F6 91               [ 4]  293 	sub	a, c
+      0000F7 CB 7B            [ 8]  294 	bit	7, e
+      0000F9 28 07            [12]  295 	jr	Z, 00250$
+      0000FB CB 7A            [ 8]  296 	bit	7, d
+      0000FD 20 08            [12]  297 	jr	NZ, 00251$
+      0000FF BF               [ 4]  298 	cp	a, a
+      000100 18 05            [12]  299 	jr	00251$
+      000102                        300 00250$:
+      000102 CB 7A            [ 8]  301 	bit	7, d
+      000104 28 01            [12]  302 	jr	Z, 00251$
+      000106 37               [ 4]  303 	scf
+      000107                        304 00251$:
+      000107 30 10            [12]  305 	jr	NC, 00117$
+                           000109   306 	C$SpriteCompass.c$43$2_1$185	= .
+                                    307 	.globl	C$SpriteCompass.c$43$2_1$185
+                                    308 ;SpriteCompass.c:43: SetSpriteAnim(THIS, a_compass_v, 1);
+      000109 3E 01            [ 8]  309 	ld	a, #0x01
+      00010B F5               [16]  310 	push	af
+      00010C 33               [ 8]  311 	inc	sp
+      00010D 01r25r00         [12]  312 	ld	bc, #_a_compass_v
+      000110 21r00r00         [12]  313 	ld	hl, #_THIS
+      000113 2A               [ 8]  314 	ld	a, (hl+)
+      000114 5F               [ 4]  315 	ld	e, a
+      000115 56               [ 8]  316 	ld	d, (hl)
+      000116 CDr00r00         [24]  317 	call	_SetSpriteAnim
+      000119                        318 00117$:
+                           000119   319 	C$SpriteCompass.c$45$1_1$179	= .
+                                    320 	.globl	C$SpriteCompass.c$45$1_1$179
+                                    321 ;SpriteCompass.c:45: if(sin > 0 && cos > 0){
+      000119 21r00r00         [12]  322 	ld	hl, #_sin
+      00011C 5E               [ 8]  323 	ld	e, (hl)
+      00011D AF               [ 4]  324 	xor	a, a
+      00011E 57               [ 4]  325 	ld	d, a
+      00011F 96               [ 8]  326 	sub	a, (hl)
+      000120 CB 7B            [ 8]  327 	bit	7, e
+      000122 28 07            [12]  328 	jr	Z, 00252$
+      000124 CB 7A            [ 8]  329 	bit	7, d
+      000126 20 08            [12]  330 	jr	NZ, 00253$
+      000128 BF               [ 4]  331 	cp	a, a
+      000129 18 05            [12]  332 	jr	00253$
+      00012B                        333 00252$:
+      00012B CB 7A            [ 8]  334 	bit	7, d
+      00012D 28 01            [12]  335 	jr	Z, 00253$
+      00012F 37               [ 4]  336 	scf
+      000130                        337 00253$:
+      000130 30 25            [12]  338 	jr	NC, 00120$
+      000132 21r00r00         [12]  339 	ld	hl, #_cos
+      000135 5E               [ 8]  340 	ld	e, (hl)
+      000136 AF               [ 4]  341 	xor	a, a
+      000137 57               [ 4]  342 	ld	d, a
+      000138 96               [ 8]  343 	sub	a, (hl)
+      000139 CB 7B            [ 8]  344 	bit	7, e
+      00013B 28 07            [12]  345 	jr	Z, 00254$
+      00013D CB 7A            [ 8]  346 	bit	7, d
+      00013F 20 08            [12]  347 	jr	NZ, 00255$
+      000141 BF               [ 4]  348 	cp	a, a
+      000142 18 05            [12]  349 	jr	00255$
+      000144                        350 00254$:
+      000144 CB 7A            [ 8]  351 	bit	7, d
+      000146 28 01            [12]  352 	jr	Z, 00255$
+      000148 37               [ 4]  353 	scf
+      000149                        354 00255$:
+      000149 30 0C            [12]  355 	jr	NC, 00120$
+                           00014B   356 	C$SpriteCompass.c$46$2_1$186	= .
+                                    357 	.globl	C$SpriteCompass.c$46$2_1$186
+                                    358 ;SpriteCompass.c:46: THIS->mirror = NO_MIRROR;
+      00014B 21r00r00         [12]  359 	ld	hl, #_THIS
+      00014E 2A               [ 8]  360 	ld	a, (hl+)
+      00014F 4F               [ 4]  361 	ld	c, a
+      000150 46               [ 8]  362 	ld	b, (hl)
+      000151 21 10 00         [12]  363 	ld	hl, #0x0010
+      000154 09               [ 8]  364 	add	hl, bc
+      000155 36 00            [12]  365 	ld	(hl), #0x00
+      000157                        366 00120$:
+                           000157   367 	C$SpriteCompass.c$48$1_1$179	= .
+                                    368 	.globl	C$SpriteCompass.c$48$1_1$179
+                                    369 ;SpriteCompass.c:48: if(sin > 0 && cos < 0){
+      000157 21r00r00         [12]  370 	ld	hl, #_sin
+      00015A 5E               [ 8]  371 	ld	e, (hl)
+      00015B AF               [ 4]  372 	xor	a, a
+      00015C 57               [ 4]  373 	ld	d, a
+      00015D 96               [ 8]  374 	sub	a, (hl)
+      00015E CB 7B            [ 8]  375 	bit	7, e
+      000160 28 07            [12]  376 	jr	Z, 00256$
+      000162 CB 7A            [ 8]  377 	bit	7, d
+      000164 20 08            [12]  378 	jr	NZ, 00257$
+      000166 BF               [ 4]  379 	cp	a, a
+      000167 18 05            [12]  380 	jr	00257$
+      000169                        381 00256$:
+      000169 CB 7A            [ 8]  382 	bit	7, d
+      00016B 28 01            [12]  383 	jr	Z, 00257$
+      00016D 37               [ 4]  384 	scf
+      00016E                        385 00257$:
+      00016E 30 13            [12]  386 	jr	NC, 00123$
+      000170 FAr00r00         [16]  387 	ld	a, (#_cos)
+      000173 CB 7F            [ 8]  388 	bit	7, a
+      000175 28 0C            [12]  389 	jr	Z, 00123$
+                           000177   390 	C$SpriteCompass.c$49$2_1$187	= .
+                                    391 	.globl	C$SpriteCompass.c$49$2_1$187
+                                    392 ;SpriteCompass.c:49: THIS->mirror = V_MIRROR;
+      000177 21r00r00         [12]  393 	ld	hl, #_THIS
+      00017A 2A               [ 8]  394 	ld	a, (hl+)
+      00017B 4F               [ 4]  395 	ld	c, a
+      00017C 46               [ 8]  396 	ld	b, (hl)
+      00017D 21 10 00         [12]  397 	ld	hl, #0x0010
+      000180 09               [ 8]  398 	add	hl, bc
+      000181 36 02            [12]  399 	ld	(hl), #0x02
+      000183                        400 00123$:
+                           000183   401 	C$SpriteCompass.c$51$1_1$179	= .
+                                    402 	.globl	C$SpriteCompass.c$51$1_1$179
+                                    403 ;SpriteCompass.c:51: if(sin < 0 && cos > 0){
+      000183 FAr00r00         [16]  404 	ld	a, (#_sin)
+      000186 CB 7F            [ 8]  405 	bit	7, a
+      000188 28 25            [12]  406 	jr	Z, 00126$
+      00018A 21r00r00         [12]  407 	ld	hl, #_cos
+      00018D 5E               [ 8]  408 	ld	e, (hl)
+      00018E AF               [ 4]  409 	xor	a, a
+      00018F 57               [ 4]  410 	ld	d, a
+      000190 96               [ 8]  411 	sub	a, (hl)
+      000191 CB 7B            [ 8]  412 	bit	7, e
+      000193 28 07            [12]  413 	jr	Z, 00258$
+      000195 CB 7A            [ 8]  414 	bit	7, d
+      000197 20 08            [12]  415 	jr	NZ, 00259$
+      000199 BF               [ 4]  416 	cp	a, a
+      00019A 18 05            [12]  417 	jr	00259$
+      00019C                        418 00258$:
+      00019C CB 7A            [ 8]  419 	bit	7, d
+      00019E 28 01            [12]  420 	jr	Z, 00259$
+      0001A0 37               [ 4]  421 	scf
+      0001A1                        422 00259$:
+      0001A1 30 0C            [12]  423 	jr	NC, 00126$
+                           0001A3   424 	C$SpriteCompass.c$52$2_1$188	= .
+                                    425 	.globl	C$SpriteCompass.c$52$2_1$188
+                                    426 ;SpriteCompass.c:52: THIS->mirror = H_MIRROR;
+      0001A3 21r00r00         [12]  427 	ld	hl, #_THIS
+      0001A6 2A               [ 8]  428 	ld	a, (hl+)
+      0001A7 4F               [ 4]  429 	ld	c, a
+      0001A8 46               [ 8]  430 	ld	b, (hl)
+      0001A9 21 10 00         [12]  431 	ld	hl, #0x0010
+      0001AC 09               [ 8]  432 	add	hl, bc
+      0001AD 36 01            [12]  433 	ld	(hl), #0x01
+      0001AF                        434 00126$:
+                           0001AF   435 	C$SpriteCompass.c$54$1_1$179	= .
+                                    436 	.globl	C$SpriteCompass.c$54$1_1$179
+                                    437 ;SpriteCompass.c:54: if(sin < 0 && cos < 0){
+      0001AF FAr00r00         [16]  438 	ld	a, (#_sin)
+      0001B2 CB 7F            [ 8]  439 	bit	7, a
+      0001B4 28 13            [12]  440 	jr	Z, 00131$
+      0001B6 FAr00r00         [16]  441 	ld	a, (#_cos)
+      0001B9 CB 7F            [ 8]  442 	bit	7, a
+      0001BB 28 0C            [12]  443 	jr	Z, 00131$
+                           0001BD   444 	C$SpriteCompass.c$55$2_1$189	= .
+                                    445 	.globl	C$SpriteCompass.c$55$2_1$189
+                                    446 ;SpriteCompass.c:55: THIS->mirror = HV_MIRROR;
+      0001BD 21r00r00         [12]  447 	ld	hl, #_THIS
+      0001C0 2A               [ 8]  448 	ld	a, (hl+)
+      0001C1 4F               [ 4]  449 	ld	c, a
+      0001C2 46               [ 8]  450 	ld	b, (hl)
+      0001C3 21 10 00         [12]  451 	ld	hl, #0x0010
+      0001C6 09               [ 8]  452 	add	hl, bc
+      0001C7 36 03            [12]  453 	ld	(hl), #0x03
+      0001C9                        454 00131$:
+                           0001C9   455 	C$SpriteCompass.c$57$1_1$178	= .
+                                    456 	.globl	C$SpriteCompass.c$57$1_1$178
+                                    457 ;SpriteCompass.c:57: }
+      0001C9 33               [ 8]  458 	inc	sp
+      0001CA 33               [ 8]  459 	inc	sp
+                           0001CB   460 	C$SpriteCompass.c$57$1_1$178	= .
+                                    461 	.globl	C$SpriteCompass.c$57$1_1$178
+                           0001CB   462 	XG$Update_SpriteCompass$0$0	= .
+                                    463 	.globl	XG$Update_SpriteCompass$0$0
+      0001CB C9               [16]  464 	ret
+                           0001CC   465 	G$Destroy_SpriteCompass$0$0	= .
+                                    466 	.globl	G$Destroy_SpriteCompass$0$0
+                           0001CC   467 	C$SpriteCompass.c$59$1_1$191	= .
+                                    468 	.globl	C$SpriteCompass.c$59$1_1$191
+                                    469 ;SpriteCompass.c:59: void DESTROY() {
+                                    470 ;	---------------------------------
+                                    471 ; Function Destroy_SpriteCompass
+                                    472 ; ---------------------------------
+      0001CC                        473 _Destroy_SpriteCompass::
+                           0001CC   474 	C$SpriteCompass.c$60$1_1$191	= .
+                                    475 	.globl	C$SpriteCompass.c$60$1_1$191
+                                    476 ;SpriteCompass.c:60: }
+                           0001CC   477 	C$SpriteCompass.c$60$1_1$191	= .
+                                    478 	.globl	C$SpriteCompass.c$60$1_1$191
+                           0001CC   479 	XG$Destroy_SpriteCompass$0$0	= .
+                                    480 	.globl	XG$Destroy_SpriteCompass$0$0
+      0001CC C9               [16]  481 	ret
+                                    482 	.area _CODE_255
+                                    483 	.area _INITIALIZER
+                                    484 	.area _CABS (ABS)

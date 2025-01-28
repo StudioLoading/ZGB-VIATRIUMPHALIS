@@ -1,0 +1,2874 @@
+;!FILE ../DbgClr/SpriteHorse.asm
+XL3
+H A areas 72F global symbols
+M SpriteHorse
+O -msm83
+S _J_WHIP Ref000000
+S _TranslateSprite Ref000000
+S _SetSpriteAnim Ref000000
+S _hud_turn_cooldown Ref000000
+S ___bank_SpriteHorse Def0000FF
+S G$__bank_SpriteHorse$0_0$0 Def0000FF
+S _use_weapon Ref000000
+S _THIS Ref000000
+S _sprite_manager_sprites Ref000000
+S _hp_current Ref000000
+S _SpriteManagerAdd Ref000000
+S _keys Ref000000
+S __mulschar Ref000000
+S .__.ABS. Def000000
+S _sine_wave Ref000000
+S _CheckCollision Ref000000
+S ___sdcc_bcall_ehl Ref000000
+S _sprite_manager_updatables Ref000000
+S _SpriteManagerRemoveSprite Ref000000
+S _delta_time Ref000000
+S _weapon_def Ref000000
+S _previous_keys Ref000000
+S b_use_weapon Ref000000
+S _GetScrollTile Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 1D flags 0 addr 0
+S _turn_samepressure_counter Def000015
+S G$turn_samepressure_counter$0_0$0 Def000015
+S _whip_power_over_stamina Def000005
+S G$whip_power_over_stamina$0_0$0 Def000005
+S _vx Def000003
+S _velocity Def000001
+S _vy Def000002
+S G$vx$0_0$0 Def000003
+S G$vy$0_0$0 Def000002
+S G$velocity$0_0$0 Def000001
+S _no_whip_counter_max Def000011
+S G$no_whip_counter_max$0_0$0 Def000011
+S _stamina_verso Def00000E
+S _whip_counter_max Def000007
+S G$stamina_verso$0_0$0 Def00000E
+S G$whip_counter_max$0_0$0 Def000007
+S _euphoria_min Def000008
+S _euphoria_max Def00000A
+S G$euphoria_min$0_0$0 Def000008
+S _onfire_countdown Def000019
+S _orme_spawned Def000018
+S G$euphoria_max$0_0$0 Def00000A
+S _cos Def000014
+S G$onfire_countdown$0_0$0 Def000019
+S G$orme_spawned$0_0$0 Def000018
+S G$cos$0_0$0 Def000014
+S _turn Def000012
+S _sin Def000013
+S G$turn$0_0$0 Def000012
+S G$sin$0_0$0 Def000013
+S _turn_verse Def000017
+S _velocity_counter Def000000
+S _past_coll_tile Def000016
+S _stamina_current Def00000C
+S G$turn_verse$0_0$0 Def000017
+S G$past_coll_tile$0_0$0 Def000016
+S G$velocity_counter$0_0$0 Def000000
+S G$stamina_current$0_0$0 Def00000C
+S _no_whip_counter Def00000F
+S G$no_whip_counter$0_0$0 Def00000F
+S _whip_counter Def000006
+S _s_flame Def00001B
+S G$s_flame$0_0$0 Def00001B
+S G$whip_counter$0_0$0 Def000006
+S _frm_skip Def000004
+S _no_whip_over_stamina Def000010
+S G$no_whip_over_stamina$0_0$0 Def000010
+S G$frm_skip$0_0$0 Def000004
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_255 size A5B flags 0 addr 0
+S A$SpriteHorse$1100 Def00040A
+S A$SpriteHorse$1010 Def0003A7
+S A$SpriteHorse$2100 Def0008B9
+S A$SpriteHorse$1200 Def00048C
+S A$SpriteHorse$1101 Def00040C
+S A$SpriteHorse$1020 Def0003B0
+S A$SpriteHorse$1011 Def0003A9
+S A$SpriteHorse$1002 Def00039E
+S _a_horse_h_idle Def000056
+S _Start_SpriteHorse Def000000
+S A$SpriteHorse$2110 Def0008C1
+S A$SpriteHorse$2101 Def0008BA
+S A$SpriteHorse$2020 Def000864
+S A$SpriteHorse$1300 Def000508
+S A$SpriteHorse$1210 Def00049B
+S A$SpriteHorse$1201 Def00048D
+S A$SpriteHorse$1120 Def000421
+S A$SpriteHorse$1102 Def00040E
+S A$SpriteHorse$1021 Def0003B3
+S A$SpriteHorse$1003 Def0003A1
+S A$SpriteHorse$2210 Def000914
+S A$SpriteHorse$2201 Def00090F
+S A$SpriteHorse$2120 Def0008C9
+S A$SpriteHorse$2030 Def000876
+S A$SpriteHorse$2021 Def000866
+S A$SpriteHorse$2012 Def00085B
+S A$SpriteHorse$2003 Def000853
+S A$SpriteHorse$1400 Def00058C
+S A$SpriteHorse$1301 Def000509
+S A$SpriteHorse$1211 Def00049D
+S A$SpriteHorse$1202 Def00048E
+S A$SpriteHorse$1130 Def000430
+S A$SpriteHorse$1121 Def000422
+S C$SpriteHorse.c$102$2_0$204 Def000138
+S A$SpriteHorse$2310 Def00098B
+S A$SpriteHorse$2211 Def000915
+S A$SpriteHorse$2130 Def0008D3
+S A$SpriteHorse$2121 Def0008CA
+S A$SpriteHorse$2031 Def000877
+S A$SpriteHorse$2022 Def000867
+S A$SpriteHorse$2013 Def00085D
+S A$SpriteHorse$2004 Def000854
+S A$SpriteHorse$1500 Def000609
+S A$SpriteHorse$1410 Def000598
+S A$SpriteHorse$1401 Def00058E
+S A$SpriteHorse$1311 Def000518
+S A$SpriteHorse$1302 Def00050B
+S A$SpriteHorse$1230 Def0004B2
+S A$SpriteHorse$1203 Def000490
+S A$SpriteHorse$1140 Def00043C
+S A$SpriteHorse$1131 Def000432
+S A$SpriteHorse$1122 Def000424
+S A$SpriteHorse$1113 Def000419
+S A$SpriteHorse$1104 Def00040F
+S A$SpriteHorse$1050 Def0003D1
+S C$SpriteHorse.c$103$1_1$204 Def00013B
+S G$a_horse_h_idle$0_0$0 Def000056
+S _a_horse_h Def00003D
+S A$SpriteHorse$2320 Def000994
+S A$SpriteHorse$2311 Def00098C
+S A$SpriteHorse$2230 Def000924
+S A$SpriteHorse$2212 Def000916
+S A$SpriteHorse$2131 Def0008D4
+S A$SpriteHorse$2113 Def0008C2
+S A$SpriteHorse$2041 Def000880
+S A$SpriteHorse$2032 Def000878
+S A$SpriteHorse$2023 Def00086A
+S A$SpriteHorse$2014 Def00085E
+S A$SpriteHorse$2005 Def000857
+S A$SpriteHorse$1600 Def00067B
+S A$SpriteHorse$1510 Def000617
+S A$SpriteHorse$1501 Def00060C
+S A$SpriteHorse$1420 Def0005A3
+S A$SpriteHorse$1402 Def000590
+S A$SpriteHorse$1321 Def000521
+S A$SpriteHorse$1312 Def00051A
+S A$SpriteHorse$1303 Def00050C
+S A$SpriteHorse$1240 Def0004C1
+S A$SpriteHorse$1231 Def0004B4
+S A$SpriteHorse$1213 Def00049E
+S A$SpriteHorse$1204 Def000492
+S A$SpriteHorse$1150 Def00044C
+S A$SpriteHorse$1141 Def00043D
+S A$SpriteHorse$1123 Def000427
+S A$SpriteHorse$1114 Def00041C
+S A$SpriteHorse$1105 Def000411
+S A$SpriteHorse$1051 Def0003D3
+S A$SpriteHorse$1033 Def0003BD
+S A$SpriteHorse$1015 Def0003AB
+S C$SpriteHorse.c$201$3_2$230 Def0004A0
+S A$SpriteHorse$2420 Def000A00
+S A$SpriteHorse$2402 Def0009EC
+S A$SpriteHorse$2330 Def0009A3
+S A$SpriteHorse$2321 Def000995
+S A$SpriteHorse$2312 Def00098E
+S A$SpriteHorse$2303 Def000984
+S A$SpriteHorse$2240 Def000934
+S A$SpriteHorse$2231 Def000926
+S A$SpriteHorse$2141 Def0008DB
+S A$SpriteHorse$2132 Def0008D5
+S A$SpriteHorse$2114 Def0008C3
+S A$SpriteHorse$2105 Def0008BB
+S A$SpriteHorse$2060 Def000892
+S A$SpriteHorse$2051 Def00088B
+S A$SpriteHorse$2042 Def000881
+S A$SpriteHorse$2033 Def00087A
+S A$SpriteHorse$2024 Def00086C
+S A$SpriteHorse$2015 Def00085F
+S A$SpriteHorse$2006 Def000858
+S A$SpriteHorse$1700 Def0006F9
+S A$SpriteHorse$1610 Def000687
+S A$SpriteHorse$1601 Def00067C
+S A$SpriteHorse$1520 Def00061E
+S A$SpriteHorse$1502 Def00060E
+S A$SpriteHorse$1430 Def0005B2
+S A$SpriteHorse$1421 Def0005A5
+S A$SpriteHorse$1340 Def000539
+S A$SpriteHorse$1322 Def000524
+S A$SpriteHorse$1313 Def00051C
+S A$SpriteHorse$1304 Def00050D
+S A$SpriteHorse$1250 Def0004CD
+S A$SpriteHorse$1241 Def0004C3
+S A$SpriteHorse$1232 Def0004B5
+S A$SpriteHorse$1205 Def000494
+S A$SpriteHorse$1160 Def000458
+S A$SpriteHorse$1142 Def00043F
+S A$SpriteHorse$1124 Def000429
+S A$SpriteHorse$1115 Def00041E
+S A$SpriteHorse$1106 Def000412
+S A$SpriteHorse$1070 Def0003E5
+S A$SpriteHorse$1052 Def0003D4
+S A$SpriteHorse$1034 Def0003C0
+S A$SpriteHorse$1016 Def0003AE
+S C$SpriteHorse.c$132$2_1$212 Def000287
+S C$SpriteHorse.c$114$1_1$204 Def00019D
+S C$SpriteHorse.c$105$1_1$204 Def000154
+S A$SpriteHorse$2520 Def000A5A
+S A$SpriteHorse$2430 Def000A0D
+S A$SpriteHorse$2421 Def000A02
+S A$SpriteHorse$2403 Def0009EF
+S A$SpriteHorse$2331 Def0009A5
+S A$SpriteHorse$2322 Def000996
+S A$SpriteHorse$2304 Def000987
+S A$SpriteHorse$2250 Def00093E
+S A$SpriteHorse$2241 Def000936
+S A$SpriteHorse$2232 Def000927
+S A$SpriteHorse$2160 Def0008EB
+S A$SpriteHorse$2142 Def0008DD
+S A$SpriteHorse$2133 Def0008D6
+S A$SpriteHorse$2115 Def0008C4
+S A$SpriteHorse$2106 Def0008BD
+S A$SpriteHorse$2070 Def00089F
+S A$SpriteHorse$2061 Def000894
+S A$SpriteHorse$2052 Def00088D
+S A$SpriteHorse$2043 Def000882
+S A$SpriteHorse$2034 Def00087B
+S A$SpriteHorse$2025 Def00086D
+S A$SpriteHorse$2007 Def000859
+S A$SpriteHorse$1701 Def0006FA
+S A$SpriteHorse$1620 Def000691
+S A$SpriteHorse$1611 Def000688
+S A$SpriteHorse$1602 Def00067D
+S A$SpriteHorse$1530 Def00062C
+S A$SpriteHorse$1521 Def000621
+S A$SpriteHorse$1440 Def0005BE
+S A$SpriteHorse$1431 Def0005B4
+S A$SpriteHorse$1422 Def0005A6
+S A$SpriteHorse$1404 Def000591
+S A$SpriteHorse$1350 Def000546
+S A$SpriteHorse$1341 Def00053A
+S A$SpriteHorse$1323 Def000525
+S A$SpriteHorse$1305 Def00050F
+S A$SpriteHorse$1260 Def0004D9
+S A$SpriteHorse$1242 Def0004C5
+S A$SpriteHorse$1233 Def0004B6
+S A$SpriteHorse$1224 Def0004A7
+S A$SpriteHorse$1206 Def000496
+S A$SpriteHorse$1170 Def000466
+S A$SpriteHorse$1161 Def00045B
+S A$SpriteHorse$1152 Def00044D
+S A$SpriteHorse$1143 Def000441
+S A$SpriteHorse$1125 Def00042B
+S A$SpriteHorse$1107 Def000414
+S A$SpriteHorse$1080 Def0003EF
+S A$SpriteHorse$1062 Def0003DD
+S A$SpriteHorse$1053 Def0003D5
+S A$SpriteHorse$1044 Def0003C7
+S A$SpriteHorse$1026 Def0003B5
+S A$SpriteHorse$1008 Def0003A3
+S C$SpriteHorse.c$200$2_2$225 Def000482
+S C$SpriteHorse.c$151$1_1$204 Def0002FE
+S C$SpriteHorse.c$104$2_1$205 Def00014A
+S G$a_horse_h$0_0$0 Def00003D
+S A$SpriteHorse$2503 Def000A59
+S A$SpriteHorse$2440 Def000A19
+S A$SpriteHorse$2431 Def000A0E
+S A$SpriteHorse$2422 Def000A03
+S A$SpriteHorse$2413 Def0009F8
+S A$SpriteHorse$2404 Def0009F0
+S A$SpriteHorse$2350 Def0009B3
+S A$SpriteHorse$2323 Def000998
+S A$SpriteHorse$2305 Def000988
+S A$SpriteHorse$2251 Def00093F
+S A$SpriteHorse$2242 Def000938
+S A$SpriteHorse$2233 Def000929
+S A$SpriteHorse$2170 Def0008F4
+S A$SpriteHorse$2161 Def0008ED
+S A$SpriteHorse$2134 Def0008D8
+S A$SpriteHorse$2125 Def0008CB
+S A$SpriteHorse$2107 Def0008BE
+S A$SpriteHorse$2080 Def0008A5
+S A$SpriteHorse$2071 Def0008A0
+S A$SpriteHorse$2062 Def000896
+S A$SpriteHorse$2053 Def00088E
+S A$SpriteHorse$2044 Def000885
+S A$SpriteHorse$2035 Def00087C
+S A$SpriteHorse$2026 Def00086F
+S A$SpriteHorse$1900 Def0007E3
+S A$SpriteHorse$1810 Def000788
+S A$SpriteHorse$1720 Def000710
+S A$SpriteHorse$1702 Def0006FB
+S A$SpriteHorse$1621 Def000692
+S A$SpriteHorse$1612 Def000689
+S A$SpriteHorse$1603 Def000680
+S A$SpriteHorse$1540 Def00063A
+S A$SpriteHorse$1531 Def00062F
+S A$SpriteHorse$1522 Def000622
+S A$SpriteHorse$1450 Def0005CA
+S A$SpriteHorse$1432 Def0005B6
+S A$SpriteHorse$1423 Def0005A7
+S A$SpriteHorse$1360 Def000554
+S A$SpriteHorse$1351 Def000549
+S A$SpriteHorse$1342 Def00053B
+S A$SpriteHorse$1333 Def000531
+S A$SpriteHorse$1324 Def000527
+S A$SpriteHorse$1315 Def00051D
+S A$SpriteHorse$1306 Def000511
+S A$SpriteHorse$1261 Def0004DA
+S A$SpriteHorse$1234 Def0004B8
+S A$SpriteHorse$1225 Def0004AA
+S A$SpriteHorse$1207 Def000497
+S A$SpriteHorse$1180 Def000475
+S A$SpriteHorse$1171 Def000467
+S A$SpriteHorse$1162 Def00045D
+S A$SpriteHorse$1153 Def00044F
+S A$SpriteHorse$1144 Def000443
+S A$SpriteHorse$1108 Def000416
+S A$SpriteHorse$1090 Def0003FB
+S A$SpriteHorse$1063 Def0003DE
+S A$SpriteHorse$1045 Def0003CA
+S A$SpriteHorse$1027 Def0003B7
+S A$SpriteHorse$1009 Def0003A5
+S C$SpriteHorse.c$203$3_2$231 Def0004C8
+S C$SpriteHorse.c$170$1_1$204 Def0003A3
+S C$SpriteHorse.c$111$2_1$208 Def000198
+S A$SpriteHorse$2450 Def000A2A
+S A$SpriteHorse$2432 Def000A11
+S A$SpriteHorse$2423 Def000A04
+S A$SpriteHorse$2414 Def0009FB
+S A$SpriteHorse$2405 Def0009F1
+S A$SpriteHorse$2360 Def0009BA
+S A$SpriteHorse$2351 Def0009B5
+S A$SpriteHorse$2333 Def0009A6
+S A$SpriteHorse$2324 Def00099A
+S A$SpriteHorse$2270 Def00095A
+S A$SpriteHorse$2252 Def000942
+S A$SpriteHorse$2234 Def00092B
+S A$SpriteHorse$2216 Def000918
+S A$SpriteHorse$2180 Def0008FD
+S A$SpriteHorse$2171 Def0008F5
+S A$SpriteHorse$2162 Def0008F0
+S A$SpriteHorse$2126 Def0008CE
+S A$SpriteHorse$2108 Def0008BF
+S A$SpriteHorse$2090 Def0008AD
+S A$SpriteHorse$2081 Def0008A7
+S A$SpriteHorse$2072 Def0008A1
+S A$SpriteHorse$2063 Def000898
+S A$SpriteHorse$2054 Def00088F
+S A$SpriteHorse$2045 Def000887
+S A$SpriteHorse$2036 Def00087D
+S A$SpriteHorse$2027 Def000870
+S A$SpriteHorse$1910 Def0007EF
+S A$SpriteHorse$1901 Def0007E4
+S A$SpriteHorse$1730 Def00071D
+S A$SpriteHorse$1721 Def000712
+S A$SpriteHorse$1712 Def000703
+S A$SpriteHorse$1703 Def0006FD
+S A$SpriteHorse$1640 Def0006A8
+S A$SpriteHorse$1631 Def00069E
+S A$SpriteHorse$1622 Def000695
+S A$SpriteHorse$1550 Def000649
+S A$SpriteHorse$1541 Def00063C
+S A$SpriteHorse$1532 Def000630
+S A$SpriteHorse$1523 Def000625
+S A$SpriteHorse$1514 Def000619
+S A$SpriteHorse$1451 Def0005CB
+S A$SpriteHorse$1424 Def0005A9
+S A$SpriteHorse$1415 Def00059B
+S A$SpriteHorse$1370 Def000563
+S A$SpriteHorse$1361 Def000555
+S A$SpriteHorse$1352 Def00054B
+S A$SpriteHorse$1343 Def00053D
+S A$SpriteHorse$1334 Def000534
+S A$SpriteHorse$1325 Def000528
+S A$SpriteHorse$1316 Def00051F
+S A$SpriteHorse$1307 Def000513
+S A$SpriteHorse$1280 Def0004F3
+S A$SpriteHorse$1271 Def0004E9
+S A$SpriteHorse$1262 Def0004DC
+S A$SpriteHorse$1244 Def0004C6
+S A$SpriteHorse$1235 Def0004BA
+S A$SpriteHorse$1226 Def0004AB
+S A$SpriteHorse$1217 Def0004A0
+S A$SpriteHorse$1181 Def000477
+S A$SpriteHorse$1172 Def000468
+S A$SpriteHorse$1154 Def000452
+S A$SpriteHorse$1145 Def000445
+S A$SpriteHorse$1136 Def000435
+S A$SpriteHorse$1109 Def000417
+S A$SpriteHorse$1091 Def0003FD
+S A$SpriteHorse$1064 Def0003E0
+S A$SpriteHorse$1046 Def0003CB
+S A$SpriteHorse$1028 Def0003B9
+S C$SpriteHorse.c$220$2_2$225 Def0005C0
+S C$SpriteHorse.c$202$2_2$225 Def0004A7
+S C$SpriteHorse.c$140$3_1$215 Def0002BE
+S C$SpriteHorse.c$135$2_1$212 Def00029C
+S C$SpriteHorse.c$133$3_1$213 Def000294
+S C$SpriteHorse.c$118$3_1$210 Def00020C
+S C$SpriteHorse.c$108$1_1$204 Def000167
+S A$SpriteHorse$2460 Def000A36
+S A$SpriteHorse$2451 Def000A2B
+S A$SpriteHorse$2424 Def000A06
+S A$SpriteHorse$2415 Def0009FD
+S A$SpriteHorse$2406 Def0009F3
+S A$SpriteHorse$2370 Def0009C6
+S A$SpriteHorse$2325 Def00099C
+S A$SpriteHorse$2280 Def000965
+S A$SpriteHorse$2262 Def00094D
+S A$SpriteHorse$2253 Def000945
+S A$SpriteHorse$2244 Def000939
+S A$SpriteHorse$2235 Def00092D
+S A$SpriteHorse$2226 Def00091D
+S A$SpriteHorse$2217 Def00091A
+S A$SpriteHorse$2190 Def000906
+S A$SpriteHorse$2181 Def0008FF
+S A$SpriteHorse$2154 Def0008E4
+S A$SpriteHorse$2127 Def0008CF
+S A$SpriteHorse$2118 Def0008C5
+S A$SpriteHorse$2109 Def0008C0
+S A$SpriteHorse$2091 Def0008AE
+S A$SpriteHorse$2082 Def0008A8
+S A$SpriteHorse$2064 Def00089A
+S A$SpriteHorse$2055 Def000890
+S A$SpriteHorse$2046 Def000888
+S A$SpriteHorse$2037 Def00087E
+S A$SpriteHorse$2028 Def000872
+S A$SpriteHorse$2019 Def000861
+S A$SpriteHorse$1911 Def0007F2
+S A$SpriteHorse$1830 Def00079B
+S A$SpriteHorse$1740 Def000728
+S A$SpriteHorse$1731 Def00071F
+S A$SpriteHorse$1722 Def000713
+S A$SpriteHorse$1713 Def000706
+S A$SpriteHorse$1650 Def0006B4
+S A$SpriteHorse$1641 Def0006A9
+S A$SpriteHorse$1632 Def0006A1
+S A$SpriteHorse$1623 Def000696
+S A$SpriteHorse$1614 Def00068B
+S A$SpriteHorse$1560 Def00064E
+S A$SpriteHorse$1542 Def00063D
+S A$SpriteHorse$1533 Def000633
+S A$SpriteHorse$1524 Def000626
+S A$SpriteHorse$1515 Def00061C
+S A$SpriteHorse$1470 Def0005E4
+S A$SpriteHorse$1461 Def0005DA
+S A$SpriteHorse$1452 Def0005CD
+S A$SpriteHorse$1434 Def0005B7
+S A$SpriteHorse$1425 Def0005AB
+S A$SpriteHorse$1416 Def00059C
+S A$SpriteHorse$1371 Def000565
+S A$SpriteHorse$1362 Def000556
+S A$SpriteHorse$1344 Def000540
+S A$SpriteHorse$1335 Def000536
+S A$SpriteHorse$1326 Def00052A
+S A$SpriteHorse$1317 Def000520
+S A$SpriteHorse$1308 Def000515
+S A$SpriteHorse$1281 Def0004F5
+S A$SpriteHorse$1272 Def0004EB
+S A$SpriteHorse$1263 Def0004DD
+S A$SpriteHorse$1236 Def0004BC
+S A$SpriteHorse$1227 Def0004AD
+S A$SpriteHorse$1218 Def0004A3
+S A$SpriteHorse$1209 Def000499
+S A$SpriteHorse$1173 Def00046A
+S A$SpriteHorse$1155 Def000454
+S A$SpriteHorse$1146 Def000446
+S A$SpriteHorse$1137 Def000438
+S A$SpriteHorse$1092 Def0003FE
+S A$SpriteHorse$1074 Def0003E8
+S A$SpriteHorse$1065 Def0003E1
+S A$SpriteHorse$1047 Def0003CE
+S A$SpriteHorse$1038 Def0003C2
+S A$SpriteHorse$1029 Def0003BB
+S C$SpriteHorse.c$230$2_3$242 Def00064B
+S C$SpriteHorse.c$223$3_2$240 Def000609
+S C$SpriteHorse.c$212$2_2$225 Def000539
+S C$SpriteHorse.c$211$3_2$234 Def000531
+S C$SpriteHorse.c$171$2_1$222 Def0003AB
+S C$SpriteHorse.c$141$3_1$215 Def0002C6
+S C$SpriteHorse.c$127$3_1$211 Def000267
+S C$SpriteHorse.c$121$2_1$209 Def000210
+S C$SpriteHorse.c$119$3_1$210 Def00020C
+S C$SpriteHorse.c$106$2_1$206 Def00015E
+S G$Update_SpriteHorse$0$0 Def000058
+S A$SpriteHorse$2452 Def000A2D
+S A$SpriteHorse$2425 Def000A09
+S A$SpriteHorse$2407 Def0009F4
+S A$SpriteHorse$2344 Def0009AC
+S A$SpriteHorse$2326 Def00099E
+S A$SpriteHorse$2317 Def00098F
+S A$SpriteHorse$2290 Def000974
+S A$SpriteHorse$2281 Def000967
+S A$SpriteHorse$2263 Def00094F
+S A$SpriteHorse$2254 Def000946
+S A$SpriteHorse$2236 Def00092F
+S A$SpriteHorse$2227 Def000920
+S A$SpriteHorse$2218 Def00091B
+S A$SpriteHorse$2209 Def000911
+S A$SpriteHorse$2191 Def000908
+S A$SpriteHorse$2155 Def0008E5
+S A$SpriteHorse$2146 Def0008DF
+S A$SpriteHorse$2128 Def0008D0
+S A$SpriteHorse$2119 Def0008C8
+S A$SpriteHorse$2092 Def0008AF
+S A$SpriteHorse$2029 Def000875
+S A$SpriteHorse$1930 Def000804
+S A$SpriteHorse$1903 Def0007E5
+S A$SpriteHorse$1831 Def00079D
+S A$SpriteHorse$1750 Def000736
+S A$SpriteHorse$1741 Def000729
+S A$SpriteHorse$1714 Def000707
+S A$SpriteHorse$1705 Def0006FF
+S A$SpriteHorse$1660 Def0006C2
+S A$SpriteHorse$1651 Def0006B5
+S A$SpriteHorse$1633 Def0006A2
+S A$SpriteHorse$1624 Def000697
+S A$SpriteHorse$1561 Def000650
+S A$SpriteHorse$1543 Def00063E
+S A$SpriteHorse$1534 Def000634
+S A$SpriteHorse$1507 Def000610
+S A$SpriteHorse$1480 Def0005F0
+S A$SpriteHorse$1471 Def0005E6
+S A$SpriteHorse$1462 Def0005DC
+S A$SpriteHorse$1453 Def0005CE
+S A$SpriteHorse$1426 Def0005AD
+S A$SpriteHorse$1417 Def00059D
+S A$SpriteHorse$1408 Def000593
+S A$SpriteHorse$1390 Def00057D
+S A$SpriteHorse$1381 Def000571
+S A$SpriteHorse$1363 Def000558
+S A$SpriteHorse$1345 Def000542
+S A$SpriteHorse$1327 Def00052C
+S A$SpriteHorse$1309 Def000516
+S A$SpriteHorse$1273 Def0004ED
+S A$SpriteHorse$1264 Def0004DE
+S A$SpriteHorse$1255 Def0004CF
+S A$SpriteHorse$1237 Def0004BE
+S A$SpriteHorse$1228 Def0004AF
+S A$SpriteHorse$1219 Def0004A5
+S A$SpriteHorse$1183 Def000478
+S A$SpriteHorse$1174 Def00046C
+S A$SpriteHorse$1156 Def000456
+S A$SpriteHorse$1138 Def000439
+S A$SpriteHorse$1129 Def00042D
+S A$SpriteHorse$1093 Def0003FF
+S A$SpriteHorse$1084 Def0003F2
+S A$SpriteHorse$1075 Def0003E9
+S A$SpriteHorse$1066 Def0003E2
+S A$SpriteHorse$1057 Def0003D8
+S A$SpriteHorse$1048 Def0003CF
+S A$SpriteHorse$1039 Def0003C5
+S C$SpriteHorse.c$303$2_3$242 Def00095D
+S C$SpriteHorse.c$222$2_2$225 Def0005E8
+S C$SpriteHorse.c$205$3_2$232 Def0004F0
+S C$SpriteHorse.c$204$2_2$225 Def0004CF
+S C$SpriteHorse.c$172$2_1$222 Def0003B0
+S C$SpriteHorse.c$164$3_1$220 Def000390
+S C$SpriteHorse.c$128$3_1$211 Def000274
+S C$SpriteHorse.c$122$2_1$209 Def000210
+S A$SpriteHorse$2480 Def000A45
+S A$SpriteHorse$2453 Def000A2E
+S A$SpriteHorse$2444 Def000A1B
+S A$SpriteHorse$2426 Def000A0C
+S A$SpriteHorse$2408 Def0009F5
+S A$SpriteHorse$2390 Def0009E1
+S A$SpriteHorse$2372 Def0009C8
+S A$SpriteHorse$2363 Def0009BC
+S A$SpriteHorse$2345 Def0009AF
+S A$SpriteHorse$2327 Def00099F
+S A$SpriteHorse$2318 Def000992
+S A$SpriteHorse$2309 Def000989
+S A$SpriteHorse$2291 Def000976
+S A$SpriteHorse$2264 Def000950
+S A$SpriteHorse$2255 Def000947
+S A$SpriteHorse$2237 Def000931
+S A$SpriteHorse$2228 Def000921
+S A$SpriteHorse$2156 Def0008E6
+S A$SpriteHorse$2147 Def0008E1
+S A$SpriteHorse$2138 Def0008D9
+S A$SpriteHorse$2129 Def0008D1
+S A$SpriteHorse$2093 Def0008B0
+S A$SpriteHorse$1940 Def00080D
+S A$SpriteHorse$1931 Def000805
+S A$SpriteHorse$1922 Def0007FD
+S A$SpriteHorse$1904 Def0007E7
+S A$SpriteHorse$1850 Def0007B0
+S A$SpriteHorse$1823 Def000791
+S A$SpriteHorse$1814 Def00078A
+S A$SpriteHorse$1760 Def000740
+S A$SpriteHorse$1751 Def000737
+S A$SpriteHorse$1742 Def00072A
+S A$SpriteHorse$1724 Def000715
+S A$SpriteHorse$1715 Def000708
+S A$SpriteHorse$1670 Def0006D2
+S A$SpriteHorse$1661 Def0006C4
+S A$SpriteHorse$1652 Def0006B6
+S A$SpriteHorse$1643 Def0006AA
+S A$SpriteHorse$1634 Def0006A3
+S A$SpriteHorse$1625 Def000698
+S A$SpriteHorse$1616 Def00068C
+S A$SpriteHorse$1580 Def000662
+S A$SpriteHorse$1544 Def00063F
+S A$SpriteHorse$1535 Def000635
+S A$SpriteHorse$1526 Def000628
+S A$SpriteHorse$1508 Def000613
+S A$SpriteHorse$1490 Def000600
+S A$SpriteHorse$1481 Def0005F2
+S A$SpriteHorse$1463 Def0005DE
+S A$SpriteHorse$1454 Def0005CF
+S A$SpriteHorse$1445 Def0005C0
+S A$SpriteHorse$1427 Def0005AF
+S A$SpriteHorse$1418 Def00059F
+S A$SpriteHorse$1409 Def000596
+S A$SpriteHorse$1391 Def00057F
+S A$SpriteHorse$1382 Def000574
+S A$SpriteHorse$1373 Def000566
+S A$SpriteHorse$1364 Def00055A
+S A$SpriteHorse$1346 Def000544
+S A$SpriteHorse$1328 Def00052D
+S A$SpriteHorse$1265 Def0004E0
+S A$SpriteHorse$1256 Def0004D2
+S A$SpriteHorse$1238 Def0004BF
+S A$SpriteHorse$1229 Def0004B1
+S A$SpriteHorse$1175 Def00046E
+S A$SpriteHorse$1148 Def000448
+S A$SpriteHorse$1139 Def00043B
+S A$SpriteHorse$1094 Def000401
+S A$SpriteHorse$1085 Def0003F5
+S A$SpriteHorse$1058 Def0003DB
+S A$SpriteHorse$1049 Def0003D0
+S C$SpriteHorse.c$214$2_2$225 Def00054E
+S C$SpriteHorse.c$180$1_2$224 Def0003DD
+S C$SpriteHorse.c$174$1_1$204 Def0003B5
+S C$SpriteHorse.c$165$3_1$220 Def000395
+S C$SpriteHorse.c$138$2_1$212 Def0002B2
+S C$SpriteHorse.c$129$3_1$211 Def00027D
+S C$SpriteHorse.c$123$2_1$209 Def000215
+S A$SpriteHorse$2490 Def000A51
+S A$SpriteHorse$2481 Def000A48
+S A$SpriteHorse$2454 Def000A30
+S A$SpriteHorse$2445 Def000A1E
+S A$SpriteHorse$2409 Def0009F6
+S A$SpriteHorse$2382 Def0009D5
+S A$SpriteHorse$2373 Def0009CB
+S A$SpriteHorse$2364 Def0009BD
+S A$SpriteHorse$2346 Def0009B1
+S A$SpriteHorse$2337 Def0009A8
+S A$SpriteHorse$2319 Def000993
+S A$SpriteHorse$2292 Def000978
+S A$SpriteHorse$2283 Def000968
+S A$SpriteHorse$2265 Def000951
+S A$SpriteHorse$2256 Def000948
+S A$SpriteHorse$2238 Def000932
+S A$SpriteHorse$2229 Def000923
+S A$SpriteHorse$2175 Def0008F7
+S A$SpriteHorse$2157 Def0008E8
+S A$SpriteHorse$2148 Def0008E2
+S A$SpriteHorse$2094 Def0008B1
+S A$SpriteHorse$2076 Def0008A3
+S A$SpriteHorse$1950 Def00081A
+S A$SpriteHorse$1941 Def000810
+S A$SpriteHorse$1932 Def000806
+S A$SpriteHorse$1923 Def0007FF
+S A$SpriteHorse$1905 Def0007E8
+S A$SpriteHorse$1860 Def0007B9
+S A$SpriteHorse$1851 Def0007B1
+S A$SpriteHorse$1842 Def0007A7
+S A$SpriteHorse$1824 Def000793
+S A$SpriteHorse$1815 Def00078D
+S A$SpriteHorse$1761 Def000741
+S A$SpriteHorse$1752 Def000738
+S A$SpriteHorse$1743 Def00072B
+S A$SpriteHorse$1725 Def000717
+S A$SpriteHorse$1716 Def000709
+S A$SpriteHorse$1707 Def000700
+S A$SpriteHorse$1680 Def0006E3
+S A$SpriteHorse$1671 Def0006D3
+S A$SpriteHorse$1662 Def0006C5
+S A$SpriteHorse$1653 Def0006B8
+S A$SpriteHorse$1644 Def0006AC
+S A$SpriteHorse$1626 Def00069B
+S A$SpriteHorse$1617 Def00068D
+S A$SpriteHorse$1608 Def000683
+S A$SpriteHorse$1590 Def00066E
+S A$SpriteHorse$1581 Def000664
+S A$SpriteHorse$1572 Def000659
+S A$SpriteHorse$1554 Def00064B
+S A$SpriteHorse$1545 Def000642
+S A$SpriteHorse$1509 Def000615
+S A$SpriteHorse$1482 Def0005F3
+S A$SpriteHorse$1455 Def0005D1
+S A$SpriteHorse$1446 Def0005C3
+S A$SpriteHorse$1428 Def0005B0
+S A$SpriteHorse$1419 Def0005A2
+S A$SpriteHorse$1392 Def000580
+S A$SpriteHorse$1383 Def000576
+S A$SpriteHorse$1374 Def000568
+S A$SpriteHorse$1365 Def00055C
+S A$SpriteHorse$1329 Def00052F
+S A$SpriteHorse$1293 Def000500
+S A$SpriteHorse$1275 Def0004EE
+S A$SpriteHorse$1266 Def0004E2
+S A$SpriteHorse$1257 Def0004D3
+S A$SpriteHorse$1248 Def0004C8
+S A$SpriteHorse$1194 Def000482
+S A$SpriteHorse$1176 Def000470
+S A$SpriteHorse$1167 Def000460
+S A$SpriteHorse$1149 Def00044A
+S A$SpriteHorse$1095 Def000403
+S A$SpriteHorse$1086 Def0003F6
+S C$SpriteHorse.c$307$1_2$224 Def00098F
+S C$SpriteHorse.c$225$3_2$241 Def000619
+S C$SpriteHorse.c$224$2_2$225 Def000610
+S C$SpriteHorse.c$213$3_2$235 Def000546
+S C$SpriteHorse.c$210$2_3$193 Def000521
+S C$SpriteHorse.c$206$2_2$225 Def0004F7
+S C$SpriteHorse.c$152$2_1$217 Def000301
+S C$SpriteHorse.c$136$3_1$214 Def0002AA
+S C$SpriteHorse.c$124$2_1$209 Def00021D
+S C$SpriteHorse.c$115$2_1$209 Def0001BC
+S XG$Start_SpriteHorse$0$0 Def00003C
+S A$SpriteHorse$2491 Def000A52
+S A$SpriteHorse$2482 Def000A49
+S A$SpriteHorse$2464 Def000A38
+S A$SpriteHorse$2455 Def000A31
+S A$SpriteHorse$2446 Def000A21
+S A$SpriteHorse$2437 Def000A13
+S A$SpriteHorse$2419 Def0009FF
+S A$SpriteHorse$2383 Def0009D6
+S A$SpriteHorse$2374 Def0009CD
+S A$SpriteHorse$2365 Def0009C0
+S A$SpriteHorse$2356 Def0009B6
+S A$SpriteHorse$2338 Def0009A9
+S A$SpriteHorse$2329 Def0009A1
+S A$SpriteHorse$2293 Def00097A
+S A$SpriteHorse$2284 Def00096B
+S A$SpriteHorse$2275 Def00095D
+S A$SpriteHorse$2266 Def000954
+S A$SpriteHorse$2257 Def00094B
+S A$SpriteHorse$2248 Def00093B
+S A$SpriteHorse$2176 Def0008F8
+S A$SpriteHorse$2158 Def0008E9
+S A$SpriteHorse$2149 Def0008E3
+S A$SpriteHorse$2095 Def0008B4
+S A$SpriteHorse$2086 Def0008A9
+S A$SpriteHorse$2059 Def000891
+S A$SpriteHorse$1960 Def000825
+S A$SpriteHorse$1951 Def00081B
+S A$SpriteHorse$1924 Def000800
+S A$SpriteHorse$1906 Def0007E9
+S A$SpriteHorse$1861 Def0007BC
+S A$SpriteHorse$1852 Def0007B2
+S A$SpriteHorse$1843 Def0007A9
+S A$SpriteHorse$1825 Def000794
+S A$SpriteHorse$1816 Def00078E
+S A$SpriteHorse$1807 Def000784
+S A$SpriteHorse$1780 Def00075B
+S A$SpriteHorse$1771 Def00074A
+S A$SpriteHorse$1762 Def000742
+S A$SpriteHorse$1753 Def000739
+S A$SpriteHorse$1744 Def00072D
+S A$SpriteHorse$1735 Def000720
+S A$SpriteHorse$1726 Def000719
+S A$SpriteHorse$1717 Def00070A
+S A$SpriteHorse$1708 Def000702
+S A$SpriteHorse$1690 Def0006EF
+S A$SpriteHorse$1681 Def0006E4
+S A$SpriteHorse$1672 Def0006D4
+S A$SpriteHorse$1663 Def0006C7
+S A$SpriteHorse$1654 Def0006B9
+S A$SpriteHorse$1645 Def0006AD
+S A$SpriteHorse$1618 Def00068F
+S A$SpriteHorse$1609 Def000686
+S A$SpriteHorse$1582 Def000666
+S A$SpriteHorse$1573 Def00065A
+S A$SpriteHorse$1546 Def000643
+S A$SpriteHorse$1537 Def000637
+S A$SpriteHorse$1528 Def000629
+S A$SpriteHorse$1492 Def000602
+S A$SpriteHorse$1483 Def0005F5
+S A$SpriteHorse$1465 Def0005DF
+S A$SpriteHorse$1456 Def0005D3
+S A$SpriteHorse$1447 Def0005C4
+S A$SpriteHorse$1438 Def0005B9
+S A$SpriteHorse$1393 Def000581
+S A$SpriteHorse$1375 Def00056B
+S A$SpriteHorse$1366 Def00055E
+S A$SpriteHorse$1357 Def00054E
+S A$SpriteHorse$1294 Def000503
+S A$SpriteHorse$1267 Def0004E4
+S A$SpriteHorse$1258 Def0004D5
+S A$SpriteHorse$1249 Def0004CB
+S A$SpriteHorse$1195 Def000483
+S A$SpriteHorse$1177 Def000471
+S A$SpriteHorse$1168 Def000463
+S A$SpriteHorse$1096 Def000405
+S A$SpriteHorse$1087 Def0003F7
+S C$SpriteHorse.c$250$5_3$250 Def0007A0
+S C$SpriteHorse.c$232$3_3$243 Def00064C
+S C$SpriteHorse.c$216$2_2$225 Def000579
+S C$SpriteHorse.c$207$3_2$233 Def000500
+S C$SpriteHorse.c$160$2_1$219 Def00036C
+S C$SpriteHorse.c$153$2_1$217 Def000306
+S C$SpriteHorse.c$125$2_1$209 Def00023D
+S C$SpriteHorse.c$116$2_1$209 Def0001C6
+S C$SpriteHorse.c$109$2_1$207 Def000182
+S A$SpriteHorse$2492 Def000A53
+S A$SpriteHorse$2465 Def000A3B
+S A$SpriteHorse$2447 Def000A24
+S A$SpriteHorse$2438 Def000A16
+S A$SpriteHorse$2384 Def0009D9
+S A$SpriteHorse$2375 Def0009CE
+S A$SpriteHorse$2366 Def0009C1
+S A$SpriteHorse$2357 Def0009B9
+S A$SpriteHorse$2339 Def0009AA
+S A$SpriteHorse$2294 Def00097C
+S A$SpriteHorse$2285 Def00096C
+S A$SpriteHorse$2276 Def000960
+S A$SpriteHorse$2267 Def000957
+S A$SpriteHorse$2249 Def00093D
+S A$SpriteHorse$2177 Def0008FA
+S A$SpriteHorse$2159 Def0008EA
+S A$SpriteHorse$2096 Def0008B5
+S A$SpriteHorse$2087 Def0008AA
+S A$SpriteHorse$2069 Def00089C
+S A$SpriteHorse$1961 Def000827
+S A$SpriteHorse$1952 Def00081C
+S A$SpriteHorse$1925 Def000801
+S A$SpriteHorse$1916 Def0007F5
+S A$SpriteHorse$1907 Def0007EB
+S A$SpriteHorse$1880 Def0007CB
+S A$SpriteHorse$1853 Def0007B4
+S A$SpriteHorse$1844 Def0007AA
+S A$SpriteHorse$1826 Def000795
+S A$SpriteHorse$1817 Def00078F
+S A$SpriteHorse$1808 Def000786
+S A$SpriteHorse$1790 Def00076E
+S A$SpriteHorse$1781 Def00075C
+S A$SpriteHorse$1772 Def00074C
+S A$SpriteHorse$1763 Def000744
+S A$SpriteHorse$1754 Def00073B
+S A$SpriteHorse$1745 Def00072E
+S A$SpriteHorse$1736 Def000723
+S A$SpriteHorse$1718 Def00070C
+S A$SpriteHorse$1691 Def0006F0
+S A$SpriteHorse$1682 Def0006E5
+S A$SpriteHorse$1673 Def0006D6
+S A$SpriteHorse$1664 Def0006CA
+S A$SpriteHorse$1655 Def0006BB
+S A$SpriteHorse$1646 Def0006AE
+S A$SpriteHorse$1619 Def000690
+S A$SpriteHorse$1592 Def000670
+S A$SpriteHorse$1574 Def00065D
+S A$SpriteHorse$1565 Def000653
+S A$SpriteHorse$1547 Def000644
+S A$SpriteHorse$1529 Def00062A
+S A$SpriteHorse$1493 Def000604
+S A$SpriteHorse$1484 Def0005F6
+S A$SpriteHorse$1457 Def0005D5
+S A$SpriteHorse$1448 Def0005C6
+S A$SpriteHorse$1439 Def0005BC
+S A$SpriteHorse$1394 Def000583
+S A$SpriteHorse$1376 Def00056D
+S A$SpriteHorse$1367 Def00055F
+S A$SpriteHorse$1358 Def000551
+S A$SpriteHorse$1286 Def0004F7
+S A$SpriteHorse$1268 Def0004E6
+S A$SpriteHorse$1259 Def0004D7
+S A$SpriteHorse$1196 Def000484
+S A$SpriteHorse$1187 Def00047A
+S A$SpriteHorse$1169 Def000464
+S A$SpriteHorse$1097 Def000407
+S A$SpriteHorse$1088 Def0003F9
+S A$SpriteHorse$1079 Def0003EC
+S C$SpriteHorse.c$309$1_2$224 Def0009AC
+S C$SpriteHorse.c$183$1_2$224 Def0003E5
+S C$SpriteHorse.c$175$2_1$223 Def0003BD
+S C$SpriteHorse.c$168$2_1$221 Def00039E
+S C$SpriteHorse.c$161$2_1$219 Def000371
+S C$SpriteHorse.c$159$1_1$204 Def000368
+S C$SpriteHorse.c$154$2_1$217 Def00030A
+S C$SpriteHorse.c$126$2_1$209 Def000260
+S A$SpriteHorse$2493 Def000A54
+S A$SpriteHorse$2484 Def000A4A
+S A$SpriteHorse$2475 Def000A3E
+S A$SpriteHorse$2466 Def000A3C
+S A$SpriteHorse$2448 Def000A27
+S A$SpriteHorse$2439 Def000A18
+S A$SpriteHorse$2394 Def0009E3
+S A$SpriteHorse$2385 Def0009DA
+S A$SpriteHorse$2376 Def0009D0
+S A$SpriteHorse$2367 Def0009C2
+S A$SpriteHorse$2295 Def00097E
+S A$SpriteHorse$2286 Def00096D
+S A$SpriteHorse$2277 Def000961
+S A$SpriteHorse$2268 Def000958
+S A$SpriteHorse$2196 Def00090A
+S A$SpriteHorse$2178 Def0008FB
+S A$SpriteHorse$2169 Def0008F1
+S A$SpriteHorse$2097 Def0008B6
+S A$SpriteHorse$2088 Def0008AB
+S A$SpriteHorse$1980 Def000835
+S A$SpriteHorse$1962 Def00082A
+S A$SpriteHorse$1935 Def000807
+S A$SpriteHorse$1926 Def000802
+S A$SpriteHorse$1917 Def0007F8
+S A$SpriteHorse$1908 Def0007EC
+S A$SpriteHorse$1890 Def0007D8
+S A$SpriteHorse$1881 Def0007CC
+S A$SpriteHorse$1872 Def0007C4
+S A$SpriteHorse$1854 Def0007B5
+S A$SpriteHorse$1845 Def0007AB
+S A$SpriteHorse$1836 Def0007A0
+S A$SpriteHorse$1827 Def000796
+S A$SpriteHorse$1818 Def000790
+S A$SpriteHorse$1809 Def000787
+S A$SpriteHorse$1791 Def000771
+S A$SpriteHorse$1782 Def00075E
+S A$SpriteHorse$1773 Def00074D
+S A$SpriteHorse$1764 Def000745
+S A$SpriteHorse$1746 Def000731
+S A$SpriteHorse$1737 Def000724
+S A$SpriteHorse$1728 Def00071A
+S A$SpriteHorse$1719 Def00070E
+S A$SpriteHorse$1683 Def0006E8
+S A$SpriteHorse$1674 Def0006D8
+S A$SpriteHorse$1665 Def0006CB
+S A$SpriteHorse$1656 Def0006BC
+S A$SpriteHorse$1647 Def0006B0
+S A$SpriteHorse$1638 Def0006A4
+S A$SpriteHorse$1593 Def000671
+S A$SpriteHorse$1575 Def00065E
+S A$SpriteHorse$1566 Def000654
+S A$SpriteHorse$1548 Def000645
+S A$SpriteHorse$1539 Def000639
+S A$SpriteHorse$1494 Def000606
+S A$SpriteHorse$1485 Def0005F7
+S A$SpriteHorse$1476 Def0005E8
+S A$SpriteHorse$1458 Def0005D7
+S A$SpriteHorse$1449 Def0005C8
+S A$SpriteHorse$1395 Def000585
+S A$SpriteHorse$1377 Def00056F
+S A$SpriteHorse$1359 Def000552
+S A$SpriteHorse$1287 Def0004FA
+S A$SpriteHorse$1269 Def0004E7
+S A$SpriteHorse$1197 Def000486
+S A$SpriteHorse$1188 Def00047D
+S A$SpriteHorse$1179 Def000473
+S A$SpriteHorse$1098 Def000408
+S A$SpriteHorse$1089 Def0003FA
+S A$SpriteHorse$200 Def00002F
+S C$SpriteHorse.c$221$3_2$239 Def0005E1
+S C$SpriteHorse.c$218$2_2$225 Def00059B
+S C$SpriteHorse.c$215$3_2$236 Def000571
+S C$SpriteHorse.c$184$1_2$224 Def0003E8
+S C$SpriteHorse.c$178$1_1$204 Def0003C7
+S C$SpriteHorse.c$176$2_1$223 Def0003C2
+S C$SpriteHorse.c$162$2_1$219 Def000375
+S C$SpriteHorse.c$155$2_1$217 Def00030E
+S C$SpriteHorse.c$147$2_1$216 Def0002EF
+S A$SpriteHorse$2476 Def000A40
+S A$SpriteHorse$2467 Def000A3D
+S A$SpriteHorse$2449 Def000A28
+S A$SpriteHorse$2395 Def0009E6
+S A$SpriteHorse$2386 Def0009DB
+S A$SpriteHorse$2377 Def0009D1
+S A$SpriteHorse$2368 Def0009C3
+S A$SpriteHorse$2296 Def000980
+S A$SpriteHorse$2287 Def00096E
+S A$SpriteHorse$2278 Def000962
+S A$SpriteHorse$2269 Def000959
+S A$SpriteHorse$2197 Def00090D
+S A$SpriteHorse$2188 Def000902
+S A$SpriteHorse$2179 Def0008FC
+S A$SpriteHorse$2098 Def0008B7
+S A$SpriteHorse$2089 Def0008AC
+S A$SpriteHorse$1990 Def000845
+S A$SpriteHorse$1981 Def000838
+S A$SpriteHorse$1972 Def000832
+S A$SpriteHorse$1954 Def00081D
+S A$SpriteHorse$1945 Def000811
+S A$SpriteHorse$1936 Def000808
+S A$SpriteHorse$1927 Def000803
+S A$SpriteHorse$1918 Def0007FA
+S A$SpriteHorse$1909 Def0007ED
+S A$SpriteHorse$1882 Def0007CD
+S A$SpriteHorse$1873 Def0007C6
+S A$SpriteHorse$1855 Def0007B6
+S A$SpriteHorse$1846 Def0007AC
+S A$SpriteHorse$1837 Def0007A3
+S A$SpriteHorse$1828 Def000797
+S A$SpriteHorse$1792 Def000773
+S A$SpriteHorse$1783 Def000761
+S A$SpriteHorse$1774 Def00074F
+S A$SpriteHorse$1765 Def000746
+S A$SpriteHorse$1747 Def000732
+S A$SpriteHorse$1738 Def000725
+S A$SpriteHorse$1729 Def00071C
+S A$SpriteHorse$1684 Def0006EA
+S A$SpriteHorse$1675 Def0006DA
+S A$SpriteHorse$1666 Def0006CC
+S A$SpriteHorse$1657 Def0006BE
+S A$SpriteHorse$1648 Def0006B1
+S A$SpriteHorse$1639 Def0006A7
+S A$SpriteHorse$1594 Def000673
+S A$SpriteHorse$1567 Def000657
+S A$SpriteHorse$1558 Def00064C
+S A$SpriteHorse$1549 Def000648
+S A$SpriteHorse$1486 Def0005F9
+S A$SpriteHorse$1477 Def0005EB
+S A$SpriteHorse$1459 Def0005D8
+S A$SpriteHorse$1396 Def000587
+S A$SpriteHorse$1369 Def000561
+S A$SpriteHorse$1288 Def0004FC
+S A$SpriteHorse$1279 Def0004F0
+S A$SpriteHorse$1198 Def000489
+S A$SpriteHorse$1189 Def00047F
+S A$SpriteHorse$201 Def000031
+S G$Destroy_SpriteHorse$0$0 Def000A5A
+S C$SpriteHorse.c$332$3_3$272 Def000A3E
+S C$SpriteHorse.c$316$2_3$271 Def000A3E
+S C$SpriteHorse.c$310$2_2$269 Def0009B3
+S C$SpriteHorse.c$301$3_3$267 Def00094D
+S C$SpriteHorse.c$251$6_3$251 Def0007A7
+S C$SpriteHorse.c$124$2_3$193 Def000984
+S C$SpriteHorse.c$233$3_4$244 Def000653
+S C$SpriteHorse.c$228$2_3$242 Def00061E
+S C$SpriteHorse.c$163$2_1$219 Def000379
+S C$SpriteHorse.c$148$2_1$216 Def0002F4
+S C$SpriteHorse.c$139$3_1$215 Def0002B9
+S A$SpriteHorse$2477 Def000A41
+S A$SpriteHorse$2459 Def000A33
+S A$SpriteHorse$2396 Def0009E7
+S A$SpriteHorse$2387 Def0009DC
+S A$SpriteHorse$2378 Def0009D2
+S A$SpriteHorse$2369 Def0009C4
+S A$SpriteHorse$2297 Def000982
+S A$SpriteHorse$2288 Def000970
+S A$SpriteHorse$2279 Def000964
+S A$SpriteHorse$2189 Def000905
+S A$SpriteHorse$2099 Def0008B8
+S A$SpriteHorse$1991 Def000847
+S A$SpriteHorse$1982 Def000839
+S A$SpriteHorse$1955 Def00081F
+S A$SpriteHorse$1946 Def000814
+S A$SpriteHorse$1937 Def000809
+S A$SpriteHorse$1883 Def0007CE
+S A$SpriteHorse$1874 Def0007C7
+S A$SpriteHorse$1865 Def0007BE
+S A$SpriteHorse$1856 Def0007B8
+S A$SpriteHorse$1847 Def0007AD
+S A$SpriteHorse$1838 Def0007A4
+S A$SpriteHorse$1829 Def000799
+S A$SpriteHorse$1793 Def000774
+S A$SpriteHorse$1784 Def000763
+S A$SpriteHorse$1775 Def000751
+S A$SpriteHorse$1766 Def000747
+S A$SpriteHorse$1748 Def000733
+S A$SpriteHorse$1739 Def000726
+S A$SpriteHorse$1676 Def0006DC
+S A$SpriteHorse$1667 Def0006CD
+S A$SpriteHorse$1658 Def0006BF
+S A$SpriteHorse$1649 Def0006B3
+S A$SpriteHorse$1595 Def000674
+S A$SpriteHorse$1586 Def000668
+S A$SpriteHorse$1568 Def000658
+S A$SpriteHorse$1559 Def00064D
+S A$SpriteHorse$1496 Def000607
+S A$SpriteHorse$1487 Def0005FB
+S A$SpriteHorse$1478 Def0005EC
+S A$SpriteHorse$1469 Def0005E1
+S A$SpriteHorse$1397 Def000589
+S A$SpriteHorse$1388 Def000579
+S A$SpriteHorse$1289 Def0004FE
+S A$SpriteHorse$1199 Def00048A
+S A$SpriteHorse$400 Def0000F7
+S A$SpriteHorse$202 Def000032
+S C$SpriteHorse.c$320$5_3$274 Def0009EC
+S C$SpriteHorse.c$252$6_3$251 Def0007B9
+S C$SpriteHorse.c$242$2_3$193 Def000720
+S C$SpriteHorse.c$234$3_4$244 Def000659
+S A$SpriteHorse$2487 Def000A4C
+S A$SpriteHorse$2478 Def000A42
+S A$SpriteHorse$2397 Def0009E8
+S A$SpriteHorse$2388 Def0009DF
+S A$SpriteHorse$2298 Def000983
+S A$SpriteHorse$2289 Def000972
+S A$SpriteHorse$1992 Def000849
+S A$SpriteHorse$1983 Def00083A
+S A$SpriteHorse$1956 Def000820
+S A$SpriteHorse$1947 Def000815
+S A$SpriteHorse$1938 Def00080A
+S A$SpriteHorse$1884 Def0007CF
+S A$SpriteHorse$1875 Def0007C8
+S A$SpriteHorse$1866 Def0007C0
+S A$SpriteHorse$1848 Def0007AE
+S A$SpriteHorse$1794 Def000776
+S A$SpriteHorse$1785 Def000764
+S A$SpriteHorse$1776 Def000753
+S A$SpriteHorse$1767 Def000749
+S A$SpriteHorse$1758 Def00073C
+S A$SpriteHorse$1749 Def000734
+S A$SpriteHorse$1695 Def0006F1
+S A$SpriteHorse$1677 Def0006DE
+S A$SpriteHorse$1668 Def0006CE
+S A$SpriteHorse$1659 Def0006C1
+S A$SpriteHorse$1596 Def000675
+S A$SpriteHorse$1587 Def00066B
+S A$SpriteHorse$1488 Def0005FD
+S A$SpriteHorse$1479 Def0005EE
+S A$SpriteHorse$1398 Def00058A
+S A$SpriteHorse$1389 Def00057C
+S A$SpriteHorse$1299 Def000505
+S A$SpriteHorse$401 Def0000F8
+S A$SpriteHorse$320 Def00009D
+S A$SpriteHorse$302 Def000089
+S C$SpriteHorse.c$253$6_3$251 Def0007BE
+S C$SpriteHorse.c$242$3_3$247 Def0006A4
+S C$SpriteHorse.c$235$3_4$244 Def00065F
+S C$SpriteHorse.c$217$3_2$237 Def000593
+S C$SpriteHorse.c$194$2_2$225 Def000421
+S C$SpriteHorse.c$185$2_2$225 Def0003EC
+S C$SpriteHorse.c$156$3_1$218 Def00035A
+S A$SpriteHorse$2488 Def000A4D
+S A$SpriteHorse$2479 Def000A44
+S A$SpriteHorse$2398 Def0009EA
+S A$SpriteHorse$2389 Def0009E0
+S A$SpriteHorse$1993 Def00084A
+S A$SpriteHorse$1984 Def00083B
+S A$SpriteHorse$1957 Def000821
+S A$SpriteHorse$1948 Def000816
+S A$SpriteHorse$1939 Def00080B
+S A$SpriteHorse$1894 Def0007D9
+S A$SpriteHorse$1885 Def0007D0
+S A$SpriteHorse$1876 Def0007C9
+S A$SpriteHorse$1867 Def0007C1
+S A$SpriteHorse$1849 Def0007AF
+S A$SpriteHorse$1795 Def000779
+S A$SpriteHorse$1786 Def000766
+S A$SpriteHorse$1777 Def000754
+S A$SpriteHorse$1759 Def00073F
+S A$SpriteHorse$1696 Def0006F4
+S A$SpriteHorse$1678 Def0006E0
+S A$SpriteHorse$1669 Def0006D1
+S A$SpriteHorse$1597 Def000676
+S A$SpriteHorse$1588 Def00066C
+S A$SpriteHorse$1579 Def00065F
+S A$SpriteHorse$1489 Def0005FF
+S A$SpriteHorse$600 Def0001D5
+S A$SpriteHorse$420 Def00010B
+S A$SpriteHorse$402 Def0000F9
+S A$SpriteHorse$321 Def00009F
+S A$SpriteHorse$312 Def000094
+S A$SpriteHorse$303 Def00008C
+S C$SpriteHorse.c$317$3_3$272 Def0009D5
+S C$SpriteHorse.c$261$5_3$254 Def00082D
+S C$SpriteHorse.c$243$3_3$247 Def00074A
+S C$SpriteHorse.c$253$2_3$193 Def000703
+S C$SpriteHorse.c$193$3_2$226 Def000419
+S C$SpriteHorse.c$179$1_2$224 Def0003D8
+S C$SpriteHorse.c$157$3_1$218 Def00035F
+S C$SpriteHorse.c$154$2_3$193 Def0002F9
+S A$SpriteHorse$2498 Def000A57
+S A$SpriteHorse$2489 Def000A50
+S A$SpriteHorse$1985 Def00083D
+S A$SpriteHorse$1967 Def00082D
+S A$SpriteHorse$1958 Def000823
+S A$SpriteHorse$1949 Def000817
+S A$SpriteHorse$1895 Def0007DC
+S A$SpriteHorse$1886 Def0007D1
+S A$SpriteHorse$1877 Def0007CA
+S A$SpriteHorse$1868 Def0007C2
+S A$SpriteHorse$1796 Def00077B
+S A$SpriteHorse$1787 Def000769
+S A$SpriteHorse$1778 Def000756
+S A$SpriteHorse$1697 Def0006F5
+S A$SpriteHorse$1688 Def0006EB
+S A$SpriteHorse$1679 Def0006E2
+S A$SpriteHorse$1598 Def000677
+S A$SpriteHorse$700 Def00024C
+S A$SpriteHorse$610 Def0001E7
+S A$SpriteHorse$601 Def0001D7
+S A$SpriteHorse$520 Def000170
+S A$SpriteHorse$412 Def000102
+S A$SpriteHorse$403 Def0000FC
+S A$SpriteHorse$340 Def0000B2
+S A$SpriteHorse$313 Def000097
+S C$SpriteHorse.c$335$2_3$193 Def000A59
+S C$SpriteHorse.c$321$6_3$275 Def0009F8
+S C$SpriteHorse.c$308$2_3$193 Def000989
+S C$SpriteHorse.c$295$2_3$242 Def00091D
+S C$SpriteHorse.c$254$2_3$193 Def0008A5
+S C$SpriteHorse.c$155$2_3$193 Def000505
+S C$SpriteHorse.c$196$2_2$225 Def000435
+S C$SpriteHorse.c$146$2_3$193 Def0002CF
+S A$SpriteHorse$1995 Def00084C
+S A$SpriteHorse$1986 Def00083E
+S A$SpriteHorse$1968 Def000830
+S A$SpriteHorse$1959 Def000824
+S A$SpriteHorse$1896 Def0007DD
+S A$SpriteHorse$1887 Def0007D2
+S A$SpriteHorse$1797 Def00077C
+S A$SpriteHorse$1788 Def00076B
+S A$SpriteHorse$1779 Def000759
+S A$SpriteHorse$1698 Def0006F6
+S A$SpriteHorse$1689 Def0006EE
+S A$SpriteHorse$1599 Def00067A
+S A$SpriteHorse$800 Def0002B9
+S A$SpriteHorse$710 Def000258
+S A$SpriteHorse$701 Def00024D
+S A$SpriteHorse$620 Def0001FA
+S A$SpriteHorse$611 Def0001E9
+S A$SpriteHorse$602 Def0001DA
+S A$SpriteHorse$521 Def000172
+S A$SpriteHorse$503 Def00015E
+S A$SpriteHorse$440 Def00011E
+S A$SpriteHorse$413 Def000105
+S A$SpriteHorse$404 Def0000FD
+S A$SpriteHorse$341 Def0000B4
+S A$SpriteHorse$332 Def0000A5
+S A$SpriteHorse$314 Def000098
+S A$SpriteHorse$206 Def000034
+S A$SpriteHorse$170 Def00000A
+S C$SpriteHorse.c$256$6_3$251 Def0007F5
+S C$SpriteHorse.c$254$7_3$252 Def0007C4
+S C$SpriteHorse.c$246$2_3$193 Def0006F1
+S C$SpriteHorse.c$236$4_4$245 Def000668
+S C$SpriteHorse.c$219$3_2$238 Def0005B9
+S C$SpriteHorse.c$192$2_3$193 Def0003F2
+S _Update_SpriteHorse Def000058
+S A$SpriteHorse$1996 Def00084E
+S A$SpriteHorse$1987 Def000840
+S A$SpriteHorse$1897 Def0007DE
+S A$SpriteHorse$1888 Def0007D3
+S A$SpriteHorse$1798 Def00077E
+S A$SpriteHorse$1789 Def00076C
+S A$SpriteHorse$1699 Def0006F8
+S A$SpriteHorse$900 Def00032B
+S A$SpriteHorse$801 Def0002BC
+S A$SpriteHorse$720 Def000260
+S A$SpriteHorse$711 Def00025A
+S A$SpriteHorse$702 Def00024E
+S A$SpriteHorse$630 Def000208
+S A$SpriteHorse$621 Def0001FB
+S A$SpriteHorse$612 Def0001EC
+S A$SpriteHorse$603 Def0001DB
+S A$SpriteHorse$540 Def00018C
+S A$SpriteHorse$531 Def000180
+S A$SpriteHorse$522 Def000174
+S A$SpriteHorse$504 Def000161
+S A$SpriteHorse$441 Def000120
+S A$SpriteHorse$432 Def000111
+S A$SpriteHorse$405 Def0000FE
+S A$SpriteHorse$360 Def0000CE
+S A$SpriteHorse$342 Def0000B5
+S A$SpriteHorse$333 Def0000A8
+S A$SpriteHorse$207 Def000037
+S A$SpriteHorse$171 Def00000B
+S C$SpriteHorse.c$318$4_3$273 Def0009E3
+S C$SpriteHorse.c$308$2_2$268 Def0009A8
+S C$SpriteHorse.c$262$4_3$248 Def000832
+S C$SpriteHorse.c$255$7_3$252 Def0007D9
+S C$SpriteHorse.c$244$4_3$248 Def000784
+S C$SpriteHorse.c$198$2_2$225 Def000460
+S C$SpriteHorse.c$195$3_2$227 Def00042D
+S A$SpriteHorse$1997 Def000850
+S A$SpriteHorse$1988 Def000841
+S A$SpriteHorse$1898 Def0007DF
+S A$SpriteHorse$1889 Def0007D5
+S A$SpriteHorse$1799 Def000781
+S A$SpriteHorse$910 Def00033C
+S A$SpriteHorse$901 Def00032D
+S A$SpriteHorse$730 Def00026D
+S A$SpriteHorse$721 Def000263
+S A$SpriteHorse$712 Def00025B
+S A$SpriteHorse$703 Def000251
+S A$SpriteHorse$640 Def00020C
+S A$SpriteHorse$631 Def000209
+S A$SpriteHorse$622 Def0001FC
+S A$SpriteHorse$613 Def0001ED
+S A$SpriteHorse$604 Def0001DD
+S A$SpriteHorse$550 Def000198
+S A$SpriteHorse$541 Def00018E
+S A$SpriteHorse$523 Def000176
+S A$SpriteHorse$514 Def000167
+S A$SpriteHorse$505 Def000162
+S A$SpriteHorse$451 Def00012E
+S A$SpriteHorse$442 Def000122
+S A$SpriteHorse$433 Def000114
+S A$SpriteHorse$424 Def00010D
+S A$SpriteHorse$406 Def0000FF
+S A$SpriteHorse$370 Def0000D7
+S A$SpriteHorse$361 Def0000CF
+S A$SpriteHorse$352 Def0000BE
+S A$SpriteHorse$334 Def0000A9
+S A$SpriteHorse$307 Def00008E
+S A$SpriteHorse$280 Def00006D
+S A$SpriteHorse$271 Def00005E
+S A$SpriteHorse$262 Def000058
+S A$SpriteHorse$217 Def00003C
+S A$SpriteHorse$208 Def000039
+S A$SpriteHorse$190 Def000023
+S A$SpriteHorse$172 Def00000C
+S C$SpriteHorse.c$322$7_3$276 Def0009FF
+S C$SpriteHorse.c$298$2_3$242 Def00091D
+S C$SpriteHorse.c$290$4_3$248 Def000911
+S C$SpriteHorse.c$281$6_5$262 Def0008E4
+S C$SpriteHorse.c$275$6_4$260 Def0008A9
+S C$SpriteHorse.c$272$4_3$248 Def000891
+S C$SpriteHorse.c$90$4_0$201 Def000102
+S A$SpriteHorse$1989 Def000843
+S A$SpriteHorse$1899 Def0007E2
+S A$SpriteHorse$920 Def00034C
+S A$SpriteHorse$911 Def00033D
+S A$SpriteHorse$830 Def0002DE
+S A$SpriteHorse$821 Def0002CF
+S A$SpriteHorse$812 Def0002C6
+S A$SpriteHorse$740 Def00027A
+S A$SpriteHorse$731 Def000270
+S A$SpriteHorse$722 Def000265
+S A$SpriteHorse$713 Def00025C
+S A$SpriteHorse$704 Def000252
+S A$SpriteHorse$650 Def000213
+S A$SpriteHorse$641 Def00020F
+S A$SpriteHorse$632 Def00020A
+S A$SpriteHorse$623 Def0001FD
+S A$SpriteHorse$614 Def0001EF
+S A$SpriteHorse$605 Def0001DE
+S A$SpriteHorse$560 Def0001A3
+S A$SpriteHorse$551 Def00019B
+S A$SpriteHorse$542 Def000190
+S A$SpriteHorse$524 Def000178
+S A$SpriteHorse$515 Def000168
+S A$SpriteHorse$506 Def000163
+S A$SpriteHorse$470 Def000140
+S A$SpriteHorse$443 Def000124
+S A$SpriteHorse$434 Def000116
+S A$SpriteHorse$425 Def00010E
+S A$SpriteHorse$407 Def000100
+S A$SpriteHorse$380 Def0000E5
+S A$SpriteHorse$371 Def0000D8
+S A$SpriteHorse$362 Def0000D0
+S A$SpriteHorse$353 Def0000C1
+S A$SpriteHorse$344 Def0000B7
+S A$SpriteHorse$335 Def0000AA
+S A$SpriteHorse$326 Def0000A1
+S A$SpriteHorse$308 Def000091
+S A$SpriteHorse$281 Def00006E
+S A$SpriteHorse$272 Def000061
+S A$SpriteHorse$209 Def00003A
+S A$SpriteHorse$182 Def000016
+S A$SpriteHorse$173 Def00000D
+S C$SpriteHorse.c$323$7_3$276 Def000A0D
+S C$SpriteHorse.c$291$4_3$248 Def000911
+S C$SpriteHorse.c$282$6_5$262 Def0008F1
+S C$SpriteHorse.c$276$6_4$260 Def0008BB
+S C$SpriteHorse.c$264$4_3$248 Def000835
+S C$SpriteHorse.c$246$4_3$248 Def000784
+S C$SpriteHorse.c$249$2_3$193 Def00088B
+S C$SpriteHorse.c$238$4_4$246 Def000683
+S A$SpriteHorse$1999 Def000851
+S A$SpriteHorse$921 Def00034E
+S A$SpriteHorse$912 Def00033F
+S A$SpriteHorse$903 Def00032E
+S A$SpriteHorse$840 Def0002EC
+S A$SpriteHorse$831 Def0002DF
+S A$SpriteHorse$822 Def0002D2
+S A$SpriteHorse$813 Def0002C9
+S A$SpriteHorse$732 Def000273
+S A$SpriteHorse$714 Def00025D
+S A$SpriteHorse$705 Def000253
+S A$SpriteHorse$615 Def0001F0
+S A$SpriteHorse$606 Def0001E0
+S A$SpriteHorse$561 Def0001A5
+S A$SpriteHorse$543 Def000192
+S A$SpriteHorse$525 Def000179
+S A$SpriteHorse$516 Def00016A
+S A$SpriteHorse$507 Def000164
+S A$SpriteHorse$480 Def00014A
+S A$SpriteHorse$471 Def000141
+S A$SpriteHorse$444 Def000126
+S A$SpriteHorse$435 Def000117
+S A$SpriteHorse$426 Def00010F
+S A$SpriteHorse$408 Def000101
+S A$SpriteHorse$381 Def0000E7
+S A$SpriteHorse$372 Def0000D9
+S A$SpriteHorse$363 Def0000D1
+S A$SpriteHorse$354 Def0000C2
+S A$SpriteHorse$345 Def0000B9
+S A$SpriteHorse$336 Def0000AB
+S A$SpriteHorse$327 Def0000A4
+S A$SpriteHorse$291 Def000077
+S A$SpriteHorse$273 Def000062
+S A$SpriteHorse$183 Def000019
+S A$SpriteHorse$165 Def000000
+S C$SpriteHorse.c$292$5_3$265 Def000918
+S C$SpriteHorse.c$283$6_5$262 Def0008F1
+S C$SpriteHorse.c$277$6_4$260 Def0008CB
+S C$SpriteHorse.c$266$5_3$255 Def000853
+S C$SpriteHorse.c$265$4_3$248 Def000835
+S C$SpriteHorse.c$257$7_3$253 Def0007FD
+S C$SpriteHorse.c$197$3_2$228 Def000458
+S A$SpriteHorse$940 Def000362
+S A$SpriteHorse$922 Def000350
+S A$SpriteHorse$913 Def000341
+S A$SpriteHorse$904 Def000330
+S A$SpriteHorse$841 Def0002ED
+S A$SpriteHorse$832 Def0002E0
+S A$SpriteHorse$823 Def0002D3
+S A$SpriteHorse$814 Def0002CA
+S A$SpriteHorse$805 Def0002BE
+S A$SpriteHorse$760 Def000291
+S A$SpriteHorse$715 Def00025E
+S A$SpriteHorse$670 Def00022B
+S A$SpriteHorse$661 Def00021D
+S A$SpriteHorse$625 Def0001FF
+S A$SpriteHorse$616 Def0001F2
+S A$SpriteHorse$607 Def0001E3
+S A$SpriteHorse$580 Def0001BF
+S A$SpriteHorse$571 Def0001B4
+S A$SpriteHorse$562 Def0001A6
+S A$SpriteHorse$544 Def000195
+S A$SpriteHorse$535 Def000182
+S A$SpriteHorse$517 Def00016C
+S A$SpriteHorse$508 Def000165
+S A$SpriteHorse$481 Def00014B
+S A$SpriteHorse$472 Def000144
+S A$SpriteHorse$463 Def000138
+S A$SpriteHorse$445 Def000127
+S A$SpriteHorse$436 Def000118
+S A$SpriteHorse$427 Def000110
+S A$SpriteHorse$418 Def000106
+S A$SpriteHorse$382 Def0000E9
+S A$SpriteHorse$373 Def0000DA
+S A$SpriteHorse$355 Def0000C5
+S A$SpriteHorse$346 Def0000BB
+S A$SpriteHorse$337 Def0000AC
+S A$SpriteHorse$319 Def00009A
+S A$SpriteHorse$292 Def00007A
+S A$SpriteHorse$283 Def000070
+S A$SpriteHorse$274 Def000063
+S A$SpriteHorse$184 Def00001A
+S A$SpriteHorse$166 Def000002
+S C$SpriteHorse.c$278$6_4$260 Def0008D9
+S C$SpriteHorse.c$273$5_3$258 Def00089C
+S C$SpriteHorse.c$258$7_3$253 Def000811
+S A$SpriteHorse$950 Def00036A
+S A$SpriteHorse$941 Def000363
+S A$SpriteHorse$923 Def000351
+S A$SpriteHorse$914 Def000343
+S A$SpriteHorse$905 Def000333
+S A$SpriteHorse$851 Def0002F4
+S A$SpriteHorse$833 Def0002E2
+S A$SpriteHorse$824 Def0002D6
+S A$SpriteHorse$815 Def0002CB
+S A$SpriteHorse$806 Def0002C1
+S A$SpriteHorse$761 Def000292
+S A$SpriteHorse$716 Def00025F
+S A$SpriteHorse$707 Def000254
+S A$SpriteHorse$680 Def000236
+S A$SpriteHorse$671 Def00022C
+S A$SpriteHorse$662 Def000220
+S A$SpriteHorse$626 Def000202
+S A$SpriteHorse$617 Def0001F5
+S A$SpriteHorse$608 Def0001E4
+S A$SpriteHorse$590 Def0001C6
+S A$SpriteHorse$581 Def0001C0
+S A$SpriteHorse$572 Def0001B6
+S A$SpriteHorse$563 Def0001A8
+S A$SpriteHorse$545 Def000196
+S A$SpriteHorse$536 Def000184
+S A$SpriteHorse$527 Def00017B
+S A$SpriteHorse$518 Def00016D
+S A$SpriteHorse$509 Def000166
+S A$SpriteHorse$482 Def00014C
+S A$SpriteHorse$473 Def000145
+S A$SpriteHorse$455 Def000130
+S A$SpriteHorse$437 Def00011A
+S A$SpriteHorse$419 Def000109
+S A$SpriteHorse$392 Def0000EF
+S A$SpriteHorse$374 Def0000DC
+S A$SpriteHorse$356 Def0000C8
+S A$SpriteHorse$338 Def0000AE
+S A$SpriteHorse$293 Def00007D
+S A$SpriteHorse$284 Def000072
+S A$SpriteHorse$275 Def000064
+S A$SpriteHorse$266 Def00005A
+S A$SpriteHorse$194 Def000025
+S A$SpriteHorse$185 Def00001B
+S A$SpriteHorse$167 Def000003
+S C$SpriteHorse.c$337$2_3$279 Def000A5A
+S C$SpriteHorse.c$325$7_3$277 Def000A13
+S C$SpriteHorse.c$267$4_3$248 Def00085B
+S C$SpriteHorse.c$247$5_3$249 Def00078A
+S C$SpriteHorse.c$87$3_0$200 Def0000EC
+S C$SpriteHorse.c$62$0_0$192 Def000000
+S A$SpriteHorse$960 Def000374
+S A$SpriteHorse$942 Def000365
+S A$SpriteHorse$915 Def000344
+S A$SpriteHorse$906 Def000335
+S A$SpriteHorse$852 Def0002F7
+S A$SpriteHorse$834 Def0002E4
+S A$SpriteHorse$825 Def0002D7
+S A$SpriteHorse$816 Def0002CC
+S A$SpriteHorse$807 Def0002C3
+S A$SpriteHorse$780 Def0002A6
+S A$SpriteHorse$744 Def00027D
+S A$SpriteHorse$726 Def000267
+S A$SpriteHorse$708 Def000256
+S A$SpriteHorse$690 Def00023D
+S A$SpriteHorse$681 Def000237
+S A$SpriteHorse$672 Def00022D
+S A$SpriteHorse$663 Def000221
+S A$SpriteHorse$654 Def000215
+S A$SpriteHorse$627 Def000203
+S A$SpriteHorse$618 Def0001F6
+S A$SpriteHorse$609 Def0001E6
+S A$SpriteHorse$591 Def0001C7
+S A$SpriteHorse$582 Def0001C1
+S A$SpriteHorse$573 Def0001B8
+S A$SpriteHorse$564 Def0001A9
+S A$SpriteHorse$537 Def000186
+S A$SpriteHorse$528 Def00017D
+S A$SpriteHorse$519 Def00016F
+S A$SpriteHorse$483 Def00014D
+S A$SpriteHorse$474 Def000146
+S A$SpriteHorse$456 Def000133
+S A$SpriteHorse$447 Def000129
+S A$SpriteHorse$438 Def00011B
+S A$SpriteHorse$393 Def0000F0
+S A$SpriteHorse$384 Def0000EA
+S A$SpriteHorse$375 Def0000DE
+S A$SpriteHorse$357 Def0000CB
+S A$SpriteHorse$348 Def0000BC
+S A$SpriteHorse$339 Def0000B0
+S A$SpriteHorse$294 Def00007E
+S A$SpriteHorse$285 Def000074
+S A$SpriteHorse$276 Def000065
+S A$SpriteHorse$267 Def00005D
+S A$SpriteHorse$195 Def000028
+S A$SpriteHorse$186 Def00001C
+S A$SpriteHorse$177 Def000010
+S A$SpriteHorse$168 Def000004
+S C$SpriteHorse.c$338$2_3$279 Def000A5A
+S C$SpriteHorse.c$326$7_3$277 Def000A1B
+S C$SpriteHorse.c$284$6_6$263 Def0008F7
+S C$SpriteHorse.c$268$5_3$256 Def000861
+S C$SpriteHorse.c$199$3_2$229 Def00047A
+S C$SpriteHorse.c$96$2_0$202 Def00010D
+S C$SpriteHorse.c$88$3_0$200 Def0000EF
+S C$SpriteHorse.c$70$1_0$193 Def000058
+S _Destroy_SpriteHorse Def000A5A
+S A$SpriteHorse$970 Def00037A
+S A$SpriteHorse$943 Def000366
+S A$SpriteHorse$934 Def00035A
+S A$SpriteHorse$925 Def000353
+S A$SpriteHorse$916 Def000346
+S A$SpriteHorse$907 Def000337
+S A$SpriteHorse$835 Def0002E5
+S A$SpriteHorse$826 Def0002D8
+S A$SpriteHorse$808 Def0002C4
+S A$SpriteHorse$781 Def0002A8
+S A$SpriteHorse$754 Def000287
+S A$SpriteHorse$745 Def000280
+S A$SpriteHorse$736 Def000274
+S A$SpriteHorse$727 Def000269
+S A$SpriteHorse$709 Def000257
+S A$SpriteHorse$691 Def000240
+S A$SpriteHorse$682 Def000238
+S A$SpriteHorse$673 Def00022E
+S A$SpriteHorse$664 Def000222
+S A$SpriteHorse$655 Def000218
+S A$SpriteHorse$628 Def000205
+S A$SpriteHorse$619 Def0001F8
+S A$SpriteHorse$592 Def0001C8
+S A$SpriteHorse$583 Def0001C2
+S A$SpriteHorse$565 Def0001AB
+S A$SpriteHorse$556 Def00019D
+S A$SpriteHorse$538 Def000188
+S A$SpriteHorse$529 Def00017F
+S A$SpriteHorse$493 Def000154
+S A$SpriteHorse$484 Def00014E
+S A$SpriteHorse$475 Def000147
+S A$SpriteHorse$457 Def000135
+S A$SpriteHorse$448 Def00012B
+S A$SpriteHorse$439 Def00011D
+S A$SpriteHorse$376 Def0000E0
+S A$SpriteHorse$358 Def0000CC
+S A$SpriteHorse$295 Def000080
+S A$SpriteHorse$277 Def000067
+S A$SpriteHorse$196 Def000029
+S A$SpriteHorse$187 Def00001F
+S A$SpriteHorse$178 Def000013
+S A$SpriteHorse$169 Def000007
+S C$SpriteHorse.c$327$7_3$277 Def000A33
+S C$SpriteHorse.c$288$5_3$264 Def00090A
+S C$SpriteHorse.c$285$6_6$263 Def000902
+S C$SpriteHorse.c$279$7_4$261 Def0008DF
+S C$SpriteHorse.c$274$6_3$259 Def0008A3
+S C$SpriteHorse.c$63$1_0$192 Def000000
+S A$SpriteHorse$980 Def000389
+S A$SpriteHorse$971 Def00037C
+S A$SpriteHorse$935 Def00035D
+S A$SpriteHorse$926 Def000355
+S A$SpriteHorse$917 Def000347
+S A$SpriteHorse$890 Def00031C
+S A$SpriteHorse$863 Def0002FE
+S A$SpriteHorse$827 Def0002DA
+S A$SpriteHorse$755 Def00028A
+S A$SpriteHorse$746 Def000282
+S A$SpriteHorse$737 Def000277
+S A$SpriteHorse$728 Def00026A
+S A$SpriteHorse$692 Def000241
+S A$SpriteHorse$683 Def000239
+S A$SpriteHorse$674 Def000231
+S A$SpriteHorse$665 Def000224
+S A$SpriteHorse$656 Def00021A
+S A$SpriteHorse$629 Def000207
+S A$SpriteHorse$593 Def0001C9
+S A$SpriteHorse$584 Def0001C3
+S A$SpriteHorse$575 Def0001B9
+S A$SpriteHorse$566 Def0001AD
+S A$SpriteHorse$557 Def0001A0
+S A$SpriteHorse$539 Def00018A
+S A$SpriteHorse$494 Def000157
+S A$SpriteHorse$485 Def00014F
+S A$SpriteHorse$476 Def000148
+S A$SpriteHorse$467 Def00013B
+S A$SpriteHorse$458 Def000136
+S A$SpriteHorse$449 Def00012D
+S A$SpriteHorse$377 Def0000E2
+S A$SpriteHorse$368 Def0000D3
+S A$SpriteHorse$359 Def0000CD
+S A$SpriteHorse$296 Def000083
+S A$SpriteHorse$287 Def000075
+S A$SpriteHorse$278 Def000069
+S A$SpriteHorse$197 Def00002A
+S A$SpriteHorse$188 Def000020
+S C$SpriteHorse.c$328$7_3$277 Def000A38
+S C$SpriteHorse.c$286$6_6$263 Def000902
+S C$SpriteHorse.c$72$1_0$193 Def00005E
+S C$SpriteHorse.c$64$1_0$192 Def000010
+S A$SpriteHorse$981 Def00038B
+S A$SpriteHorse$972 Def00037D
+S A$SpriteHorse$954 Def00036C
+S A$SpriteHorse$927 Def000357
+S A$SpriteHorse$918 Def000348
+S A$SpriteHorse$909 Def000339
+S A$SpriteHorse$891 Def00031D
+S A$SpriteHorse$873 Def000306
+S A$SpriteHorse$864 Def0002FF
+S A$SpriteHorse$846 Def0002EF
+S A$SpriteHorse$837 Def0002E7
+S A$SpriteHorse$828 Def0002DB
+S A$SpriteHorse$774 Def00029C
+S A$SpriteHorse$756 Def00028B
+S A$SpriteHorse$747 Def000283
+S A$SpriteHorse$738 Def000278
+S A$SpriteHorse$729 Def00026B
+S A$SpriteHorse$693 Def000242
+S A$SpriteHorse$684 Def00023A
+S A$SpriteHorse$675 Def000232
+S A$SpriteHorse$666 Def000225
+S A$SpriteHorse$657 Def00021B
+S A$SpriteHorse$594 Def0001CB
+S A$SpriteHorse$585 Def0001C4
+S A$SpriteHorse$567 Def0001AF
+S A$SpriteHorse$558 Def0001A1
+S A$SpriteHorse$495 Def000158
+S A$SpriteHorse$486 Def000150
+S A$SpriteHorse$468 Def00013E
+S A$SpriteHorse$378 Def0000E3
+S A$SpriteHorse$369 Def0000D6
+S A$SpriteHorse$297 Def000086
+S A$SpriteHorse$279 Def00006B
+S A$SpriteHorse$198 Def00002B
+S A$SpriteHorse$189 Def000022
+S C$SpriteHorse.c$299$3_3$266 Def00093B
+S C$SpriteHorse.c$289$4_3$248 Def00090F
+S C$SpriteHorse.c$269$6_3$257 Def000880
+S C$SpriteHorse.c$89$4_0$201 Def0000F2
+S C$SpriteHorse.c$65$1_0$192 Def000016
+S A$SpriteHorse$982 Def00038D
+S A$SpriteHorse$973 Def00037E
+S A$SpriteHorse$964 Def000375
+S A$SpriteHorse$955 Def00036F
+S A$SpriteHorse$919 Def00034A
+S A$SpriteHorse$892 Def00031E
+S A$SpriteHorse$883 Def00030E
+S A$SpriteHorse$874 Def000309
+S A$SpriteHorse$847 Def0002F2
+S A$SpriteHorse$838 Def0002E9
+S A$SpriteHorse$829 Def0002DC
+S A$SpriteHorse$775 Def00029F
+S A$SpriteHorse$766 Def000294
+S A$SpriteHorse$757 Def00028D
+S A$SpriteHorse$748 Def000284
+S A$SpriteHorse$739 Def000279
+S A$SpriteHorse$694 Def000244
+S A$SpriteHorse$685 Def00023B
+S A$SpriteHorse$676 Def000233
+S A$SpriteHorse$667 Def000227
+S A$SpriteHorse$649 Def000210
+S A$SpriteHorse$595 Def0001CC
+S A$SpriteHorse$586 Def0001C5
+S A$SpriteHorse$568 Def0001B1
+S A$SpriteHorse$559 Def0001A2
+S A$SpriteHorse$496 Def000159
+S A$SpriteHorse$487 Def000151
+S A$SpriteHorse$469 Def00013F
+S A$SpriteHorse$397 Def0000F2
+S A$SpriteHorse$388 Def0000EC
+S A$SpriteHorse$298 Def000087
+S A$SpriteHorse$199 Def00002E
+S C$SpriteHorse.c$99$2_0$203 Def000130
+S C$SpriteHorse.c$83$1_0$193 Def0000A5
+S C$SpriteHorse.c$66$1_0$192 Def000025
+S _a_horse_hit Def000046
+S A$SpriteHorse$974 Def000380
+S A$SpriteHorse$965 Def000378
+S A$SpriteHorse$929 Def000358
+S A$SpriteHorse$893 Def000320
+S A$SpriteHorse$884 Def00030F
+S A$SpriteHorse$857 Def0002F9
+S A$SpriteHorse$839 Def0002EB
+S A$SpriteHorse$794 Def0002B2
+S A$SpriteHorse$776 Def0002A0
+S A$SpriteHorse$767 Def000297
+S A$SpriteHorse$758 Def00028F
+S A$SpriteHorse$749 Def000285
+S A$SpriteHorse$695 Def000245
+S A$SpriteHorse$686 Def00023C
+S A$SpriteHorse$596 Def0001CE
+S A$SpriteHorse$569 Def0001B2
+S A$SpriteHorse$497 Def00015A
+S A$SpriteHorse$488 Def000152
+S A$SpriteHorse$398 Def0000F5
+S XG$Update_SpriteHorse$0$0 Def000A59
+S C$SpriteHorse.c$73$2_0$194 Def000077
+S C$SpriteHorse.c$67$1_0$192 Def000034
+S A$SpriteHorse$993 Def000395
+S A$SpriteHorse$984 Def00038E
+S A$SpriteHorse$975 Def000382
+S A$SpriteHorse$948 Def000368
+S A$SpriteHorse$939 Def00035F
+S A$SpriteHorse$894 Def000322
+S A$SpriteHorse$885 Def000311
+S A$SpriteHorse$858 Def0002FC
+S A$SpriteHorse$795 Def0002B5
+S A$SpriteHorse$786 Def0002AA
+S A$SpriteHorse$777 Def0002A2
+S A$SpriteHorse$768 Def000299
+S A$SpriteHorse$759 Def000290
+S A$SpriteHorse$696 Def000247
+S A$SpriteHorse$678 Def000234
+S A$SpriteHorse$669 Def000228
+S A$SpriteHorse$597 Def0001D1
+S A$SpriteHorse$579 Def0001BC
+S A$SpriteHorse$498 Def00015B
+S A$SpriteHorse$399 Def0000F6
+S C$SpriteHorse.c$68$1_0$192 Def00003C
+S A$SpriteHorse$994 Def000398
+S A$SpriteHorse$976 Def000384
+S A$SpriteHorse$949 Def000369
+S A$SpriteHorse$895 Def000324
+S A$SpriteHorse$886 Def000313
+S A$SpriteHorse$868 Def000301
+S A$SpriteHorse$859 Def0002FD
+S A$SpriteHorse$796 Def0002B7
+S A$SpriteHorse$787 Def0002AD
+S A$SpriteHorse$778 Def0002A4
+S A$SpriteHorse$769 Def00029A
+S A$SpriteHorse$679 Def000235
+S A$SpriteHorse$598 Def0001D2
+S A$SpriteHorse$499 Def00015C
+S C$SpriteHorse.c$95$1_0$193 Def000106
+S C$SpriteHorse.c$81$2_0$197 Def0000A1
+S G$a_horse_hit$0_0$0 Def000046
+S A$SpriteHorse$995 Def000399
+S A$SpriteHorse$977 Def000386
+S A$SpriteHorse$959 Def000371
+S A$SpriteHorse$896 Def000326
+S A$SpriteHorse$887 Def000316
+S A$SpriteHorse$878 Def00030A
+S A$SpriteHorse$869 Def000304
+S A$SpriteHorse$788 Def0002AF
+S A$SpriteHorse$779 Def0002A5
+S A$SpriteHorse$698 Def000248
+S A$SpriteHorse$599 Def0001D4
+S C$SpriteHorse.c$74$3_0$195 Def000089
+S A$SpriteHorse$996 Def00039B
+S A$SpriteHorse$978 Def000387
+S A$SpriteHorse$969 Def000379
+S A$SpriteHorse$897 Def000327
+S A$SpriteHorse$888 Def000319
+S A$SpriteHorse$879 Def00030D
+S A$SpriteHorse$789 Def0002B0
+S A$SpriteHorse$699 Def00024B
+S C$SpriteHorse.c$84$2_3$193 Def0000BE
+S C$SpriteHorse.c$75$3_0$195 Def00008E
+S A$SpriteHorse$997 Def00039C
+S A$SpriteHorse$988 Def000390
+S A$SpriteHorse$889 Def00031A
+S C$SpriteHorse.c$98$1_0$193 Def000111
+S C$SpriteHorse.c$76$3_0$195 Def000094
+S C$SpriteHorse.c$76$2_3$193 Def00005A
+S A$SpriteHorse$989 Def000393
+S A$SpriteHorse$899 Def000329
+S XG$Destroy_SpriteHorse$0$0 Def000A5A
+S C$SpriteHorse.c$78$3_0$196 Def00009A
+S C$SpriteHorse.c$86$2_0$199 Def0000D3
+S G$Start_SpriteHorse$0$0 Def000000
+A _INITIALIZER size 1D flags 0 addr 0
+S FSpriteHorse$__xinit_turn_samepressure_counter$0_0$0 Def000015
+S FSpriteHorse$__xinit_whip_power_over_stamina$0_0$0 Def000005
+S FSpriteHorse$__xinit_vx$0_0$0 Def000003
+S FSpriteHorse$__xinit_vy$0_0$0 Def000002
+S FSpriteHorse$__xinit_velocity$0_0$0 Def000001
+S FSpriteHorse$__xinit_no_whip_counter_max$0_0$0 Def000011
+S FSpriteHorse$__xinit_stamina_verso$0_0$0 Def00000E
+S FSpriteHorse$__xinit_whip_counter_max$0_0$0 Def000007
+S FSpriteHorse$__xinit_euphoria_min$0_0$0 Def000008
+S FSpriteHorse$__xinit_euphoria_max$0_0$0 Def00000A
+S FSpriteHorse$__xinit_onfire_countdown$0_0$0 Def000019
+S FSpriteHorse$__xinit_orme_spawned$0_0$0 Def000018
+S FSpriteHorse$__xinit_cos$0_0$0 Def000014
+S FSpriteHorse$__xinit_turn$0_0$0 Def000012
+S FSpriteHorse$__xinit_sin$0_0$0 Def000013
+S FSpriteHorse$__xinit_turn_verse$0_0$0 Def000017
+S FSpriteHorse$__xinit_past_coll_tile$0_0$0 Def000016
+S FSpriteHorse$__xinit_velocity_counter$0_0$0 Def000000
+S FSpriteHorse$__xinit_stamina_current$0_0$0 Def00000C
+S FSpriteHorse$__xinit_no_whip_counter$0_0$0 Def00000F
+S FSpriteHorse$__xinit_s_flame$0_0$0 Def00001B
+S FSpriteHorse$__xinit_whip_counter$0_0$0 Def000006
+S FSpriteHorse$__xinit_no_whip_over_stamina$0_0$0 Def000010
+S FSpriteHorse$__xinit_frm_skip$0_0$0 Def000004
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 02 00
+T 01 00 00
+R 00 00 02 00
+T 01 00 00
+R 00 00 02 00
+T 02 00 00
+R 00 00 02 00
+T 02 00 00
+R 00 00 02 00
+T 03 00 00
+R 00 00 02 00
+T 03 00 00
+R 00 00 02 00
+T 04 00 00
+R 00 00 02 00
+T 04 00 00
+R 00 00 02 00
+T 05 00 00
+R 00 00 02 00
+T 05 00 00
+R 00 00 02 00
+T 06 00 00
+R 00 00 02 00
+T 06 00 00
+R 00 00 02 00
+T 07 00 00
+R 00 00 02 00
+T 07 00 00
+R 00 00 02 00
+T 08 00 00
+R 00 00 02 00
+T 08 00 00
+R 00 00 02 00
+T 0A 00 00
+R 00 00 02 00
+T 0A 00 00
+R 00 00 02 00
+T 0C 00 00
+R 00 00 02 00
+T 0C 00 00
+R 00 00 02 00
+T 0E 00 00
+R 00 00 02 00
+T 0E 00 00
+R 00 00 02 00
+T 0F 00 00
+R 00 00 02 00
+T 0F 00 00
+R 00 00 02 00
+T 10 00 00
+R 00 00 02 00
+T 10 00 00
+R 00 00 02 00
+T 11 00 00
+R 00 00 02 00
+T 11 00 00
+R 00 00 02 00
+T 12 00 00
+R 00 00 02 00
+T 12 00 00
+R 00 00 02 00
+T 13 00 00
+R 00 00 02 00
+T 13 00 00
+R 00 00 02 00
+T 14 00 00
+R 00 00 02 00
+T 14 00 00
+R 00 00 02 00
+T 15 00 00
+R 00 00 02 00
+T 15 00 00
+R 00 00 02 00
+T 16 00 00
+R 00 00 02 00
+T 16 00 00
+R 00 00 02 00
+T 17 00 00
+R 00 00 02 00
+T 17 00 00
+R 00 00 02 00
+T 18 00 00
+R 00 00 02 00
+T 18 00 00
+R 00 00 02 00
+T 19 00 00
+R 00 00 02 00
+T 19 00 00
+R 00 00 02 00
+T 1B 00 00
+R 00 00 02 00
+T 1B 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 3E 10 F5 33 01 3D 00 21 00 00 2A 5F 56
+R 00 00 07 00 00 08 07 00 02 0B 07 00
+T 0D 00 00 CD 00 00 FA 00 00 EA 04 00 21
+R 00 00 07 00 02 04 02 00 00 07 02 00 00 0A 02 00
+T 17 00 00 00 00 2A 4F 46 21 15 00 09 3E E8 22 36
+R 00 00 07 00 02 03 07 00
+T 24 00 00 03 21 00 00 2A 4F 46 21 17 00 09 3E F4
+R 00 00 07 00 02 05 07 00
+T 31 00 00 22 36 01 21 19 00 3E FF 22 36 FF C9
+R 00 00 07 00 00 07 02 00
+T 3D 00 00
+R 00 00 07 00
+T 3D 00 00 08 00 01 02 03 04 05 06 07
+R 00 00 07 00
+T 46 00 00
+R 00 00 07 00
+T 46 00 00 0F 00 01 00 02 00 03 00 04 00 05 00 06
+R 00 00 07 00
+T 53 00 00 00 07 00
+R 00 00 07 00
+T 56 00 00
+R 00 00 07 00
+T 56 00 00 01 06
+R 00 00 07 00
+T 58 00 00
+R 00 00 07 00
+T 58 00 00 E8 F7 21 11 00 4E 21 06 00 5E AF 57 96
+R 00 00 07 00 00 06 02 00 00 0A 02 00
+T 65 00 00 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 70 00 00
+R 00 00 07 00
+T 70 00 00 CB 7A 28 01 37
+R 00 00 07 00
+T 75 00 00
+R 00 00 07 00
+T 75 00 00 38 2A FA 00 00 21 00 00 A6 28 1A FA
+R 00 00 07 00 02 06 0B 00 02 09 00 00
+T 81 00 00 00 00 21 00 00 A6 20 11 21 0E 00 36 01
+R 00 00 07 00 02 03 15 00 02 06 00 00 00 0C 02 00
+T 8E 00 00 FA 07 00 EA 06 00 21 0F 00 71 18 0B
+R 00 00 07 00 00 04 02 00 00 07 02 00 00 0A 02 00
+T 9A 00 00
+R 00 00 07 00
+T 9A 00 00 21 0E 00 36 FF 18 04
+R 00 00 07 00 00 04 02 00
+T A1 00 00
+R 00 00 07 00
+T A1 00 00 21 06 00 35
+R 00 00 07 00 00 04 02 00
+T A5 00 00
+R 00 00 07 00
+T A5 00 00 21 06 00 5E AF 57 96 CB 7B 28 07 CB 7A
+R 00 00 07 00 00 04 02 00
+T B2 00 00 20 08 BF 18 05
+R 00 00 07 00
+T B7 00 00
+R 00 00 07 00
+T B7 00 00 CB 7A 28 01 37
+R 00 00 07 00
+T BC 00 00
+R 00 00 07 00
+T BC 00 00 30 15 21 0E 00 5E FA 05 00 CD 00 00 21
+R 00 00 07 00 00 06 02 00 00 0A 02 00 02 0D 0C 00
+T C9 00 00 0C 00 7E 81 22 7E 88 77 18 33
+R 00 00 07 00 00 03 02 00
+T D3 00 00
+R 00 00 07 00
+T D3 00 00 21 0F 00 5E AF 57 96 CB 7B 28 07 CB 7A
+R 00 00 07 00 00 04 02 00
+T E0 00 00 20 08 BF 18 05
+R 00 00 07 00
+T E5 00 00
+R 00 00 07 00
+T E5 00 00 CB 7A 28 01 37
+R 00 00 07 00
+T EA 00 00
+R 00 00 07 00
+T EA 00 00 30 1A 21 0F 00 35 20 14 FA 10 00 47 07
+R 00 00 07 00 00 06 02 00 00 0C 02 00
+T F7 00 00 9F 5F 21 0C 00 7E 80 22 7E 8B 77 21
+R 00 00 07 00 00 06 02 00
+T 03 01 00 0F 00 71
+R 00 00 07 00 00 03 02 00
+T 06 01 00
+R 00 00 07 00
+T 06 01 00 21 0D 00 CB 7E 28 04 2B AF 22 77
+R 00 00 07 00 00 04 02 00
+T 11 01 00
+R 00 00 07 00
+T 11 01 00 21 0C 00 3E C0 96 23 3E 03 9E 3E 03 57
+R 00 00 07 00 00 04 02 00
+T 1E 01 00 CB 7E 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 29 01 00
+R 00 00 07 00
+T 29 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 2E 01 00
+R 00 00 07 00
+T 2E 01 00 30 08 21 0C 00 3E C0 22 36 03
+R 00 00 07 00 00 06 02 00
+T 38 01 00
+R 00 00 07 00
+T 38 01 00 01 00 00 21 0C 00 2A 5F 56 21 0A 00 2A
+R 00 00 07 00 00 07 02 00 00 0D 02 00
+T 45 01 00 93 7E 9A 30 0A 2B 7B 96 23 4F 7A 9E 47
+R 00 00 07 00
+T 52 01 00 18 13
+R 00 00 07 00
+T 54 01 00
+R 00 00 07 00
+T 54 01 00 21 08 00 7B 96 23 7A 9E 30 09 21 08 00
+R 00 00 07 00 00 04 02 00 00 0E 02 00
+T 61 01 00 2A 93 4F 7E 9A 47
+R 00 00 07 00
+T 67 01 00
+R 00 00 07 00
+T 67 01 00 58 16 00 3E 20 B9 3E 00 98 CB 7B 28 07
+R 00 00 07 00
+T 74 01 00 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 7B 01 00
+R 00 00 07 00
+T 7B 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T 80 01 00
+R 00 00 07 00
+T 80 01 00 30 16 CB 28 CB 19 CB 28 CB 19 CB 28 CB
+R 00 00 07 00
+T 8D 01 00 19 CB 28 CB 19 21 00 00 71 18 05
+R 00 00 07 00 00 09 02 00
+T 98 01 00
+R 00 00 07 00
+T 98 01 00 21 00 00 36 02
+R 00 00 07 00 00 04 02 00
+T 9D 01 00
+R 00 00 07 00
+T 9D 01 00 21 19 00 AF 96 23 3E 00 9E 3E 00 57 CB
+R 00 00 07 00 00 04 02 00
+T AA 01 00 7E 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T B4 01 00
+R 00 00 07 00
+T B4 01 00 CB 7A 28 01 37
+R 00 00 07 00
+T B9 01 00
+R 00 00 07 00
+T B9 01 00 D2 87 02 21 19 00 2A 5F 3A 57 1B 7B 22
+R 00 00 07 00 00 04 07 00 00 07 02 00
+T C6 01 00 7A 32 2A D6 32 B6 28 3E 21 19 00 2A D6
+R 00 00 07 00 00 0C 02 00
+T D3 01 00 64 B6 28 35 21 19 00 2A D6 96 B6 28 2C
+R 00 00 07 00 00 08 02 00
+T E0 01 00 21 19 00 2A D6 C8 B6 28 23 21 19 00 2A
+R 00 00 07 00 00 04 02 00 00 0D 02 00
+T ED 01 00 D6 FA B6 28 1A 21 19 00 7E D6 2C 20 05
+R 00 00 07 00 00 09 02 00
+T FA 01 00 23 7E 3D 28 0D
+R 00 00 07 00
+T FF 01 00
+R 00 00 07 00
+T FF 01 00 21 19 00 7E D6 5E 20 09 23 7E 3D 20 04
+R 00 00 07 00 00 04 02 00
+T 0C 02 00
+R 00 00 07 00
+T 0C 02 00 21 00 00 35
+R 00 00 07 00 02 04 09 00
+T 10 02 00
+R 00 00 07 00
+T 10 02 00 21 00 00 36 01 21 0C 00 3E 95 22 36 02
+R 00 00 07 00 00 04 02 00 00 09 02 00
+T 1D 02 00 21 1B 00 2A 46 C6 0C 4F 30 01 04
+R 00 00 07 00 00 04 02 00
+T 28 02 00
+R 00 00 07 00
+T 28 02 00 21 00 00 2A 5F 56 21 0C 00 19 2A 6E 5F
+R 00 00 07 00 02 04 07 00
+T 35 02 00 55 13 13 7B 02 03 7A 02 21 1B 00 2A 46
+R 00 00 07 00 00 0C 02 00
+T 42 02 00 C6 0E 4F 30 01 04
+R 00 00 07 00
+T 48 02 00
+R 00 00 07 00
+T 48 02 00 21 00 00 2A 5F 56 21 0E 00 19 2A 6E C6
+R 00 00 07 00 02 04 07 00
+T 55 02 00 F9 5F 7D CE FF 57 7B 02 03 7A 02 FA
+R 00 00 07 00
+T 61 02 00 00 00 D6 08 20 68 3E 01 F5 33 1E
+R 00 00 07 00 02 03 14 00
+T 6C 02 00 00 00 00 21 00 00 CD 00 00 33 21
+R 00 00 07 00 0B 03 16 00 02 07 06 00 02 0A 10 00
+T 75 02 00 1B 00 2A 5F 56 CD 00 00 21 19 00 3E 02
+R 00 00 07 00 00 03 02 00 02 09 12 00 00 0C 02 00
+T 82 02 00 22 AF 77 18 48
+R 00 00 07 00
+T 87 02 00
+R 00 00 07 00
+T 87 02 00 21 08 00 7E D6 90 20 05 23 7E 3D 28 08
+R 00 00 07 00 00 04 02 00
+T 94 02 00
+R 00 00 07 00
+T 94 02 00 21 08 00 3E 90 22 36 01
+R 00 00 07 00 00 04 02 00
+T 9C 02 00
+R 00 00 07 00
+T 9C 02 00 21 0A 00 7E D6 94 20 06 23 7E D6 02 28
+R 00 00 07 00 00 04 02 00
+T A9 02 00 08
+R 00 00 07 00
+T AA 02 00
+R 00 00 07 00
+T AA 02 00 21 0A 00 3E 94 22 36 02
+R 00 00 07 00 00 04 02 00
+T B2 02 00
+R 00 00 07 00
+T B2 02 00 FA 05 00 D6 03 28 16 21 05 00 36 03 21
+R 00 00 07 00 00 04 02 00 00 0B 02 00
+T BF 02 00 0C 00 3E 5E 22 36 01 21 1B 00 2A 5F 56
+R 00 00 07 00 00 03 02 00 00 0B 02 00
+T CC 02 00 CD 00 00
+R 00 00 07 00 02 04 12 00
+T CF 02 00
+R 00 00 07 00
+T CF 02 00 21 00 00 4E 21 00 00 46 78 E6 01 F5 78
+R 00 00 07 00 02 04 15 00 02 08 0B 00
+T DC 02 00 E6 02 5F F1 CB 41 28 03 B7 28 08
+R 00 00 07 00
+T E7 02 00
+R 00 00 07 00
+T E7 02 00 CB 49 28 0E 1C 1D 20 0A
+R 00 00 07 00
+T EF 02 00
+R 00 00 07 00
+T EF 02 00 21 15 00 36 00 21 00 00 36 14
+R 00 00 07 00 00 04 02 00 02 09 03 00
+T F9 02 00
+R 00 00 07 00
+T F9 02 00 21 15 00 56 14 B7 28 67 21 17 00 36 01
+R 00 00 07 00 00 04 02 00 00 0C 02 00
+T 06 03 00 21 12 00 35 21 15 00 72 7E EE 80 D6 A8
+R 00 00 07 00 00 04 02 00 00 08 02 00
+T 13 03 00 DA A3 03 21 13 00 5E 3E 1E 57 96 CB 7B
+R 00 00 07 00 00 04 07 00 00 07 02 00
+T 20 03 00 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 29 03 00
+R 00 00 07 00
+T 29 03 00 CB 7A 28 01 37
+R 00 00 07 00
+T 2E 03 00
+R 00 00 07 00
+T 2E 03 00 30 09 FA 13 00 EE 80 D6 CE 38 21
+R 00 00 07 00 00 06 02 00
+T 39 03 00
+R 00 00 07 00
+T 39 03 00 21 13 00 7E EE 80 D6 62 30 60 5E 3E B2
+R 00 00 07 00 00 04 02 00
+T 46 03 00 57 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 53 03 00
+R 00 00 07 00
+T 53 03 00 CB 7A 28 01 37
+R 00 00 07 00
+T 58 03 00
+R 00 00 07 00
+T 58 03 00 30 49
+R 00 00 07 00
+T 5A 03 00
+R 00 00 07 00
+T 5A 03 00 21 15 00 36 28 21 12 00 7E C6 FE 77 18
+R 00 00 07 00 00 04 02 00 00 09 02 00
+T 67 03 00 3B
+R 00 00 07 00
+T 68 03 00
+R 00 00 07 00
+T 68 03 00 7B B7 28 32 21 17 00 36 02 21 12 00 34
+R 00 00 07 00 00 08 02 00 00 0D 02 00
+T 75 03 00 21 15 00 72 5E 3E 28 57 96 CB 7B 28 07
+R 00 00 07 00 00 04 02 00
+T 82 03 00 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 89 03 00
+R 00 00 07 00
+T 89 03 00 CB 7A 28 01 37
+R 00 00 07 00
+T 8E 03 00
+R 00 00 07 00
+T 8E 03 00 30 13 21 15 00 36 28 21 12 00 7E C6 02
+R 00 00 07 00 00 06 02 00 00 0B 02 00
+T 9B 03 00 77 18 05
+R 00 00 07 00
+T 9E 03 00
+R 00 00 07 00
+T 9E 03 00 21 17 00 36 00
+R 00 00 07 00 00 04 02 00
+T A3 03 00
+R 00 00 07 00
+T A3 03 00 CB 50 28 0E CB 51 20 0A 21 12 00 36 40
+R 00 00 07 00 00 0C 02 00
+T B0 03 00 21 15 00 36 00
+R 00 00 07 00 00 04 02 00
+T B5 03 00
+R 00 00 07 00
+T B5 03 00 CB 58 28 0E CB 59 20 0A 21 12 00 36 C0
+R 00 00 07 00 00 0C 02 00
+T C2 03 00 21 15 00 36 00
+R 00 00 07 00 00 04 02 00
+T C7 03 00
+R 00 00 07 00
+T C7 03 00 01 00 00 79 21 12 00 86 5F 78 CE 00 57
+R 00 00 07 00 02 04 0E 00 00 08 02 00
+T D4 03 00 1A EA 13 00 FA 12 00 C6 40 6F 26 00 09
+R 00 00 07 00 00 05 02 00 00 08 02 00
+T E1 03 00 7E EA 14 00 21 04 00 35 C2 84 09 FA
+R 00 00 07 00 00 05 02 00 00 08 02 00 00 0C 07 00
+T ED 03 00 00 00 EA 04 00 21 14 00 7E 07 E6 01 4F
+R 00 00 07 00 00 03 02 00 00 06 02 00 00 09 02 00
+T FA 03 00 5E 3E 1E 57 96 CB 7B 28 07 CB 7A 20 08
+R 00 00 07 00
+T 07 04 00 BF 18 05
+R 00 00 07 00
+T 0A 04 00
+R 00 00 07 00
+T 0A 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T 0F 04 00
+R 00 00 07 00
+T 0F 04 00 3E 00 17 CB 41 20 0B B7 20 08 21 03 00
+R 00 00 07 00 00 0E 02 00
+T 1C 04 00 36 00 C3 05 05
+R 00 00 07 00 00 06 07 00
+T 21 04 00
+R 00 00 07 00
+T 21 04 00 B7 28 11 FA 14 00 EE 80 D6 B6 30 08 21
+R 00 00 07 00 00 07 02 00
+T 2E 04 00 03 00 36 01 C3 05 05
+R 00 00 07 00 00 03 02 00 00 08 07 00
+T 35 04 00
+R 00 00 07 00
+T 35 04 00 21 14 00 5E 3E 36 57 96 CB 7B 28 07 CB
+R 00 00 07 00 00 04 02 00
+T 42 04 00 7A 20 08 BF 18 05
+R 00 00 07 00
+T 48 04 00
+R 00 00 07 00
+T 48 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T 4D 04 00
+R 00 00 07 00
+T 4D 04 00 30 11 FA 14 00 EE 80 D6 CE 30 08 21
+R 00 00 07 00 00 06 02 00
+T 59 04 00 03 00 36 02 C3 05 05
+R 00 00 07 00 00 03 02 00 00 08 07 00
+T 60 04 00
+R 00 00 07 00
+T 60 04 00 21 14 00 5E 3E 4E 57 96 CB 7B 28 07 CB
+R 00 00 07 00 00 04 02 00
+T 6D 04 00 7A 20 08 BF 18 05
+R 00 00 07 00
+T 73 04 00
+R 00 00 07 00
+T 73 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T 78 04 00
+R 00 00 07 00
+T 78 04 00 30 08 21 03 00 36 03 C3 05 05
+R 00 00 07 00 00 06 02 00 00 0B 07 00
+T 82 04 00
+R 00 00 07 00
+T 82 04 00 79 B7 28 21 21 14 00 5E 3E E2 57 96 CB
+R 00 00 07 00 00 08 02 00
+T 8F 04 00 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 99 04 00
+R 00 00 07 00
+T 99 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T 9E 04 00
+R 00 00 07 00
+T 9E 04 00 30 07 21 03 00 36 00 18 5E
+R 00 00 07 00 00 06 02 00
+T A7 04 00
+R 00 00 07 00
+T A7 04 00 21 14 00 7E EE 80 D6 62 30 1E 5E 3E CA
+R 00 00 07 00 00 04 02 00
+T B4 04 00 57 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T C1 04 00
+R 00 00 07 00
+T C1 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T C6 04 00
+R 00 00 07 00
+T C6 04 00 30 07 21 03 00 36 FF 18 36
+R 00 00 07 00 00 06 02 00
+T CF 04 00
+R 00 00 07 00
+T CF 04 00 21 14 00 7E EE 80 D6 4A 30 1E 5E 3E B2
+R 00 00 07 00 00 04 02 00
+T DC 04 00 57 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T E9 04 00
+R 00 00 07 00
+T E9 04 00 CB 7A 28 01 37
+R 00 00 07 00
+T EE 04 00
+R 00 00 07 00
+T EE 04 00 30 07 21 03 00 36 FE 18 0E
+R 00 00 07 00 00 06 02 00
+T F7 04 00
+R 00 00 07 00
+T F7 04 00 FA 14 00 EE 80 D6 32 30 05 21 03 00 36
+R 00 00 07 00 00 04 02 00 00 0D 02 00
+T 04 05 00 FD
+R 00 00 07 00
+T 05 05 00
+R 00 00 07 00
+T 05 05 00 21 13 00 5E 3E 1E 57 96 CB 7B 28 07 CB
+R 00 00 07 00 00 04 02 00
+T 12 05 00 7A 20 08 BF 18 05
+R 00 00 07 00
+T 18 05 00
+R 00 00 07 00
+T 18 05 00 CB 7A 28 01 37
+R 00 00 07 00
+T 1D 05 00
+R 00 00 07 00
+T 1D 05 00 3E 00 17 4F FA 13 00 07 E6 01 47 CB 40
+R 00 00 07 00 00 08 02 00
+T 2A 05 00 20 0D 59 CB 43 20 08 21 02 00 36 00 C3
+R 00 00 07 00 00 0B 02 00
+T 37 05 00 1E 06
+R 00 00 07 00 00 03 07 00
+T 39 05 00
+R 00 00 07 00
+T 39 05 00 79 B7 28 11 FA 13 00 EE 80 D6 B6 30 08
+R 00 00 07 00 00 08 02 00
+T 46 05 00 21 02 00 36 FF C3 1E 06
+R 00 00 07 00 00 04 02 00 00 09 07 00
+T 4E 05 00
+R 00 00 07 00
+T 4E 05 00 21 13 00 5E 3E 36 57 96 CB 7B 28 07 CB
+R 00 00 07 00 00 04 02 00
+T 5B 05 00 7A 20 08 BF 18 05
+R 00 00 07 00
+T 61 05 00
+R 00 00 07 00
+T 61 05 00 CB 7A 28 01 37
+R 00 00 07 00
+T 66 05 00
+R 00 00 07 00
+T 66 05 00 30 11 FA 13 00 EE 80 D6 CE 30 08 21
+R 00 00 07 00 00 06 02 00
+T 72 05 00 02 00 36 FF C3 1E 06
+R 00 00 07 00 00 03 02 00 00 08 07 00
+T 79 05 00
+R 00 00 07 00
+T 79 05 00 21 13 00 5E 3E 4E 57 96 CB 7B 28 07 CB
+R 00 00 07 00 00 04 02 00
+T 86 05 00 7A 20 08 BF 18 05
+R 00 00 07 00
+T 8C 05 00
+R 00 00 07 00
+T 8C 05 00 CB 7A 28 01 37
+R 00 00 07 00
+T 91 05 00
+R 00 00 07 00
+T 91 05 00 30 08 21 02 00 36 FE C3 1E 06
+R 00 00 07 00 00 06 02 00 00 0B 07 00
+T 9B 05 00
+R 00 00 07 00
+T 9B 05 00 78 B7 28 21 21 13 00 5E 3E E2 57 96 CB
+R 00 00 07 00 00 08 02 00
+T A8 05 00 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T B2 05 00
+R 00 00 07 00
+T B2 05 00 CB 7A 28 01 37
+R 00 00 07 00
+T B7 05 00
+R 00 00 07 00
+T B7 05 00 30 07 21 02 00 36 00 18 5E
+R 00 00 07 00 00 06 02 00
+T C0 05 00
+R 00 00 07 00
+T C0 05 00 21 13 00 7E EE 80 D6 62 30 1E 5E 3E CA
+R 00 00 07 00 00 04 02 00
+T CD 05 00 57 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T DA 05 00
+R 00 00 07 00
+T DA 05 00 CB 7A 28 01 37
+R 00 00 07 00
+T DF 05 00
+R 00 00 07 00
+T DF 05 00 30 07 21 02 00 36 01 18 36
+R 00 00 07 00 00 06 02 00
+T E8 05 00
+R 00 00 07 00
+T E8 05 00 21 13 00 7E EE 80 D6 4A 30 1E 5E 3E B2
+R 00 00 07 00 00 04 02 00
+T F5 05 00 57 96 CB 7B 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 02 06 00
+R 00 00 07 00
+T 02 06 00 CB 7A 28 01 37
+R 00 00 07 00
+T 07 06 00
+R 00 00 07 00
+T 07 06 00 30 07 21 02 00 36 01 18 0E
+R 00 00 07 00 00 06 02 00
+T 10 06 00
+R 00 00 07 00
+T 10 06 00 FA 13 00 EE 80 D6 32 30 05 21 02 00 36
+R 00 00 07 00 00 04 02 00 00 0D 02 00
+T 1D 06 00 02
+R 00 00 07 00
+T 1E 06 00
+R 00 00 07 00
+T 1E 06 00 21 00 00 46 FA 02 00 04 18 01
+R 00 00 07 00 02 04 13 00 00 08 02 00
+T 28 06 00
+R 00 00 07 00
+T 28 06 00 87
+R 00 00 07 00
+T 29 06 00
+R 00 00 07 00
+T 29 06 00 05 20 FC 21 00 00 46 21 03 00 4E 04 18
+R 00 00 07 00 02 07 13 00 00 0B 02 00
+T 36 06 00 02
+R 00 00 07 00
+T 37 06 00
+R 00 00 07 00
+T 37 06 00 CB 21
+R 00 00 07 00
+T 39 06 00
+R 00 00 07 00
+T 39 06 00 05 20 FB F5 33 79 21 00 00 5E 23 56 CD
+R 00 00 07 00 02 0A 07 00
+T 46 06 00 00 00 4F F8 08 79 77 B7 28 4E EA 16 00
+R 00 00 07 00 02 03 01 00 00 0E 02 00
+T 53 06 00 AF 21 03 00 96 47 AF 21 02 00 96 4F FA
+R 00 00 07 00 00 05 02 00 00 0B 02 00
+T 60 06 00 03 00 EE 80 D6 82 30 1B FA 00 00 3C 18
+R 00 00 07 00 00 03 02 00 02 0C 13 00
+T 6D 06 00 02
+R 00 00 07 00
+T 6E 06 00
+R 00 00 07 00
+T 6E 06 00 CB 20
+R 00 00 07 00
+T 70 06 00
+R 00 00 07 00
+T 70 06 00 3D 20 FB AF F5 33 78 21 00 00 5E 23 56
+R 00 00 07 00 02 0B 07 00
+T 7D 06 00 CD 00 00 C3 1D 09
+R 00 00 07 00 02 04 01 00 00 07 07 00
+T 83 06 00
+R 00 00 07 00
+T 83 06 00 21 00 00 46 79 04 18 01
+R 00 00 07 00 02 04 13 00
+T 8B 06 00
+R 00 00 07 00
+T 8B 06 00 87
+R 00 00 07 00
+T 8C 06 00
+R 00 00 07 00
+T 8C 06 00 05 20 FC F5 33 AF 21 00 00 5E 23 56 CD
+R 00 00 07 00 02 0A 07 00
+T 99 06 00 00 00 C3 1D 09
+R 00 00 07 00 02 03 01 00 00 06 07 00
+T 9E 06 00
+R 00 00 07 00
+T 9E 06 00 21 00 00 2A 4F 46 21 0E 00 09 2A 6E C6
+R 00 00 07 00 02 04 07 00
+T AB 06 00 04 5F 7D CE 00 57 F8 07 73 23 72 CB 3E
+R 00 00 07 00
+T B8 06 00 2B CB 1E 23 CB 3E 2B CB 1E 23 CB 3E 2B
+R 00 00 07 00
+T C5 06 00 CB 1E 21 0C 00 09 4E 23 46 21 10 00 09
+R 00 00 07 00
+T D2 06 00 5D 54 CB 3A CB 1B CB 3A CB 1B CB 3A CB
+R 00 00 07 00
+T DF 06 00 1B F8 07 4E 23 46 CD 00 00 F8 00 77 21
+R 00 00 07 00 02 0A 17 00
+T EC 06 00 00 00 2A 4F 46 21 19 00 7E 3C 20 07 23
+R 00 00 07 00 02 03 07 00 00 09 02 00
+T F9 06 00 7E 3C 3E 01 28 01
+R 00 00 07 00
+T FF 06 00
+R 00 00 07 00
+T FF 06 00 AF
+R 00 00 07 00
+T 00 07 00
+R 00 00 07 00
+T 00 07 00 F8 01 77 21 03 00 5E AF 57 96 CB 7B 28
+R 00 00 07 00 00 07 02 00
+T 0D 07 00 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 15 07 00
+R 00 00 07 00
+T 15 07 00 CB 7A 28 01 37
+R 00 00 07 00
+T 1A 07 00
+R 00 00 07 00
+T 1A 07 00 3E 00 17 F8 02 77 21 0E 00 09 E5 7D F8
+R 00 00 07 00
+T 27 07 00 05 77 E1 7C F8 04 77 21 0C 00 09 E5 7D
+R 00 00 07 00
+T 34 07 00 F8 07 77 E1 7C F8 06 77 21 09 00 09 E5
+R 00 00 07 00
+T 41 07 00 7D F8 09 77 E1 7C F8 08 77 F8 00 7E D6
+R 00 00 07 00
+T 4E 07 00 03 28 33 F8 00 7E D6 08 CA 35 08 F8 00
+R 00 00 07 00 00 0C 07 00
+T 5B 07 00 7E D6 09 CA 35 08 F8 00 7E D6 0A CA
+R 00 00 07 00 00 07 07 00
+T 67 07 00 35 08 F8 00 7E D6 0B CA 35 08 F8 00 7E
+R 00 00 07 00 00 03 07 00 00 0B 07 00
+T 74 07 00 D6 0C CA 35 08 F8 00 7E D6 0D CA 35 08
+R 00 00 07 00 00 06 07 00 00 0E 07 00
+T 81 07 00 C3 11 09
+R 00 00 07 00 00 04 07 00
+T 84 07 00
+R 00 00 07 00
+T 84 07 00 F8 01 7E B7 28 07 21 04 00 34 34 34 34
+R 00 00 07 00 00 0A 02 00
+T 91 07 00
+R 00 00 07 00
+T 91 07 00 F8 07 2A 5F 56 1A FE 01 28 05 D6 05 C2
+R 00 00 07 00
+T 9E 07 00 2D 08
+R 00 00 07 00 00 03 07 00
+T A0 07 00
+R 00 00 07 00
+T A0 07 00 FA 18 00 B7 C2 1D 09 F8 03 2A 5F 56 1A
+R 00 00 07 00 00 04 02 00 00 08 07 00
+T AD 07 00 4F 13 1A 47 79 C6 F7 4F 78 CE FF 47 21
+R 00 00 07 00
+T BA 07 00 18 00 36 01 F8 02 7E B7 28 31 F8 05 2A
+R 00 00 07 00 00 03 02 00
+T C7 07 00 5F 56 1A 6F 13 1A 5D 57 1B 1B C5 C5 3E
+R 00 00 07 00
+T D4 07 00 02 CD 00 00 C1 21 00 00 2A 5F 56 21
+R 00 00 07 00 02 05 0A 00 02 09 07 00
+T E0 07 00 0C 00 19 2A 6E C6 08 5F 7D CE 00 57 C5
+R 00 00 07 00
+T ED 07 00 3E 02 CD 00 00 C3 1D 09
+R 00 00 07 00 02 06 0A 00 00 09 07 00
+T F5 07 00
+R 00 00 07 00
+T F5 07 00 FA 03 00 CB 7F CA 1D 09 F8 05 2A 5F 56
+R 00 00 07 00 00 04 02 00 00 09 07 00
+T 02 08 00 1A 6F 13 1A 67 C5 C5 5D 54 3E 02 CD
+R 00 00 07 00
+T 0E 08 00 00 00 C1 21 00 00 2A 5F 56 21 0C 00 19
+R 00 00 07 00 02 03 0A 00 02 07 07 00
+T 1B 08 00 2A 6E C6 08 5F 7D CE 00 57 C5 3E 02 CD
+R 00 00 07 00
+T 28 08 00 00 00 C3 1D 09
+R 00 00 07 00 02 03 0A 00 00 06 07 00
+T 2D 08 00
+R 00 00 07 00
+T 2D 08 00 21 18 00 36 00 C3 1D 09
+R 00 00 07 00 00 04 02 00 00 09 07 00
+T 35 08 00
+R 00 00 07 00
+T 35 08 00 21 19 00 AF 96 23 3E 00 9E 3E 00 57 CB
+R 00 00 07 00 00 04 02 00
+T 42 08 00 7E 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 4C 08 00
+R 00 00 07 00
+T 4C 08 00 CB 7A 28 01 37
+R 00 00 07 00
+T 51 08 00
+R 00 00 07 00
+T 51 08 00 30 08 AF 21 19 00 22 77 18 30
+R 00 00 07 00 00 07 02 00
+T 5B 08 00
+R 00 00 07 00
+T 5B 08 00 F8 01 7E B7 28 2A FA 08 00 F8 00 77 FA
+R 00 00 07 00 00 0A 02 00
+T 68 08 00 09 00 F8 01 77 CB 3E 2B CB 1E 21 0C 00
+R 00 00 07 00 00 03 02 00 00 0E 02 00
+T 75 08 00 2A 4F 46 F8 00 2A 91 7E 98 30 0B 2B 7E
+R 00 00 07 00
+T 82 08 00 EA 0C 00 F8 01 7E EA 0D 00
+R 00 00 07 00 00 04 02 00 00 0A 02 00
+T 8B 08 00
+R 00 00 07 00
+T 8B 08 00 F8 07 2A 5F 56 1A B7 28 08 FE 02 28 04
+R 00 00 07 00
+T 98 08 00 D6 04 20 6E
+R 00 00 07 00
+T 9C 08 00
+R 00 00 07 00
+T 9C 08 00 21 18 00 7E B7 20 7A 36 01 F8 05 2A 5F
+R 00 00 07 00 00 04 02 00
+T A9 08 00 2A 23 57 1A 4F 13 1A 47 11 02 00 79 93
+R 00 00 07 00
+T B6 08 00 5F 78 9A 32 73 F8 03 2A 5F 56 1A 6F 13
+R 00 00 07 00
+T C3 08 00 1A 67 11 F7 FF 19 5D 54 21 08 00 09 E5
+R 00 00 07 00
+T D0 08 00 7D F8 07 77 E1 7C F8 06 77 F8 02 CB 46
+R 00 00 07 00
+T DD 08 00 20 05 F8 07 79 22 70
+R 00 00 07 00
+T E4 08 00
+R 00 00 07 00
+T E4 08 00 D5 D5 F8 0B 2A 5F 56 3E 02 CD 00 00 D1
+R 00 00 07 00 02 0D 0A 00
+T F1 08 00 21 1E 00 09 36 01 D5 F8 07 2A 5F 56 3E
+R 00 00 07 00
+T FE 08 00 02 CD 00 00 21 1E 00 09 36 01 18 13
+R 00 00 07 00 02 05 0A 00
+T 0A 09 00
+R 00 00 07 00
+T 0A 09 00 21 18 00 36 00 18 0C
+R 00 00 07 00 00 04 02 00
+T 11 09 00
+R 00 00 07 00
+T 11 09 00 21 1A 00 3A B6 20 05 3E FF 22 36 FF
+R 00 00 07 00 00 04 02 00
+T 1D 09 00
+R 00 00 07 00
+T 1D 09 00 21 0C 00 2A D6 3C 7E DE 00 56 3E 00 CB
+R 00 00 07 00 00 04 02 00
+T 2A 09 00 7F 28 07 CB 7A 20 08 BF 18 05
+R 00 00 07 00
+T 34 09 00
+R 00 00 07 00
+T 34 09 00 CB 7A 28 01 37
+R 00 00 07 00
+T 39 09 00
+R 00 00 07 00
+T 39 09 00 30 12 3E 04 F5 33 01 56 00 21 00 00 2A
+R 00 00 07 00 00 0A 07 00 02 0D 07 00
+T 46 09 00 5F 56 CD 00 00 18 10
+R 00 00 07 00 02 06 02 00
+T 4D 09 00
+R 00 00 07 00
+T 4D 09 00 3E 04 F5 33 01 3D 00 21 00 00 2A 5F 56
+R 00 00 07 00 00 08 07 00 02 0B 07 00
+T 5A 09 00 CD 00 00
+R 00 00 07 00 02 04 02 00
+T 5D 09 00
+R 00 00 07 00
+T 5D 09 00 21 00 00 2A 46 C6 08 4F 30 01 04
+R 00 00 07 00 02 04 07 00
+T 68 09 00
+R 00 00 07 00
+T 68 09 00 21 0C 00 2A 5F 56 CB 2A CB 1B CB 2A CB
+R 00 00 07 00 00 04 02 00
+T 75 09 00 1B CB 2A CB 1B CB 2A CB 1B CB 2A CB 1B
+R 00 00 07 00
+T 82 09 00 7B 02
+R 00 00 07 00
+T 84 09 00
+R 00 00 07 00
+T 84 09 00 21 00 00 2A 46 C6 10 4F 30 01 04
+R 00 00 07 00 02 04 07 00
+T 8F 09 00
+R 00 00 07 00
+T 8F 09 00 21 03 00 5E AF 57 96 CB 7B 28 07 CB 7A
+R 00 00 07 00 00 04 02 00
+T 9C 09 00 20 08 BF 18 05
+R 00 00 07 00
+T A1 09 00
+R 00 00 07 00
+T A1 09 00 CB 7A 28 01 37
+R 00 00 07 00
+T A6 09 00
+R 00 00 07 00
+T A6 09 00 30 04 AF 02 18 0A
+R 00 00 07 00
+T AC 09 00
+R 00 00 07 00
+T AC 09 00 FA 03 00 CB 7F 28 03 3E 02 02
+R 00 00 07 00 00 04 02 00
+T B6 09 00
+R 00 00 07 00
+T B6 09 00 FA 01 00 6F 26 00 29 11 00 00 19 2A 4F
+R 00 00 07 00 02 04 11 00 02 0B 08 00
+T C3 09 00 46 F8 08 36 00
+R 00 00 07 00
+T C8 09 00
+R 00 00 07 00
+T C8 09 00 FA 00 00 F8 07 77 F8 08 3A 96 CA 57 0A
+R 00 00 07 00 02 04 11 00 00 0E 07 00
+T D5 09 00 C5 21 00 00 5E 23 56 CD 00 00 C1 B7 28
+R 00 00 07 00 02 05 07 00 02 0B 0F 00
+T E2 09 00 5B 21 13 00 09 7E D6 05 20 52 21 19 00
+R 00 00 07 00 00 0E 02 00
+T EF 09 00 7E 3C 20 4B 23 7E 3C 20 46 FA 00 00 D6
+R 00 00 07 00 02 0D 14 00
+T FC 09 00 08 20 14 C5 3E 01 F5 33 1E 00 00 00 21
+R 00 00 07 00 0B 0C 16 00
+T 07 0A 00 00 00 CD 00 00 33 D1 CD 00 00 18 2B
+R 00 00 07 00 02 03 06 00 02 06 10 00 02 0B 12 00
+T 13 0A 00
+R 00 00 07 00
+T 13 0A 00 21 19 00 3E 90 22 36 01 FA 08 00 EA
+R 00 00 07 00 00 04 02 00 00 0C 02 00
+T 1F 0A 00 0C 00 FA 09 00 21 0D 00 77 CB 3E 2B CB
+R 00 00 07 00 00 03 02 00 00 06 02 00 00 09 02 00
+T 2C 0A 00 1E 23 CB 3E 2B CB 1E 21 05 00 36 01 21
+R 00 00 07 00 00 0B 02 00
+T 39 0A 00 1B 00 79 22 70
+R 00 00 07 00 00 03 02 00
+T 3E 0A 00
+R 00 00 07 00
+T 3E 0A 00 F8 08 34 4E 06 00 03 21 00 00 09 6E 26
+R 00 00 07 00 02 0B 11 00
+T 4B 0A 00 00 29 11 00 00 19 2A 4F 46 C3 C8 09
+R 00 00 07 00 02 06 08 00 00 0D 07 00
+T 57 0A 00
+R 00 00 07 00
+T 57 0A 00 E8 09 C9
+R 00 00 07 00
+T 5A 0A 00
+R 00 00 07 00
+T 5A 0A 00 C9
+R 00 00 07 00
+T 00 00 00
+R 00 00 08 00
+T 00 00 00 02
+R 00 00 08 00
+T 01 00 00
+R 00 00 08 00
+T 01 00 00 01
+R 00 00 08 00
+T 02 00 00
+R 00 00 08 00
+T 02 00 00 00
+R 00 00 08 00
+T 03 00 00
+R 00 00 08 00
+T 03 00 00 00
+R 00 00 08 00
+T 04 00 00
+R 00 00 08 00
+T 04 00 00 00
+R 00 00 08 00
+T 05 00 00
+R 00 00 08 00
+T 05 00 00 03
+R 00 00 08 00
+T 06 00 00
+R 00 00 08 00
+T 06 00 00 00
+R 00 00 08 00
+T 07 00 00
+R 00 00 08 00
+T 07 00 00 24
+R 00 00 08 00
+T 08 00 00
+R 00 00 08 00
+T 08 00 00 90 01
+R 00 00 08 00
+T 0A 00 00
+R 00 00 08 00
+T 0A 00 00 94 02
+R 00 00 08 00
+T 0C 00 00
+R 00 00 08 00
+T 0C 00 00 00 00
+R 00 00 08 00
+T 0E 00 00
+R 00 00 08 00
+T 0E 00 00 00
+R 00 00 08 00
+T 0F 00 00
+R 00 00 08 00
+T 0F 00 00 00
+R 00 00 08 00
+T 10 00 00
+R 00 00 08 00
+T 10 00 00 F8
+R 00 00 08 00
+T 11 00 00
+R 00 00 08 00
+T 11 00 00 0A
+R 00 00 08 00
+T 12 00 00
+R 00 00 08 00
+T 12 00 00 00
+R 00 00 08 00
+T 13 00 00
+R 00 00 08 00
+T 13 00 00 00
+R 00 00 08 00
+T 14 00 00
+R 00 00 08 00
+T 14 00 00 00
+R 00 00 08 00
+T 15 00 00
+R 00 00 08 00
+T 15 00 00 00
+R 00 00 08 00
+T 16 00 00
+R 00 00 08 00
+T 16 00 00 00
+R 00 00 08 00
+T 17 00 00
+R 00 00 08 00
+T 17 00 00 00
+R 00 00 08 00
+T 18 00 00
+R 00 00 08 00
+T 18 00 00 00
+R 00 00 08 00
+T 19 00 00
+R 00 00 08 00
+T 19 00 00 FF FF
+R 00 00 08 00
+T 1B 00 00
+R 00 00 08 00
+T 1B 00 00 00 00
+R 00 00 08 00

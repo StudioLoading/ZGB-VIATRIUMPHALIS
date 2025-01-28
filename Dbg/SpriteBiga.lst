@@ -1,0 +1,929 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.3.2 #14228 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module SpriteBiga
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _Destroy_SpriteBiga
+                                     12 	.globl _Update_SpriteBiga
+                                     13 	.globl _Start_SpriteBiga
+                                     14 	.globl _SetSpriteAnim
+                                     15 	.globl _a_biga_up
+                                     16 	.globl _a_biga_down
+                                     17 	.globl _a_biga_hit
+                                     18 	.globl _a_biga_h
+                                     19 	.globl ___bank_SpriteBiga
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function registers
+                                     22 ;--------------------------------------------------------
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _DATA
+                                     27 ;--------------------------------------------------------
+                                     28 ; ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _INITIALIZED
+                                     31 ;--------------------------------------------------------
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _DABS (ABS)
+                                     35 ;--------------------------------------------------------
+                                     36 ; global & static initialisations
+                                     37 ;--------------------------------------------------------
+                                     38 	.area _HOME
+                                     39 	.area _GSINIT
+                                     40 	.area _GSFINAL
+                                     41 	.area _GSINIT
+                                     42 ;--------------------------------------------------------
+                                     43 ; Home
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _HOME
+                                     46 	.area _HOME
+                                     47 ;--------------------------------------------------------
+                                     48 ; code
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _CODE_255
+                           000000    51 	G$Start_SpriteBiga$0$0	= .
+                                     52 	.globl	G$Start_SpriteBiga$0$0
+                           000000    53 	C$SpriteBiga.c$25$0_0$177	= .
+                                     54 	.globl	C$SpriteBiga.c$25$0_0$177
+                                     55 ;SpriteBiga.c:25: void START() {
+                                     56 ;	---------------------------------
+                                     57 ; Function Start_SpriteBiga
+                                     58 ; ---------------------------------
+      000000                         59 _Start_SpriteBiga::
+                           000000    60 	C$SpriteBiga.c$26$1_0$177	= .
+                                     61 	.globl	C$SpriteBiga.c$26$1_0$177
+                                     62 ;SpriteBiga.c:26: SetSpriteAnim(THIS, a_biga_h, 32u);
+      000000 3E 20            [ 8]   63 	ld	a, #0x20
+      000002 F5               [16]   64 	push	af
+      000003 33               [ 8]   65 	inc	sp
+      000004 01r2Fr00         [12]   66 	ld	bc, #_a_biga_h
+      000007 21r00r00         [12]   67 	ld	hl, #_THIS
+      00000A 2A               [ 8]   68 	ld	a, (hl+)
+      00000B 5F               [ 4]   69 	ld	e, a
+      00000C 56               [ 8]   70 	ld	d, (hl)
+      00000D CDr00r00         [24]   71 	call	_SetSpriteAnim
+                           000010    72 	C$SpriteBiga.c$27$1_0$177	= .
+                                     73 	.globl	C$SpriteBiga.c$27$1_0$177
+                                     74 ;SpriteBiga.c:27: THIS->lim_x = 100;
+      000010 21r00r00         [12]   75 	ld	hl, #_THIS
+      000013 2A               [ 8]   76 	ld	a, (hl+)
+      000014 4F               [ 4]   77 	ld	c, a
+      000015 46               [ 8]   78 	ld	b, (hl)
+      000016 21 15 00         [12]   79 	ld	hl, #0x0015
+      000019 09               [ 8]   80 	add	hl, bc
+      00001A 3E 64            [ 8]   81 	ld	a, #0x64
+      00001C 22               [ 8]   82 	ld	(hl+), a
+      00001D 36 00            [12]   83 	ld	(hl), #0x00
+                           00001F    84 	C$SpriteBiga.c$28$1_0$177	= .
+                                     85 	.globl	C$SpriteBiga.c$28$1_0$177
+                                     86 ;SpriteBiga.c:28: THIS->lim_y = 100;
+      00001F 21r00r00         [12]   87 	ld	hl, #_THIS
+      000022 2A               [ 8]   88 	ld	a, (hl+)
+      000023 4F               [ 4]   89 	ld	c, a
+      000024 46               [ 8]   90 	ld	b, (hl)
+      000025 21 17 00         [12]   91 	ld	hl, #0x0017
+      000028 09               [ 8]   92 	add	hl, bc
+      000029 3E 64            [ 8]   93 	ld	a, #0x64
+      00002B 22               [ 8]   94 	ld	(hl+), a
+      00002C 36 00            [12]   95 	ld	(hl), #0x00
+                           00002E    96 	C$SpriteBiga.c$29$1_0$177	= .
+                                     97 	.globl	C$SpriteBiga.c$29$1_0$177
+                                     98 ;SpriteBiga.c:29: }
+                           00002E    99 	C$SpriteBiga.c$29$1_0$177	= .
+                                    100 	.globl	C$SpriteBiga.c$29$1_0$177
+                           00002E   101 	XG$Start_SpriteBiga$0$0	= .
+                                    102 	.globl	XG$Start_SpriteBiga$0$0
+      00002E C9               [16]  103 	ret
+                           0000FF   104 G$__bank_SpriteBiga$0_0$0 == 0x00ff
+                           0000FF   105 ___bank_SpriteBiga	=	0x00ff
+                           00002F   106 G$a_biga_h$0_0$0 == .
+      00002F                        107 _a_biga_h:
+      00002F 03                     108 	.db #0x03	; 3
+      000030 07                     109 	.db #0x07	; 7
+      000031 01                     110 	.db #0x01	; 1
+      000032 02                     111 	.db #0x02	; 2
+                           000033   112 G$a_biga_hit$0_0$0 == .
+      000033                        113 _a_biga_hit:
+      000033 06                     114 	.db #0x06	; 6
+      000034 00                     115 	.db #0x00	; 0
+      000035 07                     116 	.db #0x07	; 7
+      000036 00                     117 	.db #0x00	; 0
+      000037 01                     118 	.db #0x01	; 1
+      000038 00                     119 	.db #0x00	; 0
+      000039 02                     120 	.db #0x02	; 2
+                           00003A   121 G$a_biga_down$0_0$0 == .
+      00003A                        122 _a_biga_down:
+      00003A 02                     123 	.db #0x02	; 2
+      00003B 03                     124 	.db #0x03	; 3
+      00003C 04                     125 	.db #0x04	; 4
+                           00003D   126 G$a_biga_up$0_0$0 == .
+      00003D                        127 _a_biga_up:
+      00003D 02                     128 	.db #0x02	; 2
+      00003E 05                     129 	.db #0x05	; 5
+      00003F 06                     130 	.db #0x06	; 6
+                           000040   131 	G$Update_SpriteBiga$0$0	= .
+                                    132 	.globl	G$Update_SpriteBiga$0$0
+                           000040   133 	C$SpriteBiga.c$31$1_0$178	= .
+                                    134 	.globl	C$SpriteBiga.c$31$1_0$178
+                                    135 ;SpriteBiga.c:31: void UPDATE() {
+                                    136 ;	---------------------------------
+                                    137 ; Function Update_SpriteBiga
+                                    138 ; ---------------------------------
+      000040                        139 _Update_SpriteBiga::
+      000040 E8 F6            [16]  140 	add	sp, #-10
+                           000042   141 	C$SpriteBiga.c$32$1_4$178	= .
+                                    142 	.globl	C$SpriteBiga.c$32$1_4$178
+                                    143 ;SpriteBiga.c:32: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
+      000042 21r00r00         [12]  144 	ld	hl, #_s_horse
+      000045 2A               [ 8]  145 	ld	a, (hl+)
+      000046 4F               [ 4]  146 	ld	c, a
+      000047 46               [ 8]  147 	ld	b, (hl)
+      000048 21 0C 00         [12]  148 	ld	hl, #0x000c
+      00004B 09               [ 8]  149 	add	hl, bc
+      00004C 5D               [ 4]  150 	ld	e, l
+      00004D 54               [ 4]  151 	ld	d, h
+      00004E 1A               [ 8]  152 	ld	a, (de)
+      00004F F8 04            [12]  153 	ldhl	sp,	#4
+      000051 22               [ 8]  154 	ld	(hl+), a
+      000052 13               [ 8]  155 	inc	de
+      000053 1A               [ 8]  156 	ld	a, (de)
+      000054 77               [ 8]  157 	ld	(hl), a
+      000055 F8 04            [12]  158 	ldhl	sp,#4
+      000057 2A               [ 8]  159 	ld	a, (hl+)
+      000058 5F               [ 4]  160 	ld	e, a
+      000059 56               [ 8]  161 	ld	d, (hl)
+      00005A 21 18 00         [12]  162 	ld	hl, #0x0018
+      00005D 7B               [ 4]  163 	ld	a, e
+      00005E 95               [ 4]  164 	sub	a, l
+      00005F 5F               [ 4]  165 	ld	e, a
+      000060 7A               [ 4]  166 	ld	a, d
+      000061 9C               [ 4]  167 	sbc	a, h
+      000062 F8 01            [12]  168 	ldhl	sp,	#1
+      000064 32               [ 8]  169 	ld	(hl-), a
+      000065 73               [ 8]  170 	ld	(hl), e
+                           000066   171 	C$SpriteBiga.c$33$1_0$178	= .
+                                    172 	.globl	C$SpriteBiga.c$33$1_0$178
+                                    173 ;SpriteBiga.c:33: if (vx < 0){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
+      000066 FAr00r00         [16]  174 	ld	a, (#_vx)
+      000069 CB 7F            [ 8]  175 	bit	7, a
+      00006B 28 0C            [12]  176 	jr	Z, 00102$
+      00006D F8 04            [12]  177 	ldhl	sp,#4
+      00006F 2A               [ 8]  178 	ld	a, (hl+)
+      000070 5F               [ 4]  179 	ld	e, a
+      000071 56               [ 8]  180 	ld	d, (hl)
+      000072 21 1C 00         [12]  181 	ld	hl, #0x001c
+      000075 19               [ 8]  182 	add	hl, de
+      000076 33               [ 8]  183 	inc	sp
+      000077 33               [ 8]  184 	inc	sp
+      000078 E5               [16]  185 	push	hl
+      000079                        186 00102$:
+                           000079   187 	C$SpriteBiga.c$35$1_4$178	= .
+                                    188 	.globl	C$SpriteBiga.c$35$1_4$178
+                                    189 ;SpriteBiga.c:35: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
+      000079 21 0E 00         [12]  190 	ld	hl, #0x000e
+      00007C 09               [ 8]  191 	add	hl, bc
+      00007D 2A               [ 8]  192 	ld	a, (hl+)
+      00007E 4F               [ 4]  193 	ld	c, a
+      00007F 46               [ 8]  194 	ld	b, (hl)
+      000080 11 01 00         [12]  195 	ld	de, #0x0001
+      000083 79               [ 4]  196 	ld	a, c
+      000084 93               [ 4]  197 	sub	a, e
+      000085 5F               [ 4]  198 	ld	e, a
+      000086 78               [ 4]  199 	ld	a, b
+      000087 9A               [ 4]  200 	sbc	a, d
+      000088 F8 03            [12]  201 	ldhl	sp,	#3
+      00008A 32               [ 8]  202 	ld	(hl-), a
+      00008B 73               [ 8]  203 	ld	(hl), e
+                           00008C   204 	C$SpriteBiga.c$36$1_1$180	= .
+                                    205 	.globl	C$SpriteBiga.c$36$1_1$180
+                                    206 ;SpriteBiga.c:36: if(vy < 0){ final_pos_y = s_horse->y + 8;
+      00008C FAr00r00         [16]  207 	ld	a, (#_vy)
+      00008F CB 7F            [ 8]  208 	bit	7, a
+      000091 28 10            [12]  209 	jr	Z, 00106$
+      000093 21 08 00         [12]  210 	ld	hl, #0x0008
+      000096 09               [ 8]  211 	add	hl, bc
+      000097 E5               [16]  212 	push	hl
+      000098 7D               [ 4]  213 	ld	a, l
+      000099 F8 04            [12]  214 	ldhl	sp,	#4
+      00009B 77               [ 8]  215 	ld	(hl), a
+      00009C E1               [12]  216 	pop	hl
+      00009D 7C               [ 4]  217 	ld	a, h
+      00009E F8 03            [12]  218 	ldhl	sp,	#3
+      0000A0 77               [ 8]  219 	ld	(hl), a
+      0000A1 18 25            [12]  220 	jr	00107$
+      0000A3                        221 00106$:
+                           0000A3   222 	C$SpriteBiga.c$37$1_1$180	= .
+                                    223 	.globl	C$SpriteBiga.c$37$1_1$180
+                                    224 ;SpriteBiga.c:37: }else if(vy > 0){final_pos_y = s_horse->y - 8;}
+      0000A3 21r00r00         [12]  225 	ld	hl, #_vy
+      0000A6 5E               [ 8]  226 	ld	e, (hl)
+      0000A7 AF               [ 4]  227 	xor	a, a
+      0000A8 57               [ 4]  228 	ld	d, a
+      0000A9 96               [ 8]  229 	sub	a, (hl)
+      0000AA CB 7B            [ 8]  230 	bit	7, e
+      0000AC 28 07            [12]  231 	jr	Z, 00268$
+      0000AE CB 7A            [ 8]  232 	bit	7, d
+      0000B0 20 08            [12]  233 	jr	NZ, 00269$
+      0000B2 BF               [ 4]  234 	cp	a, a
+      0000B3 18 05            [12]  235 	jr	00269$
+      0000B5                        236 00268$:
+      0000B5 CB 7A            [ 8]  237 	bit	7, d
+      0000B7 28 01            [12]  238 	jr	Z, 00269$
+      0000B9 37               [ 4]  239 	scf
+      0000BA                        240 00269$:
+      0000BA 30 0C            [12]  241 	jr	NC, 00107$
+      0000BC 11 08 00         [12]  242 	ld	de, #0x0008
+      0000BF 79               [ 4]  243 	ld	a, c
+      0000C0 93               [ 4]  244 	sub	a, e
+      0000C1 5F               [ 4]  245 	ld	e, a
+      0000C2 78               [ 4]  246 	ld	a, b
+      0000C3 9A               [ 4]  247 	sbc	a, d
+      0000C4 F8 03            [12]  248 	ldhl	sp,	#3
+      0000C6 32               [ 8]  249 	ld	(hl-), a
+      0000C7 73               [ 8]  250 	ld	(hl), e
+      0000C8                        251 00107$:
+                           0000C8   252 	C$SpriteBiga.c$40$1_4$178	= .
+                                    253 	.globl	C$SpriteBiga.c$40$1_4$178
+                                    254 ;SpriteBiga.c:40: INT16 delta_x = s_horse->x - THIS->x;
+      0000C8 21r00r00         [12]  255 	ld	hl, #_THIS
+      0000CB 2A               [ 8]  256 	ld	a, (hl+)
+      0000CC 4F               [ 4]  257 	ld	c, a
+      0000CD 46               [ 8]  258 	ld	b, (hl)
+      0000CE 21 0C 00         [12]  259 	ld	hl, #0x000c
+      0000D1 09               [ 8]  260 	add	hl, bc
+      0000D2 E5               [16]  261 	push	hl
+      0000D3 7D               [ 4]  262 	ld	a, l
+      0000D4 F8 08            [12]  263 	ldhl	sp,	#8
+      0000D6 77               [ 8]  264 	ld	(hl), a
+      0000D7 E1               [12]  265 	pop	hl
+      0000D8 7C               [ 4]  266 	ld	a, h
+      0000D9 F8 07            [12]  267 	ldhl	sp,	#7
+      0000DB 32               [ 8]  268 	ld	(hl-), a
+      0000DC 2A               [ 8]  269 	ld	a, (hl+)
+      0000DD 5F               [ 4]  270 	ld	e, a
+      0000DE 3A               [ 8]  271 	ld	a, (hl-)
+      0000DF 2B               [ 8]  272 	dec	hl
+      0000E0 2B               [ 8]  273 	dec	hl
+      0000E1 57               [ 4]  274 	ld	d, a
+      0000E2 1A               [ 8]  275 	ld	a, (de)
+      0000E3 4F               [ 4]  276 	ld	c, a
+      0000E4 13               [ 8]  277 	inc	de
+      0000E5 1A               [ 8]  278 	ld	a, (de)
+      0000E6 47               [ 4]  279 	ld	b, a
+      0000E7 2A               [ 8]  280 	ld	a, (hl+)
+      0000E8 5F               [ 4]  281 	ld	e, a
+      0000E9 56               [ 8]  282 	ld	d, (hl)
+      0000EA 7B               [ 4]  283 	ld	a, e
+      0000EB 91               [ 4]  284 	sub	a, c
+      0000EC 5F               [ 4]  285 	ld	e, a
+      0000ED 7A               [ 4]  286 	ld	a, d
+      0000EE 98               [ 4]  287 	sbc	a, b
+      0000EF 4B               [ 4]  288 	ld	c, e
+      0000F0 47               [ 4]  289 	ld	b, a
+                           0000F1   290 	C$SpriteBiga.c$41$1_2$183	= .
+                                    291 	.globl	C$SpriteBiga.c$41$1_2$183
+                                    292 ;SpriteBiga.c:41: UINT8 off_limit_x = 0;
+      0000F1 F8 09            [12]  293 	ldhl	sp,	#9
+      0000F3 36 00            [12]  294 	ld	(hl), #0x00
+                           0000F5   295 	C$SpriteBiga.c$42$1_2$183	= .
+                                    296 	.globl	C$SpriteBiga.c$42$1_2$183
+                                    297 ;SpriteBiga.c:42: if(delta_x >= (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX)){ //troppo lontano indietro a sinistra! metto un limite
+      0000F5 79               [ 4]  298 	ld	a, c
+      0000F6 D6 28            [ 8]  299 	sub	a, #0x28
+      0000F8 78               [ 4]  300 	ld	a, b
+      0000F9 17               [ 4]  301 	rla
+      0000FA 3F               [ 4]  302 	ccf
+      0000FB 1F               [ 4]  303 	rra
+      0000FC DE 80            [ 8]  304 	sbc	a, #0x80
+      0000FE 38 1E            [12]  305 	jr	C, 00109$
+                           000100   306 	C$SpriteBiga.c$43$2_2$184	= .
+                                    307 	.globl	C$SpriteBiga.c$43$2_2$184
+                                    308 ;SpriteBiga.c:43: THIS->x = s_horse->x - (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX);
+      000100 F8 04            [12]  309 	ldhl	sp,#4
+      000102 2A               [ 8]  310 	ld	a, (hl+)
+      000103 5F               [ 4]  311 	ld	e, a
+      000104 56               [ 8]  312 	ld	d, (hl)
+      000105 21 28 00         [12]  313 	ld	hl, #0x0028
+      000108 7B               [ 4]  314 	ld	a, e
+      000109 95               [ 4]  315 	sub	a, l
+      00010A 5F               [ 4]  316 	ld	e, a
+      00010B 7A               [ 4]  317 	ld	a, d
+      00010C 9C               [ 4]  318 	sbc	a, h
+      00010D F8 09            [12]  319 	ldhl	sp,	#9
+      00010F 32               [ 8]  320 	ld	(hl-), a
+      000110 7B               [ 4]  321 	ld	a, e
+      000111 32               [ 8]  322 	ld	(hl-), a
+      000112 2B               [ 8]  323 	dec	hl
+      000113 2A               [ 8]  324 	ld	a, (hl+)
+      000114 5F               [ 4]  325 	ld	e, a
+      000115 2A               [ 8]  326 	ld	a, (hl+)
+      000116 57               [ 4]  327 	ld	d, a
+      000117 2A               [ 8]  328 	ld	a, (hl+)
+      000118 12               [ 8]  329 	ld	(de), a
+      000119 13               [ 8]  330 	inc	de
+      00011A 7E               [ 8]  331 	ld	a, (hl)
+      00011B 12               [ 8]  332 	ld	(de), a
+                           00011C   333 	C$SpriteBiga.c$44$2_2$184	= .
+                                    334 	.globl	C$SpriteBiga.c$44$2_2$184
+                                    335 ;SpriteBiga.c:44: off_limit_x = 1u;
+      00011C 36 01            [12]  336 	ld	(hl), #0x01
+      00011E                        337 00109$:
+                           00011E   338 	C$SpriteBiga.c$46$1_2$183	= .
+                                    339 	.globl	C$SpriteBiga.c$46$1_2$183
+                                    340 ;SpriteBiga.c:46: if(delta_x <= -((DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX))){ // troppo lontano indietro a destra! metto un limite
+      00011E 58               [ 4]  341 	ld	e, b
+      00011F 16 FF            [ 8]  342 	ld	d, #0xff
+      000121 3E D4            [ 8]  343 	ld	a, #0xd4
+      000123 B9               [ 4]  344 	cp	a, c
+      000124 3E FF            [ 8]  345 	ld	a, #0xff
+      000126 98               [ 4]  346 	sbc	a, b
+      000127 CB 7B            [ 8]  347 	bit	7, e
+      000129 28 07            [12]  348 	jr	Z, 00270$
+      00012B CB 7A            [ 8]  349 	bit	7, d
+      00012D 20 08            [12]  350 	jr	NZ, 00271$
+      00012F BF               [ 4]  351 	cp	a, a
+      000130 18 05            [12]  352 	jr	00271$
+      000132                        353 00270$:
+      000132 CB 7A            [ 8]  354 	bit	7, d
+      000134 28 01            [12]  355 	jr	Z, 00271$
+      000136 37               [ 4]  356 	scf
+      000137                        357 00271$:
+      000137 38 27            [12]  358 	jr	C, 00111$
+                           000139   359 	C$SpriteBiga.c$47$2_2$185	= .
+                                    360 	.globl	C$SpriteBiga.c$47$2_2$185
+                                    361 ;SpriteBiga.c:47: THIS->x = s_horse->x + (DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX);
+      000139 21r00r00         [12]  362 	ld	hl, #_THIS
+      00013C 2A               [ 8]  363 	ld	a, (hl+)
+      00013D 46               [ 8]  364 	ld	b, (hl)
+      00013E C6 0C            [ 8]  365 	add	a, #0x0c
+      000140 4F               [ 4]  366 	ld	c, a
+      000141 30 01            [12]  367 	jr	NC, 00272$
+      000143 04               [ 4]  368 	inc	b
+      000144                        369 00272$:
+      000144 21r00r00         [12]  370 	ld	hl, #_s_horse
+      000147 2A               [ 8]  371 	ld	a, (hl+)
+      000148 5F               [ 4]  372 	ld	e, a
+      000149 56               [ 8]  373 	ld	d, (hl)
+      00014A 21 0C 00         [12]  374 	ld	hl, #0x000c
+      00014D 19               [ 8]  375 	add	hl, de
+      00014E 2A               [ 8]  376 	ld	a,	(hl+)
+      00014F 66               [ 8]  377 	ld	h, (hl)
+                                    378 ;	spillPairReg hl
+                                    379 ;	spillPairReg hl
+                                    380 ;	spillPairReg hl
+      000150 C6 2C            [ 8]  381 	add	a, #0x2c
+      000152 5F               [ 4]  382 	ld	e, a
+      000153 7C               [ 4]  383 	ld	a, h
+      000154 CE 00            [ 8]  384 	adc	a, #0x00
+      000156 57               [ 4]  385 	ld	d, a
+      000157 7B               [ 4]  386 	ld	a, e
+      000158 02               [ 8]  387 	ld	(bc), a
+      000159 03               [ 8]  388 	inc	bc
+      00015A 7A               [ 4]  389 	ld	a, d
+      00015B 02               [ 8]  390 	ld	(bc), a
+                           00015C   391 	C$SpriteBiga.c$48$2_2$185	= .
+                                    392 	.globl	C$SpriteBiga.c$48$2_2$185
+                                    393 ;SpriteBiga.c:48: off_limit_x = 1;
+      00015C F8 09            [12]  394 	ldhl	sp,	#9
+      00015E 36 01            [12]  395 	ld	(hl), #0x01
+      000160                        396 00111$:
+                           000160   397 	C$SpriteBiga.c$50$1_2$183	= .
+                                    398 	.globl	C$SpriteBiga.c$50$1_2$183
+                                    399 ;SpriteBiga.c:50: if(off_limit_x == 0){ //se il limite non è stato infranto, mi sposto verso
+      000160 F8 09            [12]  400 	ldhl	sp,	#9
+      000162 7E               [ 8]  401 	ld	a, (hl)
+      000163 B7               [ 4]  402 	or	a, a
+      000164 20 4E            [12]  403 	jr	NZ, 00118$
+                           000166   404 	C$SpriteBiga.c$40$1_4$178	= .
+                                    405 	.globl	C$SpriteBiga.c$40$1_4$178
+                                    406 ;SpriteBiga.c:40: INT16 delta_x = s_horse->x - THIS->x;
+      000166 21r00r00         [12]  407 	ld	hl, #_THIS
+      000169 2A               [ 8]  408 	ld	a, (hl+)
+      00016A 4F               [ 4]  409 	ld	c, a
+      00016B 46               [ 8]  410 	ld	b, (hl)
+      00016C 21 0C 00         [12]  411 	ld	hl, #0x000c
+      00016F 09               [ 8]  412 	add	hl, bc
+      000170 E5               [16]  413 	push	hl
+      000171 7D               [ 4]  414 	ld	a, l
+      000172 F8 08            [12]  415 	ldhl	sp,	#8
+      000174 77               [ 8]  416 	ld	(hl), a
+      000175 E1               [12]  417 	pop	hl
+      000176 7C               [ 4]  418 	ld	a, h
+      000177 F8 07            [12]  419 	ldhl	sp,	#7
+      000179 32               [ 8]  420 	ld	(hl-), a
+      00017A 2A               [ 8]  421 	ld	a, (hl+)
+      00017B 5F               [ 4]  422 	ld	e, a
+      00017C 56               [ 8]  423 	ld	d, (hl)
+      00017D 1A               [ 8]  424 	ld	a, (de)
+      00017E 4F               [ 4]  425 	ld	c, a
+      00017F 13               [ 8]  426 	inc	de
+      000180 1A               [ 8]  427 	ld	a, (de)
+      000181 47               [ 4]  428 	ld	b, a
+                           000182   429 	C$SpriteBiga.c$52$2_2$186	= .
+                                    430 	.globl	C$SpriteBiga.c$52$2_2$186
+                                    431 ;SpriteBiga.c:52: if(THIS->x > (final_pos_x+1) ){THIS->x-=2;}
+      000182 D1               [12]  432 	pop	de
+      000183 D5               [16]  433 	push	de
+      000184 13               [ 8]  434 	inc	de
+      000185 7B               [ 4]  435 	ld	a, e
+      000186 91               [ 4]  436 	sub	a, c
+      000187 7A               [ 4]  437 	ld	a, d
+      000188 98               [ 4]  438 	sbc	a, b
+      000189 30 0A            [12]  439 	jr	NC, 00115$
+      00018B 0B               [ 8]  440 	dec	bc
+      00018C 0B               [ 8]  441 	dec	bc
+      00018D 3A               [ 8]  442 	ld	a, (hl-)
+      00018E 6E               [ 8]  443 	ld	l, (hl)
+      00018F 67               [ 4]  444 	ld	h, a
+      000190 79               [ 4]  445 	ld	a, c
+      000191 22               [ 8]  446 	ld	(hl+), a
+      000192 70               [ 8]  447 	ld	(hl), b
+      000193 18 1F            [12]  448 	jr	00118$
+      000195                        449 00115$:
+                           000195   450 	C$SpriteBiga.c$53$2_2$186	= .
+                                    451 	.globl	C$SpriteBiga.c$53$2_2$186
+                                    452 ;SpriteBiga.c:53: else if (THIS->x < (final_pos_x -1 )){THIS->x+=2;}
+      000195 D1               [12]  453 	pop	de
+      000196 D5               [16]  454 	push	de
+      000197 21 01 00         [12]  455 	ld	hl, #0x0001
+      00019A 7B               [ 4]  456 	ld	a, e
+      00019B 95               [ 4]  457 	sub	a, l
+      00019C 5F               [ 4]  458 	ld	e, a
+      00019D 7A               [ 4]  459 	ld	a, d
+      00019E 9C               [ 4]  460 	sbc	a, h
+      00019F F8 09            [12]  461 	ldhl	sp,	#9
+      0001A1 32               [ 8]  462 	ld	(hl-), a
+      0001A2 73               [ 8]  463 	ld	(hl), e
+      0001A3 79               [ 4]  464 	ld	a, c
+      0001A4 96               [ 8]  465 	sub	a, (hl)
+      0001A5 23               [ 8]  466 	inc	hl
+      0001A6 78               [ 4]  467 	ld	a, b
+      0001A7 9E               [ 8]  468 	sbc	a, (hl)
+      0001A8 30 0A            [12]  469 	jr	NC, 00118$
+      0001AA 03               [ 8]  470 	inc	bc
+      0001AB 03               [ 8]  471 	inc	bc
+      0001AC F8 06            [12]  472 	ldhl	sp,	#6
+      0001AE 2A               [ 8]  473 	ld	a,	(hl+)
+      0001AF 66               [ 8]  474 	ld	h, (hl)
+      0001B0 6F               [ 4]  475 	ld	l, a
+      0001B1 79               [ 4]  476 	ld	a, c
+      0001B2 22               [ 8]  477 	ld	(hl+), a
+      0001B3 70               [ 8]  478 	ld	(hl), b
+      0001B4                        479 00118$:
+                           0001B4   480 	C$SpriteBiga.c$32$1_4$178	= .
+                                    481 	.globl	C$SpriteBiga.c$32$1_4$178
+                                    482 ;SpriteBiga.c:32: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
+      0001B4 21r00r00         [12]  483 	ld	hl, #_s_horse
+      0001B7 2A               [ 8]  484 	ld	a, (hl+)
+      0001B8 4F               [ 4]  485 	ld	c, a
+      0001B9 46               [ 8]  486 	ld	b, (hl)
+                           0001BA   487 	C$SpriteBiga.c$35$1_4$178	= .
+                                    488 	.globl	C$SpriteBiga.c$35$1_4$178
+                                    489 ;SpriteBiga.c:35: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
+      0001BA 21 0E 00         [12]  490 	ld	hl, #0x000e
+      0001BD 09               [ 8]  491 	add	hl, bc
+      0001BE 5D               [ 4]  492 	ld	e, l
+      0001BF 54               [ 4]  493 	ld	d, h
+      0001C0 1A               [ 8]  494 	ld	a, (de)
+      0001C1 F8 04            [12]  495 	ldhl	sp,	#4
+      0001C3 22               [ 8]  496 	ld	(hl+), a
+      0001C4 13               [ 8]  497 	inc	de
+      0001C5 1A               [ 8]  498 	ld	a, (de)
+      0001C6 77               [ 8]  499 	ld	(hl), a
+                           0001C7   500 	C$SpriteBiga.c$40$1_4$178	= .
+                                    501 	.globl	C$SpriteBiga.c$40$1_4$178
+                                    502 ;SpriteBiga.c:40: INT16 delta_x = s_horse->x - THIS->x;
+      0001C7 21r00r00         [12]  503 	ld	hl, #_THIS
+      0001CA 2A               [ 8]  504 	ld	a, (hl+)
+      0001CB 4F               [ 4]  505 	ld	c, a
+      0001CC 46               [ 8]  506 	ld	b, (hl)
+                           0001CD   507 	C$SpriteBiga.c$56$1_4$178	= .
+                                    508 	.globl	C$SpriteBiga.c$56$1_4$178
+                                    509 ;SpriteBiga.c:56: INT16 delta_y = s_horse->y - THIS->y;
+      0001CD 21 0E 00         [12]  510 	ld	hl, #0x000e
+      0001D0 09               [ 8]  511 	add	hl, bc
+      0001D1 E5               [16]  512 	push	hl
+      0001D2 7D               [ 4]  513 	ld	a, l
+      0001D3 F8 08            [12]  514 	ldhl	sp,	#8
+      0001D5 77               [ 8]  515 	ld	(hl), a
+      0001D6 E1               [12]  516 	pop	hl
+      0001D7 7C               [ 4]  517 	ld	a, h
+      0001D8 F8 07            [12]  518 	ldhl	sp,	#7
+      0001DA 32               [ 8]  519 	ld	(hl-), a
+      0001DB 2A               [ 8]  520 	ld	a, (hl+)
+      0001DC 5F               [ 4]  521 	ld	e, a
+      0001DD 3A               [ 8]  522 	ld	a, (hl-)
+      0001DE 2B               [ 8]  523 	dec	hl
+      0001DF 2B               [ 8]  524 	dec	hl
+      0001E0 57               [ 4]  525 	ld	d, a
+      0001E1 1A               [ 8]  526 	ld	a, (de)
+      0001E2 4F               [ 4]  527 	ld	c, a
+      0001E3 13               [ 8]  528 	inc	de
+      0001E4 1A               [ 8]  529 	ld	a, (de)
+      0001E5 47               [ 4]  530 	ld	b, a
+      0001E6 2A               [ 8]  531 	ld	a, (hl+)
+      0001E7 5F               [ 4]  532 	ld	e, a
+      0001E8 56               [ 8]  533 	ld	d, (hl)
+      0001E9 7B               [ 4]  534 	ld	a, e
+      0001EA 91               [ 4]  535 	sub	a, c
+      0001EB 5F               [ 4]  536 	ld	e, a
+      0001EC 7A               [ 4]  537 	ld	a, d
+      0001ED 98               [ 4]  538 	sbc	a, b
+      0001EE 4B               [ 4]  539 	ld	c, e
+      0001EF 47               [ 4]  540 	ld	b, a
+                           0001F0   541 	C$SpriteBiga.c$57$1_3$189	= .
+                                    542 	.globl	C$SpriteBiga.c$57$1_3$189
+                                    543 ;SpriteBiga.c:57: UINT8 off_limit_y = 0;
+      0001F0 F8 09            [12]  544 	ldhl	sp,	#9
+      0001F2 36 00            [12]  545 	ld	(hl), #0x00
+                           0001F4   546 	C$SpriteBiga.c$58$1_3$189	= .
+                                    547 	.globl	C$SpriteBiga.c$58$1_3$189
+                                    548 ;SpriteBiga.c:58: if(delta_y >= 30){ //troppo lontano indietro in su! metto un limite
+      0001F4 79               [ 4]  549 	ld	a, c
+      0001F5 D6 1E            [ 8]  550 	sub	a, #0x1e
+      0001F7 78               [ 4]  551 	ld	a, b
+      0001F8 17               [ 4]  552 	rla
+      0001F9 3F               [ 4]  553 	ccf
+      0001FA 1F               [ 4]  554 	rra
+      0001FB DE 80            [ 8]  555 	sbc	a, #0x80
+      0001FD 38 1E            [12]  556 	jr	C, 00120$
+                           0001FF   557 	C$SpriteBiga.c$59$2_3$190	= .
+                                    558 	.globl	C$SpriteBiga.c$59$2_3$190
+                                    559 ;SpriteBiga.c:59: THIS->y = s_horse->y - 15;
+      0001FF F8 04            [12]  560 	ldhl	sp,#4
+      000201 2A               [ 8]  561 	ld	a, (hl+)
+      000202 5F               [ 4]  562 	ld	e, a
+      000203 56               [ 8]  563 	ld	d, (hl)
+      000204 21 0F 00         [12]  564 	ld	hl, #0x000f
+      000207 7B               [ 4]  565 	ld	a, e
+      000208 95               [ 4]  566 	sub	a, l
+      000209 5F               [ 4]  567 	ld	e, a
+      00020A 7A               [ 4]  568 	ld	a, d
+      00020B 9C               [ 4]  569 	sbc	a, h
+      00020C F8 09            [12]  570 	ldhl	sp,	#9
+      00020E 32               [ 8]  571 	ld	(hl-), a
+      00020F 7B               [ 4]  572 	ld	a, e
+      000210 32               [ 8]  573 	ld	(hl-), a
+      000211 2B               [ 8]  574 	dec	hl
+      000212 2A               [ 8]  575 	ld	a, (hl+)
+      000213 5F               [ 4]  576 	ld	e, a
+      000214 2A               [ 8]  577 	ld	a, (hl+)
+      000215 57               [ 4]  578 	ld	d, a
+      000216 2A               [ 8]  579 	ld	a, (hl+)
+      000217 12               [ 8]  580 	ld	(de), a
+      000218 13               [ 8]  581 	inc	de
+      000219 7E               [ 8]  582 	ld	a, (hl)
+      00021A 12               [ 8]  583 	ld	(de), a
+                           00021B   584 	C$SpriteBiga.c$60$2_3$190	= .
+                                    585 	.globl	C$SpriteBiga.c$60$2_3$190
+                                    586 ;SpriteBiga.c:60: off_limit_y = 1u;
+      00021B 36 01            [12]  587 	ld	(hl), #0x01
+      00021D                        588 00120$:
+                           00021D   589 	C$SpriteBiga.c$62$1_3$189	= .
+                                    590 	.globl	C$SpriteBiga.c$62$1_3$189
+                                    591 ;SpriteBiga.c:62: if(delta_y < -30){ //troppo lontano indietro in giù! metto un limite
+      00021D 79               [ 4]  592 	ld	a, c
+      00021E D6 E2            [ 8]  593 	sub	a, #0xe2
+      000220 78               [ 4]  594 	ld	a, b
+      000221 17               [ 4]  595 	rla
+      000222 3F               [ 4]  596 	ccf
+      000223 1F               [ 4]  597 	rra
+      000224 DE 7F            [ 8]  598 	sbc	a, #0x7f
+      000226 30 27            [12]  599 	jr	NC, 00122$
+                           000228   600 	C$SpriteBiga.c$63$2_3$191	= .
+                                    601 	.globl	C$SpriteBiga.c$63$2_3$191
+                                    602 ;SpriteBiga.c:63: THIS->y = s_horse->y + 15;
+      000228 21r00r00         [12]  603 	ld	hl, #_THIS
+      00022B 2A               [ 8]  604 	ld	a, (hl+)
+      00022C 46               [ 8]  605 	ld	b, (hl)
+      00022D C6 0E            [ 8]  606 	add	a, #0x0e
+      00022F 4F               [ 4]  607 	ld	c, a
+      000230 30 01            [12]  608 	jr	NC, 00273$
+      000232 04               [ 4]  609 	inc	b
+      000233                        610 00273$:
+      000233 21r00r00         [12]  611 	ld	hl, #_s_horse
+      000236 2A               [ 8]  612 	ld	a, (hl+)
+      000237 5F               [ 4]  613 	ld	e, a
+      000238 56               [ 8]  614 	ld	d, (hl)
+      000239 21 0E 00         [12]  615 	ld	hl, #0x000e
+      00023C 19               [ 8]  616 	add	hl, de
+      00023D 2A               [ 8]  617 	ld	a,	(hl+)
+      00023E 66               [ 8]  618 	ld	h, (hl)
+                                    619 ;	spillPairReg hl
+                                    620 ;	spillPairReg hl
+                                    621 ;	spillPairReg hl
+      00023F C6 0F            [ 8]  622 	add	a, #0x0f
+      000241 5F               [ 4]  623 	ld	e, a
+      000242 7C               [ 4]  624 	ld	a, h
+      000243 CE 00            [ 8]  625 	adc	a, #0x00
+      000245 57               [ 4]  626 	ld	d, a
+      000246 7B               [ 4]  627 	ld	a, e
+      000247 02               [ 8]  628 	ld	(bc), a
+      000248 03               [ 8]  629 	inc	bc
+      000249 7A               [ 4]  630 	ld	a, d
+      00024A 02               [ 8]  631 	ld	(bc), a
+                           00024B   632 	C$SpriteBiga.c$64$2_3$191	= .
+                                    633 	.globl	C$SpriteBiga.c$64$2_3$191
+                                    634 ;SpriteBiga.c:64: off_limit_y = 1u;
+      00024B F8 09            [12]  635 	ldhl	sp,	#9
+      00024D 36 01            [12]  636 	ld	(hl), #0x01
+      00024F                        637 00122$:
+                           00024F   638 	C$SpriteBiga.c$67$1_3$189	= .
+                                    639 	.globl	C$SpriteBiga.c$67$1_3$189
+                                    640 ;SpriteBiga.c:67: if(off_limit_y == 0){ //se il limite non è stato infranto, mi sposto verso
+      00024F F8 09            [12]  641 	ldhl	sp,	#9
+      000251 7E               [ 8]  642 	ld	a, (hl)
+      000252 B7               [ 4]  643 	or	a, a
+      000253 20 41            [12]  644 	jr	NZ, 00129$
+                           000255   645 	C$SpriteBiga.c$40$1_4$178	= .
+                                    646 	.globl	C$SpriteBiga.c$40$1_4$178
+                                    647 ;SpriteBiga.c:40: INT16 delta_x = s_horse->x - THIS->x;
+      000255 21r00r00         [12]  648 	ld	hl, #_THIS
+      000258 2A               [ 8]  649 	ld	a, (hl+)
+      000259 4F               [ 4]  650 	ld	c, a
+      00025A 46               [ 8]  651 	ld	b, (hl)
+                           00025B   652 	C$SpriteBiga.c$56$1_4$178	= .
+                                    653 	.globl	C$SpriteBiga.c$56$1_4$178
+                                    654 ;SpriteBiga.c:56: INT16 delta_y = s_horse->y - THIS->y;
+      00025B 21 0E 00         [12]  655 	ld	hl, #0x000e
+      00025E 09               [ 8]  656 	add	hl, bc
+      00025F E5               [16]  657 	push	hl
+      000260 7D               [ 4]  658 	ld	a, l
+      000261 F8 0A            [12]  659 	ldhl	sp,	#10
+      000263 77               [ 8]  660 	ld	(hl), a
+      000264 E1               [12]  661 	pop	hl
+      000265 7C               [ 4]  662 	ld	a, h
+      000266 F8 09            [12]  663 	ldhl	sp,	#9
+      000268 32               [ 8]  664 	ld	(hl-), a
+      000269 2A               [ 8]  665 	ld	a, (hl+)
+      00026A 5F               [ 4]  666 	ld	e, a
+      00026B 56               [ 8]  667 	ld	d, (hl)
+      00026C 1A               [ 8]  668 	ld	a, (de)
+      00026D 4F               [ 4]  669 	ld	c, a
+      00026E 13               [ 8]  670 	inc	de
+      00026F 1A               [ 8]  671 	ld	a, (de)
+      000270 47               [ 4]  672 	ld	b, a
+                           000271   673 	C$SpriteBiga.c$68$2_3$192	= .
+                                    674 	.globl	C$SpriteBiga.c$68$2_3$192
+                                    675 ;SpriteBiga.c:68: if(THIS->y > final_pos_y){THIS->y--;}
+      000271 F8 02            [12]  676 	ldhl	sp,	#2
+      000273 2A               [ 8]  677 	ld	a, (hl+)
+      000274 91               [ 4]  678 	sub	a, c
+      000275 7E               [ 8]  679 	ld	a, (hl)
+      000276 98               [ 4]  680 	sbc	a, b
+      000277 30 0B            [12]  681 	jr	NC, 00126$
+      000279 0B               [ 8]  682 	dec	bc
+      00027A F8 08            [12]  683 	ldhl	sp,	#8
+      00027C 2A               [ 8]  684 	ld	a,	(hl+)
+      00027D 66               [ 8]  685 	ld	h, (hl)
+      00027E 6F               [ 4]  686 	ld	l, a
+      00027F 79               [ 4]  687 	ld	a, c
+      000280 22               [ 8]  688 	ld	(hl+), a
+      000281 70               [ 8]  689 	ld	(hl), b
+      000282 18 12            [12]  690 	jr	00129$
+      000284                        691 00126$:
+                           000284   692 	C$SpriteBiga.c$69$2_3$192	= .
+                                    693 	.globl	C$SpriteBiga.c$69$2_3$192
+                                    694 ;SpriteBiga.c:69: else if (THIS->y < final_pos_y){THIS->y++;}
+      000284 F8 02            [12]  695 	ldhl	sp,	#2
+      000286 79               [ 4]  696 	ld	a, c
+      000287 96               [ 8]  697 	sub	a, (hl)
+      000288 23               [ 8]  698 	inc	hl
+      000289 78               [ 4]  699 	ld	a, b
+      00028A 9E               [ 8]  700 	sbc	a, (hl)
+      00028B 30 09            [12]  701 	jr	NC, 00129$
+      00028D 03               [ 8]  702 	inc	bc
+      00028E F8 08            [12]  703 	ldhl	sp,	#8
+      000290 2A               [ 8]  704 	ld	a,	(hl+)
+      000291 66               [ 8]  705 	ld	h, (hl)
+      000292 6F               [ 4]  706 	ld	l, a
+      000293 79               [ 4]  707 	ld	a, c
+      000294 22               [ 8]  708 	ld	(hl+), a
+      000295 70               [ 8]  709 	ld	(hl), b
+      000296                        710 00129$:
+                           000296   711 	C$SpriteBiga.c$71$1_3$189	= .
+                                    712 	.globl	C$SpriteBiga.c$71$1_3$189
+                                    713 ;SpriteBiga.c:71: THIS->anim_speed = stamina_current >> 6;
+      000296 21r00r00         [12]  714 	ld	hl, #_THIS
+      000299 2A               [ 8]  715 	ld	a, (hl+)
+      00029A 46               [ 8]  716 	ld	b, (hl)
+      00029B C6 08            [ 8]  717 	add	a, #0x08
+      00029D 4F               [ 4]  718 	ld	c, a
+      00029E 30 01            [12]  719 	jr	NC, 00274$
+      0002A0 04               [ 4]  720 	inc	b
+      0002A1                        721 00274$:
+      0002A1 21r00r00         [12]  722 	ld	hl, #_stamina_current
+      0002A4 2A               [ 8]  723 	ld	a, (hl+)
+      0002A5 5F               [ 4]  724 	ld	e, a
+      0002A6 56               [ 8]  725 	ld	d, (hl)
+      0002A7 CB 2A            [ 8]  726 	sra	d
+      0002A9 CB 1B            [ 8]  727 	rr	e
+      0002AB CB 2A            [ 8]  728 	sra	d
+      0002AD CB 1B            [ 8]  729 	rr	e
+      0002AF CB 2A            [ 8]  730 	sra	d
+      0002B1 CB 1B            [ 8]  731 	rr	e
+      0002B3 CB 2A            [ 8]  732 	sra	d
+      0002B5 CB 1B            [ 8]  733 	rr	e
+      0002B7 CB 2A            [ 8]  734 	sra	d
+      0002B9 CB 1B            [ 8]  735 	rr	e
+      0002BB CB 2A            [ 8]  736 	sra	d
+      0002BD CB 1B            [ 8]  737 	rr	e
+      0002BF 7B               [ 4]  738 	ld	a, e
+      0002C0 02               [ 8]  739 	ld	(bc), a
+                           0002C1   740 	C$SpriteBiga.c$72$1_3$189	= .
+                                    741 	.globl	C$SpriteBiga.c$72$1_3$189
+                                    742 ;SpriteBiga.c:72: THIS->mirror = s_horse->mirror;
+      0002C1 21r00r00         [12]  743 	ld	hl, #_THIS
+      0002C4 2A               [ 8]  744 	ld	a, (hl+)
+      0002C5 46               [ 8]  745 	ld	b, (hl)
+      0002C6 C6 10            [ 8]  746 	add	a, #0x10
+      0002C8 4F               [ 4]  747 	ld	c, a
+      0002C9 30 01            [12]  748 	jr	NC, 00275$
+      0002CB 04               [ 4]  749 	inc	b
+      0002CC                        750 00275$:
+      0002CC 21r00r00         [12]  751 	ld	hl, #_s_horse
+      0002CF 2A               [ 8]  752 	ld	a, (hl+)
+      0002D0 5F               [ 4]  753 	ld	e, a
+      0002D1 56               [ 8]  754 	ld	d, (hl)
+      0002D2 21 10 00         [12]  755 	ld	hl, #0x0010
+      0002D5 19               [ 8]  756 	add	hl, de
+      0002D6 7E               [ 8]  757 	ld	a, (hl)
+      0002D7 02               [ 8]  758 	ld	(bc), a
+                           0002D8   759 	C$SpriteBiga.c$74$1_4$195	= .
+                                    760 	.globl	C$SpriteBiga.c$74$1_4$195
+                                    761 ;SpriteBiga.c:74: INT16 to_final_x = THIS->x - final_pos_x;
+      0002D8 21r00r00         [12]  762 	ld	hl, #_THIS
+      0002DB 2A               [ 8]  763 	ld	a, (hl+)
+      0002DC 4F               [ 4]  764 	ld	c, a
+      0002DD 46               [ 8]  765 	ld	b, (hl)
+      0002DE 21 0C 00         [12]  766 	ld	hl, #0x000c
+      0002E1 09               [ 8]  767 	add	hl, bc
+      0002E2 2A               [ 8]  768 	ld	a, (hl+)
+      0002E3 4E               [ 8]  769 	ld	c, (hl)
+      0002E4 5F               [ 4]  770 	ld	e, a
+      0002E5 51               [ 4]  771 	ld	d, c
+      0002E6 E1               [12]  772 	pop	hl
+      0002E7 E5               [16]  773 	push	hl
+      0002E8 7B               [ 4]  774 	ld	a, e
+      0002E9 95               [ 4]  775 	sub	a, l
+      0002EA 5F               [ 4]  776 	ld	e, a
+      0002EB 7A               [ 4]  777 	ld	a, d
+      0002EC 9C               [ 4]  778 	sbc	a, h
+      0002ED 43               [ 4]  779 	ld	b, e
+      0002EE 4F               [ 4]  780 	ld	c, a
+                           0002EF   781 	C$SpriteBiga.c$75$1_4$195	= .
+                                    782 	.globl	C$SpriteBiga.c$75$1_4$195
+                                    783 ;SpriteBiga.c:75: SetSpriteAnim(THIS, a_biga_h, 1);
+      0002EF C5               [16]  784 	push	bc
+      0002F0 3E 01            [ 8]  785 	ld	a, #0x01
+      0002F2 F5               [16]  786 	push	af
+      0002F3 33               [ 8]  787 	inc	sp
+      0002F4 01r2Fr00         [12]  788 	ld	bc, #_a_biga_h
+      0002F7 21r00r00         [12]  789 	ld	hl, #_THIS
+      0002FA 2A               [ 8]  790 	ld	a, (hl+)
+      0002FB 5F               [ 4]  791 	ld	e, a
+      0002FC 56               [ 8]  792 	ld	d, (hl)
+      0002FD CDr00r00         [24]  793 	call	_SetSpriteAnim
+      000300 C1               [12]  794 	pop	bc
+                           000301   795 	C$SpriteBiga.c$76$1_4$195	= .
+                                    796 	.globl	C$SpriteBiga.c$76$1_4$195
+                                    797 ;SpriteBiga.c:76: if(to_final_x > 4){//devo andare a sinistra
+      000301 59               [ 4]  798 	ld	e, c
+      000302 16 00            [ 8]  799 	ld	d, #0x00
+      000304 3E 04            [ 8]  800 	ld	a, #0x04
+      000306 B8               [ 4]  801 	cp	a, b
+      000307 3E 00            [ 8]  802 	ld	a, #0x00
+      000309 99               [ 4]  803 	sbc	a, c
+      00030A CB 7B            [ 8]  804 	bit	7, e
+      00030C 28 07            [12]  805 	jr	Z, 00276$
+      00030E CB 7A            [ 8]  806 	bit	7, d
+      000310 20 08            [12]  807 	jr	NZ, 00277$
+      000312 BF               [ 4]  808 	cp	a, a
+      000313 18 05            [12]  809 	jr	00277$
+      000315                        810 00276$:
+      000315 CB 7A            [ 8]  811 	bit	7, d
+      000317 28 01            [12]  812 	jr	Z, 00277$
+      000319 37               [ 4]  813 	scf
+      00031A                        814 00277$:
+      00031A 30 0C            [12]  815 	jr	NC, 00131$
+                           00031C   816 	C$SpriteBiga.c$77$2_4$196	= .
+                                    817 	.globl	C$SpriteBiga.c$77$2_4$196
+                                    818 ;SpriteBiga.c:77: THIS->mirror = V_MIRROR;
+      00031C 21r00r00         [12]  819 	ld	hl, #_THIS
+      00031F 2A               [ 8]  820 	ld	a, (hl+)
+      000320 4F               [ 4]  821 	ld	c, a
+      000321 46               [ 8]  822 	ld	b, (hl)
+      000322 21 10 00         [12]  823 	ld	hl, #0x0010
+      000325 09               [ 8]  824 	add	hl, bc
+      000326 36 02            [12]  825 	ld	(hl), #0x02
+      000328                        826 00131$:
+                           000328   827 	C$SpriteBiga.c$79$1_4$195	= .
+                                    828 	.globl	C$SpriteBiga.c$79$1_4$195
+                                    829 ;SpriteBiga.c:79: if(stamina_current < euphoria_max && stamina_current > euphoria_min){
+      000328 21r00r00         [12]  830 	ld	hl, #_stamina_current
+      00032B 2A               [ 8]  831 	ld	a, (hl+)
+      00032C 4F               [ 4]  832 	ld	c, a
+      00032D 46               [ 8]  833 	ld	b, (hl)
+      00032E 21r00r00         [12]  834 	ld	hl, #_euphoria_max
+      000331 79               [ 4]  835 	ld	a, c
+      000332 96               [ 8]  836 	sub	a, (hl)
+      000333 23               [ 8]  837 	inc	hl
+      000334 78               [ 4]  838 	ld	a, b
+      000335 9E               [ 8]  839 	sbc	a, (hl)
+      000336 30 4E            [12]  840 	jr	NC, 00140$
+      000338 21r00r00         [12]  841 	ld	hl, #_euphoria_min
+      00033B 2A               [ 8]  842 	ld	a, (hl+)
+      00033C 91               [ 4]  843 	sub	a, c
+      00033D 7E               [ 8]  844 	ld	a, (hl)
+      00033E 98               [ 4]  845 	sbc	a, b
+      00033F 30 45            [12]  846 	jr	NC, 00140$
+                           000341   847 	C$SpriteBiga.c$80$2_4$197	= .
+                                    848 	.globl	C$SpriteBiga.c$80$2_4$197
+                                    849 ;SpriteBiga.c:80: if(vy > 1){ //sto andando in giù
+      000341 21r00r00         [12]  850 	ld	hl, #_vy
+      000344 5E               [ 8]  851 	ld	e, (hl)
+      000345 3E 01            [ 8]  852 	ld	a,#0x01
+      000347 57               [ 4]  853 	ld	d,a
+      000348 96               [ 8]  854 	sub	a, (hl)
+      000349 CB 7B            [ 8]  855 	bit	7, e
+      00034B 28 07            [12]  856 	jr	Z, 00278$
+      00034D CB 7A            [ 8]  857 	bit	7, d
+      00034F 20 08            [12]  858 	jr	NZ, 00279$
+      000351 BF               [ 4]  859 	cp	a, a
+      000352 18 05            [12]  860 	jr	00279$
+      000354                        861 00278$:
+      000354 CB 7A            [ 8]  862 	bit	7, d
+      000356 28 01            [12]  863 	jr	Z, 00279$
+      000358 37               [ 4]  864 	scf
+      000359                        865 00279$:
+      000359 30 12            [12]  866 	jr	NC, 00135$
+                           00035B   867 	C$SpriteBiga.c$81$3_4$198	= .
+                                    868 	.globl	C$SpriteBiga.c$81$3_4$198
+                                    869 ;SpriteBiga.c:81: SetSpriteAnim(THIS, a_biga_down, 12);
+      00035B 3E 0C            [ 8]  870 	ld	a, #0x0c
+      00035D F5               [16]  871 	push	af
+      00035E 33               [ 8]  872 	inc	sp
+      00035F 01r3Ar00         [12]  873 	ld	bc, #_a_biga_down
+      000362 21r00r00         [12]  874 	ld	hl, #_THIS
+      000365 2A               [ 8]  875 	ld	a, (hl+)
+      000366 5F               [ 4]  876 	ld	e, a
+      000367 56               [ 8]  877 	ld	d, (hl)
+      000368 CDr00r00         [24]  878 	call	_SetSpriteAnim
+      00036B 18 19            [12]  879 	jr	00140$
+      00036D                        880 00135$:
+                           00036D   881 	C$SpriteBiga.c$82$2_4$197	= .
+                                    882 	.globl	C$SpriteBiga.c$82$2_4$197
+                                    883 ;SpriteBiga.c:82: }else if (vy < -1){//sto andando in su
+      00036D FAr00r00         [16]  884 	ld	a, (#_vy)
+      000370 EE 80            [ 8]  885 	xor	a, #0x80
+      000372 D6 7F            [ 8]  886 	sub	a, #0x7f
+      000374 30 10            [12]  887 	jr	NC, 00140$
+                           000376   888 	C$SpriteBiga.c$83$3_4$199	= .
+                                    889 	.globl	C$SpriteBiga.c$83$3_4$199
+                                    890 ;SpriteBiga.c:83: SetSpriteAnim(THIS, a_biga_up, 12);
+      000376 3E 0C            [ 8]  891 	ld	a, #0x0c
+      000378 F5               [16]  892 	push	af
+      000379 33               [ 8]  893 	inc	sp
+      00037A 01r3Dr00         [12]  894 	ld	bc, #_a_biga_up
+      00037D 21r00r00         [12]  895 	ld	hl, #_THIS
+      000380 2A               [ 8]  896 	ld	a, (hl+)
+      000381 5F               [ 4]  897 	ld	e, a
+      000382 56               [ 8]  898 	ld	d, (hl)
+      000383 CDr00r00         [24]  899 	call	_SetSpriteAnim
+      000386                        900 00140$:
+                           000386   901 	C$SpriteBiga.c$86$1_4$178	= .
+                                    902 	.globl	C$SpriteBiga.c$86$1_4$178
+                                    903 ;SpriteBiga.c:86: }
+      000386 E8 0A            [16]  904 	add	sp, #10
+                           000388   905 	C$SpriteBiga.c$86$1_4$178	= .
+                                    906 	.globl	C$SpriteBiga.c$86$1_4$178
+                           000388   907 	XG$Update_SpriteBiga$0$0	= .
+                                    908 	.globl	XG$Update_SpriteBiga$0$0
+      000388 C9               [16]  909 	ret
+                           000389   910 	G$Destroy_SpriteBiga$0$0	= .
+                                    911 	.globl	G$Destroy_SpriteBiga$0$0
+                           000389   912 	C$SpriteBiga.c$88$1_4$201	= .
+                                    913 	.globl	C$SpriteBiga.c$88$1_4$201
+                                    914 ;SpriteBiga.c:88: void DESTROY() {
+                                    915 ;	---------------------------------
+                                    916 ; Function Destroy_SpriteBiga
+                                    917 ; ---------------------------------
+      000389                        918 _Destroy_SpriteBiga::
+                           000389   919 	C$SpriteBiga.c$89$1_4$201	= .
+                                    920 	.globl	C$SpriteBiga.c$89$1_4$201
+                                    921 ;SpriteBiga.c:89: }
+                           000389   922 	C$SpriteBiga.c$89$1_4$201	= .
+                                    923 	.globl	C$SpriteBiga.c$89$1_4$201
+                           000389   924 	XG$Destroy_SpriteBiga$0$0	= .
+                                    925 	.globl	XG$Destroy_SpriteBiga$0$0
+      000389 C9               [16]  926 	ret
+                                    927 	.area _CODE_255
+                                    928 	.area _INITIALIZER
+                                    929 	.area _CABS (ABS)

@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\ZGB\\common"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"zgbmain.h": "c",
+			"scroll.h": "c",
+			"spritemanager.h": "c",
+			"setautobank.h": "c",
+			"stdarg.h": "c",
+			"circlemath.h": "c",
+			"palette.h": "c",
+			"keys.h": "c",
+			"custom_datas.h": "c"
+		}
+	}
+}

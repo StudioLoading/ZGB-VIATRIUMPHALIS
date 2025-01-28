@@ -1,0 +1,127 @@
+;!FILE ../DbgClr/SpriteFantoccio.asm
+XL3
+H A areas 48 global symbols
+M SpriteFantoccio
+O -msm83
+S _SetSpriteAnim Ref000000
+S _THIS Ref000000
+S .__.ABS. Def000000
+S ___bank_SpriteFantoccio Def000003
+S G$__bank_SpriteFantoccio$0_0$0 Def0000FF
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 2 flags 0 addr 0
+S _fantoccio_turned Def000001
+S G$fantoccio_turned$0_0$0 Def000001
+S _fantoccio_counter Def000000
+S G$fantoccio_counter$0_0$0 Def000000
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_3 size 49 flags 0 addr 0
+S A$SpriteFantoccio$91 Def00001F
+S A$SpriteFantoccio$82 Def000014
+S A$SpriteFantoccio$73 Def00000A
+S A$SpriteFantoccio$83 Def000015
+S A$SpriteFantoccio$74 Def00000B
+S XG$Destroy_SpriteFantoccio$0$0 Def000048
+S A$SpriteFantoccio$84 Def000016
+S A$SpriteFantoccio$75 Def00000C
+S A$SpriteFantoccio$85 Def000019
+S A$SpriteFantoccio$76 Def00000D
+S A$SpriteFantoccio$95 Def000021
+S A$SpriteFantoccio$86 Def00001A
+S A$SpriteFantoccio$68 Def000000
+S A$SpriteFantoccio$96 Def000024
+S A$SpriteFantoccio$69 Def000002
+S A$SpriteFantoccio$97 Def000025
+S A$SpriteFantoccio$98 Def000026
+S A$SpriteFantoccio$99 Def000027
+S G$Start_SpriteFantoccio$0$0 Def000000
+S _Start_SpriteFantoccio Def000000
+S G$Update_SpriteFantoccio$0$0 Def000047
+S XG$Start_SpriteFantoccio$0$0 Def00003F
+S A$SpriteFantoccio$100 Def00002A
+S A$SpriteFantoccio$110 Def000035
+S A$SpriteFantoccio$101 Def00002B
+S A$SpriteFantoccio$111 Def000036
+S A$SpriteFantoccio$102 Def00002D
+S G$Destroy_SpriteFantoccio$0$0 Def000048
+S A$SpriteFantoccio$112 Def000039
+S A$SpriteFantoccio$103 Def00002E
+S A$SpriteFantoccio$113 Def00003A
+S A$SpriteFantoccio$123 Def00003F
+S A$SpriteFantoccio$114 Def00003C
+S A$SpriteFantoccio$151 Def000047
+S A$SpriteFantoccio$115 Def00003D
+S A$SpriteFantoccio$107 Def000030
+S C$SpriteFantoccio.c$20$1_0$191 Def000000
+S _Update_SpriteFantoccio Def000047
+S A$SpriteFantoccio$108 Def000033
+S C$SpriteFantoccio.c$21$1_0$191 Def000010
+S A$SpriteFantoccio$109 Def000034
+S C$SpriteFantoccio.c$22$1_0$191 Def00001C
+S C$SpriteFantoccio.c$23$1_0$191 Def000021
+S C$SpriteFantoccio.c$24$1_0$191 Def000030
+S C$SpriteFantoccio.c$30$1_0$195 Def000048
+S C$SpriteFantoccio.c$25$1_0$191 Def00003F
+S C$SpriteFantoccio.c$31$1_0$195 Def000048
+S A$SpriteFantoccio$168 Def000048
+S C$SpriteFantoccio.c$19$0_0$191 Def000000
+S _Destroy_SpriteFantoccio Def000048
+S C$SpriteFantoccio.c$27$1_0$193 Def000047
+S C$SpriteFantoccio.c$28$1_0$193 Def000047
+S _a_fantoccio_hit Def000040
+S XG$Update_SpriteFantoccio$0$0 Def000047
+S G$a_fantoccio_hit$0_0$0 Def000040
+S A$SpriteFantoccio$70 Def000003
+S A$SpriteFantoccio$80 Def000010
+S A$SpriteFantoccio$71 Def000004
+S A$SpriteFantoccio$90 Def00001C
+S A$SpriteFantoccio$81 Def000013
+S A$SpriteFantoccio$72 Def000007
+A _INITIALIZER size 2 flags 0 addr 0
+S FSpriteFantoccio$__xinit_fantoccio_counter$0_0$0 Def000000
+S FSpriteFantoccio$__xinit_fantoccio_turned$0_0$0 Def000001
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 02 00
+T 01 00 00
+R 00 00 02 00
+T 01 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 3E 18 F5 33 01 40 00 21 00 00 2A 5F 56
+R 00 00 07 00 00 08 07 00 02 0B 01 00
+T 0D 00 00 CD 00 00 21 00 00 2A 4F 46 21 10 00 09
+R 00 00 07 00 02 04 00 00 02 07 01 00
+T 1A 00 00 36 00 21 01 00 36 00 21 00 00 2A 4F 46
+R 00 00 07 00 00 06 02 00 02 0B 01 00
+T 27 00 00 21 15 00 09 3E E8 22 36 03 21 00 00 2A
+R 00 00 07 00 02 0D 01 00
+T 34 00 00 4F 46 21 17 00 09 3E E8 22 36 03 C9
+R 00 00 07 00
+T 40 00 00
+R 00 00 07 00
+T 40 00 00 06 00 01 02 03 04 05
+R 00 00 07 00
+T 47 00 00
+R 00 00 07 00
+T 47 00 00 C9
+R 00 00 07 00
+T 48 00 00
+R 00 00 07 00
+T 48 00 00 C9
+R 00 00 07 00
+T 00 00 00
+R 00 00 08 00
+T 00 00 00 00
+R 00 00 08 00
+T 01 00 00
+R 00 00 08 00
+T 01 00 00 00
+R 00 00 08 00
