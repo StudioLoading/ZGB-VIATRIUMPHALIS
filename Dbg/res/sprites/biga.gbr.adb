@@ -346,14 +346,12 @@ S:G$move_metasprite_hvflip$0_0$0({2}DF,SC:U),C,0,3
 S:G$hide_metasprite$0_0$0({2}DF,SV:S),C,0,3
 S:G$__func_biga$0_0$0({2}DF,SV:S),C,0,0
 S:G$biga_palettes$0_0$0({8}DA4d,SI:U),D,0,0
-S:G$biga_tiles$0_0$0({448}DA448d,SC:U),D,0,0
+S:G$biga_tiles$0_0$0({320}DA320d,SC:U),D,0,0
 S:G$biga_metasprite0$0_0$0({4}DA1d,STmetasprite_t:S),D,0,0
 S:G$biga_metasprite1$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
 S:G$biga_metasprite2$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
 S:G$biga_metasprite3$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
 S:G$biga_metasprite4$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
 S:G$biga_metasprite5$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
-S:G$biga_metasprite6$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
-S:G$biga_metasprite7$0_0$0({12}DA3d,STmetasprite_t:S),D,0,0
-S:G$biga_metasprites$0_0$0({16}DA8d,DG,STmetasprite_t:S),D,0,0
+S:G$biga_metasprites$0_0$0({12}DA6d,DG,STmetasprite_t:S),D,0,0
 S:G$biga$0_0$0({11}STMetaSpriteInfo:S),D,0,0

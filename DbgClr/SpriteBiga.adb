@@ -461,7 +461,6 @@ S:G$SpriteManagerRemoveSprite$0_0$0({2}DF,SV:S),C,0,0
 S:G$SpriteManagerFlushRemove$0_0$0({2}DF,SV:S),C,0,0
 S:G$SpriteManagerUpdate$0_0$0({2}DF,SV:S),C,0,0
 S:G$update_weapon$0_0$0({2}DF,SV:S),C,0,0
-S:G$update_hp$0_0$0({2}DF,SV:S),C,0,0
 S:G$update_hp_max$0_0$0({2}DF,SV:S),C,0,0
 S:G$update_time_max$0_0$0({2}DF,SV:S),C,0,0
 S:G$use_weapon$0_0$0({2}DF,SV:S),C,0,0

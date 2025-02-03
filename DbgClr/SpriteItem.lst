@@ -13,905 +13,1030 @@
                                      13 	.globl _Start_SpriteItem
                                      14 	.globl b_consume_weapon_def
                                      15 	.globl _consume_weapon_def
-                                     16 	.globl _SpriteManagerRemoveSprite
-                                     17 	.globl _TranslateSprite
-                                     18 	.globl _SetSpriteAnim
-                                     19 	.globl _a_item_cape
-                                     20 	.globl _a_item_shield
-                                     21 	.globl _a_item_elmet
-                                     22 	.globl _a_item_flame
-                                     23 	.globl _a_item_lance
-                                     24 	.globl _a_item_gladio
-                                     25 	.globl _a_item_time
-                                     26 	.globl _a_item_hp
-                                     27 	.globl _a_item_cape_blink
-                                     28 	.globl _a_item_shield_blink
-                                     29 	.globl _a_item_elmet_blink
-                                     30 	.globl _a_item_flame_blink
-                                     31 	.globl _a_item_lance_blink
-                                     32 	.globl _a_item_gladio_blink
-                                     33 	.globl ___bank_SpriteItem
-                                     34 ;--------------------------------------------------------
-                                     35 ; special function registers
+                                     16 	.globl b_consume_weapon_atk
+                                     17 	.globl _consume_weapon_atk
+                                     18 	.globl _SpriteManagerRemoveSprite
+                                     19 	.globl _TranslateSprite
+                                     20 	.globl _SetSpriteAnim
+                                     21 	.globl _a_item_cape
+                                     22 	.globl _a_item_shield
+                                     23 	.globl _a_item_elmet
+                                     24 	.globl _a_item_flame
+                                     25 	.globl _a_item_lance
+                                     26 	.globl _a_item_gladio
+                                     27 	.globl _a_item_time
+                                     28 	.globl _a_item_hp
+                                     29 	.globl _a_item_cape_blink
+                                     30 	.globl _a_item_shield_blink
+                                     31 	.globl _a_item_elmet_blink
+                                     32 	.globl _a_item_flame_blink
+                                     33 	.globl _a_item_lance_blink
+                                     34 	.globl _a_item_gladio_blink
+                                     35 	.globl ___bank_SpriteItem
                                      36 ;--------------------------------------------------------
-                                     37 ;--------------------------------------------------------
-                                     38 ; ram data
+                                     37 ; special function registers
+                                     38 ;--------------------------------------------------------
                                      39 ;--------------------------------------------------------
-                                     40 	.area _DATA
+                                     40 ; ram data
                                      41 ;--------------------------------------------------------
-                                     42 ; ram data
+                                     42 	.area _DATA
                                      43 ;--------------------------------------------------------
-                                     44 	.area _INITIALIZED
+                                     44 ; ram data
                                      45 ;--------------------------------------------------------
-                                     46 ; absolute external ram data
+                                     46 	.area _INITIALIZED
                                      47 ;--------------------------------------------------------
-                                     48 	.area _DABS (ABS)
+                                     48 ; absolute external ram data
                                      49 ;--------------------------------------------------------
-                                     50 ; global & static initialisations
+                                     50 	.area _DABS (ABS)
                                      51 ;--------------------------------------------------------
-                                     52 	.area _HOME
-                                     53 	.area _GSINIT
-                                     54 	.area _GSFINAL
+                                     52 ; global & static initialisations
+                                     53 ;--------------------------------------------------------
+                                     54 	.area _HOME
                                      55 	.area _GSINIT
-                                     56 ;--------------------------------------------------------
-                                     57 ; Home
+                                     56 	.area _GSFINAL
+                                     57 	.area _GSINIT
                                      58 ;--------------------------------------------------------
-                                     59 	.area _HOME
-                                     60 	.area _HOME
-                                     61 ;--------------------------------------------------------
-                                     62 ; code
+                                     59 ; Home
+                                     60 ;--------------------------------------------------------
+                                     61 	.area _HOME
+                                     62 	.area _HOME
                                      63 ;--------------------------------------------------------
-                                     64 	.area _CODE_255
-                           000000    65 	G$Start_SpriteItem$0$0	= .
-                                     66 	.globl	G$Start_SpriteItem$0$0
-                           000000    67 	C$SpriteItem.c$37$0_0$191	= .
-                                     68 	.globl	C$SpriteItem.c$37$0_0$191
-                                     69 ;SpriteItem.c:37: void START() {
-                                     70 ;	---------------------------------
-                                     71 ; Function Start_SpriteItem
-                                     72 ; ---------------------------------
-      000000                         73 _Start_SpriteItem::
-                           000000    74 	C$SpriteItem.c$38$1_0$191	= .
-                                     75 	.globl	C$SpriteItem.c$38$1_0$191
-                                     76 ;SpriteItem.c:38: struct ItemData* item_data = (struct ItemData*) THIS->custom_data;
-      000000 21r00r00         [12]   77 	ld	hl, #_THIS
-      000003 2A               [ 8]   78 	ld	a, (hl+)
-      000004 4F               [ 4]   79 	ld	c, a
-      000005 46               [ 8]   80 	ld	b, (hl)
-                           000006    81 	C$SpriteItem.c$39$1_0$191	= .
-                                     82 	.globl	C$SpriteItem.c$39$1_0$191
-                                     83 ;SpriteItem.c:39: item_data->configured = 0;
-      000006 21 1E 00         [12]   84 	ld	hl,#0x1e
-      000009 09               [ 8]   85 	add	hl,bc
-      00000A 36 00            [12]   86 	ld	(hl), #0x00
-                           00000C    87 	C$SpriteItem.c$40$1_0$191	= .
-                                     88 	.globl	C$SpriteItem.c$40$1_0$191
-                                     89 ;SpriteItem.c:40: THIS->lim_x = 1000;
-      00000C 21r00r00         [12]   90 	ld	hl, #_THIS
-      00000F 2A               [ 8]   91 	ld	a, (hl+)
-      000010 4F               [ 4]   92 	ld	c, a
-      000011 46               [ 8]   93 	ld	b, (hl)
-      000012 21 15 00         [12]   94 	ld	hl, #0x0015
-      000015 09               [ 8]   95 	add	hl, bc
-      000016 3E E8            [ 8]   96 	ld	a, #0xe8
-      000018 22               [ 8]   97 	ld	(hl+), a
-      000019 36 03            [12]   98 	ld	(hl), #0x03
-                           00001B    99 	C$SpriteItem.c$41$1_0$191	= .
-                                    100 	.globl	C$SpriteItem.c$41$1_0$191
-                                    101 ;SpriteItem.c:41: THIS->lim_y = 1000;
-      00001B 21r00r00         [12]  102 	ld	hl, #_THIS
-      00001E 2A               [ 8]  103 	ld	a, (hl+)
-      00001F 4F               [ 4]  104 	ld	c, a
-      000020 46               [ 8]  105 	ld	b, (hl)
-      000021 21 17 00         [12]  106 	ld	hl, #0x0017
-      000024 09               [ 8]  107 	add	hl, bc
-      000025 3E E8            [ 8]  108 	ld	a, #0xe8
-      000027 22               [ 8]  109 	ld	(hl+), a
-      000028 36 03            [12]  110 	ld	(hl), #0x03
-                           00002A   111 	C$SpriteItem.c$42$1_0$191	= .
-                                    112 	.globl	C$SpriteItem.c$42$1_0$191
-                                    113 ;SpriteItem.c:42: }
-                           00002A   114 	C$SpriteItem.c$42$1_0$191	= .
-                                    115 	.globl	C$SpriteItem.c$42$1_0$191
-                           00002A   116 	XG$Start_SpriteItem$0$0	= .
-                                    117 	.globl	XG$Start_SpriteItem$0$0
-      00002A C9               [16]  118 	ret
-                           0000FF   119 G$__bank_SpriteItem$0_0$0 == 0x00ff
-                           0000FF   120 ___bank_SpriteItem	=	0x00ff
-                           00002B   121 G$a_item_gladio_blink$0_0$0 == .
-      00002B                        122 _a_item_gladio_blink:
-      00002B 02                     123 	.db #0x02	; 2
-      00002C 00                     124 	.db #0x00	; 0
-      00002D 01                     125 	.db #0x01	; 1
-                           00002E   126 G$a_item_lance_blink$0_0$0 == .
-      00002E                        127 _a_item_lance_blink:
-      00002E 02                     128 	.db #0x02	; 2
-      00002F 00                     129 	.db #0x00	; 0
-      000030 02                     130 	.db #0x02	; 2
-                           000031   131 G$a_item_flame_blink$0_0$0 == .
-      000031                        132 _a_item_flame_blink:
-      000031 02                     133 	.db #0x02	; 2
-      000032 00                     134 	.db #0x00	; 0
-      000033 03                     135 	.db #0x03	; 3
-                           000034   136 G$a_item_elmet_blink$0_0$0 == .
-      000034                        137 _a_item_elmet_blink:
-      000034 02                     138 	.db #0x02	; 2
-      000035 00                     139 	.db #0x00	; 0
-      000036 04                     140 	.db #0x04	; 4
-                           000037   141 G$a_item_shield_blink$0_0$0 == .
-      000037                        142 _a_item_shield_blink:
-      000037 02                     143 	.db #0x02	; 2
-      000038 00                     144 	.db #0x00	; 0
-      000039 05                     145 	.db #0x05	; 5
-                           00003A   146 G$a_item_cape_blink$0_0$0 == .
-      00003A                        147 _a_item_cape_blink:
-      00003A 02                     148 	.db #0x02	; 2
-      00003B 00                     149 	.db #0x00	; 0
-      00003C 06                     150 	.db #0x06	; 6
-                           00003D   151 G$a_item_hp$0_0$0 == .
-      00003D                        152 _a_item_hp:
-      00003D 02                     153 	.db #0x02	; 2
-      00003E 00                     154 	.db #0x00	; 0
-      00003F 07                     155 	.db #0x07	; 7
-                           000040   156 G$a_item_time$0_0$0 == .
-      000040                        157 _a_item_time:
-      000040 02                     158 	.db #0x02	; 2
-      000041 00                     159 	.db #0x00	; 0
-      000042 08                     160 	.db #0x08	; 8
-                           000043   161 G$a_item_gladio$0_0$0 == .
-      000043                        162 _a_item_gladio:
-      000043 01                     163 	.db #0x01	; 1
-      000044 01                     164 	.db #0x01	; 1
-                           000045   165 G$a_item_lance$0_0$0 == .
-      000045                        166 _a_item_lance:
-      000045 01                     167 	.db #0x01	; 1
-      000046 02                     168 	.db #0x02	; 2
-                           000047   169 G$a_item_flame$0_0$0 == .
-      000047                        170 _a_item_flame:
-      000047 01                     171 	.db #0x01	; 1
-      000048 03                     172 	.db #0x03	; 3
-                           000049   173 G$a_item_elmet$0_0$0 == .
-      000049                        174 _a_item_elmet:
-      000049 01                     175 	.db #0x01	; 1
-      00004A 04                     176 	.db #0x04	; 4
-                           00004B   177 G$a_item_shield$0_0$0 == .
-      00004B                        178 _a_item_shield:
-      00004B 01                     179 	.db #0x01	; 1
-      00004C 05                     180 	.db #0x05	; 5
-                           00004D   181 G$a_item_cape$0_0$0 == .
-      00004D                        182 _a_item_cape:
-      00004D 01                     183 	.db #0x01	; 1
-      00004E 06                     184 	.db #0x06	; 6
-                           00004F   185 	G$Update_SpriteItem$0$0	= .
-                                    186 	.globl	G$Update_SpriteItem$0$0
-                           00004F   187 	C$SpriteItem.c$44$1_0$192	= .
-                                    188 	.globl	C$SpriteItem.c$44$1_0$192
-                                    189 ;SpriteItem.c:44: void UPDATE() {
-                                    190 ;	---------------------------------
-                                    191 ; Function Update_SpriteItem
-                                    192 ; ---------------------------------
-      00004F                        193 _Update_SpriteItem::
-      00004F E8 F3            [16]  194 	add	sp, #-13
-                           000051   195 	C$SpriteItem.c$45$1_0$192	= .
-                                    196 	.globl	C$SpriteItem.c$45$1_0$192
-                                    197 ;SpriteItem.c:45: struct ItemData* item_data = (struct ItemData*) THIS->custom_data;
-      000051 FAr00r00         [16]  198 	ld	a, (#_THIS)
-      000054 F8 00            [12]  199 	ldhl	sp,	#0
-      000056 77               [ 8]  200 	ld	(hl), a
-      000057 FAr01r00         [16]  201 	ld	a, (#_THIS + 1)
-      00005A F8 01            [12]  202 	ldhl	sp,	#1
-      00005C 77               [ 8]  203 	ld	(hl), a
-      00005D D1               [12]  204 	pop	de
-      00005E D5               [16]  205 	push	de
-      00005F 21 1B 00         [12]  206 	ld	hl, #0x001b
-      000062 19               [ 8]  207 	add	hl, de
-      000063 4D               [ 4]  208 	ld	c, l
-      000064 7C               [ 4]  209 	ld	a, h
-      000065 F8 02            [12]  210 	ldhl	sp,	#2
-      000067 71               [ 8]  211 	ld	(hl), c
-      000068 23               [ 8]  212 	inc	hl
-                           000069   213 	C$SpriteItem.c$46$1_0$192	= .
-                                    214 	.globl	C$SpriteItem.c$46$1_0$192
-                                    215 ;SpriteItem.c:46: switch(item_data->configured){
-      000069 32               [ 8]  216 	ld	(hl-), a
-      00006A 2A               [ 8]  217 	ld	a, (hl+)
-      00006B 5F               [ 4]  218 	ld	e, a
-      00006C 56               [ 8]  219 	ld	d, (hl)
-      00006D 21 03 00         [12]  220 	ld	hl, #0x0003
-      000070 19               [ 8]  221 	add	hl, de
-      000071 E5               [16]  222 	push	hl
-      000072 7D               [ 4]  223 	ld	a, l
-      000073 F8 06            [12]  224 	ldhl	sp,	#6
-      000075 77               [ 8]  225 	ld	(hl), a
-      000076 E1               [12]  226 	pop	hl
-      000077 7C               [ 4]  227 	ld	a, h
-      000078 F8 05            [12]  228 	ldhl	sp,	#5
-      00007A 32               [ 8]  229 	ld	(hl-), a
-      00007B 2A               [ 8]  230 	ld	a, (hl+)
-      00007C 5F               [ 4]  231 	ld	e, a
-      00007D 2A               [ 8]  232 	ld	a, (hl+)
-      00007E 57               [ 4]  233 	ld	d, a
-      00007F 1A               [ 8]  234 	ld	a, (de)
-      000080 77               [ 8]  235 	ld	(hl), a
-      000081 B7               [ 4]  236 	or	a, a
-      000082 CAr18r03         [16]  237 	jp	Z,00129$
-                           000085   238 	C$SpriteItem.c$49$1_0$192	= .
-                                    239 	.globl	C$SpriteItem.c$49$1_0$192
-                                    240 ;SpriteItem.c:49: switch(item_data->itemtype){
-      000085 F8 02            [12]  241 	ldhl	sp,#2
-      000087 2A               [ 8]  242 	ld	a, (hl+)
-      000088 5F               [ 4]  243 	ld	e, a
-      000089 56               [ 8]  244 	ld	d, (hl)
-      00008A 21 04 00         [12]  245 	ld	hl, #0x0004
-      00008D 19               [ 8]  246 	add	hl, de
-      00008E E5               [16]  247 	push	hl
-      00008F 7D               [ 4]  248 	ld	a, l
-      000090 F8 09            [12]  249 	ldhl	sp,	#9
-      000092 77               [ 8]  250 	ld	(hl), a
-      000093 E1               [12]  251 	pop	hl
-      000094 7C               [ 4]  252 	ld	a, h
-      000095 F8 08            [12]  253 	ldhl	sp,	#8
-                           000097   254 	C$SpriteItem.c$46$1_0$192	= .
-                                    255 	.globl	C$SpriteItem.c$46$1_0$192
-                                    256 ;SpriteItem.c:46: switch(item_data->configured){
-      000097 32               [ 8]  257 	ld	(hl-), a
-      000098 2B               [ 8]  258 	dec	hl
-      000099 7E               [ 8]  259 	ld	a, (hl)
-      00009A 3D               [ 4]  260 	dec	a
-      00009B 28 38            [12]  261 	jr	Z, 00102$
-                           00009D   262 	C$SpriteItem.c$85$1_0$192	= .
-                                    263 	.globl	C$SpriteItem.c$85$1_0$192
-                                    264 ;SpriteItem.c:85: item_data->vy = vy;
-      00009D F8 02            [12]  265 	ldhl	sp,#2
-      00009F 2A               [ 8]  266 	ld	a, (hl+)
-      0000A0 5F               [ 4]  267 	ld	e, a
-      0000A1 56               [ 8]  268 	ld	d, (hl)
-      0000A2 6B               [ 4]  269 	ld	l, e
-      0000A3 62               [ 4]  270 	ld	h, d
-      0000A4 23               [ 8]  271 	inc	hl
-      0000A5 E5               [16]  272 	push	hl
-      0000A6 7D               [ 4]  273 	ld	a, l
-      0000A7 F8 0B            [12]  274 	ldhl	sp,	#11
-      0000A9 77               [ 8]  275 	ld	(hl), a
-      0000AA E1               [12]  276 	pop	hl
-      0000AB 7C               [ 4]  277 	ld	a, h
-      0000AC F8 0A            [12]  278 	ldhl	sp,	#10
-      0000AE 77               [ 8]  279 	ld	(hl), a
-                           0000AF   280 	C$SpriteItem.c$100$1_0$192	= .
-                                    281 	.globl	C$SpriteItem.c$100$1_0$192
-                                    282 ;SpriteItem.c:100: item_data->hp = 80;
-      0000AF F8 02            [12]  283 	ldhl	sp,#2
-      0000B1 2A               [ 8]  284 	ld	a, (hl+)
-      0000B2 5F               [ 4]  285 	ld	e, a
-      0000B3 56               [ 8]  286 	ld	d, (hl)
-      0000B4 21 02 00         [12]  287 	ld	hl, #0x0002
-      0000B7 19               [ 8]  288 	add	hl, de
-      0000B8 E5               [16]  289 	push	hl
-      0000B9 7D               [ 4]  290 	ld	a, l
-      0000BA F8 0D            [12]  291 	ldhl	sp,	#13
-      0000BC 77               [ 8]  292 	ld	(hl), a
-      0000BD E1               [12]  293 	pop	hl
-      0000BE 7C               [ 4]  294 	ld	a, h
-      0000BF F8 0C            [12]  295 	ldhl	sp,	#12
-      0000C1 77               [ 8]  296 	ld	(hl), a
-                           0000C2   297 	C$SpriteItem.c$46$1_0$192	= .
-                                    298 	.globl	C$SpriteItem.c$46$1_0$192
-                                    299 ;SpriteItem.c:46: switch(item_data->configured){
-      0000C2 F8 06            [12]  300 	ldhl	sp,	#6
-      0000C4 7E               [ 8]  301 	ld	a, (hl)
-      0000C5 D6 03            [ 8]  302 	sub	a, #0x03
-      0000C7 CArA4r01         [16]  303 	jp	Z,00112$
-      0000CA F8 06            [12]  304 	ldhl	sp,	#6
-      0000CC 7E               [ 8]  305 	ld	a, (hl)
-      0000CD D6 04            [ 8]  306 	sub	a, #0x04
-      0000CF CAr51r02         [16]  307 	jp	Z,00120$
-                           0000D2   308 	C$SpriteItem.c$47$2_0$193	= .
-                                    309 	.globl	C$SpriteItem.c$47$2_0$193
-                                    310 ;SpriteItem.c:47: case 0: return; break;
-      0000D2 C3r18r03         [16]  311 	jp	00129$
-                           0000D5   312 	C$SpriteItem.c$48$2_0$193	= .
-                                    313 	.globl	C$SpriteItem.c$48$2_0$193
-                                    314 ;SpriteItem.c:48: case 1://set animation
-      0000D5                        315 00102$:
-                           0000D5   316 	C$SpriteItem.c$49$2_0$193	= .
-                                    317 	.globl	C$SpriteItem.c$49$2_0$193
-                                    318 ;SpriteItem.c:49: switch(item_data->itemtype){
-      0000D5 F8 07            [12]  319 	ldhl	sp,#7
-      0000D7 2A               [ 8]  320 	ld	a, (hl+)
-      0000D8 5F               [ 4]  321 	ld	e, a
-      0000D9 56               [ 8]  322 	ld	d, (hl)
-      0000DA 1A               [ 8]  323 	ld	a, (de)
-      0000DB 4F               [ 4]  324 	ld	c, a
-      0000DC D6 03            [ 8]  325 	sub	a, #0x03
-      0000DE DAr9Ar01         [16]  326 	jp	C, 00111$
-      0000E1 3E 0A            [ 8]  327 	ld	a, #0x0a
-      0000E3 91               [ 4]  328 	sub	a, c
-      0000E4 DAr9Ar01         [16]  329 	jp	C, 00111$
-      0000E7 79               [ 4]  330 	ld	a, c
-      0000E8 C6 FD            [ 8]  331 	add	a, #0xfd
-      0000EA 4F               [ 4]  332 	ld	c, a
-      0000EB 06 00            [ 8]  333 	ld	b, #0x00
-      0000ED 21rF4r00         [12]  334 	ld	hl, #00247$
-      0000F0 09               [ 8]  335 	add	hl, bc
-      0000F1 09               [ 8]  336 	add	hl, bc
-      0000F2 09               [ 8]  337 	add	hl, bc
-      0000F3 E9               [ 4]  338 	jp	(hl)
-      0000F4                        339 00247$:
-      0000F4 C3r0Cr01         [16]  340 	jp	00103$
-      0000F7 C3r1Er01         [16]  341 	jp	00104$
-      0000FA C3r30r01         [16]  342 	jp	00105$
-      0000FD C3r42r01         [16]  343 	jp	00106$
-      000100 C3r54r01         [16]  344 	jp	00107$
-      000103 C3r66r01         [16]  345 	jp	00108$
-      000106 C3r78r01         [16]  346 	jp	00109$
-      000109 C3r8Ar01         [16]  347 	jp	00110$
-                           00010C   348 	C$SpriteItem.c$50$3_0$194	= .
-                                    349 	.globl	C$SpriteItem.c$50$3_0$194
-                                    350 ;SpriteItem.c:50: case GLADIO:
-      00010C                        351 00103$:
-                           00010C   352 	C$SpriteItem.c$51$3_0$194	= .
-                                    353 	.globl	C$SpriteItem.c$51$3_0$194
-                                    354 ;SpriteItem.c:51: SetSpriteAnim(THIS, a_item_gladio_blink, 24);
-      00010C 3E 18            [ 8]  355 	ld	a, #0x18
-      00010E F5               [16]  356 	push	af
-      00010F 33               [ 8]  357 	inc	sp
-      000110 01r2Br00         [12]  358 	ld	bc, #_a_item_gladio_blink
-      000113 21r00r00         [12]  359 	ld	hl, #_THIS
-      000116 2A               [ 8]  360 	ld	a, (hl+)
-      000117 5F               [ 4]  361 	ld	e, a
-      000118 56               [ 8]  362 	ld	d, (hl)
-      000119 CDr00r00         [24]  363 	call	_SetSpriteAnim
-                           00011C   364 	C$SpriteItem.c$52$3_0$194	= .
-                                    365 	.globl	C$SpriteItem.c$52$3_0$194
-                                    366 ;SpriteItem.c:52: break;
-      00011C 18 7C            [12]  367 	jr	00111$
-                           00011E   368 	C$SpriteItem.c$53$3_0$194	= .
-                                    369 	.globl	C$SpriteItem.c$53$3_0$194
-                                    370 ;SpriteItem.c:53: case LANCE:
-      00011E                        371 00104$:
-                           00011E   372 	C$SpriteItem.c$54$3_0$194	= .
-                                    373 	.globl	C$SpriteItem.c$54$3_0$194
-                                    374 ;SpriteItem.c:54: SetSpriteAnim(THIS, a_item_lance_blink, 24);
-      00011E 3E 18            [ 8]  375 	ld	a, #0x18
-      000120 F5               [16]  376 	push	af
-      000121 33               [ 8]  377 	inc	sp
-      000122 01r2Er00         [12]  378 	ld	bc, #_a_item_lance_blink
-      000125 21r00r00         [12]  379 	ld	hl, #_THIS
-      000128 2A               [ 8]  380 	ld	a, (hl+)
-      000129 5F               [ 4]  381 	ld	e, a
-      00012A 56               [ 8]  382 	ld	d, (hl)
-      00012B CDr00r00         [24]  383 	call	_SetSpriteAnim
-                           00012E   384 	C$SpriteItem.c$55$3_0$194	= .
-                                    385 	.globl	C$SpriteItem.c$55$3_0$194
-                                    386 ;SpriteItem.c:55: break;
-      00012E 18 6A            [12]  387 	jr	00111$
-                           000130   388 	C$SpriteItem.c$56$3_0$194	= .
-                                    389 	.globl	C$SpriteItem.c$56$3_0$194
-                                    390 ;SpriteItem.c:56: case FLAME:
-      000130                        391 00105$:
-                           000130   392 	C$SpriteItem.c$57$3_0$194	= .
-                                    393 	.globl	C$SpriteItem.c$57$3_0$194
-                                    394 ;SpriteItem.c:57: SetSpriteAnim(THIS, a_item_flame_blink, 24);
-      000130 3E 18            [ 8]  395 	ld	a, #0x18
-      000132 F5               [16]  396 	push	af
-      000133 33               [ 8]  397 	inc	sp
-      000134 01r31r00         [12]  398 	ld	bc, #_a_item_flame_blink
-      000137 21r00r00         [12]  399 	ld	hl, #_THIS
-      00013A 2A               [ 8]  400 	ld	a, (hl+)
-      00013B 5F               [ 4]  401 	ld	e, a
-      00013C 56               [ 8]  402 	ld	d, (hl)
-      00013D CDr00r00         [24]  403 	call	_SetSpriteAnim
-                           000140   404 	C$SpriteItem.c$58$3_0$194	= .
-                                    405 	.globl	C$SpriteItem.c$58$3_0$194
-                                    406 ;SpriteItem.c:58: break;
-      000140 18 58            [12]  407 	jr	00111$
-                           000142   408 	C$SpriteItem.c$59$3_0$194	= .
-                                    409 	.globl	C$SpriteItem.c$59$3_0$194
-                                    410 ;SpriteItem.c:59: case ELMET:
-      000142                        411 00106$:
-                           000142   412 	C$SpriteItem.c$60$3_0$194	= .
-                                    413 	.globl	C$SpriteItem.c$60$3_0$194
-                                    414 ;SpriteItem.c:60: SetSpriteAnim(THIS, a_item_elmet_blink, 24);
-      000142 3E 18            [ 8]  415 	ld	a, #0x18
-      000144 F5               [16]  416 	push	af
-      000145 33               [ 8]  417 	inc	sp
-      000146 01r34r00         [12]  418 	ld	bc, #_a_item_elmet_blink
-      000149 21r00r00         [12]  419 	ld	hl, #_THIS
-      00014C 2A               [ 8]  420 	ld	a, (hl+)
-      00014D 5F               [ 4]  421 	ld	e, a
-      00014E 56               [ 8]  422 	ld	d, (hl)
-      00014F CDr00r00         [24]  423 	call	_SetSpriteAnim
-                           000152   424 	C$SpriteItem.c$61$3_0$194	= .
-                                    425 	.globl	C$SpriteItem.c$61$3_0$194
-                                    426 ;SpriteItem.c:61: break;
-      000152 18 46            [12]  427 	jr	00111$
-                           000154   428 	C$SpriteItem.c$62$3_0$194	= .
-                                    429 	.globl	C$SpriteItem.c$62$3_0$194
-                                    430 ;SpriteItem.c:62: case SHIELD:
-      000154                        431 00107$:
-                           000154   432 	C$SpriteItem.c$63$3_0$194	= .
-                                    433 	.globl	C$SpriteItem.c$63$3_0$194
-                                    434 ;SpriteItem.c:63: SetSpriteAnim(THIS, a_item_shield_blink, 24);
-      000154 3E 18            [ 8]  435 	ld	a, #0x18
-      000156 F5               [16]  436 	push	af
-      000157 33               [ 8]  437 	inc	sp
-      000158 01r37r00         [12]  438 	ld	bc, #_a_item_shield_blink
-      00015B 21r00r00         [12]  439 	ld	hl, #_THIS
-      00015E 2A               [ 8]  440 	ld	a, (hl+)
-      00015F 5F               [ 4]  441 	ld	e, a
-      000160 56               [ 8]  442 	ld	d, (hl)
-      000161 CDr00r00         [24]  443 	call	_SetSpriteAnim
-                           000164   444 	C$SpriteItem.c$64$3_0$194	= .
-                                    445 	.globl	C$SpriteItem.c$64$3_0$194
-                                    446 ;SpriteItem.c:64: break;
-      000164 18 34            [12]  447 	jr	00111$
-                           000166   448 	C$SpriteItem.c$65$3_0$194	= .
-                                    449 	.globl	C$SpriteItem.c$65$3_0$194
-                                    450 ;SpriteItem.c:65: case CAPE:
-      000166                        451 00108$:
-                           000166   452 	C$SpriteItem.c$66$3_0$194	= .
-                                    453 	.globl	C$SpriteItem.c$66$3_0$194
-                                    454 ;SpriteItem.c:66: SetSpriteAnim(THIS, a_item_cape_blink, 24);
-      000166 3E 18            [ 8]  455 	ld	a, #0x18
-      000168 F5               [16]  456 	push	af
-      000169 33               [ 8]  457 	inc	sp
-      00016A 01r3Ar00         [12]  458 	ld	bc, #_a_item_cape_blink
-      00016D 21r00r00         [12]  459 	ld	hl, #_THIS
-      000170 2A               [ 8]  460 	ld	a, (hl+)
-      000171 5F               [ 4]  461 	ld	e, a
-      000172 56               [ 8]  462 	ld	d, (hl)
-      000173 CDr00r00         [24]  463 	call	_SetSpriteAnim
-                           000176   464 	C$SpriteItem.c$67$3_0$194	= .
-                                    465 	.globl	C$SpriteItem.c$67$3_0$194
-                                    466 ;SpriteItem.c:67: break;
-      000176 18 22            [12]  467 	jr	00111$
-                           000178   468 	C$SpriteItem.c$68$3_0$194	= .
-                                    469 	.globl	C$SpriteItem.c$68$3_0$194
-                                    470 ;SpriteItem.c:68: case HP:
-      000178                        471 00109$:
-                           000178   472 	C$SpriteItem.c$69$3_0$194	= .
-                                    473 	.globl	C$SpriteItem.c$69$3_0$194
-                                    474 ;SpriteItem.c:69: SetSpriteAnim(THIS, a_item_hp, 64);
-      000178 3E 40            [ 8]  475 	ld	a, #0x40
-      00017A F5               [16]  476 	push	af
-      00017B 33               [ 8]  477 	inc	sp
-      00017C 01r3Dr00         [12]  478 	ld	bc, #_a_item_hp
-      00017F 21r00r00         [12]  479 	ld	hl, #_THIS
-      000182 2A               [ 8]  480 	ld	a, (hl+)
-      000183 5F               [ 4]  481 	ld	e, a
-      000184 56               [ 8]  482 	ld	d, (hl)
-      000185 CDr00r00         [24]  483 	call	_SetSpriteAnim
-                           000188   484 	C$SpriteItem.c$70$3_0$194	= .
-                                    485 	.globl	C$SpriteItem.c$70$3_0$194
-                                    486 ;SpriteItem.c:70: break;
-      000188 18 10            [12]  487 	jr	00111$
-                           00018A   488 	C$SpriteItem.c$71$3_0$194	= .
-                                    489 	.globl	C$SpriteItem.c$71$3_0$194
-                                    490 ;SpriteItem.c:71: case TIME:
-      00018A                        491 00110$:
-                           00018A   492 	C$SpriteItem.c$72$3_0$194	= .
-                                    493 	.globl	C$SpriteItem.c$72$3_0$194
-                                    494 ;SpriteItem.c:72: SetSpriteAnim(THIS, a_item_time, 64);
-      00018A 3E 40            [ 8]  495 	ld	a, #0x40
-      00018C F5               [16]  496 	push	af
-      00018D 33               [ 8]  497 	inc	sp
-      00018E 01r40r00         [12]  498 	ld	bc, #_a_item_time
-      000191 21r00r00         [12]  499 	ld	hl, #_THIS
-      000194 2A               [ 8]  500 	ld	a, (hl+)
-      000195 5F               [ 4]  501 	ld	e, a
-      000196 56               [ 8]  502 	ld	d, (hl)
-      000197 CDr00r00         [24]  503 	call	_SetSpriteAnim
-                           00019A   504 	C$SpriteItem.c$74$2_0$193	= .
-                                    505 	.globl	C$SpriteItem.c$74$2_0$193
-                                    506 ;SpriteItem.c:74: }
-      00019A                        507 00111$:
-                           00019A   508 	C$SpriteItem.c$75$2_0$193	= .
-                                    509 	.globl	C$SpriteItem.c$75$2_0$193
-                                    510 ;SpriteItem.c:75: item_data->configured = 2;
-      00019A F8 04            [12]  511 	ldhl	sp,	#4
-      00019C 2A               [ 8]  512 	ld	a,	(hl+)
-      00019D 66               [ 8]  513 	ld	h, (hl)
-      00019E 6F               [ 4]  514 	ld	l, a
-      00019F 36 02            [12]  515 	ld	(hl), #0x02
-                           0001A1   516 	C$SpriteItem.c$76$2_0$193	= .
-                                    517 	.globl	C$SpriteItem.c$76$2_0$193
-                                    518 ;SpriteItem.c:76: break;
-      0001A1 C3r18r03         [16]  519 	jp	00129$
-                           0001A4   520 	C$SpriteItem.c$77$2_0$193	= .
-                                    521 	.globl	C$SpriteItem.c$77$2_0$193
-                                    522 ;SpriteItem.c:77: case 3://using the weapon!
-      0001A4                        523 00112$:
-                           0001A4   524 	C$SpriteItem.c$78$2_0$193	= .
-                                    525 	.globl	C$SpriteItem.c$78$2_0$193
-                                    526 ;SpriteItem.c:78: switch(item_data->itemtype){
-      0001A4 F8 07            [12]  527 	ldhl	sp,#7
-      0001A6 2A               [ 8]  528 	ld	a, (hl+)
-      0001A7 5F               [ 4]  529 	ld	e, a
-      0001A8 56               [ 8]  530 	ld	d, (hl)
-      0001A9 1A               [ 8]  531 	ld	a, (de)
-      0001AA FE 03            [ 8]  532 	cp	a, #0x03
-      0001AC 28 16            [12]  533 	jr	Z, 00113$
-      0001AE FE 04            [ 8]  534 	cp	a, #0x04
-      0001B0 28 24            [12]  535 	jr	Z, 00114$
-      0001B2 FE 05            [ 8]  536 	cp	a, #0x05
-      0001B4 28 44            [12]  537 	jr	Z, 00115$
-      0001B6 FE 06            [ 8]  538 	cp	a, #0x06
-      0001B8 28 52            [12]  539 	jr	Z, 00116$
-      0001BA FE 07            [ 8]  540 	cp	a, #0x07
-      0001BC 28 60            [12]  541 	jr	Z, 00117$
-      0001BE D6 08            [ 8]  542 	sub	a, #0x08
-      0001C0 28 6E            [12]  543 	jr	Z, 00118$
-      0001C2 18 7C            [12]  544 	jr	00119$
-                           0001C4   545 	C$SpriteItem.c$79$3_0$195	= .
-                                    546 	.globl	C$SpriteItem.c$79$3_0$195
-                                    547 ;SpriteItem.c:79: case GLADIO:
-      0001C4                        548 00113$:
-                           0001C4   549 	C$SpriteItem.c$80$3_0$195	= .
-                                    550 	.globl	C$SpriteItem.c$80$3_0$195
-                                    551 ;SpriteItem.c:80: SetSpriteAnim(THIS, a_item_gladio, 32);
-      0001C4 3E 20            [ 8]  552 	ld	a, #0x20
-      0001C6 F5               [16]  553 	push	af
-      0001C7 33               [ 8]  554 	inc	sp
-      0001C8 01r43r00         [12]  555 	ld	bc, #_a_item_gladio
-      0001CB 21r00r00         [12]  556 	ld	hl, #_THIS
-      0001CE 2A               [ 8]  557 	ld	a, (hl+)
-      0001CF 5F               [ 4]  558 	ld	e, a
-      0001D0 56               [ 8]  559 	ld	d, (hl)
-      0001D1 CDr00r00         [24]  560 	call	_SetSpriteAnim
-                           0001D4   561 	C$SpriteItem.c$81$3_0$195	= .
-                                    562 	.globl	C$SpriteItem.c$81$3_0$195
-                                    563 ;SpriteItem.c:81: break;
-      0001D4 18 6A            [12]  564 	jr	00119$
-                           0001D6   565 	C$SpriteItem.c$82$3_0$195	= .
-                                    566 	.globl	C$SpriteItem.c$82$3_0$195
-                                    567 ;SpriteItem.c:82: case LANCE:
-      0001D6                        568 00114$:
-                           0001D6   569 	C$SpriteItem.c$83$3_0$195	= .
-                                    570 	.globl	C$SpriteItem.c$83$3_0$195
-                                    571 ;SpriteItem.c:83: SetSpriteAnim(THIS, a_item_lance, 32);
-      0001D6 3E 20            [ 8]  572 	ld	a, #0x20
-      0001D8 F5               [16]  573 	push	af
-      0001D9 33               [ 8]  574 	inc	sp
-      0001DA 01r45r00         [12]  575 	ld	bc, #_a_item_lance
-      0001DD 21r00r00         [12]  576 	ld	hl, #_THIS
-      0001E0 2A               [ 8]  577 	ld	a, (hl+)
-      0001E1 5F               [ 4]  578 	ld	e, a
-      0001E2 56               [ 8]  579 	ld	d, (hl)
-      0001E3 CDr00r00         [24]  580 	call	_SetSpriteAnim
-                           0001E6   581 	C$SpriteItem.c$84$3_0$195	= .
-                                    582 	.globl	C$SpriteItem.c$84$3_0$195
-                                    583 ;SpriteItem.c:84: item_data->vx = vx;
-      0001E6 F8 02            [12]  584 	ldhl	sp,#2
-      0001E8 2A               [ 8]  585 	ld	a, (hl+)
-      0001E9 5F               [ 4]  586 	ld	e, a
-      0001EA 56               [ 8]  587 	ld	d, (hl)
-      0001EB FAr00r00         [16]  588 	ld	a, (#_vx)
-      0001EE 12               [ 8]  589 	ld	(de), a
-                           0001EF   590 	C$SpriteItem.c$85$3_0$195	= .
-                                    591 	.globl	C$SpriteItem.c$85$3_0$195
-                                    592 ;SpriteItem.c:85: item_data->vy = vy;
-      0001EF F8 09            [12]  593 	ldhl	sp,#9
-      0001F1 2A               [ 8]  594 	ld	a, (hl+)
-      0001F2 5F               [ 4]  595 	ld	e, a
-      0001F3 56               [ 8]  596 	ld	d, (hl)
-      0001F4 FAr00r00         [16]  597 	ld	a, (#_vy)
-      0001F7 12               [ 8]  598 	ld	(de), a
-                           0001F8   599 	C$SpriteItem.c$86$3_0$195	= .
-                                    600 	.globl	C$SpriteItem.c$86$3_0$195
-                                    601 ;SpriteItem.c:86: break;
-      0001F8 18 46            [12]  602 	jr	00119$
-                           0001FA   603 	C$SpriteItem.c$87$3_0$195	= .
-                                    604 	.globl	C$SpriteItem.c$87$3_0$195
-                                    605 ;SpriteItem.c:87: case FLAME:
-      0001FA                        606 00115$:
-                           0001FA   607 	C$SpriteItem.c$88$3_0$195	= .
-                                    608 	.globl	C$SpriteItem.c$88$3_0$195
-                                    609 ;SpriteItem.c:88: SetSpriteAnim(THIS, a_item_flame, 32);
-      0001FA 3E 20            [ 8]  610 	ld	a, #0x20
-      0001FC F5               [16]  611 	push	af
-      0001FD 33               [ 8]  612 	inc	sp
-      0001FE 01r47r00         [12]  613 	ld	bc, #_a_item_flame
-      000201 21r00r00         [12]  614 	ld	hl, #_THIS
-      000204 2A               [ 8]  615 	ld	a, (hl+)
-      000205 5F               [ 4]  616 	ld	e, a
-      000206 56               [ 8]  617 	ld	d, (hl)
-      000207 CDr00r00         [24]  618 	call	_SetSpriteAnim
-                           00020A   619 	C$SpriteItem.c$89$3_0$195	= .
-                                    620 	.globl	C$SpriteItem.c$89$3_0$195
-                                    621 ;SpriteItem.c:89: break;
-      00020A 18 34            [12]  622 	jr	00119$
-                           00020C   623 	C$SpriteItem.c$90$3_0$195	= .
-                                    624 	.globl	C$SpriteItem.c$90$3_0$195
-                                    625 ;SpriteItem.c:90: case ELMET:
-      00020C                        626 00116$:
-                           00020C   627 	C$SpriteItem.c$91$3_0$195	= .
-                                    628 	.globl	C$SpriteItem.c$91$3_0$195
-                                    629 ;SpriteItem.c:91: SetSpriteAnim(THIS, a_item_elmet, 32);
-      00020C 3E 20            [ 8]  630 	ld	a, #0x20
-      00020E F5               [16]  631 	push	af
-      00020F 33               [ 8]  632 	inc	sp
-      000210 01r49r00         [12]  633 	ld	bc, #_a_item_elmet
-      000213 21r00r00         [12]  634 	ld	hl, #_THIS
-      000216 2A               [ 8]  635 	ld	a, (hl+)
-      000217 5F               [ 4]  636 	ld	e, a
-      000218 56               [ 8]  637 	ld	d, (hl)
-      000219 CDr00r00         [24]  638 	call	_SetSpriteAnim
-                           00021C   639 	C$SpriteItem.c$92$3_0$195	= .
-                                    640 	.globl	C$SpriteItem.c$92$3_0$195
-                                    641 ;SpriteItem.c:92: break;
-      00021C 18 22            [12]  642 	jr	00119$
-                           00021E   643 	C$SpriteItem.c$93$3_0$195	= .
-                                    644 	.globl	C$SpriteItem.c$93$3_0$195
-                                    645 ;SpriteItem.c:93: case SHIELD:
-      00021E                        646 00117$:
-                           00021E   647 	C$SpriteItem.c$94$3_0$195	= .
-                                    648 	.globl	C$SpriteItem.c$94$3_0$195
-                                    649 ;SpriteItem.c:94: SetSpriteAnim(THIS, a_item_shield, 32);
-      00021E 3E 20            [ 8]  650 	ld	a, #0x20
-      000220 F5               [16]  651 	push	af
-      000221 33               [ 8]  652 	inc	sp
-      000222 01r4Br00         [12]  653 	ld	bc, #_a_item_shield
-      000225 21r00r00         [12]  654 	ld	hl, #_THIS
-      000228 2A               [ 8]  655 	ld	a, (hl+)
-      000229 5F               [ 4]  656 	ld	e, a
-      00022A 56               [ 8]  657 	ld	d, (hl)
-      00022B CDr00r00         [24]  658 	call	_SetSpriteAnim
-                           00022E   659 	C$SpriteItem.c$95$3_0$195	= .
-                                    660 	.globl	C$SpriteItem.c$95$3_0$195
-                                    661 ;SpriteItem.c:95: break;
-      00022E 18 10            [12]  662 	jr	00119$
-                           000230   663 	C$SpriteItem.c$96$3_0$195	= .
-                                    664 	.globl	C$SpriteItem.c$96$3_0$195
-                                    665 ;SpriteItem.c:96: case CAPE:
-      000230                        666 00118$:
-                           000230   667 	C$SpriteItem.c$97$3_0$195	= .
-                                    668 	.globl	C$SpriteItem.c$97$3_0$195
-                                    669 ;SpriteItem.c:97: SetSpriteAnim(THIS, a_item_cape, 32);
-      000230 3E 20            [ 8]  670 	ld	a, #0x20
-      000232 F5               [16]  671 	push	af
-      000233 33               [ 8]  672 	inc	sp
-      000234 01r4Dr00         [12]  673 	ld	bc, #_a_item_cape
-      000237 21r00r00         [12]  674 	ld	hl, #_THIS
-      00023A 2A               [ 8]  675 	ld	a, (hl+)
-      00023B 5F               [ 4]  676 	ld	e, a
-      00023C 56               [ 8]  677 	ld	d, (hl)
-      00023D CDr00r00         [24]  678 	call	_SetSpriteAnim
-                           000240   679 	C$SpriteItem.c$99$2_0$193	= .
-                                    680 	.globl	C$SpriteItem.c$99$2_0$193
-                                    681 ;SpriteItem.c:99: }
-      000240                        682 00119$:
-                           000240   683 	C$SpriteItem.c$100$2_0$193	= .
-                                    684 	.globl	C$SpriteItem.c$100$2_0$193
-                                    685 ;SpriteItem.c:100: item_data->hp = 80;
-      000240 F8 0B            [12]  686 	ldhl	sp,	#11
-      000242 2A               [ 8]  687 	ld	a,	(hl+)
-      000243 66               [ 8]  688 	ld	h, (hl)
-      000244 6F               [ 4]  689 	ld	l, a
-      000245 36 50            [12]  690 	ld	(hl), #0x50
-                           000247   691 	C$SpriteItem.c$101$2_0$193	= .
-                                    692 	.globl	C$SpriteItem.c$101$2_0$193
-                                    693 ;SpriteItem.c:101: item_data->configured = 4;
-      000247 F8 04            [12]  694 	ldhl	sp,	#4
-      000249 2A               [ 8]  695 	ld	a,	(hl+)
-      00024A 66               [ 8]  696 	ld	h, (hl)
-      00024B 6F               [ 4]  697 	ld	l, a
-      00024C 36 04            [12]  698 	ld	(hl), #0x04
-                           00024E   699 	C$SpriteItem.c$102$2_0$193	= .
-                                    700 	.globl	C$SpriteItem.c$102$2_0$193
-                                    701 ;SpriteItem.c:102: break;
-      00024E C3r18r03         [16]  702 	jp	00129$
-                           000251   703 	C$SpriteItem.c$103$2_0$193	= .
-                                    704 	.globl	C$SpriteItem.c$103$2_0$193
-                                    705 ;SpriteItem.c:103: case 4://weapon in use!
-      000251                        706 00120$:
-                           000251   707 	C$SpriteItem.c$104$2_0$193	= .
-                                    708 	.globl	C$SpriteItem.c$104$2_0$193
-                                    709 ;SpriteItem.c:104: switch(item_data->itemtype){
-      000251 F8 07            [12]  710 	ldhl	sp,#7
-      000253 2A               [ 8]  711 	ld	a, (hl+)
-      000254 5F               [ 4]  712 	ld	e, a
-      000255 56               [ 8]  713 	ld	d, (hl)
-      000256 1A               [ 8]  714 	ld	a, (de)
-      000257 FE 04            [ 8]  715 	cp	a, #0x04
-      000259 CArE6r02         [16]  716 	jp	Z,00126$
-      00025C FE 06            [ 8]  717 	cp	a, #0x06
-      00025E 28 09            [12]  718 	jr	Z, 00123$
-      000260 FE 07            [ 8]  719 	cp	a, #0x07
-      000262 28 05            [12]  720 	jr	Z, 00123$
-      000264 D6 08            [ 8]  721 	sub	a, #0x08
-      000266 C2r18r03         [16]  722 	jp	NZ,00129$
-                           000269   723 	C$SpriteItem.c$107$3_0$196	= .
-                                    724 	.globl	C$SpriteItem.c$107$3_0$196
-                                    725 ;SpriteItem.c:107: case CAPE:
-      000269                        726 00123$:
-                           000269   727 	C$SpriteItem.c$108$3_0$196	= .
-                                    728 	.globl	C$SpriteItem.c$108$3_0$196
-                                    729 ;SpriteItem.c:108: THIS->x = s_horse->x;
-      000269 D1               [12]  730 	pop	de
-      00026A D5               [16]  731 	push	de
-      00026B 21 0C 00         [12]  732 	ld	hl, #0x000c
-      00026E 19               [ 8]  733 	add	hl, de
-      00026F E5               [16]  734 	push	hl
-      000270 7D               [ 4]  735 	ld	a, l
-      000271 F8 0B            [12]  736 	ldhl	sp,	#11
-      000273 77               [ 8]  737 	ld	(hl), a
-      000274 E1               [12]  738 	pop	hl
-      000275 7C               [ 4]  739 	ld	a, h
-      000276 F8 0A            [12]  740 	ldhl	sp,	#10
-      000278 77               [ 8]  741 	ld	(hl), a
-      000279 21r00r00         [12]  742 	ld	hl, #_s_horse
-      00027C 2A               [ 8]  743 	ld	a, (hl+)
-      00027D 4F               [ 4]  744 	ld	c, a
-      00027E 46               [ 8]  745 	ld	b, (hl)
-      00027F 21 0C 00         [12]  746 	ld	hl, #0x000c
-      000282 09               [ 8]  747 	add	hl, bc
-      000283 2A               [ 8]  748 	ld	a, (hl+)
-      000284 4F               [ 4]  749 	ld	c, a
-      000285 46               [ 8]  750 	ld	b, (hl)
-      000286 F8 09            [12]  751 	ldhl	sp,	#9
-      000288 2A               [ 8]  752 	ld	a,	(hl+)
-      000289 66               [ 8]  753 	ld	h, (hl)
-      00028A 6F               [ 4]  754 	ld	l, a
-      00028B 79               [ 4]  755 	ld	a, c
-      00028C 22               [ 8]  756 	ld	(hl+), a
-      00028D 70               [ 8]  757 	ld	(hl), b
-                           00028E   758 	C$SpriteItem.c$109$3_0$196	= .
-                                    759 	.globl	C$SpriteItem.c$109$3_0$196
-                                    760 ;SpriteItem.c:109: THIS->y = s_horse->y - 24;
-      00028E 21r00r00         [12]  761 	ld	hl, #_THIS
-      000291 2A               [ 8]  762 	ld	a, (hl+)
-      000292 46               [ 8]  763 	ld	b, (hl)
-      000293 C6 0E            [ 8]  764 	add	a, #0x0e
-      000295 4F               [ 4]  765 	ld	c, a
-      000296 30 01            [12]  766 	jr	NC, 00259$
-      000298 04               [ 4]  767 	inc	b
-      000299                        768 00259$:
-      000299 21r00r00         [12]  769 	ld	hl, #_s_horse
-      00029C 2A               [ 8]  770 	ld	a, (hl+)
-      00029D 5F               [ 4]  771 	ld	e, a
-      00029E 56               [ 8]  772 	ld	d, (hl)
-      00029F 21 0E 00         [12]  773 	ld	hl, #0x000e
-      0002A2 19               [ 8]  774 	add	hl, de
-      0002A3 2A               [ 8]  775 	ld	a, (hl+)
-      0002A4 6E               [ 8]  776 	ld	l, (hl)
-                                    777 ;	spillPairReg hl
-      0002A5 C6 E8            [ 8]  778 	add	a, #0xe8
-      0002A7 5F               [ 4]  779 	ld	e, a
-      0002A8 7D               [ 4]  780 	ld	a, l
-      0002A9 CE FF            [ 8]  781 	adc	a, #0xff
-      0002AB 57               [ 4]  782 	ld	d, a
-      0002AC 7B               [ 4]  783 	ld	a, e
-      0002AD 02               [ 8]  784 	ld	(bc), a
-      0002AE 03               [ 8]  785 	inc	bc
-      0002AF 7A               [ 4]  786 	ld	a, d
-      0002B0 02               [ 8]  787 	ld	(bc), a
-                           0002B1   788 	C$SpriteItem.c$110$3_0$196	= .
-                                    789 	.globl	C$SpriteItem.c$110$3_0$196
-                                    790 ;SpriteItem.c:110: item_data->hp--;
-      0002B1 F8 0B            [12]  791 	ldhl	sp,#11
-      0002B3 2A               [ 8]  792 	ld	a, (hl+)
-      0002B4 5F               [ 4]  793 	ld	e, a
-      0002B5 56               [ 8]  794 	ld	d, (hl)
-      0002B6 1A               [ 8]  795 	ld	a, (de)
-      0002B7 4F               [ 4]  796 	ld	c, a
-      0002B8 0D               [ 4]  797 	dec	c
-      0002B9 3A               [ 8]  798 	ld	a, (hl-)
-      0002BA 6E               [ 8]  799 	ld	l, (hl)
-      0002BB 67               [ 4]  800 	ld	h, a
-      0002BC 71               [ 8]  801 	ld	(hl), c
-                           0002BD   802 	C$SpriteItem.c$111$3_0$196	= .
-                                    803 	.globl	C$SpriteItem.c$111$3_0$196
-                                    804 ;SpriteItem.c:111: if(item_data->hp <= 0){
-      0002BD 59               [ 4]  805 	ld	e, c
-      0002BE AF               [ 4]  806 	xor	a, a
-      0002BF 57               [ 4]  807 	ld	d, a
-      0002C0 91               [ 4]  808 	sub	a, c
-      0002C1 CB 7B            [ 8]  809 	bit	7, e
-      0002C3 28 07            [12]  810 	jr	Z, 00260$
-      0002C5 CB 7A            [ 8]  811 	bit	7, d
-      0002C7 20 08            [12]  812 	jr	NZ, 00261$
-      0002C9 BF               [ 4]  813 	cp	a, a
-      0002CA 18 05            [12]  814 	jr	00261$
-      0002CC                        815 00260$:
-      0002CC CB 7A            [ 8]  816 	bit	7, d
-      0002CE 28 01            [12]  817 	jr	Z, 00261$
-      0002D0 37               [ 4]  818 	scf
-      0002D1                        819 00261$:
-      0002D1 38 45            [12]  820 	jr	C, 00129$
-                           0002D3   821 	C$SpriteItem.c$112$4_0$197	= .
-                                    822 	.globl	C$SpriteItem.c$112$4_0$197
-                                    823 ;SpriteItem.c:112: consume_weapon_def();
-      0002D3 1Er00            [ 8]  824 	ld	e, #b_consume_weapon_def
-      0002D5 21r00r00         [12]  825 	ld	hl, #_consume_weapon_def
-      0002D8 CDr00r00         [24]  826 	call	___sdcc_bcall_ehl
-                           0002DB   827 	C$SpriteItem.c$113$4_0$197	= .
-                                    828 	.globl	C$SpriteItem.c$113$4_0$197
-                                    829 ;SpriteItem.c:113: SpriteManagerRemoveSprite(THIS);
-      0002DB 21r00r00         [12]  830 	ld	hl, #_THIS
-      0002DE 5E               [ 8]  831 	ld	e, (hl)
-      0002DF 23               [ 8]  832 	inc	hl
-      0002E0 56               [ 8]  833 	ld	d, (hl)
-      0002E1 CDr00r00         [24]  834 	call	_SpriteManagerRemoveSprite
-                           0002E4   835 	C$SpriteItem.c$115$3_0$196	= .
-                                    836 	.globl	C$SpriteItem.c$115$3_0$196
-                                    837 ;SpriteItem.c:115: break;
-      0002E4 18 32            [12]  838 	jr	00129$
-                           0002E6   839 	C$SpriteItem.c$116$3_0$196	= .
-                                    840 	.globl	C$SpriteItem.c$116$3_0$196
-                                    841 ;SpriteItem.c:116: case LANCE:
-      0002E6                        842 00126$:
-                           0002E6   843 	C$SpriteItem.c$117$3_0$196	= .
-                                    844 	.globl	C$SpriteItem.c$117$3_0$196
-                                    845 ;SpriteItem.c:117: TranslateSprite(THIS, item_data->vx << delta_time, item_data->vy << delta_time);
-      0002E6 F8 09            [12]  846 	ldhl	sp,#9
-      0002E8 2A               [ 8]  847 	ld	a, (hl+)
-      0002E9 5F               [ 4]  848 	ld	e, a
-      0002EA 56               [ 8]  849 	ld	d, (hl)
-      0002EB 1A               [ 8]  850 	ld	a, (de)
-      0002EC 21r00r00         [12]  851 	ld	hl, #_delta_time
-      0002EF 46               [ 8]  852 	ld	b, (hl)
-      0002F0 04               [ 4]  853 	inc	b
-      0002F1 18 01            [12]  854 	jr	00263$
-      0002F3                        855 00262$:
-      0002F3 87               [ 4]  856 	add	a, a
-      0002F4                        857 00263$:
-      0002F4 05               [ 4]  858 	dec	b
-      0002F5 20 FC            [12]  859 	jr	NZ,00262$
-      0002F7 F8 02            [12]  860 	ldhl	sp,#2
-      0002F9 5E               [ 8]  861 	ld	e, (hl)
-      0002FA 23               [ 8]  862 	inc	hl
-      0002FB 56               [ 8]  863 	ld	d, (hl)
-      0002FC F5               [16]  864 	push	af
-      0002FD 1A               [ 8]  865 	ld	a, (de)
-      0002FE 4F               [ 4]  866 	ld	c, a
-      0002FF F1               [12]  867 	pop	af
-      000300 21r00r00         [12]  868 	ld	hl, #_delta_time
-      000303 46               [ 8]  869 	ld	b, (hl)
-      000304 04               [ 4]  870 	inc	b
-      000305 18 02            [12]  871 	jr	00265$
-      000307                        872 00264$:
-      000307 CB 21            [ 8]  873 	sla	c
-      000309                        874 00265$:
-      000309 05               [ 4]  875 	dec	b
-      00030A 20 FB            [12]  876 	jr	NZ,00264$
-      00030C F5               [16]  877 	push	af
-      00030D 33               [ 8]  878 	inc	sp
-      00030E 79               [ 4]  879 	ld	a, c
-      00030F 21r00r00         [12]  880 	ld	hl, #_THIS
-      000312 5E               [ 8]  881 	ld	e, (hl)
-      000313 23               [ 8]  882 	inc	hl
-      000314 56               [ 8]  883 	ld	d, (hl)
-      000315 CDr00r00         [24]  884 	call	_TranslateSprite
-                           000318   885 	C$SpriteItem.c$121$1_0$192	= .
-                                    886 	.globl	C$SpriteItem.c$121$1_0$192
-                                    887 ;SpriteItem.c:121: }
-      000318                        888 00129$:
-                           000318   889 	C$SpriteItem.c$122$1_0$192	= .
-                                    890 	.globl	C$SpriteItem.c$122$1_0$192
-                                    891 ;SpriteItem.c:122: }
-      000318 E8 0D            [16]  892 	add	sp, #13
-                           00031A   893 	C$SpriteItem.c$122$1_0$192	= .
-                                    894 	.globl	C$SpriteItem.c$122$1_0$192
-                           00031A   895 	XG$Update_SpriteItem$0$0	= .
-                                    896 	.globl	XG$Update_SpriteItem$0$0
-      00031A C9               [16]  897 	ret
-                           00031B   898 	G$Destroy_SpriteItem$0$0	= .
-                                    899 	.globl	G$Destroy_SpriteItem$0$0
-                           00031B   900 	C$SpriteItem.c$124$1_0$199	= .
-                                    901 	.globl	C$SpriteItem.c$124$1_0$199
-                                    902 ;SpriteItem.c:124: void DESTROY() {
-                                    903 ;	---------------------------------
-                                    904 ; Function Destroy_SpriteItem
-                                    905 ; ---------------------------------
-      00031B                        906 _Destroy_SpriteItem::
-                           00031B   907 	C$SpriteItem.c$125$1_0$199	= .
-                                    908 	.globl	C$SpriteItem.c$125$1_0$199
-                                    909 ;SpriteItem.c:125: }
-                           00031B   910 	C$SpriteItem.c$125$1_0$199	= .
-                                    911 	.globl	C$SpriteItem.c$125$1_0$199
-                           00031B   912 	XG$Destroy_SpriteItem$0$0	= .
-                                    913 	.globl	XG$Destroy_SpriteItem$0$0
-      00031B C9               [16]  914 	ret
-                                    915 	.area _CODE_255
-                                    916 	.area _INITIALIZER
-                                    917 	.area _CABS (ABS)
+                                     64 ; code
+                                     65 ;--------------------------------------------------------
+                                     66 	.area _CODE_255
+                           000000    67 	G$Start_SpriteItem$0$0	= .
+                                     68 	.globl	G$Start_SpriteItem$0$0
+                           000000    69 	C$SpriteItem.c$38$0_0$191	= .
+                                     70 	.globl	C$SpriteItem.c$38$0_0$191
+                                     71 ;SpriteItem.c:38: void START() {
+                                     72 ;	---------------------------------
+                                     73 ; Function Start_SpriteItem
+                                     74 ; ---------------------------------
+      000000                         75 _Start_SpriteItem::
+                           000000    76 	C$SpriteItem.c$39$1_0$191	= .
+                                     77 	.globl	C$SpriteItem.c$39$1_0$191
+                                     78 ;SpriteItem.c:39: struct ItemData* item_data = (struct ItemData*) THIS->custom_data;
+      000000 21r00r00         [12]   79 	ld	hl, #_THIS
+      000003 2A               [ 8]   80 	ld	a, (hl+)
+      000004 4F               [ 4]   81 	ld	c, a
+      000005 46               [ 8]   82 	ld	b, (hl)
+                           000006    83 	C$SpriteItem.c$40$1_0$191	= .
+                                     84 	.globl	C$SpriteItem.c$40$1_0$191
+                                     85 ;SpriteItem.c:40: item_data->configured = 0;
+      000006 21 1E 00         [12]   86 	ld	hl,#0x1e
+      000009 09               [ 8]   87 	add	hl,bc
+      00000A 36 00            [12]   88 	ld	(hl), #0x00
+                           00000C    89 	C$SpriteItem.c$41$1_0$191	= .
+                                     90 	.globl	C$SpriteItem.c$41$1_0$191
+                                     91 ;SpriteItem.c:41: THIS->lim_x = 1000;
+      00000C 21r00r00         [12]   92 	ld	hl, #_THIS
+      00000F 2A               [ 8]   93 	ld	a, (hl+)
+      000010 4F               [ 4]   94 	ld	c, a
+      000011 46               [ 8]   95 	ld	b, (hl)
+      000012 21 15 00         [12]   96 	ld	hl, #0x0015
+      000015 09               [ 8]   97 	add	hl, bc
+      000016 3E E8            [ 8]   98 	ld	a, #0xe8
+      000018 22               [ 8]   99 	ld	(hl+), a
+      000019 36 03            [12]  100 	ld	(hl), #0x03
+                           00001B   101 	C$SpriteItem.c$42$1_0$191	= .
+                                    102 	.globl	C$SpriteItem.c$42$1_0$191
+                                    103 ;SpriteItem.c:42: THIS->lim_y = 1000;
+      00001B 21r00r00         [12]  104 	ld	hl, #_THIS
+      00001E 2A               [ 8]  105 	ld	a, (hl+)
+      00001F 4F               [ 4]  106 	ld	c, a
+      000020 46               [ 8]  107 	ld	b, (hl)
+      000021 21 17 00         [12]  108 	ld	hl, #0x0017
+      000024 09               [ 8]  109 	add	hl, bc
+      000025 3E E8            [ 8]  110 	ld	a, #0xe8
+      000027 22               [ 8]  111 	ld	(hl+), a
+      000028 36 03            [12]  112 	ld	(hl), #0x03
+                           00002A   113 	C$SpriteItem.c$43$1_0$191	= .
+                                    114 	.globl	C$SpriteItem.c$43$1_0$191
+                                    115 ;SpriteItem.c:43: }
+                           00002A   116 	C$SpriteItem.c$43$1_0$191	= .
+                                    117 	.globl	C$SpriteItem.c$43$1_0$191
+                           00002A   118 	XG$Start_SpriteItem$0$0	= .
+                                    119 	.globl	XG$Start_SpriteItem$0$0
+      00002A C9               [16]  120 	ret
+                           0000FF   121 G$__bank_SpriteItem$0_0$0 == 0x00ff
+                           0000FF   122 ___bank_SpriteItem	=	0x00ff
+                           00002B   123 G$a_item_gladio_blink$0_0$0 == .
+      00002B                        124 _a_item_gladio_blink:
+      00002B 02                     125 	.db #0x02	; 2
+      00002C 00                     126 	.db #0x00	; 0
+      00002D 01                     127 	.db #0x01	; 1
+                           00002E   128 G$a_item_lance_blink$0_0$0 == .
+      00002E                        129 _a_item_lance_blink:
+      00002E 02                     130 	.db #0x02	; 2
+      00002F 00                     131 	.db #0x00	; 0
+      000030 02                     132 	.db #0x02	; 2
+                           000031   133 G$a_item_flame_blink$0_0$0 == .
+      000031                        134 _a_item_flame_blink:
+      000031 02                     135 	.db #0x02	; 2
+      000032 00                     136 	.db #0x00	; 0
+      000033 03                     137 	.db #0x03	; 3
+                           000034   138 G$a_item_elmet_blink$0_0$0 == .
+      000034                        139 _a_item_elmet_blink:
+      000034 02                     140 	.db #0x02	; 2
+      000035 00                     141 	.db #0x00	; 0
+      000036 04                     142 	.db #0x04	; 4
+                           000037   143 G$a_item_shield_blink$0_0$0 == .
+      000037                        144 _a_item_shield_blink:
+      000037 02                     145 	.db #0x02	; 2
+      000038 00                     146 	.db #0x00	; 0
+      000039 05                     147 	.db #0x05	; 5
+                           00003A   148 G$a_item_cape_blink$0_0$0 == .
+      00003A                        149 _a_item_cape_blink:
+      00003A 02                     150 	.db #0x02	; 2
+      00003B 00                     151 	.db #0x00	; 0
+      00003C 06                     152 	.db #0x06	; 6
+                           00003D   153 G$a_item_hp$0_0$0 == .
+      00003D                        154 _a_item_hp:
+      00003D 02                     155 	.db #0x02	; 2
+      00003E 00                     156 	.db #0x00	; 0
+      00003F 07                     157 	.db #0x07	; 7
+                           000040   158 G$a_item_time$0_0$0 == .
+      000040                        159 _a_item_time:
+      000040 02                     160 	.db #0x02	; 2
+      000041 00                     161 	.db #0x00	; 0
+      000042 08                     162 	.db #0x08	; 8
+                           000043   163 G$a_item_gladio$0_0$0 == .
+      000043                        164 _a_item_gladio:
+      000043 01                     165 	.db #0x01	; 1
+      000044 01                     166 	.db #0x01	; 1
+                           000045   167 G$a_item_lance$0_0$0 == .
+      000045                        168 _a_item_lance:
+      000045 01                     169 	.db #0x01	; 1
+      000046 02                     170 	.db #0x02	; 2
+                           000047   171 G$a_item_flame$0_0$0 == .
+      000047                        172 _a_item_flame:
+      000047 01                     173 	.db #0x01	; 1
+      000048 03                     174 	.db #0x03	; 3
+                           000049   175 G$a_item_elmet$0_0$0 == .
+      000049                        176 _a_item_elmet:
+      000049 01                     177 	.db #0x01	; 1
+      00004A 04                     178 	.db #0x04	; 4
+                           00004B   179 G$a_item_shield$0_0$0 == .
+      00004B                        180 _a_item_shield:
+      00004B 01                     181 	.db #0x01	; 1
+      00004C 05                     182 	.db #0x05	; 5
+                           00004D   183 G$a_item_cape$0_0$0 == .
+      00004D                        184 _a_item_cape:
+      00004D 01                     185 	.db #0x01	; 1
+      00004E 06                     186 	.db #0x06	; 6
+                           00004F   187 	G$Update_SpriteItem$0$0	= .
+                                    188 	.globl	G$Update_SpriteItem$0$0
+                           00004F   189 	C$SpriteItem.c$45$1_0$192	= .
+                                    190 	.globl	C$SpriteItem.c$45$1_0$192
+                                    191 ;SpriteItem.c:45: void UPDATE() {
+                                    192 ;	---------------------------------
+                                    193 ; Function Update_SpriteItem
+                                    194 ; ---------------------------------
+      00004F                        195 _Update_SpriteItem::
+      00004F E8 F7            [16]  196 	add	sp, #-9
+                           000051   197 	C$SpriteItem.c$46$1_0$192	= .
+                                    198 	.globl	C$SpriteItem.c$46$1_0$192
+                                    199 ;SpriteItem.c:46: struct ItemData* item_data = (struct ItemData*) THIS->custom_data;
+      000051 FAr00r00         [16]  200 	ld	a, (#_THIS)
+      000054 F8 00            [12]  201 	ldhl	sp,	#0
+      000056 77               [ 8]  202 	ld	(hl), a
+      000057 FAr01r00         [16]  203 	ld	a, (#_THIS + 1)
+      00005A F8 01            [12]  204 	ldhl	sp,	#1
+      00005C 77               [ 8]  205 	ld	(hl), a
+      00005D D1               [12]  206 	pop	de
+      00005E D5               [16]  207 	push	de
+      00005F 21 1B 00         [12]  208 	ld	hl, #0x001b
+      000062 19               [ 8]  209 	add	hl, de
+      000063 4D               [ 4]  210 	ld	c, l
+      000064 44               [ 4]  211 	ld	b, h
+                           000065   212 	C$SpriteItem.c$47$1_0$192	= .
+                                    213 	.globl	C$SpriteItem.c$47$1_0$192
+                                    214 ;SpriteItem.c:47: switch(item_data->configured){
+      000065 21 03 00         [12]  215 	ld	hl, #0x0003
+      000068 09               [ 8]  216 	add	hl, bc
+      000069 E5               [16]  217 	push	hl
+      00006A 7D               [ 4]  218 	ld	a, l
+      00006B F8 04            [12]  219 	ldhl	sp,	#4
+      00006D 77               [ 8]  220 	ld	(hl), a
+      00006E E1               [12]  221 	pop	hl
+      00006F 7C               [ 4]  222 	ld	a, h
+      000070 F8 03            [12]  223 	ldhl	sp,	#3
+      000072 32               [ 8]  224 	ld	(hl-), a
+      000073 2A               [ 8]  225 	ld	a, (hl+)
+      000074 5F               [ 4]  226 	ld	e, a
+      000075 2A               [ 8]  227 	ld	a, (hl+)
+      000076 57               [ 4]  228 	ld	d, a
+      000077 1A               [ 8]  229 	ld	a, (de)
+      000078 77               [ 8]  230 	ld	(hl), a
+      000079 B7               [ 4]  231 	or	a, a
+      00007A CAr9Er03         [16]  232 	jp	Z,00137$
+                           00007D   233 	C$SpriteItem.c$50$1_0$192	= .
+                                    234 	.globl	C$SpriteItem.c$50$1_0$192
+                                    235 ;SpriteItem.c:50: switch(item_data->itemtype){
+      00007D 21 04 00         [12]  236 	ld	hl, #0x0004
+      000080 09               [ 8]  237 	add	hl, bc
+      000081 5D               [ 4]  238 	ld	e, l
+      000082 54               [ 4]  239 	ld	d, h
+                           000083   240 	C$SpriteItem.c$47$1_0$192	= .
+                                    241 	.globl	C$SpriteItem.c$47$1_0$192
+                                    242 ;SpriteItem.c:47: switch(item_data->configured){
+      000083 F8 04            [12]  243 	ldhl	sp,	#4
+      000085 7E               [ 8]  244 	ld	a, (hl)
+      000086 3D               [ 4]  245 	dec	a
+      000087 28 2E            [12]  246 	jr	Z, 00102$
+                           000089   247 	C$SpriteItem.c$82$1_0$192	= .
+                                    248 	.globl	C$SpriteItem.c$82$1_0$192
+                                    249 ;SpriteItem.c:82: item_data->hp = 4;
+      000089 21 02 00         [12]  250 	ld	hl, #0x0002
+      00008C 09               [ 8]  251 	add	hl, bc
+      00008D E5               [16]  252 	push	hl
+      00008E 7D               [ 4]  253 	ld	a, l
+      00008F F8 07            [12]  254 	ldhl	sp,	#7
+      000091 77               [ 8]  255 	ld	(hl), a
+      000092 E1               [12]  256 	pop	hl
+      000093 7C               [ 4]  257 	ld	a, h
+      000094 F8 06            [12]  258 	ldhl	sp,	#6
+      000096 77               [ 8]  259 	ld	(hl), a
+                           000097   260 	C$SpriteItem.c$85$1_0$192	= .
+                                    261 	.globl	C$SpriteItem.c$85$1_0$192
+                                    262 ;SpriteItem.c:85: item_data->vy = 0;
+      000097 69               [ 4]  263 	ld	l, c
+      000098 60               [ 4]  264 	ld	h, b
+      000099 23               [ 8]  265 	inc	hl
+      00009A E5               [16]  266 	push	hl
+      00009B 7D               [ 4]  267 	ld	a, l
+      00009C F8 09            [12]  268 	ldhl	sp,	#9
+      00009E 77               [ 8]  269 	ld	(hl), a
+      00009F E1               [12]  270 	pop	hl
+      0000A0 7C               [ 4]  271 	ld	a, h
+      0000A1 F8 08            [12]  272 	ldhl	sp,	#8
+      0000A3 77               [ 8]  273 	ld	(hl), a
+                           0000A4   274 	C$SpriteItem.c$47$1_0$192	= .
+                                    275 	.globl	C$SpriteItem.c$47$1_0$192
+                                    276 ;SpriteItem.c:47: switch(item_data->configured){
+      0000A4 F8 04            [12]  277 	ldhl	sp,	#4
+      0000A6 7E               [ 8]  278 	ld	a, (hl)
+      0000A7 D6 03            [ 8]  279 	sub	a, #0x03
+      0000A9 CAr81r01         [16]  280 	jp	Z,00112$
+      0000AC F8 04            [12]  281 	ldhl	sp,	#4
+      0000AE 7E               [ 8]  282 	ld	a, (hl)
+      0000AF D6 04            [ 8]  283 	sub	a, #0x04
+      0000B1 CAr79r02         [16]  284 	jp	Z,00125$
+                           0000B4   285 	C$SpriteItem.c$48$2_0$193	= .
+                                    286 	.globl	C$SpriteItem.c$48$2_0$193
+                                    287 ;SpriteItem.c:48: case 0: return; break;
+      0000B4 C3r9Er03         [16]  288 	jp	00137$
+                           0000B7   289 	C$SpriteItem.c$49$2_0$193	= .
+                                    290 	.globl	C$SpriteItem.c$49$2_0$193
+                                    291 ;SpriteItem.c:49: case 1://set animation
+      0000B7                        292 00102$:
+                           0000B7   293 	C$SpriteItem.c$50$2_0$193	= .
+                                    294 	.globl	C$SpriteItem.c$50$2_0$193
+                                    295 ;SpriteItem.c:50: switch(item_data->itemtype){
+      0000B7 1A               [ 8]  296 	ld	a, (de)
+      0000B8 4F               [ 4]  297 	ld	c, a
+      0000B9 D6 03            [ 8]  298 	sub	a, #0x03
+      0000BB DAr77r01         [16]  299 	jp	C, 00111$
+      0000BE 3E 0A            [ 8]  300 	ld	a, #0x0a
+      0000C0 91               [ 4]  301 	sub	a, c
+      0000C1 DAr77r01         [16]  302 	jp	C, 00111$
+      0000C4 79               [ 4]  303 	ld	a, c
+      0000C5 C6 FD            [ 8]  304 	add	a, #0xfd
+      0000C7 4F               [ 4]  305 	ld	c, a
+      0000C8 06 00            [ 8]  306 	ld	b, #0x00
+      0000CA 21rD1r00         [12]  307 	ld	hl, #00283$
+      0000CD 09               [ 8]  308 	add	hl, bc
+      0000CE 09               [ 8]  309 	add	hl, bc
+      0000CF 09               [ 8]  310 	add	hl, bc
+      0000D0 E9               [ 4]  311 	jp	(hl)
+      0000D1                        312 00283$:
+      0000D1 C3rE9r00         [16]  313 	jp	00103$
+      0000D4 C3rFBr00         [16]  314 	jp	00104$
+      0000D7 C3r0Dr01         [16]  315 	jp	00105$
+      0000DA C3r1Fr01         [16]  316 	jp	00106$
+      0000DD C3r31r01         [16]  317 	jp	00107$
+      0000E0 C3r43r01         [16]  318 	jp	00108$
+      0000E3 C3r55r01         [16]  319 	jp	00109$
+      0000E6 C3r67r01         [16]  320 	jp	00110$
+                           0000E9   321 	C$SpriteItem.c$51$3_0$194	= .
+                                    322 	.globl	C$SpriteItem.c$51$3_0$194
+                                    323 ;SpriteItem.c:51: case GLADIO:
+      0000E9                        324 00103$:
+                           0000E9   325 	C$SpriteItem.c$52$3_0$194	= .
+                                    326 	.globl	C$SpriteItem.c$52$3_0$194
+                                    327 ;SpriteItem.c:52: SetSpriteAnim(THIS, a_item_gladio_blink, 24);
+      0000E9 3E 18            [ 8]  328 	ld	a, #0x18
+      0000EB F5               [16]  329 	push	af
+      0000EC 33               [ 8]  330 	inc	sp
+      0000ED 01r2Br00         [12]  331 	ld	bc, #_a_item_gladio_blink
+      0000F0 21r00r00         [12]  332 	ld	hl, #_THIS
+      0000F3 2A               [ 8]  333 	ld	a, (hl+)
+      0000F4 5F               [ 4]  334 	ld	e, a
+      0000F5 56               [ 8]  335 	ld	d, (hl)
+      0000F6 CDr00r00         [24]  336 	call	_SetSpriteAnim
+                           0000F9   337 	C$SpriteItem.c$53$3_0$194	= .
+                                    338 	.globl	C$SpriteItem.c$53$3_0$194
+                                    339 ;SpriteItem.c:53: break;
+      0000F9 18 7C            [12]  340 	jr	00111$
+                           0000FB   341 	C$SpriteItem.c$54$3_0$194	= .
+                                    342 	.globl	C$SpriteItem.c$54$3_0$194
+                                    343 ;SpriteItem.c:54: case LANCE:
+      0000FB                        344 00104$:
+                           0000FB   345 	C$SpriteItem.c$55$3_0$194	= .
+                                    346 	.globl	C$SpriteItem.c$55$3_0$194
+                                    347 ;SpriteItem.c:55: SetSpriteAnim(THIS, a_item_lance_blink, 24);
+      0000FB 3E 18            [ 8]  348 	ld	a, #0x18
+      0000FD F5               [16]  349 	push	af
+      0000FE 33               [ 8]  350 	inc	sp
+      0000FF 01r2Er00         [12]  351 	ld	bc, #_a_item_lance_blink
+      000102 21r00r00         [12]  352 	ld	hl, #_THIS
+      000105 2A               [ 8]  353 	ld	a, (hl+)
+      000106 5F               [ 4]  354 	ld	e, a
+      000107 56               [ 8]  355 	ld	d, (hl)
+      000108 CDr00r00         [24]  356 	call	_SetSpriteAnim
+                           00010B   357 	C$SpriteItem.c$56$3_0$194	= .
+                                    358 	.globl	C$SpriteItem.c$56$3_0$194
+                                    359 ;SpriteItem.c:56: break;
+      00010B 18 6A            [12]  360 	jr	00111$
+                           00010D   361 	C$SpriteItem.c$57$3_0$194	= .
+                                    362 	.globl	C$SpriteItem.c$57$3_0$194
+                                    363 ;SpriteItem.c:57: case FLAME:
+      00010D                        364 00105$:
+                           00010D   365 	C$SpriteItem.c$58$3_0$194	= .
+                                    366 	.globl	C$SpriteItem.c$58$3_0$194
+                                    367 ;SpriteItem.c:58: SetSpriteAnim(THIS, a_item_flame_blink, 24);
+      00010D 3E 18            [ 8]  368 	ld	a, #0x18
+      00010F F5               [16]  369 	push	af
+      000110 33               [ 8]  370 	inc	sp
+      000111 01r31r00         [12]  371 	ld	bc, #_a_item_flame_blink
+      000114 21r00r00         [12]  372 	ld	hl, #_THIS
+      000117 2A               [ 8]  373 	ld	a, (hl+)
+      000118 5F               [ 4]  374 	ld	e, a
+      000119 56               [ 8]  375 	ld	d, (hl)
+      00011A CDr00r00         [24]  376 	call	_SetSpriteAnim
+                           00011D   377 	C$SpriteItem.c$59$3_0$194	= .
+                                    378 	.globl	C$SpriteItem.c$59$3_0$194
+                                    379 ;SpriteItem.c:59: break;
+      00011D 18 58            [12]  380 	jr	00111$
+                           00011F   381 	C$SpriteItem.c$60$3_0$194	= .
+                                    382 	.globl	C$SpriteItem.c$60$3_0$194
+                                    383 ;SpriteItem.c:60: case ELMET:
+      00011F                        384 00106$:
+                           00011F   385 	C$SpriteItem.c$61$3_0$194	= .
+                                    386 	.globl	C$SpriteItem.c$61$3_0$194
+                                    387 ;SpriteItem.c:61: SetSpriteAnim(THIS, a_item_elmet_blink, 24);
+      00011F 3E 18            [ 8]  388 	ld	a, #0x18
+      000121 F5               [16]  389 	push	af
+      000122 33               [ 8]  390 	inc	sp
+      000123 01r34r00         [12]  391 	ld	bc, #_a_item_elmet_blink
+      000126 21r00r00         [12]  392 	ld	hl, #_THIS
+      000129 2A               [ 8]  393 	ld	a, (hl+)
+      00012A 5F               [ 4]  394 	ld	e, a
+      00012B 56               [ 8]  395 	ld	d, (hl)
+      00012C CDr00r00         [24]  396 	call	_SetSpriteAnim
+                           00012F   397 	C$SpriteItem.c$62$3_0$194	= .
+                                    398 	.globl	C$SpriteItem.c$62$3_0$194
+                                    399 ;SpriteItem.c:62: break;
+      00012F 18 46            [12]  400 	jr	00111$
+                           000131   401 	C$SpriteItem.c$63$3_0$194	= .
+                                    402 	.globl	C$SpriteItem.c$63$3_0$194
+                                    403 ;SpriteItem.c:63: case SHIELD:
+      000131                        404 00107$:
+                           000131   405 	C$SpriteItem.c$64$3_0$194	= .
+                                    406 	.globl	C$SpriteItem.c$64$3_0$194
+                                    407 ;SpriteItem.c:64: SetSpriteAnim(THIS, a_item_shield_blink, 24);
+      000131 3E 18            [ 8]  408 	ld	a, #0x18
+      000133 F5               [16]  409 	push	af
+      000134 33               [ 8]  410 	inc	sp
+      000135 01r37r00         [12]  411 	ld	bc, #_a_item_shield_blink
+      000138 21r00r00         [12]  412 	ld	hl, #_THIS
+      00013B 2A               [ 8]  413 	ld	a, (hl+)
+      00013C 5F               [ 4]  414 	ld	e, a
+      00013D 56               [ 8]  415 	ld	d, (hl)
+      00013E CDr00r00         [24]  416 	call	_SetSpriteAnim
+                           000141   417 	C$SpriteItem.c$65$3_0$194	= .
+                                    418 	.globl	C$SpriteItem.c$65$3_0$194
+                                    419 ;SpriteItem.c:65: break;
+      000141 18 34            [12]  420 	jr	00111$
+                           000143   421 	C$SpriteItem.c$66$3_0$194	= .
+                                    422 	.globl	C$SpriteItem.c$66$3_0$194
+                                    423 ;SpriteItem.c:66: case CAPE:
+      000143                        424 00108$:
+                           000143   425 	C$SpriteItem.c$67$3_0$194	= .
+                                    426 	.globl	C$SpriteItem.c$67$3_0$194
+                                    427 ;SpriteItem.c:67: SetSpriteAnim(THIS, a_item_cape_blink, 24);
+      000143 3E 18            [ 8]  428 	ld	a, #0x18
+      000145 F5               [16]  429 	push	af
+      000146 33               [ 8]  430 	inc	sp
+      000147 01r3Ar00         [12]  431 	ld	bc, #_a_item_cape_blink
+      00014A 21r00r00         [12]  432 	ld	hl, #_THIS
+      00014D 2A               [ 8]  433 	ld	a, (hl+)
+      00014E 5F               [ 4]  434 	ld	e, a
+      00014F 56               [ 8]  435 	ld	d, (hl)
+      000150 CDr00r00         [24]  436 	call	_SetSpriteAnim
+                           000153   437 	C$SpriteItem.c$68$3_0$194	= .
+                                    438 	.globl	C$SpriteItem.c$68$3_0$194
+                                    439 ;SpriteItem.c:68: break;
+      000153 18 22            [12]  440 	jr	00111$
+                           000155   441 	C$SpriteItem.c$69$3_0$194	= .
+                                    442 	.globl	C$SpriteItem.c$69$3_0$194
+                                    443 ;SpriteItem.c:69: case HP:
+      000155                        444 00109$:
+                           000155   445 	C$SpriteItem.c$70$3_0$194	= .
+                                    446 	.globl	C$SpriteItem.c$70$3_0$194
+                                    447 ;SpriteItem.c:70: SetSpriteAnim(THIS, a_item_hp, 64);
+      000155 3E 40            [ 8]  448 	ld	a, #0x40
+      000157 F5               [16]  449 	push	af
+      000158 33               [ 8]  450 	inc	sp
+      000159 01r3Dr00         [12]  451 	ld	bc, #_a_item_hp
+      00015C 21r00r00         [12]  452 	ld	hl, #_THIS
+      00015F 2A               [ 8]  453 	ld	a, (hl+)
+      000160 5F               [ 4]  454 	ld	e, a
+      000161 56               [ 8]  455 	ld	d, (hl)
+      000162 CDr00r00         [24]  456 	call	_SetSpriteAnim
+                           000165   457 	C$SpriteItem.c$71$3_0$194	= .
+                                    458 	.globl	C$SpriteItem.c$71$3_0$194
+                                    459 ;SpriteItem.c:71: break;
+      000165 18 10            [12]  460 	jr	00111$
+                           000167   461 	C$SpriteItem.c$72$3_0$194	= .
+                                    462 	.globl	C$SpriteItem.c$72$3_0$194
+                                    463 ;SpriteItem.c:72: case TIME:
+      000167                        464 00110$:
+                           000167   465 	C$SpriteItem.c$73$3_0$194	= .
+                                    466 	.globl	C$SpriteItem.c$73$3_0$194
+                                    467 ;SpriteItem.c:73: SetSpriteAnim(THIS, a_item_time, 64);
+      000167 3E 40            [ 8]  468 	ld	a, #0x40
+      000169 F5               [16]  469 	push	af
+      00016A 33               [ 8]  470 	inc	sp
+      00016B 01r40r00         [12]  471 	ld	bc, #_a_item_time
+      00016E 21r00r00         [12]  472 	ld	hl, #_THIS
+      000171 2A               [ 8]  473 	ld	a, (hl+)
+      000172 5F               [ 4]  474 	ld	e, a
+      000173 56               [ 8]  475 	ld	d, (hl)
+      000174 CDr00r00         [24]  476 	call	_SetSpriteAnim
+                           000177   477 	C$SpriteItem.c$75$2_0$193	= .
+                                    478 	.globl	C$SpriteItem.c$75$2_0$193
+                                    479 ;SpriteItem.c:75: }
+      000177                        480 00111$:
+                           000177   481 	C$SpriteItem.c$76$2_0$193	= .
+                                    482 	.globl	C$SpriteItem.c$76$2_0$193
+                                    483 ;SpriteItem.c:76: item_data->configured = 2;
+      000177 F8 02            [12]  484 	ldhl	sp,	#2
+      000179 2A               [ 8]  485 	ld	a,	(hl+)
+      00017A 66               [ 8]  486 	ld	h, (hl)
+      00017B 6F               [ 4]  487 	ld	l, a
+      00017C 36 02            [12]  488 	ld	(hl), #0x02
+                           00017E   489 	C$SpriteItem.c$77$2_0$193	= .
+                                    490 	.globl	C$SpriteItem.c$77$2_0$193
+                                    491 ;SpriteItem.c:77: break;
+      00017E C3r9Er03         [16]  492 	jp	00137$
+                           000181   493 	C$SpriteItem.c$78$2_0$193	= .
+                                    494 	.globl	C$SpriteItem.c$78$2_0$193
+                                    495 ;SpriteItem.c:78: case 3://using the weapon!
+      000181                        496 00112$:
+                           000181   497 	C$SpriteItem.c$79$2_0$193	= .
+                                    498 	.globl	C$SpriteItem.c$79$2_0$193
+                                    499 ;SpriteItem.c:79: switch(item_data->itemtype){
+      000181 1A               [ 8]  500 	ld	a, (de)
+      000182 FE 03            [ 8]  501 	cp	a, #0x03
+      000184 28 1B            [12]  502 	jr	Z, 00113$
+      000186 FE 04            [ 8]  503 	cp	a, #0x04
+      000188 28 62            [12]  504 	jr	Z, 00119$
+      00018A FE 05            [ 8]  505 	cp	a, #0x05
+      00018C CAr0Dr02         [16]  506 	jp	Z,00120$
+      00018F FE 06            [ 8]  507 	cp	a, #0x06
+      000191 CAr26r02         [16]  508 	jp	Z,00121$
+      000194 FE 07            [ 8]  509 	cp	a, #0x07
+      000196 CAr3Fr02         [16]  510 	jp	Z,00122$
+      000199 D6 08            [ 8]  511 	sub	a, #0x08
+      00019B CAr58r02         [16]  512 	jp	Z,00123$
+      00019E C3r6Fr02         [16]  513 	jp	00124$
+                           0001A1   514 	C$SpriteItem.c$80$3_0$195	= .
+                                    515 	.globl	C$SpriteItem.c$80$3_0$195
+                                    516 ;SpriteItem.c:80: case GLADIO:
+      0001A1                        517 00113$:
+                           0001A1   518 	C$SpriteItem.c$81$3_0$195	= .
+                                    519 	.globl	C$SpriteItem.c$81$3_0$195
+                                    520 ;SpriteItem.c:81: SetSpriteAnim(THIS, a_item_gladio, 32);
+      0001A1 C5               [16]  521 	push	bc
+      0001A2 3E 20            [ 8]  522 	ld	a, #0x20
+      0001A4 F5               [16]  523 	push	af
+      0001A5 33               [ 8]  524 	inc	sp
+      0001A6 01r43r00         [12]  525 	ld	bc, #_a_item_gladio
+      0001A9 21r00r00         [12]  526 	ld	hl, #_THIS
+      0001AC 2A               [ 8]  527 	ld	a, (hl+)
+      0001AD 5F               [ 4]  528 	ld	e, a
+      0001AE 56               [ 8]  529 	ld	d, (hl)
+      0001AF CDr00r00         [24]  530 	call	_SetSpriteAnim
+      0001B2 C1               [12]  531 	pop	bc
+                           0001B3   532 	C$SpriteItem.c$82$3_0$195	= .
+                                    533 	.globl	C$SpriteItem.c$82$3_0$195
+                                    534 ;SpriteItem.c:82: item_data->hp = 4;
+      0001B3 F8 05            [12]  535 	ldhl	sp,	#5
+      0001B5 2A               [ 8]  536 	ld	a,	(hl+)
+      0001B6 66               [ 8]  537 	ld	h, (hl)
+      0001B7 6F               [ 4]  538 	ld	l, a
+      0001B8 36 04            [12]  539 	ld	(hl), #0x04
+                           0001BA   540 	C$SpriteItem.c$83$3_0$195	= .
+                                    541 	.globl	C$SpriteItem.c$83$3_0$195
+                                    542 ;SpriteItem.c:83: if(vx > 0){ item_data->vx = 1;}
+      0001BA 21r00r00         [12]  543 	ld	hl, #_vx
+      0001BD 5E               [ 8]  544 	ld	e, (hl)
+      0001BE AF               [ 4]  545 	xor	a, a
+      0001BF 57               [ 4]  546 	ld	d, a
+      0001C0 96               [ 8]  547 	sub	a, (hl)
+      0001C1 CB 7B            [ 8]  548 	bit	7, e
+      0001C3 28 07            [12]  549 	jr	Z, 00290$
+      0001C5 CB 7A            [ 8]  550 	bit	7, d
+      0001C7 20 08            [12]  551 	jr	NZ, 00291$
+      0001C9 BF               [ 4]  552 	cp	a, a
+      0001CA 18 05            [12]  553 	jr	00291$
+      0001CC                        554 00290$:
+      0001CC CB 7A            [ 8]  555 	bit	7, d
+      0001CE 28 01            [12]  556 	jr	Z, 00291$
+      0001D0 37               [ 4]  557 	scf
+      0001D1                        558 00291$:
+      0001D1 30 05            [12]  559 	jr	NC, 00117$
+      0001D3 3E 01            [ 8]  560 	ld	a, #0x01
+      0001D5 02               [ 8]  561 	ld	(bc), a
+      0001D6 18 0A            [12]  562 	jr	00118$
+      0001D8                        563 00117$:
+                           0001D8   564 	C$SpriteItem.c$84$3_0$195	= .
+                                    565 	.globl	C$SpriteItem.c$84$3_0$195
+                                    566 ;SpriteItem.c:84: else if(vx < 0) {item_data->vx = -1;}
+      0001D8 FAr00r00         [16]  567 	ld	a, (#_vx)
+      0001DB CB 7F            [ 8]  568 	bit	7, a
+      0001DD 28 03            [12]  569 	jr	Z, 00118$
+      0001DF 3E FF            [ 8]  570 	ld	a, #0xff
+      0001E1 02               [ 8]  571 	ld	(bc), a
+      0001E2                        572 00118$:
+                           0001E2   573 	C$SpriteItem.c$85$3_0$195	= .
+                                    574 	.globl	C$SpriteItem.c$85$3_0$195
+                                    575 ;SpriteItem.c:85: item_data->vy = 0;
+      0001E2 F8 07            [12]  576 	ldhl	sp,	#7
+      0001E4 2A               [ 8]  577 	ld	a,	(hl+)
+      0001E5 66               [ 8]  578 	ld	h, (hl)
+      0001E6 6F               [ 4]  579 	ld	l, a
+      0001E7 36 00            [12]  580 	ld	(hl), #0x00
+                           0001E9   581 	C$SpriteItem.c$86$3_0$195	= .
+                                    582 	.globl	C$SpriteItem.c$86$3_0$195
+                                    583 ;SpriteItem.c:86: break;
+      0001E9 C3r6Fr02         [16]  584 	jp	00124$
+                           0001EC   585 	C$SpriteItem.c$87$3_0$195	= .
+                                    586 	.globl	C$SpriteItem.c$87$3_0$195
+                                    587 ;SpriteItem.c:87: case LANCE:
+      0001EC                        588 00119$:
+                           0001EC   589 	C$SpriteItem.c$88$3_0$195	= .
+                                    590 	.globl	C$SpriteItem.c$88$3_0$195
+                                    591 ;SpriteItem.c:88: SetSpriteAnim(THIS, a_item_lance, 32);
+      0001EC C5               [16]  592 	push	bc
+      0001ED 3E 20            [ 8]  593 	ld	a, #0x20
+      0001EF F5               [16]  594 	push	af
+      0001F0 33               [ 8]  595 	inc	sp
+      0001F1 01r45r00         [12]  596 	ld	bc, #_a_item_lance
+      0001F4 21r00r00         [12]  597 	ld	hl, #_THIS
+      0001F7 2A               [ 8]  598 	ld	a, (hl+)
+      0001F8 5F               [ 4]  599 	ld	e, a
+      0001F9 56               [ 8]  600 	ld	d, (hl)
+      0001FA CDr00r00         [24]  601 	call	_SetSpriteAnim
+      0001FD C1               [12]  602 	pop	bc
+                           0001FE   603 	C$SpriteItem.c$89$3_0$195	= .
+                                    604 	.globl	C$SpriteItem.c$89$3_0$195
+                                    605 ;SpriteItem.c:89: item_data->vx = vx;
+      0001FE FAr00r00         [16]  606 	ld	a, (#_vx)
+      000201 02               [ 8]  607 	ld	(bc), a
+                           000202   608 	C$SpriteItem.c$90$3_0$195	= .
+                                    609 	.globl	C$SpriteItem.c$90$3_0$195
+                                    610 ;SpriteItem.c:90: item_data->vy = vy;
+      000202 F8 07            [12]  611 	ldhl	sp,#7
+      000204 2A               [ 8]  612 	ld	a, (hl+)
+      000205 5F               [ 4]  613 	ld	e, a
+      000206 56               [ 8]  614 	ld	d, (hl)
+      000207 FAr00r00         [16]  615 	ld	a, (#_vy)
+      00020A 12               [ 8]  616 	ld	(de), a
+                           00020B   617 	C$SpriteItem.c$91$3_0$195	= .
+                                    618 	.globl	C$SpriteItem.c$91$3_0$195
+                                    619 ;SpriteItem.c:91: break;
+      00020B 18 62            [12]  620 	jr	00124$
+                           00020D   621 	C$SpriteItem.c$92$3_0$195	= .
+                                    622 	.globl	C$SpriteItem.c$92$3_0$195
+                                    623 ;SpriteItem.c:92: case FLAME:
+      00020D                        624 00120$:
+                           00020D   625 	C$SpriteItem.c$93$3_0$195	= .
+                                    626 	.globl	C$SpriteItem.c$93$3_0$195
+                                    627 ;SpriteItem.c:93: SetSpriteAnim(THIS, a_item_flame, 32);
+      00020D 3E 20            [ 8]  628 	ld	a, #0x20
+      00020F F5               [16]  629 	push	af
+      000210 33               [ 8]  630 	inc	sp
+      000211 01r47r00         [12]  631 	ld	bc, #_a_item_flame
+      000214 21r00r00         [12]  632 	ld	hl, #_THIS
+      000217 2A               [ 8]  633 	ld	a, (hl+)
+      000218 5F               [ 4]  634 	ld	e, a
+      000219 56               [ 8]  635 	ld	d, (hl)
+      00021A CDr00r00         [24]  636 	call	_SetSpriteAnim
+                           00021D   637 	C$SpriteItem.c$94$3_0$195	= .
+                                    638 	.globl	C$SpriteItem.c$94$3_0$195
+                                    639 ;SpriteItem.c:94: item_data->hp = 80;
+      00021D F8 05            [12]  640 	ldhl	sp,	#5
+      00021F 2A               [ 8]  641 	ld	a,	(hl+)
+      000220 66               [ 8]  642 	ld	h, (hl)
+      000221 6F               [ 4]  643 	ld	l, a
+      000222 36 50            [12]  644 	ld	(hl), #0x50
+                           000224   645 	C$SpriteItem.c$95$3_0$195	= .
+                                    646 	.globl	C$SpriteItem.c$95$3_0$195
+                                    647 ;SpriteItem.c:95: break;
+      000224 18 49            [12]  648 	jr	00124$
+                           000226   649 	C$SpriteItem.c$96$3_0$195	= .
+                                    650 	.globl	C$SpriteItem.c$96$3_0$195
+                                    651 ;SpriteItem.c:96: case ELMET:
+      000226                        652 00121$:
+                           000226   653 	C$SpriteItem.c$97$3_0$195	= .
+                                    654 	.globl	C$SpriteItem.c$97$3_0$195
+                                    655 ;SpriteItem.c:97: SetSpriteAnim(THIS, a_item_elmet, 32);
+      000226 3E 20            [ 8]  656 	ld	a, #0x20
+      000228 F5               [16]  657 	push	af
+      000229 33               [ 8]  658 	inc	sp
+      00022A 01r49r00         [12]  659 	ld	bc, #_a_item_elmet
+      00022D 21r00r00         [12]  660 	ld	hl, #_THIS
+      000230 2A               [ 8]  661 	ld	a, (hl+)
+      000231 5F               [ 4]  662 	ld	e, a
+      000232 56               [ 8]  663 	ld	d, (hl)
+      000233 CDr00r00         [24]  664 	call	_SetSpriteAnim
+                           000236   665 	C$SpriteItem.c$98$3_0$195	= .
+                                    666 	.globl	C$SpriteItem.c$98$3_0$195
+                                    667 ;SpriteItem.c:98: item_data->hp = 80;
+      000236 F8 05            [12]  668 	ldhl	sp,	#5
+      000238 2A               [ 8]  669 	ld	a,	(hl+)
+      000239 66               [ 8]  670 	ld	h, (hl)
+      00023A 6F               [ 4]  671 	ld	l, a
+      00023B 36 50            [12]  672 	ld	(hl), #0x50
+                           00023D   673 	C$SpriteItem.c$99$3_0$195	= .
+                                    674 	.globl	C$SpriteItem.c$99$3_0$195
+                                    675 ;SpriteItem.c:99: break;
+      00023D 18 30            [12]  676 	jr	00124$
+                           00023F   677 	C$SpriteItem.c$100$3_0$195	= .
+                                    678 	.globl	C$SpriteItem.c$100$3_0$195
+                                    679 ;SpriteItem.c:100: case SHIELD:
+      00023F                        680 00122$:
+                           00023F   681 	C$SpriteItem.c$101$3_0$195	= .
+                                    682 	.globl	C$SpriteItem.c$101$3_0$195
+                                    683 ;SpriteItem.c:101: SetSpriteAnim(THIS, a_item_shield, 32);
+      00023F 3E 20            [ 8]  684 	ld	a, #0x20
+      000241 F5               [16]  685 	push	af
+      000242 33               [ 8]  686 	inc	sp
+      000243 01r4Br00         [12]  687 	ld	bc, #_a_item_shield
+      000246 21r00r00         [12]  688 	ld	hl, #_THIS
+      000249 2A               [ 8]  689 	ld	a, (hl+)
+      00024A 5F               [ 4]  690 	ld	e, a
+      00024B 56               [ 8]  691 	ld	d, (hl)
+      00024C CDr00r00         [24]  692 	call	_SetSpriteAnim
+                           00024F   693 	C$SpriteItem.c$102$3_0$195	= .
+                                    694 	.globl	C$SpriteItem.c$102$3_0$195
+                                    695 ;SpriteItem.c:102: item_data->hp = 80;
+      00024F F8 05            [12]  696 	ldhl	sp,	#5
+      000251 2A               [ 8]  697 	ld	a,	(hl+)
+      000252 66               [ 8]  698 	ld	h, (hl)
+      000253 6F               [ 4]  699 	ld	l, a
+      000254 36 50            [12]  700 	ld	(hl), #0x50
+                           000256   701 	C$SpriteItem.c$103$3_0$195	= .
+                                    702 	.globl	C$SpriteItem.c$103$3_0$195
+                                    703 ;SpriteItem.c:103: break;
+      000256 18 17            [12]  704 	jr	00124$
+                           000258   705 	C$SpriteItem.c$104$3_0$195	= .
+                                    706 	.globl	C$SpriteItem.c$104$3_0$195
+                                    707 ;SpriteItem.c:104: case CAPE:
+      000258                        708 00123$:
+                           000258   709 	C$SpriteItem.c$105$3_0$195	= .
+                                    710 	.globl	C$SpriteItem.c$105$3_0$195
+                                    711 ;SpriteItem.c:105: SetSpriteAnim(THIS, a_item_cape, 32);
+      000258 3E 20            [ 8]  712 	ld	a, #0x20
+      00025A F5               [16]  713 	push	af
+      00025B 33               [ 8]  714 	inc	sp
+      00025C 01r4Dr00         [12]  715 	ld	bc, #_a_item_cape
+      00025F 21r00r00         [12]  716 	ld	hl, #_THIS
+      000262 2A               [ 8]  717 	ld	a, (hl+)
+      000263 5F               [ 4]  718 	ld	e, a
+      000264 56               [ 8]  719 	ld	d, (hl)
+      000265 CDr00r00         [24]  720 	call	_SetSpriteAnim
+                           000268   721 	C$SpriteItem.c$106$3_0$195	= .
+                                    722 	.globl	C$SpriteItem.c$106$3_0$195
+                                    723 ;SpriteItem.c:106: item_data->hp = 80;
+      000268 F8 05            [12]  724 	ldhl	sp,	#5
+      00026A 2A               [ 8]  725 	ld	a,	(hl+)
+      00026B 66               [ 8]  726 	ld	h, (hl)
+      00026C 6F               [ 4]  727 	ld	l, a
+      00026D 36 50            [12]  728 	ld	(hl), #0x50
+                           00026F   729 	C$SpriteItem.c$108$2_0$193	= .
+                                    730 	.globl	C$SpriteItem.c$108$2_0$193
+                                    731 ;SpriteItem.c:108: }
+      00026F                        732 00124$:
+                           00026F   733 	C$SpriteItem.c$109$2_0$193	= .
+                                    734 	.globl	C$SpriteItem.c$109$2_0$193
+                                    735 ;SpriteItem.c:109: item_data->configured = 4;
+      00026F F8 02            [12]  736 	ldhl	sp,	#2
+      000271 2A               [ 8]  737 	ld	a,	(hl+)
+      000272 66               [ 8]  738 	ld	h, (hl)
+      000273 6F               [ 4]  739 	ld	l, a
+      000274 36 04            [12]  740 	ld	(hl), #0x04
+                           000276   741 	C$SpriteItem.c$110$2_0$193	= .
+                                    742 	.globl	C$SpriteItem.c$110$2_0$193
+                                    743 ;SpriteItem.c:110: break;
+      000276 C3r9Er03         [16]  744 	jp	00137$
+                           000279   745 	C$SpriteItem.c$111$2_0$193	= .
+                                    746 	.globl	C$SpriteItem.c$111$2_0$193
+                                    747 ;SpriteItem.c:111: case 4://weapon in use!
+      000279                        748 00125$:
+                           000279   749 	C$SpriteItem.c$112$2_0$193	= .
+                                    750 	.globl	C$SpriteItem.c$112$2_0$193
+                                    751 ;SpriteItem.c:112: switch(item_data->itemtype){
+      000279 1A               [ 8]  752 	ld	a, (de)
+      00027A FE 03            [ 8]  753 	cp	a, #0x03
+      00027C CAr43r03         [16]  754 	jp	Z,00132$
+      00027F FE 04            [ 8]  755 	cp	a, #0x04
+      000281 CAr10r03         [16]  756 	jp	Z,00131$
+      000284 FE 06            [ 8]  757 	cp	a, #0x06
+      000286 28 09            [12]  758 	jr	Z, 00128$
+      000288 FE 07            [ 8]  759 	cp	a, #0x07
+      00028A 28 05            [12]  760 	jr	Z, 00128$
+      00028C D6 08            [ 8]  761 	sub	a, #0x08
+      00028E C2r9Er03         [16]  762 	jp	NZ,00137$
+                           000291   763 	C$SpriteItem.c$115$3_0$198	= .
+                                    764 	.globl	C$SpriteItem.c$115$3_0$198
+                                    765 ;SpriteItem.c:115: case CAPE:
+      000291                        766 00128$:
+                           000291   767 	C$SpriteItem.c$116$3_0$198	= .
+                                    768 	.globl	C$SpriteItem.c$116$3_0$198
+                                    769 ;SpriteItem.c:116: THIS->x = s_horse->x;
+      000291 D1               [12]  770 	pop	de
+      000292 D5               [16]  771 	push	de
+      000293 21 0C 00         [12]  772 	ld	hl, #0x000c
+      000296 19               [ 8]  773 	add	hl, de
+      000297 E5               [16]  774 	push	hl
+      000298 7D               [ 4]  775 	ld	a, l
+      000299 F8 09            [12]  776 	ldhl	sp,	#9
+      00029B 77               [ 8]  777 	ld	(hl), a
+      00029C E1               [12]  778 	pop	hl
+      00029D 7C               [ 4]  779 	ld	a, h
+      00029E F8 08            [12]  780 	ldhl	sp,	#8
+      0002A0 77               [ 8]  781 	ld	(hl), a
+      0002A1 21r00r00         [12]  782 	ld	hl, #_s_horse
+      0002A4 2A               [ 8]  783 	ld	a, (hl+)
+      0002A5 4F               [ 4]  784 	ld	c, a
+      0002A6 46               [ 8]  785 	ld	b, (hl)
+      0002A7 21 0C 00         [12]  786 	ld	hl, #0x000c
+      0002AA 09               [ 8]  787 	add	hl, bc
+      0002AB 2A               [ 8]  788 	ld	a, (hl+)
+      0002AC 4F               [ 4]  789 	ld	c, a
+      0002AD 46               [ 8]  790 	ld	b, (hl)
+      0002AE F8 07            [12]  791 	ldhl	sp,	#7
+      0002B0 2A               [ 8]  792 	ld	a,	(hl+)
+      0002B1 66               [ 8]  793 	ld	h, (hl)
+      0002B2 6F               [ 4]  794 	ld	l, a
+      0002B3 79               [ 4]  795 	ld	a, c
+      0002B4 22               [ 8]  796 	ld	(hl+), a
+      0002B5 70               [ 8]  797 	ld	(hl), b
+                           0002B6   798 	C$SpriteItem.c$117$3_0$198	= .
+                                    799 	.globl	C$SpriteItem.c$117$3_0$198
+                                    800 ;SpriteItem.c:117: THIS->y = s_horse->y - 24;
+      0002B6 21r00r00         [12]  801 	ld	hl, #_THIS
+      0002B9 2A               [ 8]  802 	ld	a, (hl+)
+      0002BA 46               [ 8]  803 	ld	b, (hl)
+      0002BB C6 0E            [ 8]  804 	add	a, #0x0e
+      0002BD 4F               [ 4]  805 	ld	c, a
+      0002BE 30 01            [12]  806 	jr	NC, 00298$
+      0002C0 04               [ 4]  807 	inc	b
+      0002C1                        808 00298$:
+      0002C1 21r00r00         [12]  809 	ld	hl, #_s_horse
+      0002C4 2A               [ 8]  810 	ld	a, (hl+)
+      0002C5 5F               [ 4]  811 	ld	e, a
+      0002C6 56               [ 8]  812 	ld	d, (hl)
+      0002C7 21 0E 00         [12]  813 	ld	hl, #0x000e
+      0002CA 19               [ 8]  814 	add	hl, de
+      0002CB 2A               [ 8]  815 	ld	a, (hl+)
+      0002CC 6E               [ 8]  816 	ld	l, (hl)
+                                    817 ;	spillPairReg hl
+      0002CD C6 E8            [ 8]  818 	add	a, #0xe8
+      0002CF 5F               [ 4]  819 	ld	e, a
+      0002D0 7D               [ 4]  820 	ld	a, l
+      0002D1 CE FF            [ 8]  821 	adc	a, #0xff
+      0002D3 57               [ 4]  822 	ld	d, a
+      0002D4 7B               [ 4]  823 	ld	a, e
+      0002D5 02               [ 8]  824 	ld	(bc), a
+      0002D6 03               [ 8]  825 	inc	bc
+      0002D7 7A               [ 4]  826 	ld	a, d
+      0002D8 02               [ 8]  827 	ld	(bc), a
+                           0002D9   828 	C$SpriteItem.c$118$3_0$198	= .
+                                    829 	.globl	C$SpriteItem.c$118$3_0$198
+                                    830 ;SpriteItem.c:118: item_data->hp--;
+      0002D9 F8 05            [12]  831 	ldhl	sp,#5
+      0002DB 2A               [ 8]  832 	ld	a, (hl+)
+      0002DC 5F               [ 4]  833 	ld	e, a
+      0002DD 56               [ 8]  834 	ld	d, (hl)
+      0002DE 1A               [ 8]  835 	ld	a, (de)
+      0002DF 4F               [ 4]  836 	ld	c, a
+      0002E0 0D               [ 4]  837 	dec	c
+      0002E1 3A               [ 8]  838 	ld	a, (hl-)
+      0002E2 6E               [ 8]  839 	ld	l, (hl)
+      0002E3 67               [ 4]  840 	ld	h, a
+      0002E4 71               [ 8]  841 	ld	(hl), c
+                           0002E5   842 	C$SpriteItem.c$119$3_0$198	= .
+                                    843 	.globl	C$SpriteItem.c$119$3_0$198
+                                    844 ;SpriteItem.c:119: if(item_data->hp <= 0){
+      0002E5 59               [ 4]  845 	ld	e, c
+      0002E6 AF               [ 4]  846 	xor	a, a
+      0002E7 57               [ 4]  847 	ld	d, a
+      0002E8 91               [ 4]  848 	sub	a, c
+      0002E9 CB 7B            [ 8]  849 	bit	7, e
+      0002EB 28 07            [12]  850 	jr	Z, 00299$
+      0002ED CB 7A            [ 8]  851 	bit	7, d
+      0002EF 20 08            [12]  852 	jr	NZ, 00300$
+      0002F1 BF               [ 4]  853 	cp	a, a
+      0002F2 18 05            [12]  854 	jr	00300$
+      0002F4                        855 00299$:
+      0002F4 CB 7A            [ 8]  856 	bit	7, d
+      0002F6 28 01            [12]  857 	jr	Z, 00300$
+      0002F8 37               [ 4]  858 	scf
+      0002F9                        859 00300$:
+      0002F9 DAr9Er03         [16]  860 	jp	C, 00137$
+                           0002FC   861 	C$SpriteItem.c$120$4_0$199	= .
+                                    862 	.globl	C$SpriteItem.c$120$4_0$199
+                                    863 ;SpriteItem.c:120: consume_weapon_def();
+      0002FC 1Er00            [ 8]  864 	ld	e, #b_consume_weapon_def
+      0002FE 21r00r00         [12]  865 	ld	hl, #_consume_weapon_def
+      000301 CDr00r00         [24]  866 	call	___sdcc_bcall_ehl
+                           000304   867 	C$SpriteItem.c$121$4_0$199	= .
+                                    868 	.globl	C$SpriteItem.c$121$4_0$199
+                                    869 ;SpriteItem.c:121: SpriteManagerRemoveSprite(THIS);
+      000304 21r00r00         [12]  870 	ld	hl, #_THIS
+      000307 5E               [ 8]  871 	ld	e, (hl)
+      000308 23               [ 8]  872 	inc	hl
+      000309 56               [ 8]  873 	ld	d, (hl)
+      00030A CDr00r00         [24]  874 	call	_SpriteManagerRemoveSprite
+                           00030D   875 	C$SpriteItem.c$123$3_0$198	= .
+                                    876 	.globl	C$SpriteItem.c$123$3_0$198
+                                    877 ;SpriteItem.c:123: break;
+      00030D C3r9Er03         [16]  878 	jp	00137$
+                           000310   879 	C$SpriteItem.c$124$3_0$198	= .
+                                    880 	.globl	C$SpriteItem.c$124$3_0$198
+                                    881 ;SpriteItem.c:124: case LANCE:
+      000310                        882 00131$:
+                           000310   883 	C$SpriteItem.c$125$3_0$198	= .
+                                    884 	.globl	C$SpriteItem.c$125$3_0$198
+                                    885 ;SpriteItem.c:125: TranslateSprite(THIS, item_data->vx << delta_time, item_data->vy << delta_time);
+      000310 F8 07            [12]  886 	ldhl	sp,#7
+      000312 2A               [ 8]  887 	ld	a, (hl+)
+      000313 5F               [ 4]  888 	ld	e, a
+      000314 56               [ 8]  889 	ld	d, (hl)
+      000315 1A               [ 8]  890 	ld	a, (de)
+      000316 77               [ 8]  891 	ld	(hl), a
+      000317 FAr00r00         [16]  892 	ld	a, (#_delta_time)
+      00031A F5               [16]  893 	push	af
+      00031B F8 0A            [12]  894 	ldhl	sp,	#10
+      00031D 56               [ 8]  895 	ld	d, (hl)
+      00031E F1               [12]  896 	pop	af
+      00031F 3C               [ 4]  897 	inc	a
+      000320 18 02            [12]  898 	jr	00302$
+      000322                        899 00301$:
+      000322 CB 22            [ 8]  900 	sla	d
+      000324                        901 00302$:
+      000324 3D               [ 4]  902 	dec	a
+      000325 20 FB            [12]  903 	jr	NZ,00301$
+      000327 0A               [ 8]  904 	ld	a, (bc)
+      000328 21r00r00         [12]  905 	ld	hl, #_delta_time
+      00032B 46               [ 8]  906 	ld	b, (hl)
+      00032C 4F               [ 4]  907 	ld	c, a
+      00032D 04               [ 4]  908 	inc	b
+      00032E 18 02            [12]  909 	jr	00304$
+      000330                        910 00303$:
+      000330 CB 21            [ 8]  911 	sla	c
+      000332                        912 00304$:
+      000332 05               [ 4]  913 	dec	b
+      000333 20 FB            [12]  914 	jr	NZ,00303$
+      000335 D5               [16]  915 	push	de
+      000336 33               [ 8]  916 	inc	sp
+      000337 79               [ 4]  917 	ld	a, c
+      000338 21r00r00         [12]  918 	ld	hl, #_THIS
+      00033B 5E               [ 8]  919 	ld	e, (hl)
+      00033C 23               [ 8]  920 	inc	hl
+      00033D 56               [ 8]  921 	ld	d, (hl)
+      00033E CDr00r00         [24]  922 	call	_TranslateSprite
+                           000341   923 	C$SpriteItem.c$126$3_0$198	= .
+                                    924 	.globl	C$SpriteItem.c$126$3_0$198
+                                    925 ;SpriteItem.c:126: break;
+      000341 18 5B            [12]  926 	jr	00137$
+                           000343   927 	C$SpriteItem.c$127$3_0$198	= .
+                                    928 	.globl	C$SpriteItem.c$127$3_0$198
+                                    929 ;SpriteItem.c:127: case GLADIO:
+      000343                        930 00132$:
+                           000343   931 	C$SpriteItem.c$128$3_0$198	= .
+                                    932 	.globl	C$SpriteItem.c$128$3_0$198
+                                    933 ;SpriteItem.c:128: TranslateSprite(THIS, item_data->vx << delta_time, item_data->vy << delta_time);
+      000343 F8 07            [12]  934 	ldhl	sp,#7
+      000345 2A               [ 8]  935 	ld	a, (hl+)
+      000346 5F               [ 4]  936 	ld	e, a
+      000347 56               [ 8]  937 	ld	d, (hl)
+      000348 1A               [ 8]  938 	ld	a, (de)
+      000349 77               [ 8]  939 	ld	(hl), a
+      00034A FAr00r00         [16]  940 	ld	a, (#_delta_time)
+      00034D F5               [16]  941 	push	af
+      00034E F8 0A            [12]  942 	ldhl	sp,	#10
+      000350 56               [ 8]  943 	ld	d, (hl)
+      000351 F1               [12]  944 	pop	af
+      000352 3C               [ 4]  945 	inc	a
+      000353 18 02            [12]  946 	jr	00306$
+      000355                        947 00305$:
+      000355 CB 22            [ 8]  948 	sla	d
+      000357                        949 00306$:
+      000357 3D               [ 4]  950 	dec	a
+      000358 20 FB            [12]  951 	jr	NZ,00305$
+      00035A 0A               [ 8]  952 	ld	a, (bc)
+      00035B 21r00r00         [12]  953 	ld	hl, #_delta_time
+      00035E 46               [ 8]  954 	ld	b, (hl)
+      00035F 4F               [ 4]  955 	ld	c, a
+      000360 04               [ 4]  956 	inc	b
+      000361 18 02            [12]  957 	jr	00308$
+      000363                        958 00307$:
+      000363 CB 21            [ 8]  959 	sla	c
+      000365                        960 00308$:
+      000365 05               [ 4]  961 	dec	b
+      000366 20 FB            [12]  962 	jr	NZ,00307$
+      000368 D5               [16]  963 	push	de
+      000369 33               [ 8]  964 	inc	sp
+      00036A 79               [ 4]  965 	ld	a, c
+      00036B 21r00r00         [12]  966 	ld	hl, #_THIS
+      00036E 5E               [ 8]  967 	ld	e, (hl)
+      00036F 23               [ 8]  968 	inc	hl
+      000370 56               [ 8]  969 	ld	d, (hl)
+      000371 CDr00r00         [24]  970 	call	_TranslateSprite
+                           000374   971 	C$SpriteItem.c$129$3_0$198	= .
+                                    972 	.globl	C$SpriteItem.c$129$3_0$198
+                                    973 ;SpriteItem.c:129: item_data->hp--;
+      000374 F8 05            [12]  974 	ldhl	sp,#5
+      000376 2A               [ 8]  975 	ld	a, (hl+)
+      000377 5F               [ 4]  976 	ld	e, a
+      000378 56               [ 8]  977 	ld	d, (hl)
+      000379 1A               [ 8]  978 	ld	a, (de)
+      00037A 4F               [ 4]  979 	ld	c, a
+      00037B 0D               [ 4]  980 	dec	c
+      00037C 3A               [ 8]  981 	ld	a, (hl-)
+      00037D 6E               [ 8]  982 	ld	l, (hl)
+      00037E 67               [ 4]  983 	ld	h, a
+      00037F 71               [ 8]  984 	ld	(hl), c
+                           000380   985 	C$SpriteItem.c$130$3_0$198	= .
+                                    986 	.globl	C$SpriteItem.c$130$3_0$198
+                                    987 ;SpriteItem.c:130: if(item_data->hp <= 0){
+      000380 59               [ 4]  988 	ld	e, c
+      000381 AF               [ 4]  989 	xor	a, a
+      000382 57               [ 4]  990 	ld	d, a
+      000383 91               [ 4]  991 	sub	a, c
+      000384 CB 7B            [ 8]  992 	bit	7, e
+      000386 28 07            [12]  993 	jr	Z, 00309$
+      000388 CB 7A            [ 8]  994 	bit	7, d
+      00038A 20 08            [12]  995 	jr	NZ, 00310$
+      00038C BF               [ 4]  996 	cp	a, a
+      00038D 18 05            [12]  997 	jr	00310$
+      00038F                        998 00309$:
+      00038F CB 7A            [ 8]  999 	bit	7, d
+      000391 28 01            [12] 1000 	jr	Z, 00310$
+      000393 37               [ 4] 1001 	scf
+      000394                       1002 00310$:
+      000394 38 08            [12] 1003 	jr	C, 00137$
+                           000396  1004 	C$SpriteItem.c$131$4_0$200	= .
+                                   1005 	.globl	C$SpriteItem.c$131$4_0$200
+                                   1006 ;SpriteItem.c:131: consume_weapon_atk();
+      000396 1Er00            [ 8] 1007 	ld	e, #b_consume_weapon_atk
+      000398 21r00r00         [12] 1008 	ld	hl, #_consume_weapon_atk
+      00039B CDr00r00         [24] 1009 	call	___sdcc_bcall_ehl
+                           00039E  1010 	C$SpriteItem.c$136$1_0$192	= .
+                                   1011 	.globl	C$SpriteItem.c$136$1_0$192
+                                   1012 ;SpriteItem.c:136: }
+      00039E                       1013 00137$:
+                           00039E  1014 	C$SpriteItem.c$137$1_0$192	= .
+                                   1015 	.globl	C$SpriteItem.c$137$1_0$192
+                                   1016 ;SpriteItem.c:137: }
+      00039E E8 09            [16] 1017 	add	sp, #9
+                           0003A0  1018 	C$SpriteItem.c$137$1_0$192	= .
+                                   1019 	.globl	C$SpriteItem.c$137$1_0$192
+                           0003A0  1020 	XG$Update_SpriteItem$0$0	= .
+                                   1021 	.globl	XG$Update_SpriteItem$0$0
+      0003A0 C9               [16] 1022 	ret
+                           0003A1  1023 	G$Destroy_SpriteItem$0$0	= .
+                                   1024 	.globl	G$Destroy_SpriteItem$0$0
+                           0003A1  1025 	C$SpriteItem.c$139$1_0$202	= .
+                                   1026 	.globl	C$SpriteItem.c$139$1_0$202
+                                   1027 ;SpriteItem.c:139: void DESTROY() {
+                                   1028 ;	---------------------------------
+                                   1029 ; Function Destroy_SpriteItem
+                                   1030 ; ---------------------------------
+      0003A1                       1031 _Destroy_SpriteItem::
+                           0003A1  1032 	C$SpriteItem.c$140$1_0$202	= .
+                                   1033 	.globl	C$SpriteItem.c$140$1_0$202
+                                   1034 ;SpriteItem.c:140: }
+                           0003A1  1035 	C$SpriteItem.c$140$1_0$202	= .
+                                   1036 	.globl	C$SpriteItem.c$140$1_0$202
+                           0003A1  1037 	XG$Destroy_SpriteItem$0$0	= .
+                                   1038 	.globl	XG$Destroy_SpriteItem$0$0
+      0003A1 C9               [16] 1039 	ret
+                                   1040 	.area _CODE_255
+                                   1041 	.area _INITIALIZER
+                                   1042 	.area _CABS (ABS)

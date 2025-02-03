@@ -1,7 +1,7 @@
 #include "ZGBMain.h"
 #include "Math.h"
 
-UINT8 next_state = StateGame;
+UINT8 next_state = StateTutorialGame;
 
 UINT8 J_WHIP=J_A;//0x10;
 UINT8 J_ATK=J_B;//0x20;

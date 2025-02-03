@@ -8,6 +8,7 @@ TUTORIAL
 - vai dritto e mettici meno di TEMPO
 - impara a girare a destra
 - impara a girare a sinistra
+- impara a girare a destra e poi a sinistra in meno di TEMPO
 - impara a zig-zag
 - impara a zig-zag in meno di TEMPO
 - evita l'acqua
@@ -34,4 +35,4 @@ POZZA       (da botte di -stamina ogni secondo)
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\maprome.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\maprome.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_titlescreen.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\titlescreen.gbm

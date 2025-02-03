@@ -66,9 +66,9 @@ ___func_compass::
 G$compass_palettes$0_0$0 == .
 _compass_palettes:
 	.dw #0x7fff
-	.dw #0x2f7f
-	.dw #0x02bc
-	.dw #0x0157
+	.dw #0x6318
+	.dw #0x4210
+	.dw #0x0000
 G$compass_tiles$0_0$0 == .
 _compass_tiles:
 	.db #0x07	; 7
@@ -94,15 +94,15 @@ _compass_tiles:
 	.db #0x80	; 128
 	.db #0x80	; 128
 	.db #0x40	; 64
-	.db #0x40	; 64
+	.db #0xc0	; 192
 	.db #0x40	; 64
 	.db #0x40	; 64
 	.db #0x20	; 32
-	.db #0x20	; 32
+	.db #0x60	; 96
 	.db #0x18	; 24
-	.db #0x18	; 24
+	.db #0x38	; 56	'8'
 	.db #0x07	; 7
-	.db #0x07	; 7
+	.db #0x1f	; 31
 	.db #0xe0	; 224
 	.db #0xe0	; 224
 	.db #0x18	; 24
@@ -126,15 +126,15 @@ _compass_tiles:
 	.db #0x01	; 1
 	.db #0x01	; 1
 	.db #0x02	; 2
-	.db #0x02	; 2
+	.db #0x03	; 3
 	.db #0x02	; 2
 	.db #0x02	; 2
 	.db #0x04	; 4
-	.db #0x04	; 4
+	.db #0x06	; 6
 	.db #0x18	; 24
-	.db #0x18	; 24
+	.db #0x1c	; 28
 	.db #0xe0	; 224
-	.db #0xe0	; 224
+	.db #0xf8	; 248
 	.db #0xe0	; 224
 	.db #0xe0	; 224
 	.db #0x18	; 24
@@ -158,15 +158,15 @@ _compass_tiles:
 	.db #0x01	; 1
 	.db #0x01	; 1
 	.db #0x02	; 2
-	.db #0x02	; 2
+	.db #0x03	; 3
 	.db #0x02	; 2
 	.db #0x02	; 2
 	.db #0x04	; 4
-	.db #0x04	; 4
+	.db #0x06	; 6
 	.db #0x18	; 24
-	.db #0x18	; 24
+	.db #0x1c	; 28
 	.db #0xe0	; 224
-	.db #0xe0	; 224
+	.db #0xf8	; 248
 	.db #0xe0	; 224
 	.db #0xe0	; 224
 	.db #0x18	; 24
@@ -190,15 +190,15 @@ _compass_tiles:
 	.db #0x01	; 1
 	.db #0x01	; 1
 	.db #0x02	; 2
-	.db #0x02	; 2
+	.db #0x03	; 3
 	.db #0x02	; 2
 	.db #0x02	; 2
 	.db #0x04	; 4
-	.db #0x04	; 4
+	.db #0x06	; 6
 	.db #0x18	; 24
-	.db #0x18	; 24
+	.db #0x1c	; 28
 	.db #0xe0	; 224
-	.db #0xe0	; 224
+	.db #0xf8	; 248
 	.db #0x07	; 7
 	.db #0x07	; 7
 	.db #0x19	; 25
@@ -222,15 +222,15 @@ _compass_tiles:
 	.db #0x80	; 128
 	.db #0x80	; 128
 	.db #0x40	; 64
-	.db #0x40	; 64
+	.db #0xc0	; 192
 	.db #0x40	; 64
 	.db #0x40	; 64
 	.db #0x20	; 32
-	.db #0x20	; 32
+	.db #0x60	; 96
 	.db #0x18	; 24
-	.db #0x18	; 24
+	.db #0x38	; 56	'8'
 	.db #0x07	; 7
-	.db #0x07	; 7
+	.db #0x1f	; 31
 G$compass_metasprite0$0_0$0 == .
 _compass_metasprite0:
 	.db #0x00	;  0

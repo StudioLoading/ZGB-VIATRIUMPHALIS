@@ -176,9 +176,10 @@ S:G$next_oam_sprite_flags$0_0$0({1}SC:U),E,0,0
 S:G$current_state$0_0$0({1}SC:U),E,0,0
 S:G$delta_time$0_0$0({1}SC:U),E,0,0
 S:G$bank_StateGame$0_0$0({1}SC:U),E,0,0
-S:G$stateBanks$0_0$0({1}DA1d,SC:U),E,0,0
-S:G$startFuncs$0_0$0({2}DA1d,DC,DF,SV:S),E,0,0
-S:G$updateFuncs$0_0$0({2}DA1d,DC,DF,SV:S),E,0,0
+S:G$bank_StateTutorialGame$0_0$0({1}SC:U),E,0,0
+S:G$stateBanks$0_0$0({2}DA2d,SC:U),E,0,0
+S:G$startFuncs$0_0$0({4}DA2d,DC,DF,SV:S),E,0,0
+S:G$updateFuncs$0_0$0({4}DA2d,DC,DF,SV:S),E,0,0
 S:G$bank_SpritePlayer$0_0$0({1}SC:U),E,0,0
 S:G$bank_SpriteHorse$0_0$0({1}SC:U),E,0,0
 S:G$bank_SpriteStep$0_0$0({1}SC:U),E,0,0
@@ -380,6 +381,8 @@ S:G$LCD_isr$0_0$0({2}DF,SV:S),C,0,0
 S:G$SetPalette$0_0$0({2}DF,SV:S),C,0,0
 S:G$Start_StateGame$0_0$0({2}DF,SV:S),C,0,0
 S:G$Update_StateGame$0_0$0({2}DF,SV:S),C,0,0
+S:G$Start_StateTutorialGame$0_0$0({2}DF,SV:S),C,0,0
+S:G$Update_StateTutorialGame$0_0$0({2}DF,SV:S),C,0,0
 S:G$InitStates$0_0$0({2}DF,SV:S),C,0,0
 S:G$Start_SpritePlayer$0_0$0({2}DF,SV:S),C,0,0
 S:G$Update_SpritePlayer$0_0$0({2}DF,SV:S),C,0,0

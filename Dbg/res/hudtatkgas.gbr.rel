@@ -2,7 +2,7 @@ XL3
 H A areas 7 global symbols
 M hudtatkgas_gbr
 O -msm83
-S ___bank_hudtatkgas Def000003
+S ___bank_hudtatkgas Def000004
 S G$__bank_hudtatkgas$0_0$0 Def0000FF
 S .__.ABS. Def000000
 A _CODE size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 188 flags 0 addr 0
+A _CODE_4 size 188 flags 0 addr 0
 S _hudtatkgas_tiles Def000000
 S _hudtatkgas Def000180
 S G$hudtatkgas$0_0$0 Def000180

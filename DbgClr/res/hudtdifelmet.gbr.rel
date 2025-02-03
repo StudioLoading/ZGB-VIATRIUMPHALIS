@@ -2,7 +2,7 @@ XL3
 H A areas 7 global symbols
 M hudtdifelmet_gbr
 O -msm83
-S ___bank_hudtdifelmet Def000003
+S ___bank_hudtdifelmet Def000005
 S G$__bank_hudtdifelmet$0_0$0 Def0000FF
 S .__.ABS. Def000000
 A _CODE size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 1C8 flags 0 addr 0
+A _CODE_5 size 1C8 flags 0 addr 0
 S _hudtdifelmet_tiles Def000000
 S _hudtdifelmet Def0001C0
 S G$hudtdifelmet$0_0$0 Def0001C0

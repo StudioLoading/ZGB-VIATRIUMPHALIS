@@ -62,16 +62,16 @@
 	.area _CODE_255
 	G$Start_SpriteBiga$0$0	= .
 	.globl	G$Start_SpriteBiga$0$0
-	C$SpriteBiga.c$40$0_0$180	= .
-	.globl	C$SpriteBiga.c$40$0_0$180
-;SpriteBiga.c:40: void START() {
+	C$SpriteBiga.c$39$0_0$180	= .
+	.globl	C$SpriteBiga.c$39$0_0$180
+;SpriteBiga.c:39: void START() {
 ;	---------------------------------
 ; Function Start_SpriteBiga
 ; ---------------------------------
 _Start_SpriteBiga::
-	C$SpriteBiga.c$41$1_0$180	= .
-	.globl	C$SpriteBiga.c$41$1_0$180
-;SpriteBiga.c:41: SetSpriteAnim(THIS, a_biga_h, 32u);
+	C$SpriteBiga.c$40$1_0$180	= .
+	.globl	C$SpriteBiga.c$40$1_0$180
+;SpriteBiga.c:40: SetSpriteAnim(THIS, a_biga_h, 32u);
 	ld	a, #0x20
 	push	af
 	inc	sp
@@ -81,9 +81,9 @@ _Start_SpriteBiga::
 	ld	e, a
 	ld	d, (hl)
 	call	_SetSpriteAnim
-	C$SpriteBiga.c$42$1_0$180	= .
-	.globl	C$SpriteBiga.c$42$1_0$180
-;SpriteBiga.c:42: THIS->lim_x = 100;
+	C$SpriteBiga.c$41$1_0$180	= .
+	.globl	C$SpriteBiga.c$41$1_0$180
+;SpriteBiga.c:41: THIS->lim_x = 100;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -93,9 +93,9 @@ _Start_SpriteBiga::
 	ld	a, #0x64
 	ld	(hl+), a
 	ld	(hl), #0x00
-	C$SpriteBiga.c$43$1_0$180	= .
-	.globl	C$SpriteBiga.c$43$1_0$180
-;SpriteBiga.c:43: THIS->lim_y = 100;
+	C$SpriteBiga.c$42$1_0$180	= .
+	.globl	C$SpriteBiga.c$42$1_0$180
+;SpriteBiga.c:42: THIS->lim_y = 100;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -105,11 +105,11 @@ _Start_SpriteBiga::
 	ld	a, #0x64
 	ld	(hl+), a
 	ld	(hl), #0x00
-	C$SpriteBiga.c$44$1_0$180	= .
-	.globl	C$SpriteBiga.c$44$1_0$180
-;SpriteBiga.c:44: }
-	C$SpriteBiga.c$44$1_0$180	= .
-	.globl	C$SpriteBiga.c$44$1_0$180
+	C$SpriteBiga.c$43$1_0$180	= .
+	.globl	C$SpriteBiga.c$43$1_0$180
+;SpriteBiga.c:43: }
+	C$SpriteBiga.c$43$1_0$180	= .
+	.globl	C$SpriteBiga.c$43$1_0$180
 	XG$Start_SpriteBiga$0$0	= .
 	.globl	XG$Start_SpriteBiga$0$0
 	ret
@@ -140,17 +140,17 @@ _a_biga_up:
 	.db #0x04	; 4
 	G$Update_SpriteBiga$0$0	= .
 	.globl	G$Update_SpriteBiga$0$0
-	C$SpriteBiga.c$46$1_0$181	= .
-	.globl	C$SpriteBiga.c$46$1_0$181
-;SpriteBiga.c:46: void UPDATE() {
+	C$SpriteBiga.c$45$1_0$181	= .
+	.globl	C$SpriteBiga.c$45$1_0$181
+;SpriteBiga.c:45: void UPDATE() {
 ;	---------------------------------
 ; Function Update_SpriteBiga
 ; ---------------------------------
 _Update_SpriteBiga::
 	add	sp, #-10
-	C$SpriteBiga.c$47$1_5$181	= .
-	.globl	C$SpriteBiga.c$47$1_5$181
-;SpriteBiga.c:47: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
+	C$SpriteBiga.c$46$1_5$181	= .
+	.globl	C$SpriteBiga.c$46$1_5$181
+;SpriteBiga.c:46: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
 	ld	hl, #_s_horse
 	ld	a, (hl+)
 	ld	c, a
@@ -178,9 +178,9 @@ _Update_SpriteBiga::
 	ldhl	sp,	#1
 	ld	(hl-), a
 	ld	(hl), e
-	C$SpriteBiga.c$48$1_0$181	= .
-	.globl	C$SpriteBiga.c$48$1_0$181
-;SpriteBiga.c:48: if (vx < 0){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
+	C$SpriteBiga.c$47$1_0$181	= .
+	.globl	C$SpriteBiga.c$47$1_0$181
+;SpriteBiga.c:47: if (vx < 0){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
 	ld	a, (#_vx)
 	bit	7, a
 	jr	Z, 00102$
@@ -194,9 +194,9 @@ _Update_SpriteBiga::
 	inc	sp
 	push	hl
 00102$:
-	C$SpriteBiga.c$49$1_5$181	= .
-	.globl	C$SpriteBiga.c$49$1_5$181
-;SpriteBiga.c:49: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
+	C$SpriteBiga.c$48$1_5$181	= .
+	.globl	C$SpriteBiga.c$48$1_5$181
+;SpriteBiga.c:48: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
 	ld	hl, #0x000e
 	add	hl, bc
 	ld	a, (hl+)
@@ -211,9 +211,9 @@ _Update_SpriteBiga::
 	ldhl	sp,	#3
 	ld	(hl-), a
 	ld	(hl), e
-	C$SpriteBiga.c$50$1_1$183	= .
-	.globl	C$SpriteBiga.c$50$1_1$183
-;SpriteBiga.c:50: if(vy < 0){ final_pos_y = s_horse->y + 8;
+	C$SpriteBiga.c$49$1_1$183	= .
+	.globl	C$SpriteBiga.c$49$1_1$183
+;SpriteBiga.c:49: if(vy < 0){ final_pos_y = s_horse->y + 8;
 	ld	a, (#_vy)
 	bit	7, a
 	jr	Z, 00106$
@@ -229,9 +229,9 @@ _Update_SpriteBiga::
 	ld	(hl), a
 	jr	00107$
 00106$:
-	C$SpriteBiga.c$51$1_1$183	= .
-	.globl	C$SpriteBiga.c$51$1_1$183
-;SpriteBiga.c:51: }else if(vy > 0){final_pos_y = s_horse->y - 8;}
+	C$SpriteBiga.c$50$1_1$183	= .
+	.globl	C$SpriteBiga.c$50$1_1$183
+;SpriteBiga.c:50: }else if(vy > 0){final_pos_y = s_horse->y - 8;}
 	ld	hl, #_vy
 	ld	e, (hl)
 	xor	a, a
@@ -259,9 +259,9 @@ _Update_SpriteBiga::
 	ld	(hl-), a
 	ld	(hl), e
 00107$:
-	C$SpriteBiga.c$53$1_5$181	= .
-	.globl	C$SpriteBiga.c$53$1_5$181
-;SpriteBiga.c:53: INT16 delta_x = s_horse->x - THIS->x;
+	C$SpriteBiga.c$52$1_5$181	= .
+	.globl	C$SpriteBiga.c$52$1_5$181
+;SpriteBiga.c:52: INT16 delta_x = s_horse->x - THIS->x;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -297,14 +297,14 @@ _Update_SpriteBiga::
 	sbc	a, b
 	ld	c, e
 	ld	b, a
-	C$SpriteBiga.c$54$1_2$186	= .
-	.globl	C$SpriteBiga.c$54$1_2$186
-;SpriteBiga.c:54: UINT8 off_limit_x = 0;
+	C$SpriteBiga.c$53$1_2$186	= .
+	.globl	C$SpriteBiga.c$53$1_2$186
+;SpriteBiga.c:53: UINT8 off_limit_x = 0;
 	ldhl	sp,	#9
 	ld	(hl), #0x00
-	C$SpriteBiga.c$55$1_2$186	= .
-	.globl	C$SpriteBiga.c$55$1_2$186
-;SpriteBiga.c:55: if(delta_x >= (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX)){ //troppo lontano indietro a sinistra! metto un limite
+	C$SpriteBiga.c$54$1_2$186	= .
+	.globl	C$SpriteBiga.c$54$1_2$186
+;SpriteBiga.c:54: if(delta_x >= (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX)){ //troppo lontano indietro a sinistra! metto un limite
 	ld	a, c
 	sub	a, #0x24
 	ld	a, b
@@ -313,9 +313,9 @@ _Update_SpriteBiga::
 	rra
 	sbc	a, #0x80
 	jr	C, 00109$
-	C$SpriteBiga.c$56$2_2$187	= .
-	.globl	C$SpriteBiga.c$56$2_2$187
-;SpriteBiga.c:56: THIS->x = s_horse->x - (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX);
+	C$SpriteBiga.c$55$2_2$187	= .
+	.globl	C$SpriteBiga.c$55$2_2$187
+;SpriteBiga.c:55: THIS->x = s_horse->x - (DISTANCE_X_POSITIVE + DELTA_DISTANCE_MAX);
 	ldhl	sp,#4
 	ld	a, (hl+)
 	ld	e, a
@@ -340,14 +340,14 @@ _Update_SpriteBiga::
 	inc	de
 	ld	a, (hl)
 	ld	(de), a
-	C$SpriteBiga.c$57$2_2$187	= .
-	.globl	C$SpriteBiga.c$57$2_2$187
-;SpriteBiga.c:57: off_limit_x = 1u;
+	C$SpriteBiga.c$56$2_2$187	= .
+	.globl	C$SpriteBiga.c$56$2_2$187
+;SpriteBiga.c:56: off_limit_x = 1u;
 	ld	(hl), #0x01
 00109$:
-	C$SpriteBiga.c$59$1_2$186	= .
-	.globl	C$SpriteBiga.c$59$1_2$186
-;SpriteBiga.c:59: if(delta_x <= -((DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX))){ // troppo lontano indietro a destra! metto un limite
+	C$SpriteBiga.c$58$1_2$186	= .
+	.globl	C$SpriteBiga.c$58$1_2$186
+;SpriteBiga.c:58: if(delta_x <= -((DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX))){ // troppo lontano indietro a destra! metto un limite
 	ld	e, b
 	ld	d, #0xff
 	ld	a, #0xd8
@@ -366,9 +366,9 @@ _Update_SpriteBiga::
 	scf
 00343$:
 	jr	C, 00111$
-	C$SpriteBiga.c$60$2_2$188	= .
-	.globl	C$SpriteBiga.c$60$2_2$188
-;SpriteBiga.c:60: THIS->x = s_horse->x + (DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX);
+	C$SpriteBiga.c$59$2_2$188	= .
+	.globl	C$SpriteBiga.c$59$2_2$188
+;SpriteBiga.c:59: THIS->x = s_horse->x + (DISTANCE_X_NEGATIVE + DELTA_DISTANCE_MAX);
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	b, (hl)
@@ -396,22 +396,22 @@ _Update_SpriteBiga::
 	inc	bc
 	ld	a, d
 	ld	(bc), a
-	C$SpriteBiga.c$61$2_2$188	= .
-	.globl	C$SpriteBiga.c$61$2_2$188
-;SpriteBiga.c:61: off_limit_x = 1;
+	C$SpriteBiga.c$60$2_2$188	= .
+	.globl	C$SpriteBiga.c$60$2_2$188
+;SpriteBiga.c:60: off_limit_x = 1;
 	ldhl	sp,	#9
 	ld	(hl), #0x01
 00111$:
-	C$SpriteBiga.c$63$1_2$186	= .
-	.globl	C$SpriteBiga.c$63$1_2$186
-;SpriteBiga.c:63: if(off_limit_x == 0){ //se il limite non è stato infranto, mi sposto verso
+	C$SpriteBiga.c$62$1_2$186	= .
+	.globl	C$SpriteBiga.c$62$1_2$186
+;SpriteBiga.c:62: if(off_limit_x == 0){ //se il limite non è stato infranto, mi sposto verso
 	ldhl	sp,	#9
 	ld	a, (hl)
 	or	a, a
 	jr	NZ, 00118$
-	C$SpriteBiga.c$53$1_5$181	= .
-	.globl	C$SpriteBiga.c$53$1_5$181
-;SpriteBiga.c:53: INT16 delta_x = s_horse->x - THIS->x;
+	C$SpriteBiga.c$52$1_5$181	= .
+	.globl	C$SpriteBiga.c$52$1_5$181
+;SpriteBiga.c:52: INT16 delta_x = s_horse->x - THIS->x;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -434,9 +434,9 @@ _Update_SpriteBiga::
 	inc	de
 	ld	a, (de)
 	ld	b, a
-	C$SpriteBiga.c$65$2_2$189	= .
-	.globl	C$SpriteBiga.c$65$2_2$189
-;SpriteBiga.c:65: if(THIS->x > (final_pos_x+1) ){THIS->x-=2;}
+	C$SpriteBiga.c$64$2_2$189	= .
+	.globl	C$SpriteBiga.c$64$2_2$189
+;SpriteBiga.c:64: if(THIS->x > (final_pos_x+1) ){THIS->x-=2;}
 	pop	de
 	push	de
 	inc	de
@@ -455,9 +455,9 @@ _Update_SpriteBiga::
 	ld	(hl), b
 	jr	00118$
 00115$:
-	C$SpriteBiga.c$66$2_2$189	= .
-	.globl	C$SpriteBiga.c$66$2_2$189
-;SpriteBiga.c:66: else if (THIS->x < (final_pos_x -1 )){THIS->x+=2;}
+	C$SpriteBiga.c$65$2_2$189	= .
+	.globl	C$SpriteBiga.c$65$2_2$189
+;SpriteBiga.c:65: else if (THIS->x < (final_pos_x -1 )){THIS->x+=2;}
 	pop	de
 	push	de
 	ld	hl, #0x0001
@@ -485,16 +485,16 @@ _Update_SpriteBiga::
 	ld	(hl+), a
 	ld	(hl), b
 00118$:
-	C$SpriteBiga.c$47$1_5$181	= .
-	.globl	C$SpriteBiga.c$47$1_5$181
-;SpriteBiga.c:47: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
+	C$SpriteBiga.c$46$1_5$181	= .
+	.globl	C$SpriteBiga.c$46$1_5$181
+;SpriteBiga.c:46: UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
 	ld	hl, #_s_horse
 	ld	a, (hl+)
 	ld	c, a
 	ld	b, (hl)
-	C$SpriteBiga.c$49$1_5$181	= .
-	.globl	C$SpriteBiga.c$49$1_5$181
-;SpriteBiga.c:49: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
+	C$SpriteBiga.c$48$1_5$181	= .
+	.globl	C$SpriteBiga.c$48$1_5$181
+;SpriteBiga.c:48: UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
 	ld	hl, #0x000e
 	add	hl, bc
 	ld	e, l
@@ -505,16 +505,16 @@ _Update_SpriteBiga::
 	inc	de
 	ld	a, (de)
 	ld	(hl), a
-	C$SpriteBiga.c$53$1_5$181	= .
-	.globl	C$SpriteBiga.c$53$1_5$181
-;SpriteBiga.c:53: INT16 delta_x = s_horse->x - THIS->x;
+	C$SpriteBiga.c$52$1_5$181	= .
+	.globl	C$SpriteBiga.c$52$1_5$181
+;SpriteBiga.c:52: INT16 delta_x = s_horse->x - THIS->x;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
 	ld	b, (hl)
-	C$SpriteBiga.c$69$1_5$181	= .
-	.globl	C$SpriteBiga.c$69$1_5$181
-;SpriteBiga.c:69: INT16 delta_y = s_horse->y - THIS->y;
+	C$SpriteBiga.c$68$1_5$181	= .
+	.globl	C$SpriteBiga.c$68$1_5$181
+;SpriteBiga.c:68: INT16 delta_y = s_horse->y - THIS->y;
 	ld	hl, #0x000e
 	add	hl, bc
 	push	hl
@@ -546,14 +546,14 @@ _Update_SpriteBiga::
 	sbc	a, b
 	ld	c, e
 	ld	b, a
-	C$SpriteBiga.c$70$1_3$192	= .
-	.globl	C$SpriteBiga.c$70$1_3$192
-;SpriteBiga.c:70: UINT8 off_limit_y = 0;
+	C$SpriteBiga.c$69$1_3$192	= .
+	.globl	C$SpriteBiga.c$69$1_3$192
+;SpriteBiga.c:69: UINT8 off_limit_y = 0;
 	ldhl	sp,	#9
 	ld	(hl), #0x00
-	C$SpriteBiga.c$71$1_3$192	= .
-	.globl	C$SpriteBiga.c$71$1_3$192
-;SpriteBiga.c:71: if(delta_y >= 30){ //troppo lontano indietro in su! metto un limite
+	C$SpriteBiga.c$70$1_3$192	= .
+	.globl	C$SpriteBiga.c$70$1_3$192
+;SpriteBiga.c:70: if(delta_y >= 30){ //troppo lontano indietro in su! metto un limite
 	ld	a, c
 	sub	a, #0x1e
 	ld	a, b
@@ -562,9 +562,9 @@ _Update_SpriteBiga::
 	rra
 	sbc	a, #0x80
 	jr	C, 00120$
-	C$SpriteBiga.c$72$2_3$193	= .
-	.globl	C$SpriteBiga.c$72$2_3$193
-;SpriteBiga.c:72: THIS->y = s_horse->y - 15;
+	C$SpriteBiga.c$71$2_3$193	= .
+	.globl	C$SpriteBiga.c$71$2_3$193
+;SpriteBiga.c:71: THIS->y = s_horse->y - 15;
 	ldhl	sp,#4
 	ld	a, (hl+)
 	ld	e, a
@@ -589,14 +589,14 @@ _Update_SpriteBiga::
 	inc	de
 	ld	a, (hl)
 	ld	(de), a
-	C$SpriteBiga.c$73$2_3$193	= .
-	.globl	C$SpriteBiga.c$73$2_3$193
-;SpriteBiga.c:73: off_limit_y = 1u;
+	C$SpriteBiga.c$72$2_3$193	= .
+	.globl	C$SpriteBiga.c$72$2_3$193
+;SpriteBiga.c:72: off_limit_y = 1u;
 	ld	(hl), #0x01
 00120$:
-	C$SpriteBiga.c$75$1_3$192	= .
-	.globl	C$SpriteBiga.c$75$1_3$192
-;SpriteBiga.c:75: if(delta_y < -30){ //troppo lontano indietro in giù! metto un limite
+	C$SpriteBiga.c$74$1_3$192	= .
+	.globl	C$SpriteBiga.c$74$1_3$192
+;SpriteBiga.c:74: if(delta_y < -30){ //troppo lontano indietro in giù! metto un limite
 	ld	a, c
 	sub	a, #0xe2
 	ld	a, b
@@ -605,9 +605,9 @@ _Update_SpriteBiga::
 	rra
 	sbc	a, #0x7f
 	jr	NC, 00122$
-	C$SpriteBiga.c$76$2_3$194	= .
-	.globl	C$SpriteBiga.c$76$2_3$194
-;SpriteBiga.c:76: THIS->y = s_horse->y + 15;
+	C$SpriteBiga.c$75$2_3$194	= .
+	.globl	C$SpriteBiga.c$75$2_3$194
+;SpriteBiga.c:75: THIS->y = s_horse->y + 15;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	b, (hl)
@@ -635,29 +635,29 @@ _Update_SpriteBiga::
 	inc	bc
 	ld	a, d
 	ld	(bc), a
-	C$SpriteBiga.c$77$2_3$194	= .
-	.globl	C$SpriteBiga.c$77$2_3$194
-;SpriteBiga.c:77: off_limit_y = 1u;
+	C$SpriteBiga.c$76$2_3$194	= .
+	.globl	C$SpriteBiga.c$76$2_3$194
+;SpriteBiga.c:76: off_limit_y = 1u;
 	ldhl	sp,	#9
 	ld	(hl), #0x01
 00122$:
-	C$SpriteBiga.c$80$1_3$192	= .
-	.globl	C$SpriteBiga.c$80$1_3$192
-;SpriteBiga.c:80: if(off_limit_y == 0){ //se il limite non è stato infranto, mi sposto verso
+	C$SpriteBiga.c$79$1_3$192	= .
+	.globl	C$SpriteBiga.c$79$1_3$192
+;SpriteBiga.c:79: if(off_limit_y == 0){ //se il limite non è stato infranto, mi sposto verso
 	ldhl	sp,	#9
 	ld	a, (hl)
 	or	a, a
 	jr	NZ, 00129$
-	C$SpriteBiga.c$53$1_5$181	= .
-	.globl	C$SpriteBiga.c$53$1_5$181
-;SpriteBiga.c:53: INT16 delta_x = s_horse->x - THIS->x;
+	C$SpriteBiga.c$52$1_5$181	= .
+	.globl	C$SpriteBiga.c$52$1_5$181
+;SpriteBiga.c:52: INT16 delta_x = s_horse->x - THIS->x;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
 	ld	b, (hl)
-	C$SpriteBiga.c$69$1_5$181	= .
-	.globl	C$SpriteBiga.c$69$1_5$181
-;SpriteBiga.c:69: INT16 delta_y = s_horse->y - THIS->y;
+	C$SpriteBiga.c$68$1_5$181	= .
+	.globl	C$SpriteBiga.c$68$1_5$181
+;SpriteBiga.c:68: INT16 delta_y = s_horse->y - THIS->y;
 	ld	hl, #0x000e
 	add	hl, bc
 	push	hl
@@ -676,9 +676,9 @@ _Update_SpriteBiga::
 	inc	de
 	ld	a, (de)
 	ld	b, a
-	C$SpriteBiga.c$81$2_3$195	= .
-	.globl	C$SpriteBiga.c$81$2_3$195
-;SpriteBiga.c:81: if(THIS->y > final_pos_y){THIS->y--;}
+	C$SpriteBiga.c$80$2_3$195	= .
+	.globl	C$SpriteBiga.c$80$2_3$195
+;SpriteBiga.c:80: if(THIS->y > final_pos_y){THIS->y--;}
 	ldhl	sp,	#2
 	ld	a, (hl+)
 	sub	a, c
@@ -695,9 +695,9 @@ _Update_SpriteBiga::
 	ld	(hl), b
 	jr	00129$
 00126$:
-	C$SpriteBiga.c$82$2_3$195	= .
-	.globl	C$SpriteBiga.c$82$2_3$195
-;SpriteBiga.c:82: else if (THIS->y < final_pos_y){THIS->y++;}
+	C$SpriteBiga.c$81$2_3$195	= .
+	.globl	C$SpriteBiga.c$81$2_3$195
+;SpriteBiga.c:81: else if (THIS->y < final_pos_y){THIS->y++;}
 	ldhl	sp,	#2
 	ld	a, c
 	sub	a, (hl)
@@ -714,9 +714,9 @@ _Update_SpriteBiga::
 	ld	(hl+), a
 	ld	(hl), b
 00129$:
-	C$SpriteBiga.c$84$1_3$192	= .
-	.globl	C$SpriteBiga.c$84$1_3$192
-;SpriteBiga.c:84: THIS->anim_speed = stamina_current >> 6;
+	C$SpriteBiga.c$83$1_3$192	= .
+	.globl	C$SpriteBiga.c$83$1_3$192
+;SpriteBiga.c:83: THIS->anim_speed = stamina_current >> 6;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	b, (hl)
@@ -743,9 +743,9 @@ _Update_SpriteBiga::
 	rr	e
 	ld	a, e
 	ld	(bc), a
-	C$SpriteBiga.c$85$1_3$192	= .
-	.globl	C$SpriteBiga.c$85$1_3$192
-;SpriteBiga.c:85: THIS->mirror = s_horse->mirror;
+	C$SpriteBiga.c$84$1_3$192	= .
+	.globl	C$SpriteBiga.c$84$1_3$192
+;SpriteBiga.c:84: THIS->mirror = s_horse->mirror;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	b, (hl)
@@ -762,9 +762,9 @@ _Update_SpriteBiga::
 	add	hl, de
 	ld	a, (hl)
 	ld	(bc), a
-	C$SpriteBiga.c$87$1_4$198	= .
-	.globl	C$SpriteBiga.c$87$1_4$198
-;SpriteBiga.c:87: INT16 to_final_x = THIS->x - final_pos_x;
+	C$SpriteBiga.c$86$1_4$198	= .
+	.globl	C$SpriteBiga.c$86$1_4$198
+;SpriteBiga.c:86: INT16 to_final_x = THIS->x - final_pos_x;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -784,9 +784,9 @@ _Update_SpriteBiga::
 	sbc	a, h
 	ld	c, e
 	ld	b, a
-	C$SpriteBiga.c$88$1_4$198	= .
-	.globl	C$SpriteBiga.c$88$1_4$198
-;SpriteBiga.c:88: SetSpriteAnim(THIS, a_biga_h, 1);
+	C$SpriteBiga.c$87$1_4$198	= .
+	.globl	C$SpriteBiga.c$87$1_4$198
+;SpriteBiga.c:87: SetSpriteAnim(THIS, a_biga_h, 1);
 	push	bc
 	ld	a, #0x01
 	push	af
@@ -798,9 +798,9 @@ _Update_SpriteBiga::
 	ld	d, (hl)
 	call	_SetSpriteAnim
 	pop	bc
-	C$SpriteBiga.c$89$1_4$198	= .
-	.globl	C$SpriteBiga.c$89$1_4$198
-;SpriteBiga.c:89: if(to_final_x > 4){//devo andare a sinistra
+	C$SpriteBiga.c$88$1_4$198	= .
+	.globl	C$SpriteBiga.c$88$1_4$198
+;SpriteBiga.c:88: if(to_final_x > 4){//devo andare a sinistra
 	ld	e, b
 	ld	d, #0x00
 	ld	a, #0x04
@@ -819,9 +819,9 @@ _Update_SpriteBiga::
 	scf
 00349$:
 	jr	NC, 00131$
-	C$SpriteBiga.c$90$2_4$199	= .
-	.globl	C$SpriteBiga.c$90$2_4$199
-;SpriteBiga.c:90: THIS->mirror = V_MIRROR;
+	C$SpriteBiga.c$89$2_4$199	= .
+	.globl	C$SpriteBiga.c$89$2_4$199
+;SpriteBiga.c:89: THIS->mirror = V_MIRROR;
 	ld	hl, #_THIS
 	ld	a, (hl+)
 	ld	c, a
@@ -830,9 +830,9 @@ _Update_SpriteBiga::
 	add	hl, bc
 	ld	(hl), #0x02
 00131$:
-	C$SpriteBiga.c$92$1_4$198	= .
-	.globl	C$SpriteBiga.c$92$1_4$198
-;SpriteBiga.c:92: if(stamina_current < euphoria_max && stamina_current > euphoria_min){
+	C$SpriteBiga.c$91$1_4$198	= .
+	.globl	C$SpriteBiga.c$91$1_4$198
+;SpriteBiga.c:91: if(stamina_current < euphoria_max && stamina_current > euphoria_min){
 	ld	hl, #_stamina_current
 	ld	a, (hl+)
 	ld	c, a
@@ -850,9 +850,9 @@ _Update_SpriteBiga::
 	ld	a, (hl)
 	sbc	a, b
 	jr	NC, 00138$
-	C$SpriteBiga.c$93$2_4$200	= .
-	.globl	C$SpriteBiga.c$93$2_4$200
-;SpriteBiga.c:93: if(vy > 1){ //sto andando in giù
+	C$SpriteBiga.c$92$2_4$200	= .
+	.globl	C$SpriteBiga.c$92$2_4$200
+;SpriteBiga.c:92: if(vy > 1){ //sto andando in giù
 	ld	hl, #_vy
 	ld	e, (hl)
 	ld	a,#0x01
@@ -870,9 +870,9 @@ _Update_SpriteBiga::
 	scf
 00351$:
 	jr	NC, 00135$
-	C$SpriteBiga.c$94$3_4$201	= .
-	.globl	C$SpriteBiga.c$94$3_4$201
-;SpriteBiga.c:94: SetSpriteAnim(THIS, a_biga_down, 12);
+	C$SpriteBiga.c$93$3_4$201	= .
+	.globl	C$SpriteBiga.c$93$3_4$201
+;SpriteBiga.c:93: SetSpriteAnim(THIS, a_biga_down, 12);
 	ld	a, #0x0c
 	push	af
 	inc	sp
@@ -884,16 +884,16 @@ _Update_SpriteBiga::
 	call	_SetSpriteAnim
 	jr	00138$
 00135$:
-	C$SpriteBiga.c$95$2_4$200	= .
-	.globl	C$SpriteBiga.c$95$2_4$200
-;SpriteBiga.c:95: }else if (vy < -1){//sto andando in su
+	C$SpriteBiga.c$94$2_4$200	= .
+	.globl	C$SpriteBiga.c$94$2_4$200
+;SpriteBiga.c:94: }else if (vy < -1){//sto andando in su
 	ld	a, (#_vy)
 	xor	a, #0x80
 	sub	a, #0x7f
 	jr	NC, 00138$
-	C$SpriteBiga.c$96$3_4$202	= .
-	.globl	C$SpriteBiga.c$96$3_4$202
-;SpriteBiga.c:96: SetSpriteAnim(THIS, a_biga_up, 12);
+	C$SpriteBiga.c$95$3_4$202	= .
+	.globl	C$SpriteBiga.c$95$3_4$202
+;SpriteBiga.c:95: SetSpriteAnim(THIS, a_biga_up, 12);
 	ld	a, #0x0c
 	push	af
 	inc	sp
@@ -904,9 +904,9 @@ _Update_SpriteBiga::
 	ld	d, (hl)
 	call	_SetSpriteAnim
 00138$:
-	C$SpriteBiga.c$102$2_5$204	= .
-	.globl	C$SpriteBiga.c$102$2_5$204
-;SpriteBiga.c:102: SPRITEMANAGER_ITERATE(scroll_b_tile, ibspr) {
+	C$SpriteBiga.c$101$2_5$204	= .
+	.globl	C$SpriteBiga.c$101$2_5$204
+;SpriteBiga.c:101: SPRITEMANAGER_ITERATE(scroll_b_tile, ibspr) {
 	ld	a, (#(_sprite_manager_updatables + 1) + 0)
 	ld	l, a
 ;	spillPairReg hl
@@ -930,9 +930,9 @@ _Update_SpriteBiga::
 	ld	a, (hl-)
 	sub	a, (hl)
 	jr	Z, 00146$
-	C$SpriteBiga.c$103$3_5$205	= .
-	.globl	C$SpriteBiga.c$103$3_5$205
-;SpriteBiga.c:103: if(CheckCollision(THIS, ibspr)) {
+	C$SpriteBiga.c$102$3_5$205	= .
+	.globl	C$SpriteBiga.c$102$3_5$205
+;SpriteBiga.c:102: if(CheckCollision(THIS, ibspr)) {
 	push	bc
 	ld	hl, #_THIS
 	ld	e, (hl)
@@ -942,40 +942,40 @@ _Update_SpriteBiga::
 	pop	bc
 	or	a, a
 	jr	Z, 00154$
-	C$SpriteBiga.c$104$4_5$206	= .
-	.globl	C$SpriteBiga.c$104$4_5$206
-;SpriteBiga.c:104: switch(ibspr->type){
+	C$SpriteBiga.c$103$4_5$206	= .
+	.globl	C$SpriteBiga.c$103$4_5$206
+;SpriteBiga.c:103: switch(ibspr->type){
 	ld	hl, #0x0013
 	add	hl, bc
 	ld	a, (hl)
 	sub	a, #0x08
 	jr	NZ, 00154$
+	C$SpriteBiga.c$105$6_5$208	= .
+	.globl	C$SpriteBiga.c$105$6_5$208
+;SpriteBiga.c:105: struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
 	C$SpriteBiga.c$106$6_5$208	= .
 	.globl	C$SpriteBiga.c$106$6_5$208
-;SpriteBiga.c:106: struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
-	C$SpriteBiga.c$107$6_5$208	= .
-	.globl	C$SpriteBiga.c$107$6_5$208
-;SpriteBiga.c:107: if(item_data->configured == 2){
+;SpriteBiga.c:106: if(item_data->configured == 2){
 	ld	hl,#0x1e
 	add	hl,bc
 	ld	a, (hl)
 	sub	a, #0x02
 	jr	NZ, 00154$
-	C$SpriteBiga.c$108$7_5$209	= .
-	.globl	C$SpriteBiga.c$108$7_5$209
-;SpriteBiga.c:108: pickup(ibspr);
+	C$SpriteBiga.c$107$7_5$209	= .
+	.globl	C$SpriteBiga.c$107$7_5$209
+;SpriteBiga.c:107: pickup(ibspr);
 	push	bc
 	ld	e, #b_pickup
 	ld	hl, #_pickup
 	call	___sdcc_bcall_ehl
 	pop	hl
-	C$SpriteBiga.c$111$3_5$205	= .
-	.globl	C$SpriteBiga.c$111$3_5$205
-;SpriteBiga.c:111: }
+	C$SpriteBiga.c$110$3_5$205	= .
+	.globl	C$SpriteBiga.c$110$3_5$205
+;SpriteBiga.c:110: }
 00154$:
-	C$SpriteBiga.c$102$2_5$204	= .
-	.globl	C$SpriteBiga.c$102$2_5$204
-;SpriteBiga.c:102: SPRITEMANAGER_ITERATE(scroll_b_tile, ibspr) {
+	C$SpriteBiga.c$101$2_5$204	= .
+	.globl	C$SpriteBiga.c$101$2_5$204
+;SpriteBiga.c:101: SPRITEMANAGER_ITERATE(scroll_b_tile, ibspr) {
 	ldhl	sp,	#9
 	inc	(hl)
 	ld	c, (hl)
@@ -996,9 +996,9 @@ _Update_SpriteBiga::
 	ld	b, (hl)
 	jr	00153$
 00146$:
-	C$SpriteBiga.c$115$1_5$203	= .
-	.globl	C$SpriteBiga.c$115$1_5$203
-;SpriteBiga.c:115: if(KEY_TICKED(J_ATK)){
+	C$SpriteBiga.c$114$1_5$203	= .
+	.globl	C$SpriteBiga.c$114$1_5$203
+;SpriteBiga.c:114: if(KEY_TICKED(J_ATK)){
 	ld	a, (#_keys)
 	ld	hl, #_J_ATK
 	and	a,(hl)
@@ -1007,15 +1007,15 @@ _Update_SpriteBiga::
 	ld	hl, #_J_ATK
 	and	a,(hl)
 	jr	NZ, 00155$
-	C$SpriteBiga.c$116$2_5$210	= .
-	.globl	C$SpriteBiga.c$116$2_5$210
-;SpriteBiga.c:116: if(weapon_atk != NONE){
+	C$SpriteBiga.c$115$2_5$210	= .
+	.globl	C$SpriteBiga.c$115$2_5$210
+;SpriteBiga.c:115: if(weapon_atk != NONE){
 	ld	a, (#_weapon_atk)
 	or	a, a
 	jr	Z, 00155$
-	C$SpriteBiga.c$117$3_5$211	= .
-	.globl	C$SpriteBiga.c$117$3_5$211
-;SpriteBiga.c:117: use_weapon(0);
+	C$SpriteBiga.c$116$3_5$211	= .
+	.globl	C$SpriteBiga.c$116$3_5$211
+;SpriteBiga.c:116: use_weapon(0);
 	xor	a, a
 	push	af
 	inc	sp
@@ -1024,37 +1024,37 @@ _Update_SpriteBiga::
 	call	___sdcc_bcall_ehl
 	inc	sp
 00155$:
-	C$SpriteBiga.c$120$1_5$181	= .
-	.globl	C$SpriteBiga.c$120$1_5$181
-;SpriteBiga.c:120: }
+	C$SpriteBiga.c$119$1_5$181	= .
+	.globl	C$SpriteBiga.c$119$1_5$181
+;SpriteBiga.c:119: }
 	add	sp, #10
-	C$SpriteBiga.c$120$1_5$181	= .
-	.globl	C$SpriteBiga.c$120$1_5$181
+	C$SpriteBiga.c$119$1_5$181	= .
+	.globl	C$SpriteBiga.c$119$1_5$181
 	XG$Update_SpriteBiga$0$0	= .
 	.globl	XG$Update_SpriteBiga$0$0
 	ret
 	G$pickup$0$0	= .
 	.globl	G$pickup$0$0
-	C$SpriteBiga.c$122$1_5$213	= .
-	.globl	C$SpriteBiga.c$122$1_5$213
-;SpriteBiga.c:122: void pickup(Sprite* s_arg_item) BANKED{
+	C$SpriteBiga.c$121$1_5$213	= .
+	.globl	C$SpriteBiga.c$121$1_5$213
+;SpriteBiga.c:121: void pickup(Sprite* s_arg_item) BANKED{
 ;	---------------------------------
 ; Function pickup
 ; ---------------------------------
 	b_pickup	= 255
 _pickup::
-	C$SpriteBiga.c$123$1_0$213	= .
-	.globl	C$SpriteBiga.c$123$1_0$213
-;SpriteBiga.c:123: struct ItemData* item_data = (struct ItemData*) s_arg_item->custom_data;
+	C$SpriteBiga.c$122$1_0$213	= .
+	.globl	C$SpriteBiga.c$122$1_0$213
+;SpriteBiga.c:122: struct ItemData* item_data = (struct ItemData*) s_arg_item->custom_data;
 	ldhl	sp,	#6
 	ld	a, (hl+)
 	ld	e, a
 	ld	d, (hl)
 	ld	hl, #0x001b
 	add	hl, de
-	C$SpriteBiga.c$124$1_0$213	= .
-	.globl	C$SpriteBiga.c$124$1_0$213
-;SpriteBiga.c:124: switch(item_data->itemtype){
+	C$SpriteBiga.c$123$1_0$213	= .
+	.globl	C$SpriteBiga.c$123$1_0$213
+;SpriteBiga.c:123: switch(item_data->itemtype){
 	ld	bc, #0x0004
 	add	hl, bc
 	ld	c, (hl)
@@ -1085,104 +1085,104 @@ _pickup::
 	jp	00106$
 	jp	00107$
 	jp	00108$
+	C$SpriteBiga.c$124$2_0$214	= .
+	.globl	C$SpriteBiga.c$124$2_0$214
+;SpriteBiga.c:124: case GLADIO: case LANCE: case FLAME:
+00103$:
 	C$SpriteBiga.c$125$2_0$214	= .
 	.globl	C$SpriteBiga.c$125$2_0$214
-;SpriteBiga.c:125: case GLADIO: case LANCE: case FLAME:
-00103$:
-	C$SpriteBiga.c$126$2_0$214	= .
-	.globl	C$SpriteBiga.c$126$2_0$214
-;SpriteBiga.c:126: weapon_atk = item_data->itemtype;
+;SpriteBiga.c:125: weapon_atk = item_data->itemtype;
 	ld	hl, #_weapon_atk
 	ld	(hl), c
+	C$SpriteBiga.c$126$2_0$214	= .
+	.globl	C$SpriteBiga.c$126$2_0$214
+;SpriteBiga.c:126: update_weapon();
+	push	de
+	ld	e, #b_update_weapon
+	ld	hl, #_update_weapon
+	call	___sdcc_bcall_ehl
+	pop	de
 	C$SpriteBiga.c$127$2_0$214	= .
 	.globl	C$SpriteBiga.c$127$2_0$214
-;SpriteBiga.c:127: update_weapon();
-	push	de
-	ld	e, #b_update_weapon
-	ld	hl, #_update_weapon
-	call	___sdcc_bcall_ehl
-	pop	de
+;SpriteBiga.c:127: break;
+	jp	_SpriteManagerRemoveSprite
 	C$SpriteBiga.c$128$2_0$214	= .
 	.globl	C$SpriteBiga.c$128$2_0$214
-;SpriteBiga.c:128: break;
-	jp	_SpriteManagerRemoveSprite
+;SpriteBiga.c:128: case ELMET: case SHIELD: case CAPE:
+00106$:
 	C$SpriteBiga.c$129$2_0$214	= .
 	.globl	C$SpriteBiga.c$129$2_0$214
-;SpriteBiga.c:129: case ELMET: case SHIELD: case CAPE:
-00106$:
-	C$SpriteBiga.c$130$2_0$214	= .
-	.globl	C$SpriteBiga.c$130$2_0$214
-;SpriteBiga.c:130: weapon_def = item_data->itemtype;
+;SpriteBiga.c:129: weapon_def = item_data->itemtype;
 	ld	hl, #_weapon_def
 	ld	(hl), c
-	C$SpriteBiga.c$131$2_0$214	= .
-	.globl	C$SpriteBiga.c$131$2_0$214
-;SpriteBiga.c:131: update_weapon();
+	C$SpriteBiga.c$130$2_0$214	= .
+	.globl	C$SpriteBiga.c$130$2_0$214
+;SpriteBiga.c:130: update_weapon();
 	push	de
 	ld	e, #b_update_weapon
 	ld	hl, #_update_weapon
 	call	___sdcc_bcall_ehl
 	pop	de
+	C$SpriteBiga.c$131$2_0$214	= .
+	.globl	C$SpriteBiga.c$131$2_0$214
+;SpriteBiga.c:131: break;
+	jp	_SpriteManagerRemoveSprite
 	C$SpriteBiga.c$132$2_0$214	= .
 	.globl	C$SpriteBiga.c$132$2_0$214
-;SpriteBiga.c:132: break;
-	jp	_SpriteManagerRemoveSprite
+;SpriteBiga.c:132: case HP:
+00107$:
 	C$SpriteBiga.c$133$2_0$214	= .
 	.globl	C$SpriteBiga.c$133$2_0$214
-;SpriteBiga.c:133: case HP:
-00107$:
-	C$SpriteBiga.c$134$2_0$214	= .
-	.globl	C$SpriteBiga.c$134$2_0$214
-;SpriteBiga.c:134: update_hp_max();
+;SpriteBiga.c:133: update_hp_max();
 	push	de
 	ld	e, #b_update_hp_max
 	ld	hl, #_update_hp_max
 	call	___sdcc_bcall_ehl
 	pop	de
+	C$SpriteBiga.c$134$2_0$214	= .
+	.globl	C$SpriteBiga.c$134$2_0$214
+;SpriteBiga.c:134: break;
+	jp	_SpriteManagerRemoveSprite
 	C$SpriteBiga.c$135$2_0$214	= .
 	.globl	C$SpriteBiga.c$135$2_0$214
-;SpriteBiga.c:135: break;
-	jp	_SpriteManagerRemoveSprite
+;SpriteBiga.c:135: case TIME:
+00108$:
 	C$SpriteBiga.c$136$2_0$214	= .
 	.globl	C$SpriteBiga.c$136$2_0$214
-;SpriteBiga.c:136: case TIME:
-00108$:
-	C$SpriteBiga.c$137$2_0$214	= .
-	.globl	C$SpriteBiga.c$137$2_0$214
-;SpriteBiga.c:137: update_time_max();
+;SpriteBiga.c:136: update_time_max();
 	push	de
 	ld	e, #b_update_time_max
 	ld	hl, #_update_time_max
 	call	___sdcc_bcall_ehl
 	pop	de
+	C$SpriteBiga.c$138$1_0$213	= .
+	.globl	C$SpriteBiga.c$138$1_0$213
+;SpriteBiga.c:138: }    
 	C$SpriteBiga.c$139$1_0$213	= .
 	.globl	C$SpriteBiga.c$139$1_0$213
-;SpriteBiga.c:139: }    
+;SpriteBiga.c:139: SpriteManagerRemoveSprite(s_arg_item);
 	C$SpriteBiga.c$140$1_0$213	= .
 	.globl	C$SpriteBiga.c$140$1_0$213
-;SpriteBiga.c:140: SpriteManagerRemoveSprite(s_arg_item);
-	C$SpriteBiga.c$141$1_0$213	= .
-	.globl	C$SpriteBiga.c$141$1_0$213
-;SpriteBiga.c:141: }
-	C$SpriteBiga.c$141$1_0$213	= .
-	.globl	C$SpriteBiga.c$141$1_0$213
+;SpriteBiga.c:140: }
+	C$SpriteBiga.c$140$1_0$213	= .
+	.globl	C$SpriteBiga.c$140$1_0$213
 	XG$pickup$0$0	= .
 	.globl	XG$pickup$0$0
 	jp	_SpriteManagerRemoveSprite
 	G$Destroy_SpriteBiga$0$0	= .
 	.globl	G$Destroy_SpriteBiga$0$0
-	C$SpriteBiga.c$143$1_0$216	= .
-	.globl	C$SpriteBiga.c$143$1_0$216
-;SpriteBiga.c:143: void DESTROY() {
+	C$SpriteBiga.c$142$1_0$216	= .
+	.globl	C$SpriteBiga.c$142$1_0$216
+;SpriteBiga.c:142: void DESTROY() {
 ;	---------------------------------
 ; Function Destroy_SpriteBiga
 ; ---------------------------------
 _Destroy_SpriteBiga::
-	C$SpriteBiga.c$144$1_0$216	= .
-	.globl	C$SpriteBiga.c$144$1_0$216
-;SpriteBiga.c:144: }
-	C$SpriteBiga.c$144$1_0$216	= .
-	.globl	C$SpriteBiga.c$144$1_0$216
+	C$SpriteBiga.c$143$1_0$216	= .
+	.globl	C$SpriteBiga.c$143$1_0$216
+;SpriteBiga.c:143: }
+	C$SpriteBiga.c$143$1_0$216	= .
+	.globl	C$SpriteBiga.c$143$1_0$216
 	XG$Destroy_SpriteBiga$0$0	= .
 	.globl	XG$Destroy_SpriteBiga$0$0
 	ret

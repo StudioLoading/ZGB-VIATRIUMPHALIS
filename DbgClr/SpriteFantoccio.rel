@@ -6,7 +6,7 @@ O -msm83
 S _SetSpriteAnim Ref000000
 S _THIS Ref000000
 S .__.ABS. Def000000
-S ___bank_SpriteFantoccio Def000003
+S ___bank_SpriteFantoccio Def000006
 S G$__bank_SpriteFantoccio$0_0$0 Def0000FF
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
@@ -19,7 +19,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 49 flags 0 addr 0
+A _CODE_6 size 49 flags 0 addr 0
 S A$SpriteFantoccio$91 Def00001F
 S A$SpriteFantoccio$82 Def000014
 S A$SpriteFantoccio$73 Def00000A

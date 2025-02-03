@@ -3,7 +3,7 @@ H A areas 17 global symbols
 M horse5frames_gbr
 O -msm83
 S .__.ABS. Def000000
-S ___bank_horse5frames Def000002
+S ___bank_horse5frames Def000005
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -11,7 +11,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 301 flags 0 addr 0
+A _CODE_5 size 301 flags 0 addr 0
 S _horse5frames_metasprite0 Def000288
 S _horse5frames_metasprite1 Def00029C
 S _horse5frames_metasprite2 Def0002B0

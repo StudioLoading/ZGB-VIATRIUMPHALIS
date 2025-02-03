@@ -134,7 +134,7 @@
                                     134 	.area _INITIALIZER
                            000000   135 FZGBMain$__xinit_next_state$0_0$0 == .
       000000                        136 __xinit__next_state:
-      000000 00                     137 	.db #0x00	; 0
+      000000 01                     137 	.db #0x01	; 1
                            000001   138 FZGBMain$__xinit_J_WHIP$0_0$0 == .
       000001                        139 __xinit__J_WHIP:
       000001 10                     140 	.db #0x10	; 16

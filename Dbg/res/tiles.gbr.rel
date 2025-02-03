@@ -2,7 +2,7 @@ XL3
 H A areas B global symbols
 M tiles_gbr
 O -msm83
-S ___bank_mapcircuit_tiles Def000002
+S ___bank_mapcircuit_tiles Def000003
 S G$__bank_mapcircuit_tiles$0_0$0 Def0000FF
 S .__.ABS. Def000000
 A _CODE size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 890 flags 0 addr 0
+A _CODE_3 size 890 flags 0 addr 0
 S _mapcircuit_tiles_tiles Def000088
 S _mapcircuit_tiles Def000888
 S _mapcircuit_tiles_palettes Def000000

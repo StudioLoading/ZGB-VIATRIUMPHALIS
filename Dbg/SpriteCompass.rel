@@ -8,7 +8,7 @@ S _scroll_target Ref000000
 S _THIS Ref000000
 S .__.ABS. Def000000
 S _cos Ref000000
-S ___bank_SpriteCompass Def000002
+S ___bank_SpriteCompass Def000004
 S G$__bank_SpriteCompass$0_0$0 Def0000FF
 S _sin Ref000000
 A _CODE size 0 flags 0 addr 0
@@ -18,7 +18,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 1CD flags 0 addr 0
+A _CODE_4 size 1CD flags 0 addr 0
 S A$SpriteCompass$91 Def00001E
 S A$SpriteCompass$82 Def00001B
 S A$SpriteCompass$64 Def000003

@@ -3,7 +3,7 @@ H A areas 1D global symbols
 M horse_gbr
 O -msm83
 S .__.ABS. Def000000
-S ___bank_horse Def000002
+S ___bank_horse Def000004
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -11,7 +11,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 4C3 flags 0 addr 0
+A _CODE_4 size 4C3 flags 0 addr 0
 S _horse_tiles Def000008
 S _horse Def0004B8
 S _horse_palettes Def000000

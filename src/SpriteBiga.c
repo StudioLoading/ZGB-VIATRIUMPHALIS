@@ -29,7 +29,6 @@ extern ITEM_TYPE weapon_def;
 extern UINT8 J_ATK;
 
 extern void update_weapon() BANKED;
-extern void update_hp() BANKED;
 extern void update_hp_max() BANKED;
 extern void update_time_max() BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;

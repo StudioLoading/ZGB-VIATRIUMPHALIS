@@ -9,6 +9,12 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _InitSprites
+	.globl _Destroy_SpriteItem
+	.globl _Update_SpriteItem
+	.globl _Start_SpriteItem
+	.globl _Destroy_SpriteFantoccio
+	.globl _Update_SpriteFantoccio
+	.globl _Start_SpriteFantoccio
 	.globl _Destroy_SpriteCamera
 	.globl _Update_SpriteCamera
 	.globl _Start_SpriteCamera
@@ -62,28 +68,28 @@ _updateFuncs::
 	.ds 2
 G$spriteBanks$0_0$0==.
 _spriteBanks::
-	.ds 7
+	.ds 9
 G$spriteDataBanks$0_0$0==.
 _spriteDataBanks::
-	.ds 7
+	.ds 9
 G$spriteStartFuncs$0_0$0==.
 _spriteStartFuncs::
-	.ds 14
+	.ds 18
 G$spriteUpdateFuncs$0_0$0==.
 _spriteUpdateFuncs::
-	.ds 14
+	.ds 18
 G$spriteDestroyFuncs$0_0$0==.
 _spriteDestroyFuncs::
-	.ds 14
+	.ds 18
 G$spriteDatas$0_0$0==.
 _spriteDatas::
-	.ds 14
+	.ds 18
 G$spriteIdxs$0_0$0==.
 _spriteIdxs::
-	.ds 7
+	.ds 9
 G$spritePalsOffset$0_0$0==.
 _spritePalsOffset::
-	.ds 7
+	.ds 9
 ;--------------------------------------------------------
 ; ram data
 ;--------------------------------------------------------
@@ -303,6 +309,50 @@ _InitSprites::
 	ld	(hl), #<(_camera)
 	inc	hl
 	ld	(hl), #>(_camera)
+	ld	bc, #_spriteBanks + 7
+	ld	a, #<(___bank_SpriteFantoccio)
+	ld	(bc), a
+	ld	hl, #(_spriteStartFuncs + 14)
+	ld	(hl), #<(_Start_SpriteFantoccio)
+	inc	hl
+	ld	(hl), #>(_Start_SpriteFantoccio)
+	ld	hl, #(_spriteUpdateFuncs + 14)
+	ld	(hl), #<(_Update_SpriteFantoccio)
+	inc	hl
+	ld	(hl), #>(_Update_SpriteFantoccio)
+	ld	hl, #(_spriteDestroyFuncs + 14)
+	ld	(hl), #<(_Destroy_SpriteFantoccio)
+	inc	hl
+	ld	(hl), #>(_Destroy_SpriteFantoccio)
+	ld	bc, #_spriteDataBanks + 7
+	ld	a, #<(___bank_fantoccio)
+	ld	(bc), a
+	ld	hl, #(_spriteDatas + 14)
+	ld	(hl), #<(_fantoccio)
+	inc	hl
+	ld	(hl), #>(_fantoccio)
+	ld	bc, #_spriteBanks + 8
+	ld	a, #<(___bank_SpriteItem)
+	ld	(bc), a
+	ld	hl, #(_spriteStartFuncs + 16)
+	ld	(hl), #<(_Start_SpriteItem)
+	inc	hl
+	ld	(hl), #>(_Start_SpriteItem)
+	ld	hl, #(_spriteUpdateFuncs + 16)
+	ld	(hl), #<(_Update_SpriteItem)
+	inc	hl
+	ld	(hl), #>(_Update_SpriteItem)
+	ld	hl, #(_spriteDestroyFuncs + 16)
+	ld	a, #<(_Destroy_SpriteItem)
+	ld	(hl+), a
+	ld	(hl), #>(_Destroy_SpriteItem)
+	ld	bc, #_spriteDataBanks + 8
+	ld	a, #<(___bank_item)
+	ld	(bc), a
+	ld	hl, #(_spriteDatas + 16)
+	ld	a, #<(_item)
+	ld	(hl+), a
+	ld	(hl), #>(_item)
 	C$ZGBMain_Init.c$51$1_0$159	= .
 	.globl	C$ZGBMain_Init.c$51$1_0$159
 ;C:/ZGB-2023.0/common/src/ZGBMain_Init.c:51: }

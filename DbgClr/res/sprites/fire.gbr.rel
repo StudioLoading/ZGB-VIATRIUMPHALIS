@@ -3,7 +3,7 @@ H A areas 1D global symbols
 M fire_gbr
 O -msm83
 S .__.ABS. Def000000
-S ___bank_fire Def000003
+S ___bank_fire Def000005
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -11,7 +11,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 28B flags 0 addr 0
+A _CODE_5 size 28B flags 0 addr 0
 S G$__func_fire$0$0 Def000000
 S C$fire.gbr.c$9$0_0$161 Def000000
 S _fire_tiles Def000010

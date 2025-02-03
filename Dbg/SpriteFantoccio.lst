@@ -1,0 +1,177 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.3.2 #14228 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module SpriteFantoccio
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _Destroy_SpriteFantoccio
+                                     12 	.globl _Update_SpriteFantoccio
+                                     13 	.globl _Start_SpriteFantoccio
+                                     14 	.globl _SetSpriteAnim
+                                     15 	.globl _fantoccio_turned
+                                     16 	.globl _fantoccio_counter
+                                     17 	.globl _a_fantoccio_hit
+                                     18 	.globl ___bank_SpriteFantoccio
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function registers
+                                     21 ;--------------------------------------------------------
+                                     22 ;--------------------------------------------------------
+                                     23 ; ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area _DATA
+                                     26 ;--------------------------------------------------------
+                                     27 ; ram data
+                                     28 ;--------------------------------------------------------
+                                     29 	.area _INITIALIZED
+                           000000    30 G$fantoccio_counter$0_0$0==.
+      000000                         31 _fantoccio_counter::
+      000000                         32 	.ds 1
+                           000001    33 G$fantoccio_turned$0_0$0==.
+      000001                         34 _fantoccio_turned::
+      000001                         35 	.ds 1
+                                     36 ;--------------------------------------------------------
+                                     37 ; absolute external ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area _DABS (ABS)
+                                     40 ;--------------------------------------------------------
+                                     41 ; global & static initialisations
+                                     42 ;--------------------------------------------------------
+                                     43 	.area _HOME
+                                     44 	.area _GSINIT
+                                     45 	.area _GSFINAL
+                                     46 	.area _GSINIT
+                                     47 ;--------------------------------------------------------
+                                     48 ; Home
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _HOME
+                                     51 	.area _HOME
+                                     52 ;--------------------------------------------------------
+                                     53 ; code
+                                     54 ;--------------------------------------------------------
+                                     55 	.area _CODE_255
+                           000000    56 	G$Start_SpriteFantoccio$0$0	= .
+                                     57 	.globl	G$Start_SpriteFantoccio$0$0
+                           000000    58 	C$SpriteFantoccio.c$19$0_0$190	= .
+                                     59 	.globl	C$SpriteFantoccio.c$19$0_0$190
+                                     60 ;SpriteFantoccio.c:19: void START() {
+                                     61 ;	---------------------------------
+                                     62 ; Function Start_SpriteFantoccio
+                                     63 ; ---------------------------------
+      000000                         64 _Start_SpriteFantoccio::
+                           000000    65 	C$SpriteFantoccio.c$20$1_0$190	= .
+                                     66 	.globl	C$SpriteFantoccio.c$20$1_0$190
+                                     67 ;SpriteFantoccio.c:20: SetSpriteAnim(THIS, a_fantoccio_hit, 24);
+      000000 3E 18            [ 8]   68 	ld	a, #0x18
+      000002 F5               [16]   69 	push	af
+      000003 33               [ 8]   70 	inc	sp
+      000004 01r40r00         [12]   71 	ld	bc, #_a_fantoccio_hit
+      000007 21r00r00         [12]   72 	ld	hl, #_THIS
+      00000A 2A               [ 8]   73 	ld	a, (hl+)
+      00000B 5F               [ 4]   74 	ld	e, a
+      00000C 56               [ 8]   75 	ld	d, (hl)
+      00000D CDr00r00         [24]   76 	call	_SetSpriteAnim
+                           000010    77 	C$SpriteFantoccio.c$21$1_0$190	= .
+                                     78 	.globl	C$SpriteFantoccio.c$21$1_0$190
+                                     79 ;SpriteFantoccio.c:21: THIS->mirror = NO_MIRROR;
+      000010 21r00r00         [12]   80 	ld	hl, #_THIS
+      000013 2A               [ 8]   81 	ld	a, (hl+)
+      000014 4F               [ 4]   82 	ld	c, a
+      000015 46               [ 8]   83 	ld	b, (hl)
+      000016 21 10 00         [12]   84 	ld	hl, #0x0010
+      000019 09               [ 8]   85 	add	hl, bc
+      00001A 36 00            [12]   86 	ld	(hl), #0x00
+                           00001C    87 	C$SpriteFantoccio.c$22$1_0$190	= .
+                                     88 	.globl	C$SpriteFantoccio.c$22$1_0$190
+                                     89 ;SpriteFantoccio.c:22: fantoccio_turned = 0;
+      00001C 21r01r00         [12]   90 	ld	hl, #_fantoccio_turned
+      00001F 36 00            [12]   91 	ld	(hl), #0x00
+                           000021    92 	C$SpriteFantoccio.c$23$1_0$190	= .
+                                     93 	.globl	C$SpriteFantoccio.c$23$1_0$190
+                                     94 ;SpriteFantoccio.c:23: THIS->lim_x = 1000;
+      000021 21r00r00         [12]   95 	ld	hl, #_THIS
+      000024 2A               [ 8]   96 	ld	a, (hl+)
+      000025 4F               [ 4]   97 	ld	c, a
+      000026 46               [ 8]   98 	ld	b, (hl)
+      000027 21 15 00         [12]   99 	ld	hl, #0x0015
+      00002A 09               [ 8]  100 	add	hl, bc
+      00002B 3E E8            [ 8]  101 	ld	a, #0xe8
+      00002D 22               [ 8]  102 	ld	(hl+), a
+      00002E 36 03            [12]  103 	ld	(hl), #0x03
+                           000030   104 	C$SpriteFantoccio.c$24$1_0$190	= .
+                                    105 	.globl	C$SpriteFantoccio.c$24$1_0$190
+                                    106 ;SpriteFantoccio.c:24: THIS->lim_y = 1000;
+      000030 21r00r00         [12]  107 	ld	hl, #_THIS
+      000033 2A               [ 8]  108 	ld	a, (hl+)
+      000034 4F               [ 4]  109 	ld	c, a
+      000035 46               [ 8]  110 	ld	b, (hl)
+      000036 21 17 00         [12]  111 	ld	hl, #0x0017
+      000039 09               [ 8]  112 	add	hl, bc
+      00003A 3E E8            [ 8]  113 	ld	a, #0xe8
+      00003C 22               [ 8]  114 	ld	(hl+), a
+      00003D 36 03            [12]  115 	ld	(hl), #0x03
+                           00003F   116 	C$SpriteFantoccio.c$25$1_0$190	= .
+                                    117 	.globl	C$SpriteFantoccio.c$25$1_0$190
+                                    118 ;SpriteFantoccio.c:25: }
+                           00003F   119 	C$SpriteFantoccio.c$25$1_0$190	= .
+                                    120 	.globl	C$SpriteFantoccio.c$25$1_0$190
+                           00003F   121 	XG$Start_SpriteFantoccio$0$0	= .
+                                    122 	.globl	XG$Start_SpriteFantoccio$0$0
+      00003F C9               [16]  123 	ret
+                           0000FF   124 G$__bank_SpriteFantoccio$0_0$0 == 0x00ff
+                           0000FF   125 ___bank_SpriteFantoccio	=	0x00ff
+                           000040   126 G$a_fantoccio_hit$0_0$0 == .
+      000040                        127 _a_fantoccio_hit:
+      000040 06                     128 	.db #0x06	; 6
+      000041 00                     129 	.db #0x00	; 0
+      000042 01                     130 	.db #0x01	; 1
+      000043 02                     131 	.db #0x02	; 2
+      000044 03                     132 	.db #0x03	; 3
+      000045 04                     133 	.db #0x04	; 4
+      000046 05                     134 	.db #0x05	; 5
+                           000047   135 	G$Update_SpriteFantoccio$0$0	= .
+                                    136 	.globl	G$Update_SpriteFantoccio$0$0
+                           000047   137 	C$SpriteFantoccio.c$27$1_0$192	= .
+                                    138 	.globl	C$SpriteFantoccio.c$27$1_0$192
+                                    139 ;SpriteFantoccio.c:27: void UPDATE() {
+                                    140 ;	---------------------------------
+                                    141 ; Function Update_SpriteFantoccio
+                                    142 ; ---------------------------------
+      000047                        143 _Update_SpriteFantoccio::
+                           000047   144 	C$SpriteFantoccio.c$28$1_0$192	= .
+                                    145 	.globl	C$SpriteFantoccio.c$28$1_0$192
+                                    146 ;SpriteFantoccio.c:28: }
+                           000047   147 	C$SpriteFantoccio.c$28$1_0$192	= .
+                                    148 	.globl	C$SpriteFantoccio.c$28$1_0$192
+                           000047   149 	XG$Update_SpriteFantoccio$0$0	= .
+                                    150 	.globl	XG$Update_SpriteFantoccio$0$0
+      000047 C9               [16]  151 	ret
+                           000048   152 	G$Destroy_SpriteFantoccio$0$0	= .
+                                    153 	.globl	G$Destroy_SpriteFantoccio$0$0
+                           000048   154 	C$SpriteFantoccio.c$30$1_0$194	= .
+                                    155 	.globl	C$SpriteFantoccio.c$30$1_0$194
+                                    156 ;SpriteFantoccio.c:30: void DESTROY() {
+                                    157 ;	---------------------------------
+                                    158 ; Function Destroy_SpriteFantoccio
+                                    159 ; ---------------------------------
+      000048                        160 _Destroy_SpriteFantoccio::
+                           000048   161 	C$SpriteFantoccio.c$31$1_0$194	= .
+                                    162 	.globl	C$SpriteFantoccio.c$31$1_0$194
+                                    163 ;SpriteFantoccio.c:31: }
+                           000048   164 	C$SpriteFantoccio.c$31$1_0$194	= .
+                                    165 	.globl	C$SpriteFantoccio.c$31$1_0$194
+                           000048   166 	XG$Destroy_SpriteFantoccio$0$0	= .
+                                    167 	.globl	XG$Destroy_SpriteFantoccio$0$0
+      000048 C9               [16]  168 	ret
+                                    169 	.area _CODE_255
+                                    170 	.area _INITIALIZER
+                           000000   171 FSpriteFantoccio$__xinit_fantoccio_counter$0_0$0 == .
+      000000                        172 __xinit__fantoccio_counter:
+      000000 00                     173 	.db #0x00	;  0
+                           000001   174 FSpriteFantoccio$__xinit_fantoccio_turned$0_0$0 == .
+      000001                        175 __xinit__fantoccio_turned:
+      000001 00                     176 	.db #0x00	;  0
+                                    177 	.area _CABS (ABS)

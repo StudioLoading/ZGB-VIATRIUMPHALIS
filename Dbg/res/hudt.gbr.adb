@@ -273,7 +273,7 @@ S:G$cpu_fast$0_0$0({2}DF,SV:S),C,0,0
 S:G$set_default_palette$0_0$0({2}DF,SV:S),C,0,0
 S:G$cgb_compatibility$0_0$0({2}DF,SV:S),C,0,0
 S:G$hudt_palettes$0_0$0({24}DA12d,SI:U),D,0,0
-S:G$hudtCGB$0_0$0({78}DA78d,SC:U),D,0,0
-S:G$hudt_tiles$0_0$0({1248}DA1248d,SC:U),D,0,0
+S:G$hudtCGB$0_0$0({82}DA82d,SC:U),D,0,0
+S:G$hudt_tiles$0_0$0({1312}DA1312d,SC:U),D,0,0
 S:G$__bank_hudt$0_0$0({0}SV:S),D,0,0
 S:G$hudt$0_0$0({8}STTilesInfo:S),D,0,0

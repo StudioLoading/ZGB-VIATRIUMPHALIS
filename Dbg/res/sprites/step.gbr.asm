@@ -10,6 +10,9 @@
 ;--------------------------------------------------------
 	.globl _step
 	.globl _step_metasprites
+	.globl _step_metasprite3
+	.globl _step_metasprite2
+	.globl _step_metasprite1
 	.globl _step_metasprite0
 	.globl _step_tiles
 	.globl _step_palettes
@@ -88,6 +91,10 @@ _step_tiles:
 	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
 	.db #0x06	; 6
 	.db #0x06	; 6
 	.db #0x06	; 6
@@ -99,6 +106,98 @@ _step_tiles:
 	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x06	; 6
+	.db #0x06	; 6
+	.db #0x06	; 6
+	.db #0x00	; 0
+	.db #0x60	; 96
+	.db #0x60	; 96
+	.db #0x60	; 96
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x08	; 8
+	.db #0x08	; 8
+	.db #0x01	; 1
+	.db #0x01	; 1
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x86	; 134
+	.db #0x86	; 134
+	.db #0x26	; 38
+	.db #0x20	; 32
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x60	; 96
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x06	; 6
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x00	; 0
+	.db #0x60	; 96
 	.db #0x00	; 0
 G$step_metasprite0$0_0$0 == .
 _step_metasprite0:
@@ -110,18 +209,51 @@ _step_metasprite0:
 	.db #0x00	;  0
 	.db #0x00	; 0
 	.db #0x00	; 0
+G$step_metasprite1$0_0$0 == .
+_step_metasprite1:
+	.db #0x00	;  0
+	.db #0x00	;  0
+	.db #0x02	; 2
+	.db #0x00	; 0
+	.db #0x80	; -128
+	.db #0x00	;  0
+	.db #0x00	; 0
+	.db #0x00	; 0
+G$step_metasprite2$0_0$0 == .
+_step_metasprite2:
+	.db #0x00	;  0
+	.db #0x00	;  0
+	.db #0x04	; 4
+	.db #0x00	; 0
+	.db #0x80	; -128
+	.db #0x00	;  0
+	.db #0x00	; 0
+	.db #0x00	; 0
+G$step_metasprite3$0_0$0 == .
+_step_metasprite3:
+	.db #0x00	;  0
+	.db #0x00	;  0
+	.db #0x06	; 6
+	.db #0x00	; 0
+	.db #0x80	; -128
+	.db #0x00	;  0
+	.db #0x00	; 0
+	.db #0x00	; 0
 G$step_metasprites$0_0$0 == .
 _step_metasprites:
 	.dw _step_metasprite0
+	.dw _step_metasprite1
+	.dw _step_metasprite2
+	.dw _step_metasprite3
 G$step$0_0$0 == .
 _step:
 	.db #0x08	; 8
 	.db #0x10	; 16
-	.db #0x02	; 2
+	.db #0x08	; 8
 	.dw _step_tiles
 	.db #0x01	; 1
 	.dw _step_palettes
-	.db #0x01	; 1
+	.db #0x04	; 4
 	.dw _step_metasprites
 	.area _INITIALIZER
 	.area _CABS (ABS)

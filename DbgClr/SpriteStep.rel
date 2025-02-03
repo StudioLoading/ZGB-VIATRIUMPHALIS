@@ -6,7 +6,7 @@ O -msm83
 S _SetSpriteAnim Ref000000
 S _THIS Ref000000
 S .__.ABS. Def000000
-S ___bank_SpriteStep Def000002
+S ___bank_SpriteStep Def000003
 S G$__bank_SpriteStep$0_0$0 Def0000FF
 S _SpriteManagerRemoveSprite Ref000000
 A _CODE size 0 flags 0 addr 0
@@ -16,7 +16,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 77 flags 0 addr 0
+A _CODE_3 size 77 flags 0 addr 0
 S XG$Update_SpriteStep$0$0 Def000073
 S C$SpriteStep.c$29$1_0$167 Def000073
 S C$SpriteStep.c$27$2_0$169 Def00006D

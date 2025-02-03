@@ -294,7 +294,7 @@
                            0000BF   294 	C$SpriteManager.c$44$1_0$190	= .
                                     295 	.globl	C$SpriteManager.c$44$1_0$190
                                     296 ;C:/ZGB-2023.0/common/src/SpriteManager.c:44: memset(spriteIdxs, 128, N_SPRITE_TYPES);
-      0000BF 11 07 00         [12]  297 	ld	de, #0x0007
+      0000BF 11 09 00         [12]  297 	ld	de, #0x0009
       0000C2 D5               [16]  298 	push	de
       0000C3 AF               [ 4]  299 	xor	a, a
       0000C4 F5               [16]  300 	push	af

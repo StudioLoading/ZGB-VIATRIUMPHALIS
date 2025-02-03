@@ -294,7 +294,7 @@ _SpriteManagerReset::
 	C$SpriteManager.c$44$1_0$190	= .
 	.globl	C$SpriteManager.c$44$1_0$190
 ;C:/ZGB-2023.0/common/src/SpriteManager.c:44: memset(spriteIdxs, 128, N_SPRITE_TYPES);
-	ld	de, #0x0007
+	ld	de, #0x0009
 	push	de
 	xor	a, a
 	push	af

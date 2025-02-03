@@ -346,7 +346,10 @@ S:G$move_metasprite_hvflip$0_0$0({2}DF,SC:U),C,0,3
 S:G$hide_metasprite$0_0$0({2}DF,SV:S),C,0,3
 S:G$__func_step$0_0$0({2}DF,SV:S),C,0,0
 S:G$step_palettes$0_0$0({8}DA4d,SI:U),D,0,0
-S:G$step_tiles$0_0$0({32}DA32d,SC:U),D,0,0
+S:G$step_tiles$0_0$0({128}DA128d,SC:U),D,0,0
 S:G$step_metasprite0$0_0$0({8}DA2d,STmetasprite_t:S),D,0,0
-S:G$step_metasprites$0_0$0({2}DA1d,DG,STmetasprite_t:S),D,0,0
+S:G$step_metasprite1$0_0$0({8}DA2d,STmetasprite_t:S),D,0,0
+S:G$step_metasprite2$0_0$0({8}DA2d,STmetasprite_t:S),D,0,0
+S:G$step_metasprite3$0_0$0({8}DA2d,STmetasprite_t:S),D,0,0
+S:G$step_metasprites$0_0$0({8}DA4d,DG,STmetasprite_t:S),D,0,0
 S:G$step$0_0$0({11}STMetaSpriteInfo:S),D,0,0

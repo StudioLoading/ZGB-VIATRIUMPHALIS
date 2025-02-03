@@ -125,9 +125,9 @@ S:LSpriteStep.hide_metasprite$metasprite$1_0$148({2}DG,STmetasprite_t:S),B,1,-3
 F:G$Start_SpriteStep$0_0$0({2}DF,SV:S),C,0,0,0,0,0
 S:LSpriteStep.Start_SpriteStep$step_data$1_1$165({2}DG,STItemData:S),R,0,0,[l,h]
 F:G$Update_SpriteStep$0_0$0({2}DF,SV:S),C,0,0,0,0,0
-S:LSpriteStep.Update_SpriteStep$step_data$1_0$166({2}DG,STItemData:S),R,0,0,[l,h]
+S:LSpriteStep.Update_SpriteStep$step_data$1_0$166({2}DG,STItemData:S),R,0,0,[c,b]
 F:G$Destroy_SpriteStep$0_0$0({2}DF,SV:S),C,0,0,0,0,0
-T:FSpriteStep$ItemData[({0}S:S$vx$0_0$0({1}SC:S),Z,0,0)({1}S:S$hp$0_0$0({1}SC:S),Z,0,0)({2}S:S$configured$0_0$0({1}SC:S),Z,0,0)({3}S:S$itemtype$0_0$0({1}SC:U),Z,0,0)]
+T:FSpriteStep$ItemData[({0}S:S$vx$0_0$0({1}SC:S),Z,0,0)({1}S:S$vy$0_0$0({1}SC:S),Z,0,0)({2}S:S$hp$0_0$0({1}SC:S),Z,0,0)({3}S:S$configured$0_0$0({1}SC:S),Z,0,0)({4}S:S$itemtype$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteStep$metasprite_t[({0}S:S$dy$0_0$0({1}SC:S),Z,0,0)({1}S:S$dx$0_0$0({1}SC:S),Z,0,0)({2}S:S$dtile$0_0$0({1}SC:U),Z,0,0)({3}S:S$props$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteStep$__00000000[({0}S:S$l$0_0$0({1}SC:U),Z,0,0)({1}S:S$h$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteStep$__00000001[({0}S:S$l$0_0$0({1}SC:U),Z,0,0)({1}S:S$h$0_0$0({1}SC:U),Z,0,0)]

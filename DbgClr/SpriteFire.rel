@@ -4,7 +4,7 @@ H A areas 2F global symbols
 M SpriteFire
 O -msm83
 S _SetSpriteAnim Ref000000
-S ___bank_SpriteFire Def000003
+S ___bank_SpriteFire Def000001
 S _THIS Ref000000
 S G$__bank_SpriteFire$0_0$0 Def0000FF
 S .__.ABS. Def000000
@@ -15,7 +15,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 2C flags 0 addr 0
+A _CODE_1 size 2C flags 0 addr 0
 S _a_fire Def000020
 S G$a_fire$0_0$0 Def000020
 S _Start_SpriteFire Def000000

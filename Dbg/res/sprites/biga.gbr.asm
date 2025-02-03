@@ -10,8 +10,6 @@
 ;--------------------------------------------------------
 	.globl _biga
 	.globl _biga_metasprites
-	.globl _biga_metasprite7
-	.globl _biga_metasprite6
 	.globl _biga_metasprite5
 	.globl _biga_metasprite4
 	.globl _biga_metasprite3
@@ -271,70 +269,6 @@ _biga_tiles:
 	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
-	.db #0x01	; 1
-	.db #0x01	; 1
-	.db #0x06	; 6
-	.db #0x07	; 7
-	.db #0x39	; 57	'9'
-	.db #0x3e	; 62
-	.db #0x70	; 112	'p'
-	.db #0x7f	; 127
-	.db #0xf1	; 241
-	.db #0xfe	; 254
-	.db #0xf0	; 240
-	.db #0xff	; 255
-	.db #0x18	; 24
-	.db #0x1f	; 31
-	.db #0x06	; 6
-	.db #0x07	; 7
-	.db #0x01	; 1
-	.db #0x01	; 1
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x3f	; 63
-	.db #0x00	; 0
-	.db #0x0f	; 15
-	.db #0x00	; 0
-	.db #0x01	; 1
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0xf0	; 240
-	.db #0xf0	; 240
-	.db #0x0c	; 12
-	.db #0xfc	; 252
-	.db #0xe2	; 226
-	.db #0x1e	; 30
-	.db #0x72	; 114	'r'
-	.db #0x8e	; 142
-	.db #0xfa	; 250
-	.db #0x06	; 6
-	.db #0xda	; 218
-	.db #0x26	; 38
-	.db #0x4a	; 74	'J'
-	.db #0xb6	; 182
-	.db #0x04	; 4
-	.db #0xfc	; 252
-	.db #0x84	; 132
-	.db #0xfc	; 252
-	.db #0x6e	; 110	'n'
-	.db #0x7e	; 126
-	.db #0xdc	; 220
-	.db #0x1c	; 28
-	.db #0xba	; 186
-	.db #0x38	; 56	'8'
-	.db #0xd6	; 214
-	.db #0x10	; 16
-	.db #0xfc	; 252
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
@@ -395,70 +329,6 @@ _biga_tiles:
 	.db #0x38	; 56	'8'
 	.db #0xd6	; 214
 	.db #0x10	; 16
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x03	; 3
-	.db #0x03	; 3
-	.db #0x2f	; 47
-	.db #0x2c	; 44
-	.db #0x7f	; 127
-	.db #0x7b	; 123
-	.db #0xff	; 255
-	.db #0xf7	; 247
-	.db #0xff	; 255
-	.db #0xff	; 255
-	.db #0x1b	; 27
-	.db #0x1f	; 31
-	.db #0x06	; 6
-	.db #0x07	; 7
-	.db #0x01	; 1
-	.db #0x01	; 1
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x3f	; 63
-	.db #0x00	; 0
-	.db #0x0f	; 15
-	.db #0x00	; 0
-	.db #0x01	; 1
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0x00	; 0
-	.db #0xe0	; 224
-	.db #0xe0	; 224
-	.db #0xf0	; 240
-	.db #0x10	; 16
-	.db #0xf8	; 248
-	.db #0xe8	; 232
-	.db #0xfc	; 252
-	.db #0xf4	; 244
-	.db #0xfc	; 252
-	.db #0xf4	; 244
-	.db #0xfc	; 252
-	.db #0xf4	; 244
-	.db #0xfc	; 252
-	.db #0xf4	; 244
-	.db #0xb8	; 184
-	.db #0xe8	; 232
-	.db #0x7e	; 126
-	.db #0x7e	; 126
-	.db #0xdc	; 220
-	.db #0x1c	; 28
-	.db #0xba	; 186
-	.db #0x38	; 56	'8'
-	.db #0xd6	; 214
-	.db #0x10	; 16
-	.db #0xfc	; 252
-	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
 	.db #0x00	; 0
@@ -599,34 +469,6 @@ _biga_metasprite5:
 	.db #0x00	;  0
 	.db #0x00	; 0
 	.db #0x00	; 0
-G$biga_metasprite6$0_0$0 == .
-_biga_metasprite6:
-	.db #0xf8	; -8
-	.db #0xfc	; -4
-	.db #0x14	; 20
-	.db #0x00	; 0
-	.db #0x00	;  0
-	.db #0x08	;  8
-	.db #0x16	; 22
-	.db #0x00	; 0
-	.db #0x80	; -128
-	.db #0x00	;  0
-	.db #0x00	; 0
-	.db #0x00	; 0
-G$biga_metasprite7$0_0$0 == .
-_biga_metasprite7:
-	.db #0xf8	; -8
-	.db #0xfc	; -4
-	.db #0x18	; 24
-	.db #0x00	; 0
-	.db #0x00	;  0
-	.db #0x08	;  8
-	.db #0x1a	; 26
-	.db #0x00	; 0
-	.db #0x80	; -128
-	.db #0x00	;  0
-	.db #0x00	; 0
-	.db #0x00	; 0
 G$biga_metasprites$0_0$0 == .
 _biga_metasprites:
 	.dw _biga_metasprite0
@@ -635,17 +477,15 @@ _biga_metasprites:
 	.dw _biga_metasprite3
 	.dw _biga_metasprite4
 	.dw _biga_metasprite5
-	.dw _biga_metasprite6
-	.dw _biga_metasprite7
 G$biga$0_0$0 == .
 _biga:
 	.db #0x08	; 8
 	.db #0x08	; 8
-	.db #0x1c	; 28
+	.db #0x14	; 20
 	.dw _biga_tiles
 	.db #0x01	; 1
 	.dw _biga_palettes
-	.db #0x08	; 8
+	.db #0x06	; 6
 	.dw _biga_metasprites
 	.area _INITIALIZER
 	.area _CABS (ABS)

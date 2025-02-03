@@ -4,7 +4,7 @@ M hudtatkgladio_gbr
 O -msm83
 S G$__bank_hudtatkgladio$0_0$0 Def0000FF
 S .__.ABS. Def000000
-S ___bank_hudtatkgladio Def000003
+S ___bank_hudtatkgladio Def000006
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 188 flags 0 addr 0
+A _CODE_6 size 188 flags 0 addr 0
 S _hudtatkgladio_tiles Def000000
 S _hudtatkgladio Def000180
 S G$hudtatkgladio$0_0$0 Def000180

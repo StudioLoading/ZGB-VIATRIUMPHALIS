@@ -18,6 +18,7 @@ extern INT8 cos;
 extern INT8 sin;
 extern Sprite* s_horse;
 extern INT8 velocity_counter;
+extern UINT8 track_ended;
 
 void START() {
     THIS->lim_x = 1000;
@@ -25,9 +26,12 @@ void START() {
 }
 
 void UPDATE() { 
-    //mettilo allo scroll_target!
+    //mettilo allo scroll_target che è SpriteCamera
         THIS->x = scroll_target->x;
         THIS->y = scroll_target->y;
+        if(track_ended == 1){
+            SpriteManagerRemoveSprite(THIS);
+        }
     //animation
         INT8 using_cos = cos;
         INT8 using_sin = sin;

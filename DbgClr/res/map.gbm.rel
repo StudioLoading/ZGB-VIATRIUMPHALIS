@@ -3,7 +3,7 @@ H A areas 9 global symbols
 M map_gbm
 O -msm83
 S _tiles Ref000000
-S ___bank_map Def000001
+S ___bank_map Def000004
 S G$__bank_map$0_0$0 Def0000FF
 S .__.ABS. Def000000
 S ___bank_tiles Ref000000
@@ -14,7 +14,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_1 size B5D flags 0 addr 0
+A _CODE_4 size B5D flags 0 addr 0
 S _map Def000B54
 S G$map$0_0$0 Def000B54
 S _map_map Def000000

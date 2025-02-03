@@ -4,7 +4,7 @@ M maprome00_gbm
 O -msm83
 S _mapromet Ref000000
 S .__.ABS. Def000000
-S ___bank_maprome00 Def000001
+S ___bank_maprome00 Def000003
 S G$__bank_maprome00$0_0$0 Def0000FF
 S ___bank_mapromet Ref000000
 A _CODE size 0 flags 0 addr 0
@@ -14,7 +14,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_1 size 1459 flags 0 addr 0
+A _CODE_3 size 1459 flags 0 addr 0
 S _maprome00_map Def000000
 S G$maprome00_map$0_0$0 Def000000
 S _maprome00 Def001450

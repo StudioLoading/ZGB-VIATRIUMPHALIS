@@ -134,7 +134,7 @@ _GetTileReplacement::
 	.area _INITIALIZER
 FZGBMain$__xinit_next_state$0_0$0 == .
 __xinit__next_state:
-	.db #0x00	; 0
+	.db #0x01	; 1
 FZGBMain$__xinit_J_WHIP$0_0$0 == .
 __xinit__J_WHIP:
 	.db #0x10	; 16

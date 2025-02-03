@@ -125,7 +125,7 @@ S:LSpriteFire.hide_metasprite$metasprite$1_0$148({2}DG,STmetasprite_t:S),B,1,-3
 F:G$Start_SpriteFire$0_0$0({2}DF,SV:S),C,0,0,0,0,0
 F:G$Update_SpriteFire$0_0$0({2}DF,SV:S),C,0,0,0,0,0
 F:G$Destroy_SpriteFire$0_0$0({2}DF,SV:S),C,0,0,0,0,0
-T:FSpriteFire$ItemData[({0}S:S$vx$0_0$0({1}SC:S),Z,0,0)({1}S:S$hp$0_0$0({1}SC:S),Z,0,0)({2}S:S$configured$0_0$0({1}SC:S),Z,0,0)({3}S:S$itemtype$0_0$0({1}SC:U),Z,0,0)]
+T:FSpriteFire$ItemData[({0}S:S$vx$0_0$0({1}SC:S),Z,0,0)({1}S:S$vy$0_0$0({1}SC:S),Z,0,0)({2}S:S$hp$0_0$0({1}SC:S),Z,0,0)({3}S:S$configured$0_0$0({1}SC:S),Z,0,0)({4}S:S$itemtype$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteFire$metasprite_t[({0}S:S$dy$0_0$0({1}SC:S),Z,0,0)({1}S:S$dx$0_0$0({1}SC:S),Z,0,0)({2}S:S$dtile$0_0$0({1}SC:U),Z,0,0)({3}S:S$props$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteFire$__00000000[({0}S:S$l$0_0$0({1}SC:U),Z,0,0)({1}S:S$h$0_0$0({1}SC:U),Z,0,0)]
 T:FSpriteFire$__00000001[({0}S:S$l$0_0$0({1}SC:U),Z,0,0)({1}S:S$h$0_0$0({1}SC:U),Z,0,0)]

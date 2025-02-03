@@ -2,7 +2,7 @@ XL3
 H A areas 9 global symbols
 M hudm_gbm
 O -msm83
-S ___bank_hudm Def000001
+S ___bank_hudm Def000006
 S G$__bank_hudm$0_0$0 Def0000FF
 S ___bank_hudt Ref000000
 S _hudt Ref000000
@@ -14,7 +14,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_1 size 6D flags 0 addr 0
+A _CODE_6 size 6D flags 0 addr 0
 S _hudm Def000064
 S G$hudm$0_0$0 Def000064
 S _hudm_map Def000000

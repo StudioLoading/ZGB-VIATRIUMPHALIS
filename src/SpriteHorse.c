@@ -48,13 +48,18 @@ TURNING_VERSE turn_verse = NONE;
 UINT8 orme_spawned = 0u;
 INT16 onfire_countdown = -1;//-1 normale, 0 è onfire su acqua, >0 onfire
 Sprite* s_flame = 0;
+INT8 onwater_countdown = -1;
 
 extern UINT8 J_WHIP;
-extern INT8 hp_current;
 extern INT8 hud_turn_cooldown;
 extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
+extern UINT8 track_ended;
+
+extern void update_hp(INT8 variation) BANKED;
+
 void use_weapon(INT8 is_defence) BANKED;
+
 
 
 /* velocity_counter in realtà è la velocità assoluta */
@@ -65,9 +70,21 @@ void START() {
     THIS->lim_x = 1000;
     THIS->lim_y = 500;
     onfire_countdown = -1;
+    turn_samepressure_counter = 0;
+    turn = 0;
 }
 
 void UPDATE() {
+    //IF TRACK ENDED, GO ON UNTILL THE END OF THE SCREEN
+        if(track_ended == 1u){
+            THIS->x += vx;
+            THIS->y += vy;
+            return;
+        }
+    //ON WATER TO ZERO
+        if(onwater_countdown > 0){
+            onwater_countdown--;
+        }
     //WHIP
         if(whip_counter <= 0){
             if(KEY_TICKED(J_WHIP)){
@@ -116,7 +133,7 @@ void UPDATE() {
             switch(onfire_countdown){
                 case 50: case 100: case 150:
                 case 200: case 250: case 300: case 350:
-                    hp_current--;
+                    update_hp(-1);
                 break;
             }
             velocity_counter = 1;//cioè vai a cannone
@@ -228,7 +245,9 @@ void UPDATE() {
             INT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
             if(horse_coll){//collido con tile ambiente di collisione
-                //if(past_coll_tile != horse_coll){
+                if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
+                    track_ended = 1u;
+                }else{
                     past_coll_tile = horse_coll;
                     INT8 vxbounce = vx * (-1); 
                     INT8 vybounce = vy * (-1);
@@ -237,9 +256,12 @@ void UPDATE() {
                     }else{
                         TranslateSprite(THIS, 0, vybounce << delta_time);
                     }
-                //}
+                }
             }else{//non collido, cerco cosa sto calpestando
-                UINT8 tile_over = GetScrollTile((THIS->x + 16) >> 3, (THIS->y+4) >> 3);
+                UINT8 tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
+                if(vx < 0){
+                    tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
+                }
                 switch(tile_over){
                     case 3: //ghiaia: incrementa il frameskip
                     //case 2: case 4: case 5: case 6: 
@@ -262,6 +284,7 @@ void UPDATE() {
                     break;
                     case 8: case 9: case 10:
                     case 11: case 12: case 13: //acqua: simula pantano limitando stamina
+                        onwater_countdown = 80;
                         if(onfire_countdown > 0){//sono onfire!
                             onfire_countdown = 0;
                         }else if(onfire_countdown == -1){

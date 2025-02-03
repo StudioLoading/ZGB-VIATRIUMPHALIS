@@ -124,8 +124,8 @@ S:LSpriteCompass.hide_metasprite$base_sprite$1_0$148({1}SC:U),B,1,-1
 S:LSpriteCompass.hide_metasprite$metasprite$1_0$148({2}DG,STmetasprite_t:S),B,1,-3
 F:G$Start_SpriteCompass$0_0$0({2}DF,SV:S),C,0,0,0,0,0
 F:G$Update_SpriteCompass$0_0$0({2}DF,SV:S),C,0,-2,0,0,0
-S:LSpriteCompass.Update_SpriteCompass$using_cos$1_1$180({1}SC:S),R,0,0,[]
-S:LSpriteCompass.Update_SpriteCompass$using_sin$1_1$180({1}SC:S),R,0,0,[c]
+S:LSpriteCompass.Update_SpriteCompass$using_cos$1_1$181({1}SC:S),R,0,0,[]
+S:LSpriteCompass.Update_SpriteCompass$using_sin$1_1$181({1}SC:S),R,0,0,[c]
 S:LSpriteCompass.Update_SpriteCompass$sloc0$0_1$0({2}DG,SI:U),B,1,-2
 S:LSpriteCompass.Update_SpriteCompass$sloc1$0_1$0({2}DG,SI:U),B,1,-2
 F:G$Destroy_SpriteCompass$0_0$0({2}DF,SV:S),C,0,0,0,0,0
@@ -224,6 +224,7 @@ S:G$cos$0_0$0({1}SC:S),E,0,0
 S:G$sin$0_0$0({1}SC:S),E,0,0
 S:G$s_horse$0_0$0({2}DG,ST__00000005:S),E,0,0
 S:G$velocity_counter$0_0$0({1}SC:S),E,0,0
+S:G$track_ended$0_0$0({1}SC:U),E,0,0
 S:G$P1_REG$0_0$0({1}SC:U),I,0,0
 S:G$SB_REG$0_0$0({1}SC:U),I,0,0
 S:G$SC_REG$0_0$0({1}SC:U),I,0,0

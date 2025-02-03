@@ -4,7 +4,7 @@ H A areas 15 global symbols
 M SpritePlayer
 O -msm83
 S .__.ABS. Def000000
-S ___bank_SpritePlayer Def000002
+S ___bank_SpritePlayer Def000001
 S G$__bank_SpritePlayer$0_0$0 Def0000FF
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
@@ -13,7 +13,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 3 flags 0 addr 0
+A _CODE_1 size 3 flags 0 addr 0
 S G$Destroy_SpritePlayer$0$0 Def000002
 S _Update_SpritePlayer Def000001
 S _Destroy_SpritePlayer Def000002

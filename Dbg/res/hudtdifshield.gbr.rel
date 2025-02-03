@@ -3,7 +3,7 @@ H A areas 7 global symbols
 M hudtdifshield_gbr
 O -msm83
 S .__.ABS. Def000000
-S ___bank_hudtdifshield Def000003
+S ___bank_hudtdifshield Def000004
 S G$__bank_hudtdifshield$0_0$0 Def0000FF
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_3 size 1C8 flags 0 addr 0
+A _CODE_4 size 1C8 flags 0 addr 0
 S _hudtdifshield_tiles Def000000
 S _hudtdifshield Def0001C0
 S G$hudtdifshield$0_0$0 Def0001C0

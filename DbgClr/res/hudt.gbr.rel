@@ -2,7 +2,7 @@ XL3
 H A areas B global symbols
 M hudt_gbr
 O -msm83
-S ___bank_hudt Def000002
+S ___bank_hudt Def000001
 S G$__bank_hudt$0_0$0 Def0000FF
 S .__.ABS. Def000000
 A _CODE size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 592 flags 0 addr 0
+A _CODE_1 size 592 flags 0 addr 0
 S _hudt_tiles Def00006A
 S _hudt Def00058A
 S _hudt_palettes Def000000

@@ -17,7 +17,8 @@
 			"circlemath.h": "c",
 			"palette.h": "c",
 			"keys.h": "c",
-			"custom_datas.h": "c"
+			"custom_datas.h": "c",
+			"sprite.h": "c"
 		}
 	}
 }

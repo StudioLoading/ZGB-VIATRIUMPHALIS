@@ -7,6 +7,7 @@
 
 extern Sprite* s_horse;
 extern INT8 vx;
+extern UINT8 track_ended;
 
 void START() {
     THIS->lim_x = 1000;
@@ -14,6 +15,9 @@ void START() {
 }
 
 void UPDATE() {
+    if(track_ended == 1){
+        return;
+    }
     THIS->y = s_horse->y - 18;
     INT8 delta_x = 0;
     if(vx > 1){

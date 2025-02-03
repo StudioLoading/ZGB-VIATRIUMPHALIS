@@ -9,16 +9,22 @@ Symbol Table
     .__.H$L.                                                    =  000000 L
   7 C$step.gbr.c$9$0_0$161                                      =  000000 GR
   7 G$__func_step$0$0                                           =  000000 GR
-  7 G$step$0_0$0                                                =  000032 GR
-  7 G$step_metasprite0$0_0$0                                    =  000028 GR
-  7 G$step_metasprites$0_0$0                                    =  000030 GR
+  7 G$step$0_0$0                                                =  0000B0 GR
+  7 G$step_metasprite0$0_0$0                                    =  000088 GR
+  7 G$step_metasprite1$0_0$0                                    =  000090 GR
+  7 G$step_metasprite2$0_0$0                                    =  000098 GR
+  7 G$step_metasprite3$0_0$0                                    =  0000A0 GR
+  7 G$step_metasprites$0_0$0                                    =  0000A8 GR
   7 G$step_palettes$0_0$0                                       =  000000 GR
   7 G$step_tiles$0_0$0                                          =  000008 GR
     ___bank_step                                                =  0000FF G
   7 ___func_step                                                   000000 GR
-  7 _step                                                          000032 GR
-  7 _step_metasprite0                                              000028 GR
-  7 _step_metasprites                                              000030 GR
+  7 _step                                                          0000B0 GR
+  7 _step_metasprite0                                              000088 GR
+  7 _step_metasprite1                                              000090 GR
+  7 _step_metasprite2                                              000098 GR
+  7 _step_metasprite3                                              0000A0 GR
+  7 _step_metasprites                                              0000A8 GR
   7 _step_palettes                                                 000000 GR
   7 _step_tiles                                                    000008 GR
     b___func_step                                               =  0000FF L
@@ -36,7 +42,7 @@ Area Table
    4 _HOME                                      size      0   flags    0
    5 _GSINIT                                    size      0   flags    0
    6 _GSFINAL                                   size      0   flags    0
-   7 _CODE_255                                  size     3D   flags    0
+   7 _CODE_255                                  size     BB   flags    0
    8 _INITIALIZER                               size      0   flags    0
    9 _CABS                                      size      0   flags    8
 

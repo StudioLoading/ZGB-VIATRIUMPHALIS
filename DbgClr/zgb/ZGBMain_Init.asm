@@ -37,6 +37,8 @@
 	.globl _Update_SpritePlayer
 	.globl _Start_SpritePlayer
 	.globl _InitStates
+	.globl _Update_StateTutorialGame
+	.globl _Start_StateTutorialGame
 	.globl _Update_StateGame
 	.globl _Start_StateGame
 	.globl _spritePalsOffset
@@ -59,13 +61,13 @@
 	.area _DATA
 G$stateBanks$0_0$0==.
 _stateBanks::
-	.ds 1
+	.ds 2
 G$startFuncs$0_0$0==.
 _startFuncs::
-	.ds 2
+	.ds 4
 G$updateFuncs$0_0$0==.
 _updateFuncs::
-	.ds 2
+	.ds 4
 G$spriteBanks$0_0$0==.
 _spriteBanks::
 	.ds 9
@@ -136,6 +138,17 @@ _InitStates::
 	ld	(hl), #>(_Update_StateGame)
 	ld	bc, #_stateBanks+0
 	ld	a, #<(___bank_StateGame)
+	ld	(bc), a
+	ld	hl, #(_startFuncs + 2)
+	ld	(hl), #<(_Start_StateTutorialGame)
+	inc	hl
+	ld	(hl), #>(_Start_StateTutorialGame)
+	ld	hl, #(_updateFuncs + 2)
+	ld	(hl), #<(_Update_StateTutorialGame)
+	inc	hl
+	ld	(hl), #>(_Update_StateTutorialGame)
+	inc	bc
+	ld	a, #<(___bank_StateTutorialGame)
 	ld	(bc), a
 	C$ZGBMain_Init.c$18$1_0$159	= .
 	.globl	C$ZGBMain_Init.c$18$1_0$159

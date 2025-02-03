@@ -3,7 +3,7 @@ H A areas B global symbols
 M tilesold_gbr
 O -msm83
 S .__.ABS. Def000000
-S ___bank_tiles Def000002
+S ___bank_tiles Def000005
 S G$__bank_tiles$0_0$0 Def0000FF
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
@@ -12,7 +12,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _CODE_2 size 890 flags 0 addr 0
+A _CODE_5 size 890 flags 0 addr 0
 S _tiles_tiles Def000088
 S _tiles Def000888
 S _tiles_palettes Def000000

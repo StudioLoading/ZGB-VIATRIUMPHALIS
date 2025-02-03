@@ -32,6 +32,7 @@ const UINT8 a_item_cape[] = {1,6};
 extern Sprite* s_horse;
 extern INT8 vx;
 extern INT8 vy;
+extern void consume_weapon_atk() BANKED;
 extern void consume_weapon_def() BANKED;
 
 void START() {
@@ -78,6 +79,10 @@ void UPDATE() {
             switch(item_data->itemtype){
                 case GLADIO:
                     SetSpriteAnim(THIS, a_item_gladio, 32);
+                    item_data->hp = 4;
+                    if(vx > 0){ item_data->vx = 1;}
+                    else if(vx < 0) {item_data->vx = -1;}
+                    item_data->vy = 0;
                 break;
                 case LANCE:
                     SetSpriteAnim(THIS, a_item_lance, 32);
@@ -86,18 +91,21 @@ void UPDATE() {
                 break;
                 case FLAME:
                     SetSpriteAnim(THIS, a_item_flame, 32);
+                    item_data->hp = 80;
                 break;
                 case ELMET:
                     SetSpriteAnim(THIS, a_item_elmet, 32);
+                    item_data->hp = 80;
                 break;
                 case SHIELD:
                     SetSpriteAnim(THIS, a_item_shield, 32);
+                    item_data->hp = 80;
                 break;
                 case CAPE:
                     SetSpriteAnim(THIS, a_item_cape, 32);
+                    item_data->hp = 80;
                 break;
             }
-            item_data->hp = 80;
             item_data->configured = 4;
         break;
         case 4://weapon in use!
@@ -115,6 +123,13 @@ void UPDATE() {
                 break;
                 case LANCE:
                     TranslateSprite(THIS, item_data->vx << delta_time, item_data->vy << delta_time);
+                break;
+                case GLADIO:
+                    TranslateSprite(THIS, item_data->vx << delta_time, item_data->vy << delta_time);
+                    item_data->hp--;
+                    if(item_data->hp <= 0){
+                        consume_weapon_atk();
+                    }
                 break;
             }
         break;

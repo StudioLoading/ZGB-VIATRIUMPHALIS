@@ -12,16 +12,13 @@
 #include "custom_datas.h"
 
 #define PIXEL_STAMINA 96
-#define TIME_MAX 7680 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
-#define TIME_FACTOR 240
+#define ENDED_TRACK_COOLDOWN 80
 
 IMPORT_MAP(hudm);
 IMPORT_MAP(map);
 IMPORT_MAP(maprome00);
 
 IMPORT_TILES(hudt);
-
-//IMPORT_TILES(font);
 
 const UINT8 coll_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 0};
 const UINT8 coll_surface[] = {0u, 0};
@@ -33,18 +30,22 @@ UINT16 euphoria_min_current = 0u;
 UINT16 euphoria_max_current = 0u;
 HORSE_DIRECTION horse_direction = EEE;
 HORSE_DIRECTION horse_direction_old = EEE;
-INT8 hp_current = 5;
+INT8 hp_current = 15;
 INT8 hud_turn_cooldown = 0;
-INT16 time_current = TIME_MAX;
-INT16 time_factor = TIME_FACTOR;
+INT16 timemax_current = 0;
+INT16 time_current = 0;
+INT16 time_factor = 0;
 ITEM_TYPE weapon_atk = NONE;
 ITEM_TYPE weapon_def = NONE;
+UINT8 track_ended = 0u;
+INT8 track_ended_cooldown = ENDED_TRACK_COOLDOWN;
+UINT8 hud_initialized = 0u;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
 void update_compass() BANKED;
 void update_turning() BANKED;
-void update_hp() BANKED;
+void update_hp(INT8 variation) BANKED;
 void update_hp_max() BANKED;
 void update_time() BANKED;
 void update_time_max() BANKED;
@@ -52,6 +53,7 @@ void update_weapon() BANKED;
 void consume_weapon_def() BANKED;
 void consume_weapon_atk() BANKED;
 void use_weapon(INT8 is_defence) BANKED;
+void start_common() BANKED;
 
 extern UINT8 scroll_bottom_movement_limit;//= 100;
 
@@ -62,6 +64,8 @@ extern INT16 stamina_current;// = 0;
 extern INT8 sin;
 extern INT8 cos;
 extern TURNING_VERSE turn_verse;
+extern INT8 onwater_countdown;
+
 
 void START() {
 	UINT16 pos_horse_x = 56;
@@ -81,16 +85,28 @@ void START() {
 	struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
 	item_data->itemtype = GLADIO;
     item_data->configured = 1;
+	//COMMON AND VARS
+		InitScroll(BANK(maprome00), &maprome00, coll_tiles, coll_surface);
+		//scroll_target = s_compass;
+		//INIT_FONT(font, PRINT_WIN);//test todo remove me serve solo per log
+		INIT_HUD(hudm);
+		SetWindowY(104);//su suggerimento di toxa, perché INIT_HUD non fa sta chiamata che dice serve...
+		start_common();
+}
+
+void start_common() BANKED{
 	scroll_bottom_movement_limit= 40;
-	InitScroll(BANK(maprome00), &maprome00, coll_tiles, coll_surface);
-	//scroll_target = s_compass;
-	//INIT_FONT(font, PRINT_WIN);//test todo remove me serve solo per log
-	INIT_HUD(hudm);
-	SetWindowY(104);//su suggerimento di toxa, perché INIT_HUD non fa sta chiamata che dice serve...
 	euphoria_min_current = euphoria_min;
 	euphoria_max_current = euphoria_max;
-	update_euphoria();
 	hud_turn_cooldown = 0;
+	update_euphoria();
+	track_ended = 0;
+	track_ended_cooldown = ENDED_TRACK_COOLDOWN;
+	update_time_max();
+	stamina_current = 0;
+	turn_verse = NONE;
+	hud_initialized = 0u;
+	onwater_countdown = -1;
 }
 
 void update_stamina() BANKED{
@@ -219,10 +235,17 @@ void update_turning() BANKED{
 
 void update_hp_max() BANKED{
 	hp_current = 16;
-	update_hp();
+	update_hp(16);
 }
 
-void update_hp() BANKED{
+void update_hp(INT8 variation) BANKED{
+	hp_current += variation;
+	if(hp_current <= 0){
+		//die();
+		//return;
+	}else if(hp_current > 16){
+		hp_current = 16;
+	}
 	INT8 hp_intero = hp_current / 8;
 	INT8 hp_resto = hp_current % 8;
 	INT8 idx_hp = 0;
@@ -234,6 +257,7 @@ void update_hp() BANKED{
 	}
 	if(hp_resto > 0){
 		UPDATE_HUD_TILE(7+idx_hp,2,60-hp_resto);
+		idx_hp++;
 	}
 	while(idx_hp < 2){
 		UPDATE_HUD_TILE(7+idx_hp,2, 60);
@@ -325,7 +349,13 @@ void use_weapon(INT8 is_defence) BANKED{
 		weapon_data->configured = 3;
 		consume_weapon_def();
 	}else{//attack!
-		s_weapon = SpriteManagerAdd(SpriteItem, s_horse->x + 16, s_horse->y - 4);
+		UINT16 attack_x = s_horse->x + 16;
+		UINT16 attack_y = s_horse->y + 8;
+		if(s_horse->mirror == V_MIRROR){
+			attack_y = s_horse->y - 20;
+			attack_x = s_horse->x;
+		}
+		s_weapon = SpriteManagerAdd(SpriteItem, attack_x, attack_y);
 		struct ItemData* weapon_data = (struct ItemData*) s_weapon->custom_data;
 		weapon_data->itemtype = weapon_atk;
 		weapon_data->configured = 3;
@@ -334,7 +364,7 @@ void use_weapon(INT8 is_defence) BANKED{
 }
 
 void update_time_max() BANKED{
-	time_current = TIME_MAX;
+	time_current = timemax_current ;
 }
 
 void consume_weapon_atk() BANKED{
@@ -347,23 +377,13 @@ void consume_weapon_def() BANKED{
 	update_weapon();
 }
 
-void set_banked_bkg_data(UINT8 first_tile, UINT8 nb_tiles, struct TilesInfo* t, UINT8 bank) NONBANKED {
-    uint8_t save = _current_bank;
-    SWITCH_ROM(bank);
-    set_bkg_data(first_tile, nb_tiles, t->data+((16u) * first_tile));
-	SWITCH_ROM(save);
-}
-
-void hud_compass_h_r() BANKED{
-	set_banked_bkg_data(63u, 9u, &hudt, BANK(hudt));
-}
-void hud_compass_r_u_33() BANKED{
-	//set_banked_bkg_data(63u, 9u, &hudtcompass33, BANK(hudtcompass33));
-}
-
 void UPDATE() {
+	//LIMIT MAP LEFT
+		if(s_horse->x < 40u){
+			s_horse->x = 40u;
+		}
 	//HUD
-	print_target = PRINT_WIN;
+		print_target = PRINT_WIN;
 	//UPDATE STAMINA
 		update_stamina();
 	//UPDATE COMPASS

@@ -85,7 +85,7 @@ _GetTileReplacement::
 	ld	(hl), a
 	ld	e, (hl)
 	ld	d, #0x00
-	ld	a, #0xf8
+	ld	a, #0xf6
 	sub	a, e
 	sbc	a, a
 	sub	a, d
