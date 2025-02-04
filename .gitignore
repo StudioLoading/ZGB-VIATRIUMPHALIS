@@ -12,7 +12,8 @@
 
 # Build results
 [Dd]bg*/
-[Rr]ls*/
+[Dd]bPublic/
+[Rr]el*/
 x64/
 x86/
 bld/
@@ -66,7 +67,6 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
-*Makefile.uptodate
 
 # Chutzpah Test files
 _Chutzpah*
@@ -249,3 +249,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+#ZGB other
+other/
