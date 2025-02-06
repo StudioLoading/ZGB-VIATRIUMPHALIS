@@ -15,7 +15,7 @@
 #define STAMINA_MAX 960
 #define EUPHORIA_MIN 400
 #define EUPHORIA_MAX 660
-#define ONFIRE_COUNTDOWN_MAX 400
+#define ONFIRE_COUNTDOWN_MAX 160
 #define WHIP_POWER 3
 #define HUD_TURN_COOLDOWN_MAX 20
 
@@ -57,9 +57,8 @@ extern ITEM_TYPE weapon_def;
 extern UINT8 track_ended;
 
 extern void update_hp(INT8 variation) BANKED;
-
-void use_weapon(INT8 is_defence) BANKED;
-
+extern void use_weapon(INT8 is_defence) BANKED;
+extern void pickup(Sprite* s_arg_item) BANKED;
 
 
 /* velocity_counter in realtà è la velocità assoluta */
@@ -339,19 +338,28 @@ void UPDATE() {
         SPRITEMANAGER_ITERATE(scroll_o_tile, iospr) {
             if(CheckCollision(THIS, iospr)) {
                 switch(iospr->type){
-                    case SpriteFire:
-                        if(onfire_countdown == -1){//if not already, go onfire!
-                            if(weapon_def == CAPE){
-                                use_weapon(1);
-                                SpriteManagerRemoveSprite(iospr);
-                            }else{
-                                onfire_countdown = ONFIRE_COUNTDOWN_MAX;
-                                stamina_current = euphoria_min >> 2;
-                                whip_power_over_stamina = 1;
-                                s_flame = iospr;
+                    case SpriteFlame:
+                        struct FlameData* fire_data = (struct FlameData*) iospr->custom_data;
+                        if(fire_data->dropped == -1){
+                            if(onfire_countdown == -1){//if not already, go onfire!
+                                if(weapon_def == CAPE){
+                                    use_weapon(1);
+                                    SpriteManagerRemoveSprite(iospr);
+                                }else{
+                                    onfire_countdown = ONFIRE_COUNTDOWN_MAX;
+                                    stamina_current = euphoria_min >> 2;
+                                    whip_power_over_stamina = 1;
+                                    s_flame = iospr;
+                                }
                             }
                         }
-                    break;
+                    break;                    
+                    case SpriteItemheart:{
+                        struct ItemData* item_data = (struct ItemData*) iospr->custom_data;
+                        if(item_data->configured == 2){
+                            pickup(iospr);
+                        }
+                    }break;
                 }
             }
         }

@@ -2,8 +2,10 @@
 #define ZGBMAIN_H
 
 #define STATES \
+_STATE(StateCredit)\
 _STATE(StateGame)\
 _STATE(StateTutorialGame)\
+_STATE(StateTutorialList)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -12,10 +14,18 @@ _SPRITE_DMG(SpriteHorse, horse)\
 _SPRITE_DMG(SpriteStep, step)\
 _SPRITE_DMG(SpriteBiga, biga)\
 _SPRITE_DMG(SpriteCompass, compass)\
-_SPRITE_DMG(SpriteFire, fire)\
+_SPRITE_DMG(SpriteFlame, flame)\
 _SPRITE_DMG(SpriteCamera, camera)\
 _SPRITE_DMG(SpriteFantoccio, fantoccio)\
-_SPRITE_DMG(SpriteItem, item)\
+_SPRITE_DMG(SpriteItemgladio, itemgladio)\
+_SPRITE_DMG(SpriteItemlance, itemlance)\
+_SPRITE_DMG(SpriteItemfire, itemfire)\
+_SPRITE_DMG(SpriteItemelmet, itemelmet)\
+_SPRITE_DMG(SpriteItemshield, itemshield)\
+_SPRITE_DMG(SpriteItemcape, itemcape)\
+_SPRITE_DMG(SpriteItemheart, itemheart)\
+_SPRITE_DMG(SpriteItemglass, itemglass)\
+_SPRITE_DMG(SpriteStraw, straw)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"

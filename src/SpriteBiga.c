@@ -101,7 +101,14 @@ void UPDATE() {
         SPRITEMANAGER_ITERATE(scroll_b_tile, ibspr) {
             if(CheckCollision(THIS, ibspr)) {
                 switch(ibspr->type){
-                    case SpriteItem:{
+                    case SpriteItemgladio:
+                    case SpriteItemlance:
+                    case SpriteItemfire:
+                    case SpriteItemelmet:
+                    case SpriteItemshield:
+                    case SpriteItemcape:
+                    case SpriteItemheart:
+                    case SpriteItemglass:{
                         struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
                         if(item_data->configured == 2){
                             pickup(ibspr);
@@ -121,7 +128,7 @@ void UPDATE() {
 void pickup(Sprite* s_arg_item) BANKED{
     struct ItemData* item_data = (struct ItemData*) s_arg_item->custom_data;
     switch(item_data->itemtype){
-        case GLADIO: case LANCE: case FLAME:
+        case GLADIO: case LANCE: case FIRE:
             weapon_atk = item_data->itemtype;
             update_weapon();
         break;

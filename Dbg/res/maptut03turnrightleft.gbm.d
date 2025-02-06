@@ -1,5 +1,0 @@
-../Dbg/res/maptut03turnrightleft.gbm.o: \
- ../Dbg/res/maptut03turnrightleft.gbm.c \
- C:/ZGB-2023.0/common/include/TilesInfo.h \
- C:/ZGB-2023.0/common/include/MapInfo.h \
- C:/ZGB-2023.0/common/include/TilesInfo.h

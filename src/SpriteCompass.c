@@ -17,7 +17,6 @@ extern INT8 vy;
 extern INT8 cos;
 extern INT8 sin;
 extern Sprite* s_horse;
-extern INT8 velocity_counter;
 extern UINT8 track_ended;
 
 void START() {

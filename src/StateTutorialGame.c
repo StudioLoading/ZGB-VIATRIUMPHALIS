@@ -32,14 +32,18 @@ IMPORT_MAP(maptut02turnleft);
 IMPORT_MAP(maptut03turnrightleft);
 IMPORT_MAP(maptut04dodgewater);
 IMPORT_MAP(maptut04zigzag);
+IMPORT_MAP(maptut05straight);
 IMPORT_TILES(hudt);
 
 const UINT8 coll_rome_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 118, 119, 121, 0};
 const UINT8 coll_rome_surface[] = {0u, 0};
 
-TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
+TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_11_CAPE;
 INT8 is_crono = 0;
+Sprite* s_fantoccio = 0;
+INT8 fantoccio_hit = 0;
 
+void hit_fantoccio(Sprite* s_fantoccio_arg) BANKED;
 
 extern Sprite* s_biga;
 extern Sprite* s_horse;
@@ -59,6 +63,8 @@ extern UINT8 track_ended;
 extern INT8 track_ended_cooldown;
 extern UINT8 hud_initialized;
 extern INT8 onwater_countdown; 
+extern INT8 velocity;
+extern UINT8 turn;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -67,13 +73,22 @@ extern void update_turning() BANKED;
 extern void update_euphoria() BANKED;
 extern void update_time() BANKED;
 extern void update_hp(INT8 variation) BANKED;
+extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
 
 
 void START() {
+    fantoccio_hit = 0;
     UINT16 pos_horse_x = 0;
     UINT16 pos_horse_y = 0;
     switch(tutorial_state){
         case TUTORIAL_STAGE_0_STRAIGHT:
+        case TUTORIAL_STAGE_2_TURNRIGHT:
+        case TUTORIAL_STAGE_5_ZIGZAG:
+        case TUTORIAL_STAGE_7_DODGEWATER:
+        case TUTORIAL_STAGE_8_GLADIO:
+        case TUTORIAL_STAGE_10_LANCE:
+        case TUTORIAL_STAGE_11_CAPE:
+        case TUTORIAL_STAGE_12_STRAW:
             pos_horse_x = 56;
             pos_horse_y = 88;
             is_crono = 0;
@@ -84,11 +99,6 @@ void START() {
             is_crono = 1;
             timemax_current = TIME_MAX_TUTORIAL1;
             time_factor = TIME_FACTOR_TUTORIAL1;
-        break;
-        case TUTORIAL_STAGE_2_TURNRIGHT:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 0;
         break;
         case TUTORIAL_STAGE_3_TURNLEFT:
             pos_horse_x = 56;
@@ -102,11 +112,6 @@ void START() {
             timemax_current = TIME_MAX_TUTORIAL2;
             time_factor = TIME_FACTOR_TUTORIAL2;
         break;
-        case TUTORIAL_STAGE_5_ZIGZAG:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 0;
-        break;
         case TUTORIAL_STAGE_6_ZIGZAG_ONTIME:
             pos_horse_x = 56;
             pos_horse_y = 88;
@@ -114,9 +119,8 @@ void START() {
             timemax_current = TIME_MAX_TUTORIAL3;
             time_factor = TIME_FACTOR_TUTORIAL3;
         break;
-        case TUTORIAL_STAGE_7_DODGEWATER:
-        case TUTORIAL_STAGE_8_GLADIO:
-            pos_horse_x = 56;
+        case TUTORIAL_STAGE_9_GLADIOLEFT:
+            pos_horse_x = 1120;
             pos_horse_y = 88;
             is_crono = 0;
         break;
@@ -156,15 +160,58 @@ void START() {
 		        InitScroll(BANK(maptut04dodgewater), &maptut04dodgewater, coll_rome_tiles, coll_rome_surface);
                 update_hp(0); 
             break;
-            case TUTORIAL_STAGE_8_GLADIO:
-                Sprite* s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 256u, s_horse->y + 8u);
-                Sprite* s_item = SpriteManagerAdd(SpriteItem, s_horse->x + 64u, s_horse->y + 4u);
+            case TUTORIAL_STAGE_8_GLADIO:{
+                s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 256u, s_horse->y + 8u);
+                Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x + 64u, s_horse->y + 4u);
                 struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
                 item_data->itemtype = GLADIO;
                 item_data->configured = 1;
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
                 update_hp(0); 
-            break;
+            }break;
+            case TUTORIAL_STAGE_9_GLADIOLEFT:{
+                velocity = -1;
+                turn = 127;
+                s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x - 400u, s_horse->y - 12u);
+                Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x - 128u, s_horse->y + 4u);
+                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
+                item_data->itemtype = GLADIO;
+                item_data->configured = 1;
+		        InitScroll(BANK(maptut05straight), &maptut05straight, coll_rome_tiles, coll_rome_surface);
+                update_hp(0); 
+            }break;
+            case TUTORIAL_STAGE_10_LANCE:{
+                s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 600u, s_horse->y);
+                Sprite* s_item = SpriteManagerAdd(SpriteItemlance, s_horse->x + 80u, s_horse->y);
+                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
+                item_data->itemtype = LANCE;
+                item_data->configured = 1;
+		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
+                update_hp(0); 
+            }break;
+            case TUTORIAL_STAGE_11_CAPE:{
+                Sprite* s_heart = SpriteManagerAdd(SpriteItemglass, s_horse->x + 32u, s_horse->y + 8u);
+                struct ItemData* heart_data = (struct ItemData*) s_heart->custom_data;
+                heart_data->itemtype = TIME;
+                heart_data->configured = 1;
+                Sprite* s_item = SpriteManagerAdd(SpriteItemcape, s_horse->x + 80u, s_horse->y);
+                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
+                item_data->itemtype = CAPE;
+                item_data->configured = 1;
+                Sprite* s_fire = SpriteManagerAdd(SpriteFlame, s_horse->x + 200u, s_horse->y);
+		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
+                update_hp(0); 
+            }break;
+            case TUTORIAL_STAGE_12_STRAW:{
+                Sprite* s_item = SpriteManagerAdd(SpriteItemfire, s_horse->x + 80u, s_horse->y);
+                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
+                item_data->itemtype = FIRE;
+                item_data->configured = 1;
+                Sprite* s_straw = SpriteManagerAdd(SpriteStraw, s_horse->x + 200u, s_horse->y);
+                Sprite* s_straw2 = SpriteManagerAdd(SpriteStraw, s_horse->x + 224u, s_horse->y);
+		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
+                update_hp(0); 
+            }break;
         }
 		INIT_HUD(hudm);
 		SetWindowY(104);
@@ -199,20 +246,36 @@ void UPDATE(){
             update_time();
             time_current--;
             if(time_current < 0){
-                //StateDialog TIME IS UP!
-                //GO BACK TO TUTORIAL MENU
+                SetState(StateTutorialGame);
             }
         }
     //CHECK ON WATER
-        if(onwater_countdown > 0){
+        if(tutorial_state == TUTORIAL_STAGE_7_DODGEWATER && onwater_countdown > 0){
             SetState(StateTutorialGame);
         }
     //IS TRACK COMPLETED?
         if(track_ended == 1u){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                tutorial_state++;
-                SetState(StateTutorialGame);
+                INT8 can_go_on = 1;
+                if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
+                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
+                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
+                    if(fantoccio_hit == 0){
+                        can_go_on = 0;
+                    }
+                }
+                if(can_go_on == 1){
+                    tutorial_state++;
+                }
+                SetState(StateTutorialList);
             }
         }
+}
+
+void hit_fantoccio(Sprite* s_fantoccio_arg) BANKED{
+    fantoccio_hit = 1;
+    struct FantoccioData* f_data = (struct FantoccioData*) s_fantoccio_arg->custom_data;
+    f_data->fantoccio_counter = 81;
+    fantoccio_move(s_fantoccio_arg);
 }

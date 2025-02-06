@@ -26,6 +26,10 @@ typedef enum{
     TUTORIAL_STAGE_6_ZIGZAG_ONTIME,
     TUTORIAL_STAGE_7_DODGEWATER,
     TUTORIAL_STAGE_8_GLADIO,
+    TUTORIAL_STAGE_9_GLADIOLEFT,
+    TUTORIAL_STAGE_10_LANCE,
+    TUTORIAL_STAGE_11_CAPE,
+    TUTORIAL_STAGE_12_STRAW,
     TUTORIAL_PASSED
 }TUTORIAL_STAGE;
 
@@ -37,11 +41,11 @@ typedef enum{
 
 typedef enum{
     NOITEM,
-    FIRE,
+    FLAME,
     FOG,
     GLADIO,
     LANCE,
-    FLAME,
+    FIRE,
     ELMET,
     SHIELD,
     CAPE,
@@ -55,6 +59,16 @@ struct ItemData{
     INT8 hp;
     INT8 configured;//0 ignore, 1 set anim, 2 set anim for weapon in use, 3 to be picked up, 4 weapon in use
     ITEM_TYPE itemtype;
+};
+
+struct FlameData{
+    INT8 vx;
+    INT8 hp;
+    INT8 dropped;//-1 donoth, 0 flaming, 1 cooldown, 2 just dropped
+};
+
+struct FantoccioData{
+    INT8 fantoccio_counter;//se maggiore di 0 sta girando
 };
 
 /*

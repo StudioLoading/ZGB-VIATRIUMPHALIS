@@ -30,7 +30,7 @@ UINT16 euphoria_min_current = 0u;
 UINT16 euphoria_max_current = 0u;
 HORSE_DIRECTION horse_direction = EEE;
 HORSE_DIRECTION horse_direction_old = EEE;
-INT8 hp_current = 15;
+INT8 hp_current = 10;
 INT8 hud_turn_cooldown = 0;
 INT16 timemax_current = 0;
 INT16 time_current = 0;
@@ -61,6 +61,8 @@ extern UINT16 stamina_max;// = 960;
 extern UINT16 euphoria_min;// = 600;
 extern UINT16 euphoria_max;// = 700;
 extern INT16 stamina_current;// = 0;
+extern INT8 vx;
+extern INT8 vy;
 extern INT8 sin;
 extern INT8 cos;
 extern TURNING_VERSE turn_verse;
@@ -74,14 +76,7 @@ void START() {
 	s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
 	s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
 	s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-	//Sprite* s_fire = SpriteManagerAdd(SpriteFire, s_horse->x + 160u, s_horse->y + 16u);
-	//Sprite* s_item2 = SpriteManagerAdd(SpriteFire, s_horse->x + 48u, s_horse->y + 8u);
-	//Sprite* s_fantoccio2 = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 48u, s_horse->y + 8u);
-	Sprite* s_heart = SpriteManagerAdd(SpriteItem, s_horse->x + 32u, s_horse->y + 8u);
-	struct ItemData* heart_data = (struct ItemData*) s_heart->custom_data;
-	heart_data->itemtype = HP;
-    heart_data->configured = 1;
-	Sprite* s_item = SpriteManagerAdd(SpriteItem, s_horse->x + 48u, s_horse->y + 8u);
+	Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x + 48u, s_horse->y + 8u);
 	struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
 	item_data->itemtype = GLADIO;
     item_data->configured = 1;
@@ -306,7 +301,7 @@ void update_weapon() BANKED{
 			UPDATE_HUD_TILE(6,3,34);
 			UPDATE_HUD_TILE(6,4,35);
 		break;
-		case FLAME:
+		case FIRE:
 			UPDATE_HUD_TILE(5,3,36);
 			UPDATE_HUD_TILE(5,4,37);
 			UPDATE_HUD_TILE(6,3,38);
@@ -343,22 +338,57 @@ void update_weapon() BANKED{
 
 void use_weapon(INT8 is_defence) BANKED{
 	if(is_defence){
-		s_weapon = SpriteManagerAdd(SpriteItem, s_horse->x + 16, s_horse->y);
+		switch(weapon_def){
+			case SHIELD:
+				s_weapon = SpriteManagerAdd(SpriteItemshield, s_horse->x + 16, s_horse->y);
+			break;
+			case ELMET:
+				s_weapon = SpriteManagerAdd(SpriteItemelmet, s_horse->x + 16, s_horse->y);
+			break;
+			case CAPE:
+				s_weapon = SpriteManagerAdd(SpriteItemcape, s_horse->x + 16, s_horse->y);
+			break;
+		}
 		struct ItemData* weapon_data = (struct ItemData*) s_weapon->custom_data;
 		weapon_data->itemtype = weapon_def;
 		weapon_data->configured = 3;
 		consume_weapon_def();
 	}else{//attack!
-		UINT16 attack_x = s_horse->x + 16;
+		UINT16 attack_x = s_horse->x;
 		UINT16 attack_y = s_horse->y + 8;
 		if(s_horse->mirror == V_MIRROR){
 			attack_y = s_horse->y - 20;
-			attack_x = s_horse->x;
+			attack_x = s_horse->x - 16;
 		}
-		s_weapon = SpriteManagerAdd(SpriteItem, attack_x, attack_y);
-		struct ItemData* weapon_data = (struct ItemData*) s_weapon->custom_data;
-		weapon_data->itemtype = weapon_atk;
-		weapon_data->configured = 3;
+		if(weapon_atk == LANCE){
+			attack_y = s_horse->y;
+		}else if(weapon_atk == FIRE){
+			attack_x = s_horse->x + 16;
+			if(s_horse->mirror == V_MIRROR){
+				attack_x = s_horse->x;
+			}
+			attack_y = s_horse->y;
+		}
+		switch(weapon_atk){
+			case GLADIO:
+				s_weapon = SpriteManagerAdd(SpriteItemgladio, attack_x, attack_y);
+			break;
+			case LANCE:
+				s_weapon = SpriteManagerAdd(SpriteItemlance, attack_x, attack_y);
+			break;
+			case FIRE:
+				Sprite* s_fire = SpriteManagerAdd(SpriteFlame, attack_x, attack_y);
+				struct FlameData* fire_data = (struct FlameData*) s_fire->custom_data;
+				fire_data->vx = vx;
+				fire_data->hp = 20;
+				fire_data->dropped = 2;
+			break;
+		}
+		if(s_weapon != 0){
+			struct ItemData* weapon_data = (struct ItemData*) s_weapon->custom_data;
+			weapon_data->itemtype = weapon_atk;
+			weapon_data->configured = 3;
+		}
 		consume_weapon_atk();
 	}
 }
