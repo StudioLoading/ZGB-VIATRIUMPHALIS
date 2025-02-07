@@ -26,6 +26,7 @@ _SPRITE_DMG(SpriteItemcape, itemcape)\
 _SPRITE_DMG(SpriteItemheart, itemheart)\
 _SPRITE_DMG(SpriteItemglass, itemglass)\
 _SPRITE_DMG(SpriteStraw, straw)\
+_SPRITE_DMG(SpriteCursor, cursor)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
