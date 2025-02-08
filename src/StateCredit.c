@@ -5,6 +5,7 @@
 #include "Keys.h"
 #include "Palette.h"
 #include "Scroll.h"
+#include "SGB.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
 #include "string.h"
@@ -15,6 +16,7 @@
 #define CREDIT_WAIT_MAX 240
 #define PRESSSTART_COUNTER_MAX 16
 
+IMPORT_MAP(border);
 IMPORT_MAP(mapcredit0);
 IMPORT_MAP(titlescreenmap);
 IMPORT_TILES(font);
@@ -26,6 +28,7 @@ UINT8 pressstart_show = 0;
 
 
 void START(){
+    LOAD_SGB_BORDER(border);
     credit_wait = CREDIT_WAIT_MAX;
     credit_step++;
     switch(credit_step){

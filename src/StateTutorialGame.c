@@ -128,8 +128,10 @@ void START() {
 	scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
 	s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
 	s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
-	s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-	//COMMON AND VARS
+    if(tutorial_state < TUTORIAL_STAGE_7_DODGEWATER){
+	    s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
+    }
+    //COMMON AND VARS
         switch(tutorial_state){
             case TUTORIAL_STAGE_0_STRAIGHT:
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
