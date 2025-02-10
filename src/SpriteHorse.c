@@ -309,6 +309,11 @@ void UPDATE() {
                             }
                         }else{orme_spawned = 0;}
                     break;
+                    case 122: case 123: case 124: case 125: //teschio!
+                        if(stamina_current > 100){
+                            stamina_current-=30;
+                        }
+                    break;
                     default:
                         if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo
                             onfire_countdown = -1;

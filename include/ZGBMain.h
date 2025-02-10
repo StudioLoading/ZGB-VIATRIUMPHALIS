@@ -6,6 +6,7 @@ _STATE(StateCredit)\
 _STATE(StateGame)\
 _STATE(StateTutorialGame)\
 _STATE(StateTutorialList)\
+_STATE(StateMission00rome)\
 STATE_DEF_END
 
 #define SPRITES \

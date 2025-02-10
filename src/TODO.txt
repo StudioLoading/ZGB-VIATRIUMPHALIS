@@ -3,11 +3,18 @@ VIA TRIUMPHALIS
 ogni tappa devi arrivare in un punto facendo cose.
 il percorso ha una partenza e un arrivo e non è a circuito.
 
-
 AMBIENTALI
 FIAMMA      (massimizza stamina)
 POZZA       (da botte di -stamina ogni secondo)
-NEBBIA      (cappa la stamina ad EuphoriaMin - (EuphoriaMin/4))
+TESCHIO     (diminuisce stamina)
+
+A CONSUMO
+GLADIO      SCUDO
+LANCIA      ELMO
+FUOCO       MANTELLO
+
+- potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
+
 
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)

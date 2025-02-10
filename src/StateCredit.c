@@ -48,7 +48,8 @@ void UPDATE(){
     if(credit_step < 2 && (credit_wait <= 0 || KEY_TICKED(J_START))){
         SetState(StateCredit);
     }else if(credit_step == 2 && KEY_TICKED(J_START)){
-        SetState(StateTutorialList);
+        //SetState(StateTutorialList);
+        SetState(StateMission00rome);
     }
     //PRESS START BLINK
         switch(credit_step){

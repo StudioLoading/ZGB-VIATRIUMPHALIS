@@ -70,6 +70,7 @@ extern INT8 onwater_countdown;
 
 
 void START() {
+	/* TO BE USED AS A GUIDE FOR MISSION'S STATES
 	UINT16 pos_horse_x = 56;
 	UINT16 pos_horse_y = 88;
 	scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
@@ -87,6 +88,7 @@ void START() {
 		INIT_HUD(hudm);
 		SetWindowY(104);//su suggerimento di toxa, perché INIT_HUD non fa sta chiamata che dice serve...
 		start_common();
+	*/
 }
 
 void start_common() BANKED{

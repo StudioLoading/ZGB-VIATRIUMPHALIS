@@ -33,7 +33,6 @@ IMPORT_MAP(maptut03turnrightleft);
 IMPORT_MAP(maptut04dodgewater);
 IMPORT_MAP(maptut04zigzag);
 IMPORT_MAP(maptut05straight);
-IMPORT_TILES(hudt);
 
 const UINT8 coll_rome_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 118, 119, 121, 0};
 const UINT8 coll_rome_surface[] = {0u, 0};
@@ -50,14 +49,10 @@ extern Sprite* s_horse;
 extern Sprite* s_compass;
 extern UINT16 euphoria_min_current;
 extern UINT16 euphoria_max_current;
-extern UINT16 stamina_max;
 extern UINT16 euphoria_min;
 extern UINT16 euphoria_max;
-extern UINT8 scroll_bottom_movement_limit;
-extern INT8 hud_turn_cooldown;
 extern INT16 time_current; 
 extern INT16 timemax_current;
-extern INT16 time_current;
 extern INT16 time_factor;
 extern UINT8 track_ended;
 extern INT8 track_ended_cooldown;
@@ -80,57 +75,59 @@ void START() {
     fantoccio_hit = 0;
     UINT16 pos_horse_x = 0;
     UINT16 pos_horse_y = 0;
-    switch(tutorial_state){
-        case TUTORIAL_STAGE_0_STRAIGHT:
-        case TUTORIAL_STAGE_2_TURNRIGHT:
-        case TUTORIAL_STAGE_5_ZIGZAG:
-        case TUTORIAL_STAGE_7_DODGEWATER:
-        case TUTORIAL_STAGE_8_GLADIO:
-        case TUTORIAL_STAGE_10_LANCE:
-        case TUTORIAL_STAGE_11_CAPE:
-        case TUTORIAL_STAGE_12_STRAW:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 0;
-        break;
-        case TUTORIAL_STAGE_1_STRAIGHTTIME:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 1;
-            timemax_current = TIME_MAX_TUTORIAL3;
-            time_factor = TIME_FACTOR_TUTORIAL3;
-        break;
-        case TUTORIAL_STAGE_3_TURNLEFT:
-            pos_horse_x = 56;
-            pos_horse_y = 200;
-            is_crono = 0;
-        break;
-        case TUTORIAL_STAGE_4_TURNRIGHTLEFT:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 1;
-            timemax_current = TIME_MAX_TUTORIAL2;
-            time_factor = TIME_FACTOR_TUTORIAL2;
-        break;
-        case TUTORIAL_STAGE_6_ZIGZAG_ONTIME:
-            pos_horse_x = 56;
-            pos_horse_y = 88;
-            is_crono = 1;
-            timemax_current = TIME_MAX_TUTORIAL3;
-            time_factor = TIME_FACTOR_TUTORIAL3;
-        break;
-        case TUTORIAL_STAGE_9_GLADIOLEFT:
-            pos_horse_x = 1120;
-            pos_horse_y = 88;
-            is_crono = 0;
-        break;
-    }
-	scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
-	s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
-	s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
-    if(tutorial_state < TUTORIAL_STAGE_7_DODGEWATER){
-	    s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-    }
+    //INITIAL POSITIONS & OPTIONS
+        switch(tutorial_state){
+            case TUTORIAL_STAGE_0_STRAIGHT:
+            case TUTORIAL_STAGE_2_TURNRIGHT:
+            case TUTORIAL_STAGE_5_ZIGZAG:
+            case TUTORIAL_STAGE_7_DODGEWATER:
+            case TUTORIAL_STAGE_8_GLADIO:
+            case TUTORIAL_STAGE_10_LANCE:
+            case TUTORIAL_STAGE_11_CAPE:
+            case TUTORIAL_STAGE_12_STRAW:
+                pos_horse_x = 56;
+                pos_horse_y = 88;
+                is_crono = 0;
+            break;
+            case TUTORIAL_STAGE_1_STRAIGHTTIME:
+                pos_horse_x = 56;
+                pos_horse_y = 88;
+                is_crono = 1;
+                timemax_current = TIME_MAX_TUTORIAL3;
+                time_factor = TIME_FACTOR_TUTORIAL3;
+            break;
+            case TUTORIAL_STAGE_3_TURNLEFT:
+                pos_horse_x = 56;
+                pos_horse_y = 200;
+                is_crono = 0;
+            break;
+            case TUTORIAL_STAGE_4_TURNRIGHTLEFT:
+                pos_horse_x = 56;
+                pos_horse_y = 88;
+                is_crono = 1;
+                timemax_current = TIME_MAX_TUTORIAL2;
+                time_factor = TIME_FACTOR_TUTORIAL2;
+            break;
+            case TUTORIAL_STAGE_6_ZIGZAG_ONTIME:
+                pos_horse_x = 56;
+                pos_horse_y = 88;
+                is_crono = 1;
+                timemax_current = TIME_MAX_TUTORIAL3;
+                time_factor = TIME_FACTOR_TUTORIAL3;
+            break;
+            case TUTORIAL_STAGE_9_GLADIOLEFT:
+                pos_horse_x = 1120;
+                pos_horse_y = 88;
+                is_crono = 0;
+            break;
+        }
+    //SPRITES
+        scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
+        s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
+        s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
+        if(tutorial_state < TUTORIAL_STAGE_7_DODGEWATER){
+            s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
+        }
     //COMMON AND VARS
         switch(tutorial_state){
             case TUTORIAL_STAGE_0_STRAIGHT:
