@@ -55,10 +55,12 @@ extern INT8 hud_turn_cooldown;
 extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
 extern UINT8 track_ended;
+extern MISSION_STEP current_step;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
 extern void pickup(Sprite* s_arg_item) BANKED;
+extern INT8 is_track_ended() BANKED;
 
 
 /* velocity_counter in realtà è la velocità assoluta */
@@ -241,11 +243,15 @@ void UPDATE() {
                     vy = 2;
                 }
 
-            INT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
+            UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
             if(horse_coll){//collido con tile ambiente di collisione
                 if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
-                    track_ended = 1u;
+                    if(current_state == StateTutorialGame){
+                        track_ended = 1u;
+                    }else{
+                        track_ended = is_track_ended();
+                    }
                 }else{
                     past_coll_tile = horse_coll;
                     INT8 vxbounce = vx * (-1); 
@@ -365,6 +371,9 @@ void UPDATE() {
                             pickup(iospr);
                         }
                     }break;
+                    case SpriteRomansenator:
+                        current_step = SENATOR_COLLIDED;
+                    break;
                 }
             }
         }

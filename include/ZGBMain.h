@@ -7,6 +7,7 @@ _STATE(StateGame)\
 _STATE(StateTutorialGame)\
 _STATE(StateTutorialList)\
 _STATE(StateMission00rome)\
+_STATE(StatePapyrus)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -28,6 +29,8 @@ _SPRITE_DMG(SpriteItemheart, itemheart)\
 _SPRITE_DMG(SpriteItemglass, itemglass)\
 _SPRITE_DMG(SpriteStraw, straw)\
 _SPRITE_DMG(SpriteCursor, cursor)\
+_SPRITE_DMG(SpriteRomansoldier, romansoldier)\
+_SPRITE_DMG(SpriteRomansenator, romansenator)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"

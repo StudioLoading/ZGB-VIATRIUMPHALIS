@@ -71,13 +71,14 @@ struct FantoccioData{
     INT8 fantoccio_counter;//se maggiore di 0 sta girando
 };
 
-/*
-struct LoadedEnemy{
-	ENEMY_TYPE item_type;
-	UINT16 posx;
-	UINT16 posy;
-	struct EnemyInfo einfo;
-};
-*/
+typedef enum{
+    LOOKING_FOR_SENATOR,
+    SENATOR_COLLIDED,
+    EXIT
+}MISSION_STEP;
+
+typedef enum{
+    MISSION00_SECRET_MESSAGE
+}INSTRUCTION;
 
 #endif

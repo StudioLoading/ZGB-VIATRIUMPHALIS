@@ -40,6 +40,7 @@ ITEM_TYPE weapon_def = NONE;
 UINT8 track_ended = 0u;
 INT8 track_ended_cooldown = ENDED_TRACK_COOLDOWN;
 UINT8 hud_initialized = 0u;
+INT8 mission_completed = 0;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -54,6 +55,7 @@ void consume_weapon_def() BANKED;
 void consume_weapon_atk() BANKED;
 void use_weapon(INT8 is_defence) BANKED;
 void start_common() BANKED;
+INT8 is_track_ended() BANKED;
 
 extern UINT8 scroll_bottom_movement_limit;//= 100;
 
@@ -407,6 +409,14 @@ void consume_weapon_atk() BANKED{
 void consume_weapon_def() BANKED{
 	weapon_def = NONE;
 	update_weapon();
+}
+
+INT8 is_track_ended() BANKED{// == is mission completed
+	switch(current_state){
+		case StateMission00rome:
+			return mission_completed;
+		break;
+	}
 }
 
 void UPDATE() {

@@ -40,6 +40,10 @@ void START() {
     SetSpriteAnim(THIS, a_biga_h, 32u);
     THIS->lim_x = 100;
     THIS->lim_y = 100;
+    if(_cpu != CGB_TYPE){
+        OBP1_REG = PAL_DEF(0, 0, 1, 3);
+        SPRITE_SET_PALETTE(THIS,1);
+    }
 }
 
 void UPDATE() {
