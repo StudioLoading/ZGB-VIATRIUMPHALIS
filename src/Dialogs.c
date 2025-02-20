@@ -26,6 +26,20 @@ unsigned char EMPTY_STRING_14[15] = "              ";
 void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
     reset_dn();
     switch(arg_instruction){
+        case MISSION00_INTRO:
+            memcpy(d0, "FIRSTLY THERE ", 15);
+            memcpy(d1, "COMMISSIONS TO", 15);
+            memcpy(d2, "BE DONE AROUND", 15);
+            memcpy(d3, "ROME.         ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "PLEASE BRING A", 15);
+            memcpy(d6, "SECRET MESSAGE", 15);
+            memcpy(d7, "TO THE SENATE.", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, "FIND ONORIO!  ", 15);
+            memcpy(d10, "HE WILL GIVE ", 15);
+            memcpy(d11, "YOU PAPERS.  ", 15);
+        break;
         case MISSION00_SECRET_MESSAGE:
             memcpy(d0, "FROM TODAY YOU", 15);
             memcpy(d1, "ARE DISMISSED ", 15);

@@ -8,6 +8,7 @@ _STATE(StateTutorialGame)\
 _STATE(StateTutorialList)\
 _STATE(StateMission00rome)\
 _STATE(StatePapyrus)\
+_STATE(StateWorldmap)\
 STATE_DEF_END
 
 #define SPRITES \

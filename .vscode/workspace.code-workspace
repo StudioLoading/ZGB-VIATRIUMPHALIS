@@ -20,7 +20,9 @@
 			"custom_datas.h": "c",
 			"sprite.h": "c",
 			"print.h": "c",
-			"string.h": "c"
+			"string.h": "c",
+			"bankmanager.h": "c",
+			"utilanim.h": "c"
 		}
 	}
 }

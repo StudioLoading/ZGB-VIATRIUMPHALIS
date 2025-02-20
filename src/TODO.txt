@@ -14,7 +14,7 @@ LANCIA      ELMO
 FUOCO       MANTELLO
 
 - potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
-
+- riesco a fare l'effetto di "papiro che si apre verticalmente" sullo StatePapyrus con quella funzione per mettere tile in posizione? Forse sì.
 
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)
@@ -53,4 +53,4 @@ Egitto (piramidi, fiumi, templi)
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\papyrus.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\papyrus.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\arearome01.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\arearome.gbm
