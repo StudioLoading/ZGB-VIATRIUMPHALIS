@@ -27,14 +27,14 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
     reset_dn();
     switch(arg_instruction){
         case MISSION00_INTRO:
-            memcpy(d0, "FIRSTLY THERE ", 15);
-            memcpy(d1, "COMMISSIONS TO", 15);
-            memcpy(d2, "BE DONE AROUND", 15);
-            memcpy(d3, "ROME.         ", 15);
+            memcpy(d0, "FIRSTLY WE HA,", 15);
+            memcpy(d1, "VE SOME COMMI,", 15);
+            memcpy(d2, "SSIONS BE DONE", 15);
+            memcpy(d3, "IN THE NEARBY.", 15);
             memcpy(d4, EMPTY_STRING_14, 15);
-            memcpy(d5, "PLEASE BRING A", 15);
-            memcpy(d6, "SECRET MESSAGE", 15);
-            memcpy(d7, "TO THE SENATE.", 15);
+            memcpy(d5, "BRING A SECRET", 15);
+            memcpy(d6, "MESSAGE TO THE", 15);
+            memcpy(d7, "SENATE.       ", 15);
             memcpy(d8, EMPTY_STRING_14, 15);
             memcpy(d9, "FIND ONORIO!  ", 15);
             memcpy(d10, "HE WILL GIVE ", 15);
@@ -53,6 +53,28 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d9, EMPTY_STRING_14, 15);
             memcpy(d10, "SEE YOU IN THE", 15);
             memcpy(d11, "SENATE.       ", 15);
+        break;
+        case MISSION00_COMPLETED:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU COMPLETED ", 15);
+            memcpy(d3, "YOUR FIRST    ", 15);
+            memcpy(d4, "MISSION!      ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "THERE IS NO   ", 15);
+            memcpy(d7, "TIME TO REST. ", 15);
+            memcpy(d8, "WAIT FOR MY   ", 15);
+            memcpy(d9, "MAN TO GIVE   ", 15);
+            memcpy(d10, "YOU ANOTHER  ", 15);
+            memcpy(d11, "MISSION.     ", 15);
+        break;
+        case MISSION01_INTRO:
+            memcpy(d6, "WE HAVE A SPY ", 15);
+            memcpy(d7, "PLAYING AGAIN,", 15);
+            memcpy(d8, "ST US! RUN OFF", 15);
+            memcpy(d9, "TO A SAFE PLA,", 15);
+            memcpy(d10, "CE DODGING THE", 15);
+            memcpy(d11, "GUARDS.      ", 15);
         break;
     }
 

@@ -4,11 +4,14 @@
 #define STATES \
 _STATE(StateCredit)\
 _STATE(StateGame)\
+_STATE(StateButtons)\
+_STATE(StateWorldmap)\
+_STATE(StateConfig)\
 _STATE(StateTutorialGame)\
 _STATE(StateTutorialList)\
-_STATE(StateMission00rome)\
 _STATE(StatePapyrus)\
-_STATE(StateWorldmap)\
+_STATE(StateMission00rome)\
+_STATE(StateMission01rome)\
 STATE_DEF_END
 
 #define SPRITES \

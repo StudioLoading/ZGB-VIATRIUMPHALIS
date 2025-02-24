@@ -45,12 +45,16 @@ void START() {
     print_target = PRINT_BKG;
     switch(world_area_map){
         case 0:
+            PRINT(14, 0, "CONFIG");
             PRINT(4, 16, "ROMAN EMPIRE");
         break;
         case 1:
             switch(current_mission){
                 case MISSIONROME00: 
                     PRINT(2, 15, "A SECRET MESSAGE");
+                break;
+                case MISSIONROME01: 
+                    PRINT(4, 15, "RUN TO SAFETY");
                 break;
             }
         break;
@@ -61,11 +65,12 @@ void UPDATE() {
     worldmap_counter--;
     if(worldmap_counter < -WORLDMAP_COUNTDOWN_MAX){ worldmap_counter = WORLDMAP_COUNTDOWN_MAX; return;}
     if(worldmap_counter > 0){
-        if(world_area_map == 0){
+        if(world_area_map == 0){//worldmap
             Anim_worldmap_1(current_area);
-        }else{
+        }else{//areamap
             switch(current_mission){
                 case MISSIONROME00:
+                case MISSIONROME01:
                     Anim_arearome_1();
                 break;
             }
@@ -81,14 +86,28 @@ void UPDATE() {
             }
         }
     }
-    if(KEY_RELEASED(J_START)){
+    if(KEY_TICKED(J_START)){
         world_area_map++;
         if(world_area_map > 1){
-            prev_state = StateMission00rome;
-            GetLocalizedDialog_EN(MISSION00_INTRO);
+            world_area_map = 1;
+            switch(current_mission){
+                case MISSIONROME00:
+                    prev_state = StateMission00rome;//perché StatePapyrus va poi in prev_state
+                    GetLocalizedDialog_EN(MISSION00_INTRO);
+                break;
+                case MISSIONROME01:
+                    prev_state = StateMission01rome;//perché StatePapyrus va poi in prev_state
+                    GetLocalizedDialog_EN(MISSION01_INTRO);
+                break;
+            }
             SetState(StatePapyrus);
         }else{
             SetState(StateWorldmap);
+        }
+    }
+    if(world_area_map == 0){
+        if(KEY_TICKED(J_SELECT)){//vai alla schermata di configurazione
+            SetState(StateConfig);
         }
     }
 }

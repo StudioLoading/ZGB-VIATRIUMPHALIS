@@ -76,6 +76,8 @@ void START(){
     }
     SetWindowY(144);
     blink_text = BLINK_TEXT;
+    
+    PRINT(3, 17, "TO BUTTON MAP");
 }
 
 void UPDATE(){
@@ -101,7 +103,14 @@ void UPDATE(){
     if(blink_text <= -BLINK_TEXT){
         blink_text = BLINK_TEXT;
     }
-    if(KEY_PRESSED(J_A) ||KEY_PRESSED(J_B) || KEY_PRESSED(J_START) || KEY_PRESSED(J_SELECT)){
-        SetState(StateTutorialGame);
+    if(KEY_TICKED(J_A) ||KEY_TICKED(J_B) || KEY_TICKED(J_START) || KEY_TICKED(J_SELECT)){
+        if(tutorial_state < TUTORIAL_PASSED){
+            SetState(StateTutorialGame);
+        }else{
+            SetState(StateWorldmap);
+        }
+    }
+    if(KEY_TICKED(J_LEFT)){
+        SetState(StateButtons);
     }
 }

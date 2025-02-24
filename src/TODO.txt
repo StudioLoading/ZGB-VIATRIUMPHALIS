@@ -14,11 +14,19 @@ LANCIA      ELMO
 FUOCO       MANTELLO
 
 - potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
-- riesco a fare l'effetto di "papiro che si apre verticalmente" sullo StatePapyrus con quella funzione per mettere tile in posizione? Forse sì.
-
+- schermata di funzionamento bottoni;
+- 2 frame di trotto da mettere quando il cavallo va troppo lento: potrei sacrificarli dalla corsa?
+- schermata di dettagli del giocatore, coi focus su frusta, ruote, elmo, briglie per vedere se abbiamo la versione base o la versione d'oro trovate eventualmente in giro nelle tappe di gioco;
+- Normal Mode vs Hard Mode
+    hard mode non avrà il tutorial iniziale;
+    hard mode non avrà il compasso a schermo,
+        oppure ce lo avrà ma servirà per puntare all'obiettivo, non indicherà la direzione di movimento,
+        oppure on ce lo avrà e avrà una freccettina a scomparsa, togliendola dalla status bar;
+- Deserto: multimappa a labirinto
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)
-"Consegna un messaggio segreto al senato evitando le guardie." (A tempo: 2 minuti prima che chiudano le porte!)
+"Consegna un messaggio segreto al senato" 
+"Evita le guardie!" (a tempo)
 "Sfuggi agli assassini sulla via Appia di notte."
 "Supera le bighe degli sgherri di un senatore corrotto." (Gli avversari si muovono orizzontalmente, devi evitarli o colpirli con armi! alla fine devi "sfondare" una linea di sgherri e puoi farlo solo se li impatti a stamina vicina ad Euphoria Max, altrimenti rimbalzi indietro e vieni catturato!)
 
@@ -46,6 +54,7 @@ Deserto (oasi, dune, accampamenti nomadi)
 "Scorta il tesoro imperiale attraverso il deserto africano."
 "Attraversa le paludi evitando trappole dei ribelli nubiani." (A tempo: 2 minuti prima che le sabbie mobili ti inghiottano!)
 "Sfuggi a un gruppo di predoni che cercano di bloccarti!" (Si muovono orizzontalmente, devi superarli o attaccarli!)
+
 Egitto (piramidi, fiumi, templi)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
 "Sconfiggi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli!)
@@ -53,4 +62,4 @@ Egitto (piramidi, fiumi, templi)
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\arearome01.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\arearome.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\buttonmap.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\buttonmap.gbm

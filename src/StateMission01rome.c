@@ -13,17 +13,16 @@
 #include "custom_datas.h"
 
 IMPORT_MAP(hudm);
-IMPORT_MAP(mapmission00);
+IMPORT_MAP(mapmission01);
 
-const UINT8 coll_m00_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 112, 114, 118, 119, 121, 0};
+const UINT8 coll_m01_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 112, 114, 118, 119, 121, 0};
 
-const UINT8 coll_m00_surface[] = {0u, 0};
+const UINT8 coll_m01_surface[] = {0u, 0};
 
-INT8 mission_iscrono = 0;
-Sprite* s_senator = 0;
-UINT16 pos_horse_x = 0;
-UINT16 pos_horse_y = 0;
-MISSION_STEP current_step = LOOKING_FOR_SENATOR;
+extern INT8 mission_iscrono;
+extern UINT16 pos_horse_x;
+extern UINT16 pos_horse_y;
+extern MISSION_STEP current_step;
 
 extern Sprite* s_biga;
 extern Sprite* s_horse;
@@ -63,7 +62,7 @@ void START(){
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        if(current_step == LOOKING_FOR_SENATOR){
+       /* if(current_step == LOOKING_FOR_SENATOR){
             s_senator = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 60u) << 3, ((UINT16) 43u) << 3);
             mission_iscrono = 0;
             mission_completed = 0;
@@ -72,9 +71,9 @@ void START(){
             current_step = EXIT;
             mission_completed = 1;
             s_senator = 0;
-        }
+        }*/
     //COMMONS & START
-        InitScroll(BANK(mapmission00), &mapmission00, coll_m00_tiles, coll_m00_surface);
+        InitScroll(BANK(mapmission01), &mapmission01, coll_m01_tiles, coll_m01_surface);
         update_hp(16); 
 		INIT_HUD(hudm);
 		SetWindowY(104);
@@ -114,7 +113,7 @@ void UPDATE(){
             SetState(StatePapyrus);
         }
     //IS MISSION COMPLETED?
-    if(mission_completed == 1u && track_ended == 1){
+    if(mission_completed == 1u){
         track_ended_cooldown--;
         if(track_ended_cooldown <= 0){//cambia stato
             INT8 can_go_on = 1;
