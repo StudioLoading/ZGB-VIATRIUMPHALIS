@@ -60,6 +60,8 @@ extern UINT8 hud_initialized;
 extern INT8 onwater_countdown; 
 extern INT8 velocity;
 extern UINT8 turn;
+extern UINT16 pos_horse_x;
+extern UINT16 pos_horse_y;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -73,8 +75,8 @@ extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
 
 void START() {
     fantoccio_hit = 0;
-    UINT16 pos_horse_x = 0;
-    UINT16 pos_horse_y = 0;
+    pos_horse_x = 0;
+    pos_horse_y = 0;
     //INITIAL POSITIONS & OPTIONS
         switch(tutorial_state){
             case TUTORIAL_STAGE_0_STRAIGHT:

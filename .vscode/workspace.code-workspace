@@ -22,7 +22,8 @@
 			"print.h": "c",
 			"string.h": "c",
 			"bankmanager.h": "c",
-			"utilanim.h": "c"
+			"utilanim.h": "c",
+			"dialogs.h": "c"
 		}
 	}
 }

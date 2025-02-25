@@ -39,10 +39,10 @@ void Anim_worldmap_1(AREA arg_current_area) BANKED{
 }
 
 void Anim_arearome_0() BANKED{
-    set_banked_bkg_data(1, 75u, &arearomet99, BANK(arearomet99));
+    set_banked_bkg_data(1, 73u, &arearomet99, BANK(arearomet99));
 }
 void Anim_arearome_1() BANKED{
-    set_banked_bkg_data(1, 75u, &arearomet00, BANK(arearomet00));
+    set_banked_bkg_data(1, 73u, &arearomet00, BANK(arearomet00));
 }
 
 

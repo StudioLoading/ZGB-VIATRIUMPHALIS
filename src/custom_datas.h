@@ -50,7 +50,11 @@ typedef enum{
     SHIELD,
     CAPE,
     HP,
-    TIME
+    TIME,
+    GOLDEN_WHIP,
+    GOLDEN_WHEEL,
+    GOLDEN_ELM,
+    GOLDEN_REINS
 }ITEM_TYPE;
 
 struct ItemData{
@@ -78,6 +82,7 @@ typedef enum{
 }MISSION_STEP;
 
 typedef enum{
+    DESCRIPTION_GOLDEN_WHIP,
     MISSION00_INTRO,
     MISSION00_SECRET_MESSAGE,
     MISSION00_COMPLETED,
@@ -107,5 +112,17 @@ typedef enum{
     MISSIONGREECE01,
     MISSIONGREECE02,
 }MISSION;
+
+typedef enum{
+    NORMAL,
+    GOLDEN
+}ITEM_CONFIGURATION;
+
+struct CONFIGURATION{
+    ITEM_CONFIGURATION elm;
+    ITEM_CONFIGURATION wheel;
+    ITEM_CONFIGURATION whip;
+    ITEM_CONFIGURATION reins;
+};
 
 #endif

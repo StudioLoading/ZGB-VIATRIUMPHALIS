@@ -21,8 +21,8 @@ const UINT8 coll_m00_surface[] = {0u, 0};
 
 INT8 mission_iscrono = 0;
 Sprite* s_senator = 0;
-UINT16 pos_horse_x = 0;
-UINT16 pos_horse_y = 0;
+extern UINT16 pos_horse_x;
+extern UINT16 pos_horse_y;
 MISSION_STEP current_step = LOOKING_FOR_SENATOR;
 
 extern Sprite* s_biga;
@@ -44,6 +44,9 @@ extern UINT8 turn;
 extern UINT8 prev_state;
 extern INT8 mission_completed;
 extern MISSION current_mission;
+extern struct CONFIGURATION configuration;
+extern INT8 flag_golden_found;
+extern MirroMode mirror_horse;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -54,14 +57,18 @@ extern void update_time() BANKED;
 extern void update_hp(INT8 variation) BANKED;
 
 void START(){
-    if(current_step == LOOKING_FOR_SENATOR){
-        pos_horse_x = (UINT16) 6u << 3;//(UINT16) 70u << 3;
-        pos_horse_y = (UINT16) 7u << 3;//(UINT16) 43u << 3;
+    if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
+        flag_golden_found = 0;
+    }else if(current_step == LOOKING_FOR_SENATOR){//initial
+        pos_horse_x = (UINT16) 6u << 3;
+        pos_horse_y = (UINT16) 7u << 3;
+        mirror_horse = NO_MIRROR;
     }
     //SPRITES
         scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
+        s_horse->mirror = mirror_horse;
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
         if(current_step == LOOKING_FOR_SENATOR){
             s_senator = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 60u) << 3, ((UINT16) 43u) << 3);
@@ -73,6 +80,13 @@ void START(){
             mission_completed = 1;
             s_senator = 0;
         }
+        if(configuration.whip == NORMAL){
+            Sprite* s_config_whip = SpriteManagerAdd(SpriteConfigwhip, ((UINT16)144u << 3), ((UINT16)43u << 3));
+            struct ItemData* whip_data = (struct ItemData*)s_config_whip->custom_data;
+            whip_data->itemtype = GOLDEN_WHIP;
+            whip_data->configured = 1;
+        }
+
     //COMMONS & START
         InitScroll(BANK(mapmission00), &mapmission00, coll_m00_tiles, coll_m00_surface);
         update_hp(16); 
@@ -132,7 +146,6 @@ void UPDATE(){
             current_mission++;
             GetLocalizedDialog_EN(MISSION00_COMPLETED);
             SetState(StatePapyrus);
-            //SetState(StateTutorialList);
         }
     }
 }

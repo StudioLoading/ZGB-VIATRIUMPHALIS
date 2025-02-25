@@ -48,9 +48,7 @@ void UPDATE(){
     if(credit_step < 2 && (credit_wait <= 0 || KEY_TICKED(J_START))){
         SetState(StateCredit);
     }else if(credit_step == 2 && KEY_TICKED(J_START)){
-        //SetState(StateTutorialList); TODO
         SetState(StateButtons);
-        //SetState(StateWorldmap); // TEST
     }
     //PRESS START BLINK
         switch(credit_step){

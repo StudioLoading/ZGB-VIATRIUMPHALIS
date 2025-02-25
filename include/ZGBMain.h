@@ -31,6 +31,7 @@ _SPRITE_DMG(SpriteItemshield, itemshield)\
 _SPRITE_DMG(SpriteItemcape, itemcape)\
 _SPRITE_DMG(SpriteItemheart, itemheart)\
 _SPRITE_DMG(SpriteItemglass, itemglass)\
+_SPRITE_DMG(SpriteConfigwhip, itemconfigwhip)\
 _SPRITE_DMG(SpriteStraw, straw)\
 _SPRITE_DMG(SpriteCursor, cursor)\
 _SPRITE_DMG(SpriteRomansoldier, romansoldier)\

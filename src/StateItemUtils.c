@@ -36,6 +36,8 @@ extern void item_cape_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_cape_anim(Sprite* s_item_arg) BANKED;
 extern void item_heart_anim(Sprite* s_item_arg) BANKED;
 extern void item_glass_anim(Sprite* s_item_arg) BANKED;
+extern void item_configwhip_anim_blink(Sprite* s_item_arg) BANKED;
+extern void item_configwhip_anim(Sprite* s_item_arg) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
@@ -73,6 +75,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 break;
                 case TIME:
                     item_glass_anim(s_item_arg);
+                break;
+                case GOLDEN_WHIP:
+                    item_configwhip_anim(s_item_arg);
                 break;
             }
             item_data->configured = 2;

@@ -32,6 +32,7 @@ extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
 extern void update_time_max() BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
+extern void pickup_config(ITEM_TYPE arg_pickedup) BANKED;
 
 void pickup(Sprite* s_arg_item) BANKED;
 
@@ -112,7 +113,8 @@ void UPDATE() {
                     case SpriteItemshield:
                     case SpriteItemcape:
                     case SpriteItemheart:
-                    case SpriteItemglass:{
+                    case SpriteItemglass:
+                    case SpriteConfigwhip:{
                         struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
                         if(item_data->configured == 2){
                             pickup(ibspr);
@@ -145,6 +147,12 @@ void pickup(Sprite* s_arg_item) BANKED{
         break;
         case TIME:
             update_time_max();
+        break;
+        case GOLDEN_ELM:
+        case GOLDEN_WHEEL:
+        case GOLDEN_WHIP:
+        case GOLDEN_REINS:
+            pickup_config(item_data->itemtype);
         break;
     }    
     SpriteManagerRemoveSprite(s_arg_item);

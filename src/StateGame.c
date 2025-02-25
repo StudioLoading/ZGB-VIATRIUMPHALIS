@@ -41,6 +41,9 @@ UINT8 track_ended = 0u;
 INT8 track_ended_cooldown = ENDED_TRACK_COOLDOWN;
 UINT8 hud_initialized = 0u;
 INT8 mission_completed = 0;
+UINT16 pos_horse_x = 0;
+UINT16 pos_horse_y = 0;
+MirroMode mirror_horse = NO_MIRROR;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -72,25 +75,6 @@ extern INT8 onwater_countdown;
 
 
 void START() {
-	/* TO BE USED AS A GUIDE FOR MISSION'S STATES
-	UINT16 pos_horse_x = 56;
-	UINT16 pos_horse_y = 88;
-	scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
-	s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
-	s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
-	s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-	Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x + 48u, s_horse->y + 8u);
-	struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-	item_data->itemtype = GLADIO;
-    item_data->configured = 1;
-	//COMMON AND VARS
-		InitScroll(BANK(maprome00), &maprome00, coll_tiles, coll_surface);
-		//scroll_target = s_compass;
-		//INIT_FONT(font, PRINT_WIN);//test todo remove me serve solo per log
-		INIT_HUD(hudm);
-		SetWindowY(104);//su suggerimento di toxa, perché INIT_HUD non fa sta chiamata che dice serve...
-		start_common();
-	*/
 }
 
 void start_common() BANKED{
@@ -164,6 +148,7 @@ void update_euphoria() BANKED{
 }
 
 void update_compass() BANKED{
+	/* LOOK AT hudmbkup.gbm
 	INT8 using_cos = cos;
 	INT8 using_sin = sin;
 	if(cos < 0) {using_cos = -cos;}
@@ -218,9 +203,11 @@ void update_compass() BANKED{
 
 		}
 	}
+	*/
 }
 
 void update_turning() BANKED{
+	/* LOOK AT hudmbkup.gbm
 	if(hud_turn_cooldown > 0){
 		hud_turn_cooldown--;
 	}else{
@@ -230,6 +217,7 @@ void update_turning() BANKED{
 			case COUNTERCLOCK: UPDATE_HUD_TILE(3,2,75); UPDATE_HUD_TILE(3,3,76);break;	
 		}
 	}
+	*/
 }
 
 void update_hp_max() BANKED{
@@ -250,16 +238,16 @@ void update_hp(INT8 variation) BANKED{
 	INT8 idx_hp = 0;
 	if(hp_intero > 0){
 		while(idx_hp < hp_intero){
-			UPDATE_HUD_TILE(7+idx_hp,2,52);
+			UPDATE_HUD_TILE(3+idx_hp,2,52);
 			idx_hp++;
 		}
 	}
 	if(hp_resto > 0){
-		UPDATE_HUD_TILE(7+idx_hp,2,60-hp_resto);
+		UPDATE_HUD_TILE(3+idx_hp,2,60-hp_resto);
 		idx_hp++;
 	}
 	while(idx_hp < 2){
-		UPDATE_HUD_TILE(7+idx_hp,2, 60);
+		UPDATE_HUD_TILE(3+idx_hp,2, 60);
 		idx_hp++;
 	}
 }
@@ -332,10 +320,10 @@ void update_weapon() BANKED{
 			UPDATE_HUD_TILE(14,4,47);
 		break;
 		case CAPE:
-			UPDATE_HUD_TILE(13,3,78);
-			UPDATE_HUD_TILE(13,4,79);
-			UPDATE_HUD_TILE(14,3,80);
-			UPDATE_HUD_TILE(14,4,81);
+			UPDATE_HUD_TILE(13,3,63);
+			UPDATE_HUD_TILE(13,4,64);
+			UPDATE_HUD_TILE(14,3,65);
+			UPDATE_HUD_TILE(14,4,66);
 		break;
 	}
 }
@@ -412,11 +400,13 @@ void consume_weapon_def() BANKED{
 }
 
 INT8 is_track_ended() BANKED{// == is mission completed
+	INT8 result = 0;
 	switch(current_state){
 		case StateMission00rome:
-			return mission_completed;
+			result = mission_completed;
 		break;
 	}
+	return result;
 }
 
 void UPDATE() {

@@ -43,9 +43,9 @@ void START() {
     INIT_FONT(font, PRINT_BKG);
     worldmap_counter = WORLDMAP_COUNTDOWN_MAX;
     print_target = PRINT_BKG;
+    PRINT(14, 0, "CONFIG");
     switch(world_area_map){
         case 0:
-            PRINT(14, 0, "CONFIG");
             PRINT(4, 16, "ROMAN EMPIRE");
         break;
         case 1:
@@ -105,10 +105,8 @@ void UPDATE() {
             SetState(StateWorldmap);
         }
     }
-    if(world_area_map == 0){
-        if(KEY_TICKED(J_SELECT)){//vai alla schermata di configurazione
-            SetState(StateConfig);
-        }
+    if(KEY_TICKED(J_SELECT)){//vai alla schermata di configurazione
+        SetState(StateConfig);
     }
 }
 

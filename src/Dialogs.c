@@ -26,6 +26,20 @@ unsigned char EMPTY_STRING_14[15] = "              ";
 void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
     reset_dn();
     switch(arg_instruction){
+        case DESCRIPTION_GOLDEN_WHIP:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU FOUND THE ", 15);
+            memcpy(d3, "GOLDEN WHIP!  ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "YOUR STAMINA  ", 15);
+            memcpy(d6, "IMPULSE ARE   ", 15);
+            memcpy(d7, "INCREASED.    ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case MISSION00_INTRO:
             memcpy(d0, "FIRSTLY WE HA,", 15);
             memcpy(d1, "VE SOME COMMI,", 15);

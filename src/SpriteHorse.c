@@ -17,11 +17,12 @@
 #define EUPHORIA_MAX 660
 #define ONFIRE_COUNTDOWN_MAX 160
 #define WHIP_POWER 3
+#define GOLDEN_WHIP_POWER 8
 #define HUD_TURN_COOLDOWN_MAX 20
 
-const UINT8 a_horse_h[] = {8, 0,1,2,3,4,5,6,7};
-const UINT8 a_horse_hit[] = {15, 0,1,0,2,0,3,0,4,0,5,0,6,0,7,0};
-const UINT8 a_horse_h_idle[] = {1, 6};
+const UINT8 a_horse_h[] = {6, 0,1,3,4,6,7};
+const UINT8 a_horse_hit[] = {11, 0,1,0,3,0,4,0,6,0,7,0};
+const UINT8 a_horse_h_idle[] = {2, 2,5};
 //const UINT8 a_horse_h[] = {5, 0,1,2,3,4};
 
 INT8 velocity_counter = 2; //praticamente il frm_skip_max
@@ -30,6 +31,7 @@ INT8 vy = 0;
 INT8 vx = 0;
 INT8 frm_skip = 0;
 INT8 whip_power_over_stamina = WHIP_POWER;
+INT8 current_whip_power = WHIP_POWER;
 INT8 whip_counter = 0;
 INT8 whip_counter_max = 36;
 UINT16 euphoria_min = EUPHORIA_MIN;
@@ -56,6 +58,7 @@ extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
 extern UINT8 track_ended;
 extern MISSION_STEP current_step;
+extern struct CONFIGURATION configuration;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
@@ -73,6 +76,9 @@ void START() {
     onfire_countdown = -1;
     turn_samepressure_counter = 0;
     turn = 0;
+    if(configuration.whip == GOLDEN_WHIP){
+        current_whip_power = GOLDEN_WHIP_POWER;
+    }
 }
 
 void UPDATE() {
@@ -153,8 +159,8 @@ void UPDATE() {
             if(euphoria_max != EUPHORIA_MAX){
                 euphoria_max = EUPHORIA_MAX;
             }
-            if(whip_power_over_stamina != WHIP_POWER){//se entro qui, sto risistemando la whip ed è appena terminato l'onfire.
-                whip_power_over_stamina = WHIP_POWER;
+            if(whip_power_over_stamina != current_whip_power){//se entro qui, sto risistemando la whip ed è appena terminato l'onfire.
+                whip_power_over_stamina = current_whip_power;
                 stamina_current = (EUPHORIA_MIN - (EUPHORIA_MIN >> 3));
                 SpriteManagerRemoveSprite(s_flame);
             }
@@ -328,12 +334,12 @@ void UPDATE() {
                 }
             }
             //SPRITE ANIMATION SPEED animation speed
-                if(stamina_current < 60){
-                    SetSpriteAnim(THIS, a_horse_h_idle,4u);
+                if(stamina_current < 80){
+                    SetSpriteAnim(THIS, a_horse_h_idle, 8u);
                 }else{
-                    SetSpriteAnim(THIS, a_horse_h,4u);
+                    SetSpriteAnim(THIS, a_horse_h, 4u);
+                    THIS->anim_speed = stamina_current >> 5;
                 }
-                THIS->anim_speed = stamina_current >> 5;
         }
 
     //SPRITE MIRROR

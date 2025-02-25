@@ -70,7 +70,9 @@ void UPDATE(){
             scroll_step--;
             update_scroll();
         }
-        if(scroll_step == 0){SetState(prev_state);}
+        if(scroll_step == 0){
+            SetState(prev_state);
+        }
     }
        
 }

@@ -131,7 +131,6 @@ void UPDATE(){
             current_mission++;
             GetLocalizedDialog_EN(MISSION00_COMPLETED);
             SetState(StatePapyrus);
-            //SetState(StateTutorialList);
         }
     }
 }
