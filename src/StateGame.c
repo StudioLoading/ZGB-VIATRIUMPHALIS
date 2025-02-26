@@ -15,6 +15,7 @@
 #define PIXEL_STAMINA 96
 #define ENDED_TRACK_COOLDOWN 80
 #define DIE_COUNTER_MAX 80
+#define COUNTER_DANGER_MAX 60
 
 IMPORT_MAP(hudm);
 IMPORT_MAP(map);
@@ -49,6 +50,8 @@ MirroMode mirror_horse = NO_MIRROR;
 UINT8 turn_to_load = 0;
 INT8 flag_die = 0;
 INT8 die_counter = DIE_COUNTER_MAX;
+INT8 flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
+INT8 counter_danger = 0;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -65,6 +68,10 @@ void use_weapon(INT8 is_defence) BANKED;
 void start_common() BANKED;
 INT8 is_track_ended() BANKED;
 void die() BANKED;
+void calculate_danger(Sprite* s_danger) BANKED;
+void check_danger() BANKED;
+void show_danger() BANKED;
+
 
 extern UINT8 scroll_bottom_movement_limit;//= 100;
 
@@ -428,36 +435,97 @@ INT8 is_track_ended() BANKED{// == is mission completed
 	return result;
 }
 
+void calculate_danger(Sprite* s_danger) BANKED{
+	INT16 distance_x = s_danger->x - s_horse->x;
+	INT16 distance_y = s_danger->y - s_horse->y;
+	if(distance_y < 0){distance_y = -distance_y;}
+	if(distance_y > 32){ return;}
+	INT8 flag_danger = flag_danger_right | flag_danger_left | flag_danger_up | flag_danger_down;
+	if(flag_danger){return;}
+	if(distance_x > 120 && distance_x < 200){//s_danger più a dx di s_horse
+		flag_danger_right = 1;
+	}
+	if(distance_x > -200 && distance_x < -120){//s_danger più a sx di s_horse
+		flag_danger_left = 1;
+	}
+	/*
+	}else{
+		if(distance_y > 80){//s_danger più sotto di s_horse
+			flag_danger_down = 1;
+		}
+		if(distance_y < -80){//s_danger più sopra di s_horse
+			flag_danger_up = 1;
+		}
+	}
+		*/
+}
+
+void check_danger() BANKED{
+	INT8 flag_danger = flag_danger_right | flag_danger_left | flag_danger_up | flag_danger_down;
+	if(flag_danger && counter_danger == 0){
+		counter_danger = COUNTER_DANGER_MAX;
+		UPDATE_HUD_TILE(7,2,67);
+		UPDATE_HUD_TILE(8,2,68);
+		UPDATE_HUD_TILE(9,2,69);		
+	}
+}
+
+void show_danger() BANKED{
+	if(counter_danger > 0){
+		counter_danger--;
+		switch(counter_danger){
+			case 58:
+				if(flag_danger_right){
+					UPDATE_HUD_TILE(8,3,70);
+					UPDATE_HUD_TILE(9,3,1);
+					UPDATE_HUD_TILE(10,3,1);
+				}
+				if(flag_danger_left){
+					UPDATE_HUD_TILE(8,3,1);
+					UPDATE_HUD_TILE(9,3,1);
+					UPDATE_HUD_TILE(10,3,72);
+				}
+			break;
+			case 40:
+				if(flag_danger_right){
+					UPDATE_HUD_TILE(8,3,1);
+					UPDATE_HUD_TILE(9,3,70);
+					UPDATE_HUD_TILE(10,3,1);
+				}
+				if(flag_danger_left){
+					UPDATE_HUD_TILE(8,3,1);
+					UPDATE_HUD_TILE(9,3,72);
+					UPDATE_HUD_TILE(10,3,1);
+				}
+			break;
+			case 20:
+				if(flag_danger_right){
+					UPDATE_HUD_TILE(8,3,1);
+					UPDATE_HUD_TILE(9,3,1);
+					UPDATE_HUD_TILE(10,3,70);
+				}
+				if(flag_danger_left){
+					UPDATE_HUD_TILE(8,3,72);
+					UPDATE_HUD_TILE(9,3,1);
+					UPDATE_HUD_TILE(10,3,1);
+				}
+			break;
+		}
+		if(counter_danger <= 0){//azzera i flag
+			UPDATE_HUD_TILE(7,2,1);
+			UPDATE_HUD_TILE(8,2,1);
+			UPDATE_HUD_TILE(9,2,1);
+			UPDATE_HUD_TILE(8,3,1);
+			UPDATE_HUD_TILE(9,3,1);
+			UPDATE_HUD_TILE(10,3,1);
+			flag_danger_right = 0;
+			flag_danger_left = 0;
+			flag_danger_up = 0;
+			flag_danger_down = 0;
+		}
+	}
+}
+
 void UPDATE() {
-	//LIMIT MAP LEFT
-		if(s_horse->x < 40u){
-			s_horse->x = 40u;
-		}
-	//HUD
-		print_target = PRINT_WIN;
-	//UPDATE STAMINA
-		update_stamina();
-	//UPDATE COMPASS
-		update_compass();
-	//UPDATE TURNING
-		update_turning();
-	//UPDATE HP
-		//update_hp();
-	//UPDATE EUPHORIA?
-		if(euphoria_min_current != euphoria_min || euphoria_max_current != euphoria_max){
-			update_euphoria();
-		}
-	//UPDATE TIME
-		update_time();
-		time_current--;
-    //PRINT(0,0,"%i", stamina_current);
-    //PRINT(0,1,"EUPHORIA MIN %i", euphoria_min);
-    //PRINT(0,2,"EUPHORIA MAX %i", euphoria_max);
-    //PRINT(0,3,"COS %d", cos);
-    /*
-    if(sin > 99 || sin < -99){PRINT(0,3,"TURN %d", sin);}
-    else if(sin > 9 || sin < -9){PRINT(0,3,"TURN 0%d", sin);}
-    else if(sin > 0){PRINT(0,3,"TURN 00%d", sin);}
-    else if(sin < 0){PRINT(0,3,"TURN %d", sin);}
-    */
+
 }

@@ -56,11 +56,11 @@ void UPDATE() {
         if(sin < 0) {using_sin = -sin;}
         if(using_sin >= 0 && using_sin <= 30){//tratto come se stesse andando orizzontale
             SetSpriteAnim(THIS, a_compass_h, 24);
-        }else if(using_sin > 30 && using_sin < 54){// tratto come se stesse andando a 33 gradi
+        }else if(using_sin > 30 && using_sin < 65){// tratto come se stesse andando a 33 gradi
             SetSpriteAnim(THIS, a_compass_33, 24);
-        }else if(using_sin > 54 && using_sin < 78){// tratto come se stesse andando a 66 gradi
+        }else if(using_sin > 65 && using_sin < 110){// tratto come se stesse andando a 66 gradi
             SetSpriteAnim(THIS, a_compass_66, 24);
-        }else if(using_sin > 78){ // tratto come se stesse andando orizzontale destra
+        }else if(using_sin > 110){ // tratto come se stesse andando orizzontale destra
             SetSpriteAnim(THIS, a_compass_v, 24);
         }
         if(sin > 0 && cos > 0){

@@ -15,9 +15,10 @@ FUOCO       MANTELLO
 
 -------------------------------------------------------------------------------------
 
-- implementare la hit sui teschi, che poi userò per le altri che fanno danno
-- morte
-- animazione biga in buttonmap
+- mission01
+    codice di collisione coi romansoldier
+        ricomincio l'Area!
+
 - Normal Mode vs Hard Mode
     hard mode non avrà il tutorial iniziale;
     hard mode non avrà il compasso a schermo,

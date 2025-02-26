@@ -23,8 +23,8 @@ IMPORT_TILES(font);
 extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
-AREA current_area = AREA_ROME;
-MISSION current_mission = MISSIONROME00;
+AREA current_area = AREA_ROME;//AREA_ROME
+MISSION current_mission = MISSIONROME01;//MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -81,6 +81,7 @@ void UPDATE() {
         }else{
             switch(current_mission){
                 case MISSIONROME00:
+                case MISSIONROME01:
                     Anim_arearome_0();
                 break;
             }

@@ -9,14 +9,16 @@
 
 #include "custom_datas.h"
 
-const UINT8 a_roman_h[] = {4, 2,1,2,3};
-const UINT8 a_roman_d[] = {4, 5,6,5,4};
-const UINT8 a_roman_u[] = {4, 8,9,8,7};
+const UINT8 a_roman_h[] = {2, 1,2};
+const UINT8 a_roman_u[] = {2, 3,4};
 
 void START() {
     SetSpriteAnim(THIS, a_roman_h, 8u);
     THIS->lim_x = 1000;
     THIS->lim_y = 1000;
+    struct SoldierData* romansoldier_data = (struct SoldierData*) THIS->custom_data;
+    romansoldier_data->configured = 0;
+    romansoldier_data->frmskip = 0;
     if(_cpu != CGB_TYPE){
         OBP1_REG = PAL_DEF(0, 0, 1, 3);
         SPRITE_SET_PALETTE(THIS,1);
@@ -24,6 +26,48 @@ void START() {
 }
 
 void UPDATE() {
+    struct SoldierData* romansoldier_data = (struct SoldierData*) THIS->custom_data;
+    switch(romansoldier_data->configured){
+        case 0:
+            return;
+        break;
+        case 1://horizontal
+            SetSpriteAnim(THIS, a_roman_h, romansoldier_data->frmskip_max >> 1);
+            romansoldier_data->vx = 1;
+            romansoldier_data->configured = 3;
+            return;
+        break;
+        case 2://vertical
+            SetSpriteAnim(THIS, a_roman_h, romansoldier_data->frmskip_max >> 1);
+            romansoldier_data->vy = 1;
+            romansoldier_data->configured = 3;
+            return;
+        break;
+        case 3:
+            romansoldier_data->frmskip++;
+            if(romansoldier_data->frmskip >= romansoldier_data->frmskip_max){
+                romansoldier_data->frmskip = 0;
+            }
+        break;
+    }
+    if(romansoldier_data->frmskip > 0){return;}
+    UINT8 romansoldier_coll_t = TranslateSprite(THIS, romansoldier_data->vx << delta_time, romansoldier_data->vy << delta_time);
+    if(romansoldier_coll_t){
+        if(romansoldier_data->vx != 0){
+            romansoldier_data->vx = -romansoldier_data->vx;
+            THIS->mirror = NO_MIRROR;
+            if(romansoldier_data->vx < 0){
+                THIS->mirror = V_MIRROR;
+            }
+        }
+        if(romansoldier_data->vy != 0){
+            romansoldier_data->vy = -romansoldier_data->vy;
+            SetSpriteAnim(THIS, a_roman_h, romansoldier_data->frmskip_max >> 1);
+            if(romansoldier_data->vy < 0){
+                SetSpriteAnim(THIS, a_roman_u, romansoldier_data->frmskip_max >> 1);
+            }
+        }
+    }
 }
 
 void DESTROY() {

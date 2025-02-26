@@ -126,4 +126,12 @@ struct CONFIGURATION{
     ITEM_CONFIGURATION reins;
 };
 
+struct SoldierData{
+    INT8 vx;
+    INT8 vy;
+    UINT8 frmskip;
+    UINT8 frmskip_max;
+    INT8 configured;//0:unconfigured; 1:horizontal; 2:vertical
+};
+
 #endif

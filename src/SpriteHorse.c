@@ -233,19 +233,19 @@ void UPDATE() {
                 //33 gradi sono 42 valori nell'array
                 if(cos >= 0 && cos <= 30){//tratto come se stesse andando verticale
                     vx = 0;
-                }else if(cos > 30 && cos < 54){// tratto come se stesse andando a 66 gradi
+                }else if(cos > 30 && cos < 65){// tratto come se stesse andando a 66 gradi
                     vx = 1;
-                }else if(cos > 54 && cos < 78){// tratto come se stesse andando a 33 gradi
+                }else if(cos > 65 && cos < 110){// tratto come se stesse andando a 33 gradi
                     vx = 2;
-                }else if(cos > 78){ // tratto come se stesse andando orizzontale destra
+                }else if(cos > 110){ // tratto come se stesse andando orizzontale destra
                     vx = 3;
                 }else if(cos < 0 && cos > -30){//tratto come se stesse andando verticale
                     vx = 0;
-                }else if(cos < -30 && cos > -54){// tratto come se stesse andando a 66 gradi sinistra
+                }else if(cos < -30 && cos > -65){// tratto come se stesse andando a 66 gradi sinistra
                     vx = -1;
-                }else if(cos < -54 && cos > -78){// tratto come se stesse andando a 33 gradi sinistra
+                }else if(cos < -65 && cos > -110){// tratto come se stesse andando a 33 gradi sinistra
                     vx = -2;
-                }else if(cos < -78){ // tratto come se stesse andando orizzontale sinistra
+                }else if(cos < -110){ // tratto come se stesse andando orizzontale sinistra
                     vx = -3;
                 }
             //VY col seno
