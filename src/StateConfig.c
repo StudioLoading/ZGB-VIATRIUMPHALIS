@@ -45,8 +45,9 @@ extern Sprite* s_horse;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
 extern MirroMode mirror_horse;
-extern UINT8 prev_state;
 extern MISSION_STEP current_step;
+extern UINT8 turn_to_load;
+extern UINT8 turn;
 
 void START(){
     InitScroll(BANK(configmap), &configmap, 0, 0);
@@ -176,6 +177,7 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
     pos_horse_x = s_horse->x;
     pos_horse_y = s_horse->y;
     mirror_horse = s_horse->mirror;
+    turn_to_load = turn;
     flag_golden_found = 1;
     switch(arg_pickedup){
         case GOLDEN_WHIP:

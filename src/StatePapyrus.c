@@ -195,19 +195,19 @@ void update_scroll() BANKED{
     switch(scroll_step){
         case 6:
             PRINT(3,2, d0);
-            PRINT(3,14, d11);
+            PRINT(3,14, d12);
         break;
         case 5:
             PRINT(3,3, d1);
-            PRINT(3,13, d10);
+            PRINT(3,13, d11);
         break;
         case 4:
             PRINT(3,4, d2);
-            PRINT(3,12, d9);
+            PRINT(3,12, d10);
         break;
         case 3:
             PRINT(3,5, d3);
-            PRINT(3,11, d8);
+            PRINT(3,11, d9);
         break;
         case 2:
             PRINT(3,6, d4);

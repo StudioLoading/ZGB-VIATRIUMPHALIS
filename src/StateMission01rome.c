@@ -43,6 +43,8 @@ extern UINT8 turn;
 extern UINT8 prev_state;
 extern INT8 mission_completed;
 extern MISSION current_mission;
+extern UINT8 turn_to_load;
+extern UINT8 turn;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -109,6 +111,7 @@ void UPDATE(){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
             prev_state = StateMission00rome;
+            turn_to_load = turn;
             GetLocalizedDialog_EN(MISSION00_SECRET_MESSAGE);
             SetState(StatePapyrus);
         }

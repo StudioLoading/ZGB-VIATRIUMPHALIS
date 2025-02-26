@@ -19,10 +19,12 @@
 #define WHIP_POWER 3
 #define GOLDEN_WHIP_POWER 8
 #define HUD_TURN_COOLDOWN_MAX 20
+#define COUNTER_HIT_MAX 80
 
-const UINT8 a_horse_h[] = {6, 0,1,3,4,6,7};
-const UINT8 a_horse_hit[] = {11, 0,1,0,3,0,4,0,6,0,7,0};
+const UINT8 a_horse_h[] = {6, 8,1,3,4,6,7};
+const UINT8 a_horse_hit[] = {13, 0,8,0,1,0,3,0,4,0,6,0,7,0};
 const UINT8 a_horse_h_idle[] = {2, 2,5};
+const UINT8 a_horse_h_idle_hit[] = {4, 0,2,0,5};
 //const UINT8 a_horse_h[] = {5, 0,1,2,3,4};
 
 INT8 velocity_counter = 2; //praticamente il frm_skip_max
@@ -51,6 +53,12 @@ UINT8 orme_spawned = 0u;
 INT16 onfire_countdown = -1;//-1 normale, 0 è onfire su acqua, >0 onfire
 Sprite* s_flame = 0;
 INT8 onwater_countdown = -1;
+INT8 flag_hit = 0;
+INT8 counter_hit = 0;
+
+
+void horse_hit(INT8 arg_damage) BANKED;
+
 
 extern UINT8 J_WHIP;
 extern INT8 hud_turn_cooldown;
@@ -59,6 +67,7 @@ extern ITEM_TYPE weapon_def;
 extern UINT8 track_ended;
 extern MISSION_STEP current_step;
 extern struct CONFIGURATION configuration;
+extern UINT8 turn_to_load;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
@@ -75,13 +84,22 @@ void START() {
     THIS->lim_y = 500;
     onfire_countdown = -1;
     turn_samepressure_counter = 0;
-    turn = 0;
+    turn = turn_to_load;
+    flag_hit = 0;
+    counter_hit = COUNTER_HIT_MAX;
     if(configuration.whip == GOLDEN_WHIP){
         current_whip_power = GOLDEN_WHIP_POWER;
     }
 }
 
 void UPDATE() {
+    //HIT COUNTER & FLAG
+        if(flag_hit == 1){
+            counter_hit--;
+            if(counter_hit <= 0){
+                flag_hit = 0;
+            }
+        }
     //IF TRACK ENDED, GO ON UNTILL THE END OF THE SCREEN
         if(track_ended == 1u){
             THIS->x += vx;
@@ -325,6 +343,7 @@ void UPDATE() {
                         if(stamina_current > 100){
                             stamina_current-=30;
                         }
+                        horse_hit(-4);
                     break;
                     default:
                         if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo
@@ -335,10 +354,19 @@ void UPDATE() {
             }
             //SPRITE ANIMATION SPEED animation speed
                 if(stamina_current < 80){
-                    SetSpriteAnim(THIS, a_horse_h_idle, 8u);
+                    if(flag_hit == 1){
+                        SetSpriteAnim(THIS, a_horse_hit, 24u);
+                    }else{
+                        SetSpriteAnim(THIS, a_horse_h_idle, 8u);
+                        THIS->anim_speed = stamina_current >> 5;
+                    }
                 }else{
-                    SetSpriteAnim(THIS, a_horse_h, 4u);
-                    THIS->anim_speed = stamina_current >> 5;
+                    if(flag_hit == 1){
+                        SetSpriteAnim(THIS, a_horse_h_idle_hit, 24);
+                    }else{
+                        SetSpriteAnim(THIS, a_horse_h, 4u);
+                        THIS->anim_speed = stamina_current >> 5;
+                    }
                 }
         }
 
@@ -383,6 +411,14 @@ void UPDATE() {
                 }
             }
         }
+}
+
+void horse_hit(INT8 arg_damage) BANKED{
+    if(flag_hit == 0){
+        update_hp(arg_damage);
+        flag_hit = 1;
+        counter_hit = COUNTER_HIT_MAX;
+    }
 }
 
 void DESTROY() {

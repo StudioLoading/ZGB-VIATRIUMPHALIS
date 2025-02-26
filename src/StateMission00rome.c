@@ -47,6 +47,10 @@ extern MISSION current_mission;
 extern struct CONFIGURATION configuration;
 extern INT8 flag_golden_found;
 extern MirroMode mirror_horse;
+extern UINT8 turn_to_load;
+extern UINT8 turn;
+extern INT8 flag_die;
+extern INT8 die_counter;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -55,6 +59,7 @@ extern void update_turning() BANKED;
 extern void update_euphoria() BANKED;
 extern void update_time() BANKED;
 extern void update_hp(INT8 variation) BANKED;
+extern void die() BANKED;
 
 void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
@@ -96,6 +101,15 @@ void START(){
 }
 
 void UPDATE(){
+    //DIEING
+        if(flag_die == 1){
+            die_counter--;
+            if(die_counter <= 0){
+                flag_die = 0;
+                die();
+            }
+            return;
+        }
     //LIMIT MAP LEFT
         if(s_horse->x < 40u){
             s_horse->x = 40u;
@@ -124,6 +138,7 @@ void UPDATE(){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
             prev_state = StateMission00rome;
+            turn_to_load = turn;
             GetLocalizedDialog_EN(MISSION00_SECRET_MESSAGE);
             SetState(StatePapyrus);
         }

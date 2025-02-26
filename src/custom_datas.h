@@ -87,6 +87,7 @@ typedef enum{
     MISSION00_SECRET_MESSAGE,
     MISSION00_COMPLETED,
     MISSION01_INTRO,
+    DEAD
 }INSTRUCTION;
 
 typedef enum{

@@ -10,9 +10,11 @@
 #include "Print.h"
 
 #include "custom_datas.h"
+#include "Dialogs.h"
 
 #define PIXEL_STAMINA 96
 #define ENDED_TRACK_COOLDOWN 80
+#define DIE_COUNTER_MAX 80
 
 IMPORT_MAP(hudm);
 IMPORT_MAP(map);
@@ -44,6 +46,9 @@ INT8 mission_completed = 0;
 UINT16 pos_horse_x = 0;
 UINT16 pos_horse_y = 0;
 MirroMode mirror_horse = NO_MIRROR;
+UINT8 turn_to_load = 0;
+INT8 flag_die = 0;
+INT8 die_counter = DIE_COUNTER_MAX;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -59,6 +64,7 @@ void consume_weapon_atk() BANKED;
 void use_weapon(INT8 is_defence) BANKED;
 void start_common() BANKED;
 INT8 is_track_ended() BANKED;
+void die() BANKED;
 
 extern UINT8 scroll_bottom_movement_limit;//= 100;
 
@@ -72,6 +78,9 @@ extern INT8 sin;
 extern INT8 cos;
 extern TURNING_VERSE turn_verse;
 extern INT8 onwater_countdown;
+extern MISSION_STEP current_step;
+extern MISSION current_mission;
+extern UINT8 prev_state;
 
 
 void START() {
@@ -228,7 +237,8 @@ void update_hp_max() BANKED{
 void update_hp(INT8 variation) BANKED{
 	hp_current += variation;
 	if(hp_current <= 0){
-		//die();
+		flag_die = 1;
+		die_counter = DIE_COUNTER_MAX;
 		//return;
 	}else if(hp_current > 16){
 		hp_current = 16;
@@ -250,6 +260,15 @@ void update_hp(INT8 variation) BANKED{
 		UPDATE_HUD_TILE(3+idx_hp,2, 60);
 		idx_hp++;
 	}
+}
+
+void die() BANKED{
+	switch(current_mission){
+		case MISSIONROME00: current_step = LOOKING_FOR_SENATOR; break;
+	}
+	prev_state = StateWorldmap;
+	GetLocalizedDialog_EN(DEAD);
+	SetState(StatePapyrus);
 }
 
 void update_time() BANKED{

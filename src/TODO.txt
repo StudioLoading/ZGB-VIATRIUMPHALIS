@@ -4,23 +4,29 @@ ogni tappa devi arrivare in un punto facendo cose.
 il percorso ha una partenza e un arrivo e non è a circuito.
 
 AMBIENTALI
-FIAMMA      (massimizza stamina)
+FIAMMA      (massimizza stamina + hit graduale)
 POZZA       (da botte di -stamina ogni secondo)
-TESCHIO     (diminuisce stamina)
+TESCHIO     (diminuisce stamina + hit singola)
 
 A CONSUMO
 GLADIO      SCUDO
 LANCIA      ELMO
 FUOCO       MANTELLO
 
-- potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
+-------------------------------------------------------------------------------------
 
+- implementare la hit sui teschi, che poi userò per le altri che fanno danno
+- morte
+- animazione biga in buttonmap
 - Normal Mode vs Hard Mode
     hard mode non avrà il tutorial iniziale;
     hard mode non avrà il compasso a schermo,
         oppure ce lo avrà ma servirà per puntare all'obiettivo, non indicherà la direzione di movimento,
         oppure non ce lo avrà e avrà una freccettina, a scomparsa, togliendola dalla status bar;
 - Deserto: multimappa a labirinto
+- potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
+
+-------------------------------------------------------------------------------------
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)
 "Consegna un messaggio segreto al senato" 
@@ -56,6 +62,7 @@ Deserto (oasi, dune, accampamenti nomadi)
 Egitto (piramidi, fiumi, templi)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
 "Sconfiggi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli!)
+-------------------------------------------------------------------------------------
 
 
 PNG2MAP

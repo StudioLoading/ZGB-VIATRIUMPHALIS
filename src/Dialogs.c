@@ -90,6 +90,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, "CE DODGING THE", 15);
             memcpy(d11, "GUARDS.      ", 15);
         break;
+        case DEAD:
+            memcpy(d0, "I WONDER IF I ", 15);
+            memcpy(d1, "DID A GOOD    ", 15);
+            memcpy(d2, "CHOICE IN CHO,", 15);
+            memcpy(d3, "OSING YOU AS  ", 15);
+            memcpy(d4, "THE NEW EMPIRE", 15);
+            memcpy(d5, "SECRET AGENT. ", 15);
+            memcpy(d6, EMPTY_STRING_14, 15);
+            memcpy(d7, EMPTY_STRING_14, 15);
+            memcpy(d8, "YOU WOULD BET,", 15);
+            memcpy(d9, "TER GO BACK   ", 15);
+            memcpy(d10, "AND HEAL.    ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
     }
 
 }
