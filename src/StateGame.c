@@ -52,6 +52,7 @@ INT8 flag_die = 0;
 INT8 die_counter = DIE_COUNTER_MAX;
 INT8 flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
 INT8 counter_danger = 0;
+INT8 flag_exclamation = 0;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -66,12 +67,11 @@ void consume_weapon_def() BANKED;
 void consume_weapon_atk() BANKED;
 void use_weapon(INT8 is_defence) BANKED;
 void start_common() BANKED;
+void update_common() BANKED;
 INT8 is_track_ended() BANKED;
-void die() BANKED;
 void calculate_danger(Sprite* s_danger) BANKED;
 void check_danger() BANKED;
 void show_danger() BANKED;
-
 
 extern UINT8 scroll_bottom_movement_limit;//= 100;
 
@@ -88,13 +88,17 @@ extern INT8 onwater_countdown;
 extern MISSION_STEP current_step;
 extern MISSION current_mission;
 extern UINT8 prev_state;
+extern UINT8 turn_to_load;
+extern UINT8 turn;
+
+extern void die() BANKED;
 
 
 void START() {
 }
 
 void start_common() BANKED{
-	scroll_bottom_movement_limit= 40;
+	scroll_bottom_movement_limit = 40;
 	euphoria_min_current = euphoria_min;
 	euphoria_max_current = euphoria_max;
 	hud_turn_cooldown = 0;
@@ -106,6 +110,12 @@ void start_common() BANKED{
 	turn_verse = NONE;
 	hud_initialized = 0u;
 	onwater_countdown = -1;
+	flag_exclamation = 0;
+	flag_die = 0;
+	counter_danger = 0;
+	flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
+	s_horse->mirror = mirror_horse;
+    turn = turn_to_load;
 }
 
 void update_stamina() BANKED{
@@ -269,15 +279,6 @@ void update_hp(INT8 variation) BANKED{
 	}
 }
 
-void die() BANKED{
-	switch(current_mission){
-		case MISSIONROME00: current_step = LOOKING_FOR_SENATOR; break;
-	}
-	prev_state = StateWorldmap;
-	GetLocalizedDialog_EN(DEAD);
-	SetState(StatePapyrus);
-}
-
 void update_time() BANKED{
 	INT16 time_hud = time_current / time_factor;
 	INT16 time_intero = time_hud / 8;
@@ -431,6 +432,12 @@ INT8 is_track_ended() BANKED{// == is mission completed
 		case StateMission00rome:
 			result = mission_completed;
 		break;
+		case StateMission01rome:
+			result = mission_completed;
+		break;
+		case StateMission02rome:
+			result = mission_completed;
+		break;
 	}
 	return result;
 }
@@ -525,6 +532,32 @@ void show_danger() BANKED{
 		}
 	}
 }
+
+void update_common() BANKED{
+    //DIEING
+        if(flag_die == 1){
+            die_counter--;
+            if(die_counter <= 0){
+                flag_die = 0;
+                die();
+            }
+            return;
+        }
+	//HUD
+		if(hud_initialized == 0){
+			update_hp(0);
+			hud_initialized = 1u;
+		}
+	//UPDATE STAMINA
+		update_stamina();
+	//UPDATE TURNING
+		update_turning();
+	//UPDATE EUPHORIA?
+		if(euphoria_min_current != euphoria_min || euphoria_max_current != euphoria_max){
+			update_euphoria();
+		}
+}
+
 
 void UPDATE() {
 

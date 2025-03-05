@@ -71,7 +71,7 @@ extern void update_euphoria() BANKED;
 extern void update_time() BANKED;
 extern void update_hp(INT8 variation) BANKED;
 extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
-
+extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START() {
     fantoccio_hit = 0;
@@ -163,10 +163,7 @@ void START() {
             break;
             case TUTORIAL_STAGE_8_GLADIO:{
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 256u, s_horse->y + 8u);
-                Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x + 64u, s_horse->y + 4u);
-                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-                item_data->itemtype = GLADIO;
-                item_data->configured = 1;
+                item_spawn(GLADIO, s_horse->x + 64u, s_horse->y + 4u);
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
                 update_hp(0); 
             }break;
@@ -174,10 +171,7 @@ void START() {
                 velocity = -1;
                 turn = 127;
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x - 400u, s_horse->y - 12u);
-                Sprite* s_item = SpriteManagerAdd(SpriteItemgladio, s_horse->x - 128u, s_horse->y + 4u);
-                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-                item_data->itemtype = GLADIO;
-                item_data->configured = 1;
+                item_spawn(GLADIO, s_horse->x - 128u, s_horse->y + 4u);
 		        InitScroll(BANK(maptut05straight), &maptut05straight, coll_rome_tiles, coll_rome_surface);
                 update_hp(0); 
             }break;

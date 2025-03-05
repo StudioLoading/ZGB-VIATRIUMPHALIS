@@ -95,6 +95,47 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case MISSION01_COMPLETED:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU COMPLETED ", 15);
+            memcpy(d3, "YOUR SECOND   ", 15);
+            memcpy(d4, "MISSION!      ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "WAIT FOR THE  ", 15);
+            memcpy(d7, "NIGHT TO COME ", 15);
+            memcpy(d8, "THEN MOVE NOR,", 15);
+            memcpy(d9, "TH. BEWARE THE", 15);
+            memcpy(d10, "BANDITS.     ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION02_INTRO:
+            memcpy(d1, "WE HAVE A SPY ", 15);
+            memcpy(d2, "PLAYING AGAIN,", 15);
+            memcpy(d3, "ST US! RUN OFF", 15);
+            memcpy(d4, "TO A SAFE PLA,", 15);
+            memcpy(d5, "CE.           ", 15);
+            memcpy(d6, EMPTY_STRING_14, 15);
+            memcpy(d7, "DON'T GET CAU,", 15);
+            memcpy(d8, "GHT BY THE GU,", 15);
+            memcpy(d9, "ARDS!         ", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION02_COMPLETED:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU COMPLETED ", 15);
+            memcpy(d3, "YOUR SECOND   ", 15);
+            memcpy(d4, "MISSION!      ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "WAIT FOR THE  ", 15);
+            memcpy(d7, "NIGHT TO COME ", 15);
+            memcpy(d8, "THEN MOVE NOR,", 15);
+            memcpy(d9, "TH. BEWARE THE", 15);
+            memcpy(d10, "BANDITS.     ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);

@@ -24,7 +24,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;//AREA_ROME
-MISSION current_mission = MISSIONROME01;//MISSIONROME00
+MISSION current_mission = MISSIONROME02;//MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -56,6 +56,9 @@ void START() {
                 case MISSIONROME01: 
                     PRINT(4, 15, "RUN TO SAFETY");
                 break;
+                case MISSIONROME02: 
+                    PRINT(4, 15, "    SURVIVE   ");
+                break;
             }
         break;
     }
@@ -71,6 +74,7 @@ void UPDATE() {
             switch(current_mission){
                 case MISSIONROME00:
                 case MISSIONROME01:
+                case MISSIONROME02:
                     Anim_arearome_1();
                 break;
             }
@@ -82,6 +86,7 @@ void UPDATE() {
             switch(current_mission){
                 case MISSIONROME00:
                 case MISSIONROME01:
+                case MISSIONROME02:
                     Anim_arearome_0();
                 break;
             }
@@ -99,6 +104,10 @@ void UPDATE() {
                 case MISSIONROME01:
                     prev_state = StateMission01rome;//perché StatePapyrus va poi in prev_state
                     GetLocalizedDialog_EN(MISSION01_INTRO);
+                break;
+                case MISSIONROME02:
+                    prev_state = StateMission02rome;//perché StatePapyrus va poi in prev_state
+                    GetLocalizedDialog_EN(MISSION02_INTRO);
                 break;
             }
             SetState(StatePapyrus);

@@ -9,7 +9,7 @@
 
 #include "custom_datas.h"
 
-#define DISTANCE_X_POSITIVE 24
+#define DISTANCE_X_POSITIVE 22
 #define DISTANCE_X_NEGATIVE 28
 #define DELTA_DISTANCE_MAX 12
 

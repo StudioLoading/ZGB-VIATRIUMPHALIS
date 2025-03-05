@@ -84,7 +84,6 @@ void START() {
     THIS->lim_y = 500;
     onfire_countdown = -1;
     turn_samepressure_counter = 0;
-    turn = turn_to_load;
     flag_hit = 0;
     counter_hit = COUNTER_HIT_MAX;
     if(configuration.whip == GOLDEN_WHIP){
@@ -103,7 +102,6 @@ void UPDATE() {
     //IF TRACK ENDED, GO ON UNTILL THE END OF THE SCREEN
         if(track_ended == 1u){
             THIS->x += vx;
-            THIS->y += vy;
             return;
         }
     //ON WATER TO ZERO
@@ -149,6 +147,9 @@ void UPDATE() {
         }
         if(delta_stamina_euphoria > 32){
             velocity_counter = delta_stamina_euphoria >> 4;
+            if(delta_stamina_euphoria > (euphoria_max - 10) && delta_stamina_euphoria <= euphoria_max){
+                velocity_counter = 0;//cioè vai a cannone
+            }
         }else{
             velocity_counter = 2;
         }        
@@ -222,7 +223,7 @@ void UPDATE() {
         cos = sine_wave[cos_idx];
 
     //ACTUAL MOVEMENT & COLLISION & OVER  
-        frm_skip--;
+        if(frm_skip > 0){frm_skip--;}
         if(frm_skip == 0){
             frm_skip = velocity_counter;
             //VX col coseno
@@ -269,89 +270,88 @@ void UPDATE() {
 
             UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
-            if(horse_coll){//collido con tile ambiente di collisione
-                if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
-                    if(current_state == StateTutorialGame){
-                        track_ended = 1u;
-                    }else{
+                if(horse_coll){//collido con tile ambiente di collisione
+                    if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
                         track_ended = is_track_ended();
-                    }
-                }else{
-                    past_coll_tile = horse_coll;
-                    INT8 vxbounce = vx * (-1); 
-                    INT8 vybounce = vy * (-1);
-                    if(vx < 2){
-                        TranslateSprite(THIS, vxbounce << delta_time, 0);
+                        if(current_state == StateTutorialGame){
+                            track_ended = 1u;
+                        }
                     }else{
-                        TranslateSprite(THIS, 0, vybounce << delta_time);
+                        past_coll_tile = horse_coll;
+                        INT8 vxbounce = vx * (-1); 
+                        INT8 vybounce = vy * (-1);
+                        if(vx < 2){
+                            TranslateSprite(THIS, vxbounce << delta_time, 0);
+                        }else{
+                            TranslateSprite(THIS, 0, vybounce << delta_time);
+                        }
+                    }
+                }else{//non collido, cerco cosa sto calpestando
+                    UINT8 tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
+                    if(vx < 0){
+                        tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
+                    }
+                    switch(tile_over){
+                        case 3: //ghiaia: incrementa il frameskip
+                        //case 2: case 4: case 5: case 6: 
+                            if(onfire_countdown == -1){//non sta impazzendo
+                                frm_skip+=4;
+                            }
+                            if(THIS->anim_frame == 1 || THIS->anim_frame == 5){
+                                if(orme_spawned == 0){
+                                    UINT16 orma_posy = THIS->y-9;
+                                    orme_spawned = 1;
+                                    if(vx > 0){
+                                        SpriteManagerAdd(SpriteStep, THIS->x - 2, orma_posy);
+                                        SpriteManagerAdd(SpriteStep, THIS->x + 8, orma_posy);
+                                    }else if(vx < 0){
+                                        SpriteManagerAdd(SpriteStep, THIS->x, orma_posy);
+                                        SpriteManagerAdd(SpriteStep, THIS->x + 8, orma_posy);
+                                    }
+                                }
+                            }else{orme_spawned = 0;}
+                        break;
+                        case 8: case 9: case 10:
+                        case 11: case 12: case 13: //acqua: simula pantano limitando stamina
+                            onwater_countdown = 80;
+                            if(onfire_countdown > 0){//sono onfire!
+                                onfire_countdown = 0;
+                            }else if(onfire_countdown == -1){
+                                if(stamina_current > (euphoria_min >> 1)){
+                                    stamina_current = (euphoria_min >> 1);
+                                }
+                            }                        
+                            if(THIS->anim_frame == 0 || THIS->anim_frame == 2 || THIS->anim_frame == 4){
+                                if(orme_spawned == 0){
+                                    orme_spawned = 1;
+                                    UINT16 orma0_posx = THIS->x - 2;
+                                    UINT16 orma_posy = THIS->y-9;
+                                    UINT16 orma1_posx = THIS->x + 8;
+                                    if(vx <= 0){
+                                        orma0_posx = THIS->x;
+                                    }
+                                    Sprite* s_orma0 = SpriteManagerAdd(SpriteStep, orma0_posx, orma_posy);
+                                    struct ItemData* orma0_data = (struct ItemData*)s_orma0->custom_data;
+                                    orma0_data->configured = 1;
+                                    Sprite* s_orma1 = SpriteManagerAdd(SpriteStep, orma1_posx, orma_posy);
+                                    struct ItemData* orma1_data = (struct ItemData*) s_orma1->custom_data;
+                                    orma1_data->configured = 1;
+                                }
+                            }else{orme_spawned = 0;}
+                        break;
+                        case 122: case 123: case 124: case 125: //teschio!
+                            if(stamina_current > 100){
+                                stamina_current-=30;
+                            }
+                            horse_hit(-4);
+                        break;
+                        default:
+                            if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo
+                                onfire_countdown = -1;
+                            }
+                        break;
                     }
                 }
-            }else{//non collido, cerco cosa sto calpestando
-                UINT8 tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
-                if(vx < 0){
-                    tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
-                }
-                switch(tile_over){
-                    case 3: //ghiaia: incrementa il frameskip
-                    //case 2: case 4: case 5: case 6: 
-                        if(onfire_countdown == -1){//non sta impazzendo
-                            frm_skip+=4;
-                        }
-                        if(THIS->anim_frame == 1 || THIS->anim_frame == 5){
-                            if(orme_spawned == 0){
-                                UINT16 orma_posy = THIS->y-9;
-                                orme_spawned = 1;
-                                if(vx > 0){
-                                    SpriteManagerAdd(SpriteStep, THIS->x - 2, orma_posy);
-                                    SpriteManagerAdd(SpriteStep, THIS->x + 8, orma_posy);
-                                }else if(vx < 0){
-                                    SpriteManagerAdd(SpriteStep, THIS->x, orma_posy);
-                                    SpriteManagerAdd(SpriteStep, THIS->x + 8, orma_posy);
-                                }
-                            }
-                        }else{orme_spawned = 0;}
-                    break;
-                    case 8: case 9: case 10:
-                    case 11: case 12: case 13: //acqua: simula pantano limitando stamina
-                        onwater_countdown = 80;
-                        if(onfire_countdown > 0){//sono onfire!
-                            onfire_countdown = 0;
-                        }else if(onfire_countdown == -1){
-                            if(stamina_current > (euphoria_min >> 1)){
-                                stamina_current = (euphoria_min >> 1);
-                            }
-                        }                        
-                        if(THIS->anim_frame == 0 || THIS->anim_frame == 2 || THIS->anim_frame == 4){
-                            if(orme_spawned == 0){
-                                orme_spawned = 1;
-                                UINT16 orma0_posx = THIS->x - 2;
-                                UINT16 orma_posy = THIS->y-9;
-                                UINT16 orma1_posx = THIS->x + 8;
-                                if(vx <= 0){
-                                    orma0_posx = THIS->x;
-                                }
-                                Sprite* s_orma0 = SpriteManagerAdd(SpriteStep, orma0_posx, orma_posy);
-                                struct ItemData* orma0_data = (struct ItemData*)s_orma0->custom_data;
-                                orma0_data->configured = 1;
-                                Sprite* s_orma1 = SpriteManagerAdd(SpriteStep, orma1_posx, orma_posy);
-                                struct ItemData* orma1_data = (struct ItemData*) s_orma1->custom_data;
-                                orma1_data->configured = 1;
-                            }
-                        }else{orme_spawned = 0;}
-                    break;
-                    case 122: case 123: case 124: case 125: //teschio!
-                        if(stamina_current > 100){
-                            stamina_current-=30;
-                        }
-                        horse_hit(-4);
-                    break;
-                    default:
-                        if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo
-                            onfire_countdown = -1;
-                        }
-                    break;
-                }
-            }
             //SPRITE ANIMATION SPEED animation speed
                 if(stamina_current < 80){
                     if(flag_hit == 1){
@@ -407,6 +407,18 @@ void UPDATE() {
                     }break;
                     case SpriteRomansenator:
                         current_step = SENATOR_COLLIDED;
+                    break;
+                    case SpriteRomansoldier:
+                        {
+                            struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
+                            if(soldier_data->configured < 4 && flag_hit == 0){
+                                horse_hit(-16);
+                                SpriteManagerAdd(SpriteExclamation, iospr->x + 4, iospr->y - 16u);
+                                soldier_data->vx = 0;
+                                soldier_data->vy = 0;
+                                iospr->anim_speed = 32u;
+                            }
+                        }
                     break;
                 }
             }

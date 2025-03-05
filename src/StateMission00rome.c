@@ -28,18 +28,8 @@ MISSION_STEP current_step = LOOKING_FOR_SENATOR;
 extern Sprite* s_biga;
 extern Sprite* s_horse;
 extern Sprite* s_compass;
-extern UINT16 euphoria_min_current;
-extern UINT16 euphoria_max_current;
-extern UINT16 euphoria_min;
-extern UINT16 euphoria_max;
-extern INT16 time_current; 
-extern INT16 timemax_current;
-extern INT16 time_factor;
 extern UINT8 track_ended;
 extern INT8 track_ended_cooldown;
-extern UINT8 hud_initialized;
-extern INT8 onwater_countdown; 
-extern INT8 velocity;
 extern UINT8 turn;
 extern UINT8 prev_state;
 extern INT8 mission_completed;
@@ -49,17 +39,9 @@ extern INT8 flag_golden_found;
 extern MirroMode mirror_horse;
 extern UINT8 turn_to_load;
 extern UINT8 turn;
-extern INT8 flag_die;
-extern INT8 die_counter;
 
 extern void start_common() BANKED;
-extern void update_stamina() BANKED;
-extern void update_compass() BANKED;
-extern void update_turning() BANKED;
-extern void update_euphoria() BANKED;
-extern void update_time() BANKED;
-extern void update_hp(INT8 variation) BANKED;
-extern void die() BANKED;
+extern void update_common() BANKED;
 
 void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
@@ -69,15 +51,14 @@ void START(){
         pos_horse_y = (UINT16) 7u << 3;
         mirror_horse = NO_MIRROR;
     }
+    mission_iscrono = 0;        
     //SPRITES
         scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
-        s_horse->mirror = mirror_horse;
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
         if(current_step == LOOKING_FOR_SENATOR){
             s_senator = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 60u) << 3, ((UINT16) 43u) << 3);
-            mission_iscrono = 0;
             mission_completed = 0;
         }else{
             SpriteManagerRemoveSprite(s_senator);
@@ -94,22 +75,14 @@ void START(){
 
     //COMMONS & START
         InitScroll(BANK(mapmission00), &mapmission00, coll_m00_tiles, coll_m00_surface);
-        update_hp(16); 
 		INIT_HUD(hudm);
 		SetWindowY(104);
         start_common();
 }
 
 void UPDATE(){
-    //DIEING
-        if(flag_die == 1){
-            die_counter--;
-            if(die_counter <= 0){
-                flag_die = 0;
-                die();
-            }
-            return;
-        }
+    //COMMON UPDATE
+        update_common();
     //LIMIT MAP LEFT
         if(s_horse->x < 40u){
             s_horse->x = 40u;
@@ -119,20 +92,7 @@ void UPDATE(){
                 s_horse->x = ((UINT16) 200u << 3);
             }
         }
-    //HUD
-		print_target = PRINT_WIN;
-        if(hud_initialized == 0){
-            update_hp(0);
-            hud_initialized = 1u;
-        }
-    //UPDATE STAMINA
-		update_stamina();
-    //UPDATE TURNING
-		update_turning();
-    //UPDATE EUPHORIA?
-		if(euphoria_min_current != euphoria_min || euphoria_max_current != euphoria_max){
-			update_euphoria();
-		}
+    
     //MISSION STEP
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
@@ -143,24 +103,25 @@ void UPDATE(){
             SetState(StatePapyrus);
         }
     //IS MISSION COMPLETED?
-    if(mission_completed == 1u && track_ended == 1){
-        track_ended_cooldown--;
-        if(track_ended_cooldown <= 0){//cambia stato
-            INT8 can_go_on = 1;
-            /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                if(fantoccio_hit == 0){
-                    can_go_on = 0;
+        if(mission_completed && track_ended){
+            track_ended_cooldown--;
+            if(track_ended_cooldown <= 0){//cambia stato
+                INT8 can_go_on = 1;
+                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
+                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
+                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
+                    if(fantoccio_hit == 0){
+                        can_go_on = 0;
+                    }
+                }*/
+                if(can_go_on == 1){
+                    //tutorial_state++;
                 }
-            }*/
-            if(can_go_on == 1){
-                //tutorial_state++;
+                prev_state = StateWorldmap;
+                turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
+                current_mission++;
+                GetLocalizedDialog_EN(MISSION00_COMPLETED);
+                SetState(StatePapyrus);
             }
-            prev_state = StateWorldmap;
-            current_mission++;
-            GetLocalizedDialog_EN(MISSION00_COMPLETED);
-            SetState(StatePapyrus);
         }
-    }
 }

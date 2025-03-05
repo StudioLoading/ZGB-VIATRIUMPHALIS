@@ -23,7 +23,9 @@
 			"string.h": "c",
 			"bankmanager.h": "c",
 			"utilanim.h": "c",
-			"dialogs.h": "c"
+			"dialogs.h": "c",
+			"types.h": "c",
+			"cgb.h": "c"
 		}
 	}
 }

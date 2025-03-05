@@ -54,7 +54,8 @@ typedef enum{
     GOLDEN_WHIP,
     GOLDEN_WHEEL,
     GOLDEN_ELM,
-    GOLDEN_REINS
+    GOLDEN_REINS,
+    ENEMY_LANCE
 }ITEM_TYPE;
 
 struct ItemData{
@@ -87,6 +88,9 @@ typedef enum{
     MISSION00_SECRET_MESSAGE,
     MISSION00_COMPLETED,
     MISSION01_INTRO,
+    MISSION01_COMPLETED,
+    MISSION02_INTRO,
+    MISSION02_COMPLETED,
     DEAD
 }INSTRUCTION;
 
@@ -131,7 +135,18 @@ struct SoldierData{
     INT8 vy;
     UINT8 frmskip;
     UINT8 frmskip_max;
-    INT8 configured;//0:unconfigured; 1:horizontal; 2:vertical
+    INT8 configured;//0:unconfigured; 1:horizontal; 2:vertical; 3:walking, 4:dieing
+    ITEM_TYPE reward;
+};
+
+struct KillerData{
+    UINT8 configured;//99: wait, 0: hidden, 1:blink, 2: visible, 3: blink&disappear
+    INT8 timeout;
+    UINT8 time_hidden;
+    UINT8 time_visible;
+    UINT8 time_blink;
+    UINT8 time_attack;
+    UINT8 instant_attack;
 };
 
 #endif

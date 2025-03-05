@@ -17,15 +17,19 @@ extern INT8 vy;
 void item_common_start(Sprite* s_item_arg) BANKED;
 void item_common_update(Sprite* s_item_arg) BANKED;
 void item_common_spritescollision(Sprite* s_item_arg) BANKED;
+void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 extern void hit_fantoccio(Sprite* s_fantoccio_arg) BANKED;
 extern void consume_weapon_atk() BANKED;
 extern void consume_weapon_def() BANKED;
+extern void horse_hit(INT8 arg_damage) BANKED;
 
 extern void item_gladio_anim(Sprite* s_item_arg) BANKED;
 extern void item_gladio_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_lance_anim(Sprite* s_item_arg) BANKED;
 extern void item_lance_anim_blink(Sprite* s_item_arg) BANKED;
+extern void item_e_lance_anim(Sprite* s_item_arg) BANKED;
+extern void item_e_lance_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_fire_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_fire_anim(Sprite* s_item_arg) BANKED;
 extern void item_elmet_anim_blink(Sprite* s_item_arg) BANKED;
@@ -79,6 +83,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 case GOLDEN_WHIP:
                     item_configwhip_anim(s_item_arg);
                 break;
+                case ENEMY_LANCE:
+                    item_e_lance_anim_blink(s_item_arg);
+                break;
             }
             item_data->configured = 2;
         break;
@@ -108,6 +115,12 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                     item_cape_anim_blink(s_item_arg);
                     item_data->hp = 80;
                 break;
+                case ENEMY_LANCE:
+                    item_e_lance_anim(s_item_arg);
+                    if(item_data->vy < 0){
+                        s_item_arg->mirror = H_MIRROR;
+                    }
+                break;
             }
             item_data->configured = 4;
         break;
@@ -125,8 +138,12 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                     }
                 break;
                 case LANCE:
-                    TranslateSprite(s_item_arg, item_data->vx << delta_time, item_data->vy << delta_time);
-                break;
+                case ENEMY_LANCE:{
+                    UINT8 lance_tile_coll = TranslateSprite(s_item_arg, item_data->vx << delta_time, item_data->vy << delta_time);
+                    if(lance_tile_coll){
+                        item_data->configured = 5;
+                    }
+                }break;
                 case GLADIO:{                    
                     UINT16 attack_x = s_horse->x;
                     UINT16 attack_y = s_horse->y + 8;
@@ -143,12 +160,16 @@ void item_common_update(Sprite* s_item_arg) BANKED{
             switch(item_data->itemtype){
                 case GLADIO:
                     item_gladio_anim_blink(s_item_arg);
+                    consume_weapon_atk();
                 break;
                 case LANCE:
                     item_lance_anim_blink(s_item_arg);
+                    consume_weapon_atk();
+                break;
+                case ENEMY_LANCE:
+                    item_e_lance_anim_blink(s_item_arg);
                 break;
             }
-            consume_weapon_atk();
             item_data->hp = 40;
             item_data->configured = 6;
         break;
@@ -156,6 +177,7 @@ void item_common_update(Sprite* s_item_arg) BANKED{
             switch(item_data->itemtype){
                 case GLADIO:
                 case LANCE:
+                case ENEMY_LANCE:
                     item_data->hp--;
                     if(item_data->hp <= 0){
                         SpriteManagerRemoveSprite(s_item_arg);
@@ -167,21 +189,58 @@ void item_common_update(Sprite* s_item_arg) BANKED{
 }
 
 void item_common_spritescollision(Sprite* s_item_arg) BANKED{
+    struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
     //SPRITE COLLISION
-	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
     UINT8 scroll_i_tile;
     Sprite* iispr;
     SPRITEMANAGER_ITERATE(scroll_i_tile, iispr) {
         if(CheckCollision(s_item_arg, iispr)) {
             switch(iispr->type){
-                case SpriteFantoccio:
+                case SpriteFantoccio:{
                     if(item_data->configured < 5){
                         hit_fantoccio(iispr);
                         s_item_arg->x = iispr->x;
                         item_data->configured = 5;
                     }
-                break;
+                }break;
+                case SpriteRomansoldier:{
+                    struct SoldierData* romansoldier_data = (struct SoldierData*)s_item_arg->custom_data;
+                    if(romansoldier_data->configured < 4){
+                        romansoldier_data->configured = 4;
+                    }
+                    s_item_arg->x = iispr->x;
+                    if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
+                        item_data->configured = 5;
+                    }
+                }break;
+                case SpriteHorse:
+                case SpriteBiga:{
+                    struct ItemData* weapon_data = (struct ItemData*) s_item_arg->custom_data;
+                    if(weapon_data->itemtype == ENEMY_LANCE){
+                        horse_hit(-6);
+                    }
+                }break;
             }
         }
     }
+}
+
+void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED{
+	UINT8 arg_spritetype = 0u;
+    if(arg_spritetype == 0){
+		switch(arg_itemtype){
+			case GLADIO: arg_spritetype = SpriteItemgladio; break;
+			case LANCE: arg_spritetype = SpriteItemlance; break;
+			case FIRE: arg_spritetype = SpriteItemfire; break;
+			case ELMET: arg_spritetype = SpriteItemelmet; break;
+			case CAPE: arg_spritetype = SpriteItemcape; break;
+			case SHIELD: arg_spritetype = SpriteItemshield; break;
+			case HP: arg_spritetype = SpriteItemheart; break;
+			case TIME: arg_spritetype = SpriteItemglass; break;
+		}
+	}
+	Sprite* s_item = SpriteManagerAdd(arg_spritetype, arg_posx, arg_posy);
+	struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
+	item_data->itemtype = arg_itemtype;
+	item_data->configured = 1;
 }

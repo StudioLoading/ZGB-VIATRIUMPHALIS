@@ -15,9 +15,15 @@ FUOCO       MANTELLO
 
 -------------------------------------------------------------------------------------
 
-- mission01
-    codice di collisione coi romansoldier
-        ricomincio l'Area!
+- mission02 Sfuggi agli assassini sulla via Appia (night mode)
+    tappa, direi dal basso verso l'alto con molte diagonali
+    gli assassini potrebbero stare dietro le colonne, 
+        disegnamo solo le solouette,
+        facciamo partire un timer quando la distanza è sotto una soglia,
+        li facciamo esclamare
+        dopo 2 secondi lanciano una lancia davanti a loro
+        azzeriamo il timer
+- credo che l'indicatore dell' HP abbia un problema
 
 - Normal Mode vs Hard Mode
     hard mode non avrà il tutorial iniziale;
@@ -31,7 +37,7 @@ FUOCO       MANTELLO
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)
 "Consegna un messaggio segreto al senato" 
-"Evita le guardie!" (a tempo)
+"Evita le guardie!"
 "Sfuggi agli assassini sulla via Appia di notte."
 "Supera le bighe degli sgherri di un senatore corrotto." (Gli avversari si muovono orizzontalmente, devi evitarli o colpirli con armi! alla fine devi "sfondare" una linea di sgherri e puoi farlo solo se li impatti a stamina vicina ad Euphoria Max, altrimenti rimbalzi indietro e vieni catturato!)
 
@@ -65,6 +71,9 @@ Egitto (piramidi, fiumi, templi)
 "Sconfiggi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli!)
 -------------------------------------------------------------------------------------
 
+```C
+
+```
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
