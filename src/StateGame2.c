@@ -13,6 +13,7 @@
 #include "custom_datas.h"
 #include "Dialogs.h"
 
+static const palette_color_t palette_data[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 
 void die() BANKED;
 void spawn_items() BANKED;
@@ -80,7 +81,6 @@ void night_mode() BANKED{
 			case AREA_ROME://(30,29,19), (30,25,14), (29,2,0), (13,12,1)
 				{
 					//UINT16 palette[] = {RGB(30,29,19),RGB(30,25,14),RGB(29,2,0),RGB(13,12,1)};
-					const palette_color_t palette_data[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 					set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data);
 				}
 			break;

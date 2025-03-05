@@ -24,6 +24,7 @@ FUOCO       MANTELLO
         dopo 2 secondi lanciano una lancia davanti a loro
         azzeriamo il timer
 - credo che l'indicatore dell' HP abbia un problema
+- sistemare il trotto con un nuovo flag
 
 - Normal Mode vs Hard Mode
     hard mode non avrà il tutorial iniziale;
