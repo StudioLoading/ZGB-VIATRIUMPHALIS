@@ -42,6 +42,7 @@ extern INT8 mission_iscrono;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
+extern void spawn_items() BANKED;
 
 void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata

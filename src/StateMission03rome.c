@@ -98,7 +98,7 @@ void UPDATE(){
     //UPDATE TIME
         update_time();
         time_current--;
-        if(time_current < 0){
+        if(time_current < 0 && !mission_completed && !track_ended){
             die();
         }
     //MISSION STEP

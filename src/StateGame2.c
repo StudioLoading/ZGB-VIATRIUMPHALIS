@@ -61,6 +61,13 @@ void die() BANKED{
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONROME00; 
 		break;
+		case MISSIONALPS04:
+		case MISSIONALPS05:
+		case MISSIONALPS06:
+		case MISSIONALPS07:
+			current_step = LOOKING_FOR_SENATOR; 
+			current_mission = MISSIONALPS04; 
+		break;
 	}
 	flag_night_mode = 0;//RESET
 	prev_state = StateWorldmap;
@@ -94,6 +101,10 @@ void spawn_items() BANKED{
 				wheel_data->itemtype = GOLDEN_WHEEL;
 				wheel_data->configured = 1;
 			}
+		break;
+		case MISSIONALPS04:
+			item_spawn(FIRE, ((UINT16) 38u << 3), ((UINT16) 68u << 3));
+			item_spawn(FIRE, ((UINT16) 62u << 3), ((UINT16) 18u << 3));
 		break;
 	}
 }

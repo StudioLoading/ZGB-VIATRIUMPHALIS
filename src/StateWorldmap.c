@@ -25,7 +25,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ALPS;//TODO AREA_ROME
-MISSION current_mission = MISSIONALPS00;//TODO MISSIONROME00
+MISSION current_mission = MISSIONALPS04;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -37,7 +37,7 @@ void START() {
         if(current_mission <= MISSIONROME03){
             InitScroll(BANK(arearome), &arearome, 0, 0);
         }
-        if(current_mission <= MISSIONALPS03){
+        if(current_mission <= MISSIONALPS04){
             InitScroll(BANK(areaalps), &areaalps, 0, 0);
         }
         break;
@@ -57,10 +57,10 @@ void START() {
                 case MISSIONROME00: PRINT(2, 15, "A SECRET MESSAGE"); break;
                 case MISSIONROME01: PRINT(4, 15, "RUN TO SAFETY"); break;
                 case MISSIONROME02: PRINT(4, 15, "  SURVIVE    "); break;
-                case MISSIONROME03: PRINT(4, 15, " HURRY UP!   "); break;
-                case MISSIONALPS00: PRINT(4, 15, " HURRY UP!   "); break;
-                case MISSIONALPS01: PRINT(4, 15, " HURRY UP!   "); break;
-                case MISSIONALPS02: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONROME03: PRINT(4, 15, " KILL THE MAN"); break;
+                case MISSIONALPS04: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS05: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS06: PRINT(4, 15, " HURRY UP!   "); break;
             }
         break;
     }
@@ -78,10 +78,10 @@ void UPDATE() {
                 case MISSIONROME01: Anim_arearome_1(); break;
                 case MISSIONROME02: Anim_arearome_2(); break;
                 case MISSIONROME03: Anim_arearome_3(); break;
-                case MISSIONALPS00: Anim_areaalps_1(); break;
-                case MISSIONALPS01: Anim_areaalps_2(); break;
-                case MISSIONALPS02: Anim_areaalps_3(); break;
-                case MISSIONALPS03: Anim_areaalps_4(); break;
+                case MISSIONALPS04: Anim_areaalps_1(); break;
+                case MISSIONALPS05: Anim_areaalps_2(); break;
+                case MISSIONALPS06: Anim_areaalps_3(); break;
+                case MISSIONALPS07: Anim_areaalps_4(); break;
             }
         }
     }else{
@@ -95,10 +95,10 @@ void UPDATE() {
                 case MISSIONROME03:
                     Anim_arearome_0();
                 break;
-                case MISSIONALPS00:
-                case MISSIONALPS01:
-                case MISSIONALPS02:
-                case MISSIONALPS03:
+                case MISSIONALPS04:
+                case MISSIONALPS05:
+                case MISSIONALPS06:
+                case MISSIONALPS07:
                     Anim_areaalps_0();
                 break;
             }
@@ -125,7 +125,7 @@ void UPDATE() {
                     prev_state = StateMission03rome;
                     GetLocalizedDialog_EN(MISSION03_INTRO);
                 break;
-                case MISSIONALPS00:
+                case MISSIONALPS04:
                     prev_state = StateMission04alps;
                     GetLocalizedDialog_EN(MISSION04_INTRO);
                 break;

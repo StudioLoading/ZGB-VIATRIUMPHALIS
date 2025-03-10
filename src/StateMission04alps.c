@@ -22,6 +22,8 @@ const UINT8 coll_m04_tiles[] = {15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 
 
 const UINT8 coll_m04_surface[] = {0u, 0};
 
+Sprite* s_traitor00 = 0;
+
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
@@ -46,6 +48,7 @@ extern INT16 time_current;
 extern INT16 timemax_current;
 extern INT16 time_factor;
 extern INT16 time_to_load;
+extern UINT8 mission_killed;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
@@ -71,50 +74,38 @@ void START(){
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        if(current_step == LOOKING_FOR_SENATOR){
-            /*s_senator = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 60u) << 3, ((UINT16) 43u) << 3);
-            mission_completed = 0;*/
-        }else{
-            //SpriteManagerRemoveSprite(s_senator);
-            current_step = EXIT;
-            mission_completed = 1;
-            //s_senator = 0;
-        }
+        current_step = EXIT;
+        mission_completed = 0;
     //COMMONS & START
         InitScroll(BANK(mapmission04), &mapmission04, coll_m04_tiles, coll_m04_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
         spawn_items();
         start_common();
+        spawn_spy();
+}
+
+void spawn_spy() BANKED{
+    s_traitor00 = SpriteManagerAdd(SpriteRomansoldier, ((UINT16) 74u << 3), ((UINT16) 9u << 3));
+    struct SoldierData* traitor00_data = (struct SoldierData*) s_traitor00->custom_data;
+    traitor00_data->frmskip_max = 10u;
+    traitor00_data->configured = 1;
+    traitor00_data->reward = NOITEM;
 }
 
 void UPDATE(){
     //COMMON UPDATE
         update_common();
-    //LIMIT MAP LEFT
-        if(s_horse->x < 40u){
-            s_horse->x = 40u;
-        }
-        if(s_horse->x > ((UINT16) 200u << 3)){
-            if(current_step < EXIT){
-                s_horse->x = ((UINT16) 200u << 3);
-            }
-        }
-    
+    //LIMIT MAP LEFT    
     //UPDATE TIME
         update_time();
         time_current--;
-        if(time_current < 0){
+        if(time_current < 0 && !mission_completed && !track_ended){
             die();
         }
     //MISSION STEP
-        if(current_step == SENATOR_COLLIDED){
-            pos_horse_x = s_horse->x;
-            pos_horse_y = s_horse->y;
-            prev_state = StateMission00rome;
-            turn_to_load = turn;
-            GetLocalizedDialog_EN(MISSION00_SECRET_MESSAGE);
-            SetState(StatePapyrus);
+        if(mission_killed > 0 && mission_completed == 0){
+            mission_completed = 1;
         }
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){

@@ -13,6 +13,7 @@ const UINT8 a_roman_blink[] = {2, 0,1};
 const UINT8 a_roman_h[] = {2, 1,2};
 const UINT8 a_roman_u[] = {2, 3,4};
 
+extern UINT8 mission_killed;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START() {
@@ -96,7 +97,9 @@ void UPDATE() {
             switch(rsspr->type){
                 case SpriteItemlance:
                 case SpriteItemgladio:
+                case SpriteFlame:
                     if(romansoldier_data->configured < 4){
+                        mission_killed++;
                         romansoldier_data->configured = 4;
                     }
                 break;

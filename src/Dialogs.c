@@ -181,14 +181,30 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d1, "WELCOME TO THE", 15);
             memcpy(d2, "PROVINCE OF   ", 15);
             memcpy(d3, "ETRURIA!      ", 15);
-            memcpy(d4, EMPTY_STRING_14, 15);
-            memcpy(d5, "BARBARIANS HA,", 15);
-            memcpy(d6, "VE STOLEN AN  ", 15);
-            memcpy(d7, "IMPERIAL SEAL.", 15);
-            memcpy(d8, "IT IS EXTREME,", 15);
-            memcpy(d9, "LY IMPORTANT  ", 15);
-            memcpy(d10, "FOR US TO RE, ", 15);
-            memcpy(d11, "TRIEVE IT!   ", 15);
+            memcpy(d4, "BARBARIANS HA,", 15);
+            memcpy(d5, "VE STOLEN AN  ", 15);
+            memcpy(d6, "IMPERIAL SEAL.", 15);
+            memcpy(d7, "IT IS EXTREME,", 15);
+            memcpy(d8, "LY IMPORTANT  ", 15);
+            memcpy(d9, "FOR US TO RE, ", 15);
+            memcpy(d10, "TRIEVE IT!   ", 15);
+            memcpy(d10, "KILL THE MAN ", 15);
+            memcpy(d11, "WHO OWNS IT. ", 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION04_SECRET_MESSAGE:
+            memcpy(d0, "FROM TODAY YOU", 15);
+            memcpy(d1, "ARE DISMISSED ", 15);
+            memcpy(d2, "IN DOING SERVI", 15);
+            memcpy(d3, "CE FOR THE EM,", 15);
+            memcpy(d4, "PIRE. THE MAN ", 15);
+            memcpy(d5, "WHO'S GIVING  ", 15);
+            memcpy(d6, "YOU THIS PAPER", 15);
+            memcpy(d7, "IS THE NEW SEC", 15);
+            memcpy(d8, "RET AGENT.    ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "SEE YOU IN THE", 15);
+            memcpy(d11, "SENATE.       ", 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);

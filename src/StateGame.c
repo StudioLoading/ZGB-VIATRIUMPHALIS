@@ -56,6 +56,7 @@ INT8 counter_danger = 0;
 INT8 flag_exclamation = 0;
 INT8 mission_iscrono = 0;
 MISSION_STEP current_step = LOOKING_FOR_SENATOR;
+UINT8 mission_killed = 0u;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -123,6 +124,7 @@ void start_common() BANKED{
 	flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
 	s_horse->mirror = mirror_horse;
     turn = turn_to_load;
+	mission_killed = 0u;
 }
 
 void update_stamina() BANKED{
@@ -442,6 +444,9 @@ INT8 is_track_ended() BANKED{// == is mission completed
 		case StateMission01rome:
 		case StateMission02rome:
 		case StateMission03rome:
+			result = mission_completed;
+		break;
+		case StateMission04alps:
 			result = mission_completed;
 		break;
 	}
