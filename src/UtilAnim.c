@@ -12,6 +12,14 @@ IMPORT_TILES(worldmapt04);
 
 IMPORT_TILES(arearomet99);
 IMPORT_TILES(arearomet00);
+IMPORT_TILES(arearomet01);
+IMPORT_TILES(arearomet02);
+
+IMPORT_TILES(areaalpst99);
+IMPORT_TILES(areaalpst00);
+IMPORT_TILES(areaalpst01);
+IMPORT_TILES(areaalpst02);
+IMPORT_TILES(areaalpst03);
 
 IMPORT_TILES(configmapt);
 IMPORT_TILES(configmapt00elm);
@@ -35,6 +43,9 @@ void Anim_worldmap_1(AREA arg_current_area) BANKED{
         case AREA_ROME:
             set_banked_bkg_data(0, 123u, &worldmapt00, BANK(worldmapt00));
         break;
+        case AREA_ALPS:
+            set_banked_bkg_data(0, 123u, &worldmapt01, BANK(worldmapt01));
+        break;
     }
 }
 
@@ -43,6 +54,29 @@ void Anim_arearome_0() BANKED{
 }
 void Anim_arearome_1() BANKED{
     set_banked_bkg_data(1, 73u, &arearomet00, BANK(arearomet00));
+}
+void Anim_arearome_2() BANKED{
+    set_banked_bkg_data(1, 73u, &arearomet01, BANK(arearomet01));
+}
+void Anim_arearome_3() BANKED{
+    set_banked_bkg_data(1, 73u, &arearomet02, BANK(arearomet02));
+}
+
+
+void Anim_areaalps_0() BANKED{
+    set_banked_bkg_data(1, 83u, &areaalpst99, BANK(areaalpst99));
+}
+void Anim_areaalps_1() BANKED{
+    set_banked_bkg_data(1, 83u, &areaalpst00, BANK(areaalpst00));
+}
+void Anim_areaalps_2() BANKED{
+    set_banked_bkg_data(1, 83u, &areaalpst01, BANK(areaalpst01));
+}
+void Anim_areaalps_3() BANKED{
+    set_banked_bkg_data(1, 83u, &areaalpst02, BANK(areaalpst02));
+}
+void Anim_areaalps_4() BANKED{
+    set_banked_bkg_data(1, 83u, &areaalpst03, BANK(areaalpst03));
 }
 
 

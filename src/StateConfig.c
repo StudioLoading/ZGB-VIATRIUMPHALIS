@@ -47,7 +47,9 @@ extern UINT16 pos_horse_y;
 extern MirroMode mirror_horse;
 extern MISSION_STEP current_step;
 extern UINT8 turn_to_load;
+extern INT16 time_to_load;
 extern UINT8 turn;
+extern INT16 time_current;
 
 void START(){
     InitScroll(BANK(configmap), &configmap, 0, 0);
@@ -152,7 +154,10 @@ void change_description() BANKED{
         case WHEEL:
             if(configuration.wheel == NORMAL){
                 PRINT(7,0, "NORMAL WHEELS");
-                PRINT(7,1, "             ");
+                PRINT(7,1, "RALLY IS OFF.");
+            }else if(configuration.wheel == GOLDEN){
+                PRINT(7,0, "GOLDEN WHEELS");
+                PRINT(7,1, "RALLY IS ON! ");
             }
         break;
         case WHIP:
@@ -178,12 +183,17 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
     pos_horse_y = s_horse->y;
     mirror_horse = s_horse->mirror;
     turn_to_load = turn;
-    flag_golden_found = 1;
+    time_to_load = time_current;
     switch(arg_pickedup){
         case GOLDEN_WHIP:
-            configuration.whip = GOLDEN_WHIP;
+            configuration.whip = GOLDEN;
             GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_WHIP);
         break;
+        case GOLDEN_WHEEL:
+            configuration.wheel = GOLDEN;
+            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_WHEEL);
+        break;
     }
+    flag_golden_found = 1;
     SetState(StatePapyrus);
 }

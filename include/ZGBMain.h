@@ -14,6 +14,8 @@ _STATE(StatePapyrus)\
 _STATE(StateMission00rome)\
 _STATE(StateMission01rome)\
 _STATE(StateMission02rome)\
+_STATE(StateMission03rome)\
+_STATE(StateMission04alps)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -34,6 +36,7 @@ _SPRITE_DMG(SpriteItemcape, itemcape)\
 _SPRITE_DMG(SpriteItemheart, itemheart)\
 _SPRITE_DMG(SpriteItemglass, itemglass)\
 _SPRITE_DMG(SpriteConfigwhip, itemconfigwhip)\
+_SPRITE_DMG(SpriteConfigwheel, itemconfigwheel)\
 _SPRITE_DMG(SpriteStraw, straw)\
 _SPRITE_DMG(SpriteCursor, cursor)\
 _SPRITE_DMG(SpriteRomansoldier, romansoldier)\

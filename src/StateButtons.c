@@ -76,6 +76,6 @@ void UPDATE(){
     }
     if(KEY_TICKED(J_START) && press_start){
         //SetState(StateTutorialList);//TODO
-        SetState(StateWorldmap);//TEST
+        SetState(StateWorldmap);//TEST DEV
     }
 }

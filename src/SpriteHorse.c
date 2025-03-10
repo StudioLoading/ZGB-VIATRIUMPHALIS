@@ -68,6 +68,7 @@ extern UINT8 track_ended;
 extern MISSION_STEP current_step;
 extern struct CONFIGURATION configuration;
 extern UINT8 turn_to_load;
+extern INT8 flag_die;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
@@ -86,7 +87,7 @@ void START() {
     turn_samepressure_counter = 0;
     flag_hit = 0;
     counter_hit = COUNTER_HIT_MAX;
-    if(configuration.whip == GOLDEN_WHIP){
+    if(configuration.whip == GOLDEN){
         current_whip_power = GOLDEN_WHIP_POWER;
     }
 }
@@ -221,7 +222,22 @@ void UPDATE() {
         sin = sine_wave[turn];
         UINT8 cos_idx = turn+64;
         cos = sine_wave[cos_idx];
-
+    //SPRITE ANIMATION SPEED animation speed
+        if(stamina_current < 80){
+            if(flag_hit == 1){
+                SetSpriteAnim(THIS, a_horse_hit, 24u);
+            }else{
+                SetSpriteAnim(THIS, a_horse_h_idle, 8u);
+                THIS->anim_speed = 8u;//stamina_current >> 5;
+            }
+        }else{
+            if(flag_hit == 1){
+                SetSpriteAnim(THIS, a_horse_h_idle_hit, 24);
+            }else{
+                SetSpriteAnim(THIS, a_horse_h, 4u);
+                THIS->anim_speed = stamina_current >> 5;
+            }
+        }
     //ACTUAL MOVEMENT & COLLISION & OVER  
         if(frm_skip > 0){frm_skip--;}
         if(frm_skip == 0){
@@ -267,8 +283,9 @@ void UPDATE() {
                 }else if(sin < -78){ // tratto come se stesse andando verticale basso
                     vy = 2;
                 }
-
-            UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
+           
+                if(flag_die){ return; }
+                UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
                 if(horse_coll){//collido con tile ambiente di collisione
                     if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
@@ -286,6 +303,7 @@ void UPDATE() {
                             TranslateSprite(THIS, 0, vybounce << delta_time);
                         }
                     }
+            //OVER TILE    
                 }else{//non collido, cerco cosa sto calpestando
                     UINT8 tile_over = GetScrollTile((THIS->x + 4) >> 3, (THIS->y+4) >> 3);
                     if(vx < 0){
@@ -294,7 +312,7 @@ void UPDATE() {
                     switch(tile_over){
                         case 3: //ghiaia: incrementa il frameskip
                         //case 2: case 4: case 5: case 6: 
-                            if(onfire_countdown == -1){//non sta impazzendo
+                            if(onfire_countdown == -1 && configuration.wheel == NORMAL){//non sta impazzendo
                                 frm_skip+=4;
                             }
                             if(THIS->anim_frame == 1 || THIS->anim_frame == 5){
@@ -352,22 +370,7 @@ void UPDATE() {
                         break;
                     }
                 }
-            //SPRITE ANIMATION SPEED animation speed
-                if(stamina_current < 80){
-                    if(flag_hit == 1){
-                        SetSpriteAnim(THIS, a_horse_hit, 24u);
-                    }else{
-                        SetSpriteAnim(THIS, a_horse_h_idle, 8u);
-                        THIS->anim_speed = stamina_current >> 5;
-                    }
-                }else{
-                    if(flag_hit == 1){
-                        SetSpriteAnim(THIS, a_horse_h_idle_hit, 24);
-                    }else{
-                        SetSpriteAnim(THIS, a_horse_h, 4u);
-                        THIS->anim_speed = stamina_current >> 5;
-                    }
-                }
+            
         }
 
     //SPRITE MIRROR

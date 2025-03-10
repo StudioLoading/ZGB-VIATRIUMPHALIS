@@ -33,7 +33,7 @@ UINT16 euphoria_min_current = 0u;
 UINT16 euphoria_max_current = 0u;
 HORSE_DIRECTION horse_direction = EEE;
 HORSE_DIRECTION horse_direction_old = EEE;
-INT8 hp_current = 10;
+INT8 hp_current = 16;
 INT8 hud_turn_cooldown = 0;
 INT16 timemax_current = 0;
 INT16 time_current = 0;
@@ -48,11 +48,14 @@ UINT16 pos_horse_x = 0;
 UINT16 pos_horse_y = 0;
 MirroMode mirror_horse = NO_MIRROR;
 UINT8 turn_to_load = 0;
+INT16 time_to_load = 0;
 INT8 flag_die = 0;
 INT8 die_counter = DIE_COUNTER_MAX;
 INT8 flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
 INT8 counter_danger = 0;
 INT8 flag_exclamation = 0;
+INT8 mission_iscrono = 0;
+MISSION_STEP current_step = LOOKING_FOR_SENATOR;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -85,10 +88,10 @@ extern INT8 sin;
 extern INT8 cos;
 extern TURNING_VERSE turn_verse;
 extern INT8 onwater_countdown;
-extern MISSION_STEP current_step;
 extern MISSION current_mission;
 extern UINT8 prev_state;
 extern UINT8 turn_to_load;
+extern INT16 time_to_load;
 extern UINT8 turn;
 
 extern void die() BANKED;
@@ -105,7 +108,11 @@ void start_common() BANKED{
 	update_euphoria();
 	track_ended = 0;
 	track_ended_cooldown = ENDED_TRACK_COOLDOWN;
-	update_time_max();
+	if(mission_iscrono){
+		time_current = time_to_load;
+	}else{
+		update_time_max();
+	}
 	stamina_current = 0;
 	turn_verse = NONE;
 	hud_initialized = 0u;
@@ -433,9 +440,8 @@ INT8 is_track_ended() BANKED{// == is mission completed
 			result = mission_completed;
 		break;
 		case StateMission01rome:
-			result = mission_completed;
-		break;
 		case StateMission02rome:
+		case StateMission03rome:
 			result = mission_completed;
 		break;
 	}

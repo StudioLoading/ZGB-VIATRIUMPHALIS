@@ -18,13 +18,14 @@
 
 IMPORT_MAP(worldmap);
 IMPORT_MAP(arearome);
+IMPORT_MAP(areaalps);
 IMPORT_TILES(font);
 
 extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
-AREA current_area = AREA_ROME;//AREA_ROME
-MISSION current_mission = MISSIONROME02;//MISSIONROME00
+AREA current_area = AREA_ALPS;//TODO AREA_ROME
+MISSION current_mission = MISSIONALPS00;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -33,9 +34,12 @@ void START() {
             InitScroll(BANK(worldmap), &worldmap, 0, 0);
         break;
         case 1:
-            if(current_mission <= MISSIONROME02){
-                InitScroll(BANK(arearome), &arearome, 0, 0);
-            }
+        if(current_mission <= MISSIONROME03){
+            InitScroll(BANK(arearome), &arearome, 0, 0);
+        }
+        if(current_mission <= MISSIONALPS03){
+            InitScroll(BANK(areaalps), &areaalps, 0, 0);
+        }
         break;
     }
     SetWindowY(144);
@@ -50,15 +54,13 @@ void START() {
         break;
         case 1:
             switch(current_mission){
-                case MISSIONROME00: 
-                    PRINT(2, 15, "A SECRET MESSAGE");
-                break;
-                case MISSIONROME01: 
-                    PRINT(4, 15, "RUN TO SAFETY");
-                break;
-                case MISSIONROME02: 
-                    PRINT(4, 15, "    SURVIVE   ");
-                break;
+                case MISSIONROME00: PRINT(2, 15, "A SECRET MESSAGE"); break;
+                case MISSIONROME01: PRINT(4, 15, "RUN TO SAFETY"); break;
+                case MISSIONROME02: PRINT(4, 15, "  SURVIVE    "); break;
+                case MISSIONROME03: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS00: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS01: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS02: PRINT(4, 15, " HURRY UP!   "); break;
             }
         break;
     }
@@ -72,22 +74,32 @@ void UPDATE() {
             Anim_worldmap_1(current_area);
         }else{//areamap
             switch(current_mission){
-                case MISSIONROME00:
-                case MISSIONROME01:
-                case MISSIONROME02:
-                    Anim_arearome_1();
-                break;
+                case MISSIONROME00: Anim_arearome_1(); break;
+                case MISSIONROME01: Anim_arearome_1(); break;
+                case MISSIONROME02: Anim_arearome_2(); break;
+                case MISSIONROME03: Anim_arearome_3(); break;
+                case MISSIONALPS00: Anim_areaalps_1(); break;
+                case MISSIONALPS01: Anim_areaalps_2(); break;
+                case MISSIONALPS02: Anim_areaalps_3(); break;
+                case MISSIONALPS03: Anim_areaalps_4(); break;
             }
         }
     }else{
-        if(world_area_map == 0){
+        if(world_area_map == 0){//worldmap
             Anim_worldmap_0(current_area);
         }else{
             switch(current_mission){
                 case MISSIONROME00:
                 case MISSIONROME01:
                 case MISSIONROME02:
+                case MISSIONROME03:
                     Anim_arearome_0();
+                break;
+                case MISSIONALPS00:
+                case MISSIONALPS01:
+                case MISSIONALPS02:
+                case MISSIONALPS03:
+                    Anim_areaalps_0();
                 break;
             }
         }
@@ -102,12 +114,20 @@ void UPDATE() {
                     GetLocalizedDialog_EN(MISSION00_INTRO);
                 break;
                 case MISSIONROME01:
-                    prev_state = StateMission01rome;//perché StatePapyrus va poi in prev_state
+                    prev_state = StateMission01rome;
                     GetLocalizedDialog_EN(MISSION01_INTRO);
                 break;
                 case MISSIONROME02:
-                    prev_state = StateMission02rome;//perché StatePapyrus va poi in prev_state
+                    prev_state = StateMission02rome;
                     GetLocalizedDialog_EN(MISSION02_INTRO);
+                break;
+                case MISSIONROME03:
+                    prev_state = StateMission03rome;
+                    GetLocalizedDialog_EN(MISSION03_INTRO);
+                break;
+                case MISSIONALPS00:
+                    prev_state = StateMission04alps;
+                    GetLocalizedDialog_EN(MISSION04_INTRO);
                 break;
             }
             SetState(StatePapyrus);

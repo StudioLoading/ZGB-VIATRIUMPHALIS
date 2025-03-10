@@ -47,13 +47,13 @@ extern INT8 flag_golden_found;
 extern MirroMode mirror_horse;
 extern UINT8 turn_to_load;
 extern UINT8 turn;
+extern UINT8 flag_night_mode;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
 extern void calculate_danger(Sprite* s_danger) BANKED;
 extern void check_danger() BANKED;
 extern void show_danger() BANKED;
-extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void spawn_items() BANKED;
 extern void night_mode() BANKED;
 
@@ -76,13 +76,13 @@ void START(){
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
     //COMMONS & START
+        night_mode();
         InitScroll(BANK(mapmission02), &mapmission02, coll_m02_tiles, coll_m02_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
         start_common();
         spawn_items();
         spawn_killers();
-        night_mode();
 }
 
 void spawn_killers() BANKED{
@@ -94,31 +94,14 @@ void spawn_killers() BANKED{
     s_killer05 = SpriteManagerAdd(SpriteKiller, ((UINT16) 84u << 3), ((UINT16) 3u << 3));
     s_killer06 = SpriteManagerAdd(SpriteKiller, ((UINT16) 104u << 3), ((UINT16) 3u << 3));
     s_killer07 = SpriteManagerAdd(SpriteKiller, ((UINT16) 25u << 3), ((UINT16) 16u << 3));
-    /*
-    struct SoldierData* romansoldier00_data = (struct SoldierData*) s_killer00->custom_data;
-    romansoldier00_data->frmskip_max = 12u;
-    romansoldier00_data->configured = 2;
-    romansoldier00_data->reward = NOITEM;
-    s_killer01 = SpriteManagerAdd(SpriteRomansoldier, ((UINT16) 132u << 3), ((UINT16) 17u << 3));
-    struct SoldierData* romansoldier01_data = (struct SoldierData*) s_killer01->custom_data;
-    romansoldier01_data->frmskip_max = 12u;
-    romansoldier01_data->configured = 2;
-    romansoldier00_data->reward = HP;
-    
-    s_killer02 = SpriteManagerAdd(SpriteRomansoldier, ((UINT16) 104u << 3), ((UINT16) 51u << 3));
-    struct SoldierData* romansoldier02_data = (struct SoldierData*) s_killer02->custom_data;
-    romansoldier02_data->frmskip_max = 12u;
-    romansoldier02_data->configured = 2;
-    romansoldier02_data->reward = NOITEM;
-
-    s_killer03 = SpriteManagerAdd(SpriteRomansoldier, ((UINT16) 154u << 3), ((UINT16) 48u << 3));
-    struct SoldierData* romansoldier03_data = (struct SoldierData*) s_killer03->custom_data;
-    romansoldier03_data->frmskip_max = 12u;
-    romansoldier03_data->configured = 2;
-    romansoldier03_data->reward = NOITEM;
-    */
 }
+
 void UPDATE(){
+    //NIGHT MODE
+        if(flag_night_mode == 0){
+            flag_night_mode = 1;
+            night_mode();
+        }
     //COMMON UPDATE
         update_common();
     //LIMIT MAP RIGHT
@@ -160,8 +143,9 @@ void UPDATE(){
                 if(can_go_on == 1){
                     //tutorial_state++;
                 }
+                flag_night_mode = 0;//RESET
                 prev_state = StateWorldmap;
-                turn_to_load = turn;//mission02 comincia nello stesso verso di dove finisce mission03
+                turn_to_load = 0;
                 current_mission++;
                 GetLocalizedDialog_EN(MISSION02_COMPLETED);
                 SetState(StatePapyrus);

@@ -42,12 +42,18 @@ extern void item_heart_anim(Sprite* s_item_arg) BANKED;
 extern void item_glass_anim(Sprite* s_item_arg) BANKED;
 extern void item_configwhip_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configwhip_anim(Sprite* s_item_arg) BANKED;
+extern void item_configwheel_anim_blink(Sprite* s_item_arg) BANKED;
+extern void item_configwheel_anim(Sprite* s_item_arg) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
     item_data->configured = 0;
-    s_item_arg->lim_x = 1000;
-    s_item_arg->lim_y = 1000;
+    s_item_arg->lim_x = 4000;
+    s_item_arg->lim_y = 4000;
+    if(_cpu != CGB_TYPE){
+        OBP1_REG = PAL_DEF(0, 0, 1, 3);
+        SPRITE_SET_PALETTE(THIS,1);
+    }
 }
 
 void item_common_update(Sprite* s_item_arg) BANKED{
@@ -82,6 +88,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 break;
                 case GOLDEN_WHIP:
                     item_configwhip_anim(s_item_arg);
+                break;
+                case GOLDEN_WHEEL:
+                    item_configwheel_anim(s_item_arg);
                 break;
                 case ENEMY_LANCE:
                     item_e_lance_anim_blink(s_item_arg);

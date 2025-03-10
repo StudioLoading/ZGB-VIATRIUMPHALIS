@@ -27,6 +27,7 @@ extern UINT16 euphoria_max;
 extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
 extern UINT8 J_ATK;
+extern INT8 flag_die;
 
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
@@ -48,6 +49,7 @@ void START() {
 }
 
 void UPDATE() {
+    if(flag_die){ return; }
     UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
     if (vx < 0){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
     UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
@@ -114,7 +116,8 @@ void UPDATE() {
                     case SpriteItemcape:
                     case SpriteItemheart:
                     case SpriteItemglass:
-                    case SpriteConfigwhip:{
+                    case SpriteConfigwhip:
+                    case SpriteConfigwheel:{
                         struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
                         if(item_data->configured == 2){
                             pickup(ibspr);

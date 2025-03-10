@@ -13,17 +13,8 @@ GLADIO      SCUDO
 LANCIA      ELMO
 FUOCO       MANTELLO
 
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
-- mission02 Sfuggi agli assassini sulla via Appia (night mode)
-    tappa, direi dal basso verso l'alto con molte diagonali
-    gli assassini potrebbero stare dietro le colonne, 
-        disegnamo solo le solouette,
-        facciamo partire un timer quando la distanza è sotto una soglia,
-        li facciamo esclamare
-        dopo 2 secondi lanciano una lancia davanti a loro
-        azzeriamo il timer
-- credo che l'indicatore dell' HP abbia un problema
 - sistemare il trotto con un nuovo flag
 
 - Normal Mode vs Hard Mode
@@ -33,8 +24,9 @@ FUOCO       MANTELLO
         oppure non ce lo avrà e avrà una freccettina, a scomparsa, togliendola dalla status bar;
 - Deserto: multimappa a labirinto
 - potrei usare il compass per indicare la direzione in cui si trova l'obiettivo della missione?
+- day/night mode: you can query which palette the sprite uses by checking the attr_add field of the Sprite structure.
 
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 Antica Roma (strade cittadine, mercati, palazzi imperiali)
 "Consegna un messaggio segreto al senato" 
@@ -78,4 +70,4 @@ Egitto (piramidi, fiumi, templi)
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\buttonmap.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\buttonmap.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\mapalps.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\mapalps.gbm

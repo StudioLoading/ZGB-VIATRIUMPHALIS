@@ -49,7 +49,6 @@ extern void update_common() BANKED;
 extern void calculate_danger(Sprite* s_danger) BANKED;
 extern void check_danger() BANKED;
 extern void show_danger() BANKED;
-extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void spawn_items() BANKED;
 
 void spawn_roman_soldiers() BANKED;

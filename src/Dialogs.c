@@ -40,6 +40,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case DESCRIPTION_GOLDEN_WHEEL:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU FOUND THE ", 15);
+            memcpy(d3, "GOLDEN WHEELS!", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "NOW YOU CAN   ", 15);
+            memcpy(d6, "MOVE FASTER   ", 15);
+            memcpy(d7, "WHEN DRIVING  ", 15);
+            memcpy(d8, "OUT OF THE    ", 15);
+            memcpy(d9, "ROADS!        ", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case MISSION00_INTRO:
             memcpy(d0, "FIRSTLY WE HA,", 15);
             memcpy(d1, "VE SOME COMMI,", 15);
@@ -125,16 +139,56 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         case MISSION02_COMPLETED:
             memcpy(d0, "CONGRATULATION", 15);
             memcpy(d1, EMPTY_STRING_14, 15);
-            memcpy(d2, "YOU COMPLETED ", 15);
-            memcpy(d3, "YOUR SECOND   ", 15);
-            memcpy(d4, "MISSION!      ", 15);
-            memcpy(d5, EMPTY_STRING_14, 15);
-            memcpy(d6, "WAIT FOR THE  ", 15);
-            memcpy(d7, "NIGHT TO COME ", 15);
-            memcpy(d8, "THEN MOVE NOR,", 15);
-            memcpy(d9, "TH. BEWARE THE", 15);
-            memcpy(d10, "BANDITS.     ", 15);
+            memcpy(d2, "I AM GLAD YOU ", 15);
+            memcpy(d3, "SURVIVED THAT ", 15);
+            memcpy(d4, "AMBUSH! YOU   ", 15);
+            memcpy(d5, "ARE REALLY    ", 15);
+            memcpy(d6, "BRAVE AND A   ", 15);
+            memcpy(d7, "VERY GOOD DRI,", 15);
+            memcpy(d8, "VER!          ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "REST FOR THE ", 15);
+            memcpy(d11, "NIGHT.       ", 15);
+        break;
+        case MISSION03_INTRO:
+            memcpy(d1, "GOOD MORNING. ", 15);
+            memcpy(d2, "WE ARE IN A   ", 15);
+            memcpy(d3, "HURRY!        ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "I NEED YOU TO ", 15);
+            memcpy(d6, "GET TO ETRURIA", 15);
+            memcpy(d7, "BEFORE THE    ", 15);
+            memcpy(d8, "GREEKS. THEY  ", 15);
+            memcpy(d9, "ARE GOING TO  ", 15);
+            memcpy(d10, "PAY FOR THIS  ", 15);
+            memcpy(d11, "THREAT!       ", 15);
+        break;
+        case MISSION03_COMPLETED:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU BRING HO, ", 15);
+            memcpy(d3, "NOR TO THE RO,", 15);
+            memcpy(d4, "MAN EMPIRE!   ", 15);
+            memcpy(d5, "IN TWO DAYS   ", 15);
+            memcpy(d6, "FROM NOW YOU  ", 15);
+            memcpy(d7, "WILL START YO,", 15);
+            memcpy(d8, "UR NEXT JOUR, ", 15);
+            memcpy(d9, "EY TO THE ALPS", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION04_INTRO:
+            memcpy(d1, "WELCOME TO THE", 15);
+            memcpy(d2, "PROVINCE OF   ", 15);
+            memcpy(d3, "ETRURIA!      ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "BARBARIANS HA,", 15);
+            memcpy(d6, "VE STOLEN AN  ", 15);
+            memcpy(d7, "IMPERIAL SEAL.", 15);
+            memcpy(d8, "IT IS EXTREME,", 15);
+            memcpy(d9, "LY IMPORTANT  ", 15);
+            memcpy(d10, "FOR US TO RE, ", 15);
+            memcpy(d11, "TRIEVE IT!   ", 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
