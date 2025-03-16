@@ -447,6 +447,7 @@ INT8 is_track_ended() BANKED{// == is mission completed
 			result = mission_completed;
 		break;
 		case StateMission04alps:
+		case StateMission05alps:
 			result = mission_completed;
 		break;
 	}

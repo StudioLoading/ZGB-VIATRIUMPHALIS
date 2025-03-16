@@ -32,17 +32,13 @@ Antica Roma (strade cittadine, mercati, palazzi imperiali)
 "Consegna un messaggio segreto al senato" 
 "Evita le guardie!"
 "Sfuggi agli assassini sulla via Appia di notte."
-"Supera le bighe degli sgherri di un senatore corrotto." (Gli avversari si muovono orizzontalmente, devi evitarli o colpirli con armi! alla fine devi "sfondare" una linea di sgherri e puoi farlo solo se li impatti a stamina vicina ad Euphoria Max, altrimenti rimbalzi indietro e vieni catturato!)
+"Arriva sulle alpi prima dei greci"
 
-Via Emilia (strade romane, foreste, accampamenti)
-"Intercetta un traditore che trasporta informazioni ai barbari." (A tempo: 90 secondi per raggiungerlo prima che scappi!)
-"Salva un generale romano intrappolato dietro le linee nemiche." (altri sfondamenti da fare!)
+Alpi (strade romane, foreste, accampamenti)
+"Intercetta un traditore che trasporta informazioni ai barbari." (A tempo + uccidi)
+"Salva un generale romano intrappolato dietro le linee nemiche." (sfondamenti)
+"Attraversa le gole evitando frane" (potrei far cadere qualcosa semplicemente dall' alto nei tratti in orizzontale, con l'anticipation di schermo tremante)
 "Schiva i tronchi rotolanti lanciati dai Galli lungo il sentiero!" (Ostacoli in movimento orizzontale da evitare o spingere via!)
-
-Alpi Italiane (sentieri innevati, valichi pericolosi)
-"Recupera il sigillo imperiale rubato dai briganti nelle montagne."
-"Attraversa le gole evitando frane e imboscate celtiche." (A tempo: 3 minuti prima che il sentiero crolli!)
-"Sfuggi a una valanga evitando rocce e tronchi sulla discesa!" (Movimenti orizzontali da evitare mentre corri in discesa!)
 
 Costa Albanese (porti, scogliere, sentieri costieri)
 "Ruba le mappe strategiche dei nemici senza farti scoprire." (A tempo: 2 minuti prima che la guardia torni!)

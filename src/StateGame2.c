@@ -28,7 +28,6 @@ extern UINT8 scroll_bottom_movement_limit;//= 100;
 extern UINT16 stamina_max;// = 960;
 extern UINT16 euphoria_min;// = 600;
 extern UINT16 euphoria_max;// = 700;
-extern INT16 stamina_current;// = 0;
 extern INT8 vx;
 extern INT8 vy;
 extern INT8 sin;
@@ -105,6 +104,9 @@ void spawn_items() BANKED{
 		case MISSIONALPS04:
 			item_spawn(FIRE, ((UINT16) 38u << 3), ((UINT16) 68u << 3));
 			item_spawn(FIRE, ((UINT16) 62u << 3), ((UINT16) 18u << 3));
+		break;
+		case MISSIONALPS05:
+			item_spawn(LANCE, ((UINT16) 133u << 3), ((UINT16) 27u << 3));
 		break;
 	}
 }

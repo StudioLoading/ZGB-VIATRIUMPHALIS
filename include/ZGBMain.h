@@ -16,6 +16,7 @@ _STATE(StateMission01rome)\
 _STATE(StateMission02rome)\
 _STATE(StateMission03rome)\
 _STATE(StateMission04alps)\
+_STATE(StateMission05alps)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -44,6 +45,7 @@ _SPRITE_DMG(SpriteRomansenator, romansenator)\
 _SPRITE_DMG(SpriteExclamation, exclamation)\
 _SPRITE_DMG(SpriteKiller, killer)\
 _SPRITE_DMG(SpriteEitemlance, eitemlance)\
+_SPRITE_DMG(SpriteBarbarianshield, barbarianshield)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"

@@ -222,6 +222,21 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                         item_data->configured = 5;
                     }
                 }break;
+                case SpriteBarbarianshield:{
+                    struct SoldierData* barbarianshield_data = (struct SoldierData*)iispr->custom_data;
+                    if(THIS->x < iispr->x){//gli sto a sinistra
+                        switch(barbarianshield_data->configured){
+                            case 1: barbarianshield_data->configured = 4; break;
+                            case 2: barbarianshield_data->configured = 6; break;
+                        }
+                    }else{//gli sto a destra
+                        switch(barbarianshield_data->configured){
+                            case 1: barbarianshield_data->configured = 3; break;
+                            case 2: barbarianshield_data->configured = 5; break;
+                        }
+                    }
+                    item_data->configured = 5;
+                }break;
                 case SpriteHorse:
                 case SpriteBiga:{
                     struct ItemData* weapon_data = (struct ItemData*) s_item_arg->custom_data;

@@ -25,7 +25,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ALPS;//TODO AREA_ROME
-MISSION current_mission = MISSIONALPS04;//TODO MISSIONROME00
+MISSION current_mission = MISSIONALPS05;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -37,7 +37,7 @@ void START() {
         if(current_mission <= MISSIONROME03){
             InitScroll(BANK(arearome), &arearome, 0, 0);
         }
-        if(current_mission <= MISSIONALPS04){
+        if(current_mission <= MISSIONALPS07){
             InitScroll(BANK(areaalps), &areaalps, 0, 0);
         }
         break;
@@ -57,9 +57,9 @@ void START() {
                 case MISSIONROME00: PRINT(2, 15, "A SECRET MESSAGE"); break;
                 case MISSIONROME01: PRINT(4, 15, "RUN TO SAFETY"); break;
                 case MISSIONROME02: PRINT(4, 15, "  SURVIVE    "); break;
-                case MISSIONROME03: PRINT(4, 15, " KILL THE MAN"); break;
-                case MISSIONALPS04: PRINT(4, 15, " HURRY UP!   "); break;
-                case MISSIONALPS05: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONROME03: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS04: PRINT(4, 15, " FIRST BLOOD "); break;
+                case MISSIONALPS05: PRINT(4, 15, "SAVE THE GENERAL"); break;
                 case MISSIONALPS06: PRINT(4, 15, " HURRY UP!   "); break;
             }
         break;
@@ -128,6 +128,10 @@ void UPDATE() {
                 case MISSIONALPS04:
                     prev_state = StateMission04alps;
                     GetLocalizedDialog_EN(MISSION04_INTRO);
+                break;
+                case MISSIONALPS05:
+                    prev_state = StateMission05alps;
+                    GetLocalizedDialog_EN(MISSION05_INTRO);
                 break;
             }
             SetState(StatePapyrus);

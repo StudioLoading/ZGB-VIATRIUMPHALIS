@@ -24,6 +24,8 @@ const UINT8 coll_m04_surface[] = {0u, 0};
 
 Sprite* s_traitor00 = 0;
 
+void spawn_spy() BANKED;
+
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
@@ -125,7 +127,7 @@ void UPDATE(){
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;
-                GetLocalizedDialog_EN(MISSION00_COMPLETED);
+                GetLocalizedDialog_EN(MISSION04_COMPLETED);
                 SetState(StatePapyrus);
             }
         }

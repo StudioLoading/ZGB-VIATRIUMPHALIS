@@ -55,9 +55,12 @@ Sprite* s_flame = 0;
 INT8 onwater_countdown = -1;
 INT8 flag_hit = 0;
 INT8 counter_hit = 0;
+INT8 flag_bouncing = 0;
+INT8 counter_bouncing = 80;
 
 
 void horse_hit(INT8 arg_damage) BANKED;
+void change_stamina_current(INT16 start, INT16 increase) BANKED;
 
 
 extern UINT8 J_WHIP;
@@ -93,6 +96,14 @@ void START() {
 }
 
 void UPDATE() {
+    //BOUNCING & COUNTER
+        if(counter_bouncing > 0){
+            counter_bouncing--;
+            if(counter_bouncing <= 0){
+                counter_bouncing = 0;
+                flag_bouncing = 0;
+            }
+        }
     //HIT COUNTER & FLAG
         if(flag_hit == 1){
             counter_hit--;
@@ -122,23 +133,15 @@ void UPDATE() {
             whip_counter--;
         }
         if(whip_counter > 0){
-            stamina_current += (whip_power_over_stamina * stamina_verso);
+            change_stamina_current(stamina_current, (whip_power_over_stamina * stamina_verso));
         }else{
             if(no_whip_counter > 0){
                 no_whip_counter--;
                 if(no_whip_counter == 0){
-                    stamina_current += no_whip_over_stamina;
-                    no_whip_counter = no_whip_counter_max;
+                    change_stamina_current(stamina_current, no_whip_over_stamina);no_whip_counter = no_whip_counter_max;
                 }
             }
         }    
-    //LIMIT STAMINA
-        if(stamina_current < 0){
-            stamina_current = 0;
-        }
-        if(stamina_current > STAMINA_MAX){
-            stamina_current = STAMINA_MAX;
-        }
     //VELOCITY COUNTER FRAMESKIP
         INT16 delta_stamina_euphoria = 0;
         if(stamina_current > euphoria_max){
@@ -164,7 +167,7 @@ void UPDATE() {
                 break;
             }
             velocity_counter = 1;//cioè vai a cannone
-            stamina_current = EUPHORIA_MAX+1;//fissa la stamina a euphoria_max
+            change_stamina_current(0, EUPHORIA_MAX+1);//fissa la stamina a euphoria_max
             s_flame->x = THIS->x +2;
             s_flame->y = THIS->y-7;
             if(weapon_def == CAPE){
@@ -181,7 +184,7 @@ void UPDATE() {
             }
             if(whip_power_over_stamina != current_whip_power){//se entro qui, sto risistemando la whip ed è appena terminato l'onfire.
                 whip_power_over_stamina = current_whip_power;
-                stamina_current = (EUPHORIA_MIN - (EUPHORIA_MIN >> 3));
+                change_stamina_current(0, EUPHORIA_MIN - (EUPHORIA_MIN >> 3));
                 SpriteManagerRemoveSprite(s_flame);
             }
         }
@@ -283,7 +286,7 @@ void UPDATE() {
                 }else if(sin < -78){ // tratto come se stesse andando verticale basso
                     vy = 2;
                 }
-           
+            //MOVE
                 if(flag_die){ return; }
                 UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
@@ -336,7 +339,7 @@ void UPDATE() {
                                 onfire_countdown = 0;
                             }else if(onfire_countdown == -1){
                                 if(stamina_current > (euphoria_min >> 1)){
-                                    stamina_current = (euphoria_min >> 1);
+                                    change_stamina_current(0, euphoria_min >> 1);
                                 }
                             }                        
                             if(THIS->anim_frame == 0 || THIS->anim_frame == 2 || THIS->anim_frame == 4){
@@ -395,7 +398,7 @@ void UPDATE() {
                                     SpriteManagerRemoveSprite(iospr);
                                 }else{
                                     onfire_countdown = ONFIRE_COUNTDOWN_MAX;
-                                    stamina_current = euphoria_min >> 2;
+                                    change_stamina_current(0, euphoria_min >> 2);
                                     whip_power_over_stamina = 1;
                                     s_flame = iospr;
                                 }
@@ -423,9 +426,46 @@ void UPDATE() {
                             }
                         }
                     break;
+                    case SpriteBarbarianshield:{
+                        struct SoldierData* barbarianshield_data = (struct SoldierData*)iospr->custom_data;
+                        if(barbarianshield_data->configured == 1 || barbarianshield_data->configured == 2){
+                            if(stamina_current > euphoria_min && stamina_current <= euphoria_max){//sfonda
+                                if(THIS->x < iospr->x){//gli sto a sinistra
+                                    switch(barbarianshield_data->configured){
+                                        case 1: barbarianshield_data->configured = 4; break;
+                                        case 2: barbarianshield_data->configured = 6; break;
+                                    }
+                                }else{//gli sto a destra
+                                    switch(barbarianshield_data->configured){
+                                        case 1: barbarianshield_data->configured = 3; break;
+                                        case 2: barbarianshield_data->configured = 5; break;
+                                    }
+                                }
+                                stamina_current -= 140;
+                            }else if(flag_bouncing == 0){//rimbalza
+                                if(stamina_current < 200){ stamina_current = 200;}
+                                else{stamina_current -= 200;}
+                                turn = (turn + 128u) % 254;
+                                flag_bouncing = 1;
+                                counter_bouncing = 80;
+                                //turn + 128 modulo 256, IL MODULO lo fa da solo perché é unsigned
+                            }
+                        }
+                    }break;
                 }
             }
         }
+}
+
+void change_stamina_current(INT16 start, INT16 increase) BANKED{
+    INT16 new_stamina_current = start + increase;
+    if(stamina_current < 0){
+        stamina_current = 0;
+    }else if(stamina_current > STAMINA_MAX){
+        stamina_current = STAMINA_MAX;
+    }else{
+        stamina_current = new_stamina_current;
+    }
 }
 
 void horse_hit(INT8 arg_damage) BANKED{
