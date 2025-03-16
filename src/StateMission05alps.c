@@ -29,7 +29,6 @@ Sprite* s_barbarianshield03 = 0;
 Sprite* s_barbarianshield04 = 0;
 Sprite* s_barbarianshield05 = 0;
 Sprite* s_barbarianshield06 = 0;
-Sprite* s_barbarianshield07 = 0;
 
 Sprite* s_general = 0;
 UINT8 flag_spawn_general = 0;
@@ -64,6 +63,9 @@ extern UINT8 mission_killed;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
+extern void calculate_danger(Sprite* s_danger) BANKED;
+extern void check_danger() BANKED;
+extern void show_danger() BANKED;
 extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
@@ -86,8 +88,15 @@ void START(){
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        current_step = EXIT;
-        mission_completed = 1;
+        if(current_step == LOOKING_FOR_SENATOR){
+            s_general = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 35u << 3), ((UINT16) 67u << 3));
+            mission_completed = 0;
+        }else{
+            SpriteManagerRemoveSprite(s_general);
+            current_step = EXIT;
+            mission_completed = 1;
+            s_general = 0;
+        }
     //COMMONS & START
         InitScroll(BANK(mapmission05), &mapmission05, coll_m05_tiles, coll_m05_surface);
 		INIT_HUD(hudm);
@@ -98,7 +107,7 @@ void START(){
 }
 
 void spawn_barbarianshield() BANKED{
-    s_barbarianshield00 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 47u << 3), ((UINT16) 9u << 3));
+    s_barbarianshield00 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 47u << 3), ((UINT16) 10u << 3)+2u);
     s_barbarianshield00->mirror = V_MIRROR;
     struct SoldierData* barbarian00_data = (struct SoldierData*) s_barbarianshield00->custom_data;
     barbarian00_data->configured = 1;
@@ -107,28 +116,25 @@ void spawn_barbarianshield() BANKED{
     struct SoldierData* barbarian01_data = (struct SoldierData*) s_barbarianshield01->custom_data;
     barbarian01_data->configured = 2;
     
-    s_barbarianshield02 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 114u << 3), ((UINT16) 9u << 3));
+    s_barbarianshield02 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 87 << 3), ((UINT16) 9u << 3));
     struct SoldierData* barbarian02_data = (struct SoldierData*) s_barbarianshield02->custom_data;
     barbarian02_data->configured = 1;
-    s_barbarianshield03 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 113u << 3), ((UINT16) 11u << 3));
+
+    s_barbarianshield03 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 68u << 3), ((UINT16) 22u << 3));
     struct SoldierData* barbarian03_data = (struct SoldierData*) s_barbarianshield03->custom_data;
     barbarian03_data->configured = 2;
 
-    s_barbarianshield04 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 103u << 3), ((UINT16) 30u << 3));
+    s_barbarianshield04 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 47u << 3), ((UINT16) 44u << 3));
     struct SoldierData* barbarian04_data = (struct SoldierData*) s_barbarianshield04->custom_data;
     barbarian04_data->configured = 1;
-    s_barbarianshield05 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 103u << 3) + 7u, ((UINT16) 32u << 3) - 4);
+
+    s_barbarianshield05 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 57u << 3) + 7u, ((UINT16) 45u << 3) +2u);
     struct SoldierData* barbarian05_data = (struct SoldierData*) s_barbarianshield05->custom_data;
     barbarian05_data->configured = 2;
     
-    s_barbarianshield06 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 120u << 3), ((UINT16) 62u << 3));
+    s_barbarianshield06 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 46u << 3), ((UINT16) 58u << 3));
     struct SoldierData* barbarian06_data = (struct SoldierData*) s_barbarianshield06->custom_data;
-    barbarian06_data->configured = 1;
-
-    s_barbarianshield07 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 35u << 3), ((UINT16) 67u << 3));
-    struct SoldierData* barbarian07_data = (struct SoldierData*) s_barbarianshield07->custom_data;
-    barbarian07_data->configured = 1;
-    
+    barbarian06_data->configured = 1;    
 }
 
 void UPDATE(){
@@ -143,7 +149,25 @@ void UPDATE(){
         time_current--;
         if(time_current < 0 && !mission_completed && !track_ended){
             die();
+        }    
+    //MISSION STEP
+        if(current_step == SENATOR_COLLIDED){
+            pos_horse_x = s_horse->x;
+            pos_horse_y = s_horse->y;
+            prev_state = StateMission05alps;
+            turn_to_load = turn;
+            GetLocalizedDialog_EN(MISSION05_SAVED_GENERAL);
+            SetState(StatePapyrus);
         }
+    //CALCULATE DANGER
+        calculate_danger(s_barbarianshield00);
+        calculate_danger(s_barbarianshield01);
+        calculate_danger(s_barbarianshield02);
+        calculate_danger(s_barbarianshield03);
+        calculate_danger(s_barbarianshield05);
+        calculate_danger(s_barbarianshield06);
+        check_danger();
+        show_danger();
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;

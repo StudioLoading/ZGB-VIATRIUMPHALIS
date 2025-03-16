@@ -192,19 +192,63 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "WHO OWNS IT. ", 15);
             memcpy(d12, EMPTY_STRING_14, 15);
         break;
-        case MISSION04_SECRET_MESSAGE:
-            memcpy(d0, "FROM TODAY YOU", 15);
-            memcpy(d1, "ARE DISMISSED ", 15);
-            memcpy(d2, "IN DOING SERVI", 15);
-            memcpy(d3, "CE FOR THE EM,", 15);
-            memcpy(d4, "PIRE. THE MAN ", 15);
-            memcpy(d5, "WHO'S GIVING  ", 15);
-            memcpy(d6, "YOU THIS PAPER", 15);
-            memcpy(d7, "IS THE NEW SEC", 15);
-            memcpy(d8, "RET AGENT.    ", 15);
+        case MISSION04_COMPLETED:
+            memcpy(d0, "THAT FILTHY   ", 15);
+            memcpy(d1, "TRAITOR! GREAT", 15);
+            memcpy(d2, "JOB, HE DESER,", 15);
+            memcpy(d3, "VED THAT.     ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "REST FOR THE  ", 15);
+            memcpy(d7, "NIGHT AND WAIT", 15);
+            memcpy(d8, "FOR MY NEW    ", 15);
+            memcpy(d9, "MESSAGE.      ", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION05_INTRO:
+            memcpy(d0, "THIS TIME YOU ", 15);
+            memcpy(d1, "HAVE TO MOVE  ", 15);
+            memcpy(d2, "FAST. A GENE, ", 15);
+            memcpy(d3, "RAL SOLDIER   ", 15);
+            memcpy(d4, "HAS BEEN LOST ", 15);
+            memcpy(d5, "IN THE MOUN,  ", 15);
+            memcpy(d6, "TAINS. YOU MU,", 15);
+            memcpy(d7, "ST SAVE HIM...", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, "BEFORE HE FRE,", 15);
+            memcpy(d10, "EZES TO DEATH.", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION05_SAVED_GENERAL:
+            memcpy(d0, "THANK YOU!    ", 15);
+            memcpy(d1, "LONG LIVE     ", 15);
+            memcpy(d2, "THE ROMAN EM, ", 15);
+            memcpy(d3, "PIRE AND ALL  ", 15);
+            memcpy(d4, "ITS ROMAN SOL,", 15);
+            memcpy(d5, "DIER AND CHA, ", 15);
+            memcpy(d6, "RIOTERS!      ", 15);
+            memcpy(d7, "I WAS ALMOST  ", 15);
+            memcpy(d8, "DIEING THERE..", 15);
             memcpy(d9, EMPTY_STRING_14, 15);
-            memcpy(d10, "SEE YOU IN THE", 15);
-            memcpy(d11, "SENATE.       ", 15);
+            memcpy(d10, "LET'S RUN AWAY", 15);
+            memcpy(d11, "FROM THESE CO,", 15);
+            memcpy(d12, "LD MOUNTAINS. ", 15);
+        break;
+        case MISSION05_COMPLETED:
+            memcpy(d0, "YOU DID SAVED ", 15);
+            memcpy(d1, "HIM!!         ", 15);
+            memcpy(d2, "HER DAUGHTER  ", 15);
+            memcpy(d3, "AWAITS FOR THE", 15);
+            memcpy(d4, "SAVIOR OF HER ", 15);
+            memcpy(d5, "FATHER HERE IN", 15);
+            memcpy(d6, "ROME... YOU D ", 15);
+            memcpy(d7, "BETTER GET    ", 15);
+            memcpy(d8, "BACK ALIVE, I ", 15);
+            memcpy(d9, "GUESS SHE WILL", 15);
+            memcpy(d10, "THANK YOU IN  ", 15);
+            memcpy(d11, "THE BEST WAY  ", 15);
+            memcpy(d12, "WOMEN DO...   ", 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);

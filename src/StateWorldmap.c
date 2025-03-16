@@ -59,7 +59,7 @@ void START() {
                 case MISSIONROME02: PRINT(4, 15, "  SURVIVE    "); break;
                 case MISSIONROME03: PRINT(4, 15, " HURRY UP!   "); break;
                 case MISSIONALPS04: PRINT(4, 15, " FIRST BLOOD "); break;
-                case MISSIONALPS05: PRINT(4, 15, "SAVE THE GENERAL"); break;
+                case MISSIONALPS05: PRINT(2, 15, "SAVE THE GENERAL"); break;
                 case MISSIONALPS06: PRINT(4, 15, " HURRY UP!   "); break;
             }
         break;
