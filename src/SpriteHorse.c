@@ -198,6 +198,9 @@ void UPDATE() {
         if(KEY_PRESSED(J_RIGHT)){
             turn_verse = CLOCK;
             turn--;
+            if(configuration.reins == GOLDEN){
+                turn -= 2;
+            }
             turn_samepressure_counter++;
             if(turn_samepressure_counter >= 40 && ((sin > 30 && sin < 78) || (sin < -30 && sin > -78))){
                 turn_samepressure_counter = 40;
@@ -206,6 +209,9 @@ void UPDATE() {
         }else if(KEY_PRESSED(J_LEFT)){
             turn_verse = COUNTERCLOCK;
             turn++;
+            if(configuration.reins == GOLDEN){
+                turn += 2;
+            }
             turn_samepressure_counter++;
             if(turn_samepressure_counter > 40){
                 turn_samepressure_counter = 40;

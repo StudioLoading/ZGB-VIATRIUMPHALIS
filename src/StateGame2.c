@@ -109,6 +109,16 @@ void spawn_items() BANKED{
 			item_spawn(LANCE, ((UINT16) 26u << 3), ((UINT16) 41u << 3));
 			item_spawn(LANCE, ((UINT16) 79u << 3), ((UINT16) 56u << 3));
 		break;
+		case MISSIONALPS06:
+			item_spawn(ELMET, ((UINT16) 166u << 3), ((UINT16) 14u << 3));
+			item_spawn(ELMET, ((UINT16) 128u << 3), ((UINT16) 18u << 3));
+			if(configuration.reins == NORMAL){
+				Sprite* s_config_reins = SpriteManagerAdd(SpriteConfigreins, ((UINT16)212u << 3), ((UINT16)10u << 3));
+				struct ItemData* reins_data = (struct ItemData*)s_config_reins->custom_data;
+				reins_data->itemtype = GOLDEN_REINS;
+				reins_data->configured = 1;
+			}
+		break;
 	}
 }
 

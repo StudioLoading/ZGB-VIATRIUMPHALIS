@@ -117,6 +117,7 @@ void UPDATE() {
                     case SpriteItemheart:
                     case SpriteItemglass:
                     case SpriteConfigwhip:
+                    case SpriteConfigreins:
                     case SpriteConfigwheel:{
                         struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
                         if(item_data->configured == 2){

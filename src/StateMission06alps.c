@@ -16,16 +16,22 @@
 #define TIME_ROLLINGSTONE_MED 380
 #define TIME_ROLLINGSTONE_MAX 600
 
+#define DELAY_TREMBLE_MIN 3
+#define DELAY_TREMBLE_MAX 10
+
+
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission06);
 
-const UINT8 coll_m06_tiles[] = {15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 102, 103, 104, 105, 106, 114, 118, 119, 121, 0};
+const UINT8 coll_m06_tiles[] = {15, 16, 17, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 102, 103, 104, 105, 106, 114, 118, 119, 121, 0};
 
 const UINT8 coll_m06_surface[] = {0u, 0};
 
 Sprite* s_rollingstone = 0;
+Sprite* s_rollingstone2 = 0;
 UINT8 timer_rollingstone = 0;
 UINT8 flag_turn_on_tremble = 0u;
+INT8 delay_tremble = 0;
 
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
@@ -94,6 +100,7 @@ void START(){
         start_common();
         timer_rollingstone = TIME_ROLLINGSTONE_MAX;
         flag_turn_on_tremble = 0u;
+        delay_tremble = 0;
 }
 
 
@@ -105,32 +112,58 @@ void UPDATE(){
             s_horse->x = 24u;
         }
     //CHECK ROLLINGSTONE
-        if(flag_turn_on_tremble){//screen tremble
-            if(scroll_target->y < (s_horse->y - 10u)){
-                scroll_target->y = s_horse->y + 6u;
-            }else if(scroll_target->y < (s_horse->y + 20u)){
-                scroll_target->y = s_horse->y - 12u;
+        if(s_horse->x > ((UINT16) 40u << 3)){
+            if(flag_turn_on_tremble){//screen tremble
+                delay_tremble--;
+                if(delay_tremble <= 0){
+                    delay_tremble = DELAY_TREMBLE_MIN;
+                    if(scroll_target->y < (s_horse->y - 8u)){
+                        scroll_target->y = s_horse->y + 8u;
+                    }else if(scroll_target->y < (s_horse->y + 20u)){
+                        scroll_target->y = s_horse->y - 12u;
+                    }
+                }
             }
-        }
-        timer_rollingstone--;
-        if(timer_rollingstone < 40){
-            if(flag_turn_on_tremble == 0u){
-                flag_turn_on_tremble = 1u;
+            timer_rollingstone--;
+            if(timer_rollingstone < 40){//flag tremble
+                if(flag_turn_on_tremble == 0u){
+                    flag_turn_on_tremble = 1u;
+                }
             }
-        }
-        if(timer_rollingstone < 10){
-            if(s_horse->x < ((UINT16) 70u << 3)){
-                s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 100, s_horse->y - 80);
-                flag_turn_on_tremble = 0u;
-                timer_rollingstone = TIME_ROLLINGSTONE_MAX;
-            }else if(s_horse->x < ((UINT16) 160u << 3)){
-                s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 100, s_horse->y - 80);
-                flag_turn_on_tremble = 0u;
-                timer_rollingstone = TIME_ROLLINGSTONE_MED;
-            }else if(s_horse->x < ((UINT16) 210u << 3)){
-                s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 100, s_horse->y - 80);
-                flag_turn_on_tremble = 0u;
-                timer_rollingstone = TIME_ROLLINGSTONE_MIN;
+            if(timer_rollingstone < 10){//rolling stone
+                if(s_horse->x < ((UINT16) 70u << 3)){
+                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 60, s_horse->y - 80);
+                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
+                    rollingstone_data->verse_x = -1;
+                    rollingstone_data->frmskip_y = 10;
+                    rollingstone_data->max_frmskip_y = 10;
+                    flag_turn_on_tremble = 0u;
+                    delay_tremble = 0;
+                    timer_rollingstone = TIME_ROLLINGSTONE_MIN;
+                }else if(s_horse->x < ((UINT16) 160u << 3)){
+                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 50, s_horse->y - 40);
+                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
+                    rollingstone_data->verse_x = 1;
+                    rollingstone_data->frmskip_y = 6;
+                    rollingstone_data->max_frmskip_y = 6;
+                    flag_turn_on_tremble = 0u;
+                    delay_tremble = 0;
+                    timer_rollingstone = TIME_ROLLINGSTONE_MED;
+                }else if(s_horse->x < ((UINT16) 190u << 3)){
+                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 70, s_horse->y - 80);
+                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
+                    rollingstone_data->verse_x = 1;
+                    rollingstone_data->frmskip_y = 3;
+                    rollingstone_data->max_frmskip_y = 3;
+                    s_rollingstone2 = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 100, s_horse->y - 70);
+                    struct RollingStoneData* rollingstone_data2 = (struct RollingStoneData*) s_rollingstone2->custom_data;
+                    rollingstone_data2->verse_x = 1;
+                    rollingstone_data2->frmskip_y = 3;
+                    rollingstone_data2->max_frmskip_y = 3;
+                    flag_turn_on_tremble = 0u;
+                    delay_tremble = 0;
+                    timer_rollingstone = TIME_ROLLINGSTONE_MAX;
+                }
             }
         }
     //UPDATE TIME
@@ -150,9 +183,9 @@ void UPDATE(){
             SetState(StatePapyrus);
         }*/
     //CALCULATE DANGER
-        calculate_danger(s_rollingstone);
+        /*calculate_danger(s_rollingstone);
         check_danger();
-        show_danger();
+        show_danger();*/
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;
@@ -171,7 +204,7 @@ void UPDATE(){
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;
-                GetLocalizedDialog_EN(MISSION05_COMPLETED);
+                GetLocalizedDialog_EN(MISSION06_COMPLETED);
                 SetState(StatePapyrus);
             }
         }

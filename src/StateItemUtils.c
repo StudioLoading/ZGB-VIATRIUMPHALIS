@@ -44,6 +44,8 @@ extern void item_configwhip_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configwhip_anim(Sprite* s_item_arg) BANKED;
 extern void item_configwheel_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configwheel_anim(Sprite* s_item_arg) BANKED;
+extern void item_configreins_anim_blink(Sprite* s_item_arg) BANKED;
+extern void item_configreins_anim(Sprite* s_item_arg) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
@@ -91,6 +93,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 break;
                 case GOLDEN_WHEEL:
                     item_configwheel_anim(s_item_arg);
+                break;
+                case GOLDEN_REINS:
+                    item_configreins_anim(s_item_arg);
                 break;
                 case ENEMY_LANCE:
                     item_e_lance_anim_blink(s_item_arg);

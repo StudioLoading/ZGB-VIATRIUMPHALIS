@@ -54,6 +54,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case DESCRIPTION_GOLDEN_REINS:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU FOUND THE ", 15);
+            memcpy(d3, "GOLDEN REINS! ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "YOUR TURNING  ", 15);
+            memcpy(d6, "SPEED IS INC, ", 15);
+            memcpy(d7, "REASED.       ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case MISSION00_INTRO:
             memcpy(d0, "FIRSTLY WE HA,", 15);
             memcpy(d1, "VE SOME COMMI,", 15);
@@ -263,6 +277,21 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d9, EMPTY_STRING_14, 15);
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION06_COMPLETED:
+            memcpy(d0, "IF THIS MESSA,", 15);
+            memcpy(d1, "GE REACHES YOU", 15);
+            memcpy(d2, "IT MEANS YOU  ", 15);
+            memcpy(d3, "SURVIVED THE  ", 15);
+            memcpy(d4, "LANDSLIDES.   ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, EMPTY_STRING_14, 15);
+            memcpy(d7, "REST FOR THE  ", 15);
+            memcpy(d8, "NIGHT. TOMOR, ", 15);
+            memcpy(d9, "ROW A NEW MIS,", 15);
+            memcpy(d10, "SION AWAITS   ", 15);
+            memcpy(d11, "YOU.         ", 15);
             memcpy(d12, EMPTY_STRING_14, 15);
         break;
         case DEAD:

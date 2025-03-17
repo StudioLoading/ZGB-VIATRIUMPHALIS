@@ -85,6 +85,7 @@ typedef enum{
 typedef enum{
     DESCRIPTION_GOLDEN_WHIP,
     DESCRIPTION_GOLDEN_WHEEL,
+    DESCRIPTION_GOLDEN_REINS,
     MISSION00_INTRO,
     MISSION00_SECRET_MESSAGE,
     MISSION00_COMPLETED,
@@ -100,6 +101,7 @@ typedef enum{
     MISSION05_SAVED_GENERAL,
     MISSION05_COMPLETED,
     MISSION06_INTRO,
+    MISSION06_COMPLETED,
     DEAD
 }INSTRUCTION;
 
@@ -159,6 +161,12 @@ struct KillerData{
     UINT8 time_blink;
     UINT8 time_attack;
     UINT8 instant_attack;
+};
+
+struct RollingStoneData{
+    INT8 verse_x;
+    INT8 frmskip_y;
+    UINT8 max_frmskip_y;
 };
 
 #endif

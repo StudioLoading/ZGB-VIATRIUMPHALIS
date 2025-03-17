@@ -132,12 +132,12 @@ void UPDATE(){
             case NO_REINS:
                 Anim_config_reins();
                 current_focus = REINS;
-                configwhip_blink = 0;
             break;
             case REINS:
-                Anim_config_no();
-                current_focus = NO_REINS;
-                configwhip_blink = 0;
+                if(configuration.reuns == NORMAL){
+                    Anim_config_no();
+                    current_focus = NO_REINS;
+                }
             break;
         }
     }
@@ -173,6 +173,9 @@ void change_description() BANKED{
             if(configuration.reins == NORMAL){
                 PRINT(7,0, "NORMAL REINS ");
                 PRINT(7,1, "             ");
+            }else if(configuration.reins == GOLDEN){
+                PRINT(7,0, "GOLDEN REINS ");
+                PRINT(7,1, "SPEED (2     ");
             }
         break;
     }
@@ -192,6 +195,10 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
         case GOLDEN_WHEEL:
             configuration.wheel = GOLDEN;
             GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_WHEEL);
+        break;
+        case GOLDEN_REINS:
+            configuration.reins = GOLDEN;
+            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_REINS);
         break;
     }
     flag_golden_found = 1;
