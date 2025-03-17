@@ -25,7 +25,8 @@
 			"utilanim.h": "c",
 			"dialogs.h": "c",
 			"types.h": "c",
-			"cgb.h": "c"
+			"cgb.h": "c",
+			"zgbmain_init.h": "c"
 		}
 	}
 }

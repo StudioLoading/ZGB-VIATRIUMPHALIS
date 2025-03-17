@@ -412,7 +412,9 @@ void UPDATE() {
                         }
                     }break;
                     case SpriteRomansenator:
-                        current_step = SENATOR_COLLIDED;
+                        if(current_step != SENATOR_COLLIDED){
+                            current_step = SENATOR_COLLIDED;
+                        }
                     break;
                     case SpriteRomansoldier:
                         {

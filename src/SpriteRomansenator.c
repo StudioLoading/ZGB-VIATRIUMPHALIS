@@ -22,6 +22,9 @@ void START() {
 }
 
 void UPDATE() {
+    SetSpriteAnim(THIS, a_senator_h, 8u);
+    THIS->lim_x = 10000;
+    THIS->lim_y = 10000;
 }
 
 void DESTROY() {

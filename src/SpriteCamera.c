@@ -8,6 +8,7 @@
 extern Sprite* s_horse;
 extern INT8 vx;
 extern UINT8 track_ended;
+extern UINT8 flag_turn_on_tremble;
 
 void START() {
     THIS->lim_x = 1000;
@@ -18,7 +19,9 @@ void UPDATE() {
     if(track_ended == 1){
         return;
     }
-    THIS->y = s_horse->y - 18;
+    if(flag_turn_on_tremble == 0){
+        THIS->y = s_horse->y - 18;
+    }
     INT8 delta_x = 0;
     if(vx > 1){
         UINT16 final_camera_x = s_horse->x + 56;

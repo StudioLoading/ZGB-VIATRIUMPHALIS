@@ -250,6 +250,21 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "THE BEST WAY  ", 15);
             memcpy(d12, "WOMEN DO...   ", 15);
         break;
+        case MISSION06_INTRO:
+            memcpy(d0, "THOSE FILTHY  ", 15);
+            memcpy(d1, "GALLIC ARE CA,", 15);
+            memcpy(d2, "SING LANDSLI, ", 15);
+            memcpy(d3, "DES IN YOUR   ", 15);
+            memcpy(d4, "MOUNTAINS.    ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "SURVIVE THOSE!", 15);
+            memcpy(d7, EMPTY_STRING_14, 15);
+            memcpy(d8, "TAKE YOUR TIME", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);

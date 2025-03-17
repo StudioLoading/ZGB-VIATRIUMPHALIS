@@ -25,7 +25,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ALPS;//TODO AREA_ROME
-MISSION current_mission = MISSIONALPS05;//TODO MISSIONROME00
+MISSION current_mission = MISSIONALPS06;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -60,7 +60,7 @@ void START() {
                 case MISSIONROME03: PRINT(4, 15, " HURRY UP!   "); break;
                 case MISSIONALPS04: PRINT(4, 15, " FIRST BLOOD "); break;
                 case MISSIONALPS05: PRINT(2, 15, "SAVE THE GENERAL"); break;
-                case MISSIONALPS06: PRINT(4, 15, " HURRY UP!   "); break;
+                case MISSIONALPS06: PRINT(4, 15, "LANDSLIDES!  "); break;
             }
         break;
     }
@@ -132,6 +132,10 @@ void UPDATE() {
                 case MISSIONALPS05:
                     prev_state = StateMission05alps;
                     GetLocalizedDialog_EN(MISSION05_INTRO);
+                break;
+                case MISSIONALPS06:
+                    prev_state = StateMission06alps;
+                    GetLocalizedDialog_EN(MISSION06_INTRO);
                 break;
             }
             SetState(StatePapyrus);
