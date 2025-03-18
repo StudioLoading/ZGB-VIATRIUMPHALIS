@@ -120,6 +120,14 @@ void spawn_items() BANKED{
 				reins_data->configured = 1;
 			}*/
 		break;
+		case MISSIONALPS07:
+			item_spawn(SHIELD, ((UINT16) 18u << 3), ((UINT16) 16u << 3));
+			SpriteManagerAdd(SpriteFlame, (UINT16) 13u << 3, (UINT16) 13u << 3);
+			item_spawn(SHIELD, ((UINT16) 24u << 3), ((UINT16) 39u << 3));
+			item_spawn(GLADIO, ((UINT16) 39u << 3), ((UINT16) 20u << 3));
+			item_spawn(GLADIO, ((UINT16) 31u << 3), ((UINT16) 32u << 3));
+			item_spawn(LANCE, ((UINT16) 60u << 3), ((UINT16) 41u << 3));
+		break;
 	}
 }
 

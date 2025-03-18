@@ -18,6 +18,7 @@ _STATE(StateMission03rome)\
 _STATE(StateMission04alps)\
 _STATE(StateMission05alps)\
 _STATE(StateMission06alps)\
+_STATE(StateMission07alps)\
 STATE_DEF_END
 
 #define SPRITES \

@@ -137,6 +137,10 @@ void UPDATE() {
                     prev_state = StateMission06alps;
                     GetLocalizedDialog_EN(MISSION06_INTRO);
                 break;
+                case MISSIONALPS07:
+                    prev_state = StateMission07alps;
+                    GetLocalizedDialog_EN(MISSION07_INTRO);
+                break;
             }
             SetState(StatePapyrus);
         }else{
