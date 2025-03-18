@@ -12,13 +12,13 @@
 #include "Dialogs.h"
 #include "custom_datas.h"
 
-#define TIME_ROLLINGSTONE_MIN 200
-#define TIME_ROLLINGSTONE_MED 380
-#define TIME_ROLLINGSTONE_MAX 600
+#define TIME_ROLLINGSTONE_MIN 80
+#define TIME_ROLLINGSTONE_MED 150
+#define TIME_ROLLINGSTONE_MAX 210
 
 #define DELAY_TREMBLE_MIN 3
 #define DELAY_TREMBLE_MAX 10
-
+#define ROLLINGSTONE_IDX_MAX 4
 
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission06);
@@ -29,15 +29,23 @@ const UINT8 coll_m06_surface[] = {0u, 0};
 
 Sprite* s_rollingstone = 0;
 Sprite* s_rollingstone2 = 0;
-UINT8 timer_rollingstone = 0;
+Sprite* s_rollingstone3 = 0;
+Sprite* s_rollingstone4 = 0;
+UINT16 timer_rollingstone = 0;
 UINT8 flag_turn_on_tremble = 0u;
 INT8 delay_tremble = 0;
+INT8 rollingstone_pos_x[] = {45, 30, 50, 40};
+INT8 rollingstone_pos_y[] = {80, 40, 80, 60};
+UINT8 rollingstone_idx = 0u;
+INT8 delta_x[] = {13, 0, 10, -8, 8, 0, -2, 5, 0, -10, -4, 14, 0, 2};
+INT8 delta_x_idx = 0;
+
+void roll_stone(INT8 arg_verse, UINT8 arg_max_frmskip_y) BANKED;
 
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
 extern MISSION_STEP current_step;
-
 extern Sprite* s_biga;
 extern Sprite* s_horse;
 extern Sprite* s_compass;
@@ -103,6 +111,27 @@ void START(){
         delay_tremble = 0;
 }
 
+void roll_stone(INT8 arg_verse, UINT8 arg_max_frmskip_y) BANKED{
+    rollingstone_idx++;
+    if(rollingstone_idx >= ROLLINGSTONE_IDX_MAX){
+        rollingstone_idx = 0u;
+    }
+    if(delta_x_idx > delta_x[0]){
+        delta_x_idx = 1;
+    }
+    Sprite* s_rollingstone_in_use = 0;
+    switch(rollingstone_idx){
+        case 0u: s_rollingstone_in_use = s_rollingstone; break;
+        case 1u: s_rollingstone_in_use = s_rollingstone2; break;
+        case 2u: s_rollingstone_in_use = s_rollingstone3; break;
+        case 3u: s_rollingstone_in_use = s_rollingstone4; break;
+    }
+    s_rollingstone_in_use = SpriteManagerAdd(SpriteRollingstone, s_horse->x + rollingstone_pos_x[rollingstone_idx] + delta_x[delta_x_idx], s_horse->y - rollingstone_pos_y[rollingstone_idx]);
+    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone_in_use->custom_data;
+    rollingstone_data->verse_x = arg_verse;
+    rollingstone_data->frmskip_y = arg_max_frmskip_y;
+    rollingstone_data->max_frmskip_y = arg_max_frmskip_y;
+}
 
 void UPDATE(){
     //COMMON UPDATE
@@ -125,44 +154,30 @@ void UPDATE(){
                 }
             }
             timer_rollingstone--;
-            if(timer_rollingstone < 40){//flag tremble
+            if(timer_rollingstone < 40u){//flag tremble
                 if(flag_turn_on_tremble == 0u){
                     flag_turn_on_tremble = 1u;
                 }
             }
-            if(timer_rollingstone < 10){//rolling stone
+            if(timer_rollingstone < 10u){//rolling stone
                 if(s_horse->x < ((UINT16) 70u << 3)){
-                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 60, s_horse->y - 80);
-                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
-                    rollingstone_data->verse_x = -1;
-                    rollingstone_data->frmskip_y = 10;
-                    rollingstone_data->max_frmskip_y = 10;
+                    roll_stone(-1, 10);
+                    roll_stone(1, 6);
                     flag_turn_on_tremble = 0u;
                     delay_tremble = 0;
-                    timer_rollingstone = TIME_ROLLINGSTONE_MIN;
+                    timer_rollingstone = TIME_ROLLINGSTONE_MAX;
                 }else if(s_horse->x < ((UINT16) 160u << 3)){
-                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 50, s_horse->y - 40);
-                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
-                    rollingstone_data->verse_x = 1;
-                    rollingstone_data->frmskip_y = 6;
-                    rollingstone_data->max_frmskip_y = 6;
+                    roll_stone(1, 6);
+                    roll_stone(-1, 6);
                     flag_turn_on_tremble = 0u;
                     delay_tremble = 0;
                     timer_rollingstone = TIME_ROLLINGSTONE_MED;
                 }else if(s_horse->x < ((UINT16) 190u << 3)){
-                    s_rollingstone = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 70, s_horse->y - 80);
-                    struct RollingStoneData* rollingstone_data = (struct RollingStoneData*) s_rollingstone->custom_data;
-                    rollingstone_data->verse_x = 1;
-                    rollingstone_data->frmskip_y = 3;
-                    rollingstone_data->max_frmskip_y = 3;
-                    s_rollingstone2 = SpriteManagerAdd(SpriteRollingstone, s_horse->x + 100, s_horse->y - 70);
-                    struct RollingStoneData* rollingstone_data2 = (struct RollingStoneData*) s_rollingstone2->custom_data;
-                    rollingstone_data2->verse_x = 1;
-                    rollingstone_data2->frmskip_y = 3;
-                    rollingstone_data2->max_frmskip_y = 3;
+                    roll_stone(1, 3);
+                    roll_stone(1, 6);
                     flag_turn_on_tremble = 0u;
                     delay_tremble = 0;
-                    timer_rollingstone = TIME_ROLLINGSTONE_MAX;
+                    timer_rollingstone = TIME_ROLLINGSTONE_MIN;
                 }
             }
         }

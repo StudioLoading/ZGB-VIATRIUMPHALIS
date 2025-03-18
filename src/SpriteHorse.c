@@ -460,6 +460,14 @@ void UPDATE() {
                             }
                         }
                     }break;
+                    case SpriteRollingstone:{
+                        if(weapon_def == ELMET){
+                            use_weapon(1);
+                            SpriteManagerRemoveSprite(iospr);
+                        }else if(flag_hit == 0){
+                            horse_hit(-4);
+                        }
+                    }break;
                 }
             }
         }

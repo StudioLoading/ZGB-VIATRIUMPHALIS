@@ -35,7 +35,7 @@ UINT8 configwhip_blink = 0u;
 
 INT8 blink_absent = 0;
 FOCUS current_focus = NO_ELM;
-struct CONFIGURATION configuration = {.elm = NORMAL, .wheel=NORMAL, .whip=NORMAL, .reins=NORMAL};
+struct CONFIGURATION configuration = {.elm = NORMAL, .wheel=NORMAL, .whip=NORMAL, .reins=GOLDEN};
 INT8 flag_golden_found = 0u;
 
 void change_description() BANKED;
@@ -134,7 +134,7 @@ void UPDATE(){
                 current_focus = REINS;
             break;
             case REINS:
-                if(configuration.reuns == NORMAL){
+                if(configuration.reins == NORMAL){
                     Anim_config_no();
                     current_focus = NO_REINS;
                 }
