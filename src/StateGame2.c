@@ -110,6 +110,7 @@ void spawn_items() BANKED{
 			item_spawn(LANCE, ((UINT16) 79u << 3), ((UINT16) 56u << 3));
 		break;
 		case MISSIONALPS06:
+			item_spawn(ELMET, ((UINT16) 44u << 3), ((UINT16) 15u << 3) - 4u);
 			item_spawn(ELMET, ((UINT16) 166u << 3), ((UINT16) 14u << 3));
 			item_spawn(ELMET, ((UINT16) 128u << 3), ((UINT16) 18u << 3));
 			/*if(configuration.reins == NORMAL){

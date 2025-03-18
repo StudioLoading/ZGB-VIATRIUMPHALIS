@@ -18,7 +18,7 @@
 
 IMPORT_MAP(border);
 IMPORT_MAP(mapcredit0);
-IMPORT_MAP(titlescreenmap);
+IMPORT_MAP(maptitlescreen);
 IMPORT_TILES(font);
 
 INT16 credit_wait = 0;
@@ -36,7 +36,7 @@ void START(){
             InitScroll(BANK(mapcredit0), &mapcredit0, 0, 0);
         break;
         case 2:
-            InitScroll(BANK(titlescreenmap), &titlescreenmap, 0, 0);
+            InitScroll(BANK(maptitlescreen), &maptitlescreen, 0, 0);
         break;
     }
 	SHOW_BKG;
@@ -58,9 +58,11 @@ void UPDATE(){
                     pressstart_counter = 0;
                     if(pressstart_show == 0){
                         pressstart_show = 1;
-                        PRINT(1, 9, "PRESS START");
+                        PRINT(8, 8, "PRESS");
+                        PRINT(8, 9, "START");
                     }else{
-                        PRINT(1, 9, "           ");
+                        PRINT(8, 8, "     ");
+                        PRINT(8, 9, "     ");
                         pressstart_show = 0;
                     }
                 }

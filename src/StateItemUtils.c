@@ -65,22 +65,22 @@ void item_common_update(Sprite* s_item_arg) BANKED{
         case 1://set animation
             switch(item_data->itemtype){
                 case GLADIO:
-                    item_gladio_anim_blink(s_item_arg);
+                    item_gladio_anim(s_item_arg);
                 break;
                 case LANCE:
-                    item_lance_anim_blink(s_item_arg);
+                    item_lance_anim(s_item_arg);
                 break;
                 case FIRE:
-                    item_fire_anim_blink(s_item_arg);
+                    item_fire_anim(s_item_arg);
                 break;
                 case ELMET:
-                    item_elmet_anim_blink(s_item_arg);
+                    item_elmet_anim(s_item_arg);
                 break;
                 case SHIELD:
-                    item_shield_anim_blink(s_item_arg);
+                    item_shield_anim(s_item_arg);
                 break;
                 case CAPE:
-                    item_cape_anim_blink(s_item_arg);
+                    item_cape_anim(s_item_arg);
                 break;
                 case HP:
                     item_heart_anim(s_item_arg);
@@ -98,7 +98,7 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                     item_configreins_anim(s_item_arg);
                 break;
                 case ENEMY_LANCE:
-                    item_e_lance_anim_blink(s_item_arg);
+                    item_e_lance_anim(s_item_arg);
                 break;
             }
             item_data->configured = 2;

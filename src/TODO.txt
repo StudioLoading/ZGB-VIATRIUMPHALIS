@@ -35,7 +35,7 @@ Alpi (strade romane, foreste, accampamenti)
 "Intercetta un traditore che trasporta informazioni ai barbari." (A tempo + uccidi)
 "Salva un generale romano intrappolato dietro le linee nemiche." (sfondamenti, salva generale, tempo)
 "Attraversa le gole evitando frane" (rolling stones temporizzate, scudi, schermo tremante, molti massi pochi alberi)
-"Schiva i tronchi rotolanti lanciati dai Galli lungo il sentiero!" (Ostacoli in movimento orizzontale da evitare o spingere via!)
+"Arena"(in notturna - sei vittime di un agguato!)
 
 Costa Albanese (porti, scogliere, sentieri costieri)
 "Ruba le mappe strategiche dei nemici senza farti scoprire." (A tempo: 2 minuti prima che la guardia torni!)
@@ -57,10 +57,14 @@ Egitto (piramidi, fiumi, templi)
 "Sconfiggi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli!)
 -------------------------------------------------------------------------------------
 
+sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
+
+-------------------------------------------------------------------------------------
+
 ```C
 
 ```
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\mapalps.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\mapalps.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_titlescreen.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\VT_titlescreen.gbm

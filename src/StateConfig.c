@@ -63,12 +63,12 @@ void START(){
 void UPDATE(){
     if(KEY_TICKED(J_RIGHT)){
         Anim_config_no();
-        if(current_focus == REINS || current_focus == NO_REINS){current_focus = NO_ELM;}
+        if(current_focus == REINS || current_focus == NO_REINS){current_focus = ELM;}
         else{current_focus+=2;}
     }
     if(KEY_TICKED(J_LEFT)){
         Anim_config_no();
-        if(current_focus == ELM || current_focus == NO_ELM){current_focus = NO_REINS;}
+        if(current_focus == ELM || current_focus == NO_ELM){current_focus = REINS;}
         else{current_focus-=2;}
     }
     if(KEY_TICKED(J_SELECT)){
@@ -108,21 +108,31 @@ void UPDATE(){
                 current_focus = ELM;
             break;
             case ELM:
-                Anim_config_no();
-                current_focus = NO_ELM;
+                if(configuration.elm == NORMAL){
+                    Anim_config_no();
+                    current_focus = NO_ELM;
+                }else{
+                    Anim_config_elm();
+                }
             break;
             case NO_WHEEL:
                 Anim_config_wheel();
                 current_focus = WHEEL;
             break;
             case WHEEL:
-                Anim_config_no();
-                current_focus = NO_WHEEL;
+                if(configuration.wheel == NORMAL){
+                    Anim_config_no();
+                    current_focus = NO_WHEEL;
+                }else{
+                    Anim_config_wheel();
+                }
             break;
             case WHIP:
                 if(configuration.whip == NORMAL){
                     Anim_config_no();
                     current_focus = NO_WHIP;
+                }else{
+                    Anim_config_whip();
                 }
             break;
             case NO_WHIP: 
@@ -137,6 +147,8 @@ void UPDATE(){
                 if(configuration.reins == NORMAL){
                     Anim_config_no();
                     current_focus = NO_REINS;
+                }else{
+                    Anim_config_reins();
                 }
             break;
         }
@@ -175,7 +187,7 @@ void change_description() BANKED{
                 PRINT(7,1, "             ");
             }else if(configuration.reins == GOLDEN){
                 PRINT(7,0, "GOLDEN REINS ");
-                PRINT(7,1, "SPEED (2     ");
+                PRINT(7,1, "SPINNING (2  ");
             }
         break;
     }
