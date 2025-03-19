@@ -36,13 +36,13 @@ void UPDATE() {
             return;
         break;
         case 1://horizontal
-            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max >> 1);
+            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max << 3);
             barbarian_data->vx = 1;
             barbarian_data->configured = 3;
             return;
         break;
         case 2://vertical
-            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max >> 1);
+            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max << 1);
             barbarian_data->vy = 1;
             barbarian_data->configured = 3;
             return;
@@ -62,9 +62,6 @@ void UPDATE() {
         case 5://dieing
             barbarian_data->vx--;
             if(barbarian_data->vx <= 0){
-                if(barbarian_data->reward != NOITEM){
-                    item_spawn(barbarian_data->reward, THIS->x + 2u, THIS->y);
-                }
                 SpriteManagerRemoveSprite(THIS);
             }
             return;
@@ -82,9 +79,9 @@ void UPDATE() {
         }
         if(barbarian_data->vy != 0){
             barbarian_data->vy = -barbarian_data->vy;
-            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max >> 1);
+            SetSpriteAnim(THIS, a_barbarian_h, barbarian_data->frmskip_max << 1);
             if(barbarian_data->vy < 0){
-                SetSpriteAnim(THIS, a_barbarian_u, barbarian_data->frmskip_max >> 1);
+                SetSpriteAnim(THIS, a_barbarian_u, barbarian_data->frmskip_max << 1);
             }
         }
     }
@@ -108,5 +105,9 @@ void UPDATE() {
     }
 }
 
-void DESTROY() {
+void DESTROY() {    
+    struct SoldierData* barbarian_data = (struct SoldierData*) THIS->custom_data;
+    if(barbarian_data->reward != NOITEM){
+        item_spawn(barbarian_data->reward, THIS->x + 2u, THIS->y);
+    }
 }

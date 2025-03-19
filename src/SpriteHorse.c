@@ -294,6 +294,10 @@ void UPDATE() {
                 }
             //MOVE
                 if(flag_die){ return; }
+                if(stamina_current < 20){
+                    vx = 0;
+                    vy = 0;
+                }
                 UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
                 if(horse_coll){//collido con tile ambiente di collisione
@@ -420,6 +424,16 @@ void UPDATE() {
                     case SpriteRomansenator:
                         if(current_step != SENATOR_COLLIDED){
                             current_step = SENATOR_COLLIDED;
+                        }
+                    break;
+                    case SpriteBarbarian:
+                        if(weapon_def == SHIELD){
+                            use_weapon(1);
+                        }else if(flag_hit == 0){
+                            struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
+                            if(soldier_data->configured < 4 && flag_hit == 0){
+                                horse_hit(-5);
+                            }
                         }
                     break;
                     case SpriteRomansoldier:

@@ -147,6 +147,7 @@ void UPDATE(){
                 prev_state = StateWorldmap;
                 turn_to_load = 0;
                 current_mission++;
+                current_step = LOOKING_FOR_SENATOR;
                 GetLocalizedDialog_EN(MISSION02_COMPLETED);
                 SetState(StatePapyrus);
             }

@@ -60,7 +60,6 @@ extern INT8 flag_golden_found;
 extern MirroMode mirror_horse;
 extern UINT8 turn_to_load;
 extern UINT8 turn;
-extern UINT8 flag_night_mode;
 extern INT16 time_current;
 extern INT16 timemax_current;
 extern INT16 time_factor;
@@ -219,6 +218,7 @@ void UPDATE(){
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;
+                current_step = LOOKING_FOR_SENATOR;
                 GetLocalizedDialog_EN(MISSION06_COMPLETED);
                 SetState(StatePapyrus);
             }

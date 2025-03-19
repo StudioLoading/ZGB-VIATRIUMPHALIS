@@ -25,7 +25,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ALPS;//TODO AREA_ROME
-MISSION current_mission = MISSIONALPS06;//TODO MISSIONROME00
+MISSION current_mission = MISSIONALPS07;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {

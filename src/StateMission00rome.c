@@ -116,6 +116,7 @@ void UPDATE(){
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;
+                current_step = LOOKING_FOR_SENATOR;
                 GetLocalizedDialog_EN(MISSION00_COMPLETED);
                 SetState(StatePapyrus);
             }

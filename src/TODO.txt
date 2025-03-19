@@ -35,7 +35,7 @@ Alpi (strade romane, foreste, accampamenti)
 "Intercetta un traditore che trasporta informazioni ai barbari." (A tempo + uccidi)
 "Salva un generale romano intrappolato dietro le linee nemiche." (sfondamenti, salva generale, tempo)
 "Attraversa le gole evitando frane" (rolling stones temporizzate, scudi, schermo tremante, molti massi pochi alberi)
-"Arena"(in notturna - sei vittime di un agguato!)
+"Arena"(in notturna - sei vittime di un agguato! serve continuo spawnin di un'arma per sopperire a quando fa "cilecca". se una sprite sparisce, il suo puntatore si azzera? chiesto su discord. c'è qualcosa che non va nell'azzeramento del puntatore. mi sache devo fare una variabile in più sulla custom_data delle weapon per flaggare se è o no in continuos spawning, e azzerare il puntatore solo quando pickup() della flaggata contspawn)
 
 Costa Albanese (porti, scogliere, sentieri costieri)
 "Ruba le mappe strategiche dei nemici senza farti scoprire." (A tempo: 2 minuti prima che la guardia torni!)

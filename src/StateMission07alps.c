@@ -25,6 +25,8 @@ Sprite* s_barbarian02 = 0;
 Sprite* s_barbarian03 = 0;
 Sprite* s_barbarian04 = 0;
 Sprite* s_barbarian05 = 0;
+Sprite* s_spawning_weapon = 0;
+INT8 spawning_weapon_counter = 0;
 
 void spawn_barbarian() BANKED;
 
@@ -58,15 +60,17 @@ extern void start_common() BANKED;
 extern void update_common() BANKED;
 extern void update_time() BANKED;
 extern void spawn_items() BANKED;
+extern void night_mode() BANKED;
 extern void die() BANKED;
+extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START(){
     mission_iscrono = 0;
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
-        pos_horse_x = (UINT16) 10u << 3;
-        pos_horse_y = (UINT16) 68u << 3;
+        pos_horse_x = (UINT16) 12u << 3;
+        pos_horse_y = (UINT16) 16u << 3;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
         time_to_load = timemax_current;
@@ -79,6 +83,8 @@ void START(){
         current_step = EXIT;
         mission_completed = 0;
     //COMMONS & START
+        spawning_weapon_counter = 0;
+        night_mode();
         InitScroll(BANK(mapmission07), &mapmission07, coll_m07_tiles, coll_m07_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
@@ -90,23 +96,53 @@ void START(){
 void spawn_barbarian() BANKED{
     s_barbarian00 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 36u << 3), ((UINT16) 20u << 3));
     struct SoldierData* barbarian00_data = (struct SoldierData*) s_barbarian00->custom_data;
-    barbarian00_data->frmskip_max = 10u;
+    barbarian00_data->frmskip_max = 4u;
     barbarian00_data->configured = 1;
     barbarian00_data->reward = GLADIO;
+    
+    s_barbarian01 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 30u << 3), ((UINT16) 22u << 3));
+    struct SoldierData* barbarian01_data = (struct SoldierData*) s_barbarian01->custom_data;
+    barbarian01_data->frmskip_max = 6u;
+    barbarian01_data->configured = 1;
+    barbarian01_data->reward = GLADIO;
+    
+    s_barbarian02 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 41u << 3), ((UINT16) 38u << 3));
+    struct SoldierData* barbarian02_data = (struct SoldierData*) s_barbarian02->custom_data;
+    barbarian02_data->frmskip_max = 2u;
+    barbarian02_data->configured = 2;
+    barbarian02_data->reward = LANCE;
+    
+    s_barbarian03 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 55u << 3), ((UINT16) 36u << 3));
+    struct SoldierData* barbarian03_data = (struct SoldierData*) s_barbarian03->custom_data;
+    barbarian03_data->frmskip_max = 4u;
+    barbarian03_data->configured = 2;
+    barbarian03_data->reward = NOITEM;
+    
+    s_barbarian04 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 35u << 3), ((UINT16) 10u << 3));
+    struct SoldierData* barbarian04_data = (struct SoldierData*) s_barbarian04->custom_data;
+    barbarian04_data->frmskip_max = 6u;
+    barbarian04_data->configured = 2;
+    barbarian04_data->reward = NOITEM;
 }
 
 void UPDATE(){
+    //NIGHT MODE
+        if(flag_night_mode == 0){
+            flag_night_mode = 1;
+            night_mode();
+        }
+    //CONTINUOUS SPAWNING WEAPON
+        spawning_weapon_counter++;
+        if(spawning_weapon_counter < 0){
+            if(s_spawning_weapon == 0){
+                item_spawn(GLADIO, ((UINT16)24u << 3), ((UINT16)40u << 3) + 3u);
+            }
+            spawning_weapon_counter = 0;
+        }
     //COMMON UPDATE
         update_common();
-    //LIMIT MAP LEFT    
-    //UPDATE TIME
-        update_time();
-        time_current--;
-        if(time_current < 0 && !mission_completed && !track_ended){
-            die();
-        }
     //MISSION STEP
-        if(mission_killed > 0 && mission_completed == 0){
+        if(mission_killed > 4 && mission_completed == 0){
             mission_completed = 1;
         }
     //IS MISSION COMPLETED?
@@ -124,10 +160,12 @@ void UPDATE(){
                 if(can_go_on == 1){
                     //tutorial_state++;
                 }
+                flag_night_mode = 0;//RESET
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;
-                GetLocalizedDialog_EN(MISSION04_COMPLETED);
+                current_step = LOOKING_FOR_SENATOR;
+                GetLocalizedDialog_EN(MISSION07_COMPLETED);
                 SetState(StatePapyrus);
             }
         }

@@ -13,7 +13,8 @@
 #include "custom_datas.h"
 #include "Dialogs.h"
 
-static const palette_color_t palette_data[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
+static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
+static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
 
 UINT8 flag_night_mode = 0u;
 
@@ -112,7 +113,9 @@ void spawn_items() BANKED{
 		case MISSIONALPS06:
 			item_spawn(ELMET, ((UINT16) 44u << 3), ((UINT16) 15u << 3) - 4u);
 			item_spawn(ELMET, ((UINT16) 166u << 3), ((UINT16) 14u << 3));
+			item_spawn(HP, ((UINT16) 111u << 3), ((UINT16) 19u << 3));
 			item_spawn(ELMET, ((UINT16) 128u << 3), ((UINT16) 18u << 3));
+			item_spawn(HP, ((UINT16) 155u << 3), ((UINT16) 9u << 3));
 			/*if(configuration.reins == NORMAL){
 				Sprite* s_config_reins = SpriteManagerAdd(SpriteConfigreins, ((UINT16)212u << 3), ((UINT16)10u << 3));
 				struct ItemData* reins_data = (struct ItemData*)s_config_reins->custom_data;
@@ -123,9 +126,6 @@ void spawn_items() BANKED{
 		case MISSIONALPS07:
 			item_spawn(SHIELD, ((UINT16) 18u << 3), ((UINT16) 16u << 3));
 			SpriteManagerAdd(SpriteFlame, (UINT16) 13u << 3, (UINT16) 13u << 3);
-			item_spawn(SHIELD, ((UINT16) 24u << 3), ((UINT16) 39u << 3));
-			item_spawn(GLADIO, ((UINT16) 39u << 3), ((UINT16) 20u << 3));
-			item_spawn(GLADIO, ((UINT16) 31u << 3), ((UINT16) 32u << 3));
 			item_spawn(LANCE, ((UINT16) 60u << 3), ((UINT16) 41u << 3));
 		break;
 	}
@@ -141,9 +141,13 @@ void night_mode() BANKED{
 			case AREA_ROME://(30,29,19), (30,25,14), (29,2,0), (13,12,1)
 				{
 					//UINT16 palette[] = {RGB(30,29,19),RGB(30,25,14),RGB(29,2,0),RGB(13,12,1)};
-					set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data);
-					set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data);
+					set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_rome);
+					set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_rome);
 				}
+			break;
+			case AREA_ALPS:
+				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_alps);
+				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_alps);
 			break;
 		}
 	}

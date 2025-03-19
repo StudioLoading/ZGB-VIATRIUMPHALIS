@@ -101,7 +101,7 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                     item_e_lance_anim(s_item_arg);
                 break;
             }
-            item_data->configured = 2;
+            item_data->configured = 2;//means spawned
         break;
         case 3://using the weapon!
             switch(item_data->itemtype){
@@ -115,7 +115,7 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 case LANCE:
                     item_lance_anim(s_item_arg);
                     item_data->vx = vx;
-                    item_data->vy = vy;
+                    item_data->vy = 0;
                 break;
                 case ELMET:
                     item_elmet_anim_blink(s_item_arg);
@@ -184,7 +184,7 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                     item_e_lance_anim_blink(s_item_arg);
                 break;
             }
-            item_data->hp = 40;
+            item_data->hp = 20;
             item_data->configured = 6;
         break;
         case 6://weapon dieing
@@ -217,6 +217,7 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                         item_data->configured = 5;
                     }
                 }break;
+                case SpriteBarbarian:
                 case SpriteRomansoldier:{
                     struct SoldierData* romansoldier_data = (struct SoldierData*)s_item_arg->custom_data;
                     if(romansoldier_data->configured < 4){
@@ -268,8 +269,8 @@ void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED
 			case TIME: arg_spritetype = SpriteItemglass; break;
 		}
 	}
-	Sprite* s_item = SpriteManagerAdd(arg_spritetype, arg_posx, arg_posy);
-	struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-	item_data->itemtype = arg_itemtype;
-	item_data->configured = 1;
+	Sprite* s_item_spawned = SpriteManagerAdd(arg_spritetype, arg_posx, arg_posy);
+	struct ItemData* item_spawned_data = (struct ItemData*) s_item_spawned->custom_data;
+	item_spawned_data->itemtype = arg_itemtype;
+	item_spawned_data->configured = 1;
 }

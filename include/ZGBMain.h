@@ -51,6 +51,7 @@ _SPRITE_DMG(SpriteKiller, killer)\
 _SPRITE_DMG(SpriteEitemlance, eitemlance)\
 _SPRITE_DMG(SpriteBarbarianshield, barbarianshield)\
 _SPRITE_DMG(SpriteRollingstone, rollingstone)\
+_SPRITE_DMG(SpriteBarbarian, barbarian)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
