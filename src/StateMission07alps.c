@@ -63,6 +63,7 @@ extern void spawn_items() BANKED;
 extern void night_mode() BANKED;
 extern void die() BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START(){
     mission_iscrono = 0;
@@ -132,17 +133,17 @@ void UPDATE(){
             night_mode();
         }
     //CONTINUOUS SPAWNING WEAPON
-        spawning_weapon_counter++;
-        if(spawning_weapon_counter < 0){
-            if(s_spawning_weapon == 0){
-                item_spawn(GLADIO, ((UINT16)24u << 3), ((UINT16)40u << 3) + 3u);
+        if(s_spawning_weapon == 0){
+            spawning_weapon_counter++;
+            if(spawning_weapon_counter < 0){
+                spawning_weapon_counter = 0;
+                item_spawn_continuously(GLADIO, ((UINT16)24u << 3), ((UINT16)40u << 3) + 3u);
             }
-            spawning_weapon_counter = 0;
         }
     //COMMON UPDATE
         update_common();
     //MISSION STEP
-        if(mission_killed > 4 && mission_completed == 0){
+        if(mission_killed == 5 && mission_completed == 0){
             mission_completed = 1;
         }
     //IS MISSION COMPLETED?

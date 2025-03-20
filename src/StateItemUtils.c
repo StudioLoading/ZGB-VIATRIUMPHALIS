@@ -13,11 +13,13 @@
 extern Sprite* s_horse;
 extern INT8 vx;
 extern INT8 vy;
+extern Sprite* s_spawning_weapon;
 
 void item_common_start(Sprite* s_item_arg) BANKED;
 void item_common_update(Sprite* s_item_arg) BANKED;
 void item_common_spritescollision(Sprite* s_item_arg) BANKED;
 void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 extern void hit_fantoccio(Sprite* s_fantoccio_arg) BANKED;
 extern void consume_weapon_atk() BANKED;
@@ -188,6 +190,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
             item_data->configured = 6;
         break;
         case 6://weapon dieing
+            if(item_data->flag_continuous_spawning == 1){
+                s_spawning_weapon = 0;
+            }
             switch(item_data->itemtype){
                 case GLADIO:
                 case LANCE:
@@ -273,4 +278,26 @@ void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED
 	struct ItemData* item_spawned_data = (struct ItemData*) s_item_spawned->custom_data;
 	item_spawned_data->itemtype = arg_itemtype;
 	item_spawned_data->configured = 1;
+    item_spawned_data->flag_continuous_spawning = 0;
+}
+
+void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED{
+    UINT8 arg_spritetype = 0u;
+    if(arg_spritetype == 0){
+		switch(arg_itemtype){
+			case GLADIO: arg_spritetype = SpriteItemgladio; break;
+			case LANCE: arg_spritetype = SpriteItemlance; break;
+			case FIRE: arg_spritetype = SpriteItemfire; break;
+			case ELMET: arg_spritetype = SpriteItemelmet; break;
+			case CAPE: arg_spritetype = SpriteItemcape; break;
+			case SHIELD: arg_spritetype = SpriteItemshield; break;
+			case HP: arg_spritetype = SpriteItemheart; break;
+			case TIME: arg_spritetype = SpriteItemglass; break;
+		}
+	}
+	s_spawning_weapon = SpriteManagerAdd(arg_spritetype, arg_posx, arg_posy);
+	struct ItemData* item_spawned_data = (struct ItemData*) s_spawning_weapon->custom_data;
+	item_spawned_data->itemtype = arg_itemtype;
+	item_spawned_data->configured = 1;
+    item_spawned_data->flag_continuous_spawning = 1;
 }

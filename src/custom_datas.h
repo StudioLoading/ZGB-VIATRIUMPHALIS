@@ -64,6 +64,7 @@ struct ItemData{
     INT8 hp;
     INT8 configured;//0 ignore, 1 set anim, 2 set anim for weapon in use, 3 to be picked up, 4 weapon in use
     ITEM_TYPE itemtype;
+    UINT8 flag_continuous_spawning;
 };
 
 struct FlameData{

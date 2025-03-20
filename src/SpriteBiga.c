@@ -28,7 +28,6 @@ extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
 extern UINT8 J_ATK;
 extern INT8 flag_die;
-extern Sprite* s_spawning_weapon;
 
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
@@ -161,7 +160,6 @@ void pickup(Sprite* s_arg_item) BANKED{
         break;
     }    
     SpriteManagerRemoveSprite(s_arg_item);
-    s_spawning_weapon = 0;
 }
 
 void DESTROY() {
