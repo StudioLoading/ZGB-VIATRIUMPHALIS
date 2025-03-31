@@ -38,23 +38,26 @@ Alpi (strade romane, foreste, accampamenti)
 "Arena"(ambush!)
 
 Costa Albanese (porti, scogliere, sentieri costieri)
-"Ruba le mappe strategiche dei nemici senza farti scoprire." (A tempo con tempo in continuous spawning)
-"Salva un ambasciatore bloccato in una città sotto assedio."
-"Supera le navi pirata che lanciano detriti sulla tua strada!" (Ostacoli orizzontali da evitare o deviare!)
+"trova la mappa per scoprire dove i selvaggi tengono nascosto Demetrio l'ambasciatore" (A tempo con clessidre in giro + mappa da trovare)
+"Salva l'ambasciatore catturato dai selvaggi senza farti scoprire" (night mode, senza tempo, come fatto in passato per non farsi beccare, usando gli sprite dei selvaggi)
+"Porta Demetrio alla nave! Supera la palude evitando i barili (?) che i selvaggi lanciano sulla tua strada!" (Ostacoli orizzontali da evitare o deviare!)
+"Arena"(ambush!) (night mode)
 
 Antica Grecia (templi, città-stato, foreste)
 "Trasporta una statua sacra rubata alla città di Atene." (A tempo: 3 minuti prima che i sacerdoti si accorgano!)
-"Supera un’orda di mercenari greci che vogliono bloccarti!" (Si muovono orizzontalmente, puoi evitarli o spingerli!)
-"Fuggi da un labirinto con porte che si chiudono orizzontalmente!" (A tempo: 3 minuti prima che resti intrappolato!)
+"Supera un’orda di mercenari greci che vogliono bloccarti!" 
+"Inseguimento! Fuggi verso il deserto senza farti raggiungere"
+
 
 Deserto (oasi, dune, accampamenti nomadi)
 "Trova il beduino disperso nel deserto"
 "Attraversa le paludi evitando trappole dei ribelli nubiani." (A tempo: 2 minuti prima che le sabbie mobili ti inghiottano!)
-"Sfuggi a un gruppo di predoni che cercano di bloccarti!" (Si muovono orizzontalmente, devi superarli o attaccarli!)
+"Sfuggi a un gruppo di predoni che cercano di bloccarti!" (Si muovono orizzontalmente, devi sfondarli!)
 
 Egitto (piramidi, fiumi, templi)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
-"Sconfiggi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli!)
+"Raggiungi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli! il sacerdote è a fine traccia e va ucciso)
+"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
 -------------------------------------------------------------------------------------
 
 sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
@@ -67,4 +70,4 @@ sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qua
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_titlescreen.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\VT_titlescreen.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\areasea.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\areasea.gbm

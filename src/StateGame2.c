@@ -15,6 +15,7 @@
 
 static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
+static const palette_color_t palette_data_sea[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
 
 UINT8 flag_night_mode = 0u;
 
@@ -67,6 +68,12 @@ void die() BANKED{
 		case MISSIONALPS07:
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONALPS04; 
+		break;
+		case MISSIONSEA08:
+		case MISSIONSEA09:
+		case MISSIONSEA10:
+			current_step = LOOKING_FOR_SENATOR; 
+			current_mission = MISSIONSEA08; 
 		break;
 	}
 	flag_night_mode = 0;//RESET
@@ -128,6 +135,11 @@ void spawn_items() BANKED{
 			SpriteManagerAdd(SpriteFlame, (UINT16) 13u << 3, (UINT16) 13u << 3);
 			item_spawn(LANCE, ((UINT16) 60u << 3), ((UINT16) 41u << 3));
 		break;
+		case MISSIONSEA08:
+			item_spawn(TIME, ((UINT16) 70u << 3), ((UINT16) 29u << 3));
+			item_spawn(TIME, ((UINT16) 44u << 3), ((UINT16) 61u << 3));
+			item_spawn(PAPYRUS, ((UINT16) 18u << 3), ((UINT16) 63u << 3));
+		break;
 	}
 }
 
@@ -148,6 +160,10 @@ void night_mode() BANKED{
 			case AREA_ALPS:
 				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_alps);
 				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_alps);
+			break;
+			case AREA_SEA:
+				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_sea);
+				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_sea);
 			break;
 		}
 	}

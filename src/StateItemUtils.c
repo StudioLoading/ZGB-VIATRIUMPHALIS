@@ -48,6 +48,7 @@ extern void item_configwheel_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configwheel_anim(Sprite* s_item_arg) BANKED;
 extern void item_configreins_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configreins_anim(Sprite* s_item_arg) BANKED;
+extern void item_papirus_anim(Sprite* s_item_arg) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
@@ -101,6 +102,9 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 break;
                 case ENEMY_LANCE:
                     item_e_lance_anim(s_item_arg);
+                break;
+                case PAPYRUS:
+                    item_papirus_anim(THIS);
                 break;
             }
             item_data->configured = 2;//means spawned
@@ -272,6 +276,7 @@ void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED
 			case SHIELD: arg_spritetype = SpriteItemshield; break;
 			case HP: arg_spritetype = SpriteItemheart; break;
 			case TIME: arg_spritetype = SpriteItemglass; break;
+			case PAPYRUS: arg_spritetype = SpriteItempapirus; break;
 		}
 	}
 	Sprite* s_item_spawned = SpriteManagerAdd(arg_spritetype, arg_posx, arg_posy);

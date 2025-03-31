@@ -19,13 +19,14 @@
 IMPORT_MAP(worldmap);
 IMPORT_MAP(arearome);
 IMPORT_MAP(areaalps);
+IMPORT_MAP(areasea);
 IMPORT_TILES(font);
 
 extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
-AREA current_area = AREA_ALPS;//TODO AREA_ROME
-MISSION current_mission = MISSIONALPS07;//TODO MISSIONROME00
+AREA current_area = AREA_SEA;//TODO AREA_ROME
+MISSION current_mission = MISSIONSEA09;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -34,12 +35,15 @@ void START() {
             InitScroll(BANK(worldmap), &worldmap, 0, 0);
         break;
         case 1:
-        if(current_mission <= MISSIONROME03){
-            InitScroll(BANK(arearome), &arearome, 0, 0);
-        }
-        if(current_mission <= MISSIONALPS07){
-            InitScroll(BANK(areaalps), &areaalps, 0, 0);
-        }
+            if(current_mission <= MISSIONROME03){
+                InitScroll(BANK(arearome), &arearome, 0, 0);
+            }
+            if(current_mission <= MISSIONALPS07){
+                InitScroll(BANK(areaalps), &areaalps, 0, 0);
+            }
+            if(current_mission <= MISSIONSEA10){
+                InitScroll(BANK(areasea), &areasea, 0, 0);
+            }
         break;
     }
     SetWindowY(144);
@@ -61,6 +65,9 @@ void START() {
                 case MISSIONALPS04: PRINT(4, 15, " FIRST BLOOD "); break;
                 case MISSIONALPS05: PRINT(2, 15, "SAVE THE GENERAL"); break;
                 case MISSIONALPS06: PRINT(4, 15, "LANDSLIDES!  "); break;
+                case MISSIONALPS07: PRINT(4, 15, "   AMBUSH!   "); break;
+                case MISSIONSEA08: PRINT(4, 15, "A SECRET MAP "); break;
+                case MISSIONSEA09: PRINT(0, 15, "SAVE THE AMBASSADOR"); break;
             }
         break;
     }
@@ -82,6 +89,8 @@ void UPDATE() {
                 case MISSIONALPS05: Anim_areaalps_2(); break;
                 case MISSIONALPS06: Anim_areaalps_3(); break;
                 case MISSIONALPS07: Anim_areaalps_4(); break;
+                case MISSIONSEA08: Anim_areasea_1(); break;
+                case MISSIONSEA09: Anim_areasea_2(); break;
             }
         }
     }else{
@@ -100,6 +109,11 @@ void UPDATE() {
                 case MISSIONALPS06:
                 case MISSIONALPS07:
                     Anim_areaalps_0();
+                break;
+                case MISSIONSEA08:
+                case MISSIONSEA09:
+                case MISSIONSEA10:
+                    Anim_areasea_0();
                 break;
             }
         }
@@ -140,6 +154,14 @@ void UPDATE() {
                 case MISSIONALPS07:
                     prev_state = StateMission07alps;
                     GetLocalizedDialog_EN(MISSION07_INTRO);
+                break;
+                case MISSIONSEA08:
+                    prev_state = StateMission08sea;
+                    GetLocalizedDialog_EN(MISSION08_INTRO);
+                break;
+                case MISSIONSEA09:
+                    prev_state = StateMission09sea;
+                    GetLocalizedDialog_EN(MISSION09_INTRO);
                 break;
             }
             SetState(StatePapyrus);

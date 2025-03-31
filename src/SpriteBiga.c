@@ -28,6 +28,9 @@ extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
 extern UINT8 J_ATK;
 extern INT8 flag_die;
+extern MISSION current_mission;
+extern INT8 mission_completed;
+extern MISSION_STEP current_step;
 
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
@@ -118,7 +121,8 @@ void UPDATE() {
                     case SpriteItemglass:
                     case SpriteConfigwhip:
                     case SpriteConfigreins:
-                    case SpriteConfigwheel:{
+                    case SpriteConfigwheel:
+                    case SpriteItempapirus:{
                         struct ItemData* item_data = (struct ItemData*) ibspr->custom_data;
                         if(item_data->configured == 2){
                             pickup(ibspr);
@@ -157,6 +161,12 @@ void pickup(Sprite* s_arg_item) BANKED{
         case GOLDEN_WHIP:
         case GOLDEN_REINS:
             pickup_config(item_data->itemtype);
+        break;
+        case PAPYRUS:
+            if(current_mission == MISSIONSEA08){
+                current_step = EXIT;
+                mission_completed = 1;
+            }
         break;
     }    
     SpriteManagerRemoveSprite(s_arg_item);

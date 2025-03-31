@@ -324,6 +324,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, EMPTY_STRING_14, 15);
             memcpy(d12, EMPTY_STRING_14, 15);
         break;
+        case MISSION08_INTRO:
+            memcpy(d0, "DEMETRIO THE  ", 15);
+            memcpy(d1, "AMBASSADOR HAS", 15);
+            memcpy(d2, "BEEN KIDNAPPED", 15);
+            memcpy(d3, "BY SAVAGES!   ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "GET THE MAP ON", 15);
+            memcpy(d6, "THE BEACH! YOU", 15);
+            memcpy(d7, "MUST HURRY UP ", 15);
+            memcpy(d8, "BEFORE THEY   ", 15);
+            memcpy(d9, "KILL HIM.     ", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);

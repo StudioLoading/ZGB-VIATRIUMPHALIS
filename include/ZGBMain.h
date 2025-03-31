@@ -19,6 +19,8 @@ _STATE(StateMission04alps)\
 _STATE(StateMission05alps)\
 _STATE(StateMission06alps)\
 _STATE(StateMission07alps)\
+_STATE(StateMission08sea)\
+_STATE(StateMission09sea)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -38,6 +40,7 @@ _SPRITE_DMG(SpriteItemshield, itemshield)\
 _SPRITE_DMG(SpriteItemcape, itemcape)\
 _SPRITE_DMG(SpriteItemheart, itemheart)\
 _SPRITE_DMG(SpriteItemglass, itemglass)\
+_SPRITE_DMG(SpriteItempapirus, itempapirus)\
 _SPRITE_DMG(SpriteConfigwhip, itemconfigwhip)\
 _SPRITE_DMG(SpriteConfigwheel, itemconfigwheel)\
 _SPRITE_DMG(SpriteConfigelm, itemconfigelm)\
