@@ -22,6 +22,15 @@ const UINT8 coll_m09_surface[] = {0u, 0};
 
 Sprite* s_ambassador = 0;
 
+Sprite* s_savage00 = 0;
+Sprite* s_savage01 = 0;
+Sprite* s_savage02 = 0;
+Sprite* s_savage03 = 0;
+Sprite* s_savage04 = 0;
+Sprite* s_savage05 = 0;
+
+void spawn_savages() BANKED;
+
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
@@ -79,18 +88,43 @@ void START(){
         }else{
             SpriteManagerRemoveSprite(s_ambassador);
             current_step = EXIT;
-            mission_completed = 1;
             s_ambassador = 0;
+            mission_killed = 0;
+            spawn_savages();
         }
     //COMMONS & START
         night_mode();
         InitScroll(BANK(mapmission09), &mapmission09, coll_m09_tiles, coll_m09_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
-        spawn_items();
+        if(current_step == EXIT){
+            spawn_items();
+        }
         start_common();
 }
 
+void spawn_savages() BANKED{
+
+    s_savage00 = SpriteManagerAdd(SpriteSavage, ((UINT16) 91u << 3), ((UINT16) 16u << 3));
+    struct SoldierData* savage00_data = (struct SoldierData*) s_savage00->custom_data;
+    savage00_data->frmskip_max = 12u;
+    savage00_data->configured = 1;
+    savage00_data->reward = LANCE;
+    
+    s_savage01 = SpriteManagerAdd(SpriteSavage, ((UINT16) 91u << 3), ((UINT16) 16u << 3));
+    struct SoldierData* savage01_data = (struct SoldierData*) s_savage01->custom_data;
+    savage01_data->frmskip_max = 8u;
+    savage01_data->configured = 2;
+    savage01_data->reward = GLADIO;
+    Non capisco perché il gladio spawnato non lo raccoglie correttamente
+
+    s_savage02 = SpriteManagerAdd(SpriteSavage, ((UINT16) 133u << 3), ((UINT16) 17u << 3) + 2);
+    struct SoldierData* savage02_data = (struct SoldierData*) s_savage02->custom_data;
+    savage02_data->frmskip_max = 8u;
+    savage02_data->configured = 2;
+    savage02_data->reward = HP;
+
+}
 
 void UPDATE(){
     //NIGHT MODE
@@ -119,6 +153,9 @@ void UPDATE(){
             time_to_load = time_current;
             GetLocalizedDialog_EN(MISSION09_SAVED_AMBASSADOR);
             SetState(StatePapyrus);
+        }
+        if(mission_killed >= 5 && mission_completed == 0){
+            mission_completed = 1;
         }
     //CALCULATE DANGER
         /*calculate_danger(s_barbarianshield00);

@@ -15,7 +15,7 @@
 
 static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
-static const palette_color_t palette_data_sea[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
+static const palette_color_t palette_data_sea[] = {RGB(0,0,0),RGB(14,10,1),RGB(4,22,0),RGB(0,0,0)};
 
 UINT8 flag_night_mode = 0u;
 
@@ -140,6 +140,11 @@ void spawn_items() BANKED{
 			item_spawn(TIME, ((UINT16) 44u << 3), ((UINT16) 61u << 3));
 			item_spawn(PAPYRUS, ((UINT16) 18u << 3), ((UINT16) 63u << 3));
 		break;
+		case MISSIONSEA09:
+			item_spawn(SHIELD, ((UINT16) 21u << 3), ((UINT16) 8u << 3));
+			item_spawn(LANCE, ((UINT16) 52u << 3), ((UINT16) 15u << 3));
+			item_spawn(SHIELD, ((UINT16) 113u << 3), ((UINT16) 10u << 3));
+		break;
 	}
 }
 
@@ -152,7 +157,6 @@ void night_mode() BANKED{
 		switch(current_area){
 			case AREA_ROME://(30,29,19), (30,25,14), (29,2,0), (13,12,1)
 				{
-					//UINT16 palette[] = {RGB(30,29,19),RGB(30,25,14),RGB(29,2,0),RGB(13,12,1)};
 					set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_rome);
 					set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_rome);
 				}
@@ -163,7 +167,10 @@ void night_mode() BANKED{
 			break;
 			case AREA_SEA:
 				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_sea);
+				set_bkg_palette(BKGF_CGB_PAL1, 1, palette_data_alps);
 				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_sea);
+				set_bkg_palette(BKGF_CGB_PAL3, 1, palette_data_sea);
+				set_bkg_palette(BKGF_CGB_PAL4, 1, palette_data_sea);
 			break;
 		}
 	}

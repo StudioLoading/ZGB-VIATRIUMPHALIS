@@ -338,6 +338,62 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case MISSION08_COMPLETED:
+            memcpy(d0, EMPTY_STRING_14, 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, EMPTY_STRING_14, 15);
+            memcpy(d3, "YOU ARE HALF  ", 15);
+            memcpy(d4, "THE WAY IN SAV", 15);
+            memcpy(d5, "ING DEMETRIO. ", 15);
+            memcpy(d6, EMPTY_STRING_14, 15);
+            memcpy(d7, "WAIT FOR THE  ", 15);
+            memcpy(d8, "NIGHT AND YOU ", 15);
+            memcpy(d9, "WILL RECEIVE  ", 15);
+            memcpy(d10, "A NEW MESSAGE ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION09_INTRO:
+            memcpy(d0, "GOOD JOB!     ", 15);
+            memcpy(d1, "NOW WAIT FOR  ", 15);
+            memcpy(d2, "THE THE NIGHT ", 15);
+            memcpy(d3, "TO COME.      ", 15);
+            memcpy(d4, "THEN FOLLOW   ", 15);
+            memcpy(d5, "THE MAP AND   ", 15);
+            memcpy(d6, "FIND DEMETRIO.", 15);
+            memcpy(d7, "BE READY TO   ", 15);
+            memcpy(d8, "COUNTER ATTACK", 15);
+            memcpy(d9, "BECAUSE SAVA, ", 15);
+            memcpy(d10, "GES ARE GUARD,", 15);
+            memcpy(d11, "ING DEMETRIO. ", 15);
+        break;
+        case MISSION09_SAVED_AMBASSADOR:
+            memcpy(d0, "THANK YOU AND ", 15);
+            memcpy(d1, "CAESAR AUGUST,", 15);
+            memcpy(d2, "US! THIS SAVA,", 15);
+            memcpy(d3, "GES INFLICTED ", 15);
+            memcpy(d4, "UNSPEAKABLE   ", 15);
+            memcpy(d5, "VIOLENCE ON ME", 15);
+            memcpy(d6, "... WE MUST   ", 15);
+            memcpy(d7, "SHOW THEM THE ", 15);
+            memcpy(d8, "STRENGTH OF   ", 15);
+            memcpy(d9, "THE ROMAN EM, ", 15);
+            memcpy(d10, "PIRE.         ", 15);
+            memcpy(d11, "  KILL EM ALL!", 15);
+        break;
+        case MISSION09_COMPLETED:
+            memcpy(d0, "THANK YOU AGA,", 15);
+            memcpy(d1, "IN!           ", 15);
+            memcpy(d2, "I WILL REMEM, ", 15);
+            memcpy(d3, "BER YOU FOR   ", 15);
+            memcpy(d4, "THE REST OF MY", 15);
+            memcpy(d5, "LIFE. I OWE   ", 15);
+            memcpy(d6, "YOU MY OWN LI,", 15);
+            memcpy(d7, "FE. I NEED TO ", 15);
+            memcpy(d8, "GO BACK TO RO,", 15);
+            memcpy(d9, "ME. THE FASTE,", 15);
+            memcpy(d10, "ST WAY IS BY  ", 15);
+            memcpy(d11, "SHIP.         ", 15);
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);
