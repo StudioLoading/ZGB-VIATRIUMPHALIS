@@ -2,12 +2,10 @@
 
 #include "BankManager.h"
 #include "ZGBMain.h"
-#include "Palette.h"
+#include "Keys.h"
 #include "Scroll.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
-#include "string.h"
-#include "Print.h"
 
 #include "custom_datas.h"
 #include "Dialogs.h"
@@ -57,6 +55,9 @@ INT8 flag_exclamation = 0;
 INT8 mission_iscrono = 0;
 MISSION_STEP current_step = LOOKING_FOR_SENATOR;
 UINT8 mission_killed = 0u;
+Sprite* s_spawning_weapon;
+INT8 spawning_weapon_counter;
+UINT8 reset_combo_counter = 0u;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -125,6 +126,9 @@ void start_common() BANKED{
 	s_horse->mirror = mirror_horse;
     turn = turn_to_load;
 	mission_killed = 0u;
+	s_spawning_weapon = 0;
+	spawning_weapon_counter = 0;
+	reset_combo_counter = 0u;
 }
 
 void update_stamina() BANKED{
@@ -573,6 +577,14 @@ void update_common() BANKED{
 	//UPDATE EUPHORIA?
 		if(euphoria_min_current != euphoria_min || euphoria_max_current != euphoria_max){
 			update_euphoria();
+		}
+	//COMBO TO RESTART THE LEVEL
+		if(KEY_PRESSED(J_DOWN) && KEY_PRESSED(J_START)){
+			reset_combo_counter++;
+			if(reset_combo_counter >= 200u){
+				reset_combo_counter = 0u;
+				die();
+			}
 		}
 }
 

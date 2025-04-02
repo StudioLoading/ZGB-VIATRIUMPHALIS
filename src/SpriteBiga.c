@@ -31,6 +31,7 @@ extern INT8 flag_die;
 extern MISSION current_mission;
 extern INT8 mission_completed;
 extern MISSION_STEP current_step;
+extern Sprite* s_spawning_weapon;
 
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
@@ -169,6 +170,9 @@ void pickup(Sprite* s_arg_item) BANKED{
             }
         break;
     }    
+    if(item_data->flag_continuous_spawning == 1){
+        s_spawning_weapon = 0;
+    }
     SpriteManagerRemoveSprite(s_arg_item);
 }
 

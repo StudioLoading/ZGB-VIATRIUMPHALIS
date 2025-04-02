@@ -16,7 +16,7 @@
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission09);
 
-const UINT8 coll_m09_tiles[] = {15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 59, 60, 61, 62, 63, 64, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 85, 86, 90, 91, 93, 95, 96, 97, 98, 99, 102, 103, 104, 105, 106, 114, 118, 119, 121, 0};
+const UINT8 coll_m09_tiles[] = {15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 63, 64, 68, 69, 70, 75, 76, 77, 78, 79, 80, 81, 82, 85, 86, 90, 91, 93, 95, 96, 97, 98, 99, 102, 103, 104, 105, 106, 114, 118, 119, 121, 0};
 
 const UINT8 coll_m09_surface[] = {0u, 0};
 
@@ -56,6 +56,8 @@ extern INT16 time_factor;
 extern INT16 time_to_load;
 extern UINT8 mission_killed;
 extern UINT8 flag_night_mode;
+extern Sprite* s_spawning_weapon;
+extern INT8 spawning_weapon_counter;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
@@ -66,6 +68,8 @@ extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
 extern void night_mode() BANKED;
+extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START(){
     mission_iscrono = 0;
@@ -73,7 +77,7 @@ void START(){
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
         pos_horse_x = (UINT16) 11u << 3;
-        pos_horse_y = (UINT16) 7u << 3;
+        pos_horse_y = (UINT16) 9u << 3;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
     }     
@@ -109,20 +113,31 @@ void spawn_savages() BANKED{
     struct SoldierData* savage00_data = (struct SoldierData*) s_savage00->custom_data;
     savage00_data->frmskip_max = 12u;
     savage00_data->configured = 1;
-    savage00_data->reward = LANCE;
+    savage00_data->reward = NOITEM;
     
     s_savage01 = SpriteManagerAdd(SpriteSavage, ((UINT16) 91u << 3), ((UINT16) 16u << 3));
     struct SoldierData* savage01_data = (struct SoldierData*) s_savage01->custom_data;
     savage01_data->frmskip_max = 8u;
     savage01_data->configured = 2;
-    savage01_data->reward = GLADIO;
-    Non capisco perché il gladio spawnato non lo raccoglie correttamente
+    savage01_data->reward = NOITEM;
 
     s_savage02 = SpriteManagerAdd(SpriteSavage, ((UINT16) 133u << 3), ((UINT16) 17u << 3) + 2);
     struct SoldierData* savage02_data = (struct SoldierData*) s_savage02->custom_data;
     savage02_data->frmskip_max = 8u;
     savage02_data->configured = 2;
     savage02_data->reward = HP;
+    
+    s_savage03 = SpriteManagerAdd(SpriteSavage, ((UINT16) 63u << 3), ((UINT16) 15u << 3) + 2);
+    struct SoldierData* savage03_data = (struct SoldierData*) s_savage03->custom_data;
+    savage03_data->frmskip_max = 10u;
+    savage03_data->configured = 2;
+    savage03_data->reward = GLADIO;
+    
+    s_savage04 = SpriteManagerAdd(SpriteSavage, ((UINT16) 22u << 3), ((UINT16) 11u << 3) + 2);
+    struct SoldierData* savage04_data = (struct SoldierData*) s_savage04->custom_data;
+    savage04_data->frmskip_max = 6u;
+    savage04_data->configured = 2;
+    savage04_data->reward = NOITEM;
 
 }
 
@@ -135,7 +150,7 @@ void UPDATE(){
     //COMMON UPDATE
         update_common();
     //LIMIT MAP LEFT
-        if(s_horse->y < 80 && s_horse->x < 24u){
+        if(s_horse->x < 24u){
             s_horse->x = 24u;
         }
     //UPDATE TIME
@@ -143,7 +158,15 @@ void UPDATE(){
         time_current--;
         if(time_current < 0 && !mission_completed && !track_ended){
             die();
-        } */   
+        } */    
+    //CONTINUOUS SPAWNING WEAPON
+    if(current_step == EXIT && s_spawning_weapon == 0){
+        spawning_weapon_counter++;
+        if(spawning_weapon_counter < 0){
+            spawning_weapon_counter = 0;
+            item_spawn_continuously(GLADIO, ((UINT16)55u << 3), ((UINT16)15u << 3) + 3u);
+        }
+    }
     //MISSION STEP
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;

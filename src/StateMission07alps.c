@@ -25,8 +25,8 @@ Sprite* s_barbarian02 = 0;
 Sprite* s_barbarian03 = 0;
 Sprite* s_barbarian04 = 0;
 Sprite* s_barbarian05 = 0;
-Sprite* s_spawning_weapon = 0;
-INT8 spawning_weapon_counter = 0;
+extern Sprite* s_spawning_weapon;
+extern INT8 spawning_weapon_counter;
 
 void spawn_barbarian() BANKED;
 

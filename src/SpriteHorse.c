@@ -109,6 +109,7 @@ void UPDATE() {
             counter_hit--;
             if(counter_hit <= 0){
                 flag_hit = 0;
+                counter_hit = COUNTER_HIT_MAX;
             }
         }
     //IF TRACK ENDED, GO ON UNTILL THE END OF THE SCREEN
@@ -374,7 +375,7 @@ void UPDATE() {
                             if(stamina_current > 100){
                                 stamina_current-=30;
                             }
-                            horse_hit(-4);
+                            if(counter_hit == COUNTER_HIT_MAX){horse_hit(-4);}
                         break;
                         default:
                             if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo
@@ -426,12 +427,14 @@ void UPDATE() {
                             current_step = SENATOR_COLLIDED;
                         }
                     break;
+                    case SpriteSavage:
                     case SpriteBarbarian:
                         if(weapon_def == SHIELD){
                             use_weapon(1);
-                        }else if(flag_hit == 0){
+                            counter_hit = COUNTER_HIT_MAX;
+                        }else if(flag_hit == 0 && counter_hit == COUNTER_HIT_MAX){
                             struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
-                            if(soldier_data->configured < 4 && flag_hit == 0){
+                            if(soldier_data->configured < 4 && flag_hit == 0 && counter_hit == COUNTER_HIT_MAX){
                                 horse_hit(-5);
                             }
                         }
@@ -439,7 +442,7 @@ void UPDATE() {
                     case SpriteRomansoldier:
                         {
                             struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
-                            if(soldier_data->configured < 4 && flag_hit == 0){
+                            if(soldier_data->configured < 4 && flag_hit == 0 &&  counter_hit == COUNTER_HIT_MAX){
                                 horse_hit(-16);
                                 SpriteManagerAdd(SpriteExclamation, iospr->x + 4, iospr->y - 16u);
                                 soldier_data->vx = 0;
@@ -478,7 +481,7 @@ void UPDATE() {
                         if(weapon_def == ELMET){
                             use_weapon(1);
                             SpriteManagerRemoveSprite(iospr);
-                        }else if(flag_hit == 0){
+                        }else if(flag_hit == 0 && counter_hit == COUNTER_HIT_MAX){
                             horse_hit(-4);
                         }
                     }break;

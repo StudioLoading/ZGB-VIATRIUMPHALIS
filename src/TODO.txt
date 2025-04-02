@@ -40,7 +40,7 @@ Alpi (strade romane, foreste, accampamenti)
 Costa Albanese (porti, scogliere, sentieri costieri)
 "trova la mappa per scoprire dove i selvaggi tengono nascosto Demetrio l'ambasciatore" (A tempo con clessidre in giro + mappa da trovare)
 "Salva l'ambasciatore catturato dai selvaggi senza farti scoprire" (night mode, senza tempo, come fatto in passato per non farsi beccare, usando gli sprite dei selvaggi)
-"Porta Demetrio alla nave! Supera la palude evitando i barili (?) che i selvaggi lanciano sulla tua strada!" (Ostacoli orizzontali da evitare o deviare!)
+"Porta Demetrio alla nave! Supera la palude evitando i massi (?) che i selvaggi lanciano sulla tua strada!" (altro livello di massi)
 "Arena"(ambush!) (night mode)
 
 Antica Grecia (templi, città-stato, foreste)
@@ -60,8 +60,17 @@ Egitto (piramidi, fiumi, templi)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
 -------------------------------------------------------------------------------------
 
-sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
+- sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
+- migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
+- sistema di punteggio
 
+-------------------------------------------------------------------------------------
+LIBRETTO:
+- lore
+- mappa dell'impero
+- golden items
+- ci vuole una combo che resetti la missione: è giù + start premuto 4 secondi. Invoca die(), quindi è un suicidio
+- sistema di punteggio
 -------------------------------------------------------------------------------------
 
 ```C

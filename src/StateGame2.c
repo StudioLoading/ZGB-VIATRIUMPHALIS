@@ -72,6 +72,7 @@ void die() BANKED{
 		case MISSIONSEA08:
 		case MISSIONSEA09:
 		case MISSIONSEA10:
+			turn_to_load = 0;
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONSEA08; 
 		break;
@@ -142,7 +143,7 @@ void spawn_items() BANKED{
 		break;
 		case MISSIONSEA09:
 			item_spawn(SHIELD, ((UINT16) 21u << 3), ((UINT16) 8u << 3));
-			item_spawn(LANCE, ((UINT16) 52u << 3), ((UINT16) 15u << 3));
+			//item_spawn(LANCE, ((UINT16) 52u << 3), ((UINT16) 15u << 3));
 			item_spawn(SHIELD, ((UINT16) 113u << 3), ((UINT16) 10u << 3));
 		break;
 	}
