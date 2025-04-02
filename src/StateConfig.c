@@ -212,6 +212,10 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
             configuration.reins = GOLDEN;
             GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_REINS);
         break;
+        case GOLDEN_ELM:
+            configuration.elm = GOLDEN;
+            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_ELM);
+        break;
     }
     flag_golden_found = 1;
     SetState(StatePapyrus);

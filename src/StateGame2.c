@@ -124,12 +124,12 @@ void spawn_items() BANKED{
 			item_spawn(HP, ((UINT16) 111u << 3), ((UINT16) 19u << 3));
 			item_spawn(ELMET, ((UINT16) 128u << 3), ((UINT16) 18u << 3));
 			item_spawn(HP, ((UINT16) 155u << 3), ((UINT16) 9u << 3));
-			/*if(configuration.reins == NORMAL){
+			if(configuration.reins == NORMAL){
 				Sprite* s_config_reins = SpriteManagerAdd(SpriteConfigreins, ((UINT16)212u << 3), ((UINT16)10u << 3));
 				struct ItemData* reins_data = (struct ItemData*)s_config_reins->custom_data;
 				reins_data->itemtype = GOLDEN_REINS;
 				reins_data->configured = 1;
-			}*/
+			}
 		break;
 		case MISSIONALPS07:
 			item_spawn(SHIELD, ((UINT16) 18u << 3), ((UINT16) 16u << 3));
@@ -143,8 +143,13 @@ void spawn_items() BANKED{
 		break;
 		case MISSIONSEA09:
 			item_spawn(SHIELD, ((UINT16) 21u << 3), ((UINT16) 8u << 3));
-			//item_spawn(LANCE, ((UINT16) 52u << 3), ((UINT16) 15u << 3));
 			item_spawn(SHIELD, ((UINT16) 113u << 3), ((UINT16) 10u << 3));
+			if(configuration.elm == NORMAL){
+				Sprite* s_config_elm = SpriteManagerAdd(SpriteConfigelm, ((UINT16)144 << 3), ((UINT16)6u << 3));
+				struct ItemData* elm_data = (struct ItemData*)s_config_elm->custom_data;
+				elm_data->itemtype = GOLDEN_ELM;
+				elm_data->configured = 1;
+			}
 		break;
 	}
 }

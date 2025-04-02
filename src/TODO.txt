@@ -59,7 +59,7 @@ Egitto (piramidi, fiumi, templi)
 "Raggiungi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
 -------------------------------------------------------------------------------------
-
+- il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
 - sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
 - migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
 - sistema di punteggio

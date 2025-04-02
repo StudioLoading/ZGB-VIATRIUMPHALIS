@@ -68,6 +68,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case DESCRIPTION_GOLDEN_ELM:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU FOUND THE ", 15);
+            memcpy(d3, "GOLDEN ELM!   ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "YOUR DEFENSE  ", 15);
+            memcpy(d6, "IS INCREASED. ", 15);
+            memcpy(d7, EMPTY_STRING_14, 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case MISSION00_INTRO:
             memcpy(d0, "FIRSTLY WE HA,", 15);
             memcpy(d1, "VE SOME COMMI,", 15);

@@ -91,6 +91,7 @@ void UPDATE() {
                 case MISSIONALPS07: Anim_areaalps_4(); break;
                 case MISSIONSEA08: Anim_areasea_1(); break;
                 case MISSIONSEA09: Anim_areasea_2(); break;
+                case MISSIONSEA10: Anim_areasea_3(); break;
             }
         }
     }else{
@@ -113,6 +114,7 @@ void UPDATE() {
                 case MISSIONSEA08:
                 case MISSIONSEA09:
                 case MISSIONSEA10:
+                case MISSIONSEA11:
                     Anim_areasea_0();
                 break;
             }
@@ -162,6 +164,10 @@ void UPDATE() {
                 case MISSIONSEA09:
                     prev_state = StateMission09sea;
                     GetLocalizedDialog_EN(MISSION09_INTRO);
+                break;
+                case MISSIONSEA10:
+                    prev_state = StateMission10sea;
+                    GetLocalizedDialog_EN(MISSION10_INTRO);
                 break;
             }
             SetState(StatePapyrus);
