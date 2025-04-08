@@ -251,7 +251,6 @@ paket-files/
 *.sln.iml
 
 #ZGB other
-other/
 DbgClr/ZGBMain.rel
 DbgClr/ZGBMain.o
 DbgClr/ZGBMain.lst
