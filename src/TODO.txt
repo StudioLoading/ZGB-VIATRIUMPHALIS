@@ -40,12 +40,13 @@ Alpi (strade romane, foreste, accampamenti)
 Costa Albanese (porti, scogliere, sentieri costieri)
 "trova la mappa per scoprire dove i selvaggi tengono nascosto Demetrio l'ambasciatore" (A tempo con clessidre in giro + mappa da trovare)
 "Salva l'ambasciatore catturato dai selvaggi senza farti scoprire" (night mode, senza tempo, come fatto in passato per non farsi beccare, usando gli sprite dei selvaggi)
-"Porta Demetrio alla nave! Supera la palude evitando i massi (?) che i selvaggi lanciano sulla tua strada!" (altro livello di massi)
+"Porta Demetrio alla nave!" entro tempo x
 "Arena"(ambush!) (night mode)
 
 Antica Grecia (templi, città-stato, foreste)
-"Trasporta una statua sacra rubata alla città di Atene." (A tempo: 3 minuti prima che i sacerdoti si accorgano!)
-"Supera un’orda di mercenari greci che vogliono bloccarti!" 
+"Trasporta una statua sacra rubata alla città di Atene." (A tempo: 3 minuti e non farti beccare!)
+"Vai ad origliare fuori dal palazzo del potere greco persone che parlano senza farti beccare"
+"Supera un’orda di mercenari greci che vogliono bloccarti!" (sfondamenti a tempo)
 "Inseguimento! Fuggi verso il deserto senza farti raggiungere"
 
 
@@ -59,6 +60,7 @@ Egitto (piramidi, fiumi, templi)
 "Raggiungi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
 -------------------------------------------------------------------------------------
+- spostare codice ripetute fra le StateMission sulla update_common()
 - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
 - sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
 - migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
@@ -79,4 +81,4 @@ LIBRETTO:
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\areasea.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\areasea.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_maintitle.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\VT_maintitle.gbm

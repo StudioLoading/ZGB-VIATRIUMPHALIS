@@ -19,6 +19,7 @@
 IMPORT_MAP(border);
 IMPORT_MAP(mapcredit0);
 IMPORT_MAP(maptitlescreen);
+IMPORT_MAP(maintitlemap);
 IMPORT_TILES(font);
 
 INT16 credit_wait = 0;
@@ -36,6 +37,10 @@ void START(){
             InitScroll(BANK(mapcredit0), &mapcredit0, 0, 0);
         break;
         case 2:
+            InitScroll(BANK(maintitlemap), &maintitlemap, 0, 0);
+            scroll_target = SpriteManagerAdd(SpriteCamera, 80u, 72u);
+        break;
+        case 3:
             InitScroll(BANK(maptitlescreen), &maptitlescreen, 0, 0);
         break;
     }
@@ -44,15 +49,24 @@ void START(){
 }
 
 void UPDATE(){
-    credit_wait--;
-    if(credit_step < 2 && (credit_wait <= 0 || KEY_TICKED(J_START))){
+    if(credit_step != 2){
+        credit_wait--;
+    }
+    if(credit_step < 3 && (credit_wait <= 0 || KEY_TICKED(J_START))){
         SetState(StateCredit);
-    }else if(credit_step == 2 && KEY_TICKED(J_START)){
+    }else if(credit_step == 3 && KEY_TICKED(J_START)){
         SetState(StateButtons);
     }
-    //PRESS START BLINK
+    //ANIMATIONS & CAMERA MOVEMENTS
         switch(credit_step){
             case 2:
+                if(scroll_target->x < (UINT16) 147u << 3){
+                    scroll_target->x+=2;
+                }else{
+                    credit_wait = 0;
+                }
+            break;
+            case 3:
                 pressstart_counter++;
                 if(pressstart_counter >= PRESSSTART_COUNTER_MAX){
                     pressstart_counter = 0;

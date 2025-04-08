@@ -30,6 +30,12 @@ void START(){
 	INIT_FONT(font, PRINT_BKG);
     PRINT(0, 0, "DISCOVER BUTTON MAP");
     SetWindowY(144);
+    pressed_up_down = 0u;
+    pressed_right = 0u;
+    pressed_left = 0u;
+    pressed_a = 0u;
+    pressed_b = 0u;
+    press_start = 0u;
 }
 
 void UPDATE(){
@@ -75,7 +81,7 @@ void UPDATE(){
         PRINT(0, 0, "  NOW PRESS START  ");
     }
     if(KEY_TICKED(J_START) && press_start){
-        //SetState(StateTutorialList);//TODO
-        SetState(StateWorldmap);//TEST DEV
+        SetState(StateTutorialList);//TODO PROD
+        //SetState(StateWorldmap);//TODO TEST DEV
     }
 }

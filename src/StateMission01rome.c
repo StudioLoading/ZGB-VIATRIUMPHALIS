@@ -50,6 +50,7 @@ extern void calculate_danger(Sprite* s_danger) BANKED;
 extern void check_danger() BANKED;
 extern void show_danger() BANKED;
 extern void spawn_items() BANKED;
+extern void map_ended() BANKED;
 
 void spawn_roman_soldiers() BANKED;
 
@@ -135,23 +136,7 @@ void UPDATE(){
         if(mission_completed && track_ended){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                INT8 can_go_on = 1;
-                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                    if(fantoccio_hit == 0){
-                        can_go_on = 0;
-                    }
-                }*/
-                if(can_go_on == 1){
-                    //tutorial_state++;
-                }
-                prev_state = StateWorldmap;
-                turn_to_load = turn;//mission02 comincia nello stesso verso di dove finisce mission03
-                current_mission++;
-                current_step = LOOKING_FOR_SENATOR;
-                GetLocalizedDialog_EN(MISSION01_COMPLETED);
-                SetState(StatePapyrus);
+                map_ended();
             }
         }
 }

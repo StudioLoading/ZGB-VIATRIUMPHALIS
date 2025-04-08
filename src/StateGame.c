@@ -579,9 +579,9 @@ void update_common() BANKED{
 			update_euphoria();
 		}
 	//COMBO TO RESTART THE LEVEL
-		if(KEY_PRESSED(J_DOWN) && KEY_PRESSED(J_START)){
+		if(KEY_PRESSED(J_UP) && KEY_PRESSED(J_START)){
 			reset_combo_counter++;
-			if(reset_combo_counter >= 200u){
+			if(reset_combo_counter >= 120u){
 				reset_combo_counter = 0u;
 				die();
 			}

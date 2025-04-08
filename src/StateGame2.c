@@ -22,6 +22,7 @@ UINT8 flag_night_mode = 0u;
 void die() BANKED;
 void spawn_items() BANKED;
 void night_mode() BANKED;
+void map_ended() BANKED;
 
 
 extern struct CONFIGURATION configuration;
@@ -41,6 +42,7 @@ extern MISSION current_mission;
 extern UINT8 prev_state;
 extern UINT8 turn_to_load;
 extern UINT8 turn;
+extern INT8 world_area_map;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
@@ -51,6 +53,46 @@ void START(){
 
 void UPDATE() {
 	
+}
+
+void map_ended() BANKED{
+	flag_night_mode = 0;//RESET
+	prev_state = StateWorldmap;
+	turn_to_load = turn;//missione successiva comincia nello stesso verso di dove finisce missione corrente
+	switch(current_mission){
+		case MISSIONROME00: GetLocalizedDialog_EN(MISSION00_COMPLETED); break;
+		case MISSIONROME01: GetLocalizedDialog_EN(MISSION01_COMPLETED); break;
+		case MISSIONROME02: 
+			turn_to_load = 0;
+			GetLocalizedDialog_EN(MISSION02_COMPLETED);
+		break;
+		case MISSIONROME03:
+			world_area_map = 0;
+			current_area = AREA_ALPS;
+			GetLocalizedDialog_EN(MISSION03_COMPLETED);
+		break;
+		case MISSIONALPS04: GetLocalizedDialog_EN(MISSION04_COMPLETED); break;
+		case MISSIONALPS05: 
+			turn_to_load = 0;
+			GetLocalizedDialog_EN(MISSION05_COMPLETED);
+		break;
+		case MISSIONALPS06: 
+			turn_to_load = 0;
+			GetLocalizedDialog_EN(MISSION06_COMPLETED);
+		break;
+		case MISSIONALPS07:
+			world_area_map = 0;
+			current_area = AREA_SEA;
+			GetLocalizedDialog_EN(MISSION07_COMPLETED);
+		break;
+		case MISSIONSEA08: GetLocalizedDialog_EN(MISSION08_COMPLETED); break;
+		case MISSIONSEA09: GetLocalizedDialog_EN(MISSION09_COMPLETED); break;
+		case MISSIONSEA10: GetLocalizedDialog_EN(MISSION10_COMPLETED); break;
+		case MISSIONSEA11: GetLocalizedDialog_EN(MISSION11_COMPLETED); break;
+	}
+	current_mission++;
+	current_step = LOOKING_FOR_SENATOR;
+	SetState(StatePapyrus);
 }
 
 void die() BANKED{
@@ -77,6 +119,7 @@ void die() BANKED{
 			current_mission = MISSIONSEA08; 
 		break;
 	}
+	world_area_map = 0;
 	flag_night_mode = 0;//RESET
 	prev_state = StateWorldmap;
 	update_hp(16);
@@ -144,8 +187,12 @@ void spawn_items() BANKED{
 		case MISSIONSEA09:
 			item_spawn(SHIELD, ((UINT16) 21u << 3), ((UINT16) 8u << 3));
 			item_spawn(SHIELD, ((UINT16) 113u << 3), ((UINT16) 10u << 3));
+		break;
+		case MISSIONSEA10:
+			item_spawn(TIME, ((UINT16) 52u << 3), ((UINT16) 25u << 3));
+			item_spawn(TIME, ((UINT16) 39u << 3), ((UINT16) 42u << 3));
 			if(configuration.elm == NORMAL){
-				Sprite* s_config_elm = SpriteManagerAdd(SpriteConfigelm, ((UINT16)144 << 3), ((UINT16)6u << 3));
+				Sprite* s_config_elm = SpriteManagerAdd(SpriteConfigelm, ((UINT16)83 << 3), ((UINT16)79u << 3));
 				struct ItemData* elm_data = (struct ItemData*)s_config_elm->custom_data;
 				elm_data->itemtype = GOLDEN_ELM;
 				elm_data->configured = 1;

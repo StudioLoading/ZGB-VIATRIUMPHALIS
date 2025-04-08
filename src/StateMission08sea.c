@@ -57,6 +57,7 @@ extern void show_danger() BANKED;
 extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
+extern void map_ended() BANKED;
 
 void START(){
     mission_iscrono = 1;

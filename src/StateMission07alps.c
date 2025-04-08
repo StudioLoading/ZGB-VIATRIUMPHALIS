@@ -64,6 +64,7 @@ extern void night_mode() BANKED;
 extern void die() BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void map_ended() BANKED;
 
 void START(){
     mission_iscrono = 0;
@@ -150,24 +151,7 @@ void UPDATE(){
         if(mission_completed && track_ended){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                INT8 can_go_on = 1;
-                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                    if(fantoccio_hit == 0){
-                        can_go_on = 0;
-                    }
-                }*/
-                if(can_go_on == 1){
-                    //tutorial_state++;
-                }
-                flag_night_mode = 0;//RESET
-                prev_state = StateWorldmap;
-                turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
-                current_mission++;
-                current_step = LOOKING_FOR_SENATOR;
-                GetLocalizedDialog_EN(MISSION07_COMPLETED);
-                SetState(StatePapyrus);
+                map_ended();
             }
         }
 }

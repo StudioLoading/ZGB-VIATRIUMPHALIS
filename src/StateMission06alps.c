@@ -74,6 +74,7 @@ extern void show_danger() BANKED;
 extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
+extern void map_ended() BANKED;
 
 void START(){
     mission_iscrono = 0;
@@ -90,15 +91,8 @@ void START(){
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        /*if(current_step == LOOKING_FOR_SENATOR){
-            s_general = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 35u << 3), ((UINT16) 57u << 3));
-            mission_completed = 0;
-        }else{
-            SpriteManagerRemoveSprite(s_general);*/
-            current_step = EXIT;
-            mission_completed = 1;
-            //s_general = 0;
-        //}
+        current_step = EXIT;
+        mission_completed = 1;
     //COMMONS & START
         InitScroll(BANK(mapmission06), &mapmission06, coll_m06_tiles, coll_m06_surface);
 		INIT_HUD(hudm);
@@ -204,23 +198,7 @@ void UPDATE(){
         if(mission_completed && track_ended){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                INT8 can_go_on = 1;
-                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                    if(fantoccio_hit == 0){
-                        can_go_on = 0;
-                    }
-                }*/
-                if(can_go_on == 1){
-                    //tutorial_state++;
-                }
-                prev_state = StateWorldmap;
-                turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
-                current_mission++;
-                current_step = LOOKING_FOR_SENATOR;
-                GetLocalizedDialog_EN(MISSION06_COMPLETED);
-                SetState(StatePapyrus);
+                map_ended();
             }
         }
 }

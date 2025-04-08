@@ -17,7 +17,7 @@
 #define EUPHORIA_MAX 660
 #define ONFIRE_COUNTDOWN_MAX 160
 #define WHIP_POWER 3
-#define GOLDEN_WHIP_POWER 8
+#define GOLDEN_WHIP_POWER 6
 #define HUD_TURN_COOLDOWN_MAX 20
 #define COUNTER_HIT_MAX 80
 
@@ -89,6 +89,8 @@ void START() {
     onfire_countdown = -1;
     turn_samepressure_counter = 0;
     flag_hit = 0;
+    vx = 0;
+    vy = 0;
     counter_hit = COUNTER_HIT_MAX;
     if(configuration.whip == GOLDEN){
         current_whip_power = GOLDEN_WHIP_POWER;
@@ -272,7 +274,7 @@ void UPDATE() {
                     vx = -1;
                 }else if(cos < -65 && cos > -110){// tratto come se stesse andando a 33 gradi sinistra
                     vx = -2;
-                }else if(cos < -110){ // tratto come se stesse andando orizzontale sinistra
+                }else if(cos < 0 && cos < -110){ // tratto come se stesse andando orizzontale sinistra
                     vx = -3;
                 }
             //VY col seno
