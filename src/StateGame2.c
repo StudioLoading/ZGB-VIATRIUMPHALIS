@@ -189,8 +189,10 @@ void spawn_items() BANKED{
 			item_spawn(SHIELD, ((UINT16) 113u << 3), ((UINT16) 10u << 3));
 		break;
 		case MISSIONSEA10:
+			item_spawn(TIME, ((UINT16) 93u << 3), ((UINT16) 9u << 3));
 			item_spawn(TIME, ((UINT16) 52u << 3), ((UINT16) 25u << 3));
 			item_spawn(TIME, ((UINT16) 39u << 3), ((UINT16) 42u << 3));
+			item_spawn(TIME, ((UINT16) 91u << 3), ((UINT16) 53u << 3));
 			if(configuration.elm == NORMAL){
 				Sprite* s_config_elm = SpriteManagerAdd(SpriteConfigelm, ((UINT16)83 << 3), ((UINT16)79u << 3));
 				struct ItemData* elm_data = (struct ItemData*)s_config_elm->custom_data;

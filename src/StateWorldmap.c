@@ -25,8 +25,8 @@ IMPORT_TILES(font);
 extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
-AREA current_area = AREA_ROME;//TODO AREA_ROME
-MISSION current_mission = MISSIONROME00;//TODO MISSIONROME00
+AREA current_area = AREA_SEA;//TODO AREA_ROME
+MISSION current_mission = MISSIONSEA10;//TODO MISSIONROME00
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 
 void START() {
@@ -39,7 +39,7 @@ void START() {
                 InitScroll(BANK(arearome), &arearome, 0, 0);
             }else if(current_mission <= MISSIONALPS07){
                 InitScroll(BANK(areaalps), &areaalps, 0, 0);
-            }else if(current_mission <= MISSIONSEA10){
+            }else if(current_mission <= MISSIONSEA11){
                 InitScroll(BANK(areasea), &areasea, 0, 0);
             }
         break;
@@ -67,6 +67,7 @@ void START() {
                 case MISSIONSEA08: PRINT(4, 15, "A SECRET MAP "); break;
                 case MISSIONSEA09: PRINT(0, 15, "SAVE THE AMBASSADOR"); break;
                 case MISSIONSEA10: PRINT(0, 15, "   TO THE SHIP!    "); break;
+                case MISSIONSEA11: PRINT(4, 15, "   AMBUSH!   "); break;
             }
         break;
     }

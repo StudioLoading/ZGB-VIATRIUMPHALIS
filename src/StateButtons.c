@@ -81,7 +81,7 @@ void UPDATE(){
         PRINT(0, 0, "  NOW PRESS START  ");
     }
     if(KEY_TICKED(J_START) && press_start){
-        SetState(StateTutorialList);//TODO PROD
-        //SetState(StateWorldmap);//TODO TEST DEV
+        //SetState(StateTutorialList);//TODO PROD
+        SetState(StateWorldmap);//TODO TEST DEV
     }
 }

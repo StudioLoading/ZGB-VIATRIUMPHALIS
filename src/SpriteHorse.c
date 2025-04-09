@@ -250,7 +250,7 @@ void UPDATE() {
                 THIS->anim_speed = stamina_current >> 5;
             }
         }
-    //ACTUAL MOVEMENT & COLLISION & OVER  
+    //ACTUAL MOVEMENT & COLLISION & OVER
         if(frm_skip > 0){frm_skip--;}
         if(frm_skip == 0){
             frm_skip = velocity_counter;
