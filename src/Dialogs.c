@@ -408,6 +408,54 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, "ST WAY IS BY  ", 15);
             memcpy(d11, "SHIP.         ", 15);
         break;
+        case MISSION10_INTRO:
+            memcpy(d0, "SEEMS WE ARE  ", 15);
+            memcpy(d1, "ON A HURRY!   ", 15);
+            memcpy(d2, "OUR AMBASSADOR", 15);
+            memcpy(d3, "CAN'T MISS TH,", 15);
+            memcpy(d4, "AT SAILIGN    ", 15);
+            memcpy(d5, "SHIP.         ", 15);
+            memcpy(d6, "MOVE AS FAST  ", 15);
+            memcpy(d7, "AS YOU CAN!   ", 15);
+            memcpy(d8, "THE SHIP IS TO", 15);
+            memcpy(d9, "THE SOUTH-WEST", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION10_COMPLETED:
+        break;
+        case MISSION11_INTRO:
+            memcpy(d0, EMPTY_STRING_14, 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, EMPTY_STRING_14, 15);
+            memcpy(d3, EMPTY_STRING_14, 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "    AMBUSH!   ", 15);
+            memcpy(d6, EMPTY_STRING_14, 15);
+            memcpy(d7, EMPTY_STRING_14, 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION12_INTRO:
+            memcpy(d0, "GREECE!       ", 15);
+            memcpy(d1, "IT'S TIME FOR ", 15);
+            memcpy(d2, "YOU TO GO THR,", 15);
+            memcpy(d3, "OUGH GREECE.  ", 15);
+            memcpy(d4, "IT'S MAINLY   ", 15);
+            memcpy(d5, "POPULATED BY  ", 15);
+            memcpy(d6, "CIVILIANS.    ", 15);
+            memcpy(d7, "FIRST OF ALL, ", 15);
+            memcpy(d8, "AN IMPORTANT  ", 15);
+            memcpy(d9, "PAPER MUST BE ", 15);
+            memcpy(d10, "RESCUED FROM ", 15);
+            memcpy(d11, "THE LAKE.    ", 15);
+        break;        
+        case MISSION12_COMPLETED:
+        
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);

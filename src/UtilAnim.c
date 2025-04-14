@@ -27,6 +27,12 @@ IMPORT_TILES(areaseat01);
 IMPORT_TILES(areaseat02);
 IMPORT_TILES(areaseat03);
 
+IMPORT_TILES(areagreecet99);
+IMPORT_TILES(areagreecet00);
+IMPORT_TILES(areagreecet01);
+IMPORT_TILES(areagreecet02);
+IMPORT_TILES(areagreecet03);
+
 IMPORT_TILES(configmapt);
 IMPORT_TILES(configmapt00elm);
 IMPORT_TILES(configmapt00wheel);
@@ -54,6 +60,9 @@ void Anim_worldmap_1(AREA arg_current_area) BANKED{
         break;
         case AREA_SEA:
             set_banked_bkg_data(0, 123u, &worldmapt02, BANK(worldmapt02));
+        break;
+        case AREA_GREECE:
+            set_banked_bkg_data(0, 123u, &worldmapt03, BANK(worldmapt03));
         break;
     }
 }
@@ -100,7 +109,25 @@ void Anim_areasea_2() BANKED{
 void Anim_areasea_3() BANKED{
     set_banked_bkg_data(1, 111u, &areaseat02, BANK(areaseat02));
 }
+void Anim_areasea_4() BANKED{
+    set_banked_bkg_data(1, 111u, &areaseat03, BANK(areaseat03));
+}
 
+void Anim_areagreece_0() BANKED{
+    set_banked_bkg_data(1, 123u, &areagreecet99, BANK(areagreecet99));
+}
+void Anim_areagreece_1() BANKED{
+    set_banked_bkg_data(1, 123u, &areagreecet00, BANK(areagreecet00));
+}
+void Anim_areagreece_2() BANKED{
+    set_banked_bkg_data(1, 123u, &areagreecet01, BANK(areagreecet01));
+}
+void Anim_areagreece_3() BANKED{
+    set_banked_bkg_data(1, 123u, &areagreecet02, BANK(areagreecet02));
+}
+void Anim_areagreece_4() BANKED{
+    set_banked_bkg_data(1, 123u, &areagreecet03, BANK(areagreecet03));
+}
 
 void Anim_config_no() BANKED{
     set_banked_bkg_data(0, 167u, &configmapt, BANK(configmapt));

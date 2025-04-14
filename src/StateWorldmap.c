@@ -25,9 +25,17 @@ IMPORT_TILES(font);
 extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
-AREA current_area = AREA_SEA;//TODO AREA_ROME
-MISSION current_mission = MISSIONSEA10;//TODO MISSIONROME00
+AREA current_area = AREA_ROME;
+MISSION current_mission = MISSIONROME00;
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
+void start_game() BANKED;
+
+void start_game() BANKED{
+    //SetState(StateTutorialList);//TODO PROD
+    current_area = AREA_GREECE;//TODO AREA_ROME
+    current_mission = MISSIONGREECE12;//TODO MISSIONROME00
+    SetState(StateWorldmap);//TODO TEST DEV
+}
 
 void START() {
     switch(world_area_map){
@@ -68,6 +76,7 @@ void START() {
                 case MISSIONSEA09: PRINT(0, 15, "SAVE THE AMBASSADOR"); break;
                 case MISSIONSEA10: PRINT(0, 15, "   TO THE SHIP!    "); break;
                 case MISSIONSEA11: PRINT(4, 15, "   AMBUSH!   "); break;
+                case MISSIONGREECE12: PRINT(4, 15, "GREEK IDOL"); break;
             }
         break;
     }
@@ -92,6 +101,11 @@ void UPDATE() {
                 case MISSIONSEA08: Anim_areasea_1(); break;
                 case MISSIONSEA09: Anim_areasea_2(); break;
                 case MISSIONSEA10: Anim_areasea_3(); break;
+                case MISSIONSEA11: Anim_areasea_4(); break;
+                case MISSIONGREECE12: Anim_areagreece_1(); break;
+                case MISSIONGREECE13: Anim_areagreece_2(); break;
+                case MISSIONGREECE14: Anim_areagreece_3(); break;
+                case MISSIONGREECE15: Anim_areagreece_4(); break;
             }
         }
     }else{
@@ -116,6 +130,12 @@ void UPDATE() {
                 case MISSIONSEA10:
                 case MISSIONSEA11:
                     Anim_areasea_0();
+                break;
+                case MISSIONGREECE12:
+                case MISSIONGREECE13:
+                case MISSIONGREECE14:
+                case MISSIONGREECE15:
+                    Anim_areagreece_0();
                 break;
             }
         }
@@ -168,6 +188,14 @@ void UPDATE() {
                 case MISSIONSEA10:
                     prev_state = StateMission10sea;
                     GetLocalizedDialog_EN(MISSION10_INTRO);
+                break;
+                case MISSIONSEA11:
+                    prev_state = StateMission11sea;
+                    GetLocalizedDialog_EN(MISSION11_INTRO);
+                break;
+                case MISSIONGREECE12:
+                    prev_state = StateMission12greece;
+                    GetLocalizedDialog_EN(MISSION12_INTRO);
                 break;
             }
             SetState(StatePapyrus);

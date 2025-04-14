@@ -442,6 +442,7 @@ void UPDATE() {
                         }
                     break;
                     case SpriteRomansoldier:
+                    case SpriteGreeksoldier:
                         {
                             struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
                             if(soldier_data->configured < 4 && flag_hit == 0 &&  counter_hit == COUNTER_HIT_MAX){

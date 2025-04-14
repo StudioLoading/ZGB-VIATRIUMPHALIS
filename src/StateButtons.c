@@ -17,6 +17,8 @@
 IMPORT_MAP(buttonmap);
 IMPORT_TILES(font);
 
+extern void start_game() BANKED;
+
 UINT8 pressed_up_down = 0u;
 UINT8 pressed_right = 0u;
 UINT8 pressed_left = 0u;
@@ -81,7 +83,6 @@ void UPDATE(){
         PRINT(0, 0, "  NOW PRESS START  ");
     }
     if(KEY_TICKED(J_START) && press_start){
-        //SetState(StateTutorialList);//TODO PROD
-        SetState(StateWorldmap);//TODO TEST DEV
+        start_game();
     }
 }

@@ -88,7 +88,11 @@ void map_ended() BANKED{
 		case MISSIONSEA08: GetLocalizedDialog_EN(MISSION08_COMPLETED); break;
 		case MISSIONSEA09: GetLocalizedDialog_EN(MISSION09_COMPLETED); break;
 		case MISSIONSEA10: GetLocalizedDialog_EN(MISSION10_COMPLETED); break;
-		case MISSIONSEA11: GetLocalizedDialog_EN(MISSION11_COMPLETED); break;
+		case MISSIONSEA11: 
+			current_area = AREA_GREECE;
+			GetLocalizedDialog_EN(MISSION11_COMPLETED);
+		break;
+		case MISSIONGREECE12: GetLocalizedDialog_EN(MISSION12_COMPLETED);break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;
@@ -114,6 +118,7 @@ void die() BANKED{
 		case MISSIONSEA08:
 		case MISSIONSEA09:
 		case MISSIONSEA10:
+		case MISSIONSEA11:
 			turn_to_load = 0;
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONSEA08; 
@@ -199,6 +204,15 @@ void spawn_items() BANKED{
 				elm_data->itemtype = GOLDEN_ELM;
 				elm_data->configured = 1;
 			}
+		break;
+		case MISSIONSEA11:
+			item_spawn(TIME, ((UINT16) 9u << 3), ((UINT16) 21u << 3));
+			item_spawn(LANCE, ((UINT16) 17u << 3), ((UINT16) 14u << 3));
+			item_spawn(TIME, ((UINT16) 65u << 3), ((UINT16) 11u << 3));
+			SpriteManagerAdd(SpriteFlame, (UINT16) 10u << 3, (UINT16) 11u << 3);
+		break;
+		case MISSIONGREECE12:
+			item_spawn(TIME, ((UINT16) 40u << 3), ((UINT16) 10u << 3));
 		break;
 	}
 }

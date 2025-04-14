@@ -108,12 +108,6 @@ void START(){
 }
 
 void spawn_savages() BANKED{
-
-    s_savage00 = SpriteManagerAdd(SpriteSavage, ((UINT16) 91u << 3), ((UINT16) 16u << 3));
-    struct SoldierData* savage00_data = (struct SoldierData*) s_savage00->custom_data;
-    savage00_data->frmskip_max = 12u;
-    savage00_data->configured = 1;
-    savage00_data->reward = NOITEM;
     
     s_savage01 = SpriteManagerAdd(SpriteSavage, ((UINT16) 91u << 3), ((UINT16) 16u << 3));
     struct SoldierData* savage01_data = (struct SoldierData*) s_savage01->custom_data;
@@ -177,7 +171,7 @@ void UPDATE(){
             GetLocalizedDialog_EN(MISSION09_SAVED_AMBASSADOR);
             SetState(StatePapyrus);
         }
-        if(mission_killed >= 5 && mission_completed == 0){
+        if(mission_killed >= 4 && mission_completed == 0){
             mission_completed = 1;
         }
     //CALCULATE DANGER
@@ -189,28 +183,12 @@ void UPDATE(){
         calculate_danger(s_barbarianshield06);
         check_danger();
         show_danger();*/
+    
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                INT8 can_go_on = 1;
-                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                    if(fantoccio_hit == 0){
-                        can_go_on = 0;
-                    }
-                }*/
-                if(can_go_on == 1){
-                    //tutorial_state++;
-                }
-                flag_night_mode = 0;//RESET
-                prev_state = StateWorldmap;
-                turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
-                current_mission++;
-                current_step = LOOKING_FOR_SENATOR;
-                GetLocalizedDialog_EN(MISSION09_COMPLETED);
-                SetState(StatePapyrus);
+                map_ended();
             }
         }
 }

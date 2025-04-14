@@ -81,4 +81,4 @@ LIBRETTO:
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_maintitle.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\VT_maintitle.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\areagreece.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\areagreece.gbm

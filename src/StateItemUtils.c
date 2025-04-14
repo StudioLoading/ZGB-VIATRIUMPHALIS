@@ -126,6 +126,13 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                 case LANCE:
                     item_lance_anim(s_item_arg);
                     item_data->vx = vx;
+                    if(vx == 0){
+                        if(s_horse->mirror == NO_MIRROR){
+                            item_data->vx = 1;
+                        }else{
+                            item_data->vx = -1;
+                        }
+                    }
                     item_data->vy = 0;
                 break;
                 case ELMET:
@@ -233,7 +240,8 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                 }break;
                 case SpriteBarbarian:
                 case SpriteSavage:
-                case SpriteRomansoldier:{
+                case SpriteRomansoldier:
+                case SpriteGreeksoldier:{
                     struct SoldierData* romansoldier_data = (struct SoldierData*)s_item_arg->custom_data;
                     if(romansoldier_data->configured < 4){
                         romansoldier_data->configured = 4;

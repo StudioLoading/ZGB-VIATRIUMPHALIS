@@ -165,7 +165,7 @@ void pickup(Sprite* s_arg_item) BANKED{
             pickup_config(item_data->itemtype);
         break;
         case PAPYRUS:
-            if(current_mission == MISSIONSEA08){
+            if(current_mission == MISSIONSEA08 || current_mission == MISSIONGREECE12){
                 current_step = EXIT;
                 mission_completed = 1;
             }

@@ -22,6 +22,8 @@ _STATE(StateMission07alps)\
 _STATE(StateMission08sea)\
 _STATE(StateMission09sea)\
 _STATE(StateMission10sea)\
+_STATE(StateMission11sea)\
+_STATE(StateMission12greece)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -57,6 +59,7 @@ _SPRITE_DMG(SpriteBarbarianshield, barbarianshield)\
 _SPRITE_DMG(SpriteRollingstone, rollingstone)\
 _SPRITE_DMG(SpriteBarbarian, barbarian)\
 _SPRITE_DMG(SpriteSavage, savage)\
+_SPRITE_DMG(SpriteGreeksoldier, greeksoldier)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
