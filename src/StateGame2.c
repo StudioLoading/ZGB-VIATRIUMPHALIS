@@ -212,7 +212,8 @@ void spawn_items() BANKED{
 			SpriteManagerAdd(SpriteFlame, (UINT16) 10u << 3, (UINT16) 11u << 3);
 		break;
 		case MISSIONGREECE12:
-			item_spawn(TIME, ((UINT16) 40u << 3), ((UINT16) 10u << 3));
+			item_spawn(TIME, ((UINT16) 72u << 3), ((UINT16) 20u << 3));
+			item_spawn(TIME, ((UINT16) 126u << 3), ((UINT16) 25u << 3));
 		break;
 	}
 }

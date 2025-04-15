@@ -20,6 +20,7 @@ IMPORT_MAP(worldmap);
 IMPORT_MAP(arearome);
 IMPORT_MAP(areaalps);
 IMPORT_MAP(areasea);
+IMPORT_MAP(areagreece);
 IMPORT_TILES(font);
 
 extern UINT8 prev_state;
@@ -49,6 +50,8 @@ void START() {
                 InitScroll(BANK(areaalps), &areaalps, 0, 0);
             }else if(current_mission <= MISSIONSEA11){
                 InitScroll(BANK(areasea), &areasea, 0, 0);
+            }else if(current_mission <= MISSIONGREECE15){
+                InitScroll(BANK(areagreece), &areagreece, 0, 0);
             }
         break;
     }
@@ -76,7 +79,7 @@ void START() {
                 case MISSIONSEA09: PRINT(0, 15, "SAVE THE AMBASSADOR"); break;
                 case MISSIONSEA10: PRINT(0, 15, "   TO THE SHIP!    "); break;
                 case MISSIONSEA11: PRINT(4, 15, "   AMBUSH!   "); break;
-                case MISSIONGREECE12: PRINT(4, 15, "GREEK IDOL"); break;
+                case MISSIONGREECE12: PRINT(5, 15, "GREEK IDOL"); break;
             }
         break;
     }

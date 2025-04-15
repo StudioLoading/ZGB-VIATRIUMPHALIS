@@ -45,34 +45,36 @@ Costa Albanese (porti, scogliere, sentieri costieri)
 
 Antica Grecia (templi, città-stato, foreste)
 "Trasporta una statua sacra rubata alla città di Atene." (A tempo: 3 minuti e non farti beccare!)
-"Vai ad origliare fuori dal palazzo del potere greco persone che parlano senza farti beccare"
+"Vai ad origliare fuori dal palazzo del potere greco persone che parlano senza farti beccare" (mappona, con tempo)
 "Supera un’orda di mercenari greci che vogliono bloccarti!" (sfondamenti a tempo)
 "Inseguimento! Fuggi verso il deserto senza farti raggiungere"
 
 
 Deserto (oasi, dune, accampamenti nomadi)
-"Trova il beduino disperso nel deserto"
-"Attraversa le paludi evitando trappole dei ribelli nubiani." (A tempo: 2 minuti prima che le sabbie mobili ti inghiottano!)
-"Sfuggi a un gruppo di predoni che cercano di bloccarti!" (Si muovono orizzontalmente, devi sfondarli!)
+"Trova il beduino disperso nel deserto" (il beduino dice che ti da una lettera che è per la prossima missione)
+"dai fuoco alle postazioni dei beduini traditori" (è da troppo che non mandiamo a fuoco qualcosa!)
+"Ritrova la strada per l'Egitto" (mappa senza strada, messaggio cancellato con lettere mancanti. primo livello multimappa, direi che sia arrivata l'ora di farlo, finora le missioni sono state piuttosto corte e brevi)
 
 Egitto (piramidi, fiumi, templi)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
 "Raggiungi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
 -------------------------------------------------------------------------------------
-- spostare codice ripetute fra le StateMission sulla update_common()
+
 - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
 - sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
 - migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
-- sistema di punteggio
+- sistema di punteggio highscore
+- gara di velocità/bonus stage a fine gioco se raccolti tutti gli item GOLDEN
 
 -------------------------------------------------------------------------------------
 LIBRETTO:
 - lore
 - mappa dell'impero
+- mappa delle tracce, forse è meglio metterlo come inserto a parte, fuori dal libretto!
 - golden items
-- ci vuole una combo che resetti la missione: è giù + start premuto 4 secondi. Invoca die(), quindi è un suicidio
-- sistema di punteggio
+- ci vuole una combo che resetti la missione: è su + start premuto 4 secondi. Invoca die(), quindi è un suicidio
+- sistema di punteggio: dettagli su come funziona
 -------------------------------------------------------------------------------------
 
 ```C

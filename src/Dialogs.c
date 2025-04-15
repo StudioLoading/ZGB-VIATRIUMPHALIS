@@ -454,7 +454,32 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "THE LAKE.    ", 15);
         break;        
         case MISSION12_COMPLETED:
-        
+            memcpy(d0, "GOOD! THEY ARE", 15);
+            memcpy(d1, "ARE GOING GET ", 15);
+            memcpy(d2, "CRAZY LOOKING ", 15);
+            memcpy(d3, "FOR THAT!     ", 15);
+            memcpy(d4, "THIS IS SO    ", 15);
+            memcpy(d5, "FUNNY!        ", 15);
+            memcpy(d6, "WAIT FOR THE  ", 15);
+            memcpy(d7, "THE NIGHT.... ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION13_INTRO:
+            memcpy(d0, "A SILENT NIGHT", 15);
+            memcpy(d1, "IS COMING PER,", 15);
+            memcpy(d2, "FECT TIME FOR ", 15);
+            memcpy(d3, "AN ORIGLIED.  ", 15);
+            memcpy(d4, "NOW I WANT YOU", 15);
+            memcpy(d5, "TO GET NEXT TO", 15);
+            memcpy(d6, "THE STATUE IN ", 15);
+            memcpy(d7, "ORDER TO SNEAK", 15);
+            memcpy(d8, "AND LISTEN THE", 15);
+            memcpy(d9, "ORDERS THAT   ", 15);
+            memcpy(d10, "THE GENERAL'S", 15);
+            memcpy(d11, "GIVING.      ", 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);

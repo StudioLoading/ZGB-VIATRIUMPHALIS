@@ -304,7 +304,7 @@ void UPDATE() {
                 UINT8 horse_coll = TranslateSprite(THIS, vx << delta_time, vy << delta_time);
             //COLLISIONI TILE
                 if(horse_coll){//collido con tile ambiente di collisione
-                    if(horse_coll == 118 || horse_coll == 119 || horse_coll == 121){//FINE TRACCIA!!
+                    if(horse_coll == 118 || horse_coll == 119 || horse_coll == 120 || horse_coll == 121){//FINE TRACCIA!!
                         track_ended = is_track_ended();
                         if(current_state == StateTutorialGame){
                             track_ended = 1u;
@@ -352,9 +352,13 @@ void UPDATE() {
                                 onfire_countdown = 0;
                             }else if(onfire_countdown == -1){
                                 if(stamina_current > (euphoria_min >> 1)){
-                                    change_stamina_current(0, euphoria_min >> 1);
+                                    if(configuration.wheel == NORMAL){
+                                        change_stamina_current(0, euphoria_min >> 1);
+                                    }else{
+                                        change_stamina_current(0, euphoria_min);
+                                    }
                                 }
-                            }                        
+                            }
                             if(THIS->anim_frame == 0 || THIS->anim_frame == 2 || THIS->anim_frame == 4){
                                 if(orme_spawned == 0){
                                     orme_spawned = 1;
