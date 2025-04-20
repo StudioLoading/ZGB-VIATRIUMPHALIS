@@ -16,6 +16,9 @@
 static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
 static const palette_color_t palette_data_sea[] = {RGB(0,0,0),RGB(14,10,1),RGB(4,22,0),RGB(0,0,0)};
+static const palette_color_t palette_data_greece[] = {RGB(0,0,0),RGB(13,12,1),RGB(0,0,10),RGB(0,0,0)};
+static const palette_color_t palette_data_greece_03[] = {RGB(0,0,0),RGB(0,0,0),RGB(0,7,5),RGB(0,0,0)};
+static const palette_color_t palette_data_greece_04[] = {RGB(0,0,0),RGB(0,0,0),RGB(14,10,1),RGB(0,0,0)};
 
 UINT8 flag_night_mode = 0u;
 
@@ -93,6 +96,8 @@ void map_ended() BANKED{
 			GetLocalizedDialog_EN(MISSION11_COMPLETED);
 		break;
 		case MISSIONGREECE12: GetLocalizedDialog_EN(MISSION12_COMPLETED);break;
+		case MISSIONGREECE13: GetLocalizedDialog_EN(MISSION13_COMPLETED);break;
+		case MISSIONGREECE14: GetLocalizedDialog_EN(MISSION14_COMPLETED);break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;
@@ -122,6 +127,14 @@ void die() BANKED{
 			turn_to_load = 0;
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONSEA08; 
+		break;
+		case MISSIONGREECE12:
+		case MISSIONGREECE13:
+		case MISSIONGREECE14:
+		case MISSIONGREECE15:
+			turn_to_load = 0;
+			current_step = LOOKING_FOR_SENATOR; 
+			current_mission = MISSIONGREECE12; 
 		break;
 	}
 	world_area_map = 0;
@@ -215,6 +228,11 @@ void spawn_items() BANKED{
 			item_spawn(TIME, ((UINT16) 72u << 3), ((UINT16) 20u << 3));
 			item_spawn(TIME, ((UINT16) 126u << 3), ((UINT16) 25u << 3));
 		break;
+		case MISSIONGREECE13:
+			item_spawn(TIME, ((UINT16) 36u << 3), ((UINT16) 47u << 3));
+			item_spawn(TIME, ((UINT16) 21u << 3), ((UINT16) 74u << 3));
+			item_spawn(TIME, ((UINT16) 84u << 3), ((UINT16) 58u << 3));
+		break;
 	}
 }
 
@@ -241,6 +259,13 @@ void night_mode() BANKED{
 				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_sea);
 				set_bkg_palette(BKGF_CGB_PAL3, 1, palette_data_sea);
 				set_bkg_palette(BKGF_CGB_PAL4, 1, palette_data_sea);
+			break;
+			case AREA_GREECE:
+				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_greece);
+				set_bkg_palette(BKGF_CGB_PAL1, 1, palette_data_greece);
+				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_greece);
+				set_bkg_palette(BKGF_CGB_PAL3, 1, palette_data_greece_03);
+				set_bkg_palette(BKGF_CGB_PAL4, 1, palette_data_greece_04);
 			break;
 		}
 	}

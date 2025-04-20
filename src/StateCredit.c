@@ -26,10 +26,14 @@ INT16 credit_wait = 0;
 INT8 credit_step = 0;
 INT8 pressstart_counter = 0;
 UINT8 pressstart_show = 0;
+UINT8 flag_border_set = 0u;
 
 
 void START(){
-    LOAD_SGB_BORDER(border);
+    if(flag_border_set == 0u){
+        flag_border_set = 1u;
+        LOAD_SGB_BORDER(border);
+    }
     credit_wait = CREDIT_WAIT_MAX;
     credit_step++;
     switch(credit_step){

@@ -46,7 +46,7 @@ void set_banked_bkg_data(UINT8 first_tile, UINT8 nb_tiles, struct TilesInfo* t, 
 	SWITCH_ROM(save);
 }
 
-void Anim_worldmap_0(AREA arg_current_area) BANKED{
+void Anim_worldmap_0() BANKED{
     set_banked_bkg_data(0, 123u, &worldmapt, BANK(worldmapt));
 }
 

@@ -280,7 +280,7 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         break;
         case MISSION06_INTRO:
             memcpy(d0, "THOSE FILTHY  ", 15);
-            memcpy(d1, "GALLIC ARE CA,", 15);
+            memcpy(d1, "GALLIC ARE CAU", 15);
             memcpy(d2, "SING LANDSLI, ", 15);
             memcpy(d3, "DES IN YOUR   ", 15);
             memcpy(d4, "MOUNTAINS.    ", 15);
@@ -413,7 +413,7 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d1, "ON A HURRY!   ", 15);
             memcpy(d2, "OUR AMBASSADOR", 15);
             memcpy(d3, "CAN'T MISS TH,", 15);
-            memcpy(d4, "AT SAILIGN    ", 15);
+            memcpy(d4, "AT SAILING    ", 15);
             memcpy(d5, "SHIP.         ", 15);
             memcpy(d6, "MOVE AS FAST  ", 15);
             memcpy(d7, "AS YOU CAN!   ", 15);
@@ -423,6 +423,19 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
         case MISSION10_COMPLETED:
+            memcpy(d0, "YOU SAVED HIM!", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU ARE REALLY", 15);
+            memcpy(d3, "THE BEST! I   ", 15);
+            memcpy(d4, "WISH I HAVE   ", 15);
+            memcpy(d5, "MORE SOLDIER  ", 15);
+            memcpy(d6, "LIKE YOU HERE ", 15);
+            memcpy(d7, "IN ROME. WHO  ", 15);
+            memcpy(d8, "KNOWS, ONE DAY", 15);
+            memcpy(d9, "...           ", 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
         break;
         case MISSION11_INTRO:
             memcpy(d0, EMPTY_STRING_14, 15);
@@ -455,21 +468,21 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         break;        
         case MISSION12_COMPLETED:
             memcpy(d0, "GOOD! THEY ARE", 15);
-            memcpy(d1, "ARE GOING GET ", 15);
+            memcpy(d1, "GOING TO GET  ", 15);
             memcpy(d2, "CRAZY LOOKING ", 15);
             memcpy(d3, "FOR THAT!     ", 15);
-            memcpy(d4, "THIS IS SO    ", 15);
-            memcpy(d5, "FUNNY!        ", 15);
-            memcpy(d6, "WAIT FOR THE  ", 15);
-            memcpy(d7, "THE NIGHT.... ", 15);
-            memcpy(d8, EMPTY_STRING_14, 15);
-            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "THIS IS SO    ", 15);
+            memcpy(d6, "FUNNY!        ", 15);
+            memcpy(d7, EMPTY_STRING_14, 15);
+            memcpy(d8, "WAIT FOR THE  ", 15);
+            memcpy(d9, "NIGHT...      ", 15);
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
         case MISSION13_INTRO:
             memcpy(d0, "A SILENT NIGHT", 15);
-            memcpy(d1, "IS COMING PER,", 15);
+            memcpy(d1, "IS COMING. PER", 15);
             memcpy(d2, "FECT TIME FOR ", 15);
             memcpy(d3, "AN ORIGLIED.  ", 15);
             memcpy(d4, "NOW I WANT YOU", 15);
@@ -480,6 +493,64 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d9, "ORDERS THAT   ", 15);
             memcpy(d10, "THE GENERAL'S", 15);
             memcpy(d11, "GIVING.      ", 15);
+        break;
+        case MISSION13_COMPLETED:
+            memcpy(d0, "HEAR THAT?! I ", 15);
+            memcpy(d1, "CAN'T BELIEVE ", 15);
+            memcpy(d2, "IT! HOW DARE  ", 15);
+            memcpy(d3, "THEY?!        ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "UNFORTUNATELY ", 15);
+            memcpy(d5, "YOU'VE BEEN   ", 15);
+            memcpy(d6, "SEEN! GUARDS  ", 15);
+            memcpy(d7, "HAVE BEEN     ", 15);
+            memcpy(d8, "ALERTED!      ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION13_GENERAL_HEARD:
+            memcpy(d0, "THEY SAY A    ", 15);
+            memcpy(d1, "ROMAN SECRET  ", 15);
+            memcpy(d2, "AGENT CAME.   ", 15);
+            memcpy(d3, "I THINK WE SH,", 15);
+            memcpy(d4, "OULD IMPRISON ", 15);
+            memcpy(d5, "HIM... MAYBE  ", 15);
+            memcpy(d5, "IT WOULD BE   ", 15);
+            memcpy(d6, "BETTER TO GET ", 15);
+            memcpy(d7, "HIM DURING TH,", 15);
+            memcpy(d8, "IS VERY NIGHT.", 15);
+            memcpy(d9, "HE WOULD TELL ", 15);
+            memcpy(d10, "US PRECIOUS   ", 15);
+            memcpy(d11, "INFORMATIONS..", 15);
+        break;
+        case MISSION14_INTRO:
+            memcpy(d0, "GREEK SOLDIERS", 15);
+            memcpy(d1, "ARE HUNTING   ", 15);
+            memcpy(d2, "YOU!          ", 15);
+            memcpy(d3, EMPTY_STRING_14, 15);
+            memcpy(d4, "I SUGGEST TO  ", 15);
+            memcpy(d5, "RUN AWAY AS   ", 15);
+            memcpy(d6, "FAST AS YOU   ", 15);
+            memcpy(d7, "POSSIBLE CAN! ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
+        case MISSION14_COMPLETED:
+            memcpy(d0, "I AM SORRY YOU", 15);
+            memcpy(d1, "HAVE BEEN IMP-", 15);
+            memcpy(d2, "RISONED. I CAN", 15);
+            memcpy(d3, "'T RISK IN    ", 15);
+            memcpy(d4, "SENDING PEOPLE", 15);
+            memcpy(d5, "TO HELP YOU.  ", 15);
+            memcpy(d6, "JUST...       ", 15);
+            memcpy(d7, "SURVIVE, YOU  ", 15);
+            memcpy(d8, "WILL BE REMEM,", 15);
+            memcpy(d9, "BERED... SOME,", 15);
+            memcpy(d10, "HOW.......   ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);

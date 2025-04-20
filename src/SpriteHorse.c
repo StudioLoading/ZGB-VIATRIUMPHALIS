@@ -17,7 +17,7 @@
 #define EUPHORIA_MAX 660
 #define ONFIRE_COUNTDOWN_MAX 160
 #define WHIP_POWER 3
-#define GOLDEN_WHIP_POWER 6
+#define GOLDEN_WHIP_POWER 5
 #define HUD_TURN_COOLDOWN_MAX 20
 #define COUNTER_HIT_MAX 80
 
@@ -94,6 +94,7 @@ void START() {
     counter_hit = COUNTER_HIT_MAX;
     if(configuration.whip == GOLDEN){
         current_whip_power = GOLDEN_WHIP_POWER;
+        whip_power_over_stamina = current_whip_power;
     }
 }
 
@@ -445,6 +446,7 @@ void UPDATE() {
                             }
                         }
                     break;
+                    case SpriteGreekphilosopher:
                     case SpriteRomansoldier:
                     case SpriteGreeksoldier:
                         {

@@ -45,28 +45,31 @@ Costa Albanese (porti, scogliere, sentieri costieri)
 
 Antica Grecia (templi, città-stato, foreste)
 "Trasporta una statua sacra rubata alla città di Atene." (A tempo: 3 minuti e non farti beccare!)
-"Vai ad origliare fuori dal palazzo del potere greco persone che parlano senza farti beccare" (mappona, con tempo)
-"Supera un’orda di mercenari greci che vogliono bloccarti!" (sfondamenti a tempo)
-"Inseguimento! Fuggi verso il deserto senza farti raggiungere"
+"Vai ad origliare fuori dal palazzo del potere greco persone che parlano senza farti beccare" (night mode, mappona, con tempo)
+"Supera un’orda di mercenari greci che vogliono bloccarti!" (sfondamenti a tempo, inseguitori da eliminare dando fuoco alla paglia)
+"Arena contro il Faraone ospite in Grecia per l'occasione" (condanna alla sconfitta, devo capire come farla Arena, )
 
 
 Deserto (oasi, dune, accampamenti nomadi)
-"Trova il beduino disperso nel deserto" (il beduino dice che ti da una lettera che è per la prossima missione)
-"dai fuoco alle postazioni dei beduini traditori" (è da troppo che non mandiamo a fuoco qualcosa!)
-"Ritrova la strada per l'Egitto" (mappa senza strada, messaggio cancellato con lettere mancanti. primo livello multimappa, direi che sia arrivata l'ora di farlo, finora le missioni sono state piuttosto corte e brevi)
+"Vaga da solo nel deserto, senza biga nè cavallo, in loro ricerca." (HP cala molto lentamente per la sete, più passi faccio. in giro devo trovare le oasi in cui abbeverarmi e recuperare full-HP. devo seguire le orme sulla sabbia su un sistema multimappa)
+"Trova la strada per l'Egitto" (mappa senza strada, messaggio cancellato con lettere mancanti. primo livello multimappa, direi che sia arrivata l'ora di farlo, finora le missioni sono state piuttosto corte e brevi)
 
-Egitto (piramidi, fiumi, templi)
+Egitto (piramidi, fiumi, templi in fiamme)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
-"Raggiungi il sacerdote traditore evitando le sue guardie su biga!" (Gli avversari si muovono orizzontalmente, devi superarli o attaccarli! il sacerdote è a fine traccia e va ucciso)
-"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue)
+"Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
+"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
 
+- coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
 - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
 - sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
 - migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
 - sistema di punteggio highscore
 - gara di velocità/bonus stage a fine gioco se raccolti tutti gli item GOLDEN
 
+-------------------------------------------------------------------------------------ù
+MARKETING:
+"the fate of Rome is in your hands!"
 -------------------------------------------------------------------------------------
 LIBRETTO:
 - lore

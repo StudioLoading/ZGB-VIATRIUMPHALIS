@@ -169,6 +169,9 @@ void pickup(Sprite* s_arg_item) BANKED{
                 current_step = EXIT;
                 mission_completed = 1;
             }
+            if(current_mission == MISSIONGREECE13){
+                current_step = SENATOR_COLLIDED;
+            }
         break;
     }    
     if(item_data->flag_continuous_spawning == 1){

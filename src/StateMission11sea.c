@@ -12,8 +12,8 @@
 #include "Dialogs.h"
 #include "custom_datas.h"
 
-#define TIME_MAX_MISSIONSEA11 3200
-#define TIME_FACTOR_MISSIONSEA11 100
+//#define TIME_MAX_MISSIONSEA11 3200
+//#define TIME_FACTOR_MISSIONSEA11 100
  
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission11);
@@ -65,8 +65,8 @@ extern void map_ended() BANKED;
 
 void START(){
     mission_iscrono = 0;
-    timemax_current = TIME_MAX_MISSIONSEA11;
-    time_factor = TIME_FACTOR_MISSIONSEA11;
+    //timemax_current = TIME_MAX_MISSIONSEA11;
+    //time_factor = TIME_FACTOR_MISSIONSEA11;
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
@@ -128,11 +128,11 @@ void UPDATE(){
     //COMMON UPDATE
         update_common();    
     //UPDATE TIME
-        update_time();
+        /*update_time();
         time_current--;
         if(time_current < 0 && !mission_completed && !track_ended){
             die();
-        }
+        }*/
     //CONTINUOUS SPAWNING WEAPON
         if(s_spawning_weapon == 0){
             spawning_weapon_counter++;

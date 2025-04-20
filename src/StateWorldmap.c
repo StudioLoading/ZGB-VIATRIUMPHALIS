@@ -34,7 +34,7 @@ void start_game() BANKED;
 void start_game() BANKED{
     //SetState(StateTutorialList);//TODO PROD
     current_area = AREA_GREECE;//TODO AREA_ROME
-    current_mission = MISSIONGREECE12;//TODO MISSIONROME00
+    current_mission = MISSIONGREECE13;//TODO MISSIONROME00
     SetState(StateWorldmap);//TODO TEST DEV
 }
 
@@ -80,6 +80,7 @@ void START() {
                 case MISSIONSEA10: PRINT(0, 15, "   TO THE SHIP!    "); break;
                 case MISSIONSEA11: PRINT(4, 15, "   AMBUSH!   "); break;
                 case MISSIONGREECE12: PRINT(5, 15, "GREEK IDOL"); break;
+                case MISSIONGREECE13: PRINT(4, 15, "HIDE AND HEAR"); break;
             }
         break;
     }
@@ -113,7 +114,7 @@ void UPDATE() {
         }
     }else{
         if(world_area_map == 0){//worldmap
-            Anim_worldmap_0(current_area);
+            Anim_worldmap_0();
         }else{//areamap
             switch(current_mission){
                 case MISSIONROME00:
@@ -199,6 +200,14 @@ void UPDATE() {
                 case MISSIONGREECE12:
                     prev_state = StateMission12greece;
                     GetLocalizedDialog_EN(MISSION12_INTRO);
+                break;
+                case MISSIONGREECE13:
+                    prev_state = StateMission13greece;
+                    GetLocalizedDialog_EN(MISSION13_INTRO);
+                break;
+                case MISSIONGREECE14:
+                    prev_state = StateMission14greece;
+                    GetLocalizedDialog_EN(MISSION14_INTRO);
                 break;
             }
             SetState(StatePapyrus);
