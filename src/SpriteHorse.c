@@ -451,7 +451,7 @@ void UPDATE() {
                     case SpriteGreeksoldier:
                         {
                             struct SoldierData* soldier_data = (struct SoldierData*)iospr->custom_data;
-                            if(soldier_data->configured < 4 && flag_hit == 0 &&  counter_hit == COUNTER_HIT_MAX){
+                            if(soldier_data->configured != 4 && soldier_data->configured != 5 && flag_hit == 0 && counter_hit == COUNTER_HIT_MAX){
                                 horse_hit(-16);
                                 SpriteManagerAdd(SpriteExclamation, iospr->x + 4, iospr->y - 16u);
                                 soldier_data->vx = 0;

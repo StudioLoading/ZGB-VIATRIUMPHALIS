@@ -33,9 +33,11 @@ void start_game() BANKED;
 
 void start_game() BANKED{
     //SetState(StateTutorialList);//TODO PROD
-    current_area = AREA_GREECE;//TODO AREA_ROME
-    current_mission = MISSIONGREECE13;//TODO MISSIONROME00
-    SetState(StateWorldmap);//TODO TEST DEV
+    //START TEST TODO removeme to END
+    current_area = AREA_GREECE;
+    current_mission = MISSIONGREECE14;
+    SetState(StateWorldmap);
+    //END TEST TODO removeme
 }
 
 void START() {

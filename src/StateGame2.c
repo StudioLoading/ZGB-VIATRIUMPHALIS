@@ -233,6 +233,9 @@ void spawn_items() BANKED{
 			item_spawn(TIME, ((UINT16) 21u << 3), ((UINT16) 74u << 3));
 			item_spawn(TIME, ((UINT16) 84u << 3), ((UINT16) 58u << 3));
 		break;
+		case MISSIONGREECE14:
+			item_spawn(FIRE, ((UINT16) 29u << 3), ((UINT16) 7u << 3) + 3u);
+		break;
 	}
 }
 

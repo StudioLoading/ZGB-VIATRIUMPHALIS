@@ -19,6 +19,11 @@ const UINT8 coll_m14_tiles[] = {15, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 
 
 const UINT8 coll_m14_surface[] = {0u, 0};
 
+Sprite* s_greeksoldier00;
+Sprite* s_greeksoldier01;
+Sprite* s_greeksoldier02;
+Sprite* s_greeksoldier03;
+
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
@@ -58,13 +63,14 @@ extern void map_ended() BANKED;
 extern void night_mode() BANKED;
 
 void m14_spawn_greeks() BANKED;
+void m14_spawn_straw() BANKED;
 
 void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
-        pos_horse_x = (UINT16) 15u << 3;
-        pos_horse_y = (UINT16) 14u << 3;
+        pos_horse_x = (UINT16) 10u << 3;
+        pos_horse_y = ((UINT16) 7u << 3) +3u;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
         current_step = EXIT;
@@ -80,23 +86,30 @@ void START(){
 		INIT_HUD(hudm);
 		SetWindowY(104);
         m14_spawn_greeks();
+        m14_spawn_straw();
+        spawn_items();
         start_common();
 }
 
+void m14_spawn_straw() BANKED{
+    SpriteManagerAdd(SpriteStraw, ((UINT16) 94u << 3) , ((UINT16) 6u << 3) + 4);
+    SpriteManagerAdd(SpriteStraw, ((UINT16) 92u << 3) , ((UINT16) 5u << 3) + 6u);
+}
+
 void m14_spawn_greeks() BANKED{
-    Sprite* s_greeksoldier00 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 71u << 3), ((UINT16) 56u << 3));
+    s_greeksoldier00 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 0u << 3), ((UINT16) 4u << 3));
     struct SoldierData* greeksoldier00_data = (struct SoldierData*) s_greeksoldier00->custom_data;
-    greeksoldier00_data->frmskip_max = 8u;
-    greeksoldier00_data->configured = 1;
+    greeksoldier00_data->frmskip_max = 6u;
+    greeksoldier00_data->configured = 6;
     greeksoldier00_data->reward = NOITEM;
 
-    Sprite* s_greeksoldier01 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 66u << 3), ((UINT16) 45u << 3));
+    s_greeksoldier01 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 66u << 3), ((UINT16) 45u << 3));
     struct SoldierData* greeksoldier01_data = (struct SoldierData*) s_greeksoldier01->custom_data;
     greeksoldier01_data->frmskip_max = 10u;
     greeksoldier01_data->configured = 1;
     greeksoldier01_data->reward = NOITEM;
 
-    Sprite* s_greeksoldier02 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 54u << 3), ((UINT16) 41u << 3));
+    s_greeksoldier02 = SpriteManagerAdd(SpriteGreeksoldier, ((UINT16) 54u << 3), ((UINT16) 41u << 3));
     struct SoldierData* greeksoldier02_data = (struct SoldierData*) s_greeksoldier02->custom_data;
     greeksoldier02_data->frmskip_max = 10u;
     greeksoldier02_data->configured = 1;
@@ -107,6 +120,12 @@ void m14_spawn_greeks() BANKED{
 void UPDATE(){
     //COMMON UPDATE
         update_common();
+     //CALCULATE DANGER
+        calculate_danger(s_greeksoldier00);
+        calculate_danger(s_greeksoldier01);
+        calculate_danger(s_greeksoldier02);
+        check_danger();
+        show_danger();
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;

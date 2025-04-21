@@ -14,6 +14,7 @@ const UINT8 a_greek_h[] = {2, 1,2};
 const UINT8 a_greek_u[] = {2, 3,4};
 
 extern UINT8 mission_killed;
+extern Sprite* s_horse;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START() {
@@ -69,10 +70,30 @@ void UPDATE() {
             }
             return;
         break;
+        case 6://horizontal runner
+            SetSpriteAnim(THIS, a_greek_h, greeksoldier_data->frmskip_max >> 1);
+            greeksoldier_data->vx = 3;
+            greeksoldier_data->configured = 7;
+            return;
+        break;
+        case 7://horizontal runner running
+            greeksoldier_data->frmskip++;
+            if(greeksoldier_data->frmskip >= greeksoldier_data->frmskip_max){
+                if(THIS->y < (s_horse->y - 4)){
+                    THIS->y++;
+                }else if(THIS->y > (s_horse->y + 8)){
+                    THIS->y--;
+                }
+                greeksoldier_data->frmskip = 0;
+            }
+        break;
     }
     if(greeksoldier_data->frmskip > 0){return;}
     UINT8 greeksoldier_coll_t = TranslateSprite(THIS, greeksoldier_data->vx << delta_time, greeksoldier_data->vy << delta_time);
-    if(greeksoldier_coll_t){
+    if(greeksoldier_coll_t && greeksoldier_data->configured == 7){
+        THIS->x += greeksoldier_data->vx;
+    }
+    if(greeksoldier_coll_t && greeksoldier_data->configured != 7){
         if(greeksoldier_data->vx != 0){
             greeksoldier_data->vx = -greeksoldier_data->vx;
             THIS->mirror = NO_MIRROR;

@@ -540,7 +540,7 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         break;
         case MISSION14_COMPLETED:
             memcpy(d0, "I AM SORRY YOU", 15);
-            memcpy(d1, "HAVE BEEN IMP-", 15);
+            memcpy(d1, "HAVE BEEN IMP,", 15);
             memcpy(d2, "RISONED. I CAN", 15);
             memcpy(d3, "'T RISK IN    ", 15);
             memcpy(d4, "SENDING PEOPLE", 15);
