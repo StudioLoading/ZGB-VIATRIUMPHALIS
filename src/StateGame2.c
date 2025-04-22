@@ -98,6 +98,7 @@ void map_ended() BANKED{
 		case MISSIONGREECE12: GetLocalizedDialog_EN(MISSION12_COMPLETED);break;
 		case MISSIONGREECE13: GetLocalizedDialog_EN(MISSION13_COMPLETED);break;
 		case MISSIONGREECE14: GetLocalizedDialog_EN(MISSION14_COMPLETED);break;
+		case MISSIONGREECE15: GetLocalizedDialog_EN(MISSION15_COMPLETED);break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;

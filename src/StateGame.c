@@ -465,6 +465,7 @@ INT8 is_track_ended() BANKED{// == is mission completed
 		case StateMission12greece:
 		case StateMission13greece:
 		case StateMission14greece:
+		case StateMission15greece:
 			result = mission_completed;
 		break;
 	}

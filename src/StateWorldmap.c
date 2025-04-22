@@ -211,6 +211,10 @@ void UPDATE() {
                     prev_state = StateMission14greece;
                     GetLocalizedDialog_EN(MISSION14_INTRO);
                 break;
+                case MISSIONGREECE15:
+                    prev_state = StateMission15greece;
+                    GetLocalizedDialog_EN(MISSION15_INTRO);
+                break;
             }
             SetState(StatePapyrus);
         }else{

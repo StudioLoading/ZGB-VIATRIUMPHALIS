@@ -552,6 +552,35 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, "HOW.......   ", 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case MISSION15_INTRO:
+            memcpy(d0, "THIS IS THE   ", 15);
+            memcpy(d1, "GREEK GENERAL.", 15);
+            memcpy(d2, "YOU ARE CHARG,", 15);
+            memcpy(d3, "ED WITH ESPIO,", 15);
+            memcpy(d4, "NAGE.         ", 15);
+            memcpy(d5, "TO PLEASE OUR ", 15);
+            memcpy(d6, "FRIEND THE    ", 15);
+            memcpy(d7, "EGYPTIAN PHAR,", 15);
+            memcpy(d8, "AO YOU WILL  ", 15);
+            memcpy(d9, "BE PUNISHED IN", 15);
+            memcpy(d10, "OUR ARENA TO ", 15);
+            memcpy(d11, "A 1 VS 1     ", 15);
+        break;
+        case MISSION15_COMPLETED:
+            memcpy(d0, "YOUR PUNISH,  ", 15);
+            memcpy(d1, "MENT CONSISTS ", 15);
+            memcpy(d2, "IN BEING EXIL,", 15);
+            memcpy(d3, "ED TO THE DE, ", 15);
+            memcpy(d4, "SERT. YOUR    ", 15);
+            memcpy(d5, "CHARIOT DESTRO", 15);
+            memcpy(d6, "YED AND YOUR  ", 15);
+            memcpy(d7, "HORSE DRIVED  ", 15);
+            memcpy(d8, "AWAY.         ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "GOOD LUCK ON  ", 15);
+            memcpy(d11, "DIEING ALONE  ", 15);
+            memcpy(d12, "OUT THERE!    ", 15);
+        break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
             memcpy(d1, "DID A GOOD    ", 15);

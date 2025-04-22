@@ -26,6 +26,7 @@ _STATE(StateMission11sea)\
 _STATE(StateMission12greece)\
 _STATE(StateMission13greece)\
 _STATE(StateMission14greece)\
+_STATE(StateMission15greece)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -63,6 +64,9 @@ _SPRITE_DMG(SpriteBarbarian, barbarian)\
 _SPRITE_DMG(SpriteSavage, savage)\
 _SPRITE_DMG(SpriteGreeksoldier, greeksoldier)\
 _SPRITE_DMG(SpriteGreekphilosopher, greekphilosopher)\
+_SPRITE_DMG(SpritePharaobiga, pharaobiga)\
+_SPRITE_DMG(SpritePharaosubiga, pharaosubiga)\
+_SPRITE_DMG(SpriteGator, gator)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
