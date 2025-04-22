@@ -19,6 +19,12 @@ void START() {
 }
 
 void UPDATE() {
+    THIS->y = s_gator->y - 3u;
+    if(s_gator->mirror == NO_MIRROR){
+        THIS->x = s_gator->x + 22u;
+    }else{
+        THIS->x = s_gator->x - 22u;
+    }
 }
 
 void DESTROY() {
