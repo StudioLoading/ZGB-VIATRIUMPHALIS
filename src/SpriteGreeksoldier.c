@@ -71,9 +71,14 @@ void UPDATE() {
             return;
         break;
         case 6://horizontal runner
-            SetSpriteAnim(THIS, a_greek_h, greeksoldier_data->frmskip_max >> 1);
-            greeksoldier_data->vx = 3;
-            greeksoldier_data->configured = 7;
+            if(s_horse->x > THIS->x){
+                INT16 delta_x = s_horse->x - THIS->x;
+                if(delta_x > 24){
+                    SetSpriteAnim(THIS, a_greek_h, greeksoldier_data->frmskip_max >> 1);
+                    greeksoldier_data->vx = 1;
+                    greeksoldier_data->configured = 7;
+                }
+            }
             return;
         break;
         case 7://horizontal runner running
@@ -85,6 +90,14 @@ void UPDATE() {
                     THIS->y--;
                 }
                 greeksoldier_data->frmskip = 0;
+                INT16 delta_x = THIS->x - s_horse->x;
+                if(delta_x > 640){//se troppo lontano in avanti e sta running, lo elimino
+                    greeksoldier_data->configured = 4;
+                }
+                delta_x = s_horse->x - THIS->x;
+                if(delta_x > 38){
+                    THIS->x = s_horse->x - 38u;
+                }
             }
         break;
     }
@@ -119,7 +132,7 @@ void UPDATE() {
                 case SpriteItemlance:
                 case SpriteItemgladio:
                 case SpriteFlame:
-                    if(greeksoldier_data->configured < 4){
+                    if(greeksoldier_data->configured < 4 || greeksoldier_data->configured == 7){
                         mission_killed++;
                         greeksoldier_data->configured = 4;
                     }

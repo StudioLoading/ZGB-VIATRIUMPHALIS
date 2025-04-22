@@ -235,6 +235,7 @@ void spawn_items() BANKED{
 		break;
 		case MISSIONGREECE14:
 			item_spawn(FIRE, ((UINT16) 29u << 3), ((UINT16) 7u << 3) + 3u);
+			item_spawn(FIRE, ((UINT16) 130u << 3), ((UINT16) 7u << 3) + 3u);
 		break;
 	}
 }
