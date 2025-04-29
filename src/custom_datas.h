@@ -189,4 +189,5 @@ struct RollingStoneData{
     UINT8 max_frmskip_y;
 };
 
+
 #endif

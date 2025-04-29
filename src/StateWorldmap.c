@@ -32,11 +32,11 @@ INT8 world_area_map = 0;//0=worldmap, 1=areamap
 void start_game() BANKED;
 
 void start_game() BANKED{
-    //SetState(StateTutorialList);//TODO PROD
+    SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    current_area = AREA_GREECE;
-    current_mission = MISSIONGREECE15;
-    SetState(StateWorldmap);
+    //current_area = AREA_GREECE;
+    //current_mission = MISSIONGREECE15;
+    //SetState(StateWorldmap);
     //END TEST TODO removeme
 }
 
@@ -82,7 +82,9 @@ void START() {
                 case MISSIONSEA10: PRINT(0, 15, "   TO THE SHIP!    "); break;
                 case MISSIONSEA11: PRINT(4, 15, "   AMBUSH!   "); break;
                 case MISSIONGREECE12: PRINT(5, 15, "GREEK IDOL"); break;
-                case MISSIONGREECE13: PRINT(4, 15, "HIDE AND HEAR"); break;
+                case MISSIONGREECE13: PRINT(0, 15, "HIDE AND LISTEN"); break;
+                case MISSIONGREECE14: PRINT(0, 15, "YOU'D BETTER RUN"); break;
+                case MISSIONGREECE15: PRINT(5, 15, "THE PHARAOH"); break;
             }
         break;
     }

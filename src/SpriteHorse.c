@@ -57,6 +57,7 @@ INT8 flag_hit = 0;
 INT8 counter_hit = 0;
 INT8 flag_bouncing = 0;
 INT8 counter_bouncing = 80;
+UINT8 horse_netcatching = 0u;
 
 
 void horse_hit(INT8 arg_damage) BANKED;
@@ -70,8 +71,8 @@ extern ITEM_TYPE weapon_def;
 extern UINT8 track_ended;
 extern MISSION_STEP current_step;
 extern struct CONFIGURATION configuration;
-extern UINT8 turn_to_load;
 extern INT8 flag_die;
+extern INT16 pharanonet_caught_timer;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void use_weapon(INT8 is_defence) BANKED;
@@ -99,6 +100,15 @@ void START() {
 }
 
 void UPDATE() {
+    //NET CATCHING
+        if(pharanonet_caught_timer > 0){
+            horse_netcatching++;
+            if((horse_netcatching & 0x07) == 0){
+                THIS->x++;
+            }else if((horse_netcatching & 0x03) == 0){
+                THIS->x--;
+            }
+        }
     //BOUNCING & COUNTER
         if(counter_bouncing > 0){
             counter_bouncing--;

@@ -59,7 +59,15 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
-
+- PAUSE - ripetizione pergamena StatePapyrus
+- cursore di direzione sempre visibile, col colore DARK interno risolvo anche in night-mode
+- infinite spawning per la fiamma in FIRST BLOOD
+- allargare trade in primo nigh-mode a Roma
+- sprite di GO LEFT per la missione tutorial GLADIO LEFT
+- timeout per su e giù
+- indicazioni come "danger" per il fantoccio
+- schermata di spiega della mappa di tutorial che indica cosa si deve fare
+- c'è flickering, sentiamo toxa se ha suggerimenti?
 - coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
 - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
 - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
@@ -71,13 +79,18 @@ Egitto (piramidi, fiumi, templi in fiamme)
 -------------------------------------------------------------------------------------ù
 MARKETING:
 "the fate of Rome is in your hands!"
+pagina kickstarter in lingue: tradurre con chatGPT e fare i banner con canva in lingua
+GIUSTIFICA DEL PREZZO DI 100€
+- multilingua: italiano, inglese, tedesco?, giapponese?
+- inserto delle mappe! carta Kraft A4 70g (amazon) piego il foglio in 9, ho 18 mappe disegnabili! 9 per facciata. poi arrotolo, chiudo con nastro a nodo rosso - https://www.amazon.it/gp/product/B08T3QZZT1/;
 -------------------------------------------------------------------------------------
 LIBRETTO:
 - lore
 - mappa dell'impero
-- mappa delle tracce, forse è meglio metterlo come inserto a parte, fuori dal libretto!
+- biomi
+- pulsanti e sistema di guida
 - golden items
-- ci vuole una combo che resetti la missione: è su + start premuto 4 secondi. Invoca die(), quindi è un suicidio
+- è su + start premuto 4 secondi. Invoca die(), quindi è un suicidio
 - sistema di punteggio: dettagli su come funziona
 -------------------------------------------------------------------------------------
 

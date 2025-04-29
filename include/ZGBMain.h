@@ -66,6 +66,7 @@ _SPRITE_DMG(SpriteGreeksoldier, greeksoldier)\
 _SPRITE_DMG(SpriteGreekphilosopher, greekphilosopher)\
 _SPRITE_DMG(SpritePharaobiga, pharaobiga)\
 _SPRITE_DMG(SpritePharaosubiga, pharaosubiga)\
+_SPRITE_DMG(SpritePharaonet, pharaonet)\
 _SPRITE_DMG(SpriteGator, gator)\
 SPRITE_DEF_END
 

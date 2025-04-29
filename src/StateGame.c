@@ -125,6 +125,7 @@ void start_common() BANKED{
 	flag_danger_right, flag_danger_left, flag_danger_up, flag_danger_down = 0;
 	s_horse->mirror = mirror_horse;
     turn = turn_to_load;
+	if(turn >= 127){ s_horse->mirror = V_MIRROR; }
 	mission_killed = 0u;
 	s_spawning_weapon = 0;
 	spawning_weapon_counter = 0;
