@@ -9,7 +9,7 @@
 
 #include "custom_datas.h"
 
-#define DISTANCE_X_POSITIVE 22
+#define DISTANCE_X_POSITIVE 20
 #define DISTANCE_X_NEGATIVE 28
 #define DELTA_DISTANCE_MAX 12
 
@@ -32,6 +32,7 @@ extern MISSION current_mission;
 extern INT8 mission_completed;
 extern MISSION_STEP current_step;
 extern Sprite* s_spawning_weapon;
+extern UINT8 turn;
 
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
@@ -55,7 +56,7 @@ void START() {
 void UPDATE() {
     if(flag_die){ return; }
     UINT16 final_pos_x = s_horse->x - DISTANCE_X_POSITIVE; //if vx >= 0
-    if (vx < 0){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
+    if (turn > 63 && turn < 192){ final_pos_x = s_horse->x + DISTANCE_X_NEGATIVE;}
     UINT16 final_pos_y = s_horse->y - 1; //if vy == 0
     if(vy < 0){ final_pos_y = s_horse->y + 8;
     }else if(vy > 0){final_pos_y = s_horse->y - 8;}

@@ -23,7 +23,7 @@
 
 const UINT8 a_horse_h[] = {6, 8,1,3,4,6,7};
 const UINT8 a_horse_hit[] = {13, 0,8,0,1,0,3,0,4,0,6,0,7,0};
-const UINT8 a_horse_h_idle[] = {2, 2,5};
+const UINT8 a_horse_h_idle[] = {2, 6,7};
 const UINT8 a_horse_h_idle_hit[] = {4, 0,2,0,5};
 //const UINT8 a_horse_h[] = {5, 0,1,2,3,4};
 

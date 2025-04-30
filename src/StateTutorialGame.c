@@ -125,13 +125,12 @@ void START() {
             break;
         }
     //SPRITES
-        scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
-        if(tutorial_state < TUTORIAL_STAGE_7_DODGEWATER){
-            s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        }
+        s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
+        scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
     //COMMON AND VARS
+        turn_to_load = 0;
         switch(tutorial_state){
             case TUTORIAL_STAGE_0_STRAIGHT:
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
@@ -170,6 +169,8 @@ void START() {
             }break;
             case TUTORIAL_STAGE_9_GLADIOLEFT:{
                 //velocity = -1;
+                s_biga->x = s_horse->x + 20u;
+                s_biga->mirror = V_MIRROR;
                 turn_to_load = 127;
                 s_horse->mirror = V_MIRROR;
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x - 400u, s_horse->y - 12u);

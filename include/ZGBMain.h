@@ -31,7 +31,7 @@ STATE_DEF_END
 
 #define SPRITES \
 _SPRITE_DMG(SpritePlayer, player)\
-_SPRITE_DMG(SpriteHorse, horse)\
+_SPRITE_DMG(SpriteHorse, horse2)\
 _SPRITE_DMG(SpriteStep, step)\
 _SPRITE_DMG(SpriteBiga, biga)\
 _SPRITE_DMG(SpriteCompass, compass)\

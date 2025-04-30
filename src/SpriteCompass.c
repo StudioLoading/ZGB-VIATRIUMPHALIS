@@ -63,19 +63,14 @@ void UPDATE() {
         }else if(using_sin > 110){ // tratto come se stesse andando orizzontale destra
             SetSpriteAnim(THIS, a_compass_v, 24);
         }
-        if(sin > 0 && cos > 0){
-            THIS->mirror = NO_MIRROR;
+        if(sin >= 0){
+            if(cos >= 0){ THIS->mirror = NO_MIRROR;}
+            else{ THIS->mirror = V_MIRROR; }
         }
-        if(sin > 0 && cos < 0){
-            THIS->mirror = V_MIRROR;
+        if(sin < 0){
+            if(cos >= 0){ THIS->mirror = H_MIRROR; }
+            else{ THIS->mirror = HV_MIRROR; }
         }
-        if(sin < 0 && cos > 0){
-            THIS->mirror = H_MIRROR;
-        }
-        if(sin < 0 && cos < 0){
-            THIS->mirror = HV_MIRROR;
-        }
-
     }
 
 void DESTROY() {
