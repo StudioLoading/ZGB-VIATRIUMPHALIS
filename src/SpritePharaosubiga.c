@@ -14,7 +14,7 @@ const UINT8 a_pharaosubiga_down[] = {2, 1,3};
 const UINT8 a_pharaosubiga_up[] = {1, 2};
 
 INT16 pharaosubiga_timernet_current = 0u;
-INT16 pharaosubiga_timernet_max = 100;
+INT16 pharaosubiga_timernet_max = 240;
 
 extern Sprite* s_gator;
 extern Sprite* s_pharaobiga;
@@ -71,7 +71,7 @@ void pharaosubiga_throw_net() BANKED{
         pharaonet_frmskipy_max = 4;
     }
     if(pharaonet_collided_flag == 0){
-        //SpriteManagerAdd(SpritePharaonet, THIS->x, THIS->y);
+        SpriteManagerAdd(SpritePharaonet, THIS->x, THIS->y);
     }
 
 }
