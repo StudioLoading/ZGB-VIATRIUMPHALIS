@@ -561,10 +561,11 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d5, "TO PLEASE OUR ", 15);
             memcpy(d6, "FRIEND THE    ", 15);
             memcpy(d7, "EGYPTIAN PHAR,", 15);
-            memcpy(d8, "AO YOU WILL  ", 15);
+            memcpy(d8, "AO , YOU WILL ", 15);
             memcpy(d9, "BE PUNISHED IN", 15);
             memcpy(d10, "OUR ARENA TO ", 15);
-            memcpy(d11, "A 1 VS 1     ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, "         DIE!", 15);
         break;
         case MISSION15_COMPLETED:
             memcpy(d0, "YOUR PUNISH,  ", 15);

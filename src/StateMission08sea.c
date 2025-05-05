@@ -132,16 +132,6 @@ void UPDATE(){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
                 INT8 can_go_on = 1;
-                /*if(tutorial_state == TUTORIAL_STAGE_8_GLADIO || 
-                    tutorial_state == TUTORIAL_STAGE_9_GLADIOLEFT ||
-                    tutorial_state == TUTORIAL_STAGE_10_LANCE){//check fantoccio hit
-                    if(fantoccio_hit == 0){
-                        can_go_on = 0;
-                    }
-                }*/
-                if(can_go_on == 1){
-                    //tutorial_state++;
-                }
                 prev_state = StateWorldmap;
                 turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
                 current_mission++;

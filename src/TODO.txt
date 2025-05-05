@@ -59,6 +59,7 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
+- now press start al buttonmap lampeggiante
 - PAUSE - ripetizione pergamena StatePapyrus
 - cursore di direzione sempre visibile, col colore DARK interno risolvo anche in night-mode
 - infinite spawning per la fiamma in FIRST BLOOD

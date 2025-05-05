@@ -29,14 +29,16 @@ INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;
 MISSION current_mission = MISSIONROME00;
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
+TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
 void start_game() BANKED;
 
 void start_game() BANKED{
-    SetState(StateTutorialList);//TODO PROD
+    //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
+    //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    //current_area = AREA_GREECE;
-    //current_mission = MISSIONGREECE15;
-    //SetState(StateWorldmap);
+    current_area = AREA_GREECE;
+    current_mission = MISSIONGREECE15;
+    SetState(StateWorldmap);
     //END TEST TODO removeme
 }
 

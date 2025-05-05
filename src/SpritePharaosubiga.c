@@ -29,6 +29,8 @@ void pharaosubiga_throw_net() BANKED;
 
 void START() {
     SetSpriteAnim(THIS, a_pharaosubiga_down, 8u);
+    THIS->lim_x = 2000;
+    THIS->lim_y = 2000;
 }
 
 void UPDATE() {

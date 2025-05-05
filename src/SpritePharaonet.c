@@ -34,6 +34,8 @@ void START() {
     pharaonet_frmskip_current = 0;
     pharaonet_frmskipy_current = 0;
     pharanonet_caught_timer = 0;
+    THIS->lim_x = 2000;
+    THIS->lim_y = 2000;
 }
 
 void UPDATE() {
