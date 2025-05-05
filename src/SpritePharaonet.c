@@ -9,7 +9,7 @@
 
 #include "custom_datas.h"
 
-#define PHARANONET_CAUGHT_TIMER_MAX 240
+#define PHARANONET_CAUGHT_TIMER_MAX 180
 
 
 const UINT8 a_pharaonet[] = {3, 3,2,1};

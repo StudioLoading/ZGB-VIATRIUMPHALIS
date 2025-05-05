@@ -14,7 +14,7 @@ const UINT8 a_pharaosubiga_down[] = {2, 1,3};
 const UINT8 a_pharaosubiga_up[] = {1, 2};
 
 INT16 pharaosubiga_timernet_current = 0u;
-INT16 pharaosubiga_timernet_max = 240;
+INT16 pharaosubiga_timernet_max = 320;//tengo qui così la posso modificare fuori
 
 extern Sprite* s_gator;
 extern Sprite* s_pharaobiga;
@@ -39,8 +39,8 @@ void UPDATE() {
     }else{
         THIS->mirror = NO_MIRROR;
     }
-    THIS->x = s_pharaobiga->x;
-    THIS->y = s_pharaobiga->y - 13;
+    THIS->x = s_pharaobiga->x - 3u;
+    THIS->y = s_pharaobiga->y - 20u;
     //NET
         pharaosubiga_timernet_current++;
         if(pharaosubiga_timernet_current == pharaosubiga_timernet_max){

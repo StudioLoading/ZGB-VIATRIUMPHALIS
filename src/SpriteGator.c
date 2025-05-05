@@ -176,17 +176,23 @@ void UPDATE() {
                     if(actual_gator_vx != 0 || actual_gator_vy != 0){
                         UINT8 gator_coll_tile = TranslateSprite(THIS, actual_gator_vx << delta_time, actual_gator_vy << delta_time);
                         //se collide, muoviti a GATOR_STATUS_BITE
-                        if(CheckCollision(THIS, s_horse)){//THIS->y == dest_y && THIS->x == dest_x){
-                            gator_timer_current = 0;
-                            SetSpriteAnim(THIS, a_gator_bite, 12u);
-                            gator_status.status = GATOR_STATUS_BITE;
-                        }else{
-                            UINT16 dest_x = s_horse->x -16u;
-                            if(s_horse->x < 28u || THIS->x > s_horse->x){
-                                dest_x = s_horse->x + 36u;
-                            }
-                            UINT16 dest_y = s_horse->y - 4u;
-                            gator_calculate_delta(dest_x, dest_y);
+                        UINT16 dest_x = s_horse->x -10u;
+                        if(s_horse->x < 28u || THIS->x > s_horse->x){
+                            dest_x = s_horse->x + 36u;
+                        }
+                        UINT16 dest_y = s_horse->y;
+                        gator_calculate_delta(dest_x, dest_y);
+                        INT16 gator_horse_delta_x = (THIS->x + 16) - dest_x;
+                        INT16 gator_horse_delta_y = (THIS->y-8) - dest_y;
+                        if(gator_horse_delta_x < 0){
+                            gator_horse_delta_x = -gator_horse_delta_x;
+                        }if(gator_horse_delta_y < 0){
+                            gator_horse_delta_y = -gator_horse_delta_y;
+                        }
+                        if(gator_horse_delta_x < 10 && gator_horse_delta_y <= 16){
+                                gator_timer_current = 0;
+                                SetSpriteAnim(THIS, a_gator_bite, 12u);
+                                gator_status.status = GATOR_STATUS_BITE;
                         }
                     }
                 }

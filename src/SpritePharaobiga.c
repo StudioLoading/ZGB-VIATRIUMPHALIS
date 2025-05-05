@@ -23,9 +23,9 @@ void START() {
 }
 
 void UPDATE() {
-    INT16 dest_x = s_gator->x - 14;
+    INT16 dest_x = s_gator->x - 10;
     if(s_gator->mirror == V_MIRROR){
-        dest_x = s_gator->x + 24u;
+        dest_x = s_gator->x + 28u;
     }
     INT8 dest_y = s_gator->y - 1u;
     if((INT16)THIS->x < dest_x){
