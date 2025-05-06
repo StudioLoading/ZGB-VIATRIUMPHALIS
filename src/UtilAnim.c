@@ -4,11 +4,11 @@
 #include "custom_datas.h"
 
 IMPORT_TILES(worldmapt);
-IMPORT_TILES(worldmapt00);
-IMPORT_TILES(worldmapt01);
-IMPORT_TILES(worldmapt02);
-IMPORT_TILES(worldmapt03);
-IMPORT_TILES(worldmapt04);
+IMPORT_TILES(worldmapt00);//ROME
+IMPORT_TILES(worldmapt01);//ALPS
+IMPORT_TILES(worldmapt02);//SEE
+IMPORT_TILES(worldmapt03);//GREECE
+IMPORT_TILES(worldmapt04);//DESERT + EGYPT
 
 IMPORT_TILES(arearomet99);
 IMPORT_TILES(arearomet00);
@@ -32,6 +32,12 @@ IMPORT_TILES(areagreecet00);
 IMPORT_TILES(areagreecet01);
 IMPORT_TILES(areagreecet02);
 IMPORT_TILES(areagreecet03);
+
+IMPORT_TILES(areadesertt);
+IMPORT_TILES(areadesertt00);
+IMPORT_TILES(areadesertt01);
+IMPORT_TILES(areadesertt02);
+IMPORT_TILES(areadesertt99);
 
 IMPORT_TILES(configmapt);
 IMPORT_TILES(configmapt00elm);
@@ -63,6 +69,10 @@ void Anim_worldmap_1(AREA arg_current_area) BANKED{
         break;
         case AREA_GREECE:
             set_banked_bkg_data(0, 123u, &worldmapt03, BANK(worldmapt03));
+        break;
+        case AREA_DESERT:
+        case AREA_EGYPT:
+            set_banked_bkg_data(0, 123u, &worldmapt04, BANK(worldmapt04));
         break;
     }
 }
@@ -127,6 +137,20 @@ void Anim_areagreece_3() BANKED{
 }
 void Anim_areagreece_4() BANKED{
     set_banked_bkg_data(1, 123u, &areagreecet03, BANK(areagreecet03));
+}
+
+
+void Anim_areadesert_0() BANKED{
+    set_banked_bkg_data(1, 95u, &areadesertt, BANK(areadesertt));
+}
+void Anim_areadesert_1() BANKED{
+    set_banked_bkg_data(1, 95u, &areadesertt00, BANK(areadesertt00));
+}
+void Anim_areadesert_2() BANKED{
+    set_banked_bkg_data(1, 95u, &areadesertt01, BANK(areadesertt01));
+}
+void Anim_areadesert_3() BANKED{
+    set_banked_bkg_data(1, 95u, &areadesertt02, BANK(areadesertt02));
 }
 
 void Anim_config_no() BANKED{

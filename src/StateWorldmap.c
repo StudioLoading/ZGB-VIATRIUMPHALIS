@@ -21,6 +21,7 @@ IMPORT_MAP(arearome);
 IMPORT_MAP(areaalps);
 IMPORT_MAP(areasea);
 IMPORT_MAP(areagreece);
+IMPORT_MAP(areadesert);
 IMPORT_TILES(font);
 
 extern UINT8 prev_state;
@@ -56,6 +57,8 @@ void START() {
                 InitScroll(BANK(areasea), &areasea, 0, 0);
             }else if(current_mission <= MISSIONGREECE15){
                 InitScroll(BANK(areagreece), &areagreece, 0, 0);
+            }else if(current_mission <= MISSIONDESERT16){
+                InitScroll(BANK(areadesert), &areadesert, 0, 0);
             }
         break;
     }
@@ -87,6 +90,7 @@ void START() {
                 case MISSIONGREECE13: PRINT(0, 15, "HIDE AND LISTEN"); break;
                 case MISSIONGREECE14: PRINT(0, 15, "YOU'D BETTER RUN"); break;
                 case MISSIONGREECE15: PRINT(5, 15, "THE PHARAOH"); break;
+                case MISSIONDESERT16: PRINT(1, 15, "LOST IN THE DESERT"); break;
             }
         break;
     }
@@ -116,6 +120,7 @@ void UPDATE() {
                 case MISSIONGREECE13: Anim_areagreece_2(); break;
                 case MISSIONGREECE14: Anim_areagreece_3(); break;
                 case MISSIONGREECE15: Anim_areagreece_4(); break;
+                case MISSIONDESERT16: Anim_areadesert_1(); break;
             }
         }
     }else{
@@ -146,6 +151,9 @@ void UPDATE() {
                 case MISSIONGREECE14:
                 case MISSIONGREECE15:
                     Anim_areagreece_0();
+                break;
+                case MISSIONDESERT16:
+                    Anim_areadesert_0();
                 break;
             }
         }
@@ -218,6 +226,10 @@ void UPDATE() {
                 case MISSIONGREECE15:
                     prev_state = StateMission15greece;
                     GetLocalizedDialog_EN(MISSION15_INTRO);
+                break;
+                case MISSIONDESERT16:
+                    prev_state = StateMission16desert;
+                    GetLocalizedDialog_EN(MISSION16_INTRO);
                 break;
             }
             SetState(StatePapyrus);

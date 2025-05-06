@@ -98,7 +98,13 @@ void map_ended() BANKED{
 		case MISSIONGREECE12: GetLocalizedDialog_EN(MISSION12_COMPLETED);break;
 		case MISSIONGREECE13: GetLocalizedDialog_EN(MISSION13_COMPLETED);break;
 		case MISSIONGREECE14: GetLocalizedDialog_EN(MISSION14_COMPLETED);break;
-		case MISSIONGREECE15: GetLocalizedDialog_EN(MISSION15_COMPLETED);break;
+		case MISSIONGREECE15: 
+			current_area = AREA_DESERT;
+			GetLocalizedDialog_EN(MISSION15_COMPLETED);
+		break;
+		case MISSIONDESERT16:
+			GetLocalizedDialog_EN(MISSION16_COMPLETED);
+		break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;
@@ -132,10 +138,13 @@ void die() BANKED{
 		case MISSIONGREECE12:
 		case MISSIONGREECE13:
 		case MISSIONGREECE14:
-		case MISSIONGREECE15:
 			turn_to_load = 0;
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONGREECE12; 
+		break;
+		case MISSIONGREECE15:
+			map_ended();
+			return;
 		break;
 	}
 	world_area_map = 0;
@@ -237,6 +246,10 @@ void spawn_items() BANKED{
 		case MISSIONGREECE14:
 			item_spawn(FIRE, ((UINT16) 29u << 3), ((UINT16) 7u << 3) + 3u);
 			item_spawn(FIRE, ((UINT16) 130u << 3), ((UINT16) 7u << 3) + 3u);
+		break;
+		case MISSIONGREECE15:
+			item_spawn(GLADIO, ((UINT16) 7u << 3), ((UINT16) 6u << 3) + 3u);
+			item_spawn(GLADIO, ((UINT16) 20u << 3), ((UINT16) 11u << 3) + 3u);
 		break;
 	}
 }

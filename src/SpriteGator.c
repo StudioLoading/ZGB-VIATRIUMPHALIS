@@ -200,7 +200,7 @@ void UPDATE() {
             case GATOR_STATUS_BITE:
                 gator_timer_current++;
                 if(THIS->anim_frame == 1){
-                    horse_hit(-2);
+                    horse_hit(-10);
                 }
                 if(gator_timer_current >= gator_timer_max){
                     SetSpriteAnim(THIS, a_gator_walk, 16u);

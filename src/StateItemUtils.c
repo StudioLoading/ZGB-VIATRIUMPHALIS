@@ -238,6 +238,22 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                         item_data->configured = 5;
                     }
                 }break;
+                case SpritePharaonet:
+                    if(item_data->configured > 3){
+                        if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
+                            SpriteManagerRemoveSprite(iispr);
+                            item_data->configured = 5;
+                        }
+                    }
+                break;
+                case SpritePharaosubiga:
+                case SpriteGator:
+                    if(item_data->configured > 3){
+                        if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
+                            item_data->configured = 5;
+                        }
+                    }
+                break;
                 case SpriteBarbarian:
                 case SpriteSavage:
                 case SpriteRomansoldier:

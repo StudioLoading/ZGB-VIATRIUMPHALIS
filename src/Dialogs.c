@@ -575,12 +575,27 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d4, "SERT. YOUR    ", 15);
             memcpy(d5, "CHARIOT DESTRO", 15);
             memcpy(d6, "YED AND YOUR  ", 15);
-            memcpy(d7, "HORSE DRIVED  ", 15);
+            memcpy(d7, "HORSE DRIVEN  ", 15);
             memcpy(d8, "AWAY.         ", 15);
             memcpy(d9, EMPTY_STRING_14, 15);
             memcpy(d10, "GOOD LUCK ON  ", 15);
             memcpy(d11, "DIEING ALONE  ", 15);
             memcpy(d12, "OUT THERE!    ", 15);
+        break;
+        case MISSION16_INTRO:
+            memcpy(d0, "STAY CALM AND ", 15);
+            memcpy(d1, "FOCUSED. OASIS", 15);
+            memcpy(d2, "CAN GIVE ME   ", 15);
+            memcpy(d3, "DRINKABLE WA, ", 15);
+            memcpy(d4, "TER. THE HORSE", 15);
+            memcpy(d5, "MUST HAVE LEFT", 15);
+            memcpy(d6, "SOME TRACKS TO", 15);
+            memcpy(d7, "FOLLOW. MAYBE ", 15);
+            memcpy(d8, "SOME GOLDEN   ", 15);
+            memcpy(d9, "ITEMS ARE OUT ", 15);
+            memcpy(d10, "HERE... SOME, ", 15);
+            memcpy(d11, "WHERE...      ", 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
         break;
         case DEAD:
             memcpy(d0, "I WONDER IF I ", 15);
