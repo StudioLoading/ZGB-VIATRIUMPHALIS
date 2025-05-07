@@ -142,7 +142,11 @@ void die() BANKED{
 			current_step = LOOKING_FOR_SENATOR; 
 			current_mission = MISSIONGREECE12; 
 		break;
-		case MISSIONGREECE15:
+		case MISSIONGREECE15://forced death and golden item loss
+			configuration.elm = NORMAL;
+			configuration.reins = NORMAL;
+			configuration.wheel = NORMAL;
+			configuration.whip = NORMAL;
 			map_ended();
 			return;
 		break;

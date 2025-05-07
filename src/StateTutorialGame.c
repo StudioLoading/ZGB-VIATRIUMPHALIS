@@ -37,13 +37,13 @@ IMPORT_MAP(maptut05straight);
 const UINT8 coll_rome_tiles[] = {15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 118, 119, 121, 0};
 const UINT8 coll_rome_surface[] = {0u, 0};
 
-extern TUTORIAL_STAGE tutorial_state;
-INT8 is_crono = 0;
 Sprite* s_fantoccio = 0;
+INT8 is_crono = 0;
 INT8 fantoccio_hit = 0;
 
 void hit_fantoccio(Sprite* s_fantoccio_arg) BANKED;
 
+extern TUTORIAL_STAGE tutorial_state;
 extern Sprite* s_biga;
 extern Sprite* s_horse;
 extern Sprite* s_compass;
@@ -71,6 +71,9 @@ extern void update_turning() BANKED;
 extern void update_euphoria() BANKED;
 extern void update_time() BANKED;
 extern void update_hp(INT8 variation) BANKED;
+extern void calculate_danger(Sprite* s_danger) BANKED;
+extern void check_danger() BANKED;
+extern void show_danger() BANKED;
 extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
@@ -235,6 +238,18 @@ void UPDATE(){
         if(hud_initialized == 0){
             update_hp(0);
             hud_initialized = 1u;
+        }
+    //CALCULATE DANGER
+        if(fantoccio_hit == 0){
+            switch(tutorial_state){
+                case TUTORIAL_STAGE_8_GLADIO:
+                case TUTORIAL_STAGE_9_GLADIOLEFT:
+                case TUTORIAL_STAGE_10_LANCE:
+                    calculate_danger(s_fantoccio);
+                    check_danger();
+                    show_danger();
+                break;
+            }
         }
 	//UPDATE STAMINA
 		update_stamina();

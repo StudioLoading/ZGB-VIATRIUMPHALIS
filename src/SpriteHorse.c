@@ -222,14 +222,14 @@ void UPDATE() {
             }
         }else if(KEY_PRESSED(J_LEFT)){
             turn_verse = COUNTERCLOCK;
-            turn++;
+            turn += 2;
             if(configuration.reins == GOLDEN){
                 turn += 2;
             }
             turn_samepressure_counter++;
             if(turn_samepressure_counter > 40){
                 turn_samepressure_counter = 40;
-                turn+=2;
+                turn += 1;
             }
         }else{
             turn_verse = NONE; 

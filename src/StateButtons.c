@@ -13,6 +13,8 @@
 #include "custom_datas.h"
 #include "UtilAnim.h"
 
+#define PRESS_START_MAX 30
+
 
 IMPORT_MAP(buttonmap);
 IMPORT_TILES(font);
@@ -25,6 +27,7 @@ UINT8 pressed_left = 0u;
 UINT8 pressed_a = 0u;
 UINT8 pressed_b = 0u;
 UINT8 press_start = 0u;
+INT8 press_start_counter = 0;
 
 void START(){
     InitScroll(BANK(buttonmap), &buttonmap, 0, 0);
@@ -38,6 +41,7 @@ void START(){
     pressed_a = 0u;
     pressed_b = 0u;
     press_start = 0u;
+    press_start_counter = 0;
 }
 
 void UPDATE(){
@@ -78,9 +82,16 @@ void UPDATE(){
         }
     }
     if(pressed_up_down && pressed_right && pressed_left &&
-        pressed_a && pressed_b && press_start == 0){
-        press_start = 1u;
-        PRINT(0, 0, "  NOW PRESS START  ");
+        pressed_a && pressed_b){
+        if(press_start == 0){ press_start = 1u; }
+        press_start_counter++;
+        if(press_start_counter < PRESS_START_MAX){
+            PRINT(0, 0, "   NOW PRESS START  ");
+        }else if(press_start_counter > (PRESS_START_MAX << 1)){
+            press_start_counter = 0;
+        }else if(press_start_counter > PRESS_START_MAX){
+            PRINT(0, 0, "                   ");
+        }
     }
     if(KEY_TICKED(J_START) && press_start){
         start_game();

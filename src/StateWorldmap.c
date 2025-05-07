@@ -28,7 +28,7 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;
-MISSION current_mission = MISSIONROME00;
+MISSION current_mission = MISSIONROME02;
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
 TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
 void start_game() BANKED;
@@ -37,8 +37,8 @@ void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
     //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    current_area = AREA_GREECE;
-    current_mission = MISSIONGREECE15;
+    current_area = AREA_ROME;
+    current_mission = MISSIONROME02;
     SetState(StateWorldmap);
     //END TEST TODO removeme
 }
@@ -70,7 +70,22 @@ void START() {
     PRINT(14, 0, "CONFIG");
     switch(world_area_map){
         case 0:
-            PRINT(4, 16, "ROMAN EMPIRE");
+            switch(current_area){
+                case AREA_ROME:
+                case AREA_ALPS:
+                case AREA_SEA:
+                    PRINT(4, 16, "ROMAN EMPIRE");
+                break;
+                case AREA_GREECE:
+                    PRINT(4, 16, "   GREECE   ");
+                break;
+                case AREA_DESERT:
+                    PRINT(4, 16, "  FAR EAST  ");
+                break;
+                case AREA_EGYPT:
+                    PRINT(4, 16, "   EGYPT    ");
+                break;
+            }
         break;
         case 1:
             switch(current_mission){
@@ -90,7 +105,7 @@ void START() {
                 case MISSIONGREECE13: PRINT(0, 15, "HIDE AND LISTEN"); break;
                 case MISSIONGREECE14: PRINT(0, 15, "YOU'D BETTER RUN"); break;
                 case MISSIONGREECE15: PRINT(5, 15, "THE PHARAOH"); break;
-                case MISSIONDESERT16: PRINT(1, 15, "LOST IN THE DESERT"); break;
+                case MISSIONDESERT16: PRINT(0, 15, "LOST IN THE DESERT"); break;
             }
         break;
     }

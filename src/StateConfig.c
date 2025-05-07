@@ -35,7 +35,7 @@ UINT8 configwhip_blink = 0u;
 
 INT8 blink_absent = 0;
 FOCUS current_focus = NO_ELM;
-struct CONFIGURATION configuration = {.elm = NORMAL, .wheel=GOLDEN, .whip=GOLDEN, .reins=GOLDEN};
+struct CONFIGURATION configuration = {.elm = NORMAL, .wheel=NORMAL, .whip=NORMAL, .reins=NORMAL};
 INT8 flag_golden_found = 0u;
 
 void change_description() BANKED;

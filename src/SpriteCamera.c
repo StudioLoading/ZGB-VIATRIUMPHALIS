@@ -5,7 +5,10 @@
 #include "Sprite.h"
 #include "SpriteManager.h"
 
-#define DELTA_X_INC 2
+#define DELTA_X_INC_CGB 2
+#define DELTA_X_INC_DMG 3
+
+INT8 delta_x_inc = 0;
 
 extern Sprite* s_horse;
 extern INT8 vx;
@@ -15,6 +18,10 @@ extern UINT8 flag_turn_on_tremble;
 void START() {
     THIS->lim_x = 1000;
     THIS->lim_y = 1000;
+    delta_x_inc = DELTA_X_INC_CGB;
+    if(_cpu != CGB_TYPE){
+        delta_x_inc = DELTA_X_INC_DMG;
+    }
 }
 
 void UPDATE() {
@@ -29,15 +36,15 @@ void UPDATE() {
         UINT16 final_camera_x = s_horse->x + 56;
         UINT16 final_camera_x_min = final_camera_x -8;
         UINT16 final_camera_x_max = final_camera_x +8;
-        if(THIS->x > final_camera_x_max){delta_x=-DELTA_X_INC;}
-        else if(THIS->x < final_camera_x_min){delta_x=+DELTA_X_INC;}
+        if(THIS->x > final_camera_x_max){delta_x=-delta_x_inc;}
+        else if(THIS->x < final_camera_x_min){delta_x=+delta_x_inc;}
     }
     if(vx < -1){
         UINT16 final_camera_x = s_horse->x - 40;
         UINT16 final_camera_x_min = final_camera_x -8;
         UINT16 final_camera_x_max = final_camera_x +8;
-        if(THIS->x > final_camera_x_max){delta_x=-DELTA_X_INC;}
-        else if(THIS->x < final_camera_x_min){delta_x=+DELTA_X_INC;}
+        if(THIS->x > final_camera_x_max){delta_x=-delta_x_inc;}
+        else if(THIS->x < final_camera_x_min){delta_x=+delta_x_inc;}
     }
     if(delta_x){
         INT16 camera_horse_delta_x = THIS->x - s_horse->x;

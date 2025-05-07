@@ -23,19 +23,25 @@ void START() {
 }
 
 void UPDATE() {
-    INT16 dest_x = s_gator->x - 10;
+    INT16 dest_x = (INT16)s_gator->x - 10;
     if(s_gator->mirror == V_MIRROR){
-        dest_x = s_gator->x + 28u;
+        dest_x = (INT16)s_gator->x + 28u;
     }
-    INT8 dest_y = s_gator->y - 1u;
+    INT8 dest_y = (INT16)s_gator->y - 1u;
     if((INT16)THIS->x < dest_x){
         THIS->x++;
+        if(_cpu != CGB_TYPE){
+            THIS->x++;
+        }
     }else if((INT16)THIS->x > dest_x){
         THIS->x--;
+        if(_cpu != CGB_TYPE){
+            THIS->x--;
+        }
     }
-    if(THIS->y < dest_y){
+    if((INT16)THIS->y < dest_y){
         THIS->y++;
-    }else if(THIS->y > dest_y){
+    }else if((INT16)THIS->y > dest_y){
         THIS->y--;
     }
     if(s_horse->x < THIS->x){

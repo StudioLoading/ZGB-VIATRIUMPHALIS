@@ -59,15 +59,16 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
-- now press start al buttonmap lampeggiante
-- PAUSE - ripetizione pergamena StatePapyrus
 - cursore di direzione sempre visibile, col colore DARK solo esterno risolvo anche in night-mode
+- la frustata senza whip GOLDEN forse è un po' troppo lenta, la virata è ok.
 - infinite spawning per la fiamma in FIRST BLOOD
 - allargare strade in primo nigh-mode a Roma
 - sprite di GO LEFT per la missione tutorial GLADIO LEFT
 - timeout per su e giù
 - indicazioni come "danger" per il fantoccio
 - schermata di spiega della mappa di tutorial che indica cosa si deve fare
+- PAUSE - ripetizione pergamena StatePapyrus
+
 - SuperGameBoy: 
     - colori delle mappe e della status-bar
     - border per biomi
@@ -80,6 +81,9 @@ Egitto (piramidi, fiumi, templi in fiamme)
     - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
     - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
 - gara di velocità/bonus stage con Giulio Cesare! a fine gioco se raccolti tutti gli item GOLDEN. col Pharao ho fatto i waypoints, se ci metto un random di rallentamento, potrei avergià risolto
+- test DMG
+- test SGB
+- test CGB
 
 -------------------------------------------------------------------------------------ù
 MARKETING:
@@ -105,4 +109,4 @@ LIBRETTO:
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\areadesert99.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\areadesert99.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\mapegypt.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\mapegypt.gbm
