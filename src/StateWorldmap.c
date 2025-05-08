@@ -30,8 +30,11 @@ INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;
 MISSION current_mission = MISSIONROME02;
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
-TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
+TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_8_GLADIO;
+
 void start_game() BANKED;
+
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
@@ -179,77 +182,79 @@ void UPDATE() {
         world_area_map++;
         if(world_area_map > 1){
             world_area_map = 1;
+            INSTRUCTION instruction_to_give = 0;
+            UINT8 prev_state_to_give = 0;
             switch(current_mission){
                 case MISSIONROME00:
-                    prev_state = StateMission00rome;//perché StatePapyrus va poi in prev_state
-                    GetLocalizedDialog_EN(MISSION00_INTRO);
+                    prev_state_to_give = StateMission00rome;
+                    instruction_to_give = MISSION00_INTRO;
                 break;
                 case MISSIONROME01:
-                    prev_state = StateMission01rome;
-                    GetLocalizedDialog_EN(MISSION01_INTRO);
+                    prev_state_to_give = StateMission01rome;
+                    instruction_to_give = MISSION01_INTRO;
                 break;
                 case MISSIONROME02:
-                    prev_state = StateMission02rome;
-                    GetLocalizedDialog_EN(MISSION02_INTRO);
+                    prev_state_to_give = StateMission02rome;
+                    instruction_to_give = MISSION02_INTRO;
                 break;
                 case MISSIONROME03:
-                    prev_state = StateMission03rome;
-                    GetLocalizedDialog_EN(MISSION03_INTRO);
+                    prev_state_to_give = StateMission03rome;
+                    instruction_to_give = MISSION03_INTRO;
                 break;
                 case MISSIONALPS04:
-                    prev_state = StateMission04alps;
-                    GetLocalizedDialog_EN(MISSION04_INTRO);
+                    prev_state_to_give = StateMission04alps;
+                    instruction_to_give = MISSION04_INTRO;
                 break;
                 case MISSIONALPS05:
-                    prev_state = StateMission05alps;
-                    GetLocalizedDialog_EN(MISSION05_INTRO);
+                    prev_state_to_give = StateMission05alps;
+                    instruction_to_give = MISSION05_INTRO;
                 break;
                 case MISSIONALPS06:
-                    prev_state = StateMission06alps;
-                    GetLocalizedDialog_EN(MISSION06_INTRO);
+                    prev_state_to_give = StateMission06alps;
+                    instruction_to_give = MISSION06_INTRO;
                 break;
                 case MISSIONALPS07:
-                    prev_state = StateMission07alps;
-                    GetLocalizedDialog_EN(MISSION07_INTRO);
+                    prev_state_to_give = StateMission07alps;
+                    instruction_to_give = MISSION07_INTRO;
                 break;
                 case MISSIONSEA08:
-                    prev_state = StateMission08sea;
-                    GetLocalizedDialog_EN(MISSION08_INTRO);
+                    prev_state_to_give = StateMission08sea;
+                    instruction_to_give = MISSION08_INTRO;
                 break;
                 case MISSIONSEA09:
-                    prev_state = StateMission09sea;
-                    GetLocalizedDialog_EN(MISSION09_INTRO);
+                    prev_state_to_give = StateMission09sea;
+                    instruction_to_give = MISSION09_INTRO;
                 break;
                 case MISSIONSEA10:
-                    prev_state = StateMission10sea;
-                    GetLocalizedDialog_EN(MISSION10_INTRO);
+                    prev_state_to_give = StateMission10sea;
+                    instruction_to_give = MISSION10_INTRO;
                 break;
                 case MISSIONSEA11:
-                    prev_state = StateMission11sea;
-                    GetLocalizedDialog_EN(MISSION11_INTRO);
+                    prev_state_to_give = StateMission11sea;
+                    instruction_to_give = MISSION11_INTRO;
                 break;
                 case MISSIONGREECE12:
-                    prev_state = StateMission12greece;
-                    GetLocalizedDialog_EN(MISSION12_INTRO);
+                    prev_state_to_give = StateMission12greece;
+                    instruction_to_give = MISSION12_INTRO;
                 break;
                 case MISSIONGREECE13:
-                    prev_state = StateMission13greece;
-                    GetLocalizedDialog_EN(MISSION13_INTRO);
+                    prev_state_to_give = StateMission13greece;
+                    instruction_to_give = MISSION13_INTRO;
                 break;
                 case MISSIONGREECE14:
-                    prev_state = StateMission14greece;
-                    GetLocalizedDialog_EN(MISSION14_INTRO);
+                    prev_state_to_give = StateMission14greece;
+                    instruction_to_give = MISSION14_INTRO;
                 break;
                 case MISSIONGREECE15:
-                    prev_state = StateMission15greece;
-                    GetLocalizedDialog_EN(MISSION15_INTRO);
+                    prev_state_to_give = StateMission15greece;
+                    instruction_to_give = MISSION15_INTRO;
                 break;
                 case MISSIONDESERT16:
-                    prev_state = StateMission16desert;
-                    GetLocalizedDialog_EN(MISSION16_INTRO);
+                    prev_state_to_give = StateMission16desert;
+                    instruction_to_give = MISSION16_INTRO;
                 break;
             }
-            SetState(StatePapyrus);
+            state_move_to_papyrus(instruction_to_give, prev_state_to_give);
         }else{
             SetState(StateWorldmap);
         }

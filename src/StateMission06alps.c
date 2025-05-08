@@ -184,11 +184,9 @@ void UPDATE(){
         /*if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission05alps;
             turn_to_load = turn;
             time_to_load = time_current;
-            GetLocalizedDialog_EN(MISSION05_SAVED_GENERAL);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION05_SAVED_GENERAL, StateMission05alps;
         }*/
     //CALCULATE DANGER
         /*calculate_danger(s_rollingstone);

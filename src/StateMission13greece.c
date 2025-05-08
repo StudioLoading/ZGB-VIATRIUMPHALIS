@@ -63,6 +63,7 @@ extern void die() BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void map_ended() BANKED;
 extern void night_mode() BANKED;
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 void START(){
     mission_iscrono = 1;
@@ -156,11 +157,9 @@ void UPDATE(){
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission13greece;
             turn_to_load = turn;
             time_to_load = time_current;
-            GetLocalizedDialog_EN(MISSION13_GENERAL_HEARD);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION13_GENERAL_HEARD, StateMission13greece);
         }
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){

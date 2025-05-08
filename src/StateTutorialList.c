@@ -10,7 +10,6 @@
 #include "string.h"
 #include "Print.h"
 
-#include "Dialogs.h"
 #include "custom_datas.h"
 
 #define BLINK_TEXT 16
@@ -39,6 +38,9 @@ unsigned char m12[18];
 unsigned char m13[18];
 unsigned char m14[18];
 unsigned char EMPTY_STRING_17[18] = "                 ";
+
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
+
 
 void START(){
     InitScroll(BANK(maptutoriallist), &maptutoriallist, 0, 0);
@@ -107,11 +109,11 @@ void UPDATE(){
     }
     if(KEY_TICKED(J_A) ||KEY_TICKED(J_B) || KEY_TICKED(J_START) || KEY_TICKED(J_SELECT)){
         if(tutorial_state < TUTORIAL_PASSED){
-            prev_state = StateTutorialGame;
+            INSTRUCTION instruction_to_give = 0;
             switch(tutorial_state){
-                case TUTORIAL_STAGE_0_STRAIGHT: GetLocalizedDialog_EN(TUTORIAL00_INTRO); break;
+                case TUTORIAL_STAGE_0_STRAIGHT: instruction_to_give = TUTORIAL00_INTRO; break;
             }
-            SetState(StatePapyrus);
+            state_move_to_papyrus(instruction_to_give, StateTutorialGame);
         }else{
             SetState(StateWorldmap);
         }

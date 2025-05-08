@@ -44,6 +44,7 @@ extern void start_common() BANKED;
 extern void update_common() BANKED;
 extern void spawn_items() BANKED;
 extern void map_ended() BANKED;
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
@@ -94,10 +95,8 @@ void UPDATE(){
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission00rome;
             turn_to_load = turn;
-            GetLocalizedDialog_EN(MISSION00_SECRET_MESSAGE);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION00_SECRET_MESSAGE, StateMission00rome);
         }
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){

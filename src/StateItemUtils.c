@@ -176,12 +176,14 @@ void item_common_update(Sprite* s_item_arg) BANKED{
                         item_data->configured = 5;
                     }
                 }break;
-                case GLADIO:{                    
-                    UINT16 attack_x = s_horse->x;
+                case GLADIO:{
+                    UINT16 attack_x = s_horse->x + 2;
                     UINT16 attack_y = s_horse->y + 8;
+                    THIS->mirror = H_MIRROR;
                     if(s_horse->mirror == V_MIRROR){
                         attack_y = s_horse->y - 24;
                         attack_x = s_horse->x;
+                        THIS->mirror = V_MIRROR;
                     }
                     s_item_arg->x = attack_x;
                     s_item_arg->y = attack_y;

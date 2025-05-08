@@ -26,6 +26,7 @@ void die() BANKED;
 void spawn_items() BANKED;
 void night_mode() BANKED;
 void map_ended() BANKED;
+void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 
 extern struct CONFIGURATION configuration;
@@ -60,54 +61,62 @@ void UPDATE() {
 
 void map_ended() BANKED{
 	flag_night_mode = 0;//RESET
-	prev_state = StateWorldmap;
 	turn_to_load = turn;//missione successiva comincia nello stesso verso di dove finisce missione corrente
+	INSTRUCTION instruction_to_give = 0;
 	switch(current_mission){
-		case MISSIONROME00: GetLocalizedDialog_EN(MISSION00_COMPLETED); break;
-		case MISSIONROME01: GetLocalizedDialog_EN(MISSION01_COMPLETED); break;
+		case MISSIONROME00: instruction_to_give = MISSION00_COMPLETED; break;
+		case MISSIONROME01: instruction_to_give = MISSION01_COMPLETED; break;
 		case MISSIONROME02: 
 			turn_to_load = 0;
-			GetLocalizedDialog_EN(MISSION02_COMPLETED);
+			instruction_to_give = MISSION02_COMPLETED;
 		break;
 		case MISSIONROME03:
 			world_area_map = 0;
 			current_area = AREA_ALPS;
-			GetLocalizedDialog_EN(MISSION03_COMPLETED);
+			instruction_to_give = MISSION03_COMPLETED;
 		break;
 		case MISSIONALPS04: GetLocalizedDialog_EN(MISSION04_COMPLETED); break;
 		case MISSIONALPS05: 
 			turn_to_load = 0;
-			GetLocalizedDialog_EN(MISSION05_COMPLETED);
+			instruction_to_give = MISSION05_COMPLETED;
 		break;
 		case MISSIONALPS06: 
 			turn_to_load = 0;
-			GetLocalizedDialog_EN(MISSION06_COMPLETED);
+			instruction_to_give = MISSION06_COMPLETED;
 		break;
 		case MISSIONALPS07:
 			world_area_map = 0;
 			current_area = AREA_SEA;
-			GetLocalizedDialog_EN(MISSION07_COMPLETED);
+			instruction_to_give = MISSION07_COMPLETED;
 		break;
-		case MISSIONSEA08: GetLocalizedDialog_EN(MISSION08_COMPLETED); break;
-		case MISSIONSEA09: GetLocalizedDialog_EN(MISSION09_COMPLETED); break;
-		case MISSIONSEA10: GetLocalizedDialog_EN(MISSION10_COMPLETED); break;
+		case MISSIONSEA08: instruction_to_give = MISSION08_COMPLETED; break;
+		case MISSIONSEA09: instruction_to_give = MISSION09_COMPLETED; break;
+		case MISSIONSEA10: instruction_to_give = MISSION10_COMPLETED; break;
 		case MISSIONSEA11: 
 			current_area = AREA_GREECE;
-			GetLocalizedDialog_EN(MISSION11_COMPLETED);
+			instruction_to_give = MISSION11_COMPLETED;
 		break;
-		case MISSIONGREECE12: GetLocalizedDialog_EN(MISSION12_COMPLETED);break;
-		case MISSIONGREECE13: GetLocalizedDialog_EN(MISSION13_COMPLETED);break;
-		case MISSIONGREECE14: GetLocalizedDialog_EN(MISSION14_COMPLETED);break;
+		case MISSIONGREECE12: instruction_to_give = MISSION12_COMPLETED;break;
+		case MISSIONGREECE13: instruction_to_give = MISSION13_COMPLETED;break;
+		case MISSIONGREECE14: instruction_to_give = MISSION14_COMPLETED;break;
 		case MISSIONGREECE15: 
 			current_area = AREA_DESERT;
-			GetLocalizedDialog_EN(MISSION15_COMPLETED);
+			instruction_to_give = MISSION15_COMPLETED;
 		break;
 		case MISSIONDESERT16:
-			GetLocalizedDialog_EN(MISSION16_COMPLETED);
+			instruction_to_give = MISSION16_COMPLETED;
 		break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;
+	state_move_to_papyrus(instruction_to_give, StateWorldmap);
+}
+
+void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED{
+	GetLocalizedDialog_EN(arg_instruction_to_show);
+	if(arg_prev_state){
+		prev_state = arg_prev_state;
+	}
 	SetState(StatePapyrus);
 }
 
@@ -153,10 +162,9 @@ void die() BANKED{
 	}
 	world_area_map = 0;
 	flag_night_mode = 0;//RESET
-	prev_state = StateWorldmap;
 	update_hp(16);
-	GetLocalizedDialog_EN(DEAD);
-	SetState(StatePapyrus);
+	
+	state_move_to_papyrus(DEAD, StateWorldmap);
 }
 
 void spawn_items() BANKED{

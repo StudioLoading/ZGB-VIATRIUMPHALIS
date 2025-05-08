@@ -70,6 +70,7 @@ extern void die() BANKED;
 extern void night_mode() BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 void START(){
     mission_iscrono = 0;
@@ -165,11 +166,9 @@ void UPDATE(){
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission09sea;
             turn_to_load = turn;
             time_to_load = time_current;
-            GetLocalizedDialog_EN(MISSION09_SAVED_AMBASSADOR);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION09_SAVED_AMBASSADOR, StateMission09sea);
         }
         if(mission_killed >= 4 && mission_completed == 0){
             mission_completed = 1;

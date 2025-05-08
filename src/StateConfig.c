@@ -51,6 +51,9 @@ extern INT16 time_to_load;
 extern UINT8 turn;
 extern INT16 time_current;
 
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
+
+
 void START(){
     InitScroll(BANK(configmap), &configmap, 0, 0);
 	SHOW_BKG;
@@ -199,24 +202,25 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
     mirror_horse = s_horse->mirror;
     turn_to_load = turn;
     time_to_load = time_current;
+    INSTRUCTION instruction_to_give = 0;
     switch(arg_pickedup){
         case GOLDEN_WHIP:
             configuration.whip = GOLDEN;
-            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_WHIP);
+            instruction_to_give = DESCRIPTION_GOLDEN_WHIP;
         break;
         case GOLDEN_WHEEL:
             configuration.wheel = GOLDEN;
-            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_WHEEL);
+            instruction_to_give = DESCRIPTION_GOLDEN_WHEEL;
         break;
         case GOLDEN_REINS:
             configuration.reins = GOLDEN;
-            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_REINS);
+            instruction_to_give = DESCRIPTION_GOLDEN_REINS;
         break;
         case GOLDEN_ELM:
             configuration.elm = GOLDEN;
-            GetLocalizedDialog_EN(DESCRIPTION_GOLDEN_ELM);
+            instruction_to_give = DESCRIPTION_GOLDEN_ELM;
         break;
     }
     flag_golden_found = 1;
-    SetState(StatePapyrus);
+    state_move_to_papyrus(DEAD, 0);
 }

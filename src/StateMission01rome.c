@@ -127,10 +127,8 @@ void UPDATE(){
         /*if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission00rome;
             turn_to_load = turn;
-            GetLocalizedDialog_EN(MISSION00_SECRET_MESSAGE);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION00_SECRET_MESSAGE, StateMission00romeUINT8);
         }*/
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){

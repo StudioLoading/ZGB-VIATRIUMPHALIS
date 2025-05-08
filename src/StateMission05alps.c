@@ -69,6 +69,7 @@ extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
 extern void map_ended() BANKED;
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 void START(){
     mission_iscrono = 1;
@@ -156,11 +157,9 @@ void UPDATE(){
         if(current_step == SENATOR_COLLIDED){
             pos_horse_x = s_horse->x;
             pos_horse_y = s_horse->y;
-            prev_state = StateMission05alps;
             turn_to_load = turn;
             time_to_load = time_current;
-            GetLocalizedDialog_EN(MISSION05_SAVED_GENERAL);
-            SetState(StatePapyrus);
+            state_move_to_papyrus(MISSION05_SAVED_GENERAL, StateMission05alps);
         }
     //CALCULATE DANGER
         calculate_danger(s_barbarianshield00);
