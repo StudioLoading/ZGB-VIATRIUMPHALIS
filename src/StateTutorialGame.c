@@ -63,6 +63,8 @@ extern UINT8 turn;
 extern UINT16 pos_horse_x;
 extern UINT16 pos_horse_y;
 extern UINT8 turn_to_load;
+extern Sprite* s_spawning_weapon;
+extern INT8 spawning_weapon_counter;
 
 extern void start_common() BANKED;
 extern void update_stamina() BANKED;
@@ -76,11 +78,13 @@ extern void check_danger() BANKED;
 extern void show_danger() BANKED;
 extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START() {
     fantoccio_hit = 0;
     pos_horse_x = 0;
     pos_horse_y = 0;
+	spawning_weapon_counter = 0;
     //INITIAL POSITIONS & OPTIONS
         switch(tutorial_state){
             case TUTORIAL_STAGE_0_STRAIGHT:
@@ -141,34 +145,26 @@ void START() {
             break;
             case TUTORIAL_STAGE_1_STRAIGHTTIME:
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_2_TURNRIGHT:
 		        InitScroll(BANK(maptut01turnright), &maptut01turnright, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_3_TURNLEFT:
 		        InitScroll(BANK(maptut02turnleft), &maptut02turnleft, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_4_TURNRIGHTLEFT:
 		        InitScroll(BANK(maptut03turnrightleft), &maptut03turnrightleft, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_5_ZIGZAG:
             case TUTORIAL_STAGE_6_ZIGZAG_ONTIME:
 		        InitScroll(BANK(maptut04zigzag), &maptut04zigzag, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_7_DODGEWATER:
 		        InitScroll(BANK(maptut04dodgewater), &maptut04dodgewater, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             break;
             case TUTORIAL_STAGE_8_GLADIO:{
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 256u, s_horse->y + 8u);
-                item_spawn(GLADIO, s_horse->x + 64u, s_horse->y + 4u);
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             }break;
             case TUTORIAL_STAGE_9_GLADIOLEFT:{
                 //velocity = -1;
@@ -177,43 +173,25 @@ void START() {
                 turn_to_load = 127;
                 s_horse->mirror = V_MIRROR;
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x - 400u, s_horse->y - 12u);
-                item_spawn(GLADIO, s_horse->x - 128u, s_horse->y + 4u);
 		        InitScroll(BANK(maptut05straight), &maptut05straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             }break;
             case TUTORIAL_STAGE_10_LANCE:{
                 s_fantoccio = SpriteManagerAdd(SpriteFantoccio, s_horse->x + 600u, s_horse->y);
-                Sprite* s_item = SpriteManagerAdd(SpriteItemlance, s_horse->x + 80u, s_horse->y);
-                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-                item_data->itemtype = LANCE;
-                item_data->configured = 1;
-		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
+      	        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
             }break;
             case TUTORIAL_STAGE_11_CAPE:{
-                Sprite* s_heart = SpriteManagerAdd(SpriteItemglass, s_horse->x + 32u, s_horse->y + 8u);
-                struct ItemData* heart_data = (struct ItemData*) s_heart->custom_data;
-                heart_data->itemtype = TIME;
-                heart_data->configured = 1;
-                Sprite* s_item = SpriteManagerAdd(SpriteItemcape, s_horse->x + 80u, s_horse->y);
-                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-                item_data->itemtype = CAPE;
-                item_data->configured = 1;
-                Sprite* s_fire = SpriteManagerAdd(SpriteFlame, s_horse->x + 200u, s_horse->y);
+                item_spawn(TIME, s_horse->x + 32u, s_horse->y + 8u);
+                SpriteManagerAdd(SpriteFlame, s_horse->x + 200u, s_horse->y);
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             }break;
             case TUTORIAL_STAGE_12_STRAW:{
-                Sprite* s_item = SpriteManagerAdd(SpriteItemfire, s_horse->x + 80u, s_horse->y);
-                struct ItemData* item_data = (struct ItemData*) s_item->custom_data;
-                item_data->itemtype = FIRE;
-                item_data->configured = 1;
+                item_spawn(FIRE, s_horse->x + 80u, s_horse->y);
                 Sprite* s_straw = SpriteManagerAdd(SpriteStraw, s_horse->x + 200u, s_horse->y);
                 Sprite* s_straw2 = SpriteManagerAdd(SpriteStraw, s_horse->x + 224u, s_horse->y);
 		        InitScroll(BANK(maptut00straight), &maptut00straight, coll_rome_tiles, coll_rome_surface);
-                update_hp(0); 
             }break;
         }
+        update_hp(0); 
 		INIT_HUD(hudm);
 		SetWindowY(104);
         start_common();
@@ -238,6 +216,27 @@ void UPDATE(){
         if(hud_initialized == 0){
             update_hp(0);
             hud_initialized = 1u;
+        }
+    //CONTINUOUS SPAWNING WEAPON
+        if(s_spawning_weapon == 0){
+            spawning_weapon_counter++;
+            if(spawning_weapon_counter < 0){
+                spawning_weapon_counter = 0;
+                switch(tutorial_state){
+                    case TUTORIAL_STAGE_8_GLADIO:
+                        item_spawn_continuously(GLADIO, pos_horse_x + 40u, pos_horse_y + 4u);
+                    break;
+                    case TUTORIAL_STAGE_9_GLADIOLEFT:
+                        item_spawn_continuously(GLADIO, pos_horse_x - 128u, pos_horse_y + 4u);
+                    break;
+                    case TUTORIAL_STAGE_10_LANCE:
+                        item_spawn_continuously(LANCE, pos_horse_x + 80u, pos_horse_y);
+                    break;
+                    case TUTORIAL_STAGE_11_CAPE:
+                        item_spawn_continuously(CAPE, pos_horse_x + 80u, pos_horse_y);
+                    break;                    
+                }
+            }
         }
     //CALCULATE DANGER
         if(fantoccio_hit == 0){

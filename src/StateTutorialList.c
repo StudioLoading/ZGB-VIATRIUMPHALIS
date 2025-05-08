@@ -112,6 +112,18 @@ void UPDATE(){
             INSTRUCTION instruction_to_give = 0;
             switch(tutorial_state){
                 case TUTORIAL_STAGE_0_STRAIGHT: instruction_to_give = TUTORIAL00_INTRO; break;
+                case TUTORIAL_STAGE_1_STRAIGHTTIME: instruction_to_give = TUTORIAL01_INTRO; break;
+                case TUTORIAL_STAGE_2_TURNRIGHT: instruction_to_give = TUTORIAL02_INTRO; break;
+                case TUTORIAL_STAGE_3_TURNLEFT: instruction_to_give = TUTORIAL03_INTRO; break;
+                case TUTORIAL_STAGE_4_TURNRIGHTLEFT: instruction_to_give = TUTORIAL04_INTRO; break;
+                case TUTORIAL_STAGE_5_ZIGZAG: instruction_to_give = TUTORIAL05_INTRO; break;
+                case TUTORIAL_STAGE_6_ZIGZAG_ONTIME: instruction_to_give = TUTORIAL06_INTRO; break;
+                case TUTORIAL_STAGE_7_DODGEWATER: instruction_to_give = TUTORIAL07_INTRO; break;
+                case TUTORIAL_STAGE_8_GLADIO: instruction_to_give = TUTORIAL08_INTRO; break;
+                case TUTORIAL_STAGE_9_GLADIOLEFT: instruction_to_give = TUTORIAL09_INTRO; break;
+                case TUTORIAL_STAGE_10_LANCE: instruction_to_give = TUTORIAL10_INTRO; break;
+                case TUTORIAL_STAGE_11_CAPE: instruction_to_give = TUTORIAL11_INTRO; break;
+                case TUTORIAL_STAGE_12_STRAW: instruction_to_give = TUTORIAL12_INTRO; break;
             }
             state_move_to_papyrus(instruction_to_give, StateTutorialGame);
         }else{

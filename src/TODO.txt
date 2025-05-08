@@ -60,9 +60,7 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
 
-- nei tutorial con le armi devono mettere continuous spawning!
 - non sto praticamente mai usando il cape, lo faccio solo in Egitto o una fiamma ce la mettiamo in giro in biomi precedenti?
-- schermata di spiega della mappa di tutorial che indica cosa si deve fare
 
 - SuperGameBoy: 
     - colori delle mappe e della status-bar
