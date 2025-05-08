@@ -48,8 +48,8 @@ void UPDATE(){
     if(KEY_TICKED(J_DOWN) || KEY_TICKED(J_UP)){
         if(pressed_up_down == 0u){
             pressed_up_down = 1u;
-            PRINT(4, 2, "UNLOCK        ");
-            PRINT(4, 3, "CHARIOT       ");
+            PRINT(4, 2, "DOUBLE PRESSION");
+            PRINT(4, 3, "MOVES VERTICAL ");
         }
     }
     if(KEY_TICKED(J_LEFT)){
