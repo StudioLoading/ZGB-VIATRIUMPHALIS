@@ -50,6 +50,8 @@ extern INT16 timemax_current;
 extern INT16 time_factor;
 extern INT16 time_to_load;
 extern UINT8 mission_killed;
+extern Sprite* s_spawning_weapon;
+extern INT8 spawning_weapon_counter;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
@@ -57,6 +59,7 @@ extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void die() BANKED;
 extern void map_ended() BANKED;
+extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 
 void START(){
     mission_iscrono = 1;
@@ -109,6 +112,14 @@ void UPDATE(){
     //MISSION STEP
         if(mission_killed > 0 && mission_completed == 0){
             mission_completed = 1;
+        }
+    //CONTINUOUS SPAWNING WEAPON
+        if(mission_completed == 0 && s_spawning_weapon == 0){
+            spawning_weapon_counter++;
+            if(spawning_weapon_counter < 0){
+                spawning_weapon_counter = 0;
+                item_spawn_continuously(FIRE, ((UINT16) 38u << 3), ((UINT16) 68u << 3));
+            }
         }
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){

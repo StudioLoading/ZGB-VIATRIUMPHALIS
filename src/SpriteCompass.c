@@ -7,7 +7,7 @@
 #include "Sprite.h"
 #include "SpriteManager.h"
 
-#define COMPASS_COUNTER_MAX 100
+#define COMPASS_COUNTER_MAX 150
 
 const UINT8 a_compass_hidden[] = {1, 0};
 const UINT8 a_compass_h[] = {1, 4};

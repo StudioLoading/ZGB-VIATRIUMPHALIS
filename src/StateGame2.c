@@ -186,7 +186,6 @@ void spawn_items() BANKED{
 			}
 		break;
 		case MISSIONALPS04:
-			item_spawn(FIRE, ((UINT16) 38u << 3), ((UINT16) 68u << 3));
 			item_spawn(FIRE, ((UINT16) 62u << 3), ((UINT16) 18u << 3));
 		break;
 		case MISSIONALPS05:

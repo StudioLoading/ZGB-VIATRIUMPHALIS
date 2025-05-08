@@ -513,36 +513,36 @@ void show_danger() BANKED{
 		counter_danger--;
 		switch(counter_danger){
 			case 58:
-				if(flag_danger_right){
+				if(flag_danger_right && vx > 0){
 					UPDATE_HUD_TILE(8,3,70);
 					UPDATE_HUD_TILE(9,3,1);
 					UPDATE_HUD_TILE(10,3,1);
 				}
-				if(flag_danger_left){
+				if(flag_danger_left && vx < 0){
 					UPDATE_HUD_TILE(8,3,1);
 					UPDATE_HUD_TILE(9,3,1);
 					UPDATE_HUD_TILE(10,3,72);
 				}
 			break;
 			case 40:
-				if(flag_danger_right){
+				if(flag_danger_right && vx > 0){
 					UPDATE_HUD_TILE(8,3,1);
 					UPDATE_HUD_TILE(9,3,70);
 					UPDATE_HUD_TILE(10,3,1);
 				}
-				if(flag_danger_left){
+				if(flag_danger_left && vx < 0){
 					UPDATE_HUD_TILE(8,3,1);
 					UPDATE_HUD_TILE(9,3,72);
 					UPDATE_HUD_TILE(10,3,1);
 				}
 			break;
 			case 20:
-				if(flag_danger_right){
+				if(flag_danger_right && vx > 0){
 					UPDATE_HUD_TILE(8,3,1);
 					UPDATE_HUD_TILE(9,3,1);
 					UPDATE_HUD_TILE(10,3,70);
 				}
-				if(flag_danger_left){
+				if(flag_danger_left && vx < 0){
 					UPDATE_HUD_TILE(8,3,72);
 					UPDATE_HUD_TILE(9,3,1);
 					UPDATE_HUD_TILE(10,3,1);

@@ -59,15 +59,8 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
-- cursore di direzione sempre visibile, col colore DARK solo esterno risolvo anche in night-mode
-- la frustata senza whip GOLDEN forse è un po' troppo lenta, la virata è ok.
-- infinite spawning per la fiamma in FIRST BLOOD
-- allargare strade in primo nigh-mode a Roma
-- sprite di GO LEFT per la missione tutorial GLADIO LEFT
-- timeout per su e giù
-- indicazioni come "danger" per il fantoccio
+
 - schermata di spiega della mappa di tutorial che indica cosa si deve fare
-- PAUSE - ripetizione pergamena StatePapyrus
 
 - SuperGameBoy: 
     - colori delle mappe e della status-bar
@@ -85,6 +78,7 @@ Egitto (piramidi, fiumi, templi in fiamme)
 - test SGB
 - test CGB
 
+
 -------------------------------------------------------------------------------------ù
 MARKETING:
 "the fate of Rome is in your hands!"
@@ -101,6 +95,11 @@ LIBRETTO:
 - golden items
 - è su + start premuto 4 secondi. Invoca die(), quindi è un suicidio
 - sistema di punteggio: dettagli su come funziona
+-------------------------------------------------------------------------------------
+
+NICE TO HAVE:
+- PAUSE - ripetizione pergamena StatePapyrus - significa scrivere il sistema di load/save. non sono sicuro di volerlo fare.
+
 -------------------------------------------------------------------------------------
 
 ```C

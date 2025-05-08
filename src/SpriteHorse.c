@@ -20,6 +20,7 @@
 #define GOLDEN_WHIP_POWER 5
 #define HUD_TURN_COOLDOWN_MAX 20
 #define COUNTER_HIT_MAX 80
+#define FORCE_UPDOWN_MAX 60 
 
 const UINT8 a_horse_h[] = {6, 8,1,3,4,6,7};
 const UINT8 a_horse_hit[] = {13, 0,8,0,1,0,3,0,4,0,6,0,7,0};
@@ -58,6 +59,7 @@ INT8 counter_hit = 0;
 INT8 flag_bouncing = 0;
 INT8 counter_bouncing = 80;
 UINT8 horse_netcatching = 0u;
+UINT8 force_updown_counter = 0u;
 
 
 void horse_hit(INT8 arg_damage) BANKED;
@@ -92,6 +94,7 @@ void START() {
     flag_hit = 0;
     vx = 0;
     vy = 0;
+    force_updown_counter = 0u;
     counter_hit = COUNTER_HIT_MAX;
     if(configuration.whip == GOLDEN){
         current_whip_power = GOLDEN_WHIP_POWER;
@@ -234,13 +237,29 @@ void UPDATE() {
         }else{
             turn_verse = NONE; 
         }
+        if(force_updown_counter > 0){
+            force_updown_counter++;
+            if(force_updown_counter >= FORCE_UPDOWN_MAX){
+                force_updown_counter = 0;
+            } 
+        }
         if(KEY_TICKED(J_UP)){
-            turn = 64;
-            turn_samepressure_counter = 0;
+            if(force_updown_counter == 0){
+                force_updown_counter = 1;
+            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
+                turn = 64;
+                force_updown_counter = 0u;
+                turn_samepressure_counter = 0;
+            }
         }
         if(KEY_TICKED(J_DOWN)){
-            turn = 192;
-            turn_samepressure_counter = 0;
+            if(force_updown_counter == 0){
+                force_updown_counter = 1;
+            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
+                turn = 192;
+                force_updown_counter = 0;
+                turn_samepressure_counter = 0;
+            }
         }
         sin = sine_wave[turn];
         UINT8 cos_idx = turn+64;
