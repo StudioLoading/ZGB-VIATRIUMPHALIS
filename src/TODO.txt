@@ -73,7 +73,7 @@ Egitto (piramidi, fiumi, templi in fiamme)
 - sistema di punteggio highscore
     - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
     - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
-- gara di velocità/bonus stage con Giulio Cesare! a fine gioco se raccolti tutti gli item GOLDEN. col Pharao ho fatto i waypoints, se ci metto un random di rallentamento, potrei avergià risolto
+- gara di velocità/bonus stage con Giulio Cesare! a fine gioco se raccolti tutti gli item GOLDEN. col Pharao ho fatto i waypoints, se ci metto un random di rallentamento, potrei aver già risolto
 - test DMG
 - test SGB
 - test CGB

@@ -35,12 +35,14 @@ void start_game() BANKED;
 
 void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
-    //SetState(StateTutorialList);//TODO PROD
+    SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
+    /*
     current_area = AREA_ROME;
     current_mission = MISSIONROME02;
     SetState(StateWorldmap);
-    //END TEST TODO removeme
+    */
+   //END TEST TODO removeme
 }
 
 void START() {

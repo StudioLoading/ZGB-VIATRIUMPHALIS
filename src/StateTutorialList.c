@@ -10,6 +10,7 @@
 #include "string.h"
 #include "Print.h"
 
+#include "Dialogs.h"
 #include "custom_datas.h"
 
 #define BLINK_TEXT 16
@@ -18,6 +19,7 @@ IMPORT_MAP(maptutoriallist);
 IMPORT_TILES(font);
 
 extern TUTORIAL_STAGE tutorial_state;
+extern UINT8 prev_state;
 
 INT8 blink_text = BLINK_TEXT;
 
@@ -105,7 +107,11 @@ void UPDATE(){
     }
     if(KEY_TICKED(J_A) ||KEY_TICKED(J_B) || KEY_TICKED(J_START) || KEY_TICKED(J_SELECT)){
         if(tutorial_state < TUTORIAL_PASSED){
-            SetState(StateTutorialGame);
+            prev_state = StateTutorialGame;
+            switch(tutorial_state){
+                case TUTORIAL_STAGE_0_STRAIGHT: GetLocalizedDialog_EN(TUTORIAL00_INTRO); break;
+            }
+            SetState(StatePapyrus);
         }else{
             SetState(StateWorldmap);
         }

@@ -82,6 +82,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case TUTORIAL00_INTRO:
+            memcpy(d0, "MARCUS! YOUR  ", 15);
+            memcpy(d1, "TRAINING      ", 15);
+            memcpy(d2, "STARTS NOW!   ", 15);
+            memcpy(d3, EMPTY_STRING_14, 15);
+            memcpy(d4, "FIRST THING   ", 15);
+            memcpy(d5, "TO LEAN IS L  ", 15);
+            memcpy(d6, "HOW THE WHIP  ", 15);
+            memcpy(d7, "WORKS. SO YOU ", 15);
+            memcpy(d8, "ONLY HAVE TO  ", 15);
+            memcpy(d9, "PRESS THE WHIP", 15);
+            memcpy(d10, "BUTTON TO IM, ", 15);
+            memcpy(d11, "PROVE VELOCITY", 15);
+        break;
         case MISSION00_INTRO:
             memcpy(d0, "FIRSTLY WE HA,", 15);
             memcpy(d1, "VE SOME COMMI,", 15);
