@@ -5,7 +5,6 @@
 #include "Keys.h"
 #include "Palette.h"
 #include "Scroll.h"
-#include "SGB.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
 #include "string.h"
@@ -16,26 +15,25 @@
 #define CREDIT_WAIT_MAX 240
 #define PRESSSTART_COUNTER_MAX 16
 
-IMPORT_MAP(border);
 IMPORT_MAP(mapcredit0);
 IMPORT_MAP(maptitlescreen);
 IMPORT_MAP(maintitlemap);
 IMPORT_TILES(font);
 
 INT16 credit_wait = 0;
-INT8 credit_step = 0;
+INT8 credit_step = 1;//1 SL;2 VT;3 titlescreen
 INT8 pressstart_counter = 0;
 UINT8 pressstart_show = 0;
-UINT8 flag_border_set = 0u;
 
+#define sgb_running sgb_check()
+
+extern void manage_border(UINT8 my_next_state) BANKED;
 
 void START(){
-    if(flag_border_set == 0u){
-        flag_border_set = 1u;
-        LOAD_SGB_BORDER(border);
-    }
+	if(sgb_running){
+		manage_border(current_state);
+	}
     credit_wait = CREDIT_WAIT_MAX;
-    credit_step++;
     switch(credit_step){
         case 1:
             InitScroll(BANK(mapcredit0), &mapcredit0, 0, 0);
@@ -57,6 +55,7 @@ void UPDATE(){
         credit_wait--;
     }
     if(credit_step < 3 && (credit_wait <= 0 || KEY_TICKED(J_START))){
+        credit_step++;
         SetState(StateCredit);
     }else if(credit_step == 3 && KEY_TICKED(J_START)){
         SetState(StateButtons);

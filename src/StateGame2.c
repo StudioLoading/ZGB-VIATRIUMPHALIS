@@ -5,6 +5,7 @@
 #include "ZGBMain.h"
 #include "Palette.h"
 #include "Scroll.h"
+#include "SGB.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
 #include "string.h"
@@ -12,6 +13,9 @@
 
 #include "custom_datas.h"
 #include "Dialogs.h"
+#include "sgb_palette.h"
+
+IMPORT_MAP(border);
 
 static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
@@ -21,13 +25,15 @@ static const palette_color_t palette_data_greece_03[] = {RGB(0,0,0),RGB(0,0,0),R
 static const palette_color_t palette_data_greece_04[] = {RGB(0,0,0),RGB(0,0,0),RGB(14,10,1),RGB(0,0,0)};
 
 UINT8 flag_night_mode = 0u;
+UINT8 flag_border_set = 0u;
 
 void die() BANKED;
 void spawn_items() BANKED;
 void night_mode() BANKED;
 void map_ended() BANKED;
 void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
-
+void manage_border(UINT8 my_next_state) BANKED;
+void check_sgb_palette(UINT8 new_state) BANKED;
 
 extern struct CONFIGURATION configuration;
 extern AREA current_area;
@@ -47,6 +53,7 @@ extern UINT8 prev_state;
 extern UINT8 turn_to_load;
 extern UINT8 turn;
 extern INT8 world_area_map;
+extern UINT8 credit_step;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
@@ -75,7 +82,7 @@ void map_ended() BANKED{
 			current_area = AREA_ALPS;
 			instruction_to_give = MISSION03_COMPLETED;
 		break;
-		case MISSIONALPS04: GetLocalizedDialog_EN(MISSION04_COMPLETED); break;
+		case MISSIONALPS04: instruction_to_give = MISSION04_COMPLETED; break;
 		case MISSIONALPS05: 
 			turn_to_load = 0;
 			instruction_to_give = MISSION05_COMPLETED;
@@ -298,4 +305,38 @@ void night_mode() BANKED{
 			break;
 		}
 	}
+}
+
+void check_sgb_palette(UINT8 new_state) BANKED{
+	switch (new_state){
+		case StateCredit:
+		{
+			switch(credit_step){
+				case 1: set_sgb_palette_credit_studioloading();break;
+				case 2: set_sgb_palette_credit_viatriumphalis();break;
+				case 3: set_sgb_palette_credit_titlescreen();break;		
+			}
+		}
+		break;
+		case StateTutorialList:
+		break;
+		case StateWorldmap:
+		{
+			switch(current_area){
+				case AREA_ROME: set_sgb_palette_arearome(); break;
+				case AREA_ALPS: set_sgb_palette_areaalps(); break;
+				case AREA_SEA:  break;
+				case AREA_DESERT:  break;
+				case AREA_EGYPT:  break;
+			}
+		}
+		break;
+	}
+}
+void manage_border(UINT8 my_next_state) BANKED{
+    if(flag_border_set == 0u){
+        LOAD_SGB_BORDER(border);
+        flag_border_set = 1u;
+    }
+    check_sgb_palette(my_next_state);
 }

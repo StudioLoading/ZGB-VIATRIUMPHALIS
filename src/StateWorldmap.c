@@ -35,17 +35,18 @@ TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_8_GLADIO;
 void start_game() BANKED;
 
 extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
+extern void manage_border(UINT8 my_next_state) BANKED;
+extern void check_sgb_palette(UINT8 my_next_state) BANKED;
 
 void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
-    SetState(StateTutorialList);//TODO PROD
+    //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    /*
-    current_area = AREA_ROME;
-    current_mission = MISSIONROME02;
+    current_area = AREA_ALPS;
+    current_mission = MISSIONALPS04;
     SetState(StateWorldmap);
-    */
    //END TEST TODO removeme
+	manage_border(current_state);
 }
 
 void START() {
@@ -114,6 +115,7 @@ void START() {
             }
         break;
     }
+	manage_border(current_state);
 }
 
 void UPDATE() {
