@@ -13,15 +13,11 @@ GLADIO      SCUDO
 LANCIA      ELMO
 FUOCO       MANTELLO
 
-------------------------------------------------------------------------------------
-
-- Normal Mode vs Hard Mode
-    hard mode non avrà il tutorial iniziale;
-    hard mode non avrà il compasso a schermo,
-        oppure ce lo avrà ma servirà per puntare all'obiettivo, non indicherà la direzione di movimento,
-        oppure non ce lo avrà e avrà una freccettina, a scomparsa, togliendola dalla status bar;
-- Deserto: multimappa a labirinto
-- day/night mode: you can query which palette the sprite uses by checking the attr_add field of the Sprite structure.
+GOLDEN ITEMS
+golden whip     MISSIONROME00
+golden wheel    MISSIONROME03
+golden reins    MISSIONALPS06
+golden elm      MISSIONSEA10
 
 ------------------------------------------------------------------------------------
 
@@ -60,11 +56,15 @@ Egitto (piramidi, fiumi, templi in fiamme)
 "Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
 
+- Normal Mode vs Hard Mode
+    hard mode non avrà il tutorial iniziale;
+    hard mode non avrà il compasso a schermo,
+        oppure ce lo avrà ma servirà per puntare all'obiettivo, non indicherà la direzione di movimento,
+        oppure non ce lo avrà e avrà una freccettina, a scomparsa, togliendola dalla status bar;
+
 - non sto praticamente mai usando il cape, lo faccio solo in Egitto o una fiamma ce la mettiamo in giro in biomi precedenti?
 
 - SuperGameBoy: 
-    - colori delle mappe e della status-bar
-    - border per biomi
     - border finale per bonus stage
 - c'è flickering, sentiamo toxa se ha suggerimenti? mi ha detto che su CrossZGB è risolta. grazie ar ca'. sono riuscito ad attutirlo - provare su real hardware.
 - coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
@@ -95,6 +95,13 @@ LIBRETTO:
 - golden items
 - è su + start premuto 4 secondi. Invoca die(), quindi è un suicidio
 - sistema di punteggio: dettagli su come funziona
+-------------------------------------------------------------------------------------
+FISICO che giustifichi i 150€:
+box
+pergamena mappe
+spilletta con la biga e cavallo stilizzata
+nobilitature etichetta
+doppia etichetta
 -------------------------------------------------------------------------------------
 
 NICE TO HAVE:

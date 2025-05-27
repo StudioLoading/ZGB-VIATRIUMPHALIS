@@ -69,6 +69,8 @@ _SPRITE_DMG(SpritePharaobiga, pharaobiga)\
 _SPRITE_DMG(SpritePharaosubiga, pharaosubiga)\
 _SPRITE_DMG(SpritePharaonet, pharaonet)\
 _SPRITE_DMG(SpriteGator, gator)\
+_SPRITE_DMG(SpriteMarcus, marcus)\
+_SPRITE_DMG(SpriteMarcushorse, marcushorse)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"

@@ -16,6 +16,11 @@
 #include "sgb_palette.h"
 
 IMPORT_MAP(border);
+IMPORT_MAP(borderalps);
+IMPORT_MAP(bordersea);
+IMPORT_MAP(bordergreece);
+IMPORT_MAP(borderdesert);
+IMPORT_MAP(borderegypt);
 
 static const palette_color_t palette_data_rome[] = {RGB(0,0,0),RGB(0,0,0),RGB(29,2,0),RGB(0,0,0)};
 static const palette_color_t palette_data_alps[] = {RGB(0,0,0),RGB(9,24,31),RGB(15,0,25),RGB(0,0,0)};
@@ -67,6 +72,7 @@ void UPDATE() {
 }
 
 void map_ended() BANKED{
+	reset_sgb_palette_statusbar();
 	flag_night_mode = 0;//RESET
 	turn_to_load = turn;//missione successiva comincia nello stesso verso di dove finisce missione corrente
 	INSTRUCTION instruction_to_give = 0;
@@ -82,7 +88,8 @@ void map_ended() BANKED{
 			current_area = AREA_ALPS;
 			instruction_to_give = MISSION03_COMPLETED;
 		break;
-		case MISSIONALPS04: instruction_to_give = MISSION04_COMPLETED; break;
+		case MISSIONALPS04:
+			flag_border_set = 0u; instruction_to_give = MISSION04_COMPLETED; break;
 		case MISSIONALPS05: 
 			turn_to_load = 0;
 			instruction_to_give = MISSION05_COMPLETED;
@@ -96,14 +103,16 @@ void map_ended() BANKED{
 			current_area = AREA_SEA;
 			instruction_to_give = MISSION07_COMPLETED;
 		break;
-		case MISSIONSEA08: instruction_to_give = MISSION08_COMPLETED; break;
+		case MISSIONSEA08: 
+			flag_border_set = 0u;instruction_to_give = MISSION08_COMPLETED; break;
 		case MISSIONSEA09: instruction_to_give = MISSION09_COMPLETED; break;
 		case MISSIONSEA10: instruction_to_give = MISSION10_COMPLETED; break;
 		case MISSIONSEA11: 
 			current_area = AREA_GREECE;
 			instruction_to_give = MISSION11_COMPLETED;
 		break;
-		case MISSIONGREECE12: instruction_to_give = MISSION12_COMPLETED;break;
+		case MISSIONGREECE12: 
+			flag_border_set = 0u; instruction_to_give = MISSION12_COMPLETED;break;
 		case MISSIONGREECE13: instruction_to_give = MISSION13_COMPLETED;break;
 		case MISSIONGREECE14: instruction_to_give = MISSION14_COMPLETED;break;
 		case MISSIONGREECE15: 
@@ -111,6 +120,7 @@ void map_ended() BANKED{
 			instruction_to_give = MISSION15_COMPLETED;
 		break;
 		case MISSIONDESERT16:
+			flag_border_set = 0u;
 			instruction_to_give = MISSION16_COMPLETED;
 		break;
 	}
@@ -120,6 +130,7 @@ void map_ended() BANKED{
 }
 
 void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED{
+	reset_sgb_palette_statusbar();
 	GetLocalizedDialog_EN(arg_instruction_to_show);
 	if(arg_prev_state){
 		prev_state = arg_prev_state;
@@ -128,6 +139,7 @@ void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_s
 }
 
 void die() BANKED{
+	reset_sgb_palette_statusbar();
 	switch(current_mission){
 		case MISSIONROME00: current_step = LOOKING_FOR_SENATOR; break;
 		case MISSIONROME01:
@@ -269,6 +281,32 @@ void spawn_items() BANKED{
 			item_spawn(GLADIO, ((UINT16) 7u << 3), ((UINT16) 6u << 3) + 3u);
 			item_spawn(GLADIO, ((UINT16) 20u << 3), ((UINT16) 11u << 3) + 3u);
 		break;
+		case MISSIONDESERT16:
+			if(configuration.whip == NORMAL){
+				Sprite* s_config_whip = SpriteManagerAdd(SpriteConfigwhip, ((UINT16)61u << 3), ((UINT16)3u << 3));
+				struct ItemData* whip_data = (struct ItemData*)s_config_whip->custom_data;
+				whip_data->itemtype = GOLDEN_WHIP;
+				whip_data->configured = 1;
+			}
+			if(configuration.wheel == NORMAL){
+				Sprite* s_config_wheel = SpriteManagerAdd(SpriteConfigwheel, ((UINT16)95u << 3), ((UINT16)21u << 3));
+				struct ItemData* wheel_data = (struct ItemData*)s_config_wheel->custom_data;
+				wheel_data->itemtype = GOLDEN_WHEEL;
+				wheel_data->configured = 1;
+			}
+			if(configuration.reins == NORMAL){
+				Sprite* s_config_reins = SpriteManagerAdd(SpriteConfigreins, ((UINT16)84u << 3), ((UINT16)43u << 3));
+				struct ItemData* reins_data = (struct ItemData*)s_config_reins->custom_data;
+				reins_data->itemtype = GOLDEN_REINS;
+				reins_data->configured = 1;
+			}
+			if(configuration.elm == NORMAL){	
+				Sprite* s_config_elm = SpriteManagerAdd(SpriteConfigelm, ((UINT16)9u << 3), ((UINT16)95u << 3));
+				struct ItemData* elm_data = (struct ItemData*)s_config_elm->custom_data;
+				elm_data->itemtype = GOLDEN_ELM;
+				elm_data->configured = 1;
+			}
+		break;
 	}
 }
 
@@ -325,17 +363,26 @@ void check_sgb_palette(UINT8 new_state) BANKED{
 			switch(current_area){
 				case AREA_ROME: set_sgb_palette_arearome(); break;
 				case AREA_ALPS: set_sgb_palette_areaalps(); break;
-				case AREA_SEA:  break;
-				case AREA_DESERT:  break;
+				case AREA_SEA:  set_sgb_palette_areasea(); break;
+				case AREA_GREECE: set_sgb_palette_areagreece(); break;
+				case AREA_DESERT: set_sgb_palette_areadesert(); break;
 				case AREA_EGYPT:  break;
 			}
 		}
 		break;
 	}
 }
+
 void manage_border(UINT8 my_next_state) BANKED{
     if(flag_border_set == 0u){
-        LOAD_SGB_BORDER(border);
+		switch(current_area){
+			case AREA_ROME: LOAD_SGB_BORDER(border); break;
+			case AREA_ALPS: LOAD_SGB_BORDER(borderalps); break;
+			case AREA_SEA: LOAD_SGB_BORDER(bordersea); break;
+			case AREA_GREECE: LOAD_SGB_BORDER(bordergreece); break;
+			case AREA_DESERT: LOAD_SGB_BORDER(borderdesert); break; 
+			case AREA_EGYPT: LOAD_SGB_BORDER(borderegypt); break; 
+		}
         flag_border_set = 1u;
     }
     check_sgb_palette(my_next_state);

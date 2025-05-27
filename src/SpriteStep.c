@@ -14,7 +14,7 @@ void START(){
 	THIS->lim_y = 1u;
     SetSpriteAnim(THIS, a_step, 16u);
 	struct ItemData* step_data = (struct ItemData*) THIS->custom_data;
-	step_data->hp = 40u;
+	step_data->hp = 30u;
 }
 
 void UPDATE(){

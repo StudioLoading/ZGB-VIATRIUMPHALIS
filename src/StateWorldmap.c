@@ -42,8 +42,8 @@ void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
     //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    current_area = AREA_ALPS;
-    current_mission = MISSIONALPS04;
+    current_area = AREA_DESERT;
+    current_mission = MISSIONDESERT16;
     SetState(StateWorldmap);
    //END TEST TODO removeme
 	manage_border(current_state);
@@ -111,7 +111,7 @@ void START() {
                 case MISSIONGREECE13: PRINT(0, 15, "HIDE AND LISTEN"); break;
                 case MISSIONGREECE14: PRINT(0, 15, "YOU'D BETTER RUN"); break;
                 case MISSIONGREECE15: PRINT(5, 15, "THE PHARAOH"); break;
-                case MISSIONDESERT16: PRINT(0, 15, "LOST IN THE DESERT"); break;
+                case MISSIONDESERT16: PRINT(1, 15, "LOST IN THE DESERT"); break;
             }
         break;
     }

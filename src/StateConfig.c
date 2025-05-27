@@ -50,6 +50,7 @@ extern UINT8 turn_to_load;
 extern INT16 time_to_load;
 extern UINT8 turn;
 extern INT16 time_current;
+extern MISSION current_mission;
 
 extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
@@ -200,6 +201,11 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
     pos_horse_x = s_horse->x;
     pos_horse_y = s_horse->y;
     mirror_horse = s_horse->mirror;
+    if(current_mission == MISSIONDESERT16){
+        pos_horse_x = scroll_target->x;
+        pos_horse_y = scroll_target->y;
+        mirror_horse = scroll_target->mirror;
+    }
     turn_to_load = turn;
     time_to_load = time_current;
     INSTRUCTION instruction_to_give = 0;
@@ -222,5 +228,5 @@ void pickup_config(ITEM_TYPE arg_pickedup) BANKED{
         break;
     }
     flag_golden_found = 1;
-    state_move_to_papyrus(DEAD, 0);
+    state_move_to_papyrus(instruction_to_give, 0);
 }

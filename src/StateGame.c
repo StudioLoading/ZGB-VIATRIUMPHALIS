@@ -9,6 +9,7 @@
 
 #include "custom_datas.h"
 #include "Dialogs.h"
+#include "sgb_palette.h"
 
 #define PIXEL_STAMINA 96
 #define ENDED_TRACK_COOLDOWN 80
@@ -103,6 +104,7 @@ void START() {
 }
 
 void start_common() BANKED{
+	set_sgb_palette_statusbar();
 	scroll_bottom_movement_limit = 40;
 	euphoria_min_current = euphoria_min;
 	euphoria_max_current = euphoria_max;

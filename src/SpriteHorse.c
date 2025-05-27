@@ -261,6 +261,24 @@ void UPDATE() {
                 turn_samepressure_counter = 0;
             }
         }
+        if(KEY_TICKED(J_LEFT)){
+            if(force_updown_counter == 0){
+                force_updown_counter = 1;
+            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
+                turn = 126;
+                force_updown_counter = 0u;
+                turn_samepressure_counter = 0;
+            }
+        }
+        if(KEY_TICKED(J_RIGHT)){
+            if(force_updown_counter == 0){
+                force_updown_counter = 1;
+            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
+                turn = 0;
+                force_updown_counter = 0u;
+                turn_samepressure_counter = 0;
+            }
+        }
         sin = sine_wave[turn];
         UINT8 cos_idx = turn+64;
         cos = sine_wave[cos_idx];
