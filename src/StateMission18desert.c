@@ -54,6 +54,7 @@ extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void map_ended() BANKED;
 extern void night_mode() BANKED;
+extern void die() BANKED;
 extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
 Sprite* s_beduin = 0;
