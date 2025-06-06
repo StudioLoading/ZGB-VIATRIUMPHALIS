@@ -261,24 +261,6 @@ void UPDATE() {
                 turn_samepressure_counter = 0;
             }
         }
-        if(KEY_TICKED(J_LEFT)){
-            if(force_updown_counter == 0){
-                force_updown_counter = 1;
-            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
-                turn = 126;
-                force_updown_counter = 0u;
-                turn_samepressure_counter = 0;
-            }
-        }
-        if(KEY_TICKED(J_RIGHT)){
-            if(force_updown_counter == 0){
-                force_updown_counter = 1;
-            }else if(force_updown_counter < FORCE_UPDOWN_MAX){
-                turn = 0;
-                force_updown_counter = 0u;
-                turn_samepressure_counter = 0;
-            }
-        }
         sin = sine_wave[turn];
         UINT8 cos_idx = turn+64;
         cos = sine_wave[cos_idx];
@@ -425,11 +407,18 @@ void UPDATE() {
                                 }
                             }else{orme_spawned = 0;}
                         break;
-                        case 122: case 123: case 124: case 125: //teschio!
+                        case 122: case 123: case 124: case 125: // SKULL teschio!
                             if(stamina_current > 100){
                                 stamina_current-=30;
                             }
-                            if(counter_hit == COUNTER_HIT_MAX){horse_hit(-4);}
+                            if(counter_hit == COUNTER_HIT_MAX){
+                                if(weapon_def == ELMET){
+                                    flag_hit = 1;
+                                    use_weapon(1);
+                                }else{
+                                    horse_hit(-4);
+                                }
+                            }
                         break;
                         default:
                             if(onfire_countdown == 0){//se ho spento il fuoco con l'acqua rimettimi il countdown negativo

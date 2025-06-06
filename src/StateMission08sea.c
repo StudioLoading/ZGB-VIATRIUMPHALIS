@@ -126,15 +126,11 @@ void UPDATE(){
         calculate_danger(s_barbarianshield06);
         check_danger();
         show_danger();*/
-    //IS MISSION COMPLETED?
+     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
-                INT8 can_go_on = 1;
-                turn_to_load = turn;//mission01 comincia nello stesso verso di dove finisce mission00
-                current_mission++;
-                current_step = LOOKING_FOR_SENATOR;
-                state_move_to_papyrus(MISSION08_COMPLETED, StateWorldmap);
+                map_ended();
             }
         }
 }

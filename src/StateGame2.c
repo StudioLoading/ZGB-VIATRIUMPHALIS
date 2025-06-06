@@ -28,6 +28,9 @@ static const palette_color_t palette_data_sea[] = {RGB(0,0,0),RGB(14,10,1),RGB(4
 static const palette_color_t palette_data_greece[] = {RGB(0,0,0),RGB(13,12,1),RGB(0,0,10),RGB(0,0,0)};
 static const palette_color_t palette_data_greece_03[] = {RGB(0,0,0),RGB(0,0,0),RGB(0,7,5),RGB(0,0,0)};
 static const palette_color_t palette_data_greece_04[] = {RGB(0,0,0),RGB(0,0,0),RGB(14,10,1),RGB(0,0,0)};
+static const palette_color_t palette_data_desert[] = {RGB(14,7,1),RGB(0,10,19),RGB(0,0,0),RGB(0,0,0)};
+static const palette_color_t palette_data_desert_01[] = {RGB(0,0,0),RGB(0,0,0),RGB(0,7,5),RGB(0,0,0)};
+static const palette_color_t palette_data_desert_02[] = {RGB(14,7,1),RGB(0,0,0),RGB(0,0,0),RGB(0,10,19)};
 
 UINT8 flag_night_mode = 0u;
 UINT8 flag_border_set = 0u;
@@ -121,7 +124,14 @@ void map_ended() BANKED{
 		break;
 		case MISSIONDESERT16:
 			flag_border_set = 0u;
+			current_area = AREA_EGYPT;
 			instruction_to_give = MISSION16_COMPLETED;
+		break;
+		case MISSIONDESERT17:
+			instruction_to_give = MISSION17_COMPLETED;
+		break;
+		case MISSIONDESERT18:
+			instruction_to_give = MISSION18_COMPLETED;
 		break;
 	}
 	current_mission++;
@@ -307,13 +317,19 @@ void spawn_items() BANKED{
 				elm_data->configured = 1;
 			}
 		break;
+		case MISSIONDESERT17:
+			item_spawn(ELMET, ((UINT16) 57u << 3), (UINT16) 10u << 3);
+			item_spawn(HP, ((UINT16) 67u << 3), (UINT16) 36u << 3);
+		break;
+		case MISSIONDESERT18:
+		break;
 	}
 }
 
 void night_mode() BANKED{
 	if(_cpu != CGB_TYPE){
 		BGP_REG = PAL_DEF(2, 1, 3, 3);// NIGHT MODE
-		OBP0_REG = PAL_DEF(2, 1, 3, 3);
+		OBP0_REG = PAL_DEF(3, 3, 1, 3);
 		//OBP1_REG = PAL_DEF(2, 1, 3, 3);
 	}else{
 		switch(current_area){
@@ -340,6 +356,12 @@ void night_mode() BANKED{
 				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_greece);
 				set_bkg_palette(BKGF_CGB_PAL3, 1, palette_data_greece_03);
 				set_bkg_palette(BKGF_CGB_PAL4, 1, palette_data_greece_04);
+			break;
+			case AREA_DESERT:
+				set_bkg_palette(BKGF_CGB_PAL0, 1, palette_data_desert);
+				set_bkg_palette(BKGF_CGB_PAL1, 1, palette_data_desert_01);
+				set_bkg_palette(BKGF_CGB_PAL2, 1, palette_data_desert_02);
+				set_bkg_palette(BKGF_CGB_PAL3, 1, palette_data_desert_02);
 			break;
 		}
 	}

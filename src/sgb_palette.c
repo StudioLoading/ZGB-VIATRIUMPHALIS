@@ -259,8 +259,8 @@ void set_sgb_palette_statusbar() __banked {
         UINT8 padding;
     } SGB_PALETTE2_PACKET = {
         .command = (SGB_PAL_12 << 3) | 1,
-        .pal1 = {SGB_TUTORIAL_LIGHTER, SGB_AREAROME_LIGHT, SGB_AREAROME_DARK, SGB_AREAROME_DARKER},
-        .pal2 = {SGB_AREAALPS_LIGHT, SGB_AREAALPS_DARK, SGB_AREAROME_DARKER},
+        .pal1 = {SGB_TUTORIAL_LIGHTER, SGB_AREAROME_LIGHT, SGB_TUTORIAL_LIGHTER, SGB_AREAROME_DARKER},
+        .pal2 = {SGB_AREAALPS_LIGHTER, SGB_AREAALPS_LIGHT, SGB_AREAROME_DARKER},
         .padding = 0 
     };
 	struct {
@@ -276,9 +276,9 @@ void set_sgb_palette_statusbar() __banked {
         .ycoo = 13u,
         .ndata = 20u,
 		.style = 0,
-		.ds = {0b10101010,0b10101010,0b10101010,0b10101010,
-        0b10101010,0b10101010,0b10101010,0b10101010,
-        0b10101010,0b10101010}
+		.ds = {0b01010101,0b01010101,0b01010101,0b01010101,
+        0b01010101,0b01010101,0b01010101,0b01010101,
+        0b01010101,0b01010101}
     };
 	struct {
         UINT8 command;
@@ -310,7 +310,7 @@ void set_sgb_palette_statusbar() __banked {
         .ycoo = 15u,
         .ndata = 20u,
 		.style = 0,
-		.ds = {0b01010101,0b10010101,0b01010101,0b01010110,
+		.ds = {0b01010101,0b01010101,0b01010101,0b01010101,
         0b01010101,0b01010101,0b01010101,0b01010101,
         0b01010101,0b01010101}
     };
@@ -327,9 +327,9 @@ void set_sgb_palette_statusbar() __banked {
         .ycoo = 16u,
         .ndata = 20u,
 		.style = 0,
-		.ds = {0b01010101,0b01010101,0b01010101,0b10101010,
-        0b01010101,0b01010101,0b01010101,0b01010101,
-        0b01010101,0b01010101}
+		.ds = {0b10101010,0b10101010,0b10101010,0b10101010,
+        0b10101010,0b10101010,0b10101010,0b10101010,
+        0b10101010,0b10101010}
     };
     
 	struct {
@@ -345,9 +345,9 @@ void set_sgb_palette_statusbar() __banked {
         .ycoo = 17u,
         .ndata = 20u,
 		.style = 0,
-		.ds = {0b01010101,0b01010101,0b01010101,0b10101010,
-        0b01010101,0b01010101,0b01010101,0b01010101,
-        0b01010101,0b01010101}
+		.ds =  {0b10101010,0b10101010,0b10101010,0b10101010,
+        0b10101010,0b10101010,0b10101010,0b10101010,
+        0b10101010,0b10101010}
     };
     sgb_transfer((void *)&SGB_PALETTE2_PACKET);
     sgb_transfer((void *)&SGB_PALETTE_STATUS_PACKET_0);

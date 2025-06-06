@@ -44,7 +44,7 @@
 
 #define SGB_AREADESERT_LIGHTER 	  myRGB(255, 255, 255)
 #define SGB_AREADESERT_LIGHT 	  myRGB(240, 224, 152)
-#define SGB_AREADESERT_DARK 	  myRGB(247, 48, 0)
+#define SGB_AREADESERT_DARK 	  myRGB(195, 116, 0)
 #define SGB_AREADESERT_DARKER     myRGB(0, 0, 0)
 
 void set_sgb_palette_credit_studioloading() __banked;

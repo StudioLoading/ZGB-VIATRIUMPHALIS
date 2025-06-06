@@ -28,6 +28,8 @@ _STATE(StateMission13greece)\
 _STATE(StateMission14greece)\
 _STATE(StateMission15greece)\
 _STATE(StateMission16desert)\
+_STATE(StateMission17desert)\
+_STATE(StateMission18desert)\
 STATE_DEF_END
 
 #define SPRITES \

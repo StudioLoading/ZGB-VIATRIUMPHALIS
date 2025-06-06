@@ -26,6 +26,8 @@ extern INT8 counter_hit;
 extern INT8 flag_die;
 extern UINT8 orme_spawned;
 extern INT16 time_current;
+extern UINT8 track_ended;
+extern INT8 mission_completed;
 
 void marcus_update_anim() BANKED;
 
@@ -127,6 +129,10 @@ void UPDATE() {
                             pickup(imspr);
                         }
                     }break;
+                    case SpriteMarcushorse:
+                        track_ended = 1;
+                        mission_completed = 1;
+                    break;
                 }
             }
         }

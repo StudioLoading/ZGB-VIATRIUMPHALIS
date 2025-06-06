@@ -12,15 +12,12 @@
 #include "Dialogs.h"
 #include "custom_datas.h"
 
-#define TIME_MAX_MISSIONSEA10 960 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
-#define TIME_FACTOR_MISSIONSEA10 30
-
 IMPORT_MAP(hudm);
-IMPORT_MAP(mapmission10);
+IMPORT_MAP(mapmission17);
 
-const UINT8 coll_m10_tiles[] = {15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 63, 64, 68, 69, 70, 75, 76, 77, 78, 79, 80, 81, 82, 85, 86, 90, 91, 93, 95, 96, 97, 98, 99, 102, 103, 104, 105, 106, 114, 118, 119, 121, 0};
+const UINT8 coll_m17_tiles[] = {3, 17, 18, 19, 21, 22, 23, 28, 29, 36, 44, 45, 46, 47, 49, 51, 52, 54, 56, 57, 58, 59, 61, 62, 63, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 118, 119, 120, 121, 0};
 
-const UINT8 coll_m10_surface[] = {0u, 0};
+const UINT8 coll_m17_surface[] = {0u, 0};
 
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
@@ -46,61 +43,48 @@ extern INT16 timemax_current;
 extern INT16 time_factor;
 extern INT16 time_to_load;
 extern UINT8 mission_killed;
+extern UINT8 flag_night_mode;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
-extern void calculate_danger(Sprite* s_danger) BANKED;
-extern void check_danger() BANKED;
-extern void show_danger() BANKED;
-extern void update_time() BANKED;
 extern void spawn_items() BANKED;
-extern void die() BANKED;
 extern void map_ended() BANKED;
+extern void night_mode() BANKED;
+
 
 void START(){
-    mission_iscrono = 1;
+    mission_iscrono = 0;
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
-        pos_horse_x = (UINT16) 11u << 3;
-        pos_horse_y = (UINT16) 7u << 3;
+        pos_horse_x = (UINT16) 6u << 3;
+        pos_horse_y = ((UINT16) 6u << 3) +3u;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
-        time_factor = TIME_FACTOR_MISSIONSEA10;
-        timemax_current = TIME_MAX_MISSIONSEA10;
-        time_to_load = timemax_current;
-    }     
+        current_step = EXIT;
+        mission_completed = 1;
+    }
     //SPRITES
         scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
         s_biga = SpriteManagerAdd(SpriteBiga, pos_horse_x - 20, pos_horse_y + 9);
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
-        if(current_step == LOOKING_FOR_SENATOR){
-            current_step = EXIT;
-            mission_completed = 1;
-        }
     //COMMONS & START
-        InitScroll(BANK(mapmission10), &mapmission10, coll_m10_tiles, coll_m10_surface);
+        InitScroll(BANK(mapmission17), &mapmission17, coll_m17_tiles, coll_m17_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
         spawn_items();
         start_common();
 }
 
-
 void UPDATE(){
+    //NIGHT MODE
+        if(flag_night_mode == 0){
+            flag_night_mode = 1;
+            night_mode();
+        }
     //COMMON UPDATE
         update_common();
-    //LIMIT MAP LEFT
-        if(s_horse->y < 80 && s_horse->x < 24u){
-            s_horse->x = 24u;
-        }
-    //UPDATE TIME
-        update_time();
-        time_current--;
-        if(time_current < 0 && !mission_completed && !track_ended){
-            die();
-        }
     //IS MISSION COMPLETED?
         if(mission_completed && track_ended){
             track_ended_cooldown--;

@@ -43,7 +43,7 @@ void start_game() BANKED{
     //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
     current_area = AREA_DESERT;
-    current_mission = MISSIONDESERT16;
+    current_mission = MISSIONDESERT18;
     SetState(StateWorldmap);
    //END TEST TODO removeme
 	manage_border(current_state);
@@ -63,7 +63,7 @@ void START() {
                 InitScroll(BANK(areasea), &areasea, 0, 0);
             }else if(current_mission <= MISSIONGREECE15){
                 InitScroll(BANK(areagreece), &areagreece, 0, 0);
-            }else if(current_mission <= MISSIONDESERT16){
+            }else if(current_mission <= MISSIONDESERT18){
                 InitScroll(BANK(areadesert), &areadesert, 0, 0);
             }
         break;
@@ -112,6 +112,8 @@ void START() {
                 case MISSIONGREECE14: PRINT(0, 15, "YOU'D BETTER RUN"); break;
                 case MISSIONGREECE15: PRINT(5, 15, "THE PHARAOH"); break;
                 case MISSIONDESERT16: PRINT(1, 15, "LOST IN THE DESERT"); break;
+                case MISSIONDESERT17: PRINT(1, 15, "  NIGHTLY DESERT  "); break;
+                case MISSIONDESERT18: PRINT(1, 15, "   THE BEDUINE    "); break;
             }
         break;
     }
@@ -143,6 +145,8 @@ void UPDATE() {
                 case MISSIONGREECE14: Anim_areagreece_3(); break;
                 case MISSIONGREECE15: Anim_areagreece_4(); break;
                 case MISSIONDESERT16: Anim_areadesert_1(); break;
+                case MISSIONDESERT17: Anim_areadesert_2(); break;
+                case MISSIONDESERT18: Anim_areadesert_3(); break;
             }
         }
     }else{
@@ -175,6 +179,8 @@ void UPDATE() {
                     Anim_areagreece_0();
                 break;
                 case MISSIONDESERT16:
+                case MISSIONDESERT17:
+                case MISSIONDESERT18:
                     Anim_areadesert_0();
                 break;
             }
@@ -254,6 +260,14 @@ void UPDATE() {
                 case MISSIONDESERT16:
                     prev_state_to_give = StateMission16desert;
                     instruction_to_give = MISSION16_INTRO;
+                break;
+                case MISSIONDESERT17:
+                    prev_state_to_give = StateMission17desert;
+                    instruction_to_give = MISSION17_INTRO;
+                break;
+                case MISSIONDESERT18:
+                    prev_state_to_give = StateMission18desert;
+                    instruction_to_give = MISSION18_INTRO;
                 break;
             }
             state_move_to_papyrus(instruction_to_give, prev_state_to_give);

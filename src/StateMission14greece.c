@@ -71,6 +71,7 @@ void m14_spawn_straw() BANKED;
 void m14_spawn_greeks2() BANKED;
 
 void START(){
+    mission_iscrono = 0;
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial

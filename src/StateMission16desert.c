@@ -110,5 +110,12 @@ void UPDATE(){
         if(time_current < 0){
             update_hp(-2);
             time_current = timemax_current;
-        } 
+        }
+    //TRACK ENDED
+        if(mission_completed && track_ended){
+            track_ended_cooldown--;
+            if(track_ended_cooldown <= 0){//cambia stato
+                map_ended();
+            }
+        }
 }

@@ -256,5 +256,80 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "WHERE...      ", 15);
             memcpy(d12, EMPTY_STRING_14, 15);
         break;
+        case MISSION16_COMPLETED:
+            memcpy(d0, "I AM BARELY A,", 15);
+            memcpy(d1, "LIVE. THIS HE,", 15);
+            memcpy(d2, "AT IS KILLING ", 15);
+            memcpy(d3, "ME AND THE    ", 15);
+            memcpy(d4, "HORSE... IT'S ", 15);
+            memcpy(d5, "BETTER FOR US ", 15);
+            memcpy(d6, "TO WAIT FOR   ", 15);
+            memcpy(d7, "THE NIGHT.    ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, "EGYPT SHOULD  ", 15);
+            memcpy(d10, "BE SOUTH EAST ", 15);
+            memcpy(d11, "FROM HERE.    ", 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION17_INTRO:
+            memcpy(d0, "NIGHT HAS FAL,", 15);
+            memcpy(d1, "LEN IN THIS   ", 15);
+            memcpy(d2, "DESERT OF THE ", 15);
+            memcpy(d3, "FAR EAST.     ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "I SHOULD GET  ", 15);
+            memcpy(d6, "TO SOME CIVI, ", 15);
+            memcpy(d7, "LIZED VILLAGE ", 15);
+            memcpy(d8, "IF I MOVE TO  ", 15);
+            memcpy(d9, "THE SOUTH EAST", 15);
+            memcpy(d10, "FROM HERE.    ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION17_COMPLETED:
+            memcpy(d0, "PHEW!         ", 15);
+            memcpy(d1, "THIS DESERT IS", 15);
+            memcpy(d2, "HARD GOING... ", 15);
+            memcpy(d3, "SUN IS RISING ", 15);
+            memcpy(d4, "UP, LIGHT WILL", 15);
+            memcpy(d5, "HOPEFULLY SHOW", 15);
+            memcpy(d6, "ME WHAT'S IN  ", 15);
+            memcpy(d7, "THE HORIZON.  ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION18_INTRO:
+            memcpy(d0, "GOOD MORNING  ", 15);
+            memcpy(d1, "TO ME! I CAN  ", 15);
+            memcpy(d2, "NOW SEE SOME  ", 15);
+            memcpy(d3, "TRACKS! I     ", 15);
+            memcpy(d4, "SHOULD FOLLOW ", 15);
+            memcpy(d5, "THEM, MAYBE   ", 15);
+            memcpy(d6, "THERE'S ANO,  ", 15);
+            memcpy(d7, "THER HUMAN    ", 15);
+            memcpy(d8, "BEING LOST IN ", 15);
+            memcpy(d9, "HERE... OR A  ", 15);
+            memcpy(d10, "VILLAGE TO GET", 15);
+            memcpy(d11, "TO, NEARBY... ", 15);
+            memcpy(d12, EMPTY_STRING_14, 15);
+        break;
+        case MISSION18_COMPLETED:
+            memcpy(d0, "MARCUS,       ", 15);
+            memcpy(d1, "IF YOU WILL   ", 15);
+            memcpy(d2, "EVER GET THIS ", 15);
+            memcpy(d3, "MESSAGE, I    ", 15);
+            memcpy(d4, "HOPE YOU ARE  ", 15);
+            memcpy(d5, "IN GOOD SHAPE ", 15);
+            memcpy(d6, "TO CONTINUE   ", 15);
+            memcpy(d7, "YOUR JOURNEY. ", 15);
+            memcpy(d8, "I'VE KNOWN THE", 15);
+            memcpy(d9, "PHARAOH BEATED", 15);
+            memcpy(d10, "YOU. IT IS    ", 15);
+            memcpy(d11, "TIME FOR RETRI", 15);
+            memcpy(d12, "BUTION.       ", 15);
+        break;
     }
 }
