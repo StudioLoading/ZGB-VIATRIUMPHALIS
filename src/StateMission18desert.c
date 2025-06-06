@@ -15,6 +15,9 @@
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission18);
 
+#define TIME_MAX_MISSION18 448 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
+#define TIME_FACTOR_MISSION18 14
+
 const UINT8 coll_m18_tiles[] = {3, 17, 18, 19, 21, 22, 23, 28, 29, 36, 44, 45, 46, 47, 49, 51, 52, 54, 56, 57, 58, 59, 61, 62, 63, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 118, 119, 120, 121, 0};
 
 const UINT8 coll_m18_surface[] = {0u, 0};
@@ -47,22 +50,37 @@ extern UINT8 flag_night_mode;
 
 extern void start_common() BANKED;
 extern void update_common() BANKED;
+extern void update_time() BANKED;
 extern void spawn_items() BANKED;
 extern void map_ended() BANKED;
 extern void night_mode() BANKED;
+extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 
+Sprite* s_beduin = 0;
 
 void START(){
     mission_iscrono = 0;
+    timemax_current = TIME_MAX_MISSION18;
+    time_factor = TIME_FACTOR_MISSION18;
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
         pos_horse_x = (UINT16) 6u << 3;
-        pos_horse_y = ((UINT16) 6u << 3) +3u;
+        pos_horse_y = ((UINT16) 10u << 3) +3u;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
         current_step = EXIT;
+        s_beduin = SpriteManagerAdd(SpriteRomansenator, ((UINT16) 159u) << 3, ((UINT16) 16u) << 3);
+        mission_completed = 0;
+        time_factor = TIME_FACTOR_MISSION18;
+        timemax_current = TIME_MAX_MISSION18;
+        time_to_load = timemax_current;
+    }else{
+        mirror_horse = NO_MIRROR;
+        SpriteManagerRemoveSprite(s_beduin);
+        current_step = EXIT;
         mission_completed = 1;
+        s_beduin = 0;
     }
     //SPRITES
         scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);
@@ -84,6 +102,19 @@ void UPDATE(){
         }
         if(s_horse->y < ((UINT16) 1u << 3)){ s_horse->y = ((UINT16) 1u << 3); }
         if(s_horse->y > ((UINT16) 22u << 3)){ s_horse->y = ((UINT16) 22u << 3); }
+    //UPDATE TIME
+        update_time();
+        time_current--;
+        if(time_current < 0 && !mission_completed && !track_ended){
+            die();
+        }
+    //MISSION STEP
+        if(current_step == SENATOR_COLLIDED){
+            pos_horse_x = s_horse->x;
+            pos_horse_y = s_horse->y;
+            turn_to_load = turn;
+            state_move_to_papyrus(MISSION18_BEDUIN_MESSAGE, StateMission18desert);
+        }
     //COMMON UPDATE
         update_common();
     //IS MISSION COMPLETED?

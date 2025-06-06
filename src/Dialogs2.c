@@ -316,6 +316,20 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "TO, NEARBY... ", 15);
             memcpy(d12, EMPTY_STRING_14, 15);
         break;
+        case MISSION18_BEDUIN_MESSAGE:
+            memcpy(d0, "JULIUS CAESAR ", 15);
+            memcpy(d1, "SENT ME TO    ", 15);
+            memcpy(d2, "FIND THE BRAVE", 15);
+            memcpy(d3, "MARCUS. ARE   ", 15);
+            memcpy(d4, "YOU THAT MAN? ", 15);
+            memcpy(d5, EMPTY_STRING_14, 15);
+            memcpy(d6, "IT IS MY DUTY ", 15);
+            memcpy(d7, "TO SHOW YOU   ", 15);
+            memcpy(d8, "THE ROAD TO   ", 15);
+            memcpy(d9, "EGYPTIAN VIL, ", 15);
+            memcpy(d10, "LAGES.        ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
         case MISSION18_COMPLETED:
             memcpy(d0, "MARCUS,       ", 15);
             memcpy(d1, "IF YOU WILL   ", 15);

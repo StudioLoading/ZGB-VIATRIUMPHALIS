@@ -82,7 +82,6 @@ void START(){
         scroll_target = SpriteManagerAdd(SpriteMarcus, pos_horse_x + 8, pos_horse_y - 16);
         SpriteManagerAdd(SpriteMarcushorse, ((UINT16)54u << 3), ((UINT16)91u << 3));
         if(current_step == LOOKING_FOR_SENATOR){
-            mission_completed = 0;
             current_step = EXIT;
             mission_completed = 1;
         }

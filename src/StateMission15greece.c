@@ -85,7 +85,6 @@ void START(){
         s_horse = SpriteManagerAdd(SpriteHorse, pos_horse_x, pos_horse_y);
         //s_compass = SpriteManagerAdd(SpriteCompass, pos_horse_x, pos_horse_y);
         if(current_step == LOOKING_FOR_SENATOR){
-            mission_completed = 0;
             current_step = EXIT;
             mission_completed = 1;
         }

@@ -75,7 +75,6 @@ void START(){
         pos_horse_y = (UINT16) 16u << 3;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
-        time_to_load = timemax_current;
     }     
     //SPRITES
         scroll_target = SpriteManagerAdd(SpriteCamera, pos_horse_x + 8, pos_horse_y - 16);

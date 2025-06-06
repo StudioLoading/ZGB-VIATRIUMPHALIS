@@ -322,6 +322,8 @@ void spawn_items() BANKED{
 			item_spawn(HP, ((UINT16) 67u << 3), (UINT16) 36u << 3);
 		break;
 		case MISSIONDESERT18:
+			item_spawn(TIME, ((UINT16) 75u << 3), ((UINT16) 6u << 3));
+			item_spawn(TIME, ((UINT16) 132u << 3), ((UINT16) 9u << 3));
 		break;
 	}
 }
