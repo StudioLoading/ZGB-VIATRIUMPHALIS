@@ -9,10 +9,10 @@
 
 #include "custom_datas.h"
 
-const UINT8 a_statue_h[] = {2, 0,1};
+const UINT8 a_statue_h[] = {1, 1};
 
 void START() {
-    SetSpriteAnim(THIS, a_statue_h, 32u);
+    SetSpriteAnim(THIS, a_statue_h, 1u);
     THIS->lim_x = 10000;
     THIS->lim_y = 10000;
     if(_cpu != CGB_TYPE){

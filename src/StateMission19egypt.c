@@ -16,8 +16,8 @@
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission19);
 
-#define TIME_MAX_MISSION19 448 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
-#define TIME_FACTOR_MISSION19 14
+#define TIME_MAX_MISSION19 1024 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
+#define TIME_FACTOR_MISSION19 32
 #define TIME_MAX_TILE_ANIM 10
 
 const UINT8 coll_m19_tiles[] = {3, 17, 18, 19, 21, 22, 23, 28, 29, 36, 44, 45, 46, 47, 49, 51, 52, 54, 56, 57, 58, 59, 61, 62, 63, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 118, 119, 120, 121, 0};
@@ -64,7 +64,7 @@ INT8 timer_tile_anim = 0;
 UINT8 idx_tile_anim = 0u;
 
 void START(){
-    mission_iscrono = 0;
+    mission_iscrono = 1;
     timemax_current = TIME_MAX_MISSION19;
     time_factor = TIME_FACTOR_MISSION19;
     timer_tile_anim = TIME_MAX_TILE_ANIM;
@@ -77,7 +77,7 @@ void START(){
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
         current_step = EXIT;
-        s_statue = SpriteManagerAdd(SpriteStatue, ((UINT16) 159u) << 3, ((UINT16) 16u) << 3);
+        s_statue = SpriteManagerAdd(SpriteStatue, ((UINT16) 56u) << 3, ((UINT16) 37u) << 3);
         mission_completed = 0;
         time_factor = TIME_FACTOR_MISSION19;
         timemax_current = TIME_MAX_MISSION19;
@@ -108,12 +108,10 @@ void UPDATE(){
         if(s_horse->x < 40u){
             s_horse->x = 40u;
         }
-        if(s_horse->y < ((UINT16) 1u << 3)){ s_horse->y = ((UINT16) 1u << 3); }
-        if(s_horse->y > ((UINT16) 22u << 3)){ s_horse->y = ((UINT16) 22u << 3); }
     //UPDATE TIME
         update_time();
         time_current--;
-        if(time_current < 0 && !mission_completed && !track_ended){
+        if(time_current < 0 && !track_ended){
             die();
         }
     //MISSION STEP

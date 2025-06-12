@@ -374,5 +374,20 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, EMPTY_STRING_14, 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case MISSION19_COMPLETED:
+            memcpy(d0, "THE STATUE OF ", 15);
+            memcpy(d1, "MARS! NOW I   ", 15);
+            memcpy(d2, "CAN FEEL WE   ", 15);
+            memcpy(d3, "CAN MAKE IT!  ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "WITHOUT THIS  ", 15);
+            memcpy(d6, "STATUE THE    ", 15);
+            memcpy(d7, "ENEMY YOU ARE ", 15);
+            memcpy(d8, "GOING TO FACE ", 15);
+            memcpy(d9, "WILL BE A LOT ", 15);
+            memcpy(d10, "WEAKER.       ", 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+            memcpy(d12, "NOW REST.     ", 15);
+        break;
     }
 }

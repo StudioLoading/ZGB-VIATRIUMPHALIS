@@ -329,9 +329,8 @@ void spawn_items() BANKED{
 			item_spawn(TIME, ((UINT16) 132u << 3), ((UINT16) 9u << 3));
 		break;
 		case MISSIONEGYPT19:
-			item_spawn(TIME, ((UINT16) 75u << 3), ((UINT16) 6u << 3));
-			item_spawn(TIME, ((UINT16) 132u << 3), ((UINT16) 29u << 3));
-			item_spawn(HP, ((UINT16) 32u << 3), ((UINT16) 54u << 3));
+			item_spawn(TIME, ((UINT16) 38u << 3), ((UINT16) 28u << 3));
+			item_spawn(HP, ((UINT16) 110u << 3), ((UINT16) 29u << 3));
 		break;
 	}
 }
