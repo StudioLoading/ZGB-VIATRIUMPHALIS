@@ -113,7 +113,11 @@ NICE TO HAVE:
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\egypt.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\egypt.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\egypt.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\mapegypt.gbm
+
+GIF TO PNG FRAMES
+ffmpeg -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\input.gif C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%d.png
+ffmpeg -framerate 10 -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%01d.png -vf format=gray C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_grayscale.gif
 
 GENERAZIONE QR CODE DA POWERSHELL
 New-QRCodeURI -URI 'https://www.kickstarter.com/projects/studioloading/flying-arrows-2-gameboy-game-save-bolognanerd' -Width 15 -OutPath 'C:\Users\checc\GB\ARROWS2\BOX\QR-URL.png'

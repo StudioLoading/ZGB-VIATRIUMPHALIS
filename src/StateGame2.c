@@ -123,15 +123,18 @@ void map_ended() BANKED{
 			instruction_to_give = MISSION15_COMPLETED;
 		break;
 		case MISSIONDESERT16:
-			flag_border_set = 0u;
-			current_area = AREA_EGYPT;
 			instruction_to_give = MISSION16_COMPLETED;
 		break;
 		case MISSIONDESERT17:
 			instruction_to_give = MISSION17_COMPLETED;
 		break;
 		case MISSIONDESERT18:
+			flag_border_set = 0u;
+			current_area = AREA_EGYPT;
 			instruction_to_give = MISSION18_COMPLETED;
+		break;
+		case MISSIONEGYPT19:
+			instruction_to_give = MISSION19_COMPLETED;
 		break;
 	}
 	current_mission++;
@@ -324,6 +327,11 @@ void spawn_items() BANKED{
 		case MISSIONDESERT18:
 			item_spawn(TIME, ((UINT16) 75u << 3), ((UINT16) 6u << 3));
 			item_spawn(TIME, ((UINT16) 132u << 3), ((UINT16) 9u << 3));
+		break;
+		case MISSIONEGYPT19:
+			item_spawn(TIME, ((UINT16) 75u << 3), ((UINT16) 6u << 3));
+			item_spawn(TIME, ((UINT16) 132u << 3), ((UINT16) 29u << 3));
+			item_spawn(HP, ((UINT16) 32u << 3), ((UINT16) 54u << 3));
 		break;
 	}
 }

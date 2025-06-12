@@ -8,7 +8,8 @@ IMPORT_TILES(worldmapt00);//ROME
 IMPORT_TILES(worldmapt01);//ALPS
 IMPORT_TILES(worldmapt02);//SEE
 IMPORT_TILES(worldmapt03);//GREECE
-IMPORT_TILES(worldmapt04);//DESERT + EGYPT
+IMPORT_TILES(worldmapt04);//DESERT
+IMPORT_TILES(worldmapt05);//EGYPT
 
 IMPORT_TILES(arearomet99);
 IMPORT_TILES(arearomet00);
@@ -38,6 +39,18 @@ IMPORT_TILES(areadesertt00);
 IMPORT_TILES(areadesertt01);
 IMPORT_TILES(areadesertt02);
 IMPORT_TILES(areadesertt99);
+
+IMPORT_TILES(areaegyptt99);
+IMPORT_TILES(areaegyptt00);
+IMPORT_TILES(areaegyptt01);
+IMPORT_TILES(areaegyptt02);
+
+IMPORT_TILES(mapegyptt);
+IMPORT_TILES(mapegyptt1);
+IMPORT_TILES(mapegyptt2);
+IMPORT_TILES(mapegyptt3);
+IMPORT_TILES(mapegyptt4);
+IMPORT_TILES(mapegyptt5);
 
 IMPORT_TILES(configmapt);
 IMPORT_TILES(configmapt00elm);
@@ -71,8 +84,10 @@ void Anim_worldmap_1(AREA arg_current_area) BANKED{
             set_banked_bkg_data(0, 123u, &worldmapt03, BANK(worldmapt03));
         break;
         case AREA_DESERT:
-        case AREA_EGYPT:
             set_banked_bkg_data(0, 123u, &worldmapt04, BANK(worldmapt04));
+        break;
+        case AREA_EGYPT:
+            set_banked_bkg_data(0, 123u, &worldmapt05, BANK(worldmapt05));
         break;
     }
 }
@@ -151,6 +166,38 @@ void Anim_areadesert_2() BANKED{
 }
 void Anim_areadesert_3() BANKED{
     set_banked_bkg_data(1, 95u, &areadesertt02, BANK(areadesertt02));
+}
+
+void Anim_areaegypt_0() BANKED{
+    set_banked_bkg_data(1, 95u, &areaegyptt99, BANK(areaegyptt99));
+}
+void Anim_areaegypt_1() BANKED{
+    set_banked_bkg_data(1, 95u, &areaegyptt00, BANK(areaegyptt00));
+}
+void Anim_areaegypt_2() BANKED{
+    set_banked_bkg_data(1, 95u, &areaegyptt01, BANK(areaegyptt01));
+}
+void Anim_areaegypt_3() BANKED{
+    set_banked_bkg_data(1, 95u, &areaegyptt02, BANK(areaegyptt02));
+}
+
+void Anim_mapegypt_0() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt, BANK(mapegyptt));
+}
+void Anim_mapegypt_1() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt1, BANK(mapegyptt1));
+}
+void Anim_mapegypt_2() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt2, BANK(mapegyptt2));
+}
+void Anim_mapegypt_3() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt3, BANK(mapegyptt3));
+}
+void Anim_mapegypt_4() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt4, BANK(mapegyptt4));
+}
+void Anim_mapegypt_5() BANKED{
+    set_banked_bkg_data(32, 73u, &mapegyptt5, BANK(mapegyptt5));
 }
 
 void Anim_config_no() BANKED{

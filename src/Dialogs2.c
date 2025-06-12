@@ -345,5 +345,34 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "TIME FOR RETRI", 15);
             memcpy(d12, "BUTION.       ", 15);
         break;
+        case MISSION19_INTRO:
+            memcpy(d0, "A CENTURION   ", 15);
+            memcpy(d1, "ARMY HAS FIRED", 15);
+            memcpy(d2, "UP AN EGYPTIAN", 15);
+            memcpy(d3, "TEMPLE OF RA. ", 15);
+            memcpy(d4, "WE USE IT     ", 15);
+            memcpy(d5, "DIVERSIVELY TO", 15);
+            memcpy(d6, "GET BACK ONE  ", 15);
+            memcpy(d7, "OF OUR SACRED ", 15);
+            memcpy(d8, "STATUE.       ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "YOU MUST FIND ", 15);
+            memcpy(d11, "THE STATUE AND", 15);
+            memcpy(d12, "RUN OFF!      ", 15);
+        break;
+        case MISSION19_STATUE_MESSAGE:
+            memcpy(d0, "THE STATUE OF ", 15);
+            memcpy(d1, "MARTE ULTRONE ", 15);
+            memcpy(d2, "IS BACK IN OUR", 15);
+            memcpy(d3, "HANDS!        ", 15);
+            memcpy(d4, EMPTY_STRING_14, 15);
+            memcpy(d5, "GREAT!        ", 15);
+            memcpy(d6, "NOW RUN AWAY  ", 15);
+            memcpy(d7, "AS FAST AS YOU", 15);
+            memcpy(d8, "CAN.          ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, EMPTY_STRING_14, 15);
+            memcpy(d11, EMPTY_STRING_14, 15);
+        break;
     }
 }
