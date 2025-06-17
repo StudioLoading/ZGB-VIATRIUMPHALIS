@@ -31,6 +31,7 @@ _STATE(StateMission16desert)\
 _STATE(StateMission17desert)\
 _STATE(StateMission18desert)\
 _STATE(StateMission19egypt)\
+_STATE(StateMission20egypt)\
 STATE_DEF_END
 
 #define SPRITES \
@@ -75,6 +76,7 @@ _SPRITE_DMG(SpriteGator, gator)\
 _SPRITE_DMG(SpriteMarcus, marcus)\
 _SPRITE_DMG(SpriteMarcushorse, marcushorse)\
 _SPRITE_DMG(SpriteStatue, statue)\
+_SPRITE_DMG(SpritePriest, priest)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"

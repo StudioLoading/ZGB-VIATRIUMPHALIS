@@ -389,5 +389,20 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, EMPTY_STRING_14, 15);
             memcpy(d12, "NOW REST.     ", 15);
         break;
+        case MISSION20_INTRO:
+            memcpy(d0, "FOLLOW THE    ", 15);
+            memcpy(d1, "PATH BETWEEN  ", 15);
+            memcpy(d2, "THE TENDS OF  ", 15);
+            memcpy(d3, "THE VILLAGE.  ", 15);
+            memcpy(d4, "YOU'LL FIND A ", 15);
+            memcpy(d5, "SINGLE GUARD  ", 15);
+            memcpy(d6, "AND AT THE END", 15);
+            memcpy(d7, "OF THE PATH,  ", 15);
+            memcpy(d8, "THE PRIEST.   ", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "YOU MUST BE FA", 15);
+            memcpy(d11, "ST AND EXTRIME", 15);
+            memcpy(d12, "LY PRECISE.   ", 15);
+        break;
     }
 }

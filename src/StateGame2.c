@@ -136,6 +136,12 @@ void map_ended() BANKED{
 		case MISSIONEGYPT19:
 			instruction_to_give = MISSION19_COMPLETED;
 		break;
+		case MISSIONEGYPT20:
+			instruction_to_give = MISSION20_COMPLETED;
+		break;
+		case MISSIONEGYPT21:
+			instruction_to_give = MISSION21_COMPLETED;
+		break;
 	}
 	current_mission++;
 	current_step = LOOKING_FOR_SENATOR;
@@ -190,6 +196,20 @@ void die() BANKED{
 			configuration.whip = NORMAL;
 			map_ended();
 			return;
+		break;
+		case MISSIONDESERT16:
+		case MISSIONDESERT17:
+		case MISSIONDESERT18:
+			turn_to_load = 0;
+			current_step = LOOKING_FOR_SENATOR; 
+			current_mission = MISSIONDESERT16;
+		break;
+		case MISSIONEGYPT19:
+		case MISSIONEGYPT20:
+		case MISSIONEGYPT21:
+			turn_to_load = 0;
+			current_step = LOOKING_FOR_SENATOR; 
+			current_mission = MISSIONEGYPT19; 
 		break;
 	}
 	world_area_map = 0;
@@ -331,6 +351,13 @@ void spawn_items() BANKED{
 		case MISSIONEGYPT19:
 			item_spawn(TIME, ((UINT16) 38u << 3), ((UINT16) 28u << 3));
 			item_spawn(HP, ((UINT16) 110u << 3), ((UINT16) 29u << 3));
+		break;
+		case MISSIONEGYPT20:
+			item_spawn(GLADIO, ((UINT16) 12u << 3), ((UINT16) 4u << 3));
+			item_spawn(TIME, ((UINT16) 108u << 3), ((UINT16) 8u << 3));
+			item_spawn(TIME, ((UINT16) 206u << 3), ((UINT16) 7u << 3));
+			item_spawn(TIME, ((UINT16) 176u << 3), ((UINT16) 10u << 3));
+
 		break;
 	}
 }

@@ -121,3 +121,6 @@ ffmpeg -framerate 10 -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%01d.png -
 
 GENERAZIONE QR CODE DA POWERSHELL
 New-QRCodeURI -URI 'https://www.kickstarter.com/projects/studioloading/flying-arrows-2-gameboy-game-save-bolognanerd' -Width 15 -OutPath 'C:\Users\checc\GB\ARROWS2\BOX\QR-URL.png'
+
+PDF TO PNG
+magick -density 300 input.pdf -resize 50% output.png

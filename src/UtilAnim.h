@@ -30,6 +30,7 @@ void Anim_areadesert_3() BANKED;
 void Anim_areaegypt_0() BANKED;
 void Anim_areaegypt_1() BANKED;
 void Anim_areaegypt_2() BANKED;
+void Anim_areaegypt_3() BANKED;
 void Anim_mapegypt_0() BANKED;
 void Anim_mapegypt_1() BANKED;
 void Anim_mapegypt_2() BANKED;
