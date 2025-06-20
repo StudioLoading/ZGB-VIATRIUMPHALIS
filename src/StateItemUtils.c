@@ -259,6 +259,7 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                 case SpriteBarbarian:
                 case SpriteSavage:
                 case SpriteRomansoldier:
+                case SpritePriest:
                 case SpriteGreeksoldier:{
                     struct SoldierData* romansoldier_data = (struct SoldierData*)s_item_arg->custom_data;
                     if(romansoldier_data->configured < 4){

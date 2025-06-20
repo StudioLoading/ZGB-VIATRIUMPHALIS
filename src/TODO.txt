@@ -54,13 +54,11 @@ Deserto (oasi, dune, accampamenti nomadi)
 Egitto (piramidi, fiumi, templi in fiamme)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
-"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Dove metto il faraone? un trono su un carro trainato da coccodrilli. Potrei far lanciare ragnatele nel senso di reti che mi intrappolano per un po', e i coccodrilli vengono a mangiarmi. se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
+"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 -------------------------------------------------------------------------------------
 
 - Normal Mode vs Hard Mode
     hard mode non avrà il tutorial iniziale;
-
-- non sto praticamente mai usando il cape, lo faccio solo in Egitto o una fiamma ce la mettiamo in giro in biomi precedenti?
 
 - SuperGameBoy: 
     - border finale per bonus stage

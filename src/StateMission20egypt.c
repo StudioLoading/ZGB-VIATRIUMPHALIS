@@ -76,7 +76,7 @@ void START(){
         s_priest = SpriteManagerAdd(SpritePriest, ((UINT16) 214u) << 3, ((UINT16) 4u) << 3);
         s_shielded0 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 92u) << 3, (((UINT16) 9u) << 3)+3u);
         s_shielded0->mirror = V_MIRROR;
-        struct SoldierData* shielded00_data = (struct SoldierData*) s_shielded00->custom_data;
+        struct SoldierData* shielded00_data = (struct SoldierData*) s_shielded0->custom_data;
         shielded00_data->configured = 1;
         mission_completed = 0;
         time_factor = TIME_FACTOR_MISSION20;
@@ -112,6 +112,10 @@ void UPDATE(){
         time_current--;
         if(time_current < 0 && !track_ended){
             die();
+        }
+    //CHECK PRIEST DIE
+        if(mission_killed > 0){
+            mission_completed = 1;
         }
     //COMMON UPDATE
         update_common();

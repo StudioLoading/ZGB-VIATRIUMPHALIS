@@ -404,5 +404,35 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "ST AND EXTRIME", 15);
             memcpy(d12, "LY PRECISE.   ", 15);
         break;
+        case MISSION20_COMPLETED:
+            memcpy(d0, "I KNEW YOU    ", 15);
+            memcpy(d1, "WERE ABLE TO  ", 15);
+            memcpy(d2, "DO THAT! I AM ", 15);
+            memcpy(d3, "SO PROUD OF   ", 15);
+            memcpy(d4, "YOU! MARCUS IS", 15);
+            memcpy(d5, "ALREADY BEING ", 15);
+            memcpy(d6, "TOLD AS AN    ", 15);
+            memcpy(d7, "EMPIRE HERO!  ", 15);
+            memcpy(d8, EMPTY_STRING_14, 15);
+            memcpy(d9, "IT IS TIME FOR", 15);
+            memcpy(d10, "YOU TO REST   ", 15);
+            memcpy(d11, "FOR THE FINAL ", 15);
+            memcpy(d12, "MISSION.      ", 15);
+        break;
+        case MISSION21_INTRO:
+            memcpy(d0, "THE PHARAOH   ", 15);
+            memcpy(d1, "IN PERSON IS  ", 15);
+            memcpy(d2, "OUR FOCUS NOW.", 15);
+            memcpy(d3, EMPTY_STRING_14, 15);
+            memcpy(d4, "IT IS TIME FOR", 15);
+            memcpy(d5, "YOUR LAST     ", 15);
+            memcpy(d6, "BLOOD. ATTACK ", 15);
+            memcpy(d7, "HIM WITH EVERY", 15);
+            memcpy(d8, "WEAPON YOU GET", 15);
+            memcpy(d9, EMPTY_STRING_14, 15);
+            memcpy(d10, "LET'S GET SOME", 15);
+            memcpy(d11, "RETRIBUTION!  ", 15);
+            memcpy(d12, EMPTY_STRING_14 , 15);
+        break;
     }
 }
