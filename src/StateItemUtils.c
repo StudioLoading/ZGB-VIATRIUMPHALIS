@@ -51,6 +51,7 @@ extern void item_configreins_anim(Sprite* s_item_arg) BANKED;
 extern void item_configelm_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configelm_anim(Sprite* s_item_arg) BANKED;
 extern void item_papirus_anim(Sprite* s_item_arg) BANKED;
+extern void pharaosubiga_change_status(INT8 arg_status) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
@@ -249,6 +250,14 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                     }
                 break;
                 case SpritePharaosubiga:
+                case SpritePharaobiga:
+                    if(item_data->configured > 3){
+                        if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
+                            pharaosubiga_change_status(1);
+                            item_data->configured = 5;
+                        }
+                    }
+                break;
                 case SpriteGator:
                     if(item_data->configured > 3){
                         if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
@@ -261,13 +270,15 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                 case SpriteRomansoldier:
                 case SpritePriest:
                 case SpriteGreeksoldier:{
-                    struct SoldierData* romansoldier_data = (struct SoldierData*)s_item_arg->custom_data;
-                    if(romansoldier_data->configured < 4){
-                        romansoldier_data->configured = 4;
+                    struct SoldierData* sprite_data = (struct SoldierData*)iispr->custom_data;
+                    if(sprite_data->configured < 4){
+                        sprite_data->configured = 4;
                     }
                     s_item_arg->x = iispr->x;
                     if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
-                        item_data->configured = 5;
+                        if(item_data->configured < 5){
+                            item_data->configured = 5;
+                        }
                     }
                 }break;
                 case SpriteBarbarianshield:{

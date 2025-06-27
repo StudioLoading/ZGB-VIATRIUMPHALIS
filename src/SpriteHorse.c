@@ -67,6 +67,7 @@ void change_stamina_current(INT16 start, INT16 increase) BANKED;
 
 
 extern UINT8 J_WHIP;
+extern UINT8 J_ATK;
 extern INT8 hud_turn_cooldown;
 extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
@@ -103,6 +104,12 @@ void START() {
 }
 
 void UPDATE() {
+    //ATTACK
+        if(KEY_TICKED(J_ATK)){
+            if(weapon_atk != NONE){
+                use_weapon(0);
+            }
+        }
     //NET CATCHING
         if(pharanonet_caught_timer > 0){
             horse_netcatching++;
@@ -459,7 +466,19 @@ void UPDATE() {
                             }
                         }
                     break;                    
-                    case SpriteItemheart:{
+                    case SpriteItemgladio:
+                    case SpriteItemlance:
+                    case SpriteItemfire:
+                    case SpriteItemelmet:
+                    case SpriteItemshield:
+                    case SpriteItemcape:
+                    case SpriteItemheart:
+                    case SpriteItemglass:
+                    case SpriteConfigwhip:
+                    case SpriteConfigreins:
+                    case SpriteConfigwheel:
+                    case SpriteConfigelm:
+                    case SpriteItempapirus:{
                         struct ItemData* item_data = (struct ItemData*) iospr->custom_data;
                         if(item_data->configured == 2){
                             pickup(iospr);

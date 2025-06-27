@@ -13,16 +13,15 @@
 #include "custom_datas.h"
  
 IMPORT_MAP(hudm);
-IMPORT_MAP(mapmission15);
+IMPORT_MAP(mapmission21);
 
-const UINT8 coll_m15_tiles[] = {3, 15, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 40, 41, 42, 43, 44, 48, 49, 50, 51, 52, 53, 56, 57, 63, 64, 67, 68, 69, 75, 76, 77, 78, 79, 82, 85, 86, 93, 95, 96, 97, 98, 99, 101, 102, 103, 104, 105, 106, 108, 109, 118, 119, 120, 121, 0};
+const UINT8 coll_m21_tiles[] = {3, 15, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 40, 41, 42, 43, 44, 48, 49, 50, 51, 52, 53, 56, 57, 63, 64, 67, 68, 69, 75, 76, 77, 78, 79, 82, 85, 86, 93, 95, 96, 97, 98, 99, 101, 102, 103, 104, 105, 106, 108, 109, 118, 119, 120, 121, 0};
 
-const UINT8 coll_m15_surface[] = {0u, 0};
+const UINT8 coll_m21_surface[] = {0u, 0};
 
-Sprite* s_gator = 0;
-Sprite* s_pharaobiga = 0;
-Sprite* s_pharaosubiga = 0;
-
+extern Sprite* s_gator;
+extern Sprite* s_pharaobiga;
+extern Sprite* s_pharaosubiga;
 
 extern INT8 mission_iscrono;
 extern UINT16 pos_horse_x;
@@ -67,8 +66,8 @@ void START(){
     if(flag_golden_found == 1){//uso pos_horse_x per come l'ho salvata
         flag_golden_found = 0;
     }else if(current_step == LOOKING_FOR_SENATOR){//initial
-        pos_horse_x = (UINT16) 3u << 3;
-        pos_horse_y = (UINT16) 9u << 3;
+        pos_horse_x = (UINT16) 8u << 3;
+        pos_horse_y = (UINT16) 10u << 3;
         mirror_horse = NO_MIRROR;
         turn_to_load = 0;
         time_to_load = timemax_current;
@@ -84,34 +83,32 @@ void START(){
             mission_completed = 1;
         }
     //COMMONS & START
-        InitScroll(BANK(mapmission15), &mapmission15, coll_m15_tiles, coll_m15_surface);
+        InitScroll(BANK(mapmission21), &mapmission21, coll_m21_tiles, coll_m21_surface);
 		INIT_HUD(hudm);
 		SetWindowY(104);
         spawn_items();
         start_common();
-        s_gator = SpriteManagerAdd(SpriteGator, ((UINT16) 10u << 3), ((UINT16) 7u << 3));
+        s_gator = SpriteManagerAdd(SpriteGator, ((UINT16) 20u << 3), ((UINT16) 10u << 3));
         s_pharaobiga = SpriteManagerAdd(SpritePharaobiga, s_gator->x + 18u, s_gator->y);
         s_pharaosubiga = SpriteManagerAdd(SpritePharaosubiga, s_pharaobiga->x, s_pharaobiga->y - 15u);
+        struct PharaoData* pharao_data = (struct PharaoData*) s_pharaosubiga->custom_data;
+        pharao_data->status = 0;
+        pharao_data->hp = 5;
+        pharao_data->counter = 127;
 }
 
 
 void UPDATE(){
     //COMMON UPDATE
-        update_common();    
-    //UPDATE TIME
-        /*update_time();
-        time_current--;
-        if(time_current < 0 && !mission_completed && !track_ended){
-            die();
-        }*/
+        update_common();  
     //CONTINUOUS SPAWNING WEAPON
-        /*if(s_spawning_weapon == 0){
+        if(s_spawning_weapon == 0){
             spawning_weapon_counter++;
             if(spawning_weapon_counter < 0){
                 spawning_weapon_counter = 0;
-                item_spawn_continuously(LANCE, ((UINT16)46u << 3), ((UINT16)43u << 3) + 3u);
+                item_spawn_continuously(GLADIO, ((UINT16)21u << 3), ((UINT16)19u << 3) + 3u);
             }
-        }*/
+        }
     //MISSION STEP
         /*if(mission_killed == 3 && mission_completed == 0){
             mission_completed = 1;

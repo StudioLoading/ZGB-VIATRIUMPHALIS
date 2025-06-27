@@ -44,7 +44,7 @@ void start_game() BANKED{
     //SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
     current_area = AREA_EGYPT;
-    current_mission = MISSIONEGYPT20;
+    current_mission = MISSIONEGYPT21;
     SetState(StateWorldmap);
    //END TEST TODO removeme
 	manage_border(current_state);
@@ -292,7 +292,7 @@ void UPDATE() {
                     instruction_to_give = MISSION20_INTRO;
                 break;
                 case MISSIONEGYPT21:
-                    //prev_state_to_give = StateMission21egypt;
+                    prev_state_to_give = StateMission21egypt;
                     instruction_to_give = MISSION21_INTRO;
                 break;
             }

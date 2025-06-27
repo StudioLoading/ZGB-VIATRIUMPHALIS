@@ -190,6 +190,12 @@ struct CONFIGURATION{
     ITEM_CONFIGURATION reins;
 };
 
+struct PharaoData {
+    INT8 status;//0:normal; 1:hit; 2:dead;
+    INT8 hp;
+    INT8 counter;
+};
+
 struct SoldierData{
     INT8 vx;
     INT8 vy;

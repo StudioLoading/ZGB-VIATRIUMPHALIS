@@ -26,7 +26,6 @@ extern UINT16 euphoria_min;
 extern UINT16 euphoria_max;
 extern ITEM_TYPE weapon_atk;
 extern ITEM_TYPE weapon_def;
-extern UINT8 J_ATK;
 extern INT8 flag_die;
 extern MISSION current_mission;
 extern INT8 mission_completed;
@@ -37,7 +36,6 @@ extern UINT8 turn;
 extern void update_weapon() BANKED;
 extern void update_hp_max() BANKED;
 extern void update_time_max() BANKED;
-extern void use_weapon(INT8 is_defence) BANKED;
 extern void pickup_config(ITEM_TYPE arg_pickedup) BANKED;
 
 void pickup(Sprite* s_arg_item) BANKED;
@@ -132,12 +130,6 @@ void UPDATE() {
                         }
                     }break;
                 }
-            }
-        }
-    //ATTACK
-        if(KEY_TICKED(J_ATK)){
-            if(weapon_atk != NONE){
-                use_weapon(0);
             }
         }
 }

@@ -37,8 +37,12 @@ UINT8 gator_frmskip_current = 0;
 INT8 gator_timer_max = 80;
 INT8 gator_timer_current = 0;
 struct GatorStatus gator_status = {.status = GATOR_STATUS_NONE};
-UINT16 gator_waypoints_x[] = {148u, 212u, 44u};
-UINT16 gator_waypoints_y[] = {20u, 100u, 84u};
+UINT16 gator_waypoints_x[16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+UINT16 gator_waypoints_y[16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+UINT16 gator_waypoints_x_m15[16] = {148u, 212u, 44u,1,1,1,1,1,1,1,1,1,1,1,1};
+UINT16 gator_waypoints_y_m15[16] = {20u, 100u, 84u,1,1,1,1,1,1,1,1,1,1,1,1};
+UINT16 gator_waypoints_x_m21[16] = {104u, 56u, 56u, 184u, 144u, 88u, 48u, 144u,1,1,1,1,1,1,1};
+UINT16 gator_waypoints_y_m21[16] = {104u, 152u, 88u, 128u, 56u, 88u, 48u, 168u,1,1,1,1,1,1,1};
 UINT8 gator_waypoints_total = 3;
 UINT8 gator_waypoints_current = 0;
 UINT8 gator_walking_frmskip_x_current = 0;
@@ -54,6 +58,7 @@ INT8 delta_walking_delta_y_verse = 0;
 
 extern Sprite* s_pharao_biga;
 extern Sprite* s_horse;
+extern Sprite* s_pharaosubiga;
 extern UINT8 pharaonet_collided_flag;
 
 void gator_turn() BANKED;
@@ -68,9 +73,30 @@ void START() {
     gator_waypoints_current = 0;
     THIS->lim_x = 2000;
     THIS->lim_y = 2000;
+    if(current_state == StateMission15greece){
+        gator_waypoints_total = 3;
+        for (UINT8 i = 0; i < 16; ++i) { // Itera su tutti i 16 elementi
+            gator_waypoints_x[i] = gator_waypoints_x_m15[i];
+            gator_waypoints_y[i] = gator_waypoints_y_m15[i];
+        }
+    }else{
+        gator_waypoints_total = 8;
+        for (UINT8 i = 0; i < 16; ++i) { // Itera su tutti i 16 elementi
+            gator_waypoints_x[i] = gator_waypoints_x_m21[i];
+            gator_waypoints_y[i] = gator_waypoints_y_m21[i];
+        }
+    }
 }
 
 void UPDATE() {
+    // CHECK PHARAO HP
+        struct PharaoData* pharao_data = (struct PharaoData*) s_pharaosubiga->custom_data;
+        if(pharao_data->hp <= 2 && gator_frmskip_max != GATOR_FRMSKIP_LOW){
+            gator_frmskip_max = GATOR_FRMSKIP_LOW;
+        }
+        if(pharao_data->status > 0){
+            return;
+        }
     //SPEED ANIMATION ACCORDING TO gator_frmskip_max
         gator_frmskip_current++;
         if(gator_frmskip_current >= gator_frmskip_max){

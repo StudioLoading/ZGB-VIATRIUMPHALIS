@@ -422,7 +422,7 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
         case MISSION21_INTRO:
             memcpy(d0, "THE PHARAOH   ", 15);
             memcpy(d1, "IN PERSON IS  ", 15);
-            memcpy(d2, "OUR FOCUS NOW.", 15);
+            memcpy(d2, "OUR TARGET.   ", 15);
             memcpy(d3, EMPTY_STRING_14, 15);
             memcpy(d4, "IT IS TIME FOR", 15);
             memcpy(d5, "YOUR LAST     ", 15);

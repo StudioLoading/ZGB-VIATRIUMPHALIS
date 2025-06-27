@@ -74,6 +74,8 @@ void START(){
         turn_to_load = 0;
         current_step = EXIT;
         s_priest = SpriteManagerAdd(SpritePriest, ((UINT16) 214u) << 3, ((UINT16) 4u) << 3);
+        struct SoldierData* priest_data = (struct SoldierData*) s_priest->custom_data;
+        priest_data->configured = 1;
         s_shielded0 = SpriteManagerAdd(SpriteBarbarianshield, ((UINT16) 92u) << 3, (((UINT16) 9u) << 3)+3u);
         s_shielded0->mirror = V_MIRROR;
         struct SoldierData* shielded00_data = (struct SoldierData*) s_shielded0->custom_data;

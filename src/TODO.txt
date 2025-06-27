@@ -54,7 +54,11 @@ Deserto (oasi, dune, accampamenti nomadi)
 Egitto (piramidi, fiumi, templi in fiamme)
 "Fuggi dal tempio incendiato con il papiro sacro." (A tempo: 3 minuti prima che il fuoco blocchi l’uscita!)
 "Raggiungi il sacerdote traditore evitando le sue guardie" (sfondamenti! il sacerdote è a fine traccia e va ucciso)
-"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
+"Last Blood" (arena, night mode, uccidi il Faraone in una lotta all'ultimo sangue. 
+Il faraone lancia una boccia incendiaria che cadendo genera una fiamma che mi può colpire, dopo lancia 3 reti, poi una boccia, e così via. Devo codare la hit del faraone.
+Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
+
+"Lettera finale con punteggio" ne farei in 3 versioni, troppo sotto un certo punteggio, medio, eccellente 
 -------------------------------------------------------------------------------------
 
 - Normal Mode vs Hard Mode

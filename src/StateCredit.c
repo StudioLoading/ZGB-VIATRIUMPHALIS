@@ -12,6 +12,8 @@
 
 #include "custom_datas.h"
 
+#define sgb_running sgb_check()
+
 #define CREDIT_WAIT_MAX 240
 #define PRESSSTART_COUNTER_MAX 16
 
@@ -25,7 +27,6 @@ INT8 credit_step = 1;//1 SL;2 VT;3 titlescreen
 INT8 pressstart_counter = 0;
 UINT8 pressstart_show = 0;
 
-#define sgb_running sgb_check()
 
 extern void manage_border(UINT8 my_next_state) BANKED;
 

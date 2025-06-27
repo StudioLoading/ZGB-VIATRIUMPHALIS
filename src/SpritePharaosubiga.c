@@ -10,8 +10,8 @@
 #include "custom_datas.h"
 
 
-const UINT8 a_pharaosubiga_down[] = {2, 1,3};
-const UINT8 a_pharaosubiga_up[] = {1, 2};
+const UINT8 a_pharaosubiga_down[] = {2, 1,2};
+const UINT8 a_pharaosubiga_down_blink[] = {2, 0,1};
 
 INT16 pharaosubiga_timernet_current = 0u;
 INT16 pharaosubiga_timernet_max = 320;//tengo qui così la posso modificare fuori
@@ -26,6 +26,7 @@ extern INT8 pharaonet_frmskipy_max;
 extern UINT8 pharaonet_collided_flag;
 
 void pharaosubiga_throw_net() BANKED;
+void pharaosubiga_change_status(INT8 arg_status) BANKED;
 
 void START() {
     SetSpriteAnim(THIS, a_pharaosubiga_down, 8u);
@@ -34,19 +35,61 @@ void START() {
 }
 
 void UPDATE() {
-    if(s_horse->x < THIS->x){
-        THIS->mirror = V_MIRROR;
-    }else{
-        THIS->mirror = NO_MIRROR;
-    }
-    THIS->x = s_pharaobiga->x - 3u;
-    THIS->y = s_pharaobiga->y - 20u;
-    //NET
-        pharaosubiga_timernet_current++;
-        if(pharaosubiga_timernet_current == pharaosubiga_timernet_max){
-            pharaosubiga_timernet_current = 0;
-            pharaosubiga_throw_net();
+    //STATUS
+        struct PharaoData* pharao_data = (struct PharaoData*) THIS->custom_data;
+        if(pharao_data->hp == 0){
+            pharaosubiga_change_status(2);
         }
+        switch(pharao_data->status){
+            case 0: //NORMAL
+                if(s_horse->x < THIS->x){
+                    THIS->mirror = V_MIRROR;
+                }else{
+                    THIS->mirror = NO_MIRROR;
+                }
+                THIS->x = s_pharaobiga->x - 3u;
+                THIS->y = s_pharaobiga->y - 20u;
+                //NET
+                    pharaosubiga_timernet_current++;
+                    if(pharaosubiga_timernet_current == pharaosubiga_timernet_max){
+                        pharaosubiga_timernet_current = 0;
+                        pharaosubiga_throw_net();
+                    }
+            break;
+            case 1: //HIT
+                pharao_data->counter--;
+                if(pharao_data->counter <= 0){
+                    pharaosubiga_change_status(0);
+                }
+            break;
+            case 2: //DEAD
+
+            break;
+        }
+}
+
+void pharaosubiga_change_status(INT8 arg_status) BANKED{
+    struct PharaoData* pharao_data = (struct PharaoData*) THIS->custom_data;
+    switch(arg_status){ //go to status
+        case 0: // NORMAL
+            SetSpriteAnim(THIS, a_pharaosubiga_down, 8u);
+        break;
+        case 1: // HIT
+            if(pharao_data->status != 1){
+                if(pharao_data->hp > 1){
+                    pharao_data->hp--;
+                }else{
+                    pharao_data->hp = 0;
+                }
+                SetSpriteAnim(THIS, a_pharaosubiga_down_blink, 12u);
+            }
+        break;
+        case 2: // DEAD
+            SetSpriteAnim(THIS, a_pharaosubiga_down_blink, 64u);
+        break;
+    }
+    pharao_data->status = arg_status;
+    pharao_data->counter = 127;
 }
 
 void pharaosubiga_throw_net() BANKED{
