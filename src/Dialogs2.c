@@ -434,5 +434,9 @@ void GetLocalizedDialog2_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d11, "RETRIBUTION!  ", 15);
             memcpy(d12, EMPTY_STRING_14 , 15);
         break;
+        case MISSION21_COMPLETED:
+            //TODO END GAME FINAL PAPER
+            //MAYBE THE HIGHSCORE 
+        break;
     }
 }

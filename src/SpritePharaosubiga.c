@@ -24,21 +24,25 @@ extern INT8 pharaonet_vy;
 extern INT8 pharaonet_frmskip_max;
 extern INT8 pharaonet_frmskipy_max;
 extern UINT8 pharaonet_collided_flag;
+extern UINT8 end_game;
 
 void pharaosubiga_throw_net() BANKED;
-void pharaosubiga_change_status(INT8 arg_status) BANKED;
+void pharaosubiga_change_status(INT8 arg_status, Sprite* arg_s_pharaosubiga) BANKED;
 
 void START() {
     SetSpriteAnim(THIS, a_pharaosubiga_down, 8u);
     THIS->lim_x = 2000;
     THIS->lim_y = 2000;
+    if(current_state == StateMission21egypt){
+        pharaosubiga_timernet_max = 500;
+    }
 }
 
 void UPDATE() {
     //STATUS
         struct PharaoData* pharao_data = (struct PharaoData*) THIS->custom_data;
         if(pharao_data->hp == 0){
-            pharaosubiga_change_status(2);
+            pharaosubiga_change_status(2, THIS);
         }
         switch(pharao_data->status){
             case 0: //NORMAL
@@ -59,33 +63,44 @@ void UPDATE() {
             case 1: //HIT
                 pharao_data->counter--;
                 if(pharao_data->counter <= 0){
-                    pharaosubiga_change_status(0);
+                    pharaosubiga_change_status(0, THIS);
                 }
             break;
             case 2: //DEAD
-
+                pharao_data->counter--;
+                if(pharao_data->counter <= 0){
+                    pharaosubiga_change_status(3, THIS);
+                }
+            break;
+            case 3:
+                //DEAD animation is over, used to procede to endgame
             break;
         }
 }
 
-void pharaosubiga_change_status(INT8 arg_status) BANKED{
-    struct PharaoData* pharao_data = (struct PharaoData*) THIS->custom_data;
+void pharaosubiga_change_status(INT8 arg_status, Sprite* arg_s_pharaosubiga) BANKED{
+    struct PharaoData* pharao_data = (struct PharaoData*) arg_s_pharaosubiga->custom_data;
+    if(arg_status == pharao_data->status){return;}
     switch(arg_status){ //go to status
         case 0: // NORMAL
-            SetSpriteAnim(THIS, a_pharaosubiga_down, 8u);
+            SetSpriteAnim(arg_s_pharaosubiga, a_pharaosubiga_down, 8u);
         break;
         case 1: // HIT
             if(pharao_data->status != 1){
-                if(pharao_data->hp > 1){
+                if(pharao_data->hp > 0){
                     pharao_data->hp--;
                 }else{
                     pharao_data->hp = 0;
                 }
-                SetSpriteAnim(THIS, a_pharaosubiga_down_blink, 12u);
+                SetSpriteAnim(arg_s_pharaosubiga, a_pharaosubiga_down_blink, 12u);
             }
         break;
         case 2: // DEAD
-            SetSpriteAnim(THIS, a_pharaosubiga_down_blink, 64u);
+            pharao_data->hp = 0;
+            SetSpriteAnim(arg_s_pharaosubiga, a_pharaosubiga_down_blink, 64u);
+        break;
+        case 3: //END GAME
+            end_game = 1u;
         break;
     }
     pharao_data->status = arg_status;

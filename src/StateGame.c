@@ -59,6 +59,8 @@ UINT8 mission_killed = 0u;
 Sprite* s_spawning_weapon;
 INT8 spawning_weapon_counter;
 UINT8 reset_combo_counter = 0u;
+UINT8 flag_using_atk = 0u;
+UINT8 end_game = 0u;
 
 void update_stamina() BANKED;
 void update_euphoria() BANKED;
@@ -132,6 +134,7 @@ void start_common() BANKED{
 	s_spawning_weapon = 0;
 	spawning_weapon_counter = 0;
 	reset_combo_counter = 0u;
+	flag_using_atk = 0u;
 }
 
 void update_stamina() BANKED{
@@ -389,6 +392,7 @@ void use_weapon(INT8 is_defence) BANKED{
 		weapon_data->configured = 3;
 		consume_weapon_def();
 	}else{//attack!
+		flag_using_atk = 1u;
 		UINT16 attack_x = s_horse->x;
 		UINT16 attack_y = s_horse->y + 8;
 		if(s_horse->mirror == V_MIRROR){
@@ -434,6 +438,7 @@ void update_time_max() BANKED{
 
 void consume_weapon_atk() BANKED{
 	weapon_atk = NONE;
+	flag_using_atk = 0u;
 	update_weapon();
 }
 
@@ -477,8 +482,10 @@ INT8 is_track_ended() BANKED{// == is mission completed
 		break;
 		case StateMission19egypt:
 		case StateMission20egypt:
-		//case StateMission21egypt:
 			result = mission_completed;
+		break;
+		case StateMission21egypt:
+			result = end_game;
 		break;
 	}
 	return result;

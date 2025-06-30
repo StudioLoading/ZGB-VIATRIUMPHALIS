@@ -58,25 +58,25 @@ Egitto (piramidi, fiumi, templi in fiamme)
 Il faraone lancia una boccia incendiaria che cadendo genera una fiamma che mi può colpire, dopo lancia 3 reti, poi una boccia, e così via. Devo codare la hit del faraone.
 Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel deserto, non dovrei fare trovare più i golden...?)
 
-"Lettera finale con punteggio" ne farei in 3 versioni, troppo sotto un certo punteggio, medio, eccellente 
+
 -------------------------------------------------------------------------------------
 
-- Normal Mode vs Hard Mode
-    hard mode non avrà il tutorial iniziale;
-
-- SuperGameBoy: 
-    - border finale per bonus stage
-- c'è flickering, sentiamo toxa se ha suggerimenti? mi ha detto che su CrossZGB è risolta. grazie ar ca'. sono riuscito ad attutirlo - provare su real hardware.
-- coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
-- sulla mappa di mission06 c'è una zona a vicolo-cieco in cui potrei spawnare qualcosa
-- migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
+TODOs:
 - sistema di punteggio highscore
     - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
     - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
-- gara di velocità/bonus stage con Giulio Cesare! a fine gioco se raccolti tutti gli item GOLDEN. col Pharao ho fatto i waypoints, se ci metto un random di rallentamento, potrei aver già risolto
+- "Lettera finale con punteggio" ne farei in 3 versioni, troppo sotto un certo punteggio, medio, eccellente 
+- Normal Mode vs Hard Mode
+    hard mode 
+        non avrà il tutorial iniziale;
+        non avrà il compass;
+        avrà il faraone finale a 7 di hp;
 - test DMG
 - test SGB
 - test CGB
+- coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
+- audio bgm: mettere su traccia spartitica i pezzoni del Duplex, che sloopy me li fa a 25$ a loop. no sfx.
+- migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
 
 
 -------------------------------------------------------------------------------------ù
@@ -122,7 +122,7 @@ ffmpeg -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\input.gif C:\ZGB-2023.0\ZGB-VIA
 ffmpeg -framerate 10 -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%01d.png -vf format=gray C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_grayscale.gif
 
 GENERAZIONE QR CODE DA POWERSHELL
-New-QRCodeURI -URI 'https://www.kickstarter.com/projects/studioloading/flying-arrows-2-gameboy-game-save-bolognanerd' -Width 15 -OutPath 'C:\Users\checc\GB\ARROWS2\BOX\QR-URL.png'
+New-QRCodeURI -URI 'https://www.notion.so/leandromacrini/28-06-2025-209ac641edda807c83eefd7ca5caecb2' -Width 15 -OutPath 'C:\Users\checc\BN\QR-riunione.png'
 
 PDF TO PNG
 magick -density 300 input.pdf -resize 50% output.png

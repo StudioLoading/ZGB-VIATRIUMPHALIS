@@ -11,6 +11,7 @@
 #include "custom_datas.h"
 
 extern Sprite* s_horse;
+extern Sprite* s_pharaosubiga;
 extern INT8 vx;
 extern INT8 vy;
 extern Sprite* s_spawning_weapon;
@@ -51,7 +52,7 @@ extern void item_configreins_anim(Sprite* s_item_arg) BANKED;
 extern void item_configelm_anim_blink(Sprite* s_item_arg) BANKED;
 extern void item_configelm_anim(Sprite* s_item_arg) BANKED;
 extern void item_papirus_anim(Sprite* s_item_arg) BANKED;
-extern void pharaosubiga_change_status(INT8 arg_status) BANKED;
+extern void pharaosubiga_change_status(INT8 arg_status, Sprite* arg_s_pharaosubiga) BANKED;
 
 void item_common_start(Sprite* s_item_arg) BANKED{
 	struct ItemData* item_data = (struct ItemData*) s_item_arg->custom_data;
@@ -249,22 +250,22 @@ void item_common_spritescollision(Sprite* s_item_arg) BANKED{
                         }
                     }
                 break;
-                case SpritePharaosubiga:
-                case SpritePharaobiga:
-                    if(item_data->configured > 3){
+                case SpritePharaosubiga:{
+                    struct PharaoData* pharao_data = (struct PharaoData*) iispr->custom_data;
+                    if(item_data->configured == 4 && pharao_data->status == 0){
                         if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
-                            pharaosubiga_change_status(1);
+                            pharaosubiga_change_status(1, iispr);
                             item_data->configured = 5;
                         }
                     }
-                break;
-                case SpriteGator:
+                }break;
+                /*case SpriteGator:
                     if(item_data->configured > 3){
                         if(item_data->itemtype == GLADIO || item_data->itemtype == LANCE){
                             item_data->configured = 5;
                         }
                     }
-                break;
+                break;*/
                 case SpriteBarbarian:
                 case SpriteSavage:
                 case SpriteRomansoldier:

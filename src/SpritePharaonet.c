@@ -25,7 +25,7 @@ UINT8 pharaonet_collided_flag = 0u;
 INT16 pharanonet_caught_timer = 0;
 
 extern Sprite* s_horse;
-
+extern UINT8 flag_using_atk;
 extern void change_stamina_current(INT16 start, INT16 increase) BANKED;
 
 void START() {
@@ -43,8 +43,11 @@ void UPDATE() {
         THIS->x = s_horse->x - 1;
         THIS->y = s_horse->y - 6;
         pharanonet_caught_timer++;
-        change_stamina_current(0,0);
-        if(pharanonet_caught_timer >= PHARANONET_CAUGHT_TIMER_MAX){
+        if(flag_using_atk == 0){
+            change_stamina_current(0,0);
+        }
+        if(pharanonet_caught_timer >= PHARANONET_CAUGHT_TIMER_MAX || 
+            flag_using_atk){
             pharaonet_collided_flag = 0;
             pharanonet_caught_timer = 0;
             SpriteManagerRemoveSprite(THIS);
@@ -52,7 +55,7 @@ void UPDATE() {
         return;
     }
     pharaonet_frmskip_current++;
-    if(pharaonet_frmskip_current == pharaonet_frmskip_max){
+    if(pharaonet_frmskip_current >= pharaonet_frmskip_max){
         pharaonet_frmskip_current = 0;
     }
     if(pharaonet_frmskip_current == 0){
@@ -88,9 +91,8 @@ void UPDATE() {
         if(CheckCollision(THIS, phnetspr)) {
             switch(phnetspr->type){
                 case SpriteHorse:
-                    if(pharaonet_collided_flag == 0u){
+                    if(flag_using_atk && pharaonet_collided_flag == 0u){
                         pharaonet_collided_flag = 1u;
-                        //SpriteManagerRemoveSprite(THIS);
                     }
                 break;
             }
