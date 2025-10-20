@@ -29,9 +29,9 @@ extern UINT8 prev_state;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;
-MISSION current_mission = MISSIONROME02;
+MISSION current_mission = MISSIONROME00;
 INT8 world_area_map = 0;//0=worldmap, 1=areamap
-TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_8_GLADIO;
+TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;//TUTORIAL_STAGE_0_STRAIGHT
 
 void start_game() BANKED;
 
@@ -41,11 +41,11 @@ extern void check_sgb_palette(UINT8 my_next_state) BANKED;
 
 void start_game() BANKED{
     //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
-    //SetState(StateTutorialList);//TODO PROD
+    SetState(StateTutorialList);//TODO PROD
     //START TEST TODO removeme to END
-    current_area = AREA_EGYPT;
-    current_mission = MISSIONEGYPT21;
-    SetState(StateWorldmap);
+    //current_area = AREA_EGYPT;
+    //current_mission = MISSIONEGYPT21;
+    //SetState(StateWorldmap);
    //END TEST TODO removeme
 	manage_border(current_state);
 }

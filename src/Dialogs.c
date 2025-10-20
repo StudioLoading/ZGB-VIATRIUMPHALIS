@@ -156,11 +156,11 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         case TUTORIAL05_INTRO:
             memcpy(d0, "ZIGZAG!       ", 15);
             memcpy(d1, "THE FIRST IS  ", 15);
-            memcpy(d2, "A RIGHT TURN -", 15);
-            memcpy(d3, "THEN A 180 DEG", 15);
-            memcpy(d4, "REE TURN HAS  ", 15);
-            memcpy(d5, "TO BE PERFORM,", 15);
-            memcpy(d6, "ED.           ", 15);
+            memcpy(d2, "A RIGHT TURN  ", 15);
+            memcpy(d3, "THEN A CLXX   ", 15);
+            memcpy(d4, "DEGREE TURN   ", 15);
+            memcpy(d5, "HAS TO BE     ", 15);
+            memcpy(d6, "PERFORMED.    ", 15);
             memcpy(d7, EMPTY_STRING_14, 15);
             memcpy(d8, EMPTY_STRING_14, 15);
             memcpy(d9, EMPTY_STRING_14, 15);
@@ -170,8 +170,8 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
         case TUTORIAL06_INTRO:
             memcpy(d0, "ZIGZAG!       ", 15);
             memcpy(d1, "THE FIRST IS  ", 15);
-            memcpy(d2, "A RIGHT TURN -", 15);
-            memcpy(d3, "THEN A 180 DEG", 15);
+            memcpy(d2, "A RIGHT TURN  ", 15);
+            memcpy(d3, "THEN CLXX DEG", 15);
             memcpy(d4, "REE TURN HAS  ", 15);
             memcpy(d5, "TO BE PERFORM,", 15);
             memcpy(d6, "ED.           ", 15);
