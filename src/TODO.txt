@@ -62,6 +62,7 @@ Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel
 -------------------------------------------------------------------------------------
 
 TODOs:
+- multilingua: italiano, tedesco, francese, inglese, giapponese
 - sistema di punteggio highscore
     - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
     - il calcolo del danno deve essere centralizzato perché dipende dalla presenza del configuration.elm == GOLDEN
@@ -74,9 +75,6 @@ TODOs:
 - test DMG
 - test SGB
 - test CGB
-- coprire il cavallo con un mantello di pelle, così i colpi di frusta non lo picchiano direttamente sulla pelle (?sloopy rompe i coglioni su sta cosa, provo a venirgli incontro)
-- audio bgm: mettere su traccia spartitica i pezzoni del Duplex, che sloopy me li fa a 25$ a loop. no sfx.
-- migliorare le palette COLOR per il nightMode perché al momento sono tutte una palette, ma dovrebbero differenziarsi, scurendo quelle della mappa in cui ci si trova
 
 
 -------------------------------------------------------------------------------------ù
@@ -115,7 +113,7 @@ NICE TO HAVE:
 
 PNG2MAP
 cd C:\ZGB-2023.0\tools\png2map\
-png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\egypt.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\mapegypt.gbm
+png2gbtiles.exe C:\ZGB-2023.0\tools\png2map\VT_titlescreen.png -gbm -g -pal=mypal.pal C:\ZGB-2023.0\tools\png2map\VT_titlescreen.gbm
 
 GIF TO PNG FRAMES
 ffmpeg -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\input.gif C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%d.png

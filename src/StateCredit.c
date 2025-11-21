@@ -18,7 +18,7 @@
 #define PRESSSTART_COUNTER_MAX 16
 
 IMPORT_MAP(mapcredit0);
-IMPORT_MAP(maptitlescreen);
+IMPORT_MAP(titlescreen);
 IMPORT_MAP(maintitlemap);
 IMPORT_TILES(font);
 
@@ -44,7 +44,7 @@ void START(){
             scroll_target = SpriteManagerAdd(SpriteCamera, 80u, 72u);
         break;
         case 3:
-            InitScroll(BANK(maptitlescreen), &maptitlescreen, 0, 0);
+            InitScroll(BANK(titlescreen), &titlescreen, 0, 0);
         break;
     }
 	SHOW_BKG;

@@ -567,7 +567,6 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             GetLocalizedDialog2_EN(arg_instruction);
         break;
     }
-
 }
 
 void reset_dn() BANKED{

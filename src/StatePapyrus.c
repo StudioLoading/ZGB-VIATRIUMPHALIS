@@ -59,8 +59,8 @@ void UPDATE(){
             update_scroll();
             return;
         }
-        if(scroll_step == 6){
-            if(KEY_RELEASED(J_START)){
+        if(scroll_step > 3){
+            if(KEY_RELEASED(J_START) || KEY_RELEASED(J_A) || KEY_RELEASED(J_B)){
                 trigger_unscroll = 1;
             }
         }
