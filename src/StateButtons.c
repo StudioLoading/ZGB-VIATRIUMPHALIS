@@ -20,6 +20,7 @@ IMPORT_MAP(buttonmap);
 IMPORT_TILES(font);
 
 extern void start_game() BANKED;
+extern void start_game_cheat(AREA arg_cheat_area) BANKED;
 
 UINT8 pressed_up_down = 0u;
 UINT8 pressed_right = 0u;
@@ -28,6 +29,11 @@ UINT8 pressed_a = 0u;
 UINT8 pressed_b = 0u;
 UINT8 press_start = 0u;
 INT8 press_start_counter = 0;
+
+
+extern UINT8 cheat_activated;
+extern AREA cheat_area;
+
 
 void START(){
     InitScroll(BANK(buttonmap), &buttonmap, 0, 0);
@@ -93,7 +99,12 @@ void UPDATE(){
             PRINT(0, 0, "                   ");
         }
     }
-    if(KEY_TICKED(J_START) && press_start){
-        start_game();
+    if(KEY_TICKED(J_START)){
+        if(press_start){
+            start_game();
+        }
+        if(cheat_activated){
+            start_game_cheat(cheat_area);
+        }
     }
 }

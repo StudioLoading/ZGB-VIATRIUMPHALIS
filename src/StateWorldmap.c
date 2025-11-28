@@ -26,6 +26,7 @@ IMPORT_MAP(areaegypt);
 IMPORT_TILES(font);
 
 extern UINT8 prev_state;
+extern UINT8 flag_border_set;
 
 INT8 worldmap_counter = 0;
 AREA current_area = AREA_ROME;
@@ -34,19 +35,26 @@ INT8 world_area_map = 0;//0=worldmap, 1=areamap
 TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;//TUTORIAL_STAGE_0_STRAIGHT
 
 void start_game() BANKED;
+void start_game_cheat(AREA arg_cheat_area) BANKED;
 
 extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
 extern void manage_border(UINT8 my_next_state) BANKED;
 extern void check_sgb_palette(UINT8 my_next_state) BANKED;
 
+void start_game_cheat(AREA arg_cheat_area) BANKED{
+    switch(current_area){
+        case AREA_ALPS: current_mission = MISSIONALPS07; break;
+        case AREA_SEA: current_mission = MISSIONSEA08; break;
+        case AREA_GREECE: current_mission = MISSIONGREECE12; break;
+        case AREA_DESERT: current_mission = MISSIONDESERT16; break;
+        case AREA_EGYPT: current_mission = MISSIONEGYPT21; break;
+    }
+    SetState(StateWorldmap);
+	manage_border(current_state);
+}
+
 void start_game() BANKED{
-    //TUTORIAL_STAGE tutorial_state = TUTORIAL_STAGE_0_STRAIGHT;
-    SetState(StateTutorialList);//TODO PROD
-    //START TEST TODO removeme to END
-    //current_area = AREA_EGYPT;
-    //current_mission = MISSIONEGYPT21;
-    //SetState(StateWorldmap);
-   //END TEST TODO removeme
+    SetState(StateTutorialList);
 	manage_border(current_state);
 }
 
@@ -120,6 +128,16 @@ void START() {
                 case MISSIONEGYPT19: PRINT(1, 15, " A TEMPLE ON FIRE "); break;
                 case MISSIONEGYPT20: PRINT(1, 15, "    A SACRIFICE   "); break;
                 case MISSIONEGYPT21: PRINT(1, 15, "    LAST BLOOD    "); break;
+            }
+            //activate flag for border management
+            switch(current_mission){
+                case MISSIONALPS04:
+                case MISSIONSEA08:
+                case MISSIONGREECE12:
+                case MISSIONDESERT16:
+                case MISSIONEGYPT19:
+                    flag_border_set = 0u;
+                break;
             }
         break;
     }

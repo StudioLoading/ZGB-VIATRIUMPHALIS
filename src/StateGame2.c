@@ -92,7 +92,7 @@ void map_ended() BANKED{
 			instruction_to_give = MISSION03_COMPLETED;
 		break;
 		case MISSIONALPS04:
-			flag_border_set = 0u; instruction_to_give = MISSION04_COMPLETED; break;
+			instruction_to_give = MISSION04_COMPLETED; break;
 		case MISSIONALPS05: 
 			turn_to_load = 0;
 			instruction_to_give = MISSION05_COMPLETED;
@@ -107,34 +107,30 @@ void map_ended() BANKED{
 			instruction_to_give = MISSION07_COMPLETED;
 		break;
 		case MISSIONSEA08: 
-			flag_border_set = 0u;instruction_to_give = MISSION08_COMPLETED; break;
+			instruction_to_give = MISSION08_COMPLETED; break;
 		case MISSIONSEA09: instruction_to_give = MISSION09_COMPLETED; break;
 		case MISSIONSEA10: instruction_to_give = MISSION10_COMPLETED; break;
 		case MISSIONSEA11: 
 			current_area = AREA_GREECE;
 			instruction_to_give = MISSION11_COMPLETED;
 		break;
-		case MISSIONGREECE12: 
-			flag_border_set = 0u; instruction_to_give = MISSION12_COMPLETED;break;
+		case MISSIONGREECE12: instruction_to_give = MISSION12_COMPLETED;break;
 		case MISSIONGREECE13: instruction_to_give = MISSION13_COMPLETED;break;
 		case MISSIONGREECE14: instruction_to_give = MISSION14_COMPLETED;break;
 		case MISSIONGREECE15: 
 			current_area = AREA_DESERT;
 			instruction_to_give = MISSION15_COMPLETED;
 		break;
-		case MISSIONDESERT16:
-			instruction_to_give = MISSION16_COMPLETED;
+		case MISSIONDESERT16: instruction_to_give = MISSION16_COMPLETED;
 		break;
 		case MISSIONDESERT17:
 			instruction_to_give = MISSION17_COMPLETED;
 		break;
 		case MISSIONDESERT18:
-			flag_border_set = 0u;
 			current_area = AREA_EGYPT;
 			instruction_to_give = MISSION18_COMPLETED;
 		break;
-		case MISSIONEGYPT19:
-			instruction_to_give = MISSION19_COMPLETED;
+		case MISSIONEGYPT19:instruction_to_give = MISSION19_COMPLETED;
 		break;
 		case MISSIONEGYPT20:
 			instruction_to_give = MISSION20_COMPLETED;

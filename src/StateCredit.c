@@ -26,7 +26,11 @@ INT16 credit_wait = 0;
 INT8 credit_step = 1;//1 SL;2 VT;3 titlescreen
 INT8 pressstart_counter = 0;
 UINT8 pressstart_show = 0;
+UINT8 cheat_counter = 0u;
+UINT8 cheat_activated = 0u;
+AREA cheat_area = AREA_ROME;
 
+extern AREA current_area;
 
 extern void manage_border(UINT8 my_next_state) BANKED;
 
@@ -44,6 +48,9 @@ void START(){
             scroll_target = SpriteManagerAdd(SpriteCamera, 80u, 72u);
         break;
         case 3:
+            cheat_counter = 0u;
+            cheat_activated = 0u;
+            cheat_area = 0u;
             InitScroll(BANK(titlescreen), &titlescreen, 0, 0);
         break;
     }
@@ -55,10 +62,41 @@ void UPDATE(){
     if(credit_step != 2){
         credit_wait--;
     }
+    //CHEAT
+    if(credit_step == 3){
+        if(KEY_RELEASED(J_SELECT)){
+            if(cheat_activated == 0){
+                cheat_counter++;
+                if(cheat_counter > 4){
+                    cheat_activated = 1u;
+                    PRINT(13, 1, "CHEATER!");
+                    return;
+                }
+            }else{
+                if(KEY_RELEASED(J_SELECT)){
+                    cheat_area++;
+                    if(cheat_area == AREA_EGYPT){
+                        cheat_area = AREA_ROME;
+                    }
+                    switch(cheat_area){
+                        case AREA_ROME: PRINT(13, 1, "ROME    "); break;
+                        case AREA_ALPS: PRINT(13, 1, "ALPS    "); break;
+                        case AREA_SEA:  PRINT(13, 1, "SEA     "); break;
+                        case AREA_GREECE: PRINT(13, 1, "GREECE  "); break;
+                        case AREA_DESERT: PRINT(13, 1, "DESERT  "); break;
+                        case AREA_EGYPT: PRINT(13, 1, "EGYPT   "); break;
+                    }
+                }
+            }
+        }
+    }
     if(credit_step < 3 && (credit_wait <= 0 || KEY_TICKED(J_START))){
         credit_step++;
         SetState(StateCredit);
     }else if(credit_step == 3 && KEY_TICKED(J_START)){
+        if(cheat_activated){
+            current_area = cheat_area;
+        }
         SetState(StateButtons);
     }
     //ANIMATIONS & CAMERA MOVEMENTS

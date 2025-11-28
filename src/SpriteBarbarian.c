@@ -54,6 +54,7 @@ void UPDATE() {
             }
         break;
         case 4://activate dieing
+            mission_killed++;
             barbarian_data->vx = 40;//usato come countdown di morte
             barbarian_data->configured = 5;
             SetSpriteAnim(THIS, a_barbarian_blink, 24u);
@@ -96,7 +97,6 @@ void UPDATE() {
                 case SpriteItemgladio:
                 case SpriteFlame:
                     if(barbarian_data->configured < 4){
-                        mission_killed++;
                         barbarian_data->configured = 4;
                     }
                 break;

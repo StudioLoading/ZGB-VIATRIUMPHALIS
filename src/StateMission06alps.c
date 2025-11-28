@@ -139,10 +139,10 @@ void UPDATE(){
                 delay_tremble--;
                 if(delay_tremble <= 0){
                     delay_tremble = DELAY_TREMBLE_MIN;
-                    if(scroll_target->y < (s_horse->y - 8u)){
-                        scroll_target->y = s_horse->y + 8u;
-                    }else if(scroll_target->y < (s_horse->y + 20u)){
-                        scroll_target->y = s_horse->y - 12u;
+                    if(scroll_target->y < (s_horse->y - 6u)){
+                        scroll_target->y = s_horse->y + 6u;
+                    }else if(scroll_target->y < (s_horse->y + 18u)){
+                        scroll_target->y = s_horse->y - 10u;
                     }
                 }
             }

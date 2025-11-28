@@ -55,4 +55,6 @@ void UPDATE() {
 }
 
 void DESTROY() {
+    THIS->y--;
+    THIS->x++;
 }

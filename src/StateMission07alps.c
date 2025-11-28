@@ -99,7 +99,7 @@ void spawn_barbarian() BANKED{
     struct SoldierData* barbarian00_data = (struct SoldierData*) s_barbarian00->custom_data;
     barbarian00_data->frmskip_max = 4u;
     barbarian00_data->configured = 1;
-    barbarian00_data->reward = GLADIO;
+    barbarian00_data->reward = HP;
     
     s_barbarian01 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 30u << 3), ((UINT16) 22u << 3));
     struct SoldierData* barbarian01_data = (struct SoldierData*) s_barbarian01->custom_data;
@@ -117,13 +117,13 @@ void spawn_barbarian() BANKED{
     struct SoldierData* barbarian03_data = (struct SoldierData*) s_barbarian03->custom_data;
     barbarian03_data->frmskip_max = 4u;
     barbarian03_data->configured = 2;
-    barbarian03_data->reward = NOITEM;
+    barbarian03_data->reward = HP;
     
     s_barbarian04 = SpriteManagerAdd(SpriteBarbarian, ((UINT16) 35u << 3), ((UINT16) 10u << 3));
     struct SoldierData* barbarian04_data = (struct SoldierData*) s_barbarian04->custom_data;
     barbarian04_data->frmskip_max = 6u;
     barbarian04_data->configured = 2;
-    barbarian04_data->reward = NOITEM;
+    barbarian04_data->reward = LANCE;
 }
 
 void UPDATE(){
@@ -143,7 +143,7 @@ void UPDATE(){
     //COMMON UPDATE
         update_common();
     //MISSION STEP
-        if(mission_killed == 5 && mission_completed == 0){
+        if(mission_killed >= 4 && mission_completed == 0){
             mission_completed = 1;
         }
     //IS MISSION COMPLETED?

@@ -414,6 +414,9 @@ void use_weapon(INT8 is_defence) BANKED{
 			break;
 			case LANCE:
 				s_weapon = SpriteManagerAdd(SpriteItemlance, attack_x, attack_y);
+				if(vx < 0){
+					s_weapon->mirror = V_MIRROR;
+				}
 			break;
 			case FIRE:
 				Sprite* s_fire = SpriteManagerAdd(SpriteFlame, attack_x, attack_y);
