@@ -51,7 +51,6 @@ extern INT16 time_current;
 extern INT16 timemax_current;
 extern INT16 time_factor;
 extern INT16 time_to_load;
-extern UINT8 mission_killed;
 extern UINT8 flag_night_mode;
 
 extern void start_common() BANKED;

@@ -48,7 +48,6 @@ extern INT16 time_current;
 extern INT16 timemax_current;
 extern INT16 time_factor;
 extern INT16 time_to_load;
-extern UINT8 mission_killed;
 extern Sprite* s_spawning_weapon;
 extern INT8 spawning_weapon_counter;
 extern INT8 hp_current;

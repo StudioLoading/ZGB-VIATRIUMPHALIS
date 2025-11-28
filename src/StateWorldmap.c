@@ -59,6 +59,19 @@ void start_game() BANKED{
 }
 
 void START() {
+    if(flag_border_set == 1){
+        //activate flag for border management
+        switch(current_mission){
+            case MISSIONALPS04:
+            case MISSIONSEA08:
+            case MISSIONGREECE12:
+            case MISSIONDESERT16:
+            case MISSIONEGYPT19:
+                flag_border_set = 0u;
+            break;
+        }
+    }
+	manage_border(current_state);
     switch(world_area_map){
         case 0:
             InitScroll(BANK(worldmap), &worldmap, 0, 0);
@@ -129,19 +142,8 @@ void START() {
                 case MISSIONEGYPT20: PRINT(1, 15, "    A SACRIFICE   "); break;
                 case MISSIONEGYPT21: PRINT(1, 15, "    LAST BLOOD    "); break;
             }
-            //activate flag for border management
-            switch(current_mission){
-                case MISSIONALPS04:
-                case MISSIONSEA08:
-                case MISSIONGREECE12:
-                case MISSIONDESERT16:
-                case MISSIONEGYPT19:
-                    flag_border_set = 0u;
-                break;
-            }
         break;
     }
-	manage_border(current_state);
 }
 
 void UPDATE() {

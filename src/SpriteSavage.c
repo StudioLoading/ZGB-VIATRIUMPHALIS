@@ -54,6 +54,7 @@ void UPDATE() {
             }
         break;
         case 4://activate dieing
+            mission_killed++;
             savage_data->vx = 40;//usato come countdown di morte
             savage_data->configured = 5;
             SetSpriteAnim(THIS, a_savage_blink, 24u);
@@ -96,7 +97,6 @@ void UPDATE() {
                 case SpriteItemgladio:
                 case SpriteFlame:
                     if(savage_data->configured < 4){
-                        mission_killed++;
                         savage_data->configured = 4;
                     }
                 break;

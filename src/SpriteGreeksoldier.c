@@ -55,6 +55,7 @@ void UPDATE() {
             }
         break;
         case 4://activate dieing
+            mission_killed++;
             greeksoldier_data->vx = 40;//usato come countdown di morte
             greeksoldier_data->configured = 5;
             SetSpriteAnim(THIS, a_greek_blink, 24u);
@@ -133,7 +134,6 @@ void UPDATE() {
                 case SpriteItemgladio:
                 case SpriteFlame:
                     if(greeksoldier_data->configured < 4 || greeksoldier_data->configured == 7){
-                        mission_killed++;
                         greeksoldier_data->configured = 4;
                     }
                 break;

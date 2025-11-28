@@ -54,6 +54,7 @@ void UPDATE() {
             }
         break;
         case 4://activate dieing
+            mission_killed++;
             romansoldier_data->vx = 40;//usato come countdown di morte
             romansoldier_data->configured = 5;
             SetSpriteAnim(THIS, a_roman_blink, 24u);
@@ -99,7 +100,6 @@ void UPDATE() {
                 case SpriteItemgladio:
                 case SpriteFlame:
                     if(romansoldier_data->configured < 4){
-                        mission_killed++;
                         romansoldier_data->configured = 4;
                     }
                 break;
