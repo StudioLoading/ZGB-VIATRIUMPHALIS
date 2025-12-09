@@ -62,6 +62,8 @@ Se perdi, ricominci fuori dal deserto in area precedente! forse lì, tornato nel
 -------------------------------------------------------------------------------------
 
 TODOs:
+- il THE BEDUINE ha una crono impossibile! perché l'ho fatta così?
+
 - multilingua: italiano, tedesco, francese, inglese, giapponese
 - sistema di punteggio highscore
     - sprite di segnalazione +1K quando si uccide qualcuno, che significa 1kill e 1.000 punti
@@ -70,12 +72,14 @@ TODOs:
 - Normal Mode vs Hard Mode
     hard mode 
         non avrà il tutorial iniziale;
-        non avrà il compass;
+        non avrà il compass; (?)
         avrà il faraone finale a 7 di hp;
 - test DMG
 - test SGB
 - test CGB
-
+- controlla le missioni di atterraggio col cheat alla start_game_cheat()
+    oppure elimina il cheat
+    oppure fallo che dia solo i gold con una combo differente
 
 -------------------------------------------------------------------------------------ù
 MARKETING:
@@ -121,6 +125,7 @@ ffmpeg -framerate 10 -i C:\ZGB-2023.0\ZGB-VIATRIUMPHALIS\other\output_%01d.png -
 
 GENERAZIONE QR CODE DA POWERSHELL
 New-QRCodeURI -URI 'https://www.notion.so/leandromacrini/28-06-2025-209ac641edda807c83eefd7ca5caecb2' -Width 15 -OutPath 'C:\Users\checc\BN\QR-riunione.png'
+New-QRCodeURI -URI 'mailto:m5sgruppoterritoriale@gmail.com?subject=Chiedilo%20al%20Movimento' -Width 15 -OutPath 'C:\Users\checc\M5S\QR-mailto.png'
 
 PDF TO PNG
 magick -density 300 input.pdf -resize 50% output.png

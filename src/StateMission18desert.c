@@ -15,8 +15,8 @@
 IMPORT_MAP(hudm);
 IMPORT_MAP(mapmission18);
 
-#define TIME_MAX_MISSION18 448 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
-#define TIME_FACTOR_MISSION18 14
+#define TIME_MAX_MISSION18 640 //32 fattore 1, 320 fattore 10, 640 fattore 20, ...
+#define TIME_FACTOR_MISSION18 20
 
 const UINT8 coll_m18_tiles[] = {3, 17, 18, 19, 21, 22, 23, 28, 29, 36, 44, 45, 46, 47, 49, 51, 52, 54, 56, 57, 58, 59, 61, 62, 63, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 94, 95, 118, 119, 120, 121, 0};
 

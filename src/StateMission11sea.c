@@ -109,7 +109,7 @@ void spawn_m11_savage() BANKED{
     struct SoldierData* savage00_data = (struct SoldierData*) s_savage00->custom_data;
     savage00_data->frmskip_max = 12u;
     savage00_data->configured = 1;
-    savage00_data->reward = LANCE;
+    savage00_data->reward = HP;
     
     Sprite* s_savage01 = SpriteManagerAdd(SpriteSavage, ((UINT16) 60 << 3), ((UINT16) 16u << 3));
     struct SoldierData* savage01_data = (struct SoldierData*) s_savage01->custom_data;
@@ -121,7 +121,7 @@ void spawn_m11_savage() BANKED{
     struct SoldierData* savage02_data = (struct SoldierData*) s_savage02->custom_data;
     savage02_data->frmskip_max = 12u;
     savage02_data->configured = 1;
-    savage02_data->reward = TIME;    
+    savage02_data->reward = HP;    
 }
 
 void UPDATE(){

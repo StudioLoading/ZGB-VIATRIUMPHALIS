@@ -56,6 +56,12 @@ void START(){
     }
 	SHOW_BKG;
 	INIT_FONT(font, PRINT_BKG);
+    
+    switch(credit_step){
+        case 1:
+            PRINT(6, 10, "PRESENTS");
+        break;
+    }
 }
 
 void UPDATE(){
@@ -75,7 +81,7 @@ void UPDATE(){
             }else{
                 if(KEY_RELEASED(J_SELECT)){
                     cheat_area++;
-                    if(cheat_area == AREA_EGYPT){
+                    if(cheat_area > AREA_EGYPT){
                         cheat_area = AREA_ROME;
                     }
                     switch(cheat_area){

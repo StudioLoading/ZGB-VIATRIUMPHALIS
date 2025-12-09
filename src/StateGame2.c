@@ -288,9 +288,8 @@ void spawn_items() BANKED{
 			}
 		break;
 		case MISSIONSEA11:
-			item_spawn(TIME, ((UINT16) 9u << 3), ((UINT16) 21u << 3));
 			item_spawn(LANCE, ((UINT16) 17u << 3), ((UINT16) 14u << 3));
-			item_spawn(TIME, ((UINT16) 65u << 3), ((UINT16) 11u << 3));
+			item_spawn(HP, ((UINT16) 65u << 3), ((UINT16) 11u << 3));
 			SpriteManagerAdd(SpriteFlame, (UINT16) 10u << 3, (UINT16) 11u << 3);
 		break;
 		case MISSIONGREECE12:
