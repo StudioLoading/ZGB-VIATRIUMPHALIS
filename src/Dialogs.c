@@ -334,6 +334,20 @@ void GetLocalizedDialog_EN(INSTRUCTION arg_instruction) BANKED{
             memcpy(d10, "BANDITS.     ", 15);
             memcpy(d11, EMPTY_STRING_14, 15);
         break;
+        case DEMO_COMPLETED:
+            memcpy(d0, "CONGRATULATION", 15);
+            memcpy(d1, EMPTY_STRING_14, 15);
+            memcpy(d2, "YOU COMPLETED ", 15);
+            memcpy(d3, "THE DEMO OF   ", 15);
+            memcpy(d4, "THIS GAME, SO ", 15);
+            memcpy(d5, "THANK YOU!!   ", 15);
+            memcpy(d6, "GET BACK TO   ", 15);
+            memcpy(d7, "THE KICK      ", 15);
+            memcpy(d8, "STARTER PAGE  ", 15);
+            memcpy(d9, "FOR THIS GAME ", 15);
+            memcpy(d10, "TO GET ON REAL", 15);
+            memcpy(d11, "CARTRIDGE!    ", 15);
+        break;
         case MISSION02_INTRO:
             memcpy(d1, "WE HAVE A SPY ", 15);
             memcpy(d2, "PLAYING AGAIN,", 15);

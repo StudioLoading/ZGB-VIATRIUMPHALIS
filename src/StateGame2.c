@@ -34,6 +34,7 @@ static const palette_color_t palette_data_desert_02[] = {RGB(14,7,1),RGB(0,0,0),
 
 UINT8 flag_night_mode = 0u;
 UINT8 flag_border_set = 0u;
+UINT8 flag_is_demo = 1u;
 
 void die() BANKED;
 void spawn_items() BANKED;
@@ -62,6 +63,7 @@ extern UINT8 turn_to_load;
 extern UINT8 turn;
 extern INT8 world_area_map;
 extern UINT8 credit_step;
+extern INSTRUCTION instruction_given;
 
 extern void update_hp(INT8 variation) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
@@ -81,7 +83,13 @@ void map_ended() BANKED{
 	INSTRUCTION instruction_to_give = 0;
 	switch(current_mission){
 		case MISSIONROME00: instruction_to_give = MISSION00_COMPLETED; break;
-		case MISSIONROME01: instruction_to_give = MISSION01_COMPLETED; break;
+		case MISSIONROME01: 
+			if(flag_is_demo){
+				instruction_to_give = DEMO_COMPLETED; 
+			}else{
+				instruction_to_give = MISSION01_COMPLETED; 
+			}
+		break;
 		case MISSIONROME02: 
 			turn_to_load = 0;
 			instruction_to_give = MISSION02_COMPLETED;
@@ -146,6 +154,7 @@ void map_ended() BANKED{
 
 void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED{
 	reset_sgb_palette_statusbar();
+	instruction_given = arg_instruction_to_show;
 	GetLocalizedDialog_EN(arg_instruction_to_show);
 	if(arg_prev_state){
 		prev_state = arg_prev_state;

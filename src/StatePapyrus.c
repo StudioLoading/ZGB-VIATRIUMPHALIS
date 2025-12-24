@@ -37,6 +37,10 @@ extern unsigned char d10[];
 extern unsigned char d11[];
 extern unsigned char d12[];
 
+extern UINT8 flag_is_demo;
+
+INSTRUCTION instruction_given = 0;
+
 void update_scroll() BANKED;
 
 void START(){
@@ -66,6 +70,9 @@ void UPDATE(){
         }
     }
     if(trigger_unscroll == 1){
+        if(flag_is_demo && instruction_given == DEMO_COMPLETED){
+            return;
+        }
         if(scroll_counter > SCROLL_COUNTER_MAX){
             scroll_step--;
             update_scroll();
