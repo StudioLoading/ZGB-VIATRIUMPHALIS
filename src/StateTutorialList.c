@@ -40,11 +40,12 @@ unsigned char m14[18];
 unsigned char EMPTY_STRING_17[18] = "                 ";
 
 extern void state_move_to_papyrus(INSTRUCTION arg_instruction_to_show, UINT8 arg_prev_state) BANKED;
-
+extern void set_bgm() BANKED;
 
 void START(){
     InitScroll(BANK(maptutoriallist), &maptutoriallist, 0, 0);
 	SHOW_BKG;
+    set_bgm();
 	INIT_FONT(font, PRINT_BKG);
     memcpy(m01, "GO STRAIGHT      ", 18);
     memcpy(m02, "GO STRAIGHT TIME ", 18);

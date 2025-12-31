@@ -2,7 +2,6 @@
 #include "Math.h"
 
 UINT8 next_state = StateCredit;
-
 UINT8 J_WHIP=J_A;//0x10;
 UINT8 J_ATK=J_B;//0x20;
 

@@ -31,8 +31,12 @@ UINT8 cheat_activated = 0u;
 AREA cheat_area = AREA_ROME;
 
 extern AREA current_area;
+extern UINT8 stop_music_on_new_state;
+extern TUTORIAL_STAGE tutorial_state;
 
 extern void manage_border(UINT8 my_next_state) BANKED;
+extern void set_bgm() BANKED;
+
 
 void START(){
 	if(sgb_running){
@@ -42,6 +46,7 @@ void START(){
     switch(credit_step){
         case 1:
             InitScroll(BANK(mapcredit0), &mapcredit0, 0, 0);
+            stop_music_on_new_state = 0u; 
         break;
         case 2:
             InitScroll(BANK(maintitlemap), &maintitlemap, 0, 0);
@@ -54,6 +59,7 @@ void START(){
             InitScroll(BANK(titlescreen), &titlescreen, 0, 0);
         break;
     }
+    set_bgm();
 	SHOW_BKG;
 	INIT_FONT(font, PRINT_BKG);
     
@@ -75,6 +81,7 @@ void UPDATE(){
                 cheat_counter++;
                 if(cheat_counter > 4){
                     cheat_activated = 1u;
+                    tutorial_state = TUTORIAL_PASSED;
                     PRINT(13, 1, "CHEATER!");
                     return;
                 }

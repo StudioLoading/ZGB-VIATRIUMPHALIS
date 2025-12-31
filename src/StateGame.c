@@ -100,7 +100,7 @@ extern INT16 time_to_load;
 extern UINT8 turn;
 
 extern void die() BANKED;
-
+extern void set_bgm() BANKED;
 
 void START() {
 }
@@ -135,6 +135,7 @@ void start_common() BANKED{
 	spawning_weapon_counter = 0;
 	reset_combo_counter = 0u;
 	flag_using_atk = 0u;
+	set_bgm();
 }
 
 void update_stamina() BANKED{

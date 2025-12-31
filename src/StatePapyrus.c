@@ -3,6 +3,7 @@
 #include "BankManager.h"
 #include "ZGBMain.h"
 #include "Keys.h"
+#include "Music.h"
 #include "Palette.h"
 #include "Scroll.h"
 #include "Sprite.h"
@@ -38,10 +39,13 @@ extern unsigned char d11[];
 extern unsigned char d12[];
 
 extern UINT8 flag_is_demo;
+extern TUTORIAL_STAGE tutorial_state;
 
 INSTRUCTION instruction_given = 0;
 
 void update_scroll() BANKED;
+
+extern void set_bgm() BANKED;
 
 void START(){
     InitScroll(BANK(papyrusmap), &papyrusmap, 0, 0);
@@ -52,6 +56,10 @@ void START(){
     scroll_step = 0;
     scroll_counter = 0;
     trigger_unscroll = 0;
+    PauseMusic;
+    if(instruction_given == DEMO_COMPLETED){//tutorial_state != TUTORIAL_PASSED
+        set_bgm();
+    }
 }
 
 void UPDATE(){
@@ -78,6 +86,9 @@ void UPDATE(){
             update_scroll();
         }
         if(scroll_step == 0){
+            if(tutorial_state == TUTORIAL_PASSED && prev_state != StateWorldmap){
+                ResumeMusic;
+            }
             SetState(prev_state);
         }
     }

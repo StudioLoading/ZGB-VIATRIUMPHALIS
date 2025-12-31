@@ -2,6 +2,7 @@
 
 #include "BankManager.h"
 #include "ZGBMain.h"
+#include "Music.h"
 #include "Palette.h"
 #include "Scroll.h"
 #include "Sprite.h"
@@ -79,6 +80,7 @@ extern void show_danger() BANKED;
 extern void fantoccio_move(Sprite* s_fantoccio_arg) BANKED;
 extern void item_spawn(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
 extern void item_spawn_continuously(ITEM_TYPE arg_itemtype, UINT16 arg_posx, UINT16 arg_posy) BANKED;
+extern void set_bgm() BANKED;
 
 void START() {
     fantoccio_hit = 0;
@@ -274,6 +276,7 @@ void UPDATE(){
         }
     //IS TRACK COMPLETED?
         if(track_ended == 1u){
+            PauseMusic;
             track_ended_cooldown--;
             if(track_ended_cooldown <= 0){//cambia stato
                 INT8 can_go_on = 1;
